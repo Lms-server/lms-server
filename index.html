@@ -7,164 +7,329 @@
 
 <title>🦆 LMS SERVER</title>
 
+
 <style>
 
+
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    color:white;
-    text-align:center;
-    background:linear-gradient(135deg,#07152e,#102d5c,#07152e);
+
+margin:0;
+font-family:"Arial Rounded MT Bold",Arial,sans-serif;
+color:#333;
+text-align:center;
+
+background:#fff9e6;
+
+background-image:
+
+linear-gradient(#d9e9ff 1px, transparent 1px),
+linear-gradient(90deg,#d9e9ff 1px, transparent 1px);
+
+background-size:35px 35px;
+
 }
 
 
+
 header{
-    padding:60px 20px;
-    background:linear-gradient(135deg,#ffd633,#ff9900);
-    color:#111;
+
+padding:50px 20px;
+
+background:linear-gradient(135deg,#ffe66d,#ffb703);
+
+border-bottom:5px solid #ff8800;
+
 }
 
 
 h1{
-    font-size:55px;
-    cursor:pointer;
+
+font-size:55px;
+color:#333;
+cursor:pointer;
+
+text-shadow:3px 3px white;
+
 }
 
 
+
 nav{
-    position:sticky;
-    top:0;
-    background:#061329ee;
-    padding:20px;
-    z-index:10;
+
+position:sticky;
+top:0;
+
+background:#ffffffee;
+
+padding:15px;
+
+border-bottom:3px solid #ffd166;
+
+z-index:10;
+
 }
 
 
 nav a{
-    color:white;
-    text-decoration:none;
-    margin:15px;
-    font-weight:bold;
+
+color:#008cff;
+
+text-decoration:none;
+
+margin:15px;
+
+font-weight:bold;
+
+font-size:18px;
+
 }
+
+
+nav a:hover{
+
+color:#ff8800;
+
+}
+
 
 
 section{
-    padding:50px 20px;
+
+padding:40px 20px;
+
 }
+
 
 
 .card{
-    background:rgba(15,35,70,0.9);
-    border-radius:25px;
-    padding:35px;
-    margin:25px auto;
-    max-width:800px;
-    box-shadow:0 0 25px rgba(0,150,255,0.3);
+
+background:white;
+
+border-radius:30px;
+
+padding:30px;
+
+margin:25px auto;
+
+max-width:800px;
+
+
+box-shadow:
+
+0 8px 0 #ffd166;
+
+
+border:3px solid #ffe29a;
+
 }
+
 
 
 .button{
-    display:inline-block;
-    margin-top:20px;
-    padding:15px 35px;
-    background:#ffd633;
-    color:black;
-    border-radius:15px;
-    text-decoration:none;
-    font-weight:bold;
-    cursor:pointer;
+
+display:inline-block;
+
+margin-top:15px;
+
+padding:15px 35px;
+
+background:#ffcc33;
+
+color:#333;
+
+border-radius:20px;
+
+text-decoration:none;
+
+font-weight:bold;
+
+cursor:pointer;
+
+
+border:3px solid #ff9900;
+
 }
 
 
 
-/* 🍪 COOKIE CLICKER */
+.button:hover{
+
+transform:scale(1.05);
+
+}
+
 
 .cookie-box{
-    background:#4b2a12;
-    border-radius:25px;
-    padding:30px;
+
+background:#fff3b0;
+
+border-radius:30px;
+
+padding:30px;
+
+border:4px solid #ffcc33;
+
 }
 
 
 .cookie{
-    font-size:130px;
-    cursor:pointer;
-    user-select:none;
-    transition:0.15s;
+
+font-size:140px;
+
+cursor:pointer;
+
+user-select:none;
+
+transition:0.15s;
+
 }
+
 
 
 .cookie:active{
-    transform:scale(0.85);
+
+transform:scale(0.8) rotate(10deg);
+
 }
+
 
 
 .stats{
-    font-size:22px;
-    margin:15px;
+
+font-size:24px;
+
+margin:12px;
+
+font-weight:bold;
+
+color:#ff8800;
+
 }
+
 
 
 .upgrade{
-    background:#ffd633;
-    color:black;
-    padding:15px;
-    border-radius:15px;
-    cursor:pointer;
-    display:inline-block;
-    font-weight:bold;
+
+display:inline-block;
+
+background:#4cc9f0;
+
+color:white;
+
+padding:15px 25px;
+
+border-radius:20px;
+
+cursor:pointer;
+
+font-weight:bold;
+
+border:3px solid #008cff;
+
 }
 
 
-
-/* Team */
 
 .team-grid{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:15px;
+
+display:flex;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:15px;
+
 }
+
 
 
 .player{
-    background:#081b38;
-    padding:12px;
-    border-radius:15px;
-    width:130px;
+
+background:#e8f8ff;
+
+padding:15px;
+
+border-radius:20px;
+
+width:120px;
+
+border:3px solid #9adfff;
+
 }
+
 
 
 .player img{
-    width:70px;
-    height:70px;
+
+width:60px;
+
+height:60px;
+
+border-radius:50%;
+
 }
+
 
 
 .owner{
-    border:3px solid gold;
+
+border-color:#ffd000;
+
 }
+
 
 
 .admin{
-    border:3px solid red;
+
+border-color:#ff5555;
+
 }
+
 
 
 .builder{
-    border:3px solid lime;
+
+border-color:#55dd55;
+
 }
+
 
 
 .premium{
-    border:3px solid purple;
+
+border-color:#cc66ff;
+
 }
+
+
+
+
+input,select,textarea{
+
+width:80%;
+
+padding:12px;
+
+margin:8px;
+
+border-radius:15px;
+
+border:2px solid #ffd166;
+
+}
+
 
 
 footer{
-    padding:25px;
-    background:#061329;
+
+padding:25px;
+
+background:#ffcc33;
+
 }
+
+
 
 
 </style>
@@ -177,100 +342,143 @@ footer{
 
 <header id="start">
 
+
 <h1 onclick="creeperDuck()">
+
 🦆 LMS SERVER
+
 </h1>
 
+
 <p>
+
 Die offizielle Website des Minecraft Servers
+
 </p>
+
 
 </header>
 
 
+
 <nav>
 
-<a href="#start">Start</a>
-<a href="#minigames">Minigame</a>
-<a href="#shop">Shop</a>
-<a href="#team">Team</a>
-<a href="#kontakt">Kontakt</a>
+
+<a href="#start">🏠 Start</a>
+
+<a href="#minigames">🍪 Spiele</a>
+
+<a href="#shop">🛒 Shop</a>
+
+<a href="#team">👑 Team</a>
+
+<a href="#kontakt">📩 Kontakt</a>
+
 
 </nav>
+
+
+
 <section>
+
 
 <div class="card">
 
-<h2>🌌 Willkommen!</h2>
+
+<h2>🌈 Willkommen!</h2>
+
 
 <p>
-Willkommen auf dem LMS SERVER!
+
+Willkommen beim LMS SERVER!
+
 <br>
-Spiele Minigames, sammle Kekse und entdecke neue Welten.
+
+Spiele, sammle Kekse und entdecke unsere Welt.
+
 </p>
 
 
+
 <a class="button" href="https://discord.gg/N5ZYVRpMMU">
-💜 Discord beitreten
+
+💜 Discord
+
 </a>
 
 
 </div>
 
+
 </section>
+
 
 
 
 <section id="minigames">
 
+
 <div class="card">
 
-<h2>🍪 LMS Cookie Clicker</h2>
+
+<h2>🍪 Keks Abenteuer</h2>
+
 
 <div class="cookie-box">
 
-<div class="stats" id="cookies">
+
+<div id="cookies" class="stats">
+
 🍪 Kekse: 0
+
 </div>
 
 
-<div class="stats" id="level">
+<div id="level" class="stats">
+
 ⭐ Level: 1
+
 </div>
 
 
-<div class="stats" id="power">
-👆 Klick Stärke: +1
+<div id="power" class="stats">
+
+👆 Stärke: +1
+
 </div>
 
-
-<br>
 
 
 <div class="cookie" onclick="clickCookie()">
+
 🍪
+
 </div>
 
-
-<br>
 
 
 <div class="upgrade" onclick="upgradeCookie()">
 
-🛠️ Keks-Upgrade
+🛠️ Upgrade
 
 <br>
 
 <span id="upgradeCost">
+
 50 🍪
+
 </span>
 
+
 </div>
+
 
 
 </div>
 
+
 </div>
+
 
 </section>
 
@@ -279,36 +487,41 @@ Spiele Minigames, sammle Kekse und entdecke neue Welten.
 
 <section id="shop">
 
+
 <div class="card">
 
-<h2>🛒 Shop</h2>
+
+<h2>🛒 LMS Shop</h2>
+
 
 <p>
 
-🚧 Coming Soon
+🚧 Coming Soon 🚧
 
 <br><br>
 
-Der LMS SERVER Shop ist bald verfügbar!
+Bald:
 
-<br><br>
+<br>
 
 💎 Rubine
+
 <br>
+
 🎁 Mysteryboxen
+
 <br>
-🦆 Exklusive Items
+
+🦆 Ente Items
+
 
 </p>
 
+
 </div>
 
+
 </section>
-
-
-
-
-
 <section id="team">
 
 <div class="card">
@@ -319,87 +532,52 @@ Der LMS SERVER Shop ist bald verfügbar!
 <div class="team-grid">
 
 
-
 <div class="player owner">
-
 <img src="https://mc-heads.net/avatar/CC_Minecarft/70">
-
 <h3>CC_Minecarft</h3>
-
 <p>👑 Owner</p>
-
 </div>
 
 
-
 <div class="player builder">
-
 <img src="https://mc-heads.net/avatar/Hobbit2304/70">
-
 <h3>Hobbit2304</h3>
-
 <p>🛠️ Builder</p>
-
 </div>
 
 
-
 <div class="player builder">
-
 <img src="https://mc-heads.net/avatar/King_Luma1/70">
-
 <h3>King_Luma1</h3>
-
 <p>🛠️ Builder</p>
-
 </div>
-
 
 
 <div class="player builder">
-
 <img src="https://mc-heads.net/avatar/Lennyy20/70">
-
 <h3>Lennyy20</h3>
-
 <p>🛠️ Builder</p>
-
 </div>
-
 
 
 <div class="player admin">
-
 <img src="https://mc-heads.net/avatar/Thrumx/70">
-
 <h3>Thrumx</h3>
-
 <p>🛡️ Admin</p>
-
 </div>
 
 
-
 <div class="player premium">
-
 <img src="https://mc-heads.net/avatar/Takatonka/70">
-
 <h3>Takatonka</h3>
-
 <p>⭐ Premium</p>
-
 </div>
 
 
-
 <div class="player premium">
-
 <img src="https://mc-heads.net/avatar/LemonadeFruit/70">
-
 <h3>LemonadeFruit</h3>
-
 <p>⭐ Premium</p>
-
 </div>
 
 
@@ -408,28 +586,18 @@ Der LMS SERVER Shop ist bald verfügbar!
 </div>
 
 </section>
+
+
+
+
 <section id="kontakt">
 
 <div class="card">
 
-<h2>📩 Kontakt & Support</h2>
-
-<p>
-Fragen oder Vorschläge an das LMS SERVER Team?
-</p>
+<h2>📩 Kontakt</h2>
 
 
-<input id="name" type="text" placeholder="Minecraft Name">
-
-<br>
-
-
-<select id="art">
-
-<option>❓ Frage</option>
-<option>💡 Vorschlag</option>
-
-</select>
+<input id="name" placeholder="Minecraft Name">
 
 
 <br>
@@ -442,7 +610,9 @@ Fragen oder Vorschläge an das LMS SERVER Team?
 
 
 <button class="button" onclick="sendMessage()">
-📨 An Discord senden
+
+📨 Frage stellen
+
 </button>
 
 
@@ -452,14 +622,18 @@ Fragen oder Vorschläge an das LMS SERVER Team?
 <br>
 
 
-<a class="button" href="https://discord.gg/N5ZYVRpMMU">
-💜 Offizieller Discord
+<a class="button" href="https://discord.gg/SKVYAWGbXD">
+
+💬 Stelle Fragen Discord
+
 </a>
 
 
 </div>
 
+
 </section>
+
 
 
 
@@ -471,19 +645,22 @@ Fragen oder Vorschläge an das LMS SERVER Team?
 
 
 
+
 <script>
 
 
-// 🍪 Cookie Clicker
-
 let cookies = Number(localStorage.getItem("cookies")) || 0;
+
 let level = Number(localStorage.getItem("level")) || 1;
+
 let power = Number(localStorage.getItem("power")) || 1;
+
 let upgradeCost = Number(localStorage.getItem("upgradeCost")) || 50;
 
 
 
 function updateCookieGame(){
+
 
 document.getElementById("cookies").innerHTML =
 "🍪 Kekse: " + cookies;
@@ -494,17 +671,22 @@ document.getElementById("level").innerHTML =
 
 
 document.getElementById("power").innerHTML =
-"👆 Klick Stärke: +" + power;
+"👆 Stärke: +" + power;
 
 
 document.getElementById("upgradeCost").innerHTML =
 upgradeCost + " 🍪";
 
 
+
 localStorage.setItem("cookies",cookies);
+
 localStorage.setItem("level",level);
+
 localStorage.setItem("power",power);
+
 localStorage.setItem("upgradeCost",upgradeCost);
+
 
 }
 
@@ -512,6 +694,7 @@ localStorage.setItem("upgradeCost",upgradeCost);
 
 
 function clickCookie(){
+
 
 cookies += power;
 
@@ -525,12 +708,14 @@ level++;
 
 updateCookieGame();
 
+
 }
 
 
 
 
 function upgradeCookie(){
+
 
 if(cookies >= upgradeCost){
 
@@ -549,51 +734,29 @@ updateCookieGame();
 
 else{
 
-
-alert("❌ Du brauchst mehr Kekse!");
-
+alert("❌ Noch nicht genug Kekse!");
 
 }
 
-}
-
-
-
-updateCookieGame();
-
-
-
-
-// 🦆 Creeper Animation
-
-function creeperDuck(){
-
-alert("🦆 Eine Ente fliegt über den Server!");
 
 }
 
 
 
-
-// 📩 Discord
 
 function sendMessage(){
 
-let name =
-document.getElementById("name").value;
 
+let name=document.getElementById("name").value;
 
-let nachricht =
-document.getElementById("nachricht").value;
+let nachricht=document.getElementById("nachricht").value;
 
 
 
-if(name === "" || nachricht === ""){
+if(name==="" || nachricht===""){
 
-
-document.getElementById("status").innerHTML =
-"❌ Bitte alles ausfüllen.";
-
+document.getElementById("status").innerHTML=
+"❌ Bitte ausfüllen.";
 
 return;
 
@@ -608,11 +771,16 @@ window.open(
 
 
 
-document.getElementById("status").innerHTML =
-"✅ Öffne Discord #stelle-fragen!";
+document.getElementById("status").innerHTML=
+"✅ Discord geöffnet!";
 
 
 }
+
+
+
+
+updateCookieGame();
 
 
 </script>
