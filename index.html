@@ -29,7 +29,6 @@ background-size:35px 35px;
 }
 
 
-
 header{
 
 padding:60px 20px;
@@ -50,8 +49,6 @@ font-size:55px;
 cursor:pointer;
 
 }
-
-
 
 
 
@@ -89,7 +86,6 @@ nav a:hover{
 color:#ffd633;
 
 }
-
 
 
 
@@ -153,7 +149,37 @@ margin:8px;
 
 
 
-/* Cookie */
+/* RADIO */
+
+
+.radio-box{
+
+background:#eef5ff;
+
+border:3px solid #16365c;
+
+border-radius:20px;
+
+padding:25px;
+
+}
+
+
+
+.radio-title{
+
+font-size:30px;
+
+font-weight:bold;
+
+}
+
+
+
+
+
+/* COOKIE */
+
 
 .cookie-box{
 
@@ -186,6 +212,7 @@ cursor:pointer;
 position:relative;
 
 box-shadow:
+
 inset -15px -15px 20px #7d4218,
 0 10px 20px #0005;
 
@@ -247,34 +274,6 @@ display:inline-block;
 cursor:pointer;
 
 }
-
-/* Radio */
-
-.radio-box{
-
-background:#eef5ff;
-
-padding:25px;
-
-border-radius:20px;
-
-border:3px solid #16365c;
-
-}
-
-
-
-.radio-title{
-
-font-size:30px;
-
-font-weight:bold;
-
-}
-
-
-
-
 
 /* Team */
 
@@ -461,11 +460,13 @@ background:#061329;
 
 <div class="creeper">
 
+
 <div class="eye"></div>
 
 <div class="eye2"></div>
 
 <div class="mouth"></div>
+
 
 </div>
 
@@ -499,6 +500,7 @@ Die offizielle Website des Minecraft Servers
 
 
 
+
 <nav>
 
 
@@ -523,21 +525,25 @@ Die offizielle Website des Minecraft Servers
 
 
 
+
 <section>
 
 
 <div class="card">
 
 
-<h2>Willkommen beim LMS SERVER</h2>
+<h2>
+
+Willkommen beim LMS SERVER
+
+</h2>
 
 
 <p>
 
-Minecraft, Events, Spiele und Community.
+Minecraft, Events und Community.
 
 </p>
-
 
 
 <a class="button" href="https://discord.gg/SKVYAWGbXD">
@@ -558,13 +564,18 @@ Discord
 
 
 
+
 <section id="live">
 
 
 <div class="card">
 
 
-<h2>📺 LMS LIVE</h2>
+<h2>
+
+📺 LMS LIVE
+
+</h2>
 
 
 <h3>
@@ -576,10 +587,9 @@ Die interaktive Live Show kommt bald!
 
 <p>
 
-Hier kannst du später den offiziellen Stream anschauen.
+Der offizielle Stream wird später hier verfügbar sein.
 
 </p>
-
 
 
 <button class="button" onclick="liveMessage()">
@@ -593,6 +603,8 @@ Hier kannst du später den offiziellen Stream anschauen.
 
 
 </section>
+
+
 
 
 
@@ -619,32 +631,43 @@ Hier kannst du später den offiziellen Stream anschauen.
 
 <p>
 
-Wähle deinen Lieblingssender:
+Wähle deinen Radiosender:
 
 </p>
 
 
 
-
-<a class="button" target="_blank" href="https://www.ffh.de/">
+<h3>
 
 📻 FFH
 
+</h3>
+
+
+
+<a class="button" target="_blank" href="https://www.ffh.de/on-air/webradio.html">
+
+▶ FFH Player
+
 </a>
 
 
 
-<a class="button" target="_blank" href="https://www.you-fm.de/">
-
-🎧 YOU FM
-
-</a>
+<br><br>
 
 
 
-<a class="button" target="_blank" href="https://www.dasding.de/">
+<h3>
 
 🎵 DASDING
+
+</h3>
+
+
+
+<a class="button" target="_blank" href="https://www.dasding.de">
+
+▶ DASDING Player
 
 </a>
 
@@ -663,13 +686,18 @@ Wähle deinen Lieblingssender:
 
 
 
+
 <section id="minigames">
 
 
 <div class="card">
 
 
-<h2>🍪 Cookie Challenge</h2>
+<h2>
+
+🍪 Cookie Challenge
+
+</h2>
 
 
 <div class="cookie-box">
@@ -682,6 +710,7 @@ Kekse: 0
 </div>
 
 
+
 <div class="stats" id="level">
 
 Level: 1
@@ -689,11 +718,14 @@ Level: 1
 </div>
 
 
+
 <div class="stats" id="power">
 
 Stärke: 1
 
 </div>
+
+
 
 
 <div class="cookie" onclick="clickCookie()">
@@ -730,13 +762,20 @@ Upgrade
 
 
 
+
+
+
 <section id="shop">
 
 
 <div class="card">
 
 
-<h2>🛒 Shop</h2>
+<h2>
+
+🛒 Shop
+
+</h2>
 
 
 <h3>
@@ -760,9 +799,16 @@ Rubine, Mysteryboxen und LMS Items.
 
 <section id="team">
 
+
 <div class="card">
 
-<h2>👑 LMS SERVER Team</h2>
+
+<h2>
+
+👑 LMS SERVER Team
+
+</h2>
+
 
 
 <div class="team-grid">
@@ -781,7 +827,6 @@ Rubine, Mysteryboxen und LMS Items.
 
 
 
-
 <div class="player">
 
 <img src="https://mc-heads.net/avatar/Hobbit2304/70">
@@ -791,7 +836,6 @@ Rubine, Mysteryboxen und LMS Items.
 <p>Builder</p>
 
 </div>
-
 
 
 
@@ -807,7 +851,6 @@ Rubine, Mysteryboxen und LMS Items.
 
 
 
-
 <div class="player">
 
 <img src="https://mc-heads.net/avatar/Lennyy20/70">
@@ -817,7 +860,6 @@ Rubine, Mysteryboxen und LMS Items.
 <p>Builder</p>
 
 </div>
-
 
 
 
@@ -833,7 +875,6 @@ Rubine, Mysteryboxen und LMS Items.
 
 
 
-
 <div class="player">
 
 <img src="https://mc-heads.net/avatar/Takatonka/70">
@@ -843,7 +884,6 @@ Rubine, Mysteryboxen und LMS Items.
 <p>Premium</p>
 
 </div>
-
 
 
 
@@ -861,9 +901,12 @@ Rubine, Mysteryboxen und LMS Items.
 
 </div>
 
+
 </div>
 
+
 </section>
+
 
 
 
@@ -876,7 +919,12 @@ Rubine, Mysteryboxen und LMS Items.
 <div class="card">
 
 
-<h2>📩 Kontakt & Support</h2>
+<h2>
+
+📩 Kontakt & Support
+
+</h2>
+
 
 
 <p>
@@ -891,7 +939,6 @@ Fragen oder Vorschläge?
 
 
 <br>
-
 
 
 <textarea id="nachricht" placeholder="Deine Nachricht"></textarea>
@@ -916,10 +963,9 @@ Nachricht senden
 <br>
 
 
-
 <a class="button" href="https://discord.gg/SKVYAWGbXD">
 
-Discord Stelle Fragen
+Discord
 
 </a>
 
@@ -935,13 +981,14 @@ Discord Stelle Fragen
 
 
 
-<footer>
 
+<footer>
 
 © 2026 🦆 LMS SERVER
 
-
 </footer>
+
+
 
 
 
@@ -951,7 +998,7 @@ Discord Stelle Fragen
 <script>
 
 
-// Cookie Clicker
+// Cookie System
 
 
 let cookies = Number(localStorage.getItem("cookies")) || 0;
@@ -961,6 +1008,7 @@ let level = Number(localStorage.getItem("level")) || 1;
 let power = Number(localStorage.getItem("power")) || 1;
 
 let upgradeCost = Number(localStorage.getItem("upgradeCost")) || 50;
+
 
 
 
@@ -999,6 +1047,7 @@ localStorage.setItem("upgradeCost",upgradeCost);
 
 
 
+
 function clickCookie(){
 
 
@@ -1033,7 +1082,7 @@ cookies -= upgradeCost;
 
 power++;
 
-upgradeCost *= 2;
+upgradeCost = upgradeCost * 2;
 
 
 updateCookie();
@@ -1050,6 +1099,7 @@ alert("Nicht genug Kekse!");
 
 
 }
+
 
 
 
@@ -1074,13 +1124,14 @@ alert(
 
 
 
+
 // Creeper mit Ente
 
 
 function creeperDuck(){
 
 
-let c=document.getElementById("creeperDuck");
+let c = document.getElementById("creeperDuck");
 
 
 c.style.bottom="30px";
@@ -1102,6 +1153,7 @@ c.style.bottom="-300px";
 
 
 
+
 // Kontakt
 
 
@@ -1111,7 +1163,6 @@ function sendMessage(){
 let name=document.getElementById("name").value;
 
 let nachricht=document.getElementById("nachricht").value;
-
 
 
 
@@ -1130,7 +1181,6 @@ return;
 
 
 
-
 window.open(
 
 "https://discord.gg/SKVYAWGbXD",
@@ -1141,15 +1191,12 @@ window.open(
 
 
 
-
 document.getElementById("status").innerHTML=
 
 "Discord geöffnet!";
 
 
-
 }
-
 
 
 
