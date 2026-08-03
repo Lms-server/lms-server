@@ -141,6 +141,7 @@ footer{
 
 </head>
 
+
 <body>
 
 
@@ -299,7 +300,7 @@ Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 <h2>📩 Kontakt & Support</h2>
 
 <p>
-Hast du eine Frage oder einen Vorschlag?
+Fragen oder Vorschläge an das LMS SERVER Team?
 </p>
 
 
@@ -328,7 +329,7 @@ Hast du eine Frage oder einen Vorschlag?
 
 
 <button class="button" onclick="sendMessage()">
-📨 Absenden
+📨 An Discord senden
 </button>
 
 
@@ -339,7 +340,7 @@ Hast du eine Frage oder einen Vorschlag?
 
 
 <a class="button" href="https://discord.gg/N5ZYVRpMMU">
-💜 Discord
+💜 Offizieller Discord
 </a>
 
 
@@ -363,7 +364,9 @@ Hast du eine Frage oder einen Vorschlag?
 function sendMessage(){
 
 let name = document.getElementById("name").value;
+let art = document.getElementById("art").value;
 let nachricht = document.getElementById("nachricht").value;
+
 
 if(name === "" || nachricht === ""){
 
@@ -375,12 +378,22 @@ return;
 }
 
 
+let text =
+"🦆 LMS SERVER Anfrage%0A%0A" +
+"👤 Name: " + name + "%0A" +
+"📌 Kategorie: " + art + "%0A" +
+"💬 Nachricht: " + nachricht;
+
+
+window.open(
+"https://discord.com/channels/@me",
+"_blank"
+);
+
+
 document.getElementById("status").innerHTML =
-"✅ Danke " + name + "! Deine Nachricht wurde an das LMS SERVER Team gesendet.";
+"✅ Anfrage vorbereitet! Öffne Discord und sende sie in #stelle-fragen.";
 
-
-document.getElementById("name").value="";
-document.getElementById("nachricht").value="";
 
 }
 
