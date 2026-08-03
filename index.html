@@ -1,239 +1,319 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>LMS SERVER</title>
+<title>🦆 LMS SERVER</title>
+
 
 <style>
 
+
 body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    color:white;
-    text-align:center;
-    background:#071a33;
 
-    background-image:
-    linear-gradient(#16365c 1px, transparent 1px),
-    linear-gradient(90deg,#16365c 1px, transparent 1px);
+margin:0;
 
-    background-size:35px 35px;
+font-family:Arial,sans-serif;
+
+color:white;
+
+text-align:center;
+
+background:#071a33;
+
+
+background-image:
+
+linear-gradient(#16365c 1px,transparent 1px),
+linear-gradient(90deg,#16365c 1px,transparent 1px);
+
+background-size:35px 35px;
+
 }
 
 
-/* Kopf */
 
 header{
 
-    padding:60px 20px;
+padding:60px 20px;
 
-    background:#ffd633;
+background:linear-gradient(135deg,#ffd633,#ffad00);
 
-    color:#071a33;
+color:#071a33;
 
-    border-bottom:5px solid #c99d00;
+border-bottom:5px solid #c58b00;
 
 }
+
 
 
 h1{
 
-    font-size:55px;
+font-size:55px;
 
-    cursor:pointer;
+cursor:pointer;
+
+text-shadow:2px 2px white;
 
 }
 
 
 
-/* Navigation */
 
 nav{
 
-    position:sticky;
+position:sticky;
 
-    top:0;
+top:0;
 
-    background:#061329ee;
+background:#061329ee;
 
-    padding:18px;
+padding:18px;
 
-    z-index:10;
+z-index:20;
 
 }
+
 
 
 nav a{
 
-    color:white;
+color:white;
 
-    text-decoration:none;
+text-decoration:none;
 
-    margin:15px;
+margin:12px;
 
-    font-weight:bold;
+font-weight:bold;
 
 }
+
 
 
 nav a:hover{
 
-    color:#ffd633;
+color:#ffd633;
 
 }
 
 
 
-/* Karten */
+
 
 section{
 
-    padding:40px 20px;
+padding:40px 20px;
 
 }
+
+
 
 
 
 .card{
 
-    background:#ffffff;
+background:white;
 
-    color:#071a33;
+color:#071a33;
 
-    max-width:850px;
+max-width:850px;
 
-    margin:25px auto;
+margin:25px auto;
 
-    padding:35px;
+padding:35px;
 
-    border-radius:20px;
+border-radius:25px;
 
-    box-shadow:0 8px 25px #0008;
+box-shadow:0 10px 25px #0008;
 
 }
 
 
 
-/* Buttons */
 
 .button{
 
-    display:inline-block;
+display:inline-block;
 
-    background:#ffd633;
+background:#ffd633;
 
-    color:#071a33;
+color:#071a33;
 
-    padding:14px 30px;
+padding:15px 30px;
 
-    margin-top:15px;
+border-radius:15px;
 
-    border-radius:12px;
+font-weight:bold;
 
-    text-decoration:none;
+cursor:pointer;
 
-    font-weight:bold;
+text-decoration:none;
 
-    cursor:pointer;
-
-}
-
-
-
-/* Cookie Game */
-
-.cookie-box{
-
-    background:#eef5ff;
-
-    border-radius:20px;
-
-    padding:25px;
-
-}
-
-
-.cookie{
-
-    width:150px;
-
-    height:150px;
-
-    margin:20px auto;
-
-    background:#c98232;
-
-    border-radius:50%;
-
-    cursor:pointer;
-
-    position:relative;
-
-    box-shadow:inset 0 0 0 8px #9b5d20;
-
-}
-
-
-.cookie:before{
-
-    content:"";
-
-    position:absolute;
-
-    width:15px;
-
-    height:15px;
-
-    background:#3b2414;
-
-    border-radius:50%;
-
-    top:35px;
-
-    left:45px;
-
-    box-shadow:
-    45px 20px #3b2414,
-    20px 70px #3b2414,
-    75px 80px #3b2414;
-
-}
-
-
-.cookie:active{
-
-    transform:scale(0.9);
+border:none;
 
 }
 
 
 
-.stats{
+.button:hover{
 
-    font-size:20px;
-
-    margin:10px;
+transform:scale(1.05);
 
 }
 
 
 
-.upgrade{
 
-    background:#071a33;
 
-    color:white;
 
-    padding:15px;
+/* LMS LIVE */
 
-    border-radius:10px;
+.live-box{
 
-    display:inline-block;
+background:#eef5ff;
 
-    cursor:pointer;
+padding:25px;
+
+border-radius:20px;
+
+border:3px solid #16365c;
+
+}
+
+
+
+.live-title{
+
+font-size:35px;
+
+font-weight:bold;
+
+}
+
+
+
+
+
+/* Shop */
+
+
+.coming{
+
+font-size:25px;
+
+font-weight:bold;
+
+color:#16365c;
+
+}
+
+
+
+
+
+/* Creeper Ente */
+
+
+#creeperDuck{
+
+position:fixed;
+
+bottom:-300px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+transition:1.2s;
+
+z-index:100;
+
+}
+
+
+
+.creeper{
+
+width:130px;
+
+height:220px;
+
+background:#4caf50;
+
+border-radius:12px;
+
+position:relative;
+
+}
+
+
+
+.eye{
+
+position:absolute;
+
+top:45px;
+
+left:30px;
+
+width:25px;
+
+height:25px;
+
+background:black;
+
+}
+
+
+
+.eye2{
+
+position:absolute;
+
+top:45px;
+
+right:30px;
+
+width:25px;
+
+height:25px;
+
+background:black;
+
+}
+
+
+
+.mouth{
+
+position:absolute;
+
+bottom:40px;
+
+left:35px;
+
+width:60px;
+
+height:35px;
+
+background:black;
+
+}
+
+
+
+.duck{
+
+position:absolute;
+
+top:-70px;
+
+left:30px;
+
+font-size:70px;
 
 }
 
@@ -241,13 +321,13 @@ section{
 
 .team-grid{
 
-    display:flex;
+display:flex;
 
-    flex-wrap:wrap;
+flex-wrap:wrap;
 
-    justify-content:center;
+justify-content:center;
 
-    gap:15px;
+gap:15px;
 
 }
 
@@ -255,17 +335,17 @@ section{
 
 .player{
 
-    background:#edf4ff;
+background:#edf4ff;
 
-    color:#071a33;
+color:#071a33;
 
-    width:120px;
+width:120px;
 
-    padding:15px;
+padding:15px;
 
-    border-radius:15px;
+border-radius:15px;
 
-    border:2px solid #16365c;
+border:2px solid #16365c;
 
 }
 
@@ -273,57 +353,29 @@ section{
 
 .player img{
 
-    width:60px;
+width:60px;
 
-    height:60px;
+height:60px;
 
-    border-radius:8px;
-
-}
-
-
-
-.owner{
-
-    border:3px solid #ffd633;
-
-}
-
-
-.admin{
-
-    border:3px solid #d33;
-
-}
-
-
-.builder{
-
-    border:3px solid #2ca02c;
-
-}
-
-
-.premium{
-
-    border:3px solid #7b4cff;
+border-radius:8px;
 
 }
 
 
 
 
-input, textarea, select{
 
-    width:80%;
+input,textarea,select{
 
-    padding:12px;
+width:80%;
 
-    margin:8px;
+padding:12px;
 
-    border-radius:10px;
+margin:8px;
 
-    border:2px solid #16365c;
+border-radius:10px;
+
+border:2px solid #16365c;
 
 }
 
@@ -332,117 +384,12 @@ input, textarea, select{
 
 footer{
 
-    padding:25px;
+padding:25px;
 
-    background:#061329;
-
-}
-
-
-
-
-
-/* 🦆 Creeper Ente Animation */
-
-
-#creeperDuck{
-
-    position:fixed;
-
-    bottom:-300px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    transition:1.2s;
-
-    z-index:100;
+background:#061329;
 
 }
 
-
-
-.creeper{
-
-    width:120px;
-
-    height:200px;
-
-    background:#4caf50;
-
-    position:relative;
-
-    border-radius:10px;
-
-}
-
-
-
-.eye{
-
-    width:25px;
-
-    height:25px;
-
-    background:black;
-
-    position:absolute;
-
-    top:40px;
-
-    left:25px;
-
-}
-
-
-.eye2{
-
-    width:25px;
-
-    height:25px;
-
-    background:black;
-
-    position:absolute;
-
-    top:40px;
-
-    right:25px;
-
-}
-
-
-
-.mouth{
-
-    width:60px;
-
-    height:35px;
-
-    background:black;
-
-    position:absolute;
-
-    bottom:35px;
-
-    left:30px;
-
-}
-
-
-
-.duck{
-
-    position:absolute;
-
-    top:-65px;
-
-    left:25px;
-
-    font-size:65px;
-
-}
 
 
 
@@ -451,7 +398,10 @@ footer{
 </head>
 
 
+
 <body>
+
+
 
 
 <div id="creeperDuck">
@@ -466,18 +416,17 @@ footer{
 
 <div class="creeper">
 
-
 <div class="eye"></div>
 
 <div class="eye2"></div>
 
 <div class="mouth"></div>
 
-
 </div>
 
 
 </div>
+
 
 
 
@@ -504,11 +453,13 @@ Die offizielle Website des Minecraft Servers
 
 
 
+
 <nav>
+
 
 <a href="#start">Start</a>
 
-<a href="#minigames">Spiele</a>
+<a href="#live">LMS LIVE</a>
 
 <a href="#shop">Shop</a>
 
@@ -516,7 +467,9 @@ Die offizielle Website des Minecraft Servers
 
 <a href="#kontakt">Kontakt</a>
 
+
 </nav>
+
 
 
 
@@ -527,16 +480,16 @@ Die offizielle Website des Minecraft Servers
 <div class="card">
 
 
-<h2>Willkommen</h2>
+<h2>Willkommen beim LMS SERVER</h2>
 
 
 <p>
 
-Willkommen auf dem LMS SERVER.
+Erlebe Minecraft, Events und bald auch LMS LIVE.
 
 <br>
 
-Entdecke Minigames, sammle Kekse und werde Teil der Community.
+Eine neue interaktive Show für die Community.
 
 </p>
 
@@ -549,6 +502,7 @@ Discord
 </a>
 
 
+
 </div>
 
 
@@ -557,72 +511,64 @@ Discord
 
 
 
-<section id="minigames">
+
+
+<section id="live">
 
 
 <div class="card">
 
 
-<h2>Cookie Challenge</h2>
+<div class="live-box">
 
 
+<div class="live-title">
 
-<div class="cookie-box">
-
-
-<div class="stats" id="cookies">
-
-Kekse: 0
-
-</div>
-
-
-<div class="stats" id="level">
-
-Level: 1
-
-</div>
-
-
-<div class="stats" id="power">
-
-Klick Stärke: 1
+📺 LMS LIVE
 
 </div>
 
 
 
-<div class="cookie" onclick="clickCookie()">
+<h3>
 
-</div>
+Die interaktive Live Show kommt bald!
+
+</h3>
 
 
 
+<p>
 
-<div class="upgrade" onclick="upgradeCookie()">
-
-Upgrade
+Hier kannst du später den offiziellen Stream anschauen.
 
 <br>
 
-<span id="upgradeCost">
+Sei dabei bei Events, Spielen und besonderen Folgen.
 
-50 Kekse
+</p>
 
-</span>
+
+
+
+<button class="button" onclick="liveMessage()">
+
+▶ Live anschauen
+
+</button>
+
 
 
 </div>
 
-
-
-</div>
 
 
 </div>
 
 
 </section>
+
+
 
 
 
@@ -636,15 +582,24 @@ Upgrade
 <h2>Shop</h2>
 
 
+<p class="coming">
+
+🚧 Coming Soon
+
+</p>
+
+
+
 <p>
 
-Coming Soon
+Der LMS SERVER Shop wird bald eröffnet.
 
 <br><br>
 
-Rubine, Mysteryboxen und exklusive LMS Items
+Rubine, Mysteryboxen und exklusive Items folgen.
 
 </p>
+
 
 
 </div>
@@ -654,7 +609,10 @@ Rubine, Mysteryboxen und exklusive LMS Items
 
 
 
+
+
 <section id="team">
+
 
 <div class="card">
 
@@ -662,7 +620,9 @@ Rubine, Mysteryboxen und exklusive LMS Items
 <h2>LMS SERVER Team</h2>
 
 
+
 <div class="team-grid">
+
 
 
 
@@ -678,6 +638,7 @@ Rubine, Mysteryboxen und exklusive LMS Items
 
 
 
+
 <div class="player builder">
 
 <img src="https://mc-heads.net/avatar/Hobbit2304/70">
@@ -687,6 +648,7 @@ Rubine, Mysteryboxen und exklusive LMS Items
 <p>Builder</p>
 
 </div>
+
 
 
 
@@ -711,7 +673,6 @@ Rubine, Mysteryboxen und exklusive LMS Items
 <p>Builder</p>
 
 </div>
-
 
 
 <div class="player admin">
@@ -755,6 +716,7 @@ Rubine, Mysteryboxen und exklusive LMS Items
 
 </div>
 
+
 </section>
 
 
@@ -772,7 +734,7 @@ Rubine, Mysteryboxen und exklusive LMS Items
 
 <p>
 
-Fragen oder Vorschläge?
+Fragen oder Vorschläge an das LMS SERVER Team?
 
 </p>
 
@@ -790,11 +752,13 @@ Fragen oder Vorschläge?
 <br>
 
 
+
 <button class="button" onclick="sendMessage()">
 
-An Discord senden
+Nachricht senden
 
 </button>
+
 
 
 <p id="status"></p>
@@ -804,9 +768,10 @@ An Discord senden
 <br>
 
 
+
 <a class="button" href="https://discord.gg/SKVYAWGbXD">
 
-Stelle Fragen Discord
+Discord Stelle Fragen
 
 </a>
 
@@ -823,9 +788,10 @@ Stelle Fragen Discord
 
 <footer>
 
-© 2026 LMS SERVER
+© 2026 🦆 LMS SERVER
 
 </footer>
+
 
 
 
@@ -834,123 +800,17 @@ Stelle Fragen Discord
 <script>
 
 
-// Cookie Clicker
-
-
-let cookies = Number(localStorage.getItem("cookies")) || 0;
-
-let level = Number(localStorage.getItem("level")) || 1;
-
-let power = Number(localStorage.getItem("power")) || 1;
-
-let upgradeCost = Number(localStorage.getItem("upgradeCost")) || 50;
-
-
-
-function updateCookie(){
-
-
-document.getElementById("cookies").innerHTML =
-"Kekse: " + cookies;
-
-
-document.getElementById("level").innerHTML =
-"Level: " + level;
-
-
-document.getElementById("power").innerHTML =
-"Klick Stärke: " + power;
-
-
-
-document.getElementById("upgradeCost").innerHTML =
-upgradeCost + " Kekse";
-
-
-
-localStorage.setItem("cookies",cookies);
-
-localStorage.setItem("level",level);
-
-localStorage.setItem("power",power);
-
-localStorage.setItem("upgradeCost",upgradeCost);
-
-
-}
-
-
-
-
-
-function clickCookie(){
-
-
-cookies += power;
-
-
-if(cookies >= level * 100){
-
-level++;
-
-}
-
-
-updateCookie();
-
-
-}
-
-
-
-
-
-function upgradeCookie(){
-
-
-if(cookies >= upgradeCost){
-
-
-cookies -= upgradeCost;
-
-power++;
-
-upgradeCost *= 2;
-
-
-updateCookie();
-
-
-}
-
-else{
-
-
-alert("Nicht genug Kekse!");
-
-}
-
-
-}
-
-
-
-
-
-// Creeper mit Ente
-
-
 function creeperDuck(){
 
 
 let c=document.getElementById("creeperDuck");
 
 
-c.style.bottom="20px";
+c.style.bottom="30px";
 
 
 
-setTimeout(()=>{
+setTimeout(function(){
 
 
 c.style.bottom="-300px";
@@ -959,12 +819,27 @@ c.style.bottom="-300px";
 },2500);
 
 
+
 }
 
 
 
 
-// Kontakt
+
+function liveMessage(){
+
+
+alert(
+
+"📺 Tut uns leid!\n\nLMS LIVE ist noch nicht zum Anschauen verfügbar."
+
+);
+
+
+}
+
+
+
 
 
 function sendMessage(){
@@ -980,7 +855,8 @@ if(name==="" || nachricht===""){
 
 
 document.getElementById("status").innerHTML=
-"Bitte alles ausfüllen.";
+
+"Bitte fülle alle Felder aus.";
 
 
 return;
@@ -1005,15 +881,17 @@ document.getElementById("status").innerHTML=
 "Discord geöffnet!";
 
 
+document.getElementById("name").value="";
+
+document.getElementById("nachricht").value="";
+
+
 }
 
 
 
-updateCookie();
-
-
-
 </script>
+
 
 
 </body>
