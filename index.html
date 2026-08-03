@@ -83,12 +83,14 @@ section{
     cursor:pointer;
 }
 
+
 .team-grid{
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
     gap:15px;
 }
+
 
 .player{
     background:#081b38;
@@ -97,11 +99,13 @@ section{
     width:130px;
 }
 
+
 .player img{
     width:70px;
     height:70px;
     border-radius:10px;
 }
+
 
 .owner{
     border:3px solid gold;
@@ -119,6 +123,7 @@ section{
     border:3px solid purple;
 }
 
+
 input, select, textarea{
     width:80%;
     padding:12px;
@@ -127,6 +132,7 @@ input, select, textarea{
     margin:8px;
 }
 
+
 #status{
     margin-top:20px;
     color:#66ff66;
@@ -134,16 +140,63 @@ input, select, textarea{
 }
 
 
-/* Creeper Animation */
+/* 🦆 Creeper mit Ente */
 
 #creeperDuck{
     position:fixed;
-    bottom:-200px;
+    bottom:-300px;
     left:50%;
     transform:translateX(-50%);
-    font-size:80px;
     transition:1s;
     z-index:100;
+}
+
+
+.creeper{
+    width:140px;
+    height:220px;
+    background:#4CAF50;
+    border-radius:10px;
+    position:relative;
+    box-shadow:0 0 20px black;
+}
+
+
+.eye{
+    position:absolute;
+    top:45px;
+    left:30px;
+    width:25px;
+    height:25px;
+    background:black;
+}
+
+
+.eye2{
+    position:absolute;
+    top:45px;
+    right:30px;
+    width:25px;
+    height:25px;
+    background:black;
+}
+
+
+.mouth{
+    position:absolute;
+    bottom:45px;
+    left:35px;
+    width:70px;
+    height:35px;
+    background:black;
+}
+
+
+.duck{
+    position:absolute;
+    top:-65px;
+    left:35px;
+    font-size:70px;
 }
 
 
@@ -156,16 +209,26 @@ footer{
 
 </head>
 
-
 <body>
 
 
 <div id="creeperDuck">
-🟩<br>
+
+<div class="duck">
 🦆
 </div>
 
+<div class="creeper">
 
+<div class="eye"></div>
+
+<div class="eye2"></div>
+
+<div class="mouth"></div>
+
+</div>
+
+</div>
 <header id="start">
 
 <h1 onclick="creeperDuck()">
@@ -190,6 +253,7 @@ Die offizielle Website des Minecraft Servers
 </nav>
 
 
+
 <section>
 
 <div class="card">
@@ -202,13 +266,17 @@ Willkommen auf dem LMS SERVER!
 Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 </p>
 
+
 <a class="button" href="https://discord.gg/N5ZYVRpMMU">
 💜 Discord beitreten
 </a>
 
+
 </div>
 
 </section>
+
+
 
 
 <section id="minigames">
@@ -232,6 +300,8 @@ Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 </section>
 
 
+
+
 <section id="shop">
 
 <div class="card">
@@ -239,76 +309,130 @@ Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 <h2>🛒 Shop</h2>
 
 <p>
+
 🚧 Coming Soon
+
 <br><br>
+
 Der LMS SERVER Shop ist bald verfügbar!
+
 <br><br>
+
 💎 Rubine
 <br>
 🎁 Mysteryboxen
 <br>
 🦆 Exklusive Items
+
 </p>
 
 </div>
 
 </section>
+
+
+
+
+
 <section id="team">
 
 <div class="card">
 
 <h2>👑 LMS SERVER Team</h2>
 
+
 <div class="team-grid">
 
 
+
 <div class="player owner">
+
 <img src="https://mc-heads.net/avatar/CC_Minecarft/70">
+
 <h3>CC_Minecarft</h3>
+
 <p>👑 Owner</p>
+
 </div>
 
 
+
+
 <div class="player builder">
+
 <img src="https://mc-heads.net/avatar/Hobbit2304/70">
+
 <h3>Hobbit2304</h3>
+
 <p>🛠️ Builder</p>
+
 </div>
 
 
+
+
 <div class="player builder">
+
 <img src="https://mc-heads.net/avatar/King_Luma1/70">
+
 <h3>King_Luma1</h3>
+
 <p>🛠️ Builder</p>
+
 </div>
+
+
 
 
 <div class="player builder">
+
 <img src="https://mc-heads.net/avatar/Lennyy20/70">
+
 <h3>Lennyy20</h3>
+
 <p>🛠️ Builder</p>
+
 </div>
+
+
 
 
 <div class="player admin">
+
 <img src="https://mc-heads.net/avatar/Thrumx/70">
+
 <h3>Thrumx</h3>
+
 <p>🛡️ Admin</p>
+
 </div>
 
 
+
+
 <div class="player premium">
+
 <img src="https://mc-heads.net/avatar/Takatonka/70">
+
 <h3>Takatonka</h3>
+
 <p>⭐ Premium</p>
+
 </div>
+
+
 
 
 <div class="player premium">
+
 <img src="https://mc-heads.net/avatar/LemonadeFruit/70">
+
 <h3>LemonadeFruit</h3>
+
 <p>⭐ Premium</p>
+
 </div>
+
 
 
 </div>
@@ -316,10 +440,6 @@ Der LMS SERVER Shop ist bald verfügbar!
 </div>
 
 </section>
-
-
-
-
 <section id="kontakt">
 
 <div class="card">
@@ -339,6 +459,7 @@ Fragen oder Vorschläge an das LMS SERVER Team?
 <select id="art">
 
 <option>❓ Frage</option>
+
 <option>💡 Vorschlag</option>
 
 </select>
@@ -352,7 +473,9 @@ Fragen oder Vorschläge an das LMS SERVER Team?
 
 
 <button class="button" onclick="sendMessage()">
+
 📨 An Discord senden
+
 </button>
 
 
@@ -363,7 +486,9 @@ Fragen oder Vorschläge an das LMS SERVER Team?
 
 
 <a class="button" href="https://discord.gg/N5ZYVRpMMU">
+
 💜 Offizieller Discord
+
 </a>
 
 
@@ -382,6 +507,7 @@ Fragen oder Vorschläge an das LMS SERVER Team?
 
 
 
+
 <script>
 
 
@@ -389,47 +515,64 @@ function creeperDuck(){
 
 let c = document.getElementById("creeperDuck");
 
+
 c.style.bottom="0px";
 
 
 setTimeout(function(){
 
-c.style.bottom="-200px";
+c.style.bottom="-300px";
 
 },2500);
 
+
 }
+
 
 
 
 function sendMessage(){
 
 let name = document.getElementById("name").value;
+
 let art = document.getElementById("art").value;
+
 let nachricht = document.getElementById("nachricht").value;
+
 
 
 if(name === "" || nachricht === ""){
 
+
 document.getElementById("status").innerHTML =
 "❌ Bitte fülle alle Felder aus.";
 
+
 return;
+
 
 }
 
 
+
 window.open(
+
 "https://discord.gg/SKVYAWGbXD",
+
 "_blank"
+
 );
 
 
+
 document.getElementById("status").innerHTML =
+
 "✅ Anfrage vorbereitet! Öffne Discord und sende sie in #stelle-fragen.";
 
 
+
 document.getElementById("name").value="";
+
 document.getElementById("nachricht").value="";
 
 
@@ -440,4 +583,5 @@ document.getElementById("nachricht").value="";
 
 
 </body>
+
 </html>
