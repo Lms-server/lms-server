@@ -145,14 +145,15 @@ text-decoration:none;
 
 display:inline-block;
 
+margin:8px;
+
 }
 
 
 
 
 
-/* Cookie Spiel */
-
+/* Cookie */
 
 .cookie-box{
 
@@ -185,20 +186,8 @@ cursor:pointer;
 position:relative;
 
 box-shadow:
-
 inset -15px -15px 20px #7d4218,
-
 0 10px 20px #0005;
-
-transition:.15s;
-
-}
-
-
-
-.cookie:hover{
-
-transform:scale(1.08);
 
 }
 
@@ -225,20 +214,9 @@ left:45px;
 box-shadow:
 
 50px 10px #3b2414,
-
 90px 60px #3b2414,
-
 30px 90px #3b2414,
-
 100px 100px #3b2414;
-
-}
-
-
-
-.cookie:active{
-
-transform:scale(.85);
 
 }
 
@@ -264,11 +242,37 @@ padding:15px;
 
 border-radius:12px;
 
-cursor:pointer;
-
 display:inline-block;
 
+cursor:pointer;
+
 }
+
+/* Radio */
+
+.radio-box{
+
+background:#eef5ff;
+
+padding:25px;
+
+border-radius:20px;
+
+border:3px solid #16365c;
+
+}
+
+
+
+.radio-title{
+
+font-size:30px;
+
+font-weight:bold;
+
+}
+
+
 
 
 
@@ -315,6 +319,8 @@ height:60px;
 border-radius:8px;
 
 }
+
+
 
 
 
@@ -435,6 +441,7 @@ background:#061329;
 
 </style>
 
+
 </head>
 
 
@@ -443,6 +450,7 @@ background:#061329;
 
 
 <div id="creeperDuck">
+
 
 <div class="duck">
 
@@ -460,6 +468,7 @@ background:#061329;
 <div class="mouth"></div>
 
 </div>
+
 
 </div>
 
@@ -489,9 +498,13 @@ Die offizielle Website des Minecraft Servers
 
 
 
+
 <nav>
 
+
 <a href="#live">📺 LMS LIVE</a>
+
+<a href="#radio">📻 Radio</a>
 
 <a href="#start">Start</a>
 
@@ -502,6 +515,7 @@ Die offizielle Website des Minecraft Servers
 <a href="#team">Team</a>
 
 <a href="#kontakt">Kontakt</a>
+
 
 </nav>
 
@@ -520,13 +534,13 @@ Die offizielle Website des Minecraft Servers
 
 <p>
 
-Minecraft, Events und bald LMS LIVE.
+Minecraft, Events, Spiele und Community.
 
 </p>
 
 
 
-<a class="button" href="https://discord.gg/N5ZYVRpMMU">
+<a class="button" href="https://discord.gg/SKVYAWGbXD">
 
 Discord
 
@@ -543,6 +557,7 @@ Discord
 
 
 
+
 <section id="live">
 
 
@@ -552,10 +567,6 @@ Discord
 <h2>📺 LMS LIVE</h2>
 
 
-
-<div class="live-box">
-
-
 <h3>
 
 Die interaktive Live Show kommt bald!
@@ -563,10 +574,9 @@ Die interaktive Live Show kommt bald!
 </h3>
 
 
-
 <p>
 
-Hier wird später der offizielle Stream zu sehen sein.
+Hier kannst du später den offiziellen Stream anschauen.
 
 </p>
 
@@ -577,6 +587,66 @@ Hier wird später der offizielle Stream zu sehen sein.
 ▶ Live anschauen
 
 </button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<section id="radio">
+
+
+<div class="card">
+
+
+<div class="radio-box">
+
+
+<div class="radio-title">
+
+📻 LMS RADIO
+
+</div>
+
+
+
+<p>
+
+Wähle deinen Lieblingssender:
+
+</p>
+
+
+
+
+<a class="button" target="_blank" href="https://www.ffh.de/">
+
+📻 FFH
+
+</a>
+
+
+
+<a class="button" target="_blank" href="https://www.you-fm.de/">
+
+🎧 YOU FM
+
+</a>
+
+
+
+<a class="button" target="_blank" href="https://www.dasding.de/">
+
+🎵 DASDING
+
+</a>
 
 
 
@@ -592,14 +662,14 @@ Hier wird später der offizielle Stream zu sehen sein.
 
 
 
+
 <section id="minigames">
 
 
 <div class="card">
 
 
-<h2>Cookie Challenge</h2>
-
+<h2>🍪 Cookie Challenge</h2>
 
 
 <div class="cookie-box">
@@ -612,13 +682,11 @@ Kekse: 0
 </div>
 
 
-
 <div class="stats" id="level">
 
 Level: 1
 
 </div>
-
 
 
 <div class="stats" id="power">
@@ -628,11 +696,9 @@ Stärke: 1
 </div>
 
 
-
 <div class="cookie" onclick="clickCookie()">
 
 </div>
-
 
 
 
@@ -664,26 +730,25 @@ Upgrade
 
 
 
-
 <section id="shop">
 
 
 <div class="card">
 
 
-<h2>Shop</h2>
+<h2>🛒 Shop</h2>
 
 
 <h3>
 
-Coming Soon
+🚧 Coming Soon
 
 </h3>
 
 
 <p>
 
-Rubine, Mysteryboxen und exklusive LMS Items
+Rubine, Mysteryboxen und LMS Items.
 
 </p>
 
@@ -697,59 +762,101 @@ Rubine, Mysteryboxen und exklusive LMS Items
 
 <div class="card">
 
-<h2>LMS SERVER Team</h2>
+<h2>👑 LMS SERVER Team</h2>
 
 
 <div class="team-grid">
 
 
+
 <div class="player">
+
 <img src="https://mc-heads.net/avatar/CC_Minecarft/70">
+
 <h3>CC_Minecarft</h3>
+
 <p>Owner</p>
+
 </div>
 
 
+
+
 <div class="player">
+
 <img src="https://mc-heads.net/avatar/Hobbit2304/70">
+
 <h3>Hobbit2304</h3>
+
 <p>Builder</p>
+
 </div>
 
 
+
+
 <div class="player">
+
 <img src="https://mc-heads.net/avatar/King_Luma1/70">
+
 <h3>King_Luma1</h3>
+
 <p>Builder</p>
+
 </div>
 
 
+
+
 <div class="player">
+
 <img src="https://mc-heads.net/avatar/Lennyy20/70">
+
 <h3>Lennyy20</h3>
+
 <p>Builder</p>
+
 </div>
 
 
+
+
 <div class="player">
+
 <img src="https://mc-heads.net/avatar/Thrumx/70">
+
 <h3>Thrumx</h3>
+
 <p>Admin</p>
+
 </div>
 
 
+
+
 <div class="player">
+
 <img src="https://mc-heads.net/avatar/Takatonka/70">
+
 <h3>Takatonka</h3>
+
 <p>Premium</p>
+
 </div>
+
+
 
 
 <div class="player">
+
 <img src="https://mc-heads.net/avatar/LemonadeFruit/70">
+
 <h3>LemonadeFruit</h3>
+
 <p>Premium</p>
+
 </div>
+
 
 
 </div>
@@ -762,13 +869,14 @@ Rubine, Mysteryboxen und exklusive LMS Items
 
 
 
+
 <section id="kontakt">
 
 
 <div class="card">
 
 
-<h2>Kontakt & Support</h2>
+<h2>📩 Kontakt & Support</h2>
 
 
 <p>
@@ -785,10 +893,12 @@ Fragen oder Vorschläge?
 <br>
 
 
+
 <textarea id="nachricht" placeholder="Deine Nachricht"></textarea>
 
 
 <br>
+
 
 
 <button class="button" onclick="sendMessage()">
@@ -798,17 +908,21 @@ Nachricht senden
 </button>
 
 
+
 <p id="status"></p>
+
 
 
 <br>
 
 
+
 <a class="button" href="https://discord.gg/SKVYAWGbXD">
 
-Stelle Fragen Discord
+Discord Stelle Fragen
 
 </a>
+
 
 
 </div>
@@ -820,11 +934,15 @@ Stelle Fragen Discord
 
 
 
+
 <footer>
 
-© 2026 LMS SERVER
+
+© 2026 🦆 LMS SERVER
+
 
 </footer>
+
 
 
 
@@ -881,11 +999,11 @@ localStorage.setItem("upgradeCost",upgradeCost);
 
 
 
-
 function clickCookie(){
 
 
 cookies += power;
+
 
 
 if(cookies >= level * 100){
@@ -893,6 +1011,7 @@ if(cookies >= level * 100){
 level++;
 
 }
+
 
 
 updateCookie();
@@ -914,7 +1033,7 @@ cookies -= upgradeCost;
 
 power++;
 
-upgradeCost = upgradeCost * 2;
+upgradeCost *= 2;
 
 
 updateCookie();
@@ -955,7 +1074,7 @@ alert(
 
 
 
-// Creeper Ente
+// Creeper mit Ente
 
 
 function creeperDuck(){
@@ -995,6 +1114,7 @@ let nachricht=document.getElementById("nachricht").value;
 
 
 
+
 if(name==="" || nachricht===""){
 
 
@@ -1005,7 +1125,9 @@ document.getElementById("status").innerHTML=
 
 return;
 
+
 }
+
 
 
 
@@ -1019,16 +1141,21 @@ window.open(
 
 
 
+
 document.getElementById("status").innerHTML=
 
 "Discord geöffnet!";
+
 
 
 }
 
 
 
+
+
 updateCookie();
+
 
 
 </script>
