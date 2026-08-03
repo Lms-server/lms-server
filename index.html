@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>🦆 LMS SERVER</title>
 
 <style>
@@ -27,6 +28,8 @@ h1{
 nav{
     background:#1d1d1d;
     padding:15px;
+    position:sticky;
+    top:0;
 }
 
 nav a{
@@ -36,8 +39,21 @@ nav a{
     font-weight:bold;
 }
 
+nav a:hover{
+    color:#ffcc33;
+}
+
 section{
     padding:60px 20px;
+    min-height:200px;
+}
+
+.box{
+    background:#1d1d1d;
+    padding:30px;
+    margin:20px auto;
+    max-width:700px;
+    border-radius:15px;
 }
 
 .button{
@@ -61,22 +77,25 @@ footer{
 
 <body>
 
-<header>
+<header id="start">
 <h1>🦆 LMS SERVER</h1>
 <p>Willkommen auf der offiziellen Website!</p>
 </header>
 
+
 <nav>
-<a href="#">Start</a>
-<a href="#">Minigames</a>
-<a href="#">Shop</a>
-<a href="#">Team</a>
-<a href="#">Kontakt</a>
+<a href="#start">Start</a>
+<a href="#minigames">Minigames</a>
+<a href="#shop">Shop</a>
+<a href="#team">Team</a>
+<a href="#kontakt">Kontakt</a>
 </nav>
+
 
 <section>
 
-<h2>Willkommen!</h2>
+<div class="box">
+<h2>🎮 Willkommen!</h2>
 
 <p>
 Hier entsteht die offizielle Website des LMS SERVER.
@@ -86,13 +105,105 @@ Hier entsteht die offizielle Website des LMS SERVER.
 Server beitreten
 </a>
 
+</div>
+
 </section>
+
+
+<section id="minigames">
+
+<div class="box">
+
+<h2>🎯 Minigames</h2>
+
+<p>
+Entdecke unsere verschiedenen Minigames und Abenteuerwelten.
+</p>
+
+<p>
+Bald verfügbar:
+<br>
+🟩 Jump and Run
+<br>
+⚔️ PvP
+<br>
+👻 Horror Maps
+<br>
+🎉 Fun Games
+</p>
+
+</div>
+
+</section>
+
+
+<section id="shop">
+
+<div class="box">
+
+<h2>🛒 Shop</h2>
+
+<p>
+Hier findest du bald den LMS SERVER Shop.
+</p>
+
+<p>
+💎 Rubine
+<br>
+🟢 Schleim
+<br>
+🎁 Mysteryboxen
+</p>
+
+</div>
+
+</section>
+
+
+<section id="team">
+
+<div class="box">
+
+<h2>👥 Team</h2>
+
+<p>
+Das LMS SERVER Team stellt sich vor.
+</p>
+
+<p>
+🦆 Owner: maxi444444
+</p>
+
+</div>
+
+</section>
+
+
+<section id="kontakt">
+
+<div class="box">
+
+<h2>📩 Kontakt</h2>
+
+<p>
+Fragen oder Vorschläge?
+</p>
+
+<p>
+Discord: Bald verfügbar
+</p>
+
+</div>
+
+</section>
+
 
 <footer>
 
-© 2026 LMS SERVER
+© 2026 🦆 LMS SERVER
 
 </footer>
+
 
 </body>
 </html>
