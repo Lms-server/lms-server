@@ -70,7 +70,6 @@ section{
     box-shadow:0 0 25px rgba(0,150,255,0.3);
 }
 
-
 .button{
     display:inline-block;
     margin-top:20px;
@@ -80,8 +79,8 @@ section{
     border-radius:15px;
     text-decoration:none;
     font-weight:bold;
+    cursor:pointer;
 }
-
 
 .team-grid{
     display:flex;
@@ -90,7 +89,6 @@ section{
     gap:20px;
 }
 
-
 .player{
     background:#081b38;
     padding:20px;
@@ -98,13 +96,11 @@ section{
     width:180px;
 }
 
-
 .player img{
     width:100px;
     height:100px;
     border-radius:15px;
 }
-
 
 .owner{
     border:3px solid gold;
@@ -122,29 +118,28 @@ section{
     border:3px solid purple;
 }
 
-
 input, select, textarea{
-
     width:80%;
     padding:12px;
     border-radius:10px;
     border:none;
     margin:8px;
-
 }
 
+#status{
+    margin-top:20px;
+    color:#66ff66;
+    font-weight:bold;
+}
 
 footer{
-
     padding:25px;
     background:#061329;
-
 }
 
 </style>
 
 </head>
-
 
 <body>
 
@@ -160,7 +155,6 @@ Die offizielle Website des Minecraft Servers
 </header>
 
 
-
 <nav>
 
 <a href="#start">Start</a>
@@ -170,7 +164,6 @@ Die offizielle Website des Minecraft Servers
 <a href="#kontakt">Kontakt</a>
 
 </nav>
-
 
 
 <section>
@@ -185,17 +178,13 @@ Willkommen auf dem LMS SERVER!
 Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 </p>
 
-
 <a class="button" href="https://discord.gg/N5ZYVRpMMU">
 💜 Discord beitreten
 </a>
 
-
 </div>
 
 </section>
-
-
 
 
 <section id="minigames">
@@ -219,8 +208,6 @@ Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 </section>
 
 
-
-
 <section id="shop">
 
 <div class="card">
@@ -238,16 +225,11 @@ Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 </div>
 
 </section>
-
-
-
-
 <section id="team">
 
 <div class="card">
 
 <h2>👑 LMS SERVER Team</h2>
-
 
 <div class="team-grid">
 
@@ -310,7 +292,6 @@ Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 
 
 
-
 <section id="kontakt">
 
 <div class="card">
@@ -322,16 +303,13 @@ Hast du eine Frage oder einen Vorschlag?
 </p>
 
 
-<form>
-
-
-<input type="text" placeholder="Minecraft Name">
+<input id="name" type="text" placeholder="Minecraft Name">
 
 
 <br>
 
 
-<select>
+<select id="art">
 
 <option>❓ Frage</option>
 
@@ -343,18 +321,18 @@ Hast du eine Frage oder einen Vorschlag?
 <br>
 
 
-<textarea placeholder="Deine Nachricht"></textarea>
+<textarea id="nachricht" placeholder="Deine Nachricht"></textarea>
 
 
 <br>
 
 
-<button class="button" type="button">
+<button class="button" onclick="sendMessage()">
 📨 Absenden
 </button>
 
 
-</form>
+<p id="status"></p>
 
 
 <br>
@@ -377,6 +355,36 @@ Hast du eine Frage oder einen Vorschlag?
 © 2026 🦆 LMS SERVER
 
 </footer>
+
+
+
+<script>
+
+function sendMessage(){
+
+let name = document.getElementById("name").value;
+let nachricht = document.getElementById("nachricht").value;
+
+if(name === "" || nachricht === ""){
+
+document.getElementById("status").innerHTML =
+"❌ Bitte fülle alle Felder aus.";
+
+return;
+
+}
+
+
+document.getElementById("status").innerHTML =
+"✅ Danke " + name + "! Deine Nachricht wurde an das LMS SERVER Team gesendet.";
+
+
+document.getElementById("name").value="";
+document.getElementById("nachricht").value="";
+
+}
+
+</script>
 
 
 </body>
