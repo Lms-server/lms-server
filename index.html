@@ -7,30 +7,55 @@
 <title>🦆 LMS SERVER</title>
 
 <style>
+
 body{
     margin:0;
     font-family:Arial, sans-serif;
-    background:#121212;
     color:white;
     text-align:center;
+
+    background:
+    linear-gradient(135deg, #07152e, #102d5c, #07152e);
+    
+    background-size:cover;
 }
+
+/* Karo-Netz Effekt */
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size:40px 40px;
+    pointer-events:none;
+}
+
 
 header{
-    background:#ffcc33;
-    color:black;
-    padding:40px;
+    padding:60px 20px;
+    background:
+    linear-gradient(135deg,#ffd633,#ff9900);
+    color:#111;
 }
+
 
 h1{
-    font-size:50px;
+    font-size:55px;
+    margin:0;
 }
 
+
 nav{
-    background:#1d1d1d;
-    padding:15px;
     position:sticky;
     top:0;
+    background:#061329dd;
+    backdrop-filter:blur(10px);
+    padding:20px;
+    z-index:10;
 }
+
 
 nav a{
     color:white;
@@ -39,93 +64,131 @@ nav a{
     font-weight:bold;
 }
 
+
 nav a:hover{
-    color:#ffcc33;
+    color:#ffd633;
 }
+
 
 section{
     padding:60px 20px;
-    min-height:200px;
 }
 
-.box{
-    background:#1d1d1d;
-    padding:30px;
-    margin:20px auto;
+
+.card{
+    background:rgba(15,35,70,0.85);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:25px;
+    padding:35px;
+    margin:25px auto;
     max-width:700px;
-    border-radius:15px;
+    box-shadow:0 0 25px rgba(0,150,255,0.3);
 }
+
 
 .button{
     display:inline-block;
-    background:#ffcc33;
-    color:black;
+    margin-top:20px;
     padding:15px 35px;
-    border-radius:10px;
+    background:#ffd633;
+    color:black;
+    border-radius:15px;
     text-decoration:none;
     font-weight:bold;
+}
+
+
+.button:hover{
+    transform:scale(1.05);
+}
+
+
+.player{
     margin-top:20px;
 }
 
-footer{
-    background:#1d1d1d;
-    padding:20px;
+
+.player img{
+    width:120px;
+    height:120px;
+    border-radius:15px;
 }
+
+
+footer{
+    padding:25px;
+    background:#061329;
+}
+
 </style>
 
 </head>
 
+
 <body>
 
+
 <header id="start">
+
 <h1>🦆 LMS SERVER</h1>
-<p>Willkommen auf der offiziellen Website!</p>
+
+<p>Die offizielle Website des Minecraft Servers</p>
+
 </header>
 
 
+
 <nav>
+
 <a href="#start">Start</a>
 <a href="#minigames">Minigames</a>
 <a href="#shop">Shop</a>
 <a href="#team">Team</a>
 <a href="#kontakt">Kontakt</a>
+
 </nav>
+
 
 
 <section>
 
-<div class="box">
-<h2>🎮 Willkommen!</h2>
+<div class="card">
+
+<h2>🌌 Willkommen!</h2>
 
 <p>
-Hier entsteht die offizielle Website des LMS SERVER.
+Willkommen auf dem LMS SERVER!
+<br>
+Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 </p>
 
+
 <a class="button" href="#">
-Server beitreten
+🎮 Server beitreten
 </a>
+
 
 </div>
 
 </section>
 
 
+
+
 <section id="minigames">
 
-<div class="box">
+<div class="card">
 
-<h2>🎯 Minigames</h2>
+<h2>🎮 Minigames</h2>
 
 <p>
-Entdecke unsere verschiedenen Minigames und Abenteuerwelten.
+Auf dem LMS SERVER erwarten dich:
 </p>
 
 <p>
-Bald verfügbar:
-<br>
-🟩 Jump and Run
-<br>
 ⚔️ PvP
+<br>
+🏃 Jump and Run
 <br>
 👻 Horror Maps
 <br>
@@ -137,20 +200,22 @@ Bald verfügbar:
 </section>
 
 
+
+
 <section id="shop">
 
-<div class="box">
+<div class="card">
 
 <h2>🛒 Shop</h2>
 
 <p>
-Hier findest du bald den LMS SERVER Shop.
+Deine Währungen:
 </p>
 
 <p>
-💎 Rubine
-<br>
 🟢 Schleim
+<br>
+💎 Rubine
 <br>
 🎁 Mysteryboxen
 </p>
@@ -160,28 +225,38 @@ Hier findest du bald den LMS SERVER Shop.
 </section>
 
 
+
+
 <section id="team">
 
-<div class="box">
+<div class="card">
 
-<h2>👥 Team</h2>
+<h2>👑 Team</h2>
+
+
+<div class="player">
+
+<img src="https://mc-heads.net/avatar/CC_Minecarft/120">
+
+<h3>CC_Minecarft</h3>
 
 <p>
-Das LMS SERVER Team stellt sich vor.
+👑 Owner
 </p>
 
-<p>
-🦆 Owner: maxi444444
-</p>
+</div>
+
 
 </div>
 
 </section>
 
 
+
+
 <section id="kontakt">
 
-<div class="box">
+<div class="card">
 
 <h2>📩 Kontakt</h2>
 
@@ -196,6 +271,8 @@ Discord: Bald verfügbar
 </div>
 
 </section>
+
+
 
 
 <footer>
