@@ -28,16 +28,19 @@ body:before{
     pointer-events:none;
 }
 
+
 header{
     padding:60px 20px;
     background:linear-gradient(135deg,#ffd633,#ff9900);
     color:#111;
 }
 
+
 h1{
     font-size:55px;
     cursor:pointer;
 }
+
 
 nav{
     position:sticky;
@@ -47,6 +50,7 @@ nav{
     z-index:10;
 }
 
+
 nav a{
     color:white;
     text-decoration:none;
@@ -54,13 +58,16 @@ nav a{
     font-weight:bold;
 }
 
+
 nav a:hover{
     color:#ffd633;
 }
 
+
 section{
     padding:50px 20px;
 }
+
 
 .card{
     background:rgba(15,35,70,0.9);
@@ -70,6 +77,7 @@ section{
     max-width:800px;
     box-shadow:0 0 25px rgba(0,150,255,0.3);
 }
+
 
 .button{
     display:inline-block;
@@ -140,7 +148,7 @@ input, select, textarea{
 }
 
 
-/* 🦆 Creeper mit Ente */
+/* Creeper Ente */
 
 #creeperDuck{
     position:fixed;
@@ -158,7 +166,6 @@ input, select, textarea{
     background:#4CAF50;
     border-radius:10px;
     position:relative;
-    box-shadow:0 0 20px black;
 }
 
 
@@ -200,6 +207,13 @@ input, select, textarea{
 }
 
 
+/* Clicker */
+
+#slimeCounter{
+    font-size:35px;
+}
+
+
 footer{
     padding:25px;
     background:#061329;
@@ -221,14 +235,14 @@ footer{
 <div class="creeper">
 
 <div class="eye"></div>
-
 <div class="eye2"></div>
-
 <div class="mouth"></div>
 
 </div>
 
 </div>
+
+
 <header id="start">
 
 <h1 onclick="creeperDuck()">
@@ -240,8 +254,6 @@ Die offizielle Website des Minecraft Servers
 </p>
 
 </header>
-
-
 <nav>
 
 <a href="#start">Start</a>
@@ -278,22 +290,42 @@ Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 
 
 
-
 <section id="minigames">
 
 <div class="card">
 
-<h2>🎮 Minigames</h2>
+<h2>🎮 LMS MiniGames</h2>
 
 <p>
-⚔️ PvP
-<br>
-🏃 Jump and Run
-<br>
-👻 Horror Maps
-<br>
-🎉 Fun Games
+Spiele direkt auf der Website!
 </p>
+
+
+<h3>🟢 Schleim Clicker</h3>
+
+
+<h1 id="slimeCounter">
+🟢 Schleim: 0
+</h1>
+
+
+<button class="button" onclick="clickSlime()">
+🖱️ Schleim klicken
+</button>
+
+
+<br>
+
+
+<button class="button" onclick="buyUpgrade()">
+⬆️ Upgrade kaufen (50 Schleim)
+</button>
+
+
+<p id="level">
+Level: 1
+</p>
+
 
 </div>
 
@@ -344,7 +376,6 @@ Der LMS SERVER Shop ist bald verfügbar!
 <div class="team-grid">
 
 
-
 <div class="player owner">
 
 <img src="https://mc-heads.net/avatar/CC_Minecarft/70">
@@ -354,7 +385,6 @@ Der LMS SERVER Shop ist bald verfügbar!
 <p>👑 Owner</p>
 
 </div>
-
 
 
 
@@ -370,7 +400,6 @@ Der LMS SERVER Shop ist bald verfügbar!
 
 
 
-
 <div class="player builder">
 
 <img src="https://mc-heads.net/avatar/King_Luma1/70">
@@ -380,7 +409,6 @@ Der LMS SERVER Shop ist bald verfügbar!
 <p>🛠️ Builder</p>
 
 </div>
-
 
 
 
@@ -396,7 +424,6 @@ Der LMS SERVER Shop ist bald verfügbar!
 
 
 
-
 <div class="player admin">
 
 <img src="https://mc-heads.net/avatar/Thrumx/70">
@@ -406,7 +433,6 @@ Der LMS SERVER Shop ist bald verfügbar!
 <p>🛡️ Admin</p>
 
 </div>
-
 
 
 
@@ -422,7 +448,6 @@ Der LMS SERVER Shop ist bald verfügbar!
 
 
 
-
 <div class="player premium">
 
 <img src="https://mc-heads.net/avatar/LemonadeFruit/70">
@@ -432,7 +457,6 @@ Der LMS SERVER Shop ist bald verfügbar!
 <p>⭐ Premium</p>
 
 </div>
-
 
 
 </div>
@@ -464,10 +488,12 @@ Fragen oder Vorschläge an das LMS SERVER Team?
 
 </select>
 
+
 <br>
 
 
 <textarea id="nachricht" placeholder="Deine Nachricht"></textarea>
+
 
 <br>
 
@@ -511,6 +537,8 @@ Fragen oder Vorschläge an das LMS SERVER Team?
 <script>
 
 
+// 🦆 Creeper mit Ente Animation
+
 function creeperDuck(){
 
 let c = document.getElementById("creeperDuck");
@@ -525,13 +553,68 @@ c.style.bottom="-300px";
 
 },2500);
 
+}
+
+
+
+
+// 🟢 Schleim Clicker
+
+let slime = 0;
+
+let level = 1;
+
+
+
+function clickSlime(){
+
+slime += level;
+
+
+document.getElementById("slimeCounter").innerHTML =
+"🟢 Schleim: " + slime;
+
+}
+
+
+
+function buyUpgrade(){
+
+if(slime >= 50){
+
+
+slime -= 50;
+
+level++;
+
+
+document.getElementById("slimeCounter").innerHTML =
+"🟢 Schleim: " + slime;
+
+
+document.getElementById("level").innerHTML =
+"Level: " + level;
+
+
+}
+
+else{
+
+
+alert("❌ Du brauchst 50 Schleim für das Upgrade!");
+
+}
+
 
 }
 
 
 
 
+// 📩 Discord Kontakt
+
 function sendMessage(){
+
 
 let name = document.getElementById("name").value;
 
@@ -549,7 +632,6 @@ document.getElementById("status").innerHTML =
 
 
 return;
-
 
 }
 
@@ -577,6 +659,7 @@ document.getElementById("nachricht").value="";
 
 
 }
+
 
 
 </script>
