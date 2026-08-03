@@ -36,6 +36,7 @@ header{
 
 h1{
     font-size:55px;
+    cursor:pointer;
 }
 
 nav{
@@ -86,20 +87,20 @@ section{
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
-    gap:20px;
+    gap:15px;
 }
 
 .player{
     background:#081b38;
-    padding:20px;
-    border-radius:20px;
-    width:180px;
+    padding:12px;
+    border-radius:15px;
+    width:130px;
 }
 
 .player img{
-    width:100px;
-    height:100px;
-    border-radius:15px;
+    width:70px;
+    height:70px;
+    border-radius:10px;
 }
 
 .owner{
@@ -132,6 +133,20 @@ input, select, textarea{
     font-weight:bold;
 }
 
+
+/* Creeper Animation */
+
+#creeperDuck{
+    position:fixed;
+    bottom:-200px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:80px;
+    transition:1s;
+    z-index:100;
+}
+
+
 footer{
     padding:25px;
     background:#061329;
@@ -141,12 +156,21 @@ footer{
 
 </head>
 
+
 <body>
+
+
+<div id="creeperDuck">
+🟩<br>
+🦆
+</div>
 
 
 <header id="start">
 
-<h1>🦆 LMS SERVER</h1>
+<h1 onclick="creeperDuck()">
+🦆 LMS SERVER
+</h1>
 
 <p>
 Die offizielle Website des Minecraft Servers
@@ -215,11 +239,15 @@ Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 <h2>🛒 Shop</h2>
 
 <p>
-🟢 Schleim
-<br>
+🚧 Coming Soon
+<br><br>
+Der LMS SERVER Shop ist bald verfügbar!
+<br><br>
 💎 Rubine
 <br>
 🎁 Mysteryboxen
+<br>
+🦆 Exklusive Items
 </p>
 
 </div>
@@ -235,49 +263,49 @@ Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 
 
 <div class="player owner">
-<img src="https://mc-heads.net/avatar/CC_Minecarft/100">
+<img src="https://mc-heads.net/avatar/CC_Minecarft/70">
 <h3>CC_Minecarft</h3>
 <p>👑 Owner</p>
 </div>
 
 
 <div class="player builder">
-<img src="https://mc-heads.net/avatar/Hobbit2304/100">
+<img src="https://mc-heads.net/avatar/Hobbit2304/70">
 <h3>Hobbit2304</h3>
 <p>🛠️ Builder</p>
 </div>
 
 
 <div class="player builder">
-<img src="https://mc-heads.net/avatar/King_Luma1/100">
+<img src="https://mc-heads.net/avatar/King_Luma1/70">
 <h3>King_Luma1</h3>
 <p>🛠️ Builder</p>
 </div>
 
 
 <div class="player builder">
-<img src="https://mc-heads.net/avatar/Lennyy20/100">
+<img src="https://mc-heads.net/avatar/Lennyy20/70">
 <h3>Lennyy20</h3>
 <p>🛠️ Builder</p>
 </div>
 
 
 <div class="player admin">
-<img src="https://mc-heads.net/avatar/Thrumx/100">
+<img src="https://mc-heads.net/avatar/Thrumx/70">
 <h3>Thrumx</h3>
 <p>🛡️ Admin</p>
 </div>
 
 
 <div class="player premium">
-<img src="https://mc-heads.net/avatar/Takatonka/100">
+<img src="https://mc-heads.net/avatar/Takatonka/70">
 <h3>Takatonka</h3>
 <p>⭐ Premium</p>
 </div>
 
 
 <div class="player premium">
-<img src="https://mc-heads.net/avatar/LemonadeFruit/100">
+<img src="https://mc-heads.net/avatar/LemonadeFruit/70">
 <h3>LemonadeFruit</h3>
 <p>⭐ Premium</p>
 </div>
@@ -356,6 +384,24 @@ Fragen oder Vorschläge an das LMS SERVER Team?
 
 <script>
 
+
+function creeperDuck(){
+
+let c = document.getElementById("creeperDuck");
+
+c.style.bottom="0px";
+
+
+setTimeout(function(){
+
+c.style.bottom="-200px";
+
+},2500);
+
+}
+
+
+
 function sendMessage(){
 
 let name = document.getElementById("name").value;
@@ -373,19 +419,10 @@ return;
 }
 
 
-let text =
-"🦆 LMS SERVER Anfrage\n\n" +
-"👤 Name: " + name + "\n" +
-"📌 Kategorie: " + art + "\n" +
-"💬 Nachricht: " + nachricht;
-
-
-
 window.open(
 "https://discord.gg/SKVYAWGbXD",
 "_blank"
 );
-
 
 
 document.getElementById("status").innerHTML =
@@ -397,6 +434,7 @@ document.getElementById("nachricht").value="";
 
 
 }
+
 
 </script>
 
