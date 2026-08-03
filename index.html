@@ -13,14 +13,9 @@ body{
     font-family:Arial, sans-serif;
     color:white;
     text-align:center;
-
-    background:
-    linear-gradient(135deg, #07152e, #102d5c, #07152e);
-    
-    background-size:cover;
+    background:linear-gradient(135deg,#07152e,#102d5c,#07152e);
 }
 
-/* Karo-Netz Effekt */
 body:before{
     content:"";
     position:fixed;
@@ -32,30 +27,23 @@ body:before{
     pointer-events:none;
 }
 
-
 header{
     padding:60px 20px;
-    background:
-    linear-gradient(135deg,#ffd633,#ff9900);
+    background:linear-gradient(135deg,#ffd633,#ff9900);
     color:#111;
 }
 
-
 h1{
     font-size:55px;
-    margin:0;
 }
-
 
 nav{
     position:sticky;
     top:0;
-    background:#061329dd;
-    backdrop-filter:blur(10px);
+    background:#061329ee;
     padding:20px;
     z-index:10;
 }
-
 
 nav a{
     color:white;
@@ -64,27 +52,22 @@ nav a{
     font-weight:bold;
 }
 
-
 nav a:hover{
     color:#ffd633;
 }
 
-
 section{
-    padding:60px 20px;
+    padding:50px 20px;
 }
 
-
 .card{
-    background:rgba(15,35,70,0.85);
-    border:1px solid rgba(255,255,255,0.15);
+    background:rgba(15,35,70,0.9);
     border-radius:25px;
     padding:35px;
     margin:25px auto;
-    max-width:700px;
+    max-width:800px;
     box-shadow:0 0 25px rgba(0,150,255,0.3);
 }
-
 
 .button{
     display:inline-block;
@@ -97,23 +80,41 @@ section{
     font-weight:bold;
 }
 
-
-.button:hover{
-    transform:scale(1.05);
+.team-grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
 }
-
 
 .player{
-    margin-top:20px;
+    background:#081b38;
+    padding:20px;
+    border-radius:20px;
+    width:180px;
 }
 
-
 .player img{
-    width:120px;
-    height:120px;
+    width:100px;
+    height:100px;
     border-radius:15px;
 }
 
+.owner{
+    border:3px solid gold;
+}
+
+.admin{
+    border:3px solid red;
+}
+
+.builder{
+    border:3px solid lime;
+}
+
+.premium{
+    border:3px solid purple;
+}
 
 footer{
     padding:25px;
@@ -123,7 +124,6 @@ footer{
 </style>
 
 </head>
-
 
 <body>
 
@@ -163,8 +163,8 @@ Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 </p>
 
 
-<a class="button" href="#">
-🎮 Server beitreten
+<a class="button" href="https://discord.gg/N5ZYVRpMMU">
+💜 Discord beitreten
 </a>
 
 
@@ -180,10 +180,6 @@ Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 <div class="card">
 
 <h2>🎮 Minigames</h2>
-
-<p>
-Auf dem LMS SERVER erwarten dich:
-</p>
 
 <p>
 ⚔️ PvP
@@ -209,10 +205,6 @@ Auf dem LMS SERVER erwarten dich:
 <h2>🛒 Shop</h2>
 
 <p>
-Deine Währungen:
-</p>
-
-<p>
 🟢 Schleim
 <br>
 💎 Rubine
@@ -231,21 +223,69 @@ Deine Währungen:
 
 <div class="card">
 
-<h2>👑 Team</h2>
+<h2>👑 LMS SERVER Team</h2>
 
 
-<div class="player">
+<div class="team-grid">
 
-<img src="https://mc-heads.net/avatar/CC_Minecarft/120">
 
+<div class="player owner">
+<img src="https://mc-heads.net/avatar/CC_Minecarft/100">
 <h3>CC_Minecarft</h3>
-
-<p>
-👑 Owner
-</p>
-
+<p>👑 Owner</p>
 </div>
 
+
+
+<div class="player builder">
+<img src="https://mc-heads.net/avatar/Hobbit2304/100">
+<h3>Hobbit2304</h3>
+<p>🛠️ Builder</p>
+</div>
+
+
+
+<div class="player builder">
+<img src="https://mc-heads.net/avatar/LumaFlo779/100">
+<h3>LumaFlo779</h3>
+<p>🛠️ Builder</p>
+</div>
+
+
+
+<div class="player builder">
+<img src="https://mc-heads.net/avatar/Lennyy20/100">
+<h3>Lennyy20</h3>
+<p>🛠️ Builder</p>
+</div>
+
+
+
+<div class="player admin">
+<img src="https://mc-heads.net/avatar/Thrumx/100">
+<h3>Thrumx</h3>
+<p>🛡️ Admin</p>
+</div>
+
+
+
+<div class="player premium">
+<img src="https://mc-heads.net/avatar/Takatonka/100">
+<h3>Takatonka</h3>
+<p>⭐ Premium</p>
+</div>
+
+
+
+<div class="player premium">
+<img src="https://mc-heads.net/avatar/LemonadeFruit/100">
+<h3>LemonadeFruit</h3>
+<p>⭐ Premium</p>
+</div>
+
+
+
+</div>
 
 </div>
 
@@ -265,8 +305,12 @@ Fragen oder Vorschläge?
 </p>
 
 <p>
-Discord: Bald verfügbar
+Nutze unseren Discord!
 </p>
+
+<a class="button" href="https://discord.gg/N5ZYVRpMMU">
+💜 Discord
+</a>
 
 </div>
 
