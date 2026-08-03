@@ -17,6 +17,7 @@ body{
     background:linear-gradient(135deg,#07152e,#102d5c,#07152e);
 }
 
+
 body:before{
     content:"";
     position:fixed;
@@ -92,12 +93,14 @@ section{
 }
 
 
+
 .team-grid{
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
     gap:15px;
 }
+
 
 
 .player{
@@ -119,13 +122,16 @@ section{
     border:3px solid gold;
 }
 
+
 .admin{
     border:3px solid red;
 }
 
+
 .builder{
     border:3px solid lime;
 }
+
 
 .premium{
     border:3px solid purple;
@@ -148,7 +154,55 @@ input, select, textarea{
 }
 
 
-/* Creeper Ente */
+
+/* 🍪 Cookie Clicker */
+
+#cookieBox{
+
+background:#081b38;
+padding:25px;
+border-radius:25px;
+
+}
+
+
+#cookieStats{
+
+background:#102d5c;
+padding:20px;
+border-radius:20px;
+
+}
+
+
+#cookie{
+
+font-size:160px;
+cursor:pointer;
+display:inline-block;
+transition:0.15s;
+
+}
+
+
+#cookie:active{
+
+transform:scale(0.8) rotate(15deg);
+
+}
+
+
+
+#upgradeInfo{
+
+font-size:18px;
+
+}
+
+
+
+/* 🦆 Creeper Ente */
+
 
 #creeperDuck{
     position:fixed;
@@ -204,13 +258,6 @@ input, select, textarea{
     top:-65px;
     left:35px;
     font-size:70px;
-}
-
-
-/* Clicker */
-
-#slimeCounter{
-    font-size:35px;
 }
 
 
@@ -275,7 +322,7 @@ Die offizielle Website des Minecraft Servers
 <p>
 Willkommen auf dem LMS SERVER!
 <br>
-Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
+Spiele spannende Minigames, sammle Kekse und entdecke neue Welten.
 </p>
 
 
@@ -290,46 +337,70 @@ Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 
 
 
+
+
 <section id="minigames">
 
-<div class="card">
+<div class="card" id="cookieBox">
 
-<h2>🎮 LMS MiniGames</h2>
+<h2>🎮 LMS Cookie Clicker</h2>
 
 <p>
-Spiele direkt auf der Website!
+Klicke auf den Keks und werde zum Cookie-Meister!
 </p>
 
 
-<h3>🟢 Schleim Clicker</h3>
+<div id="cookieStats">
 
-
-<h1 id="slimeCounter">
-🟢 Schleim: 0
+<h1 id="cookieCount">
+🍪 Kekse: 0
 </h1>
 
 
-<button class="button" onclick="clickSlime()">
-🖱️ Schleim klicken
-</button>
+<h2 id="cookieLevel">
+⭐ Level: 1
+</h2>
+
+
+<h3 id="cookiePower">
+💪 Klick-Kraft: 1
+</h3>
+
+
+</div>
+
+
+
+<div id="cookie" onclick="clickCookie()">
+
+🍪
+
+</div>
+
 
 
 <br>
 
 
-<button class="button" onclick="buyUpgrade()">
-⬆️ Upgrade kaufen (50 Schleim)
+<button class="button" onclick="upgradeCookie()">
+
+⬆️ Upgrade kaufen
+
 </button>
 
 
-<p id="level">
-Level: 1
+<p id="upgradeInfo">
+
+Nächstes Upgrade: 50 Kekse
+
 </p>
 
 
 </div>
 
 </section>
+
+
 
 
 
@@ -366,6 +437,7 @@ Der LMS SERVER Shop ist bald verfügbar!
 
 
 
+
 <section id="team">
 
 <div class="card">
@@ -374,6 +446,7 @@ Der LMS SERVER Shop ist bald verfügbar!
 
 
 <div class="team-grid">
+
 
 
 <div class="player owner">
@@ -385,6 +458,7 @@ Der LMS SERVER Shop ist bald verfügbar!
 <p>👑 Owner</p>
 
 </div>
+
 
 
 
@@ -400,6 +474,7 @@ Der LMS SERVER Shop ist bald verfügbar!
 
 
 
+
 <div class="player builder">
 
 <img src="https://mc-heads.net/avatar/King_Luma1/70">
@@ -409,6 +484,7 @@ Der LMS SERVER Shop ist bald verfügbar!
 <p>🛠️ Builder</p>
 
 </div>
+
 
 
 
@@ -424,6 +500,7 @@ Der LMS SERVER Shop ist bald verfügbar!
 
 
 
+
 <div class="player admin">
 
 <img src="https://mc-heads.net/avatar/Thrumx/70">
@@ -433,6 +510,7 @@ Der LMS SERVER Shop ist bald verfügbar!
 <p>🛡️ Admin</p>
 
 </div>
+
 
 
 
@@ -448,6 +526,7 @@ Der LMS SERVER Shop ist bald verfügbar!
 
 
 
+
 <div class="player premium">
 
 <img src="https://mc-heads.net/avatar/LemonadeFruit/70">
@@ -457,6 +536,7 @@ Der LMS SERVER Shop ist bald verfügbar!
 <p>⭐ Premium</p>
 
 </div>
+
 
 
 </div>
@@ -479,29 +559,22 @@ Fragen oder Vorschläge an das LMS SERVER Team?
 
 <br>
 
-
 <select id="art">
 
 <option>❓ Frage</option>
-
 <option>💡 Vorschlag</option>
 
 </select>
 
-
 <br>
 
-
 <textarea id="nachricht" placeholder="Deine Nachricht"></textarea>
-
 
 <br>
 
 
 <button class="button" onclick="sendMessage()">
-
 📨 An Discord senden
-
 </button>
 
 
@@ -512,16 +585,13 @@ Fragen oder Vorschläge an das LMS SERVER Team?
 
 
 <a class="button" href="https://discord.gg/N5ZYVRpMMU">
-
 💜 Offizieller Discord
-
 </a>
 
 
 </div>
 
 </section>
-
 
 
 
@@ -533,16 +603,14 @@ Fragen oder Vorschläge an das LMS SERVER Team?
 
 
 
-
 <script>
 
 
-// 🦆 Creeper mit Ente Animation
+// 🦆 Creeper mit Ente
 
 function creeperDuck(){
 
 let c = document.getElementById("creeperDuck");
-
 
 c.style.bottom="0px";
 
@@ -557,56 +625,86 @@ c.style.bottom="-300px";
 
 
 
+// 🍪 Cookie Clicker
 
-// 🟢 Schleim Clicker
-
-let slime = 0;
-
-let level = 1;
-
-
-
-function clickSlime(){
-
-slime += level;
+let cookies = Number(localStorage.getItem("cookies")) || 0;
+let level = Number(localStorage.getItem("level")) || 1;
+let power = Number(localStorage.getItem("power")) || 1;
+let upgradeCost = Number(localStorage.getItem("upgrade")) || 50;
 
 
-document.getElementById("slimeCounter").innerHTML =
-"🟢 Schleim: " + slime;
+function updateCookieGame(){
+
+document.getElementById("cookies").innerHTML =
+"🍪 Kekse: " + cookies;
+
+
+document.getElementById("level").innerHTML =
+"⭐ Level: " + level;
+
+
+document.getElementById("power").innerHTML =
+"👆 Klick Stärke: +" + power;
+
+
+document.getElementById("upgradeCost").innerHTML =
+"🛠️ Upgrade kostet: " + upgradeCost + " 🍪";
+
+
+localStorage.setItem("cookies",cookies);
+localStorage.setItem("level",level);
+localStorage.setItem("power",power);
+localStorage.setItem("upgrade",upgradeCost);
+
 
 }
 
 
 
-function buyUpgrade(){
+function clickCookie(){
 
-if(slime >= 50){
+cookies += power;
 
 
-slime -= 50;
+if(cookies >= level * 100){
 
 level++;
 
-
-document.getElementById("slimeCounter").innerHTML =
-"🟢 Schleim: " + slime;
+}
 
 
-document.getElementById("level").innerHTML =
-"Level: " + level;
+updateCookieGame();
 
+}
+
+
+
+function upgradeCookie(){
+
+if(cookies >= upgradeCost){
+
+cookies -= upgradeCost;
+
+power++;
+
+upgradeCost = upgradeCost * 2;
+
+updateCookieGame();
 
 }
 
 else{
 
+alert("❌ Du brauchst mehr Kekse!");
 
-alert("❌ Du brauchst 50 Schleim für das Upgrade!");
+}
 
 }
 
 
-}
+
+updateCookieGame();
+
 
 
 
@@ -615,13 +713,8 @@ alert("❌ Du brauchst 50 Schleim für das Upgrade!");
 
 function sendMessage(){
 
-
 let name = document.getElementById("name").value;
-
-let art = document.getElementById("art").value;
-
 let nachricht = document.getElementById("nachricht").value;
-
 
 
 if(name === "" || nachricht === ""){
@@ -638,33 +731,25 @@ return;
 
 
 window.open(
-
 "https://discord.gg/SKVYAWGbXD",
-
 "_blank"
-
 );
 
 
 
 document.getElementById("status").innerHTML =
-
-"✅ Anfrage vorbereitet! Öffne Discord und sende sie in #stelle-fragen.";
-
+"✅ Öffne #stelle-fragen und sende deine Nachricht!";
 
 
 document.getElementById("name").value="";
-
 document.getElementById("nachricht").value="";
 
 
 }
 
 
-
 </script>
 
 
 </body>
-
 </html>
