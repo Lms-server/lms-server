@@ -11,22 +11,16 @@
 
 <style>
 
-
 body{
 
 margin:0;
-
 font-family:Arial,sans-serif;
-
-color:white;
-
 text-align:center;
+color:white;
 
 background:#071a33;
 
-
 background-image:
-
 linear-gradient(#16365c 1px,transparent 1px),
 linear-gradient(90deg,#16365c 1px,transparent 1px);
 
@@ -40,11 +34,11 @@ header{
 
 padding:60px 20px;
 
-background:linear-gradient(135deg,#ffd633,#ffad00);
+background:#ffd633;
 
 color:#071a33;
 
-border-bottom:5px solid #c58b00;
+border-bottom:5px solid #c99d00;
 
 }
 
@@ -53,12 +47,10 @@ border-bottom:5px solid #c58b00;
 h1{
 
 font-size:55px;
-
 cursor:pointer;
 
-text-shadow:2px 2px white;
-
 }
+
 
 
 
@@ -66,7 +58,6 @@ text-shadow:2px 2px white;
 nav{
 
 position:sticky;
-
 top:0;
 
 background:#061329ee;
@@ -112,7 +103,6 @@ padding:40px 20px;
 
 
 
-
 .card{
 
 background:white;
@@ -134,9 +124,8 @@ box-shadow:0 10px 25px #0008;
 
 
 
-.button{
 
-display:inline-block;
+.button{
 
 background:#ffd633;
 
@@ -150,17 +139,11 @@ font-weight:bold;
 
 cursor:pointer;
 
-text-decoration:none;
-
 border:none;
 
-}
+text-decoration:none;
 
-
-
-.button:hover{
-
-transform:scale(1.05);
+display:inline-block;
 
 }
 
@@ -168,10 +151,10 @@ transform:scale(1.05);
 
 
 
+/* Cookie Spiel */
 
-/* LMS LIVE */
 
-.live-box{
+.cookie-box{
 
 background:#eef5ff;
 
@@ -185,715 +168,108 @@ border:3px solid #16365c;
 
 
 
-.live-title{
+.cookie{
 
-font-size:35px;
+width:170px;
 
-font-weight:bold;
+height:170px;
 
-}
+margin:25px auto;
 
+background:#c98232;
 
+border-radius:50%;
 
-
-
-/* Shop */
-
-
-.coming{
-
-font-size:25px;
-
-font-weight:bold;
-
-color:#16365c;
-
-}
-
-
-
-
-
-/* Creeper Ente */
-
-
-#creeperDuck{
-
-position:fixed;
-
-bottom:-300px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-transition:1.2s;
-
-z-index:100;
-
-}
-
-
-
-.creeper{
-
-width:130px;
-
-height:220px;
-
-background:#4caf50;
-
-border-radius:12px;
+cursor:pointer;
 
 position:relative;
 
+box-shadow:
+
+inset -15px -15px 20px #7d4218,
+
+0 10px 20px #0005;
+
+transition:.15s;
+
 }
 
 
 
-.eye{
+.cookie:hover{
+
+transform:scale(1.08);
+
+}
+
+
+
+.cookie:before{
+
+content:"";
 
 position:absolute;
 
-top:45px;
+width:18px;
 
-left:30px;
+height:18px;
 
-width:25px;
+background:#3b2414;
 
-height:25px;
+border-radius:50%;
 
-background:black;
+top:35px;
 
-}
+left:45px;
 
+box-shadow:
 
+50px 10px #3b2414,
 
-.eye2{
+90px 60px #3b2414,
 
-position:absolute;
+30px 90px #3b2414,
 
-top:45px;
-
-right:30px;
-
-width:25px;
-
-height:25px;
-
-background:black;
+100px 100px #3b2414;
 
 }
 
 
 
-.mouth{
+.cookie:active{
 
-position:absolute;
-
-bottom:40px;
-
-left:35px;
-
-width:60px;
-
-height:35px;
-
-background:black;
+transform:scale(.85);
 
 }
 
 
 
-.duck{
+.stats{
 
-position:absolute;
+font-size:22px;
 
-top:-70px;
-
-left:30px;
-
-font-size:70px;
+margin:10px;
 
 }
 
 
 
-.team-grid{
+.upgrade{
 
-display:flex;
+background:#071a33;
 
-flex-wrap:wrap;
-
-justify-content:center;
-
-gap:15px;
-
-}
-
-
-
-.player{
-
-background:#edf4ff;
-
-color:#071a33;
-
-width:120px;
+color:white;
 
 padding:15px;
 
-border-radius:15px;
+border-radius:12px;
 
-border:2px solid #16365c;
+cursor:pointer;
 
-}
-
-
-
-.player img{
-
-width:60px;
-
-height:60px;
-
-border-radius:8px;
+display:inline-block;
 
 }
 
 
 
 
-
-input,textarea,select{
-
-width:80%;
-
-padding:12px;
-
-margin:8px;
-
-border-radius:10px;
-
-border:2px solid #16365c;
-
-}
-
-
-
-
-footer{
-
-padding:25px;
-
-background:#061329;
-
-}
-
-
-
-
-</style>
-
-</head>
-
-
-
-<body>
-
-
-
-
-<div id="creeperDuck">
-
-
-<div class="duck">
-
-🦆
-
-</div>
-
-
-<div class="creeper">
-
-<div class="eye"></div>
-
-<div class="eye2"></div>
-
-<div class="mouth"></div>
-
-</div>
-
-
-</div>
-
-
-
-
-
-<header id="start">
-
-
-<h1 onclick="creeperDuck()">
-
-🦆 LMS SERVER
-
-</h1>
-
-
-<p>
-
-Die offizielle Website des Minecraft Servers
-
-</p>
-
-
-</header>
-
-
-
-
-
-<nav>
-
-
-<a href="#start">Start</a>
-
-<a href="#live">LMS LIVE</a>
-
-<a href="#shop">Shop</a>
-
-<a href="#team">Team</a>
-
-<a href="#kontakt">Kontakt</a>
-
-
-</nav>
-
-
-
-
-
-<section>
-
-
-<div class="card">
-
-
-<h2>Willkommen beim LMS SERVER</h2>
-
-
-<p>
-
-Erlebe Minecraft, Events und bald auch LMS LIVE.
-
-<br>
-
-Eine neue interaktive Show für die Community.
-
-</p>
-
-
-
-<a class="button" href="https://discord.gg/N5ZYVRpMMU">
-
-Discord
-
-</a>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-<section id="live">
-
-
-<div class="card">
-
-
-<div class="live-box">
-
-
-<div class="live-title">
-
-📺 LMS LIVE
-
-</div>
-
-
-
-<h3>
-
-Die interaktive Live Show kommt bald!
-
-</h3>
-
-
-
-<p>
-
-Hier kannst du später den offiziellen Stream anschauen.
-
-<br>
-
-Sei dabei bei Events, Spielen und besonderen Folgen.
-
-</p>
-
-
-
-
-<button class="button" onclick="liveMessage()">
-
-▶ Live anschauen
-
-</button>
-
-
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-<section id="shop">
-
-
-<div class="card">
-
-
-<h2>Shop</h2>
-
-
-<p class="coming">
-
-🚧 Coming Soon
-
-</p>
-
-
-
-<p>
-
-Der LMS SERVER Shop wird bald eröffnet.
-
-<br><br>
-
-Rubine, Mysteryboxen und exklusive Items folgen.
-
-</p>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-<section id="team">
-
-
-<div class="card">
-
-
-<h2>LMS SERVER Team</h2>
-
-
-
-<div class="team-grid">
-
-
-
-
-<div class="player owner">
-
-<img src="https://mc-heads.net/avatar/CC_Minecarft/70">
-
-<h3>CC_Minecarft</h3>
-
-<p>Owner</p>
-
-</div>
-
-
-
-
-<div class="player builder">
-
-<img src="https://mc-heads.net/avatar/Hobbit2304/70">
-
-<h3>Hobbit2304</h3>
-
-<p>Builder</p>
-
-</div>
-
-
-
-
-<div class="player builder">
-
-<img src="https://mc-heads.net/avatar/King_Luma1/70">
-
-<h3>King_Luma1</h3>
-
-<p>Builder</p>
-
-</div>
-
-
-
-<div class="player builder">
-
-<img src="https://mc-heads.net/avatar/Lennyy20/70">
-
-<h3>Lennyy20</h3>
-
-<p>Builder</p>
-
-</div>
-
-
-<div class="player admin">
-
-<img src="https://mc-heads.net/avatar/Thrumx/70">
-
-<h3>Thrumx</h3>
-
-<p>Admin</p>
-
-</div>
-
-
-
-<div class="player premium">
-
-<img src="https://mc-heads.net/avatar/Takatonka/70">
-
-<h3>Takatonka</h3>
-
-<p>Premium</p>
-
-</div>
-
-
-
-<div class="player premium">
-
-<img src="https://mc-heads.net/avatar/LemonadeFruit/70">
-
-<h3>LemonadeFruit</h3>
-
-<p>Premium</p>
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-<section id="kontakt">
-
-
-<div class="card">
-
-
-<h2>Kontakt & Support</h2>
-
-
-<p>
-
-Fragen oder Vorschläge an das LMS SERVER Team?
-
-</p>
-
-
-
-<input id="name" placeholder="Minecraft Name">
-
-
-<br>
-
-
-<textarea id="nachricht" placeholder="Deine Nachricht"></textarea>
-
-
-<br>
-
-
-
-<button class="button" onclick="sendMessage()">
-
-Nachricht senden
-
-</button>
-
-
-
-<p id="status"></p>
-
-
-
-<br>
-
-
-
-<a class="button" href="https://discord.gg/SKVYAWGbXD">
-
-Discord Stelle Fragen
-
-</a>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-<footer>
-
-© 2026 🦆 LMS SERVER
-
-</footer>
-
-
-
-
-
-
-<script>
-
-
-function creeperDuck(){
-
-
-let c=document.getElementById("creeperDuck");
-
-
-c.style.bottom="30px";
-
-
-
-setTimeout(function(){
-
-
-c.style.bottom="-300px";
-
-
-},2500);
-
-
-
-}
-
-
-
-
-
-function liveMessage(){
-
-
-alert(
-
-"📺 Tut uns leid!\n\nLMS LIVE ist noch nicht zum Anschauen verfügbar."
-
-);
-
-
-}
-
-
-
-
-
-function sendMessage(){
-
-
-let name=document.getElementById("name").value;
-
-let nachricht=document.getElementById("nachricht").value;
-
-
-
-if(name==="" || nachricht===""){
-
-
-document.getElementById("status").innerHTML=
-
-"Bitte fülle alle Felder aus.";
-
-
-return;
-
-
-}
-
-
-
-window.open(
-
-"https://discord.gg/SKVYAWGbXD",
-
-"_blank"
-
-);
-
-
-
-document.getElementById("status").innerHTML=
-
-"Discord geöffnet!";
-
-
-document.getElementById("name").value="";
-
-document.getElementById("nachricht").value="";
-
-
-}
-
-
-
-</script>
-
-
-
-</body>
-
-</html>
