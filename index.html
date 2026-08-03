@@ -141,7 +141,6 @@ footer{
 
 </head>
 
-
 <body>
 
 
@@ -306,24 +305,20 @@ Fragen oder Vorschläge an das LMS SERVER Team?
 
 <input id="name" type="text" placeholder="Minecraft Name">
 
-
 <br>
 
 
 <select id="art">
 
 <option>❓ Frage</option>
-
 <option>💡 Vorschlag</option>
 
 </select>
-
 
 <br>
 
 
 <textarea id="nachricht" placeholder="Deine Nachricht"></textarea>
-
 
 <br>
 
@@ -379,20 +374,26 @@ return;
 
 
 let text =
-"🦆 LMS SERVER Anfrage%0A%0A" +
-"👤 Name: " + name + "%0A" +
-"📌 Kategorie: " + art + "%0A" +
+"🦆 LMS SERVER Anfrage\n\n" +
+"👤 Name: " + name + "\n" +
+"📌 Kategorie: " + art + "\n" +
 "💬 Nachricht: " + nachricht;
 
 
+
 window.open(
-"https://discord.com/channels/@me",
+"https://discord.gg/SKVYAWGbXD",
 "_blank"
 );
 
 
+
 document.getElementById("status").innerHTML =
 "✅ Anfrage vorbereitet! Öffne Discord und sende sie in #stelle-fragen.";
+
+
+document.getElementById("name").value="";
+document.getElementById("nachricht").value="";
 
 
 }
