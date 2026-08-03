@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,7 +11,7 @@
 
 body{
     margin:0;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
     color:white;
     text-align:center;
     background:linear-gradient(135deg,#07152e,#102d5c,#07152e);
@@ -69,6 +70,7 @@ section{
     box-shadow:0 0 25px rgba(0,150,255,0.3);
 }
 
+
 .button{
     display:inline-block;
     margin-top:20px;
@@ -80,12 +82,14 @@ section{
     font-weight:bold;
 }
 
+
 .team-grid{
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
     gap:20px;
 }
+
 
 .player{
     background:#081b38;
@@ -94,11 +98,13 @@ section{
     width:180px;
 }
 
+
 .player img{
     width:100px;
     height:100px;
     border-radius:15px;
 }
+
 
 .owner{
     border:3px solid gold;
@@ -116,14 +122,29 @@ section{
     border:3px solid purple;
 }
 
+
+input, select, textarea{
+
+    width:80%;
+    padding:12px;
+    border-radius:10px;
+    border:none;
+    margin:8px;
+
+}
+
+
 footer{
+
     padding:25px;
     background:#061329;
+
 }
 
 </style>
 
 </head>
+
 
 <body>
 
@@ -132,7 +153,9 @@ footer{
 
 <h1>🦆 LMS SERVER</h1>
 
-<p>Die offizielle Website des Minecraft Servers</p>
+<p>
+Die offizielle Website des Minecraft Servers
+</p>
 
 </header>
 
@@ -236,7 +259,6 @@ Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 </div>
 
 
-
 <div class="player builder">
 <img src="https://mc-heads.net/avatar/Hobbit2304/100">
 <h3>Hobbit2304</h3>
@@ -244,13 +266,11 @@ Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 </div>
 
 
-
 <div class="player builder">
-<img src="https://mc-heads.net/avatar/LumaFlo779/100">
-<h3>LumaFlo779</h3>
+<img src="https://mc-heads.net/avatar/King_Luma1/100">
+<h3>King_Luma1</h3>
 <p>🛠️ Builder</p>
 </div>
-
 
 
 <div class="player builder">
@@ -260,13 +280,11 @@ Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 </div>
 
 
-
 <div class="player admin">
 <img src="https://mc-heads.net/avatar/Thrumx/100">
 <h3>Thrumx</h3>
 <p>🛡️ Admin</p>
 </div>
-
 
 
 <div class="player premium">
@@ -276,13 +294,11 @@ Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 </div>
 
 
-
 <div class="player premium">
 <img src="https://mc-heads.net/avatar/LemonadeFruit/100">
 <h3>LemonadeFruit</h3>
 <p>⭐ Premium</p>
 </div>
-
 
 
 </div>
@@ -294,23 +310,60 @@ Spiele spannende Minigames, sammle Rubine und entdecke neue Welten.
 
 
 
+
 <section id="kontakt">
 
 <div class="card">
 
-<h2>📩 Kontakt</h2>
+<h2>📩 Kontakt & Support</h2>
 
 <p>
-Fragen oder Vorschläge?
+Hast du eine Frage oder einen Vorschlag?
 </p>
 
-<p>
-Nutze unseren Discord!
-</p>
+
+<form>
+
+
+<input type="text" placeholder="Minecraft Name">
+
+
+<br>
+
+
+<select>
+
+<option>❓ Frage</option>
+
+<option>💡 Vorschlag</option>
+
+</select>
+
+
+<br>
+
+
+<textarea placeholder="Deine Nachricht"></textarea>
+
+
+<br>
+
+
+<button class="button" type="button">
+📨 Absenden
+</button>
+
+
+</form>
+
+
+<br>
+
 
 <a class="button" href="https://discord.gg/N5ZYVRpMMU">
 💜 Discord
 </a>
+
 
 </div>
 
