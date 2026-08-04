@@ -168,6 +168,23 @@ border-radius:20px;
 }
 
 
+
+.camp-code{
+
+margin-top:20px;
+
+padding:20px;
+
+background:rgba(30,90,160,0.5);
+
+border-radius:15px;
+
+font-size:22px;
+
+color:#ffb000;
+
+}
+
 </style>
 
 </head>
@@ -176,36 +193,54 @@ border-radius:20px;
 <body>
 
 
-<header>
+<header id="top">
+
 
 <h1>🦆 LMS SERVER</h1>
 
+
 <p>Minecraft Minigames • Survival • Events</p>
+
 
 </header>
 
 
 <div class="nav">
 
-<button onclick="location.href='#start'">
+<button onclick="window.scrollTo({top:0, behavior:'smooth'})">
+
 Start
+
 </button>
+
 
 <button onclick="location.href='#shop'">
+
 Shop
+
 </button>
+
 
 <button onclick="location.href='#games'">
+
 Minigames
+
 </button>
+
 
 <button onclick="location.href='#team'">
+
 Team
+
 </button>
 
+
 <button onclick="location.href='#kontakt'">
+
 Kontakt
+
 </button>
+
 
 </div>
 <div id="start"></div>
@@ -258,6 +293,7 @@ Viele weitere Spiele
 
 <h2>Cookie Clicker</h2>
 
+
 <p>
 
 Klicke den Cookie!
@@ -286,7 +322,6 @@ Cookies: <span id="cookies">0</span>
 
 
 <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
-
 
 
 <div>
@@ -482,7 +517,7 @@ und entdecke neue Gebiete.
 
 <button onclick="joinCamp()">
 
-Beitreten
+Code erhalten
 
 </button>
 
@@ -494,9 +529,7 @@ Code wird erstellt...
 </div>
 
 
-<div id="campCode"
-
-style="margin-top:20px;font-size:22px;color:#ffb000;">
+<div id="campCode" class="camp-code">
 
 </div>
 
@@ -591,6 +624,16 @@ codeBox.innerHTML=
 +finalCode;
 
 
+
+codeBox.scrollIntoView({
+
+behavior:"smooth",
+
+block:"center"
+
+});
+
+
 }
 
 
@@ -647,7 +690,6 @@ alert(
 
 
 }
-
 
 
 </script>
