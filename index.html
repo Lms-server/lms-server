@@ -50,42 +50,7 @@ margin:10px;
 }
 
 
-.box{
-
-background:rgba(0,0,0,0.35);
-
-margin:30px auto;
-
-padding:25px;
-
-width:80%;
-
-max-width:900px;
-
-border-radius:20px;
-
-border:1px solid #315b8f;
-
-box-shadow:0 0 20px #000;
-
-}
-
-
-.status{
-
-background:rgba(30,90,160,0.45);
-
-border:2px solid #4b9cff;
-
-}
-
-
-h2{
-
-color:#ffb000;
-
-}
-
+/* Navigation */
 
 .nav{
 
@@ -124,9 +89,13 @@ padding:12px 25px;
 
 border-radius:12px;
 
+font-size:17px;
+
 cursor:pointer;
 
 font-weight:bold;
+
+transition:0.3s;
 
 }
 
@@ -136,6 +105,98 @@ font-weight:bold;
 background:white;
 
 color:#071a33;
+
+transform:translateY(-3px);
+
+}
+
+
+
+/* Boxen */
+
+.box{
+
+background:rgba(0,0,0,0.35);
+
+margin:30px auto;
+
+padding:25px;
+
+width:80%;
+
+max-width:900px;
+
+border-radius:20px;
+
+border:1px solid #315b8f;
+
+box-shadow:0 0 20px #000;
+
+}
+
+
+
+.status{
+
+background:rgba(30,90,160,0.45);
+
+border:2px solid #4b9cff;
+
+}
+
+
+
+h2{
+
+color:#ffb000;
+
+}
+
+
+.cookie{
+
+font-size:80px;
+
+cursor:pointer;
+
+}
+
+
+.survival-img{
+
+width:100%;
+
+max-width:800px;
+
+height:300px;
+
+object-fit:cover;
+
+border-radius:20px;
+
+}
+
+
+.live{
+
+border:2px solid #ffb000;
+
+}
+
+
+.camp-code{
+
+margin-top:20px;
+
+padding:20px;
+
+background:rgba(30,90,160,0.5);
+
+border-radius:15px;
+
+font-size:22px;
+
+color:#ffb000;
 
 }
 
@@ -157,6 +218,51 @@ color:#071a33;
 </header>
 
 
+<div class="nav">
+
+<button onclick="window.scrollTo({top:0,behavior:'smooth'})">
+
+Start
+
+</button>
+
+
+<button onclick="location.href='#shop'">
+
+Shop
+
+</button>
+
+
+<button onclick="location.href='#games'">
+
+Minigames
+
+</button>
+
+
+<button onclick="location.href='#live'">
+
+LMS LIVE
+
+</button>
+
+
+<button onclick="location.href='#team'">
+
+Team
+
+</button>
+
+
+<button onclick="location.href='#kontakt'">
+
+Kontakt
+
+</button>
+
+
+</div>
 <div class="box status">
 
 <h2>LMS SERVER STATUS</h2>
@@ -206,51 +312,6 @@ Wird geladen...
 </span>
 
 </p>
-
-
-</div>
-<div class="nav">
-
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})">
-
-Start
-
-</button>
-
-
-<button onclick="location.href='#shop'">
-
-Shop
-
-</button>
-
-
-<button onclick="location.href='#games'">
-
-Minigames
-
-</button>
-
-
-<button onclick="location.href='#live'">
-
-LMS LIVE
-
-</button>
-
-
-<button onclick="location.href='#team'">
-
-Team
-
-</button>
-
-
-<button onclick="location.href='#kontakt'">
-
-Kontakt
-
-</button>
 
 
 </div>
@@ -362,7 +423,7 @@ Klicke den Cookie!
 </p>
 
 
-<div style="font-size:80px;cursor:pointer" onclick="clickCookie()">
+<div class="cookie" onclick="clickCookie()">
 
 🍪
 
@@ -564,7 +625,7 @@ Discord öffnen
 
 src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23"
 
-alt="Minecraft Survival Camp">
+alt="Survival Camp">
 
 
 <h2>Survival Camp</h2>
@@ -771,7 +832,7 @@ alert(
 
 
 
-// LMS SERVER LIVE STATUS
+// Echter LMS SERVER Status
 
 function updateServerStatus(){
 
@@ -783,7 +844,6 @@ fetch("https://api.mcstatus.io/v2/status/java/LMS_server.aternos.me")
 
 
 .then(data => {
-
 
 
 if(data.online){
@@ -803,7 +863,6 @@ data.version.name;
 
 }
 
-
 else{
 
 
@@ -822,7 +881,6 @@ document.getElementById("version").innerHTML =
 }
 
 
-
 })
 
 
@@ -830,7 +888,7 @@ document.getElementById("version").innerHTML =
 
 
 document.getElementById("serverStatus").innerHTML =
-"⚠️ Status nicht verfügbar";
+"⚠️ Status konnte nicht geladen werden";
 
 
 });
