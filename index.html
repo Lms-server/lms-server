@@ -8,32 +8,46 @@
 
 <title>🦆 LMS SERVER</title>
 
+
 <style>
+
+*{
+box-sizing:border-box;
+}
+
 
 body{
 
 margin:0;
+
 font-family:Arial,sans-serif;
+
 text-align:center;
+
 color:white;
 
-background:#071a33;
+background:#061426;
 
 background-image:
-linear-gradient(#16365c 1px,transparent 1px),
-linear-gradient(90deg,#16365c 1px,transparent 1px);
 
-background-size:40px 40px;
+linear-gradient(#153252 1px,transparent 1px),
+
+linear-gradient(90deg,#153252 1px,transparent 1px);
+
+background-size:45px 45px;
 
 }
 
 
+/* Banner */
+
 header{
 
-padding:35px 20px;
+padding:50px 20px;
 
 background:
-linear-gradient(135deg,#ffb000,#ffd75e);
+
+linear-gradient(135deg,#ffb000,#ffe27a);
 
 color:#071a33;
 
@@ -42,13 +56,25 @@ border-bottom:5px solid #ffb000;
 }
 
 
+header a{
+
+color:#071a33;
+
+text-decoration:none;
+
+}
+
+
 h1{
 
-font-size:50px;
+font-size:55px;
+
 margin:10px;
 
 }
 
+
+/* Navigation */
 
 .nav{
 
@@ -56,44 +82,46 @@ position:sticky;
 
 top:0;
 
-z-index:1000;
+z-index:999;
 
 display:flex;
 
 justify-content:center;
 
-gap:15px;
+gap:12px;
 
 flex-wrap:wrap;
 
 padding:15px;
 
-background:rgba(7,26,51,0.85);
 
-backdrop-filter:blur(8px);
+background:rgba(6,20,38,0.85);
+
+backdrop-filter:blur(10px);
 
 }
 
 
 .nav button{
 
-background:rgba(30,90,160,0.65);
+
+background:rgba(40,120,210,0.55);
+
+border:1px solid #4da3ff;
 
 color:white;
 
-border:1px solid #4b9cff;
+padding:13px 25px;
 
-padding:12px 25px;
+border-radius:15px;
 
-border-radius:12px;
-
-font-size:17px;
-
-cursor:pointer;
+font-size:16px;
 
 font-weight:bold;
 
-transition:0.3s;
+cursor:pointer;
+
+transition:.3s;
 
 }
 
@@ -104,64 +132,98 @@ background:white;
 
 color:#071a33;
 
-transform:translateY(-3px);
+transform:translateY(-4px);
 
 }
+
+
+
+/* Karten */
 
 
 .box{
 
-background:rgba(0,0,0,0.35);
+width:85%;
 
-margin:30px auto;
+max-width:950px;
 
-padding:25px;
+margin:35px auto;
 
-width:80%;
+padding:30px;
 
-max-width:900px;
 
-border-radius:20px;
+background:rgba(255,255,255,0.08);
 
-border:1px solid #315b8f;
+border:1px solid rgba(255,255,255,0.15);
 
-box-shadow:0 0 20px #000;
+border-radius:25px;
+
+
+box-shadow:
+
+0 0 25px rgba(0,0,0,.5);
+
+
+backdrop-filter:blur(8px);
+
+
+transition:.3s;
 
 }
 
 
-.status{
 
-background:rgba(30,90,160,0.45);
+.box:hover{
 
-border:2px solid #4b9cff;
+transform:translateY(-5px);
 
 }
+
+
 
 
 h2{
 
 color:#ffb000;
 
+font-size:32px;
+
 }
+
+
+
+.status{
+
+border:2px solid #4da3ff;
+
+}
+
 
 
 .cookie{
 
-font-size:80px;
+font-size:90px;
 
 cursor:pointer;
 
+transition:.3s;
+
 }
+
+
+.cookie:hover{
+
+transform:scale(1.2);
+
+}
+
 
 
 .survival-img{
 
 width:100%;
 
-max-width:800px;
-
-height:300px;
+height:320px;
 
 object-fit:cover;
 
@@ -170,11 +232,13 @@ border-radius:20px;
 }
 
 
-.live{
 
-border:2px solid #ffb000;
+button{
+
+cursor:pointer;
 
 }
+
 
 
 .camp-code{
@@ -183,13 +247,13 @@ margin-top:20px;
 
 padding:20px;
 
-background:rgba(30,90,160,0.5);
-
-border-radius:15px;
-
-font-size:22px;
+font-size:24px;
 
 color:#ffb000;
+
+background:rgba(0,0,0,.4);
+
+border-radius:15px;
 
 }
 
@@ -204,7 +268,8 @@ color:#ffb000;
 
 <header id="top">
 
-<a href="index.html" style="text-decoration:none;color:#071a33;">
+
+<a href="index.html">
 
 <h1>🦆 LMS SERVER</h1>
 
@@ -273,7 +338,10 @@ Info
 
 </button>
 
+
+</div>
 <div class="box status">
+
 
 <h2>LMS SERVER STATUS</h2>
 
@@ -332,6 +400,7 @@ Wird geladen...
 
 <div class="box" id="shop">
 
+
 <h2>Shop</h2>
 
 
@@ -341,8 +410,8 @@ Der LMS SERVER Shop kommt bald.
 
 <br><br>
 
-Hier findest du später besondere Inhalte
-und Extras für den Server.
+Hier entstehen später besondere Inhalte,
+Ränge und Extras.
 
 </p>
 
@@ -355,17 +424,24 @@ und Extras für den Server.
 
 <div class="box" id="games">
 
+
 <h2>Minigames</h2>
 
 
 <p>
 
 Happy Ghast Flug<br>
+
 Bugworld<br>
+
 Trainingsplatz<br>
+
 Waterhopper<br>
+
 Elytraparcour<br>
+
 Explorer Trip<br>
+
 Viele weitere Spiele
 
 </p>
@@ -377,7 +453,8 @@ Viele weitere Spiele
 
 
 
-<div class="box live" id="live">
+<div class="box" id="live">
+
 
 <h2>LMS LIVE</h2>
 
@@ -388,16 +465,19 @@ Die interaktive Show vom LMS SERVER.
 
 <br><br>
 
-Events, Community-Aktionen und besondere Shows.
+Events, Community-Aktionen
+und besondere Shows.
 
 <br><br>
 
 Bald verfügbar:
 
-<br>
+<br><br>
 
 Live-Events<br>
+
 Abstimmungen<br>
+
 Challenges
 
 </p>
@@ -422,6 +502,7 @@ Abstimmen
 
 
 <div class="box">
+
 
 <h2>Cookie Clicker</h2>
 
@@ -455,19 +536,20 @@ Cookies:
 
 
 </div>
-
 <div class="box" id="team">
+
 
 <h2>Team</h2>
 
 
-<div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
+<div style="display:flex;justify-content:center;gap:25px;flex-wrap:wrap;">
+
 
 
 <div>
 
 <img src="https://mc-heads.net/avatar/CC_Minecarft/100"
-style="border-radius:10px;">
+style="border-radius:15px;">
 
 <p>
 Owner<br>
@@ -478,10 +560,11 @@ CC_Minecarft
 
 
 
+
 <div>
 
 <img src="https://mc-heads.net/avatar/Hobbit2304/100"
-style="border-radius:10px;">
+style="border-radius:15px;">
 
 <p>
 Builder<br>
@@ -492,10 +575,11 @@ Hobbit2304
 
 
 
+
 <div>
 
 <img src="https://mc-heads.net/avatar/King_Luma1/100"
-style="border-radius:10px;">
+style="border-radius:15px;">
 
 <p>
 Builder<br>
@@ -506,10 +590,11 @@ King_Luma1
 
 
 
+
 <div>
 
 <img src="https://mc-heads.net/avatar/Lennyy20/100"
-style="border-radius:10px;">
+style="border-radius:15px;">
 
 <p>
 Builder<br>
@@ -520,10 +605,11 @@ Lennyy20
 
 
 
+
 <div>
 
 <img src="https://mc-heads.net/avatar/Thrumx/100"
-style="border-radius:10px;">
+style="border-radius:15px;">
 
 <p>
 Admin<br>
@@ -534,11 +620,11 @@ Thrumx
 
 
 
+
 <div>
 
 <img src="https://mc-heads.net/avatar/Takatonka/100"
-
-style="border-radius:10px;">
+style="border-radius:15px;">
 
 <p>
 Premium<br>
@@ -549,11 +635,11 @@ Takatonka
 
 
 
+
 <div>
 
 <img src="https://mc-heads.net/avatar/LemonadeFruit/100"
-
-style="border-radius:10px;">
+style="border-radius:15px;">
 
 <p>
 Premium<br>
@@ -573,6 +659,7 @@ LemonadeFruit
 
 <div class="box" id="kontakt">
 
+
 <h2>Kontakt</h2>
 
 
@@ -583,26 +670,31 @@ Fragen, Ideen oder Probleme?
 </p>
 
 
+
 <input id="playername"
 
 placeholder="Minecraft Name"
 
-style="width:80%;padding:10px;border-radius:10px;">
+style="width:80%;padding:12px;border-radius:12px;">
+
 
 
 <br><br>
+
 
 
 <textarea id="message"
 
 placeholder="Deine Nachricht"
 
-style="width:80%;height:100px;border-radius:10px;padding:10px;">
+style="width:80%;height:120px;border-radius:12px;padding:12px;">
 
 </textarea>
 
 
+
 <br><br>
+
 
 
 <button onclick="sendDiscord()">
@@ -612,10 +704,13 @@ An Discord senden
 </button>
 
 
+
 <br><br>
 
 
+
 <a href="https://discord.gg/N5ZYVRpMMU" target="_blank">
+
 
 <button>
 
@@ -623,7 +718,9 @@ Discord öffnen
 
 </button>
 
+
 </a>
+
 
 
 </div>
@@ -642,7 +739,9 @@ src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23"
 alt="Minecraft Survival Camp">
 
 
+
 <h2>Survival Camp</h2>
+
 
 
 <p>
@@ -651,10 +750,12 @@ Starte dein eigenes Abenteuer.
 
 <br><br>
 
-Baue deine Base, sammle Ressourcen
+Baue deine Base,
+sammle Ressourcen
 und erkunde die Welt.
 
 </p>
+
 
 
 <button onclick="joinCamp()">
@@ -664,16 +765,23 @@ Code erhalten
 </button>
 
 
-<div id="slot" style="display:none;margin-top:20px;font-size:25px;">
+
+
+<div id="slot"
+
+style="display:none;margin-top:20px;font-size:25px;">
 
 Code wird erstellt...
 
 </div>
 
 
+
+
 <div id="campCode" class="camp-code">
 
 </div>
+
 
 
 </div>
@@ -709,6 +817,7 @@ document.getElementById("vote").innerHTML =
 
 function joinCamp(){
 
+
 let slot = document.getElementById("slot");
 
 let codeBox = document.getElementById("campCode");
@@ -719,54 +828,73 @@ slot.style.display="block";
 codeBox.innerHTML="";
 
 
-let symbols = [
+
+let symbols=[
 
 "A","B","C","D","E","F",
+
 "1","2","3","4","5","6",
+
 "7","8","9"
 
 ];
 
 
-let count = 0;
+
+let count=0;
 
 
-let animation = setInterval(function(){
+
+let animation=setInterval(function(){
 
 
-let random = "";
+
+let random="";
+
 
 
 for(let i=0;i<8;i++){
 
+
 random += symbols[Math.floor(Math.random()*symbols.length)];
 
+
 }
+
 
 
 slot.innerHTML=random;
 
 
+
 count++;
+
 
 
 if(count>=15){
 
 
+
 clearInterval(animation);
+
 
 
 let finalCode="CAMP-";
 
 
+
 for(let i=0;i<6;i++){
 
+
 finalCode += symbols[Math.floor(Math.random()*symbols.length)];
+
 
 }
 
 
+
 slot.innerHTML="Code erstellt";
+
 
 
 codeBox.innerHTML=
@@ -774,6 +902,7 @@ codeBox.innerHTML=
 "Dein Survival Camp Code:<br><br>"
 
 +finalCode;
+
 
 
 codeBox.scrollIntoView({
@@ -785,10 +914,14 @@ block:"center"
 });
 
 
+
 }
 
 
+
 },100);
+
+
 
 }
 
@@ -798,20 +931,21 @@ block:"center"
 
 function sendDiscord(){
 
-let name =
-document.getElementById("playername").value;
+
+let name=document.getElementById("playername").value;
 
 
-let message =
-document.getElementById("message").value;
+let message=document.getElementById("message").value;
 
 
 
 if(name==""){
 
+
 alert("Bitte Minecraft Name eintragen.");
 
 return;
+
 
 }
 
@@ -819,9 +953,11 @@ return;
 
 if(message==""){
 
+
 alert("Bitte Nachricht schreiben.");
 
 return;
+
 
 }
 
@@ -840,6 +976,7 @@ alert(
 );
 
 
+
 }
 
 
@@ -849,28 +986,35 @@ alert(
 function updateServerStatus(){
 
 
+
 fetch("https://api.mcstatus.io/v2/status/java/LMS_server.aternos.me")
 
+.then(response=>response.json())
 
-.then(response => response.json())
+.then(data=>{
 
-
-.then(data => {
 
 
 if(data.online){
 
 
-document.getElementById("serverStatus").innerHTML =
-"🟢 Online";
+
+document.getElementById("serverStatus").innerHTML=
+
+"Online";
 
 
-document.getElementById("players").innerHTML =
-data.players.online + "/" + data.players.max;
+
+document.getElementById("players").innerHTML=
+
+data.players.online+"/"+data.players.max;
 
 
-document.getElementById("version").innerHTML =
+
+document.getElementById("version").innerHTML=
+
 data.version.name;
+
 
 
 }
@@ -878,32 +1022,40 @@ data.version.name;
 else{
 
 
-document.getElementById("serverStatus").innerHTML =
-"🔴 Offline";
+
+document.getElementById("serverStatus").innerHTML=
+
+"Offline";
 
 
-document.getElementById("players").innerHTML =
+
+document.getElementById("players").innerHTML=
+
 "0/40";
 
 
-document.getElementById("version").innerHTML =
+
+document.getElementById("version").innerHTML=
+
 "Nicht erreichbar";
 
 
 }
 
 
+
 })
 
+.catch(()=>{
 
-.catch(error => {
 
+document.getElementById("serverStatus").innerHTML=
 
-document.getElementById("serverStatus").innerHTML =
-"⚠️ Status konnte nicht geladen werden";
+"Status konnte nicht geladen werden";
 
 
 });
+
 
 }
 
@@ -915,10 +1067,10 @@ updateServerStatus();
 setInterval(updateServerStatus,60000);
 
 
+
 </script>
 
 
 </body>
 
 </html>
-</div>
