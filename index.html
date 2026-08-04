@@ -12,106 +12,145 @@
 
 body{
 
-    margin:0;
-    font-family:Arial,sans-serif;
-    text-align:center;
-    color:white;
+margin:0;
+font-family:Arial,sans-serif;
+text-align:center;
+color:white;
 
-    background:#071a33;
+background:#071a33;
 
-    background-image:
-    linear-gradient(#16365c 1px,transparent 1px),
-    linear-gradient(90deg,#16365c 1px,transparent 1px);
+background-image:
+linear-gradient(#16365c 1px,transparent 1px),
+linear-gradient(90deg,#16365c 1px,transparent 1px);
 
-    background-size:40px 40px;
+background-size:40px 40px;
 
 }
 
 
-/* Gelbes Banner */
-
 header{
 
-    padding:35px 20px;
+padding:35px 20px;
 
-    background:
+background:
+linear-gradient(135deg,#ffb000,#ffd75e);
 
-    linear-gradient(135deg,#ffb000,#ffd75e);
+color:#071a33;
 
-    color:#071a33;
-
-    border-bottom:5px solid #ffb000;
+border-bottom:5px solid #ffb000;
 
 }
 
 
 h1{
 
-    font-size:50px;
-    margin:10px;
+font-size:50px;
+margin:10px;
 
 }
 
 
 .logo{
 
-    font-size:80px;
+font-size:80px;
+cursor:pointer;
 
-    cursor:pointer;
-
-    transition:0.3s;
+transition:0.3s;
 
 }
 
 
 .logo:hover{
 
-    transform:scale(1.2) rotate(10deg);
+transform:scale(1.2) rotate(10deg);
 
 }
+
+
+/* Duck Creeper */
+
+#creeper{
+
+display:none;
+
+font-size:90px;
+
+animation:up 1s;
+
+}
+
+
+@keyframes up{
+
+from{
+
+transform:translateY(100px);
+
+opacity:0;
+
+}
+
+to{
+
+transform:translateY(0);
+
+opacity:1;
+
+}
+
+}
+
 
 
 /* Navigation */
 
 .nav{
 
-    display:flex;
+position:sticky;
 
-    justify-content:center;
+top:0;
 
-    gap:15px;
+z-index:1000;
 
-    flex-wrap:wrap;
+display:flex;
 
-    margin:20px;
+justify-content:center;
+
+gap:15px;
+
+flex-wrap:wrap;
+
+padding:15px;
+
+background:#071a33;
 
 }
 
 
 .nav button{
 
-    background:#ffb000;
+background:#ffb000;
 
-    color:#071a33;
+color:#071a33;
 
-    border:none;
+border:none;
 
-    padding:12px 25px;
+padding:12px 25px;
 
-    border-radius:12px;
+border-radius:12px;
 
-    font-size:17px;
+font-size:17px;
 
-    cursor:pointer;
+cursor:pointer;
 
-    font-weight:bold;
+font-weight:bold;
 
 }
 
 
 .nav button:hover{
 
-    background:white;
+background:white;
 
 }
 
@@ -121,31 +160,39 @@ h1{
 
 .box{
 
-    background:rgba(0,0,0,0.35);
+background:rgba(0,0,0,0.35);
 
-    margin:30px auto;
+margin:30px auto;
 
-    padding:25px;
+padding:25px;
 
-    width:80%;
+width:80%;
 
-    max-width:900px;
+max-width:900px;
 
-    border-radius:20px;
+border-radius:20px;
 
-    border:1px solid #315b8f;
+border:1px solid #315b8f;
 
-    box-shadow:0 0 20px #000;
+box-shadow:0 0 20px #000;
 
 }
 
 
 h2{
 
-    color:#ffb000;
+color:#ffb000;
 
 }
 
+
+.cookie{
+
+font-size:80px;
+
+cursor:pointer;
+
+}
 
 </style>
 
@@ -159,14 +206,19 @@ h2{
 
 <div class="logo" onclick="duckClick()">🦆</div>
 
+<div id="creeper">🟩💥<br>🦆</div>
+
 <h1>🦆 LMS SERVER</h1>
 
 <p>Minecraft Minigames • Survival • Events</p>
 
-<p>Owner: CC_Minecarft</p>
+
+</header>
 
 
 <div class="nav">
+
+<button onclick="location.href='#start'">🏠 Start</button>
 
 <button onclick="location.href='#shop'">🛒 Shop</button>
 
@@ -179,9 +231,9 @@ h2{
 <button onclick="location.href='#radio'">📻 Radio</button>
 
 </div>
+<div id="start"></div>
 
 
-</header>
 <div class="box" id="shop">
 
 <h2>🛒 Shop</h2>
@@ -198,7 +250,6 @@ Ränge und Extras finden.
 </p>
 
 </div>
-
 
 
 
@@ -231,16 +282,16 @@ Ränge und Extras finden.
 
 <p>
 
-Klicke den Cookie und sammle Punkte!
+Klicke den Keks!
 
 </p>
 
 
-<button onclick="clickCookie()">
+<div class="cookie" onclick="clickCookie()">
 
-🍪 Cookie
+🍪
 
-</button>
+</div>
 
 
 <p>
@@ -388,9 +439,19 @@ LemonadeFruit
 
 <p>
 
-Fragen, Ideen oder Probleme?
+Schreibe uns deine Frage oder Idee.
 
 </p>
+
+
+<input id="playername"
+
+placeholder="Minecraft Name"
+
+style="width:80%;padding:10px;border-radius:10px;">
+
+
+<br><br>
 
 
 <textarea id="message"
@@ -433,18 +494,19 @@ style="width:80%;height:100px;border-radius:10px;padding:10px;">
 
 <p>
 
-Das große Survival-Abenteuer kommt bald!
+Das Survival Camp kommt bald!
 
 <br><br>
 
-🌲 Eigene Base bauen<br>
+🌲 Base bauen<br>
 ⛏️ Ressourcen sammeln<br>
-🌍 Neue Welten entdecken<br>
+🌍 Welten erkunden<br>
 🏕️ Abenteuer erleben
 
 </p>
 
 </div>
+
 
 
 
@@ -469,20 +531,33 @@ Das große Survival-Abenteuer kommt bald!
 let cookies = 0;
 
 
+
 function clickCookie(){
 
-    cookies++;
+cookies++;
 
-    document.getElementById("cookies").innerHTML = cookies;
+document.getElementById("cookies").innerHTML = cookies;
 
 }
 
 
 
 
+
 function duckClick(){
 
-    alert("🦆 Der Duck-Creeper wurde aktiviert! 💥");
+let creeper = document.getElementById("creeper");
+
+
+creeper.style.display="block";
+
+
+setTimeout(function(){
+
+creeper.style.display="none";
+
+},3000);
+
 
 }
 
@@ -492,7 +567,7 @@ function duckClick(){
 
 function playRadio(){
 
-    alert("📻 LMS Radio gestartet!");
+alert("📻 LMS Radio gestartet!");
 
 }
 
@@ -502,7 +577,7 @@ function playRadio(){
 
 function stopRadio(){
 
-    alert("📻 LMS Radio gestoppt!");
+alert("📻 LMS Radio gestoppt!");
 
 }
 
@@ -512,22 +587,44 @@ function stopRadio(){
 
 function sendDiscord(){
 
-    let message = document.getElementById("message").value;
+let name =
+document.getElementById("playername").value;
 
 
-    if(message==""){
-
-        alert("Bitte schreibe zuerst eine Nachricht!");
-
-        return;
-
-    }
+let message =
+document.getElementById("message").value;
 
 
-    alert("Nachricht vorbereitet! Öffne Discord und sende sie dort.");
+
+if(name==""){
+
+alert("Bitte Minecraft Namen eintragen!");
+
+return;
 
 }
 
+
+
+if(message==""){
+
+alert("Bitte Nachricht schreiben!");
+
+return;
+
+}
+
+
+
+alert(
+"Nachricht vorbereitet für Discord:\n\nMinecraft Name: "
++name+
+"\n\n"
++message
+);
+
+
+}
 
 
 </script>
