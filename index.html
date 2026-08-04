@@ -50,8 +50,6 @@ margin:10px;
 }
 
 
-/* Navigation */
-
 .nav{
 
 position:sticky;
@@ -111,9 +109,6 @@ transform:translateY(-3px);
 }
 
 
-
-/* Boxen */
-
 .box{
 
 background:rgba(0,0,0,0.35);
@@ -135,7 +130,6 @@ box-shadow:0 0 20px #000;
 }
 
 
-
 .status{
 
 background:rgba(30,90,160,0.45);
@@ -143,7 +137,6 @@ background:rgba(30,90,160,0.45);
 border:2px solid #4b9cff;
 
 }
-
 
 
 h2{
@@ -211,14 +204,26 @@ color:#ffb000;
 
 <header id="top">
 
+<a href="index.html" style="text-decoration:none;color:#071a33;">
+
 <h1>🦆 LMS SERVER</h1>
 
-<p>Minecraft Minigames • Survival • Events</p>
+</a>
+
+
+<p>
+
+Minecraft Minigames • Survival • Events
+
+</p>
+
 
 </header>
 
 
+
 <div class="nav">
+
 
 <button onclick="window.scrollTo({top:0,behavior:'smooth'})">
 
@@ -262,7 +267,12 @@ Kontakt
 </button>
 
 
-</div>
+<button onclick="location.href='info.html'">
+
+Info
+
+</button>
+
 <div class="box status">
 
 <h2>LMS SERVER STATUS</h2>
@@ -440,10 +450,12 @@ Cookies:
 
 </span>
 
+
 </p>
 
 
 </div>
+
 <div class="box" id="team">
 
 <h2>Team</h2>
@@ -525,6 +537,7 @@ Thrumx
 <div>
 
 <img src="https://mc-heads.net/avatar/Takatonka/100"
+
 style="border-radius:10px;">
 
 <p>
@@ -539,6 +552,7 @@ Takatonka
 <div>
 
 <img src="https://mc-heads.net/avatar/LemonadeFruit/100"
+
 style="border-radius:10px;">
 
 <p>
@@ -625,7 +639,7 @@ Discord öffnen
 
 src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23"
 
-alt="Survival Camp">
+alt="Minecraft Survival Camp">
 
 
 <h2>Survival Camp</h2>
@@ -832,8 +846,6 @@ alert(
 
 
 
-// Echter LMS SERVER Status
-
 function updateServerStatus(){
 
 
@@ -909,3 +921,4 @@ setInterval(updateServerStatus,60000);
 </body>
 
 </html>
+</div>
