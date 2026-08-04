@@ -28,14 +28,19 @@ body{
 }
 
 
+/* Gelbes Banner */
+
 header{
 
-    padding:40px 20px;
+    padding:35px 20px;
 
     background:
-    linear-gradient(135deg,#071a33,#123b70);
 
-    border-bottom:3px solid #ffb000;
+    linear-gradient(135deg,#ffb000,#ffd75e);
+
+    color:#071a33;
+
+    border-bottom:5px solid #ffb000;
 
 }
 
@@ -43,8 +48,7 @@ header{
 h1{
 
     font-size:50px;
-    margin:0;
-    color:#ffb000;
+    margin:10px;
 
 }
 
@@ -52,6 +56,7 @@ h1{
 .logo{
 
     font-size:80px;
+
     cursor:pointer;
 
     transition:0.3s;
@@ -66,6 +71,53 @@ h1{
 }
 
 
+/* Navigation */
+
+.nav{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin:20px;
+
+}
+
+
+.nav button{
+
+    background:#ffb000;
+
+    color:#071a33;
+
+    border:none;
+
+    padding:12px 25px;
+
+    border-radius:12px;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+
+.nav button:hover{
+
+    background:white;
+
+}
+
+
+
+/* Boxen */
 
 .box{
 
@@ -95,30 +147,6 @@ h2{
 }
 
 
-button{
-
-    background:#ffb000;
-
-    color:black;
-
-    border:none;
-
-    padding:12px 25px;
-
-    border-radius:10px;
-
-    font-size:18px;
-
-    cursor:pointer;
-
-}
-
-
-button:hover{
-
-    background:white;
-
-}
 </style>
 
 </head>
@@ -133,53 +161,39 @@ button:hover{
 
 <h1>🦆 LMS SERVER</h1>
 
-<p>Dein Minecraft Minigames & Abenteuer Server</p>
+<p>Minecraft Minigames • Survival • Events</p>
 
 <p>Owner: CC_Minecarft</p>
 
-</header>
 
+<div class="nav">
 
+<button onclick="location.href='#shop'">🛒 Shop</button>
 
+<button onclick="location.href='#games'">🎮 Minigames</button>
 
+<button onclick="location.href='#team'">👥 Team</button>
 
-<div class="box">
+<button onclick="location.href='#kontakt'">📩 Kontakt</button>
 
-<h2>🌐 Über den Server</h2>
-
-<p>
-
-Willkommen auf dem LMS SERVER!
-
-<br><br>
-
-Hier erwarten dich eigene Minigames,
-Abenteuerwelten und besondere Server-Erlebnisse.
-
-<br>
-
-Spiele mit Freunden und entdecke unsere Welten!
-
-</p>
+<button onclick="location.href='#radio'">📻 Radio</button>
 
 </div>
 
 
-
-
-
-<div class="box">
+</header>
+<div class="box" id="shop">
 
 <h2>🛒 Shop</h2>
 
 <p>
 
-Der Shop kommt bald!
+Der LMS SERVER Shop kommt bald!
 
 <br><br>
 
-Später kannst du hier besondere Inhalte
-für den LMS SERVER erhalten.
+Später kannst du hier besondere Inhalte,
+Ränge und Extras finden.
 
 </p>
 
@@ -189,7 +203,7 @@ für den LMS SERVER erhalten.
 
 
 
-<div class="box">
+<div class="box" id="games">
 
 <h2>🎮 Minigames</h2>
 
@@ -213,106 +227,220 @@ für den LMS SERVER erhalten.
 
 <div class="box">
 
-<h2>⛺ Survival Camp</h2>
+<h2>🍪 Cookie Clicker</h2>
 
 <p>
 
-Erlebe dein eigenes Survival-Abenteuer!
+Klicke den Cookie und sammle Punkte!
 
-<br><br>
+</p>
 
-🌲 Baue deine Base<br>
-⛏️ Sammle Ressourcen<br>
-🏕️ Erkunde die Welt<br>
-⚔️ Überlebe Herausforderungen<br>
-🏆 Werde der beste Survivor
 
-<br><br>
+<button onclick="clickCookie()">
 
-Das Survival Camp wartet auf dich!
+🍪 Cookie
 
+</button>
+
+
+<p>
+
+Cookies: <span id="cookies">0</span>
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="box" id="radio">
+
+<h2>📻 LMS Radio</h2>
+
+<p>
+
+Musik und Unterhaltung für die Community.
+
+</p>
+
+
+<button onclick="playRadio()">
+
+▶️ Radio starten
+
+</button>
+
+
+<button onclick="stopRadio()">
+
+⏹️ Stoppen
+
+</button>
+
+
+</div>
+<div class="box" id="team">
+
+<h2>👥 Team</h2>
+
+
+<div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+
+
+<div>
+
+<img src="https://mc-heads.net/avatar/Hobbit2304/100"
+style="border-radius:10px;">
+
+<p>
+🧱 Builder<br>
+Hobbit2304
 </p>
 
 </div>
-<div class="box">
 
-<h2>💬 Discord</h2>
+
+
+<div>
+
+<img src="https://mc-heads.net/avatar/King_Luma1/100"
+style="border-radius:10px;">
+
+<p>
+🧱 Builder<br>
+King_Luma1
+</p>
+
+</div>
+
+
+
+<div>
+
+<img src="https://mc-heads.net/avatar/Lennyy20/100"
+style="border-radius:10px;">
+
+<p>
+🧱 Builder<br>
+Lennyy20
+</p>
+
+</div>
+
+
+
+<div>
+
+<img src="https://mc-heads.net/avatar/Thrumx/100"
+style="border-radius:10px;">
+
+<p>
+⚙️ Admin<br>
+Thrumx
+</p>
+
+</div>
+
+
+
+<div>
+
+<img src="https://mc-heads.net/avatar/Takatonka/100"
+style="border-radius:10px;">
+
+<p>
+⭐ Premium<br>
+Takatonka
+</p>
+
+</div>
+
+
+
+<div>
+
+<img src="https://mc-heads.net/avatar/LemonadeFruit/100"
+style="border-radius:10px;">
+
+<p>
+⭐ Premium<br>
+LemonadeFruit
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="box" id="kontakt">
+
+<h2>📩 Kontakt</h2>
+
 
 <p>
 
-Trete unserer Community bei!
+Fragen, Ideen oder Probleme?
+
+</p>
+
+
+<textarea id="message"
+
+placeholder="Deine Nachricht..."
+
+style="width:80%;height:100px;border-radius:10px;padding:10px;">
+
+</textarea>
+
 
 <br><br>
 
-Bespreche Updates, Events und neue Ideen
-mit anderen Spielern.
 
-</p>
+<button onclick="sendDiscord()">
+
+💬 An Discord senden
+
+</button>
+
+
+<br><br>
 
 
 <a href="https://discord.gg/N5ZYVRpMMU" target="_blank">
 
 <button>
-Discord öffnen
+
+🟣 Discord öffnen
+
 </button>
 
 </a>
 
 
 </div>
-
-
-
-
-
 <div class="box">
 
-<h2>👥 Team</h2>
+<h2>⛺ Survival Camp</h2>
 
 <p>
 
-🧱 Builder Hobbit2304<br>
-🧱 Builder King_Luma1<br>
-🧱 Builder Lennyy20<br>
-⚙️ Admin Thrumx<br>
-⭐ Premium Takatonka<br>
-⭐ Premium LemonadeFruit
-
-</p>
-
-</div>
-
-
-
-
-
-<div class="box">
-
-<h2>📩 Kontakt</h2>
-
-<p>
-
-Du hast Fragen, Ideen oder möchtest helfen?
+Das große Survival-Abenteuer kommt bald!
 
 <br><br>
 
-Schreib uns auf Discord!
-
-</p>
-
-</div>
-<div class="box">
-
-<h2>🦆 LMS SERVER</h2>
-
-<p>
-
-Danke, dass du unsere Website besuchst!
-
-<br><br>
-
-Viel Spaß auf dem LMS SERVER
-und bis bald im Spiel!
+🌲 Eigene Base bauen<br>
+⛏️ Ressourcen sammeln<br>
+🌍 Neue Welten entdecken<br>
+🏕️ Abenteuer erleben
 
 </p>
 
@@ -338,11 +466,68 @@ und bis bald im Spiel!
 <script>
 
 
+let cookies = 0;
+
+
+function clickCookie(){
+
+    cookies++;
+
+    document.getElementById("cookies").innerHTML = cookies;
+
+}
+
+
+
+
 function duckClick(){
 
     alert("🦆 Der Duck-Creeper wurde aktiviert! 💥");
 
 }
+
+
+
+
+
+function playRadio(){
+
+    alert("📻 LMS Radio gestartet!");
+
+}
+
+
+
+
+
+function stopRadio(){
+
+    alert("📻 LMS Radio gestoppt!");
+
+}
+
+
+
+
+
+function sendDiscord(){
+
+    let message = document.getElementById("message").value;
+
+
+    if(message==""){
+
+        alert("Bitte schreibe zuerst eine Nachricht!");
+
+        return;
+
+    }
+
+
+    alert("Nachricht vorbereitet! Öffne Discord und sende sie dort.");
+
+}
+
 
 
 </script>
