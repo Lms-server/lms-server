@@ -28,6 +28,7 @@ background-size:40px 40px;
 }
 
 
+
 header{
 
 padding:35px 20px;
@@ -42,12 +43,14 @@ border-bottom:5px solid #ffb000;
 }
 
 
+
 h1{
 
 font-size:50px;
 margin:10px;
 
 }
+
 
 
 .logo{
@@ -60,6 +63,7 @@ transition:0.3s;
 }
 
 
+
 .logo:hover{
 
 transform:scale(1.2) rotate(10deg);
@@ -67,7 +71,7 @@ transform:scale(1.2) rotate(10deg);
 }
 
 
-/* Duck Creeper */
+
 
 #creeper{
 
@@ -78,6 +82,7 @@ font-size:90px;
 animation:up 1s;
 
 }
+
 
 
 @keyframes up{
@@ -102,7 +107,6 @@ opacity:1;
 
 
 
-/* Navigation */
 
 .nav{
 
@@ -122,18 +126,22 @@ flex-wrap:wrap;
 
 padding:15px;
 
-background:#071a33;
+background:rgba(7,26,51,0.85);
+
+backdrop-filter:blur(8px);
 
 }
 
 
+
+
 .nav button{
 
-background:#ffb000;
+background:rgba(255,176,0,0.65);
 
 color:#071a33;
 
-border:none;
+border:1px solid #ffb000;
 
 padding:12px 25px;
 
@@ -145,18 +153,22 @@ cursor:pointer;
 
 font-weight:bold;
 
+transition:0.3s;
+
 }
+
 
 
 .nav button:hover{
 
-background:white;
+background:rgba(255,255,255,0.9);
+
+transform:translateY(-3px);
 
 }
 
 
 
-/* Boxen */
 
 .box{
 
@@ -179,11 +191,13 @@ box-shadow:0 0 20px #000;
 }
 
 
+
 h2{
 
 color:#ffb000;
 
 }
+
 
 
 .cookie{
@@ -204,11 +218,17 @@ cursor:pointer;
 
 <header>
 
+
 <div class="logo" onclick="duckClick()">🦆</div>
 
-<div id="creeper">🟩💥<br>🦆</div>
+<div id="creeper">
+🟩💥<br>
+🦆
+</div>
+
 
 <h1>🦆 LMS SERVER</h1>
+
 
 <p>Minecraft Minigames • Survival • Events</p>
 
@@ -218,17 +238,30 @@ cursor:pointer;
 
 <div class="nav">
 
-<button onclick="location.href='#start'">🏠 Start</button>
+<button onclick="location.href='#start'">
+Start
+</button>
 
-<button onclick="location.href='#shop'">🛒 Shop</button>
+<button onclick="location.href='#shop'">
+Shop
+</button>
 
-<button onclick="location.href='#games'">🎮 Minigames</button>
+<button onclick="location.href='#games'">
+Minigames
+</button>
 
-<button onclick="location.href='#team'">👥 Team</button>
+<button onclick="location.href='#team'">
+Team
+</button>
 
-<button onclick="location.href='#kontakt'">📩 Kontakt</button>
+<button onclick="location.href='#kontakt'">
+Kontakt
+</button>
 
-<button onclick="location.href='#radio'">📻 Radio</button>
+<button onclick="location.href='#radio'">
+Radio
+</button>
+
 
 </div>
 <div id="start"></div>
@@ -236,16 +269,16 @@ cursor:pointer;
 
 <div class="box" id="shop">
 
-<h2>🛒 Shop</h2>
+<h2>Shop</h2>
 
 <p>
 
-Der LMS SERVER Shop kommt bald!
+Der LMS SERVER Shop kommt bald.
 
 <br><br>
 
-Später kannst du hier besondere Inhalte,
-Ränge und Extras finden.
+Hier findest du später besondere Inhalte,
+Ränge und Extras.
 
 </p>
 
@@ -256,17 +289,17 @@ Ränge und Extras finden.
 
 <div class="box" id="games">
 
-<h2>🎮 Minigames</h2>
+<h2>Minigames</h2>
 
 <p>
 
-🦆 Happy Ghast Flug<br>
-🌍 Bugworld<br>
-⚔️ Trainingsplatz<br>
-💧 Waterhopper<br>
-🪽 Elytraparcour<br>
-🧭 Explorer Trip<br>
-🏆 Viele weitere Spiele
+Happy Ghast Flug<br>
+Bugworld<br>
+Trainingsplatz<br>
+Waterhopper<br>
+Elytraparcour<br>
+Explorer Trip<br>
+Viele weitere Spiele
 
 </p>
 
@@ -278,11 +311,11 @@ Ränge und Extras finden.
 
 <div class="box">
 
-<h2>🍪 Cookie Clicker</h2>
+<h2>Cookie Clicker</h2>
 
 <p>
 
-Klicke den Keks!
+Klicke den Cookie!
 
 </p>
 
@@ -309,7 +342,8 @@ Cookies: <span id="cookies">0</span>
 
 <div class="box" id="radio">
 
-<h2>📻 LMS Radio</h2>
+<h2>Radio</h2>
+
 
 <p>
 
@@ -320,14 +354,14 @@ Musik und Unterhaltung für die Community.
 
 <button onclick="playRadio()">
 
-▶️ Radio starten
+Starten
 
 </button>
 
 
 <button onclick="stopRadio()">
 
-⏹️ Stoppen
+Stoppen
 
 </button>
 
@@ -335,10 +369,25 @@ Musik und Unterhaltung für die Community.
 </div>
 <div class="box" id="team">
 
-<h2>👥 Team</h2>
+<h2>Team</h2>
 
 
 <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+
+
+
+<div>
+
+<img src="https://mc-heads.net/avatar/CC_Minecarft/100"
+style="border-radius:10px;">
+
+<p>
+Owner<br>
+CC_Minecarft
+</p>
+
+</div>
+
 
 
 <div>
@@ -347,7 +396,7 @@ Musik und Unterhaltung für die Community.
 style="border-radius:10px;">
 
 <p>
-🧱 Builder<br>
+Builder<br>
 Hobbit2304
 </p>
 
@@ -361,7 +410,7 @@ Hobbit2304
 style="border-radius:10px;">
 
 <p>
-🧱 Builder<br>
+Builder<br>
 King_Luma1
 </p>
 
@@ -375,7 +424,7 @@ King_Luma1
 style="border-radius:10px;">
 
 <p>
-🧱 Builder<br>
+Builder<br>
 Lennyy20
 </p>
 
@@ -389,7 +438,7 @@ Lennyy20
 style="border-radius:10px;">
 
 <p>
-⚙️ Admin<br>
+Admin<br>
 Thrumx
 </p>
 
@@ -403,7 +452,7 @@ Thrumx
 style="border-radius:10px;">
 
 <p>
-⭐ Premium<br>
+Premium<br>
 Takatonka
 </p>
 
@@ -417,7 +466,7 @@ Takatonka
 style="border-radius:10px;">
 
 <p>
-⭐ Premium<br>
+Premium<br>
 LemonadeFruit
 </p>
 
@@ -434,12 +483,12 @@ LemonadeFruit
 
 <div class="box" id="kontakt">
 
-<h2>📩 Kontakt</h2>
+<h2>Kontakt</h2>
 
 
 <p>
 
-Schreibe uns deine Frage oder Idee.
+Fragen, Ideen oder Probleme?
 
 </p>
 
@@ -456,7 +505,7 @@ style="width:80%;padding:10px;border-radius:10px;">
 
 <textarea id="message"
 
-placeholder="Deine Nachricht..."
+placeholder="Deine Nachricht"
 
 style="width:80%;height:100px;border-radius:10px;padding:10px;">
 
@@ -468,7 +517,7 @@ style="width:80%;height:100px;border-radius:10px;padding:10px;">
 
 <button onclick="sendDiscord()">
 
-💬 An Discord senden
+An Discord senden
 
 </button>
 
@@ -480,7 +529,7 @@ style="width:80%;height:100px;border-radius:10px;padding:10px;">
 
 <button>
 
-🟣 Discord öffnen
+Discord öffnen
 
 </button>
 
@@ -490,36 +539,22 @@ style="width:80%;height:100px;border-radius:10px;padding:10px;">
 </div>
 <div class="box">
 
-<h2>⛺ Survival Camp</h2>
+<h2>Survival Camp</h2>
 
 <p>
 
-Das Survival Camp kommt bald!
+Das Survival Camp kommt bald.
 
 <br><br>
 
-🌲 Base bauen<br>
-⛏️ Ressourcen sammeln<br>
-🌍 Welten erkunden<br>
-🏕️ Abenteuer erleben
+Base bauen<br>
+Ressourcen sammeln<br>
+Welten erkunden<br>
+Abenteuer erleben
 
 </p>
 
 </div>
-
-
-
-
-
-<footer>
-
-<p>
-
-© LMS SERVER | 🦆 CC_Minecarft
-
-</p>
-
-</footer>
 
 
 
@@ -558,7 +593,6 @@ creeper.style.display="none";
 
 },3000);
 
-
 }
 
 
@@ -567,7 +601,7 @@ creeper.style.display="none";
 
 function playRadio(){
 
-alert("📻 LMS Radio gestartet!");
+alert("Radio gestartet.");
 
 }
 
@@ -577,7 +611,7 @@ alert("📻 LMS Radio gestartet!");
 
 function stopRadio(){
 
-alert("📻 LMS Radio gestoppt!");
+alert("Radio gestoppt.");
 
 }
 
@@ -598,7 +632,7 @@ document.getElementById("message").value;
 
 if(name==""){
 
-alert("Bitte Minecraft Namen eintragen!");
+alert("Bitte Minecraft Name eintragen.");
 
 return;
 
@@ -608,7 +642,7 @@ return;
 
 if(message==""){
 
-alert("Bitte Nachricht schreiben!");
+alert("Bitte Nachricht schreiben.");
 
 return;
 
@@ -617,12 +651,11 @@ return;
 
 
 alert(
-"Nachricht vorbereitet für Discord:\n\nMinecraft Name: "
+"Nachricht vorbereitet:\n\nMinecraft Name: "
 +name+
 "\n\n"
 +message
 );
-
 
 }
 
