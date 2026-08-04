@@ -8,438 +8,118 @@
 
 <title>🦆 LMS SERVER</title>
 
-
 <style>
 
 body{
 
-margin:0;
-font-family:Arial,sans-serif;
-text-align:center;
-color:white;
+    margin:0;
+    font-family:Arial,sans-serif;
+    text-align:center;
+    color:white;
 
-background:#071a33;
+    background:#071a33;
 
-background-image:
-linear-gradient(#16365c 1px,transparent 1px),
-linear-gradient(90deg,#16365c 1px,transparent 1px);
+    background-image:
+    linear-gradient(#16365c 1px,transparent 1px),
+    linear-gradient(90deg,#16365c 1px,transparent 1px);
 
-background-size:35px 35px;
+    background-size:40px 40px;
 
 }
 
 
 header{
 
-padding:60px 20px;
+    padding:40px 20px;
 
-background:#ffd633;
+    background:
+    linear-gradient(135deg,#071a33,#123b70);
 
-color:#071a33;
-
-border-bottom:5px solid #c99d00;
+    border-bottom:3px solid #ffb000;
 
 }
-
 
 
 h1{
 
-font-size:55px;
-cursor:pointer;
+    font-size:50px;
+    margin:0;
+    color:#ffb000;
+
+}
+
+
+.logo{
+
+    font-size:80px;
+    cursor:pointer;
+
+    transition:0.3s;
+
+}
+
+
+.logo:hover{
+
+    transform:scale(1.2) rotate(10deg);
 
 }
 
 
 
-nav{
+.box{
 
-position:sticky;
-top:0;
+    background:rgba(0,0,0,0.35);
 
-background:#061329ee;
+    margin:30px auto;
 
-padding:18px;
+    padding:25px;
 
-z-index:20;
+    width:80%;
 
-}
+    max-width:900px;
 
+    border-radius:20px;
 
+    border:1px solid #315b8f;
 
-nav a{
-
-color:white;
-
-text-decoration:none;
-
-margin:12px;
-
-font-weight:bold;
+    box-shadow:0 0 20px #000;
 
 }
 
 
+h2{
 
-nav a:hover{
-
-color:#ffd633;
-
-}
-
-
-
-
-section{
-
-padding:40px 20px;
+    color:#ffb000;
 
 }
 
 
+button{
 
+    background:#ffb000;
 
-.card{
+    color:black;
 
-background:white;
+    border:none;
 
-color:#071a33;
+    padding:12px 25px;
 
-max-width:850px;
+    border-radius:10px;
 
-margin:25px auto;
+    font-size:18px;
 
-padding:35px;
-
-border-radius:25px;
-
-box-shadow:0 10px 25px #0008;
+    cursor:pointer;
 
 }
 
 
+button:hover{
 
-
-
-.button{
-
-background:#ffd633;
-
-color:#071a33;
-
-padding:15px 30px;
-
-border-radius:15px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-border:none;
-
-text-decoration:none;
-
-display:inline-block;
-
-margin:8px;
+    background:white;
 
 }
-
-
-
-
-
-/* RADIO */
-
-
-.radio-box{
-
-background:#eef5ff;
-
-border:3px solid #16365c;
-
-border-radius:20px;
-
-padding:25px;
-
-}
-
-
-
-.radio-title{
-
-font-size:30px;
-
-font-weight:bold;
-
-}
-
-
-
-
-
-/* COOKIE */
-
-
-.cookie-box{
-
-background:#eef5ff;
-
-padding:25px;
-
-border-radius:20px;
-
-border:3px solid #16365c;
-
-}
-
-
-
-.cookie{
-
-width:170px;
-
-height:170px;
-
-margin:25px auto;
-
-background:#c98232;
-
-border-radius:50%;
-
-cursor:pointer;
-
-position:relative;
-
-box-shadow:
-
-inset -15px -15px 20px #7d4218,
-0 10px 20px #0005;
-
-}
-
-
-
-.cookie:before{
-
-content:"";
-
-position:absolute;
-
-width:18px;
-
-height:18px;
-
-background:#3b2414;
-
-border-radius:50%;
-
-top:35px;
-
-left:45px;
-
-box-shadow:
-
-50px 10px #3b2414,
-90px 60px #3b2414,
-30px 90px #3b2414,
-100px 100px #3b2414;
-
-}
-
-
-
-.stats{
-
-font-size:22px;
-
-margin:10px;
-
-}
-
-
-
-.upgrade{
-
-background:#071a33;
-
-color:white;
-
-padding:15px;
-
-border-radius:12px;
-
-display:inline-block;
-
-cursor:pointer;
-
-}
-
-/* Team */
-
-.team-grid{
-
-display:flex;
-
-flex-wrap:wrap;
-
-justify-content:center;
-
-gap:15px;
-
-}
-
-
-
-.player{
-
-background:#edf4ff;
-
-color:#071a33;
-
-width:120px;
-
-padding:15px;
-
-border-radius:15px;
-
-border:2px solid #16365c;
-
-}
-
-
-
-.player img{
-
-width:60px;
-
-height:60px;
-
-border-radius:8px;
-
-}
-
-
-
-
-
-/* Creeper Ente */
-
-
-#creeperDuck{
-
-position:fixed;
-
-bottom:-300px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-transition:1.2s;
-
-z-index:100;
-
-}
-
-
-
-.creeper{
-
-width:130px;
-
-height:220px;
-
-background:#4caf50;
-
-border-radius:10px;
-
-position:relative;
-
-}
-
-
-
-.eye{
-
-position:absolute;
-
-top:45px;
-
-left:30px;
-
-width:25px;
-
-height:25px;
-
-background:black;
-
-}
-
-
-
-.eye2{
-
-position:absolute;
-
-top:45px;
-
-right:30px;
-
-width:25px;
-
-height:25px;
-
-background:black;
-
-}
-
-
-
-.mouth{
-
-position:absolute;
-
-bottom:40px;
-
-left:35px;
-
-width:60px;
-
-height:35px;
-
-background:black;
-
-}
-
-
-
-.duck{
-
-position:absolute;
-
-top:-70px;
-
-left:30px;
-
-font-size:70px;
-
-}
-
-
-
-footer{
-
-padding:25px;
-
-background:#061329;
-
-}
-
-
-
 </style>
-
 
 </head>
 
@@ -447,52 +127,15 @@ background:#061329;
 <body>
 
 
+<header>
 
-<div id="creeperDuck">
+<div class="logo" onclick="duckClick()">🦆</div>
 
+<h1>🦆 LMS SERVER</h1>
 
-<div class="duck">
+<p>Dein Minecraft Minigames & Abenteuer Server</p>
 
-🦆
-
-</div>
-
-
-<div class="creeper">
-
-
-<div class="eye"></div>
-
-<div class="eye2"></div>
-
-<div class="mouth"></div>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<header id="start">
-
-
-<h1 onclick="creeperDuck()">
-
-🦆 LMS SERVER
-
-</h1>
-
-
-<p>
-
-Die offizielle Website des Minecraft Servers
-
-</p>
-
+<p>Owner: CC_Minecarft</p>
 
 </header>
 
@@ -500,496 +143,193 @@ Die offizielle Website des Minecraft Servers
 
 
 
+<div class="box">
 
-<nav>
-
-
-<a href="#live">📺 LMS LIVE</a>
-
-<a href="#radio">📻 Radio</a>
-
-<a href="#start">Start</a>
-
-<a href="#minigames">Cookie Game</a>
-
-<a href="#shop">Shop</a>
-
-<a href="#team">Team</a>
-
-<a href="#kontakt">Kontakt</a>
-
-
-</nav>
-
-
-
-
-
-
-<section>
-
-
-<div class="card">
-
-
-<h2>
-
-Willkommen beim LMS SERVER
-
-</h2>
-
+<h2>🌐 Über den Server</h2>
 
 <p>
 
-Minecraft, Events und Community.
-
-</p>
-
-
-<a class="button" href="https://discord.gg/SKVYAWGbXD">
-
-Discord
-
-</a>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-<section id="live">
-
-
-<div class="card">
-
-
-<h2>
-
-📺 LMS LIVE
-
-</h2>
-
-
-<h3>
-
-Die interaktive Live Show kommt bald!
-
-</h3>
-
-
-<p>
-
-Der offizielle Stream wird später hier verfügbar sein.
-
-</p>
-
-
-<button class="button" onclick="liveMessage()">
-
-▶ Live anschauen
-
-</button>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<section id="radio">
-
-
-<div class="card">
-
-
-<div class="radio-box">
-
-
-<div class="radio-title">
-
-📻 LMS RADIO
-
-</div>
-
-
-
-<p>
-
-Wähle deinen Radiosender:
-
-</p>
-
-
-
-<h3>
-
-📻 FFH
-
-</h3>
-
-
-
-<a class="button" target="_blank" href="https://www.ffh.de/on-air/webradio.html">
-
-▶ FFH Player
-
-</a>
-
-
+Willkommen auf dem LMS SERVER!
 
 <br><br>
 
-
-
-<h3>
-
-🎵 DASDING
-
-</h3>
-
-
-
-<a class="button" target="_blank" href="https://www.dasding.de">
-
-▶ DASDING Player
-
-</a>
-
-
-
-</div>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-<section id="minigames">
-
-
-<div class="card">
-
-
-<h2>
-
-🍪 Cookie Challenge
-
-</h2>
-
-
-<div class="cookie-box">
-
-
-<div class="stats" id="cookies">
-
-Kekse: 0
-
-</div>
-
-
-
-<div class="stats" id="level">
-
-Level: 1
-
-</div>
-
-
-
-<div class="stats" id="power">
-
-Stärke: 1
-
-</div>
-
-
-
-
-<div class="cookie" onclick="clickCookie()">
-
-</div>
-
-
-
-<div class="upgrade" onclick="upgradeCookie()">
-
-Upgrade
+Hier erwarten dich eigene Minigames,
+Abenteuerwelten und besondere Server-Erlebnisse.
 
 <br>
 
-<span id="upgradeCost">
+Spiele mit Freunden und entdecke unsere Welten!
 
-50 Kekse
-
-</span>
-
+</p>
 
 </div>
 
 
 
-</div>
 
 
-</div>
+<div class="box">
 
-
-</section>
-
-
-
-
-
-
-
-<section id="shop">
-
-
-<div class="card">
-
-
-<h2>
-
-🛒 Shop
-
-</h2>
-
-
-<h3>
-
-🚧 Coming Soon
-
-</h3>
-
+<h2>🛒 Shop</h2>
 
 <p>
 
-Rubine, Mysteryboxen und LMS Items.
+Der Shop kommt bald!
+
+<br><br>
+
+Später kannst du hier besondere Inhalte
+für den LMS SERVER erhalten.
+
+</p>
+
+</div>
+
+
+
+
+
+<div class="box">
+
+<h2>🎮 Minigames</h2>
+
+<p>
+
+🦆 Happy Ghast Flug<br>
+🌍 Bugworld<br>
+⚔️ Trainingsplatz<br>
+💧 Waterhopper<br>
+🪽 Elytraparcour<br>
+🧭 Explorer Trip<br>
+🏆 Viele weitere Spiele
+
+</p>
+
+</div>
+
+
+
+
+
+<div class="box">
+
+<h2>⛺ Survival Camp</h2>
+
+<p>
+
+Erlebe dein eigenes Survival-Abenteuer!
+
+<br><br>
+
+🌲 Baue deine Base<br>
+⛏️ Sammle Ressourcen<br>
+🏕️ Erkunde die Welt<br>
+⚔️ Überlebe Herausforderungen<br>
+🏆 Werde der beste Survivor
+
+<br><br>
+
+Das Survival Camp wartet auf dich!
+
+</p>
+
+</div>
+<div class="box">
+
+<h2>💬 Discord</h2>
+
+<p>
+
+Trete unserer Community bei!
+
+<br><br>
+
+Bespreche Updates, Events und neue Ideen
+mit anderen Spielern.
 
 </p>
 
 
-</div>
+<a href="https://discord.gg/N5ZYVRpMMU" target="_blank">
 
-
-</section>
-
-<section id="team">
-
-
-<div class="card">
-
-
-<h2>
-
-👑 LMS SERVER Team
-
-</h2>
-
-
-
-<div class="team-grid">
-
-
-
-<div class="player">
-
-<img src="https://mc-heads.net/avatar/CC_Minecarft/70">
-
-<h3>CC_Minecarft</h3>
-
-<p>Owner</p>
-
-</div>
-
-
-
-<div class="player">
-
-<img src="https://mc-heads.net/avatar/Hobbit2304/70">
-
-<h3>Hobbit2304</h3>
-
-<p>Builder</p>
-
-</div>
-
-
-
-<div class="player">
-
-<img src="https://mc-heads.net/avatar/King_Luma1/70">
-
-<h3>King_Luma1</h3>
-
-<p>Builder</p>
-
-</div>
-
-
-
-<div class="player">
-
-<img src="https://mc-heads.net/avatar/Lennyy20/70">
-
-<h3>Lennyy20</h3>
-
-<p>Builder</p>
-
-</div>
-
-
-
-<div class="player">
-
-<img src="https://mc-heads.net/avatar/Thrumx/70">
-
-<h3>Thrumx</h3>
-
-<p>Admin</p>
-
-</div>
-
-
-
-<div class="player">
-
-<img src="https://mc-heads.net/avatar/Takatonka/70">
-
-<h3>Takatonka</h3>
-
-<p>Premium</p>
-
-</div>
-
-
-
-<div class="player">
-
-<img src="https://mc-heads.net/avatar/LemonadeFruit/70">
-
-<h3>LemonadeFruit</h3>
-
-<p>Premium</p>
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-<section id="kontakt">
-
-
-<div class="card">
-
-
-<h2>
-
-📩 Kontakt & Support
-
-</h2>
-
-
-
-<p>
-
-Fragen oder Vorschläge?
-
-</p>
-
-
-
-<input id="name" placeholder="Minecraft Name">
-
-
-<br>
-
-
-<textarea id="nachricht" placeholder="Deine Nachricht"></textarea>
-
-
-<br>
-
-
-
-<button class="button" onclick="sendMessage()">
-
-Nachricht senden
-
+<button>
+Discord öffnen
 </button>
 
-
-
-<p id="status"></p>
-
-
-
-<br>
-
-
-<a class="button" href="https://discord.gg/SKVYAWGbXD">
-
-Discord
-
 </a>
-
 
 
 </div>
 
 
-</section>
 
 
 
+<div class="box">
+
+<h2>👥 Team</h2>
+
+<p>
+
+🧱 Builder Hobbit2304<br>
+🧱 Builder King_Luma1<br>
+🧱 Builder Lennyy20<br>
+⚙️ Admin Thrumx<br>
+⭐ Premium Takatonka<br>
+⭐ Premium LemonadeFruit
+
+</p>
+
+</div>
+
+
+
+
+
+<div class="box">
+
+<h2>📩 Kontakt</h2>
+
+<p>
+
+Du hast Fragen, Ideen oder möchtest helfen?
+
+<br><br>
+
+Schreib uns auf Discord!
+
+</p>
+
+</div>
+<div class="box">
+
+<h2>🦆 LMS SERVER</h2>
+
+<p>
+
+Danke, dass du unsere Website besuchst!
+
+<br><br>
+
+Viel Spaß auf dem LMS SERVER
+und bis bald im Spiel!
+
+</p>
+
+</div>
 
 
 
 
 <footer>
 
-© 2026 🦆 LMS SERVER
+<p>
+
+© LMS SERVER | 🦆 CC_Minecarft
+
+</p>
 
 </footer>
-
-
-
 
 
 
@@ -998,215 +338,14 @@ Discord
 <script>
 
 
-// Cookie System
+function duckClick(){
 
-
-let cookies = Number(localStorage.getItem("cookies")) || 0;
-
-let level = Number(localStorage.getItem("level")) || 1;
-
-let power = Number(localStorage.getItem("power")) || 1;
-
-let upgradeCost = Number(localStorage.getItem("upgradeCost")) || 50;
-
-
-
-
-
-function updateCookie(){
-
-
-document.getElementById("cookies").innerHTML =
-"Kekse: " + cookies;
-
-
-document.getElementById("level").innerHTML =
-"Level: " + level;
-
-
-document.getElementById("power").innerHTML =
-"Stärke: " + power;
-
-
-document.getElementById("upgradeCost").innerHTML =
-upgradeCost + " Kekse";
-
-
-
-localStorage.setItem("cookies",cookies);
-
-localStorage.setItem("level",level);
-
-localStorage.setItem("power",power);
-
-localStorage.setItem("upgradeCost",upgradeCost);
-
+    alert("🦆 Der Duck-Creeper wurde aktiviert! 💥");
 
 }
-
-
-
-
-
-function clickCookie(){
-
-
-cookies += power;
-
-
-
-if(cookies >= level * 100){
-
-level++;
-
-}
-
-
-
-updateCookie();
-
-
-}
-
-
-
-
-
-function upgradeCookie(){
-
-
-if(cookies >= upgradeCost){
-
-
-cookies -= upgradeCost;
-
-power++;
-
-upgradeCost = upgradeCost * 2;
-
-
-updateCookie();
-
-
-}
-
-else{
-
-
-alert("Nicht genug Kekse!");
-
-}
-
-
-}
-
-
-
-
-
-
-// LMS LIVE
-
-
-function liveMessage(){
-
-
-alert(
-
-"📺 Tut uns leid!\n\nLMS LIVE ist noch nicht zum Anschauen verfügbar."
-
-);
-
-
-}
-
-
-
-
-
-
-// Creeper mit Ente
-
-
-function creeperDuck(){
-
-
-let c = document.getElementById("creeperDuck");
-
-
-c.style.bottom="30px";
-
-
-
-setTimeout(function(){
-
-
-c.style.bottom="-300px";
-
-
-},2500);
-
-
-}
-
-
-
-
-
-
-// Kontakt
-
-
-function sendMessage(){
-
-
-let name=document.getElementById("name").value;
-
-let nachricht=document.getElementById("nachricht").value;
-
-
-
-if(name==="" || nachricht===""){
-
-
-document.getElementById("status").innerHTML=
-
-"Bitte fülle alle Felder aus.";
-
-
-return;
-
-
-}
-
-
-
-window.open(
-
-"https://discord.gg/SKVYAWGbXD",
-
-"_blank"
-
-);
-
-
-
-document.getElementById("status").innerHTML=
-
-"Discord geöffnet!";
-
-
-}
-
-
-
-
-updateCookie();
-
 
 
 </script>
-
 
 
 </body>
