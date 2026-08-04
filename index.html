@@ -50,6 +50,42 @@ margin:10px;
 }
 
 
+.box{
+
+background:rgba(0,0,0,0.35);
+
+margin:30px auto;
+
+padding:25px;
+
+width:80%;
+
+max-width:900px;
+
+border-radius:20px;
+
+border:1px solid #315b8f;
+
+box-shadow:0 0 20px #000;
+
+}
+
+
+.status{
+
+background:rgba(30,90,160,0.45);
+
+border:2px solid #4b9cff;
+
+}
+
+
+h2{
+
+color:#ffb000;
+
+}
+
 
 .nav{
 
@@ -88,13 +124,9 @@ padding:12px 25px;
 
 border-radius:12px;
 
-font-size:17px;
-
 cursor:pointer;
 
 font-weight:bold;
-
-transition:0.3s;
 
 }
 
@@ -104,97 +136,6 @@ transition:0.3s;
 background:white;
 
 color:#071a33;
-
-transform:translateY(-3px);
-
-}
-
-
-
-.box{
-
-background:rgba(0,0,0,0.35);
-
-margin:30px auto;
-
-padding:25px;
-
-width:80%;
-
-max-width:900px;
-
-border-radius:20px;
-
-border:1px solid #315b8f;
-
-box-shadow:0 0 20px #000;
-
-}
-
-
-
-.status{
-
-background:rgba(30,90,160,0.45);
-
-border:2px solid #4b9cff;
-
-}
-
-
-
-h2{
-
-color:#ffb000;
-
-}
-
-
-
-.cookie{
-
-font-size:80px;
-
-cursor:pointer;
-
-}
-
-
-.survival-img{
-
-width:100%;
-
-max-width:800px;
-
-height:300px;
-
-object-fit:cover;
-
-border-radius:20px;
-
-}
-
-
-.live{
-
-border:2px solid #ffb000;
-
-}
-
-
-.camp-code{
-
-margin-top:20px;
-
-padding:20px;
-
-background:rgba(30,90,160,0.5);
-
-border-radius:15px;
-
-font-size:22px;
-
-color:#ffb000;
 
 }
 
@@ -220,17 +161,26 @@ color:#ffb000;
 
 <h2>LMS SERVER STATUS</h2>
 
+
+<p id="serverStatus">
+
+🔄 Prüfe Server...
+
+</p>
+
+
 <p>
 
-🟢 Online
+Spieler:
+
+<span id="players">
+
+0/40
+
+</span>
 
 </p>
 
-<p>
-
-Spieler: 0/40
-
-</p>
 
 <p>
 
@@ -242,15 +192,21 @@ LMS_server.aternos.me
 
 </p>
 
+
 <p>
 
 Version:
 
 <br>
 
-Minecraft Java
+<span id="version">
+
+Wird geladen...
+
+</span>
 
 </p>
+
 
 </div>
 <div class="nav">
@@ -319,6 +275,7 @@ und Extras für den Server.
 
 </p>
 
+
 </div>
 
 
@@ -342,6 +299,7 @@ Viele weitere Spiele
 
 </p>
 
+
 </div>
 
 
@@ -359,8 +317,7 @@ Die interaktive Show vom LMS SERVER.
 
 <br><br>
 
-Hier erwarten dich Events,
-Community-Aktionen und besondere Shows.
+Events, Community-Aktionen und besondere Shows.
 
 <br><br>
 
@@ -370,8 +327,7 @@ Bald verfügbar:
 
 Live-Events<br>
 Abstimmungen<br>
-Challenges<br>
-Spezielle Aktionen
+Challenges
 
 </p>
 
@@ -406,7 +362,7 @@ Klicke den Cookie!
 </p>
 
 
-<div class="cookie" onclick="clickCookie()">
+<div style="font-size:80px;cursor:pointer" onclick="clickCookie()">
 
 🍪
 
@@ -415,7 +371,13 @@ Klicke den Cookie!
 
 <p>
 
-Cookies: <span id="cookies">0</span>
+Cookies:
+
+<span id="cookies">
+
+0
+
+</span>
 
 </p>
 
@@ -426,7 +388,7 @@ Cookies: <span id="cookies">0</span>
 <h2>Team</h2>
 
 
-<div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+<div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
 
 
 <div>
@@ -602,7 +564,7 @@ Discord öffnen
 
 src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23"
 
-alt="Survival Camp">
+alt="Minecraft Survival Camp">
 
 
 <h2>Survival Camp</h2>
@@ -804,6 +766,83 @@ alert(
 
 
 }
+
+
+
+
+
+// LMS SERVER LIVE STATUS
+
+function updateServerStatus(){
+
+
+fetch("https://api.mcstatus.io/v2/status/java/LMS_server.aternos.me")
+
+
+.then(response => response.json())
+
+
+.then(data => {
+
+
+
+if(data.online){
+
+
+document.getElementById("serverStatus").innerHTML =
+"🟢 Online";
+
+
+document.getElementById("players").innerHTML =
+data.players.online + "/" + data.players.max;
+
+
+document.getElementById("version").innerHTML =
+data.version.name;
+
+
+}
+
+
+else{
+
+
+document.getElementById("serverStatus").innerHTML =
+"🔴 Offline";
+
+
+document.getElementById("players").innerHTML =
+"0/40";
+
+
+document.getElementById("version").innerHTML =
+"Nicht erreichbar";
+
+
+}
+
+
+
+})
+
+
+.catch(error => {
+
+
+document.getElementById("serverStatus").innerHTML =
+"⚠️ Status nicht verfügbar";
+
+
+});
+
+}
+
+
+
+updateServerStatus();
+
+
+setInterval(updateServerStatus,60000);
 
 
 </script>
