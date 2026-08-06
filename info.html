@@ -24,9 +24,7 @@ color:white;
 background:#071a33;
 
 background-image:
-
 linear-gradient(#16365c 1px,transparent 1px),
-
 linear-gradient(90deg,#16365c 1px,transparent 1px);
 
 background-size:40px 40px;
@@ -157,35 +155,67 @@ color:#ffb000;
 
 
 
-.info-button{
+.info-card{
 
-background:rgba(40,120,210,0.65);
+width:220px;
 
-color:white;
+padding:25px;
+
+background:rgba(40,120,210,0.35);
 
 border:1px solid #4da3ff;
 
-padding:15px 30px;
-
-border-radius:15px;
-
-font-size:18px;
-
-font-weight:bold;
-
-margin:10px;
+border-radius:20px;
 
 cursor:pointer;
+
+transition:.3s;
 
 }
 
 
 
-.info-button:hover{
+.info-card:hover{
 
 background:white;
 
 color:#071a33;
+
+transform:translateY(-8px);
+
+box-shadow:0 0 25px #4da3ff;
+
+}
+
+
+
+.info-card h3{
+
+color:#ffb000;
+
+font-size:24px;
+
+}
+
+
+
+.info-card:hover h3{
+
+color:#071a33;
+
+}
+
+
+
+.info-grid{
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+flex-wrap:wrap;
 
 }
 
@@ -198,8 +228,21 @@ display:none;
 }
 
 
-</style>
 
+.update{
+
+background:rgba(255,255,255,0.08);
+
+padding:20px;
+
+margin:20px;
+
+border-radius:15px;
+
+}
+
+
+</style>
 
 </head>
 
@@ -223,9 +266,7 @@ Informationen zum LMS SERVER
 
 </p>
 
-
 </header>
-
 
 
 
@@ -268,601 +309,8 @@ Kontakt
 
 
 </div>
-
-
-
-
-
-<div class="box">
-
-
-<h2>Info Übersicht</h2>
-
-
-<p>
-
-Wähle ein Thema aus:
-
-</p>
-
-
-<button class="info-button" onclick="showInfo('minecraft')">
-
-Minecraft
-
-</button>
-
-
-<button class="info-button" onclick="showInfo('mods')">
-
-Mods
-
-</button>
-
-
-<button class="info-button" onclick="showInfo('optifine')">
-
-Optifine
-
-</button>
-
-
-<button class="info-button" onclick="showInfo('blog')">
-
-Blog
-
-</button>
-
-
-</div>
-
-
-
-
-
-<div class="box info-page" id="minecraft">
-
-
-<h2>Minecraft Versionen</h2>
-
-
-<p>
-
-LMS SERVER unterstützt Minecraft Java Edition.
-
-<br><br>
-
-Wir unterstützen aktuelle Minecraft Versionen.
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="box info-page" id="mods">
-
-
-<h2>Mods</h2>
-
-
-<p>
-
-Hier kommen später alle Informationen zu:
-
-<br><br>
-
-Forge<br>
-
-NeoForge<br>
-
-Fabric<br>
-
-Erlaubte Mods
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="box info-page" id="optifine">
-
-
-<h2>Optifine</h2>
-
-
-<p>
-
-Informationen zu Grafikverbesserungen
-und Performance.
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="box info-page" id="blog">
-
-
-<h2>LMS SERVER Blog</h2>
-
-
-<p>
-
-Hier erscheinen später:
-
-<br><br>
-
-Updates<br>
-
-Neue Minigames<br>
-
-Events<br>
-
-Neuigkeiten
-
-</p>
-
-
-</div>
-
-
-
-
-
-<footer>
-
-<p>
-
-© LMS SERVER 
-
-</p>
-
-</footer>
-
-
-
-
-
-<script>
-
-
-function showInfo(id){
-
-
-document.querySelectorAll(".info-page").forEach(function(page){
-
-page.style.display="none";
-
-});
-
-
-document.getElementById(id).style.display="block";
-
-
-}
-
-
-</script>
-
-
-
-</body>
-
-</html>
-<!-- MINECRAFT BEREICH -->
-
-<div class="box info-page" id="minecraft">
-
-
-<h2>Minecraft Versionen</h2>
-
-
-<p>
-
-Der LMS SERVER läuft auf der Minecraft Java Edition.
-
-<br><br>
-
-Unterstützte Versionen:
-
-<br><br>
-
-Minecraft 1.21.x
-
-<br><br>
-
-Wir empfehlen immer die aktuellste Version zu verwenden,
-damit du alle Funktionen nutzen kannst.
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-<!-- MODS BEREICH -->
-
-<div class="box info-page" id="mods">
-
-
-<h2>Mods</h2>
-
-
-<p>
-
-Auf dem LMS SERVER sind bestimmte Client-Mods erlaubt.
-
-</p>
-
-
-<h3>Erlaubt:</h3>
-
-
-<p>
-
-✔ Performance-Mods
-
-<br>
-
-✔ Grafik-Mods
-
-<br>
-
-✔ Optimierungs-Mods
-
-<br>
-
-✔ Client-Erweiterungen
-
-</p>
-
-
-
-<h3>Nicht erlaubt:</h3>
-
-
-<p>
-
-✘ Mods, die neue Server-Funktionen hinzufügen
-
-<br>
-
-✘ Cheats oder Vorteile gegenüber anderen Spielern
-
-<br>
-
-✘ Programme, die den Spielablauf verändern
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-<!-- OPTIFINE BEREICH -->
-
-<div class="box info-page" id="optifine">
-
-
-<h2>Optifine</h2>
-
-
-<p>
-
-Optifine kann auf dem LMS SERVER verwendet werden.
-
-<br><br>
-
-Mit Optifine kannst du:
-
-<br><br>
-
-• Grafik verbessern
-
-<br>
-
-• FPS erhöhen
-
-<br>
-
-• Shader nutzen
-
-<br>
-
-• Einstellungen optimieren
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-<!-- BLOG BEREICH -->
-
-<div class="box info-page" id="blog">
-
-
-<h2>LMS SERVER Blog</h2>
-
-
-<p>
-
-Willkommen im LMS SERVER Blog.
-
-<br><br>
-
-Hier erscheinen Neuigkeiten über:
-
-</p>
-
-
-
-<h3>Server Updates</h3>
-
-
-<p>
-
-Neue Funktionen, Verbesserungen und Änderungen.
-
-</p>
-
-
-
-<h3>Neue Minigames</h3>
-
-
-<p>
-
-Informationen zu neuen Spielen und Events.
-
-</p>
-
-
-
-<h3>Community</h3>
-
-
-<p>
-
-Wichtige Nachrichten für Spieler.
-
-</p>
-
-
-</div>
-<!-- ZUSATZ MENÜ -->
-
-
-<div class="box info-page" id="forge">
-
-
-<h2>Forge</h2>
-
-
-<p>
-
-Forge ist einer der bekanntesten Mod-Loader für Minecraft.
-
-<br><br>
-
-Auf dem LMS SERVER können Client-Mods genutzt werden,
-die keine Serverinstallation benötigen.
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="box info-page" id="fabric">
-
-
-<h2>Fabric</h2>
-
-
-<p>
-
-Fabric ist ein leichter und schneller Mod-Loader.
-
-<br><br>
-
-Viele Performance-Mods verwenden Fabric.
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="box info-page" id="neoforge">
-
-
-<h2>NeoForge</h2>
-
-
-<p>
-
-NeoForge ist eine Weiterentwicklung von Forge.
-
-<br><br>
-
-Auch hier gelten die normalen LMS SERVER Regeln
-für Mods.
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- BLOG EINTRÄGE -->
-
-
-<div class="box info-page" id="updates">
-
-
-<h2>LMS SERVER Updates</h2>
-
-
-
-<div class="update">
-
-
-<h3>Update 1.0</h3>
-
-
-<p>
-
-Die LMS SERVER Website wurde gestartet.
-
-<br>
-
-Neue Bereiche und Funktionen werden hinzugefügt.
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="update">
-
-
-<h3>Update 1.1</h3>
-
-
-<p>
-
-Neue Minigames, Verbesserungen und Events
-werden vorbereitet.
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- ZURÜCK BUTTON -->
-
-
-<button class="info-button" onclick="backInfo()">
-
-Zurück zur Übersicht
-
-</button>
-
-
-
-
-
-
-
-
-<style>
-
-
-.update{
-
-
-background:rgba(255,255,255,0.08);
-
-padding:20px;
-
-margin:20px;
-
-border-radius:15px;
-
-
-}
-
-
-
-
-</style>
-
-
-
-
-
-
-
-<script>
-
-
-function backInfo(){
-
-
-document.querySelectorAll(".info-page").forEach(function(page){
-
-
-page.style.display="none";
-
-
-});
-
-
-}
-
-
-
-</script>
 <!-- INFO WIKI ÜBERSICHT -->
+
 
 <div class="box">
 
@@ -986,19 +434,454 @@ Neuigkeiten und Updates
 
 
 
-<style>
 
 
-.info-grid{
+
+<!-- MINECRAFT -->
 
 
-display:flex;
+<div class="box info-page" id="minecraft">
 
-justify-content:center;
 
-gap:20px;
+<h2>Minecraft Versionen</h2>
 
-flex-wrap:wrap;
+
+<p>
+
+Der LMS SERVER läuft auf der Minecraft Java Edition.
+
+<br><br>
+
+Unterstützte Version:
+
+<br><br>
+
+Minecraft 1.21.x
+
+<br><br>
+
+Wir empfehlen immer die aktuellste Version,
+damit du alle Funktionen nutzen kannst.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- MODS -->
+
+
+<div class="box info-page" id="mods">
+
+
+<h2>Mods</h2>
+
+
+<p>
+
+Auf dem LMS SERVER sind bestimmte Client-Mods erlaubt.
+
+</p>
+
+
+
+<h3>Erlaubt:</h3>
+
+
+<p>
+
+✔ Performance-Mods
+
+<br>
+
+✔ Grafik-Mods
+
+<br>
+
+✔ Optimierungs-Mods
+
+<br>
+
+✔ Client-Erweiterungen
+
+</p>
+
+
+
+<h3>Nicht erlaubt:</h3>
+
+
+<p>
+
+✘ Cheats
+
+<br>
+
+✘ Vorteile gegenüber anderen Spielern
+
+<br>
+
+✘ Mods, die Serverfunktionen benötigen
+
+</p>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- MOD LOADER -->
+
+
+<div class="box info-page" id="forge">
+
+
+<h2>Forge</h2>
+
+
+<p>
+
+Forge ist ein bekannter Minecraft Mod-Loader.
+
+<br><br>
+
+Client-Mods ohne Serverinstallation können genutzt werden.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="box info-page" id="fabric">
+
+
+<h2>Fabric</h2>
+
+
+<p>
+
+Fabric ist ein leichter Mod-Loader.
+
+<br><br>
+
+Viele Performance-Mods nutzen Fabric.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="box info-page" id="neoforge">
+
+
+<h2>NeoForge</h2>
+
+
+<p>
+
+NeoForge ist eine Weiterentwicklung von Forge.
+
+<br><br>
+
+Es gelten die normalen LMS SERVER Regeln.
+
+</p>
+
+
+</div>
+<!-- OPTIFINE -->
+
+
+<div class="box info-page" id="optifine">
+
+
+<h2>Optifine</h2>
+
+
+<p>
+
+Optifine kann auf dem LMS SERVER verwendet werden.
+
+<br><br>
+
+Mit Optifine kannst du:
+
+<br><br>
+
+• Grafik verbessern
+
+<br>
+
+• FPS erhöhen
+
+<br>
+
+• Shader nutzen
+
+<br>
+
+• Einstellungen optimieren
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- BLOG -->
+
+
+<div class="box info-page" id="blog">
+
+
+<h2>LMS SERVER Blog</h2>
+
+
+<p>
+
+Willkommen im LMS SERVER Blog.
+
+<br><br>
+
+Hier erscheinen Neuigkeiten über den Server.
+
+</p>
+
+
+
+<h3>Server Updates</h3>
+
+
+<p>
+
+Neue Funktionen, Verbesserungen und Änderungen.
+
+</p>
+
+
+
+
+
+<h3>Neue Minigames</h3>
+
+
+<p>
+
+Informationen zu neuen Spielen und Events.
+
+</p>
+
+
+
+
+
+<h3>Community</h3>
+
+
+<p>
+
+Wichtige Nachrichten für Spieler.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- UPDATES -->
+
+
+<div class="box info-page" id="updates">
+
+
+<h2>LMS SERVER Updates</h2>
+
+
+
+
+<div class="update">
+
+
+<h3>Update 1.0</h3>
+
+
+<p>
+
+Die LMS SERVER Website wurde gestartet.
+
+<br><br>
+
+Neue Bereiche und Funktionen werden hinzugefügt.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="update">
+
+
+<h3>Update 1.1</h3>
+
+
+<p>
+
+Neue Minigames, Verbesserungen und Events
+werden vorbereitet.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="update">
+
+
+<h3>Update 1.2</h3>
+
+
+<p>
+
+Geplante Erweiterungen:
+
+<br><br>
+
+• Neue Minigames
+
+<br>
+
+• Shop-System
+
+<br>
+
+• Weitere Community-Funktionen
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ZURÜCK BUTTON -->
+
+
+<div class="box">
+
+
+<button class="info-card" onclick="backInfo()">
+
+Zurück zur Übersicht
+
+</button>
+
+
+</div>
+<footer>
+
+<p>
+
+© LMS SERVER | CC_Minecarft
+
+</p>
+
+
+</footer>
+
+
+
+
+
+
+
+
+<script>
+
+
+function showInfo(id){
+
+
+document.querySelectorAll(".info-page").forEach(function(page){
+
+
+page.style.display="none";
+
+
+});
+
+
+
+document.getElementById(id).style.display="block";
+
+
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
 
 
 }
@@ -1006,79 +889,40 @@ flex-wrap:wrap;
 
 
 
-.info-card{
 
 
-width:220px;
+function backInfo(){
 
 
-padding:25px;
+document.querySelectorAll(".info-page").forEach(function(page){
 
 
-background:rgba(40,120,210,0.35);
+page.style.display="none";
 
 
-border:1px solid #4da3ff;
-
-
-border-radius:20px;
-
-
-cursor:pointer;
-
-
-transition:.3s;
-
-
-}
+});
 
 
 
+window.scrollTo({
 
-.info-card:hover{
+top:0,
 
+behavior:"smooth"
 
-background:white;
-
-
-color:#071a33;
-
-
-transform:translateY(-8px);
-
-
-box-shadow:0 0 25px #4da3ff;
+});
 
 
 }
 
 
 
-
-
-.info-card h3{
-
-
-color:#ffb000;
-
-
-font-size:24px;
-
-
-}
+</script>
 
 
 
 
-.info-card:hover h3{
 
+</body>
 
-color:#071a33;
-
-
-}
-
-
-
-
-</style>
+</html>
