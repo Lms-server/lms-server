@@ -6,10 +6,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>🦆 LMS SERVER Info</title>
+<title>🦆 LMS SERVER Wiki</title>
 
 
 <style>
+
+
+*{
+box-sizing:border-box;
+}
+
 
 body{
 
@@ -17,31 +23,46 @@ margin:0;
 
 font-family:Arial,sans-serif;
 
-text-align:center;
-
 color:white;
 
-background:#071a33;
+text-align:center;
+
+
+background:#061426;
+
 
 background-image:
-linear-gradient(#16365c 1px,transparent 1px),
-linear-gradient(90deg,#16365c 1px,transparent 1px);
 
-background-size:40px 40px;
+linear-gradient(#153252 1px,transparent 1px),
+
+linear-gradient(90deg,#153252 1px,transparent 1px);
+
+
+background-size:45px 45px;
 
 }
 
 
 
+/* HEADER */
+
+
 header{
 
-padding:35px 20px;
 
-background:linear-gradient(135deg,#ffb000,#ffd75e);
+padding:60px 20px;
+
+
+background:
+
+linear-gradient(135deg,#ffb000,#ffe27a);
+
 
 color:#071a33;
 
+
 border-bottom:5px solid #ffb000;
+
 
 }
 
@@ -49,9 +70,11 @@ border-bottom:5px solid #ffb000;
 
 header a{
 
+
 text-decoration:none;
 
 color:#071a33;
+
 
 }
 
@@ -59,21 +82,31 @@ color:#071a33;
 
 h1{
 
-font-size:50px;
+
+font-size:60px;
+
 
 margin:10px;
+
 
 }
 
 
 
+
+
+/* NAV */
+
+
 .nav{
+
 
 position:sticky;
 
 top:0;
 
-z-index:1000;
+z-index:100;
+
 
 display:flex;
 
@@ -83,11 +116,15 @@ gap:15px;
 
 flex-wrap:wrap;
 
+
 padding:15px;
 
-background:rgba(7,26,51,0.85);
 
-backdrop-filter:blur(8px);
+background:rgba(6,20,38,.9);
+
+
+backdrop-filter:blur(10px);
+
 
 }
 
@@ -95,21 +132,30 @@ backdrop-filter:blur(8px);
 
 .nav button{
 
-background:rgba(30,90,160,0.65);
+
+background:rgba(40,120,210,.6);
+
+
+border:1px solid #4da3ff;
+
 
 color:white;
 
-border:1px solid #4b9cff;
 
-padding:12px 25px;
+padding:13px 25px;
 
-border-radius:12px;
 
-font-size:17px;
+border-radius:15px;
+
+
+font-weight:bold;
+
 
 cursor:pointer;
 
-font-weight:bold;
+
+transition:.3s;
+
 
 }
 
@@ -117,132 +163,212 @@ font-weight:bold;
 
 .nav button:hover{
 
-background:white;
-
-color:#071a33;
-
-}
-
-
-
-.box{
-
-background:rgba(0,0,0,0.35);
-
-margin:30px auto;
-
-padding:25px;
-
-width:80%;
-
-max-width:900px;
-
-border-radius:20px;
-
-border:1px solid #315b8f;
-
-box-shadow:0 0 20px #000;
-
-}
-
-
-
-h2{
-
-color:#ffb000;
-
-}
-
-
-
-.info-card{
-
-width:220px;
-
-padding:25px;
-
-background:rgba(40,120,210,0.35);
-
-border:1px solid #4da3ff;
-
-border-radius:20px;
-
-cursor:pointer;
-
-transition:.3s;
-
-}
-
-
-
-.info-card:hover{
 
 background:white;
 
+
 color:#071a33;
 
-transform:translateY(-8px);
 
-box-shadow:0 0 25px #4da3ff;
+transform:translateY(-5px);
+
 
 }
 
 
 
-.info-card h3{
+
+
+/* INTRO */
+
+
+.hero{
+
+
+width:85%;
+
+max-width:1100px;
+
+margin:40px auto;
+
+
+padding:40px;
+
+
+background:rgba(255,255,255,.08);
+
+
+border-radius:30px;
+
+
+border:1px solid rgba(255,255,255,.2);
+
+
+}
+
+
+
+.hero h2{
+
 
 color:#ffb000;
 
-font-size:24px;
+font-size:40px;
+
 
 }
 
 
 
-.info-card:hover h3{
-
-color:#071a33;
-
-}
 
 
+/* WIKI KARTEN */
 
-.info-grid{
+
+.grid{
+
 
 display:flex;
 
+
 justify-content:center;
 
-gap:20px;
+
+gap:35px;
+
 
 flex-wrap:wrap;
 
-}
-
-
-
-.info-page{
-
-display:none;
 
 }
 
 
 
-.update{
+.card{
 
-background:rgba(255,255,255,0.08);
 
-padding:20px;
+position:relative;
 
-margin:20px;
 
-border-radius:15px;
+width:280px;
+
+
+min-height:260px;
+
+
+padding:40px 20px 25px;
+
+
+background:rgba(255,255,255,.08);
+
+
+border:1px solid rgba(255,255,255,.2);
+
+
+border-radius:30px;
+
+
+cursor:pointer;
+
+
+transition:.4s;
+
+
+overflow:visible;
+
 
 }
+
+
+
+
+.card:hover{
+
+
+transform:translateY(-15px);
+
+
+box-shadow:0 0 35px #4da3ff;
+
+
+}
+
+
+
+
+
+.card img{
+
+
+position:absolute;
+
+
+top:-80px;
+
+
+left:50%;
+
+
+transform:translateX(-50%);
+
+
+width:110px;
+
+
+height:110px;
+
+
+border-radius:20px;
+
+
+transition:.4s;
+
+
+}
+
+
+
+.card:hover img{
+
+
+transform:translateX(-50%) scale(1.15);
+
+
+}
+
+
+
+
+
+.card h3{
+
+
+margin-top:60px;
+
+
+font-size:28px;
+
+
+color:#ffb000;
+
+
+}
+
+
+
+.card p{
+
+
+color:#ddd;
+
+
+}
+
+
 
 
 </style>
+
 
 </head>
 
@@ -253,20 +379,25 @@ border-radius:15px;
 
 <header>
 
+
 <a href="index.html">
 
+
 <h1>🦆 LMS SERVER</h1>
+
 
 </a>
 
 
 <p>
 
-Informationen zum LMS SERVER
+LMS SERVER Wiki • Informationen • Neuigkeiten
 
 </p>
 
+
 </header>
+
 
 
 
@@ -276,13 +407,6 @@ Informationen zum LMS SERVER
 <button onclick="location.href='index.html'">
 
 Start
-
-</button>
-
-
-<button onclick="location.href='index.html#shop'">
-
-Shop
 
 </button>
 
@@ -309,36 +433,24 @@ Kontakt
 
 
 </div>
-<!-- INFO WIKI ÜBERSICHT -->
+<!-- WIKI START -->
 
 
-<div class="box">
+<div class="hero">
 
 
-<h2>LMS SERVER Wiki</h2>
-
-
-<p>
-
-Wähle einen Bereich aus, um mehr Informationen zu erhalten.
-
-</p>
-
-
-
-<div class="info-grid">
-
-
-
-<div class="info-card" onclick="showInfo('minecraft')">
-
-
-<h3>Minecraft</h3>
+<h2>Willkommen im LMS SERVER Wiki</h2>
 
 
 <p>
 
-Versionen und Serverinformationen
+Hier findest du alle wichtigen Informationen
+über den LMS SERVER.
+
+<br><br>
+
+Erfahre mehr über unsere Spiele,
+Mods, Events und die Community.
 
 </p>
 
@@ -349,88 +461,14 @@ Versionen und Serverinformationen
 
 
 
-<div class="info-card" onclick="showInfo('mods')">
+<div class="hero">
 
 
-<h3>Mods</h3>
-
-
-<p>
-
-Forge, Fabric, NeoForge und Regeln
-
-</p>
-
-
-</div>
+<h2>Server Bereiche</h2>
 
 
 
-
-
-<div class="info-card" onclick="showInfo('optifine')">
-
-
-<h3>Optifine</h3>
-
-
-<p>
-
-Grafik und Performance
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="info-card" onclick="showInfo('blog')">
-
-
-<h3>Blog</h3>
-
-
-<p>
-
-Neuigkeiten und Updates
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="info-card" onclick="showInfo('updates')">
-
-
-<h3>Updates</h3>
-
-
-<p>
-
-Änderungen am Server
-
-</p>
-
-
-</div>
-
-
-
-
-</div>
-
-
-</div>
-
-
-
+<div class="grid">
 
 
 
@@ -440,34 +478,52 @@ Neuigkeiten und Updates
 <!-- MINECRAFT -->
 
 
-<div class="box info-page" id="minecraft">
+<div class="card" onclick="showPage('minecraft')">
 
 
-<h2>Minecraft Versionen</h2>
+<img src="https://mc-heads.net/avatar/Steve/100">
+
+
+<h3>Minecraft</h3>
 
 
 <p>
 
-Der LMS SERVER läuft auf der Minecraft Java Edition.
-
-<br><br>
-
-Unterstützte Version:
-
-<br><br>
-
-Minecraft 1.21.x
-
-<br><br>
-
-Wir empfehlen immer die aktuellste Version,
-damit du alle Funktionen nutzen kannst.
+Versionen, Installation
+und wichtige Informationen.
 
 </p>
 
 
 </div>
 
+
+
+
+
+
+
+<!-- MINIGAMES -->
+
+
+<div class="card" onclick="showPage('games')">
+
+
+<img src="https://mc-heads.net/avatar/Alex/100">
+
+
+<h3>Minigames</h3>
+
+
+<p>
+
+Unsere Spiele,
+Events und Abenteuer.
+
+</p>
+
+
+</div>
 
 
 
@@ -479,7 +535,207 @@ damit du alle Funktionen nutzen kannst.
 <!-- MODS -->
 
 
-<div class="box info-page" id="mods">
+<div class="card" onclick="showPage('mods')">
+
+
+<img src="https://mc-heads.net/avatar/Pillager/100">
+
+
+<h3>Mods</h3>
+
+
+<p>
+
+Erlaubte Mods,
+Forge, Fabric und NeoForge.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- TEAM -->
+
+
+<div class="card" onclick="showPage('team')">
+
+
+<img src="https://mc-heads.net/avatar/CC_Minecarft/100">
+
+
+<h3>Team</h3>
+
+
+<p>
+
+Die Menschen hinter
+dem LMS SERVER.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- UPDATES -->
+
+
+<div class="card" onclick="showPage('updates')">
+
+
+<img src="https://mc-heads.net/avatar/Zombie/100">
+
+
+<h3>Updates</h3>
+
+
+<p>
+
+Neue Funktionen,
+Änderungen und News.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- BLOG -->
+
+
+<div class="card" onclick="showPage('blog')">
+
+
+<img src="https://mc-heads.net/avatar/Notch/100">
+
+
+<h3>Blog</h3>
+
+
+<p>
+
+Geschichten,
+Events und Neuigkeiten.
+
+</p>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+<!-- DETAIL SEITEN -->
+
+
+<div class="hero page" id="minecraft">
+
+
+<h2>Minecraft</h2>
+
+
+<p>
+
+Der LMS SERVER läuft auf der Minecraft Java Edition.
+
+<br><br>
+
+Wir empfehlen immer die aktuellste Minecraft Version,
+damit du alle Funktionen nutzen kannst.
+
+<br><br>
+
+Gemeinsam erleben wir Minigames,
+Survival Abenteuer und Events.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="hero page" id="games">
+
+
+<h2>Minigames</h2>
+
+
+<p>
+
+Auf dem LMS SERVER warten viele verschiedene Spiele.
+
+</p>
+
+
+<br>
+
+
+<p>
+
+🎮 Happy Ghast Flug
+
+<br><br>
+
+🌎 Bugworld
+
+<br><br>
+
+⚔ Trainingsplatz
+
+<br><br>
+
+🪽 Elytraparcour
+
+<br><br>
+
+🚀 Explorer Trip
+
+<br><br>
+
+und viele weitere Projekte.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="hero page" id="mods">
 
 
 <h2>Mods</h2>
@@ -487,10 +743,13 @@ damit du alle Funktionen nutzen kannst.
 
 <p>
 
-Auf dem LMS SERVER sind bestimmte Client-Mods erlaubt.
+Bestimmte Client-Mods können auf dem LMS SERVER
+genutzt werden.
 
 </p>
 
+
+<br>
 
 
 <h3>Erlaubt:</h3>
@@ -506,13 +765,14 @@ Auf dem LMS SERVER sind bestimmte Client-Mods erlaubt.
 
 <br>
 
-✔ Optimierungs-Mods
+✔ Optimierungen
 
 <br>
 
 ✔ Client-Erweiterungen
 
 </p>
+
 
 
 
@@ -529,39 +789,7 @@ Auf dem LMS SERVER sind bestimmte Client-Mods erlaubt.
 
 <br>
 
-✘ Mods, die Serverfunktionen benötigen
-
-</p>
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- MOD LOADER -->
-
-
-<div class="box info-page" id="forge">
-
-
-<h2>Forge</h2>
-
-
-<p>
-
-Forge ist ein bekannter Minecraft Mod-Loader.
-
-<br><br>
-
-Client-Mods ohne Serverinstallation können genutzt werden.
+✘ Mods mit benötigten Server-Erweiterungen
 
 </p>
 
@@ -572,146 +800,86 @@ Client-Mods ohne Serverinstallation können genutzt werden.
 
 
 
-<div class="box info-page" id="fabric">
 
 
-<h2>Fabric</h2>
+<div class="hero page" id="team">
+
+
+<h2>LMS SERVER Team</h2>
 
 
 <p>
 
-Fabric ist ein leichter Mod-Loader.
-
-<br><br>
-
-Viele Performance-Mods nutzen Fabric.
+Unser Team baut, entwickelt und organisiert
+den LMS SERVER.
 
 </p>
 
-
-</div>
-
-
-
-
-
-<div class="box info-page" id="neoforge">
-
-
-<h2>NeoForge</h2>
-
-
-<p>
-
-NeoForge ist eine Weiterentwicklung von Forge.
-
-<br><br>
-
-Es gelten die normalen LMS SERVER Regeln.
-
-</p>
-
-
-</div>
-<!-- OPTIFINE -->
-
-
-<div class="box info-page" id="optifine">
-
-
-<h2>Optifine</h2>
-
-
-<p>
-
-Optifine kann auf dem LMS SERVER verwendet werden.
-
-<br><br>
-
-Mit Optifine kannst du:
-
-<br><br>
-
-• Grafik verbessern
 
 <br>
 
-• FPS erhöhen
-
-<br>
-
-• Shader nutzen
-
-<br>
-
-• Einstellungen optimieren
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- BLOG -->
-
-
-<div class="box info-page" id="blog">
-
-
-<h2>LMS SERVER Blog</h2>
-
 
 <p>
 
-Willkommen im LMS SERVER Blog.
+🦆 CC_Minecarft
+
+<br>
+
+Owner
 
 <br><br>
 
-Hier erscheinen Neuigkeiten über den Server.
 
-</p>
+🧱 Hobbit2304
 
+<br>
 
+Builder
 
-<h3>Server Updates</h3>
-
-
-<p>
-
-Neue Funktionen, Verbesserungen und Änderungen.
-
-</p>
+<br><br>
 
 
+🧱 King_Luma1
+
+<br>
+
+Builder
+
+<br><br>
 
 
+🧱 Lennyy20
 
-<h3>Neue Minigames</h3>
+<br>
 
+Builder
 
-<p>
-
-Informationen zu neuen Spielen und Events.
-
-</p>
+<br><br>
 
 
+⚙ Thrumx
+
+<br>
+
+Admin
+
+<br><br>
 
 
+⭐ Takatonka
 
-<h3>Community</h3>
+<br>
+
+Premium
+
+<br><br>
 
 
-<p>
+⭐ LemonadeFruit
 
-Wichtige Nachrichten für Spieler.
+<br>
+
+Premium
 
 </p>
 
@@ -725,19 +893,21 @@ Wichtige Nachrichten für Spieler.
 
 
 
-
-<!-- UPDATES -->
-
-
-<div class="box info-page" id="updates">
+<div class="hero page" id="updates">
 
 
-<h2>LMS SERVER Updates</h2>
+<h2>Updates</h2>
 
 
+<p>
+
+Hier findest du neue Änderungen
+am LMS SERVER.
+
+</p>
 
 
-<div class="update">
+<br>
 
 
 <h3>Update 1.0</h3>
@@ -745,24 +915,10 @@ Wichtige Nachrichten für Spieler.
 
 <p>
 
-Die LMS SERVER Website wurde gestartet.
-
-<br><br>
-
-Neue Bereiche und Funktionen werden hinzugefügt.
+Die Website wurde veröffentlicht.
 
 </p>
 
-
-</div>
-
-
-
-
-
-
-
-<div class="update">
 
 
 <h3>Update 1.1</h3>
@@ -770,21 +926,11 @@ Neue Bereiche und Funktionen werden hinzugefügt.
 
 <p>
 
-Neue Minigames, Verbesserungen und Events
+Neue Bereiche und Funktionen
 werden vorbereitet.
 
 </p>
 
-
-</div>
-
-
-
-
-
-
-
-<div class="update">
 
 
 <h3>Update 1.2</h3>
@@ -792,19 +938,8 @@ werden vorbereitet.
 
 <p>
 
-Geplante Erweiterungen:
-
-<br><br>
-
-• Neue Minigames
-
-<br>
-
-• Shop-System
-
-<br>
-
-• Weitere Community-Funktionen
+Neue Minigames und Community-Funktionen
+sind geplant.
 
 </p>
 
@@ -813,35 +948,137 @@ Geplante Erweiterungen:
 
 
 
+
+
+
+
+
+<div class="hero page" id="blog">
+
+
+<h2>LMS SERVER Blog</h2>
+
+
+<p>
+
+Willkommen im offiziellen LMS SERVER Blog.
+
+</p>
+
+
+<br>
+
+
+<p>
+
+Hier erscheinen:
+
+<br><br>
+
+Neue Projekte
+
+<br>
+
+Events
+
+<br>
+
+Entwicklungen
+
+<br>
+
+Besondere Momente
+
+</p>
+
+
 </div>
 
 
 
 
 
-
-
-
-
-<!-- ZURÜCK BUTTON -->
-
-
-<div class="box">
-
-
-<button class="info-card" onclick="backInfo()">
+<button class="back" onclick="backHome()">
 
 Zurück zur Übersicht
 
 </button>
+<style>
 
 
-</div>
+.page{
+
+display:none;
+
+}
+
+
+
+.back{
+
+
+margin:30px;
+
+
+background:#ffb000;
+
+
+color:#071a33;
+
+
+border:none;
+
+
+padding:15px 35px;
+
+
+border-radius:20px;
+
+
+font-size:18px;
+
+
+font-weight:bold;
+
+
+cursor:pointer;
+
+
+transition:.3s;
+
+
+}
+
+
+
+.back:hover{
+
+
+transform:scale(1.08);
+
+
+box-shadow:0 0 20px #ffb000;
+
+
+}
+
+
+
+
+</style>
+
+
+
+
+
+
+
 <footer>
+
 
 <p>
 
-© LMS SERVER | CC_Minecarft
+🦆 LMS SERVER © 2026 | CC_Minecarft
 
 </p>
 
@@ -855,13 +1092,15 @@ Zurück zur Übersicht
 
 
 
+
 <script>
 
 
-function showInfo(id){
+function showPage(id){
 
 
-document.querySelectorAll(".info-page").forEach(function(page){
+
+document.querySelectorAll(".page").forEach(function(page){
 
 
 page.style.display="none";
@@ -871,15 +1110,24 @@ page.style.display="none";
 
 
 
+
+document.querySelector(".grid").parentElement.parentElement.style.display="none";
+
+
+
+
 document.getElementById(id).style.display="block";
 
 
 
 window.scrollTo({
 
+
 top:0,
 
+
 behavior:"smooth"
+
 
 });
 
@@ -891,10 +1139,12 @@ behavior:"smooth"
 
 
 
-function backInfo(){
+
+function backHome(){
 
 
-document.querySelectorAll(".info-page").forEach(function(page){
+
+document.querySelectorAll(".page").forEach(function(page){
 
 
 page.style.display="none";
@@ -904,11 +1154,19 @@ page.style.display="none";
 
 
 
+
+document.querySelector(".grid").parentElement.parentElement.style.display="block";
+
+
+
 window.scrollTo({
+
 
 top:0,
 
+
 behavior:"smooth"
+
 
 });
 
@@ -923,6 +1181,8 @@ behavior:"smooth"
 
 
 
+
 </body>
+
 
 </html>
