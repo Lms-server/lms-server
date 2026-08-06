@@ -21,16 +21,13 @@ text-align:center;
 
 color:white;
 
-
 background:#071a33;
-
 
 background-image:
 
 linear-gradient(#16365c 1px,transparent 1px),
 
 linear-gradient(90deg,#16365c 1px,transparent 1px);
-
 
 background-size:40px 40px;
 
@@ -40,20 +37,13 @@ background-size:40px 40px;
 
 header{
 
-
 padding:35px 20px;
 
-
-background:
-
-linear-gradient(135deg,#ffb000,#ffd75e);
-
+background:linear-gradient(135deg,#ffb000,#ffd75e);
 
 color:#071a33;
 
-
 border-bottom:5px solid #ffb000;
-
 
 }
 
@@ -81,13 +71,11 @@ margin:10px;
 
 .nav{
 
-
 position:sticky;
 
 top:0;
 
 z-index:1000;
-
 
 display:flex;
 
@@ -97,15 +85,11 @@ gap:15px;
 
 flex-wrap:wrap;
 
-
 padding:15px;
-
 
 background:rgba(7,26,51,0.85);
 
-
 backdrop-filter:blur(8px);
-
 
 }
 
@@ -113,30 +97,21 @@ backdrop-filter:blur(8px);
 
 .nav button{
 
-
 background:rgba(30,90,160,0.65);
-
 
 color:white;
 
-
 border:1px solid #4b9cff;
-
 
 padding:12px 25px;
 
-
 border-radius:12px;
-
 
 font-size:17px;
 
-
 cursor:pointer;
 
-
 font-weight:bold;
-
 
 }
 
@@ -144,11 +119,9 @@ font-weight:bold;
 
 .nav button:hover{
 
-
 background:white;
 
 color:#071a33;
-
 
 }
 
@@ -156,30 +129,21 @@ color:#071a33;
 
 .box{
 
-
 background:rgba(0,0,0,0.35);
-
 
 margin:30px auto;
 
-
 padding:25px;
-
 
 width:80%;
 
-
 max-width:900px;
-
 
 border-radius:20px;
 
-
 border:1px solid #315b8f;
 
-
 box-shadow:0 0 20px #000;
-
 
 }
 
@@ -187,9 +151,49 @@ box-shadow:0 0 20px #000;
 
 h2{
 
-
 color:#ffb000;
 
+}
+
+
+
+.info-button{
+
+background:rgba(40,120,210,0.65);
+
+color:white;
+
+border:1px solid #4da3ff;
+
+padding:15px 30px;
+
+border-radius:15px;
+
+font-size:18px;
+
+font-weight:bold;
+
+margin:10px;
+
+cursor:pointer;
+
+}
+
+
+
+.info-button:hover{
+
+background:white;
+
+color:#071a33;
+
+}
+
+
+
+.info-page{
+
+display:none;
 
 }
 
@@ -206,24 +210,22 @@ color:#ffb000;
 
 <header>
 
-
 <a href="index.html">
 
-
 <h1>🦆 LMS SERVER</h1>
-
 
 </a>
 
 
 <p>
 
-Minecraft Versionen & Mod Informationen
+Informationen zum LMS SERVER
 
 </p>
 
 
 </header>
+
 
 
 
@@ -264,25 +266,6 @@ Kontakt
 
 </button>
 
-<div class="box">
-
-<h2>Minecraft Versionen</h2>
-
-
-<p>
-
-LMS SERVER unterstützt Minecraft Java Edition.
-
-<br><br>
-
-Wir unterstützen die neuesten Minecraft Versionen.
-
-<br><br>
-
-Bitte nutze immer eine aktuelle Version,
-damit du die beste Erfahrung bekommst.
-
-</p>
 
 </div>
 
@@ -292,101 +275,41 @@ damit du die beste Erfahrung bekommst.
 
 <div class="box">
 
-<h2>Forge, NeoForge & Fabric</h2>
+
+<h2>Info Übersicht</h2>
 
 
 <p>
 
-Du kannst mit verschiedenen Mod-Loadern
-auf dem LMS SERVER spielen.
-
-<br><br>
-
-Unterstützt:
-
-<br><br>
-
-Forge<br>
-
-NeoForge<br>
-
-Fabric
-
-<br><br>
-
-
-Wichtig:
-
-<br><br>
-
-Mods, die nur für deinen eigenen Client sind,
-können verwendet werden.
-
-<br><br>
-
-Mods, die auf dem Server installiert sein müssen,
-werden nicht unterstützt.
+Wähle ein Thema aus:
 
 </p>
 
 
-</div>
+<button class="info-button" onclick="showInfo('minecraft')">
+
+Minecraft
+
+</button>
 
 
+<button class="info-button" onclick="showInfo('mods')">
+
+Mods
+
+</button>
 
 
+<button class="info-button" onclick="showInfo('optifine')">
 
-<div class="box">
+Optifine
 
-<h2>Mods</h2>
-
-
-<p>
-
-Erlaubt sind zum Beispiel:
-
-<br><br>
-
-Performance-Mods<br>
-
-Grafik-Mods<br>
-
-Client-Erweiterungen
-
-<br><br>
-
-Nicht unterstützt werden Mods,
-die neue Inhalte oder Funktionen
-auf dem Server benötigen.
-
-</p>
+</button>
 
 
-</div>
+<button class="info-button" onclick="showInfo('blog')">
 
-
-
-
-
-<div class="box">
-
-<h2>Optifine</h2>
-
-
-<p>
-
-Du brauchst Informationen zu Optifine?
-
-<br><br>
-
-Klicke hier:
-
-</p>
-
-
-<button onclick="document.getElementById('optifine').scrollIntoView({behavior:'smooth'})">
-
-Optifine Infos
+Blog
 
 </button>
 
@@ -397,25 +320,97 @@ Optifine Infos
 
 
 
-<div class="box" id="optifine">
+<div class="box info-page" id="minecraft">
 
-<h2>Optifine Informationen</h2>
+
+<h2>Minecraft Versionen</h2>
 
 
 <p>
 
-LMS SERVER unterstützt aktuelle Optifine Versionen.
+LMS SERVER unterstützt Minecraft Java Edition.
 
 <br><br>
 
-Bitte benutze immer eine Optifine-Version,
-die zu deiner Minecraft-Version passt.
+Wir unterstützen aktuelle Minecraft Versionen.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="box info-page" id="mods">
+
+
+<h2>Mods</h2>
+
+
+<p>
+
+Hier kommen später alle Informationen zu:
 
 <br><br>
 
-Mit Optifine kannst du unter anderem
-Grafikeinstellungen verbessern
-und die Leistung optimieren.
+Forge<br>
+
+NeoForge<br>
+
+Fabric<br>
+
+Erlaubte Mods
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="box info-page" id="optifine">
+
+
+<h2>Optifine</h2>
+
+
+<p>
+
+Informationen zu Grafikverbesserungen
+und Performance.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="box info-page" id="blog">
+
+
+<h2>LMS SERVER Blog</h2>
+
+
+<p>
+
+Hier erscheinen später:
+
+<br><br>
+
+Updates<br>
+
+Neue Minigames<br>
+
+Events<br>
+
+Neuigkeiten
 
 </p>
 
@@ -430,7 +425,7 @@ und die Leistung optimieren.
 
 <p>
 
-© LMS SERVER | CC_Minecarft
+© LMS SERVER 
 
 </p>
 
@@ -438,7 +433,652 @@ und die Leistung optimieren.
 
 
 
+
+
+<script>
+
+
+function showInfo(id){
+
+
+document.querySelectorAll(".info-page").forEach(function(page){
+
+page.style.display="none";
+
+});
+
+
+document.getElementById(id).style.display="block";
+
+
+}
+
+
+</script>
+
+
+
 </body>
 
 </html>
+<!-- MINECRAFT BEREICH -->
+
+<div class="box info-page" id="minecraft">
+
+
+<h2>Minecraft Versionen</h2>
+
+
+<p>
+
+Der LMS SERVER läuft auf der Minecraft Java Edition.
+
+<br><br>
+
+Unterstützte Versionen:
+
+<br><br>
+
+Minecraft 1.21.x
+
+<br><br>
+
+Wir empfehlen immer die aktuellste Version zu verwenden,
+damit du alle Funktionen nutzen kannst.
+
+</p>
+
+
 </div>
+
+
+
+
+
+
+
+<!-- MODS BEREICH -->
+
+<div class="box info-page" id="mods">
+
+
+<h2>Mods</h2>
+
+
+<p>
+
+Auf dem LMS SERVER sind bestimmte Client-Mods erlaubt.
+
+</p>
+
+
+<h3>Erlaubt:</h3>
+
+
+<p>
+
+✔ Performance-Mods
+
+<br>
+
+✔ Grafik-Mods
+
+<br>
+
+✔ Optimierungs-Mods
+
+<br>
+
+✔ Client-Erweiterungen
+
+</p>
+
+
+
+<h3>Nicht erlaubt:</h3>
+
+
+<p>
+
+✘ Mods, die neue Server-Funktionen hinzufügen
+
+<br>
+
+✘ Cheats oder Vorteile gegenüber anderen Spielern
+
+<br>
+
+✘ Programme, die den Spielablauf verändern
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- OPTIFINE BEREICH -->
+
+<div class="box info-page" id="optifine">
+
+
+<h2>Optifine</h2>
+
+
+<p>
+
+Optifine kann auf dem LMS SERVER verwendet werden.
+
+<br><br>
+
+Mit Optifine kannst du:
+
+<br><br>
+
+• Grafik verbessern
+
+<br>
+
+• FPS erhöhen
+
+<br>
+
+• Shader nutzen
+
+<br>
+
+• Einstellungen optimieren
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- BLOG BEREICH -->
+
+<div class="box info-page" id="blog">
+
+
+<h2>LMS SERVER Blog</h2>
+
+
+<p>
+
+Willkommen im LMS SERVER Blog.
+
+<br><br>
+
+Hier erscheinen Neuigkeiten über:
+
+</p>
+
+
+
+<h3>Server Updates</h3>
+
+
+<p>
+
+Neue Funktionen, Verbesserungen und Änderungen.
+
+</p>
+
+
+
+<h3>Neue Minigames</h3>
+
+
+<p>
+
+Informationen zu neuen Spielen und Events.
+
+</p>
+
+
+
+<h3>Community</h3>
+
+
+<p>
+
+Wichtige Nachrichten für Spieler.
+
+</p>
+
+
+</div>
+<!-- ZUSATZ MENÜ -->
+
+
+<div class="box info-page" id="forge">
+
+
+<h2>Forge</h2>
+
+
+<p>
+
+Forge ist einer der bekanntesten Mod-Loader für Minecraft.
+
+<br><br>
+
+Auf dem LMS SERVER können Client-Mods genutzt werden,
+die keine Serverinstallation benötigen.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="box info-page" id="fabric">
+
+
+<h2>Fabric</h2>
+
+
+<p>
+
+Fabric ist ein leichter und schneller Mod-Loader.
+
+<br><br>
+
+Viele Performance-Mods verwenden Fabric.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="box info-page" id="neoforge">
+
+
+<h2>NeoForge</h2>
+
+
+<p>
+
+NeoForge ist eine Weiterentwicklung von Forge.
+
+<br><br>
+
+Auch hier gelten die normalen LMS SERVER Regeln
+für Mods.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- BLOG EINTRÄGE -->
+
+
+<div class="box info-page" id="updates">
+
+
+<h2>LMS SERVER Updates</h2>
+
+
+
+<div class="update">
+
+
+<h3>Update 1.0</h3>
+
+
+<p>
+
+Die LMS SERVER Website wurde gestartet.
+
+<br>
+
+Neue Bereiche und Funktionen werden hinzugefügt.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="update">
+
+
+<h3>Update 1.1</h3>
+
+
+<p>
+
+Neue Minigames, Verbesserungen und Events
+werden vorbereitet.
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- ZURÜCK BUTTON -->
+
+
+<button class="info-button" onclick="backInfo()">
+
+Zurück zur Übersicht
+
+</button>
+
+
+
+
+
+
+
+
+<style>
+
+
+.update{
+
+
+background:rgba(255,255,255,0.08);
+
+padding:20px;
+
+margin:20px;
+
+border-radius:15px;
+
+
+}
+
+
+
+
+</style>
+
+
+
+
+
+
+
+<script>
+
+
+function backInfo(){
+
+
+document.querySelectorAll(".info-page").forEach(function(page){
+
+
+page.style.display="none";
+
+
+});
+
+
+}
+
+
+
+</script>
+<!-- INFO WIKI ÜBERSICHT -->
+
+<div class="box">
+
+
+<h2>LMS SERVER Wiki</h2>
+
+
+<p>
+
+Wähle einen Bereich aus, um mehr Informationen zu erhalten.
+
+</p>
+
+
+
+<div class="info-grid">
+
+
+
+<div class="info-card" onclick="showInfo('minecraft')">
+
+
+<h3>Minecraft</h3>
+
+
+<p>
+
+Versionen und Serverinformationen
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="info-card" onclick="showInfo('mods')">
+
+
+<h3>Mods</h3>
+
+
+<p>
+
+Forge, Fabric, NeoForge und Regeln
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="info-card" onclick="showInfo('optifine')">
+
+
+<h3>Optifine</h3>
+
+
+<p>
+
+Grafik und Performance
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="info-card" onclick="showInfo('blog')">
+
+
+<h3>Blog</h3>
+
+
+<p>
+
+Neuigkeiten und Updates
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="info-card" onclick="showInfo('updates')">
+
+
+<h3>Updates</h3>
+
+
+<p>
+
+Änderungen am Server
+
+</p>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<style>
+
+
+.info-grid{
+
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+
+}
+
+
+
+
+.info-card{
+
+
+width:220px;
+
+
+padding:25px;
+
+
+background:rgba(40,120,210,0.35);
+
+
+border:1px solid #4da3ff;
+
+
+border-radius:20px;
+
+
+cursor:pointer;
+
+
+transition:.3s;
+
+
+}
+
+
+
+
+.info-card:hover{
+
+
+background:white;
+
+
+color:#071a33;
+
+
+transform:translateY(-8px);
+
+
+box-shadow:0 0 25px #4da3ff;
+
+
+}
+
+
+
+
+
+.info-card h3{
+
+
+color:#ffb000;
+
+
+font-size:24px;
+
+
+}
+
+
+
+
+.info-card:hover h3{
+
+
+color:#071a33;
+
+
+}
+
+
+
+
+</style>
