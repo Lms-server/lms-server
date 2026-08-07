@@ -8,367 +8,244 @@
 
 <title>🦆 LMS SERVER Wiki</title>
 
-
 <style>
 
-
 *{
+margin:0;
+padding:0;
 box-sizing:border-box;
 }
 
+html{
+scroll-behavior:smooth;
+}
 
 body{
 
-margin:0;
-
 font-family:Arial,sans-serif;
-
+background:#061426;
 color:white;
-
 text-align:center;
 
-
-background:#061426;
-
-
 background-image:
-
 linear-gradient(#153252 1px,transparent 1px),
-
 linear-gradient(90deg,#153252 1px,transparent 1px);
-
 
 background-size:45px 45px;
 
 }
 
-
-
 /* HEADER */
-
 
 header{
 
-
 padding:60px 20px;
 
-
 background:
-
 linear-gradient(135deg,#ffb000,#ffe27a);
 
-
 color:#071a33;
-
 
 border-bottom:5px solid #ffb000;
 
-
 }
-
-
 
 header a{
 
-
 text-decoration:none;
-
 color:#071a33;
 
-
 }
-
-
 
 h1{
 
-
 font-size:60px;
-
-
 margin:10px;
-
 
 }
 
+header p{
 
+font-size:22px;
 
+}
 
-
-/* NAV */
-
+/* NAVIGATION */
 
 .nav{
 
-
 position:sticky;
-
 top:0;
-
-z-index:100;
-
+z-index:999;
 
 display:flex;
-
 justify-content:center;
-
 gap:15px;
-
 flex-wrap:wrap;
-
 
 padding:15px;
 
-
-background:rgba(6,20,38,.9);
-
+background:rgba(6,20,38,.88);
 
 backdrop-filter:blur(10px);
 
-
 }
-
-
 
 .nav button{
 
-
 background:rgba(40,120,210,.6);
-
 
 border:1px solid #4da3ff;
 
-
 color:white;
-
 
 padding:13px 25px;
 
-
 border-radius:15px;
 
+font-size:16px;
 
 font-weight:bold;
 
-
 cursor:pointer;
-
 
 transition:.3s;
 
-
 }
-
-
 
 .nav button:hover{
 
-
 background:white;
-
-
 color:#071a33;
-
-
 transform:translateY(-5px);
-
 
 }
 
-
-
-
-
-/* INTRO */
-
+/* HERO */
 
 .hero{
 
+width:90%;
+max-width:1200px;
 
-width:85%;
+margin:45px auto;
 
-max-width:1100px;
-
-margin:40px auto;
-
-
-padding:40px;
-
-
-background:rgba(255,255,255,.08);
-
+padding:45px;
 
 border-radius:30px;
 
+background:rgba(255,255,255,.08);
 
-border:1px solid rgba(255,255,255,.2);
+border:1px solid rgba(255,255,255,.18);
 
+backdrop-filter:blur(10px);
+
+box-shadow:0 0 35px rgba(0,0,0,.45);
 
 }
-
-
 
 .hero h2{
 
-
+font-size:45px;
 color:#ffb000;
-
-font-size:40px;
-
+margin-bottom:20px;
 
 }
 
+.hero p{
 
+font-size:20px;
+line-height:1.7;
 
+}
 
-
-/* WIKI KARTEN */
-
+/* KARTEN */
 
 .grid{
 
-
 display:flex;
-
 
 justify-content:center;
 
-
-gap:35px;
-
+gap:40px;
 
 flex-wrap:wrap;
 
+margin-top:80px;
 
 }
-
-
 
 .card{
 
-
 position:relative;
-
 
 width:280px;
 
-
-min-height:260px;
-
-
-padding:40px 20px 25px;
-
-
-background:rgba(255,255,255,.08);
-
-
-border:1px solid rgba(255,255,255,.2);
-
+padding:90px 25px 30px;
 
 border-radius:30px;
 
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.18);
 
 cursor:pointer;
 
-
-transition:.4s;
-
+transition:.35s;
 
 overflow:visible;
 
-
 }
-
-
-
 
 .card:hover{
 
-
-transform:translateY(-15px);
-
+transform:translateY(-12px);
 
 box-shadow:0 0 35px #4da3ff;
 
-
 }
-
-
-
-
 
 .card img{
 
-
 position:absolute;
 
-
-top:-80px;
-
+top:-70px;
 
 left:50%;
 
-
 transform:translateX(-50%);
 
+width:120px;
+height:120px;
 
-width:110px;
-
-
-height:110px;
-
-
-border-radius:20px;
-
-
-transition:.4s;
-
+transition:.35s;
 
 }
-
-
 
 .card:hover img{
 
-
-transform:translateX(-50%) scale(1.15);
-
+transform:translateX(-50%) scale(1.12);
 
 }
-
-
-
-
 
 .card h3{
 
-
-margin-top:60px;
-
-
-font-size:28px;
-
+font-size:30px;
 
 color:#ffb000;
 
+margin-bottom:15px;
 
 }
-
-
 
 .card p{
 
-
 color:#ddd;
 
+line-height:1.5;
 
 }
-
-
-
-
-</style>
-
+  </style>
 
 </head>
 
@@ -376,28 +253,23 @@ color:#ddd;
 <body>
 
 
-
 <header>
-
 
 <a href="index.html">
 
-
 <h1>🦆 LMS SERVER</h1>
-
 
 </a>
 
 
 <p>
 
-LMS SERVER Wiki • Informationen • Neuigkeiten
+LMS SERVER Wiki • Informationen • Hilfe
 
 </p>
 
 
 </header>
-
 
 
 
@@ -433,13 +305,22 @@ Kontakt
 
 
 </div>
+
+
+
+
+
 <!-- WIKI START -->
 
 
 <div class="hero">
 
 
-<h2>Willkommen im LMS SERVER Wiki</h2>
+<h2>
+
+Willkommen im LMS SERVER Wiki
+
+</h2>
 
 
 <p>
@@ -449,8 +330,7 @@ Hier findest du alle wichtigen Informationen
 
 <br><br>
 
-Erfahre mehr über unsere Spiele,
-Mods, Events und die Community.
+Regeln, Spiele, Updates und vieles mehr.
 
 </p>
 
@@ -461,10 +341,16 @@ Mods, Events und die Community.
 
 
 
+
 <div class="hero">
 
 
-<h2>Server Bereiche</h2>
+<h2>
+
+Server Bereiche
+
+</h2>
+
 
 
 
@@ -474,23 +360,26 @@ Mods, Events und die Community.
 
 
 
-
-<!-- MINECRAFT -->
-
-
-<div class="card" onclick="showPage('minecraft')">
+<!-- REGELN -->
 
 
-<img src="https://mc-heads.net/avatar/Steve/100">
+<div class="card" onclick="location.href='regeln.html'">
 
 
-<h3>Minecraft</h3>
+<img src="https://mc-heads.net/avatar/Piglin/100">
+
+
+<h3>
+
+Regeln
+
+</h3>
 
 
 <p>
 
-Versionen, Installation
-und wichtige Informationen.
+Alle Regeln für ein faires
+und freundliches Spielerlebnis.
 
 </p>
 
@@ -506,19 +395,23 @@ und wichtige Informationen.
 <!-- MINIGAMES -->
 
 
-<div class="card" onclick="showPage('games')">
+<div class="card" onclick="location.href='minigames.html'">
 
 
-<img src="https://mc-heads.net/avatar/Alex/100">
+<img src="https://mc-heads.net/avatar/Steve/100">
 
 
-<h3>Minigames</h3>
+<h3>
+
+Minigames
+
+</h3>
 
 
 <p>
 
-Unsere Spiele,
-Events und Abenteuer.
+Alle Spiele, Abenteuer
+und Events des LMS SERVER.
 
 </p>
 
@@ -535,25 +428,28 @@ Events und Abenteuer.
 <!-- MODS -->
 
 
-<div class="card" onclick="showPage('mods')">
+<div class="card" onclick="location.href='mods.html'">
 
 
 <img src="https://mc-heads.net/avatar/Pillager/100">
 
 
-<h3>Mods</h3>
+<h3>
+
+Mods
+
+</h3>
 
 
 <p>
 
-Erlaubte Mods,
-Forge, Fabric und NeoForge.
+Welche Mods erlaubt sind
+und welche verboten sind.
 
 </p>
 
 
 </div>
-
 
 
 
@@ -564,19 +460,23 @@ Forge, Fabric und NeoForge.
 <!-- TEAM -->
 
 
-<div class="card" onclick="showPage('team')">
+<div class="card" onclick="location.href='team.html'">
 
 
 <img src="https://mc-heads.net/avatar/CC_Minecarft/100">
 
 
-<h3>Team</h3>
+<h3>
+
+Team
+
+</h3>
 
 
 <p>
 
-Die Menschen hinter
-dem LMS SERVER.
+Lerne das Team hinter
+dem LMS SERVER kennen.
 
 </p>
 
@@ -589,17 +489,20 @@ dem LMS SERVER.
 
 
 
-
 <!-- UPDATES -->
 
 
-<div class="card" onclick="showPage('updates')">
+<div class="card" onclick="location.href='updates.html'">
 
 
 <img src="https://mc-heads.net/avatar/Zombie/100">
 
 
-<h3>Updates</h3>
+<h3>
+
+Updates
+
+</h3>
 
 
 <p>
@@ -619,22 +522,26 @@ Neue Funktionen,
 
 
 
-<!-- BLOG -->
+<!-- FAQ -->
 
 
-<div class="card" onclick="showPage('blog')">
+<div class="card" onclick="location.href='faq.html'">
 
 
-<img src="https://mc-heads.net/avatar/Notch/100">
+<img src="https://mc-heads.net/avatar/Villager/100">
 
 
-<h3>Blog</h3>
+<h3>
+
+FAQ
+
+</h3>
 
 
 <p>
 
-Geschichten,
-Events und Neuigkeiten.
+Antworten auf häufige
+Fragen zum Server.
 
 </p>
 
@@ -649,28 +556,29 @@ Events und Neuigkeiten.
 
 
 </div>
-<!-- DETAIL SEITEN -->
+<!-- INFO BEREICH -->
+
+<div class="hero">
 
 
-<div class="hero page" id="minecraft">
+<h2>
 
+LMS SERVER Informationen
 
-<h2>Minecraft</h2>
+</h2>
 
 
 <p>
 
-Der LMS SERVER läuft auf der Minecraft Java Edition.
+Der LMS SERVER bietet verschiedene Minecraft-Erlebnisse.
 
 <br><br>
 
-Wir empfehlen immer die aktuellste Minecraft Version,
-damit du alle Funktionen nutzen kannst.
+Minigames, Survival, Events und eine eigene Community.
 
 <br><br>
 
-Gemeinsam erleben wir Minigames,
-Survival Abenteuer und Events.
+Alle wichtigen Informationen findest du in unserem Wiki.
 
 </p>
 
@@ -681,47 +589,41 @@ Survival Abenteuer und Events.
 
 
 
+<!-- SCHNELLZUGRIFF -->
 
 
-<div class="hero page" id="games">
+<div class="hero">
 
 
-<h2>Minigames</h2>
+<h2>
+
+Schnellzugriff
+
+</h2>
+
+
+
+<div class="grid">
+
+
+
+<div class="card" onclick="location.href='regeln.html'">
+
+
+<img src="https://mc-heads.net/avatar/Book/100">
+
+
+<h3>
+
+Server Regeln
+
+</h3>
 
 
 <p>
 
-Auf dem LMS SERVER warten viele verschiedene Spiele.
-
-</p>
-
-
-<br>
-
-
-<p>
-
-Happy Ghast Flug
-
-<br><br>
-
-Bugworld
-
-<br><br>
-
-Trainingsplatz
-
-<br><br>
-
-Elytraparcour
-
-<br><br>
-
-Explorer Trip
-
-<br><br>
-
-und viele weitere Projekte.
+Lies dir die Regeln durch,
+bevor du spielst.
 
 </p>
 
@@ -732,64 +634,23 @@ und viele weitere Projekte.
 
 
 
+<div class="card" onclick="location.href='minigames.html'">
 
 
-
-<div class="hero page" id="mods">
-
-
-<h2>Mods</h2>
+<img src="https://mc-heads.net/avatar/Diamond_Sword/100">
 
 
-<p>
+<h3>
 
-Bestimmte Client-Mods können auf dem LMS SERVER
-genutzt werden.
+Spiele
 
-</p>
-
-
-<br>
-
-
-<h3>Erlaubt:</h3>
+</h3>
 
 
 <p>
 
-✔ Performance-Mods
-
-<br>
-
-✔ Grafik-Mods
-
-<br>
-
-✔ Optimierungen
-
-<br>
-
-✔ Client-Erweiterungen
-
-</p>
-
-
-
-
-<h3>Nicht erlaubt:</h3>
-
-
-<p>
-
-✘ Cheats
-
-<br>
-
-✘ Vorteile gegenüber anderen Spielern
-
-<br>
-
-✘ Mods mit benötigten Server-Erweiterungen
+Entdecke unsere Minecraft
+Minigames.
 
 </p>
 
@@ -800,138 +661,23 @@ genutzt werden.
 
 
 
+<div class="card" onclick="location.href='updates.html'">
 
 
-<div class="hero page" id="team">
+<img src="https://mc-heads.net/avatar/Redstone_Block/100">
 
 
-<h2>LMS SERVER Team</h2>
+<h3>
 
+Neuigkeiten
 
-<p>
-
-Unser Team baut, entwickelt und organisiert
-den LMS SERVER.
-
-</p>
-
-
-<br>
+</h3>
 
 
 <p>
 
-CC_Minecarft
-
-<br>
-
-Owner
-
-<br><br>
-
-
-Hobbit2304
-
-<br>
-
-Builder
-
-<br><br>
-
-
-King_Luma1
-
-<br>
-
-Builder
-
-<br><br>
-
-
-Lennyy20
-
-<br>
-
-Builder
-
-<br><br>
-
-
-Thrumx
-
-<br>
-
-Admin
-
-<br><br>
-
-
-Takatonka
-
-<br>
-
-Premium
-
-<br><br>
-
-
-LemonadeFruit
-
-<br>
-
-Premium
-
-</p>
-
-
-</div>
-<div class="hero page" id="updates">
-
-
-<h2>Updates</h2>
-
-
-<p>
-
-Hier findest du neue Änderungen
-am LMS SERVER.
-
-</p>
-
-
-<br>
-
-
-<h3>Update 1.0</h3>
-
-
-<p>
-
-Die Website wurde veröffentlicht.
-
-</p>
-
-
-
-<h3>Update 1.1</h3>
-
-
-<p>
-
-Neue Bereiche und Funktionen
-werden vorbereitet.
-
-</p>
-
-
-
-<h3>Update 1.2</h3>
-
-
-<p>
-
-Neue Minigames und Community-Funktionen
-sind geplant.
+Neue Projekte und
+Serveränderungen.
 
 </p>
 
@@ -940,61 +686,20 @@ sind geplant.
 
 
 
-
-
-
-
-
-<div class="hero page" id="blog">
-
-
-<h2>LMS SERVER Blog</h2>
-
-
-<p>
-
-Willkommen im offiziellen LMS SERVER Blog.
-
-</p>
-
-
-<br>
-
-
-<p>
-
-Hier erscheinen:
-
-<br><br>
-
-Neue Projekte
-
-<br>
-
-Events
-
-<br>
-
-Entwicklungen
-
-<br>
-
-Besondere Momente
-
-</p>
-
-
 </div>
 
 
+</div>
+<footer>
 
+<p>
 
+🦆 LMS SERVER © 2026 | CC_Minecarft
 
-<button class="back" onclick="backHome()">
+</p>
 
-Zurück zur Übersicht
+</footer>
 
-</button>
 
 
 
@@ -1002,62 +707,15 @@ Zurück zur Übersicht
 <style>
 
 
-.page{
+footer{
 
-display:none;
+padding:40px;
 
-}
+margin-top:50px;
 
-
-
-.back{
-
-
-margin:30px;
-
-
-background:#ffb000;
-
-
-color:#071a33;
-
-
-border:none;
-
-
-padding:15px 35px;
-
-
-border-radius:20px;
-
-
-font-size:18px;
-
-
-font-weight:bold;
-
-
-cursor:pointer;
-
-
-transition:.3s;
-
+opacity:.8;
 
 }
-
-
-
-.back:hover{
-
-
-transform:scale(1.08);
-
-
-box-shadow:0 0 20px #ffb000;
-
-
-}
-
 
 
 
@@ -1068,106 +726,24 @@ box-shadow:0 0 20px #ffb000;
 
 
 
-
-<footer>
-
-
-<p>
-
-🦆 LMS SERVER © 2026 | CC_Minecarft
-
-</p>
-
-
-</footer>
-
-
-
-
-
-
-
-
-
 <script>
 
 
-function showPage(id){
+// kleiner Effekt beim Laden
+
+document.querySelectorAll(".card").forEach(card=>{
 
 
-
-document.querySelectorAll(".page").forEach(function(page){
-
-
-page.style.display="none";
+card.addEventListener("mouseenter",()=>{
 
 
-});
-
-
-
-
-document.querySelector(".grid").parentElement.parentElement.style.display="none";
-
-
-
-
-document.getElementById(id).style.display="block";
-
-
-
-window.scrollTo({
-
-
-top:0,
-
-
-behavior:"smooth"
+card.style.transition=".35s";
 
 
 });
 
 
-}
-
-
-
-
-
-
-
-function backHome(){
-
-
-
-document.querySelectorAll(".page").forEach(function(page){
-
-
-page.style.display="none";
-
-
 });
-
-
-
-
-document.querySelector(".grid").parentElement.parentElement.style.display="block";
-
-
-
-window.scrollTo({
-
-
-top:0,
-
-
-behavior:"smooth"
-
-
-});
-
-
-}
 
 
 
@@ -1179,6 +755,5 @@ behavior:"smooth"
 
 
 </body>
-
 
 </html>
