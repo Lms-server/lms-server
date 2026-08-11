@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="de">
 
@@ -23,8 +24,11 @@ scroll-behavior:smooth;
 body{
 
 font-family:Arial,sans-serif;
+
 background:#061426;
+
 color:white;
+
 text-align:center;
 
 background-image:
@@ -35,7 +39,10 @@ background-size:45px 45px;
 
 }
 
-/* HEADER */
+
+/* =========================
+HEADER
+========================= */
 
 header{
 
@@ -53,6 +60,7 @@ border-bottom:5px solid #ffb000;
 header a{
 
 text-decoration:none;
+
 color:#071a33;
 
 }
@@ -60,6 +68,7 @@ color:#071a33;
 h1{
 
 font-size:60px;
+
 margin:10px;
 
 }
@@ -70,17 +79,25 @@ font-size:22px;
 
 }
 
-/* NAVIGATION */
+
+/* =========================
+NAVIGATION
+========================= */
 
 .nav{
 
 position:sticky;
+
 top:0;
+
 z-index:999;
 
 display:flex;
+
 justify-content:center;
+
 gap:15px;
+
 flex-wrap:wrap;
 
 padding:15px;
@@ -116,16 +133,22 @@ transition:.3s;
 .nav button:hover{
 
 background:white;
+
 color:#071a33;
+
 transform:translateY(-5px);
 
 }
 
-/* HERO */
+
+/* =========================
+ALLGEMEINE BOX
+========================= */
 
 .hero{
 
 width:90%;
+
 max-width:1200px;
 
 margin:45px auto;
@@ -147,7 +170,9 @@ box-shadow:0 0 35px rgba(0,0,0,.45);
 .hero h2{
 
 font-size:45px;
+
 color:#ffb000;
+
 margin-bottom:20px;
 
 }
@@ -155,103 +180,210 @@ margin-bottom:20px;
 .hero p{
 
 font-size:20px;
+
 line-height:1.7;
 
 }
 
-/* KARTEN */
 
-.grid{
+/* =========================
+REGELWERK KARTE
+========================= */
 
-display:flex;
+.rule-card{
 
-justify-content:center;
+display:block;
 
-gap:40px;
+width:320px;
 
-flex-wrap:wrap;
+margin:50px auto 10px;
 
-margin-top:80px;
-
-}
-
-.card{
-
-position:relative;
-
-width:280px;
-
-padding:90px 25px 30px;
+padding:35px 25px;
 
 border-radius:30px;
 
-background:rgba(255,255,255,.08);
+background:rgba(40,120,210,.18);
 
-border:1px solid rgba(255,255,255,.18);
+border:1px solid #4da3ff;
 
-cursor:pointer;
+text-decoration:none;
+
+color:white;
 
 transition:.35s;
 
-overflow:visible;
-
 }
 
-.card:hover{
+.rule-card:hover{
 
-transform:translateY(-12px);
+transform:translateY(-10px) scale(1.03);
+
+background:rgba(40,120,210,.35);
 
 box-shadow:0 0 35px #4da3ff;
 
 }
 
-.card img{
+.rule-icon{
 
-position:absolute;
-
-top:-70px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-width:120px;
-height:120px;
-
-transition:.35s;
-
-}
-
-.card:hover img{
-
-transform:translateX(-50%) scale(1.12);
-
-}
-
-.card h3{
-
-font-size:30px;
-
-color:#ffb000;
+font-size:75px;
 
 margin-bottom:15px;
 
 }
 
-.card p{
+.rule-card h3{
+
+font-size:32px;
+
+color:#ffb000;
+
+margin-bottom:12px;
+
+}
+
+.rule-card p{
+
+font-size:17px;
 
 color:#ddd;
 
 line-height:1.5;
 
 }
-  </style>
+
+
+/* =========================
+BUILDER BEREICH
+========================= */
+
+.builder-section{
+
+width:90%;
+
+max-width:1200px;
+
+margin:70px auto;
+
+padding:0;
+
+border-radius:30px;
+
+overflow:hidden;
+
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.18);
+
+box-shadow:0 0 35px rgba(0,0,0,.5);
+
+}
+
+.builder-image{
+
+width:100%;
+
+display:block;
+
+max-height:520px;
+
+object-fit:cover;
+
+}
+
+.builder-content{
+
+padding:45px;
+
+}
+
+.builder-content h2{
+
+font-size:46px;
+
+color:#ffb000;
+
+margin-bottom:20px;
+
+}
+
+.builder-content h3{
+
+font-size:28px;
+
+margin-top:30px;
+
+margin-bottom:15px;
+
+color:#4da3ff;
+
+}
+
+.builder-content p{
+
+font-size:19px;
+
+line-height:1.8;
+
+color:#e5e5e5;
+
+max-width:950px;
+
+margin:0 auto;
+
+}
+
+
+/* =========================
+INFO HINWEIS
+========================= */
+
+.note{
+
+margin:35px auto 0;
+
+max-width:900px;
+
+padding:20px;
+
+border-left:4px solid #ffb000;
+
+background:rgba(255,176,0,.08);
+
+border-radius:12px;
+
+color:#ddd;
+
+line-height:1.6;
+
+}
+
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+
+padding:40px;
+
+margin-top:70px;
+
+opacity:.8;
+
+}
+
+</style>
 
 </head>
 
 
 <body>
 
+
+<!-- =========================
+HEADER
+========================= -->
 
 <header>
 
@@ -261,20 +393,21 @@ line-height:1.5;
 
 </a>
 
-
 <p>
 
 LMS SERVER Wiki • Informationen • Hilfe
 
 </p>
 
-
 </header>
 
 
 
-<div class="nav">
+<!-- =========================
+NAVIGATION
+========================= -->
 
+<div class="nav">
 
 <button onclick="location.href='index.html'">
 
@@ -303,18 +436,15 @@ Kontakt
 
 </button>
 
-
 </div>
 
 
 
-
-
-<!-- WIKI START -->
-
+<!-- =========================
+WILLKOMMEN
+========================= -->
 
 <div class="hero">
-
 
 <h2>
 
@@ -322,374 +452,230 @@ Willkommen im LMS SERVER Wiki
 
 </h2>
 
-
 <p>
 
-Hier findest du alle wichtigen Informationen
-über den LMS SERVER.
+Hier findest du wichtige Informationen
+rund um den LMS SERVER.
 
 <br><br>
 
-Regeln, Spiele, Updates und vieles mehr.
+Wir bauen das Wiki Schritt für Schritt aus,
+damit du schnell findest, was du wissen möchtest.
 
 </p>
 
+
+<!-- REGELWERK -->
+
+<a href="regeln.html" class="rule-card">
+
+<div class="rule-icon">
+
+📖
+
+</div>
+
+<h3>
+
+Regelwerk
+
+</h3>
+
+<p>
+
+Alle wichtigen Regeln für den LMS SERVER.
+Bitte lies sie dir vor dem Spielen durch.
+
+</p>
+
+</a>
 
 </div>
 
 
 
+<!-- =========================
+BUILDER GESUCHT
+========================= -->
+
+<div class="builder-section">
 
 
+<img
+class="builder-image"
+src="https://github.com/Lms-server/lms-server/blob/main/Screenshot%20%28254%29.png"
+alt="LMS SERVER Builder Projekt">
 
-<div class="hero">
+
+<div class="builder-content">
 
 
 <h2>
 
-Server Bereiche
-
-</h2>
-
-
-
-
-<div class="grid">
-
-
-
-
-
-<!-- REGELN -->
-
-
-<div class="card" onclick="location.href='regeln.html'">
-
-
-<img src="https://mc-heads.net/avatar/Piglin/100">
-
-
-<h3>
-
-Regeln
-
-</h3>
-
-
-<p>
-
-Alle Regeln für ein faires
-und freundliches Spielerlebnis.
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-<!-- MINIGAMES -->
-
-
-<div class="card" onclick="location.href='minigames.html'">
-
-
-<img src="https://mc-heads.net/avatar/Steve/100">
-
-
-<h3>
-
-Minigames
-
-</h3>
-
-
-<p>
-
-Alle Spiele, Abenteuer
-und Events des LMS SERVER.
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- MODS -->
-
-
-<div class="card" onclick="location.href='mods.html'">
-
-
-<img src="https://mc-heads.net/avatar/Pillager/100">
-
-
-<h3>
-
-Mods
-
-</h3>
-
-
-<p>
-
-Welche Mods erlaubt sind
-und welche verboten sind.
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-<!-- TEAM -->
-
-
-<div class="card" onclick="location.href='team.html'">
-
-
-<img src="https://mc-heads.net/avatar/CC_Minecarft/100">
-
-
-<h3>
-
-Team
-
-</h3>
-
-
-<p>
-
-Lerne das Team hinter
-dem LMS SERVER kennen.
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-<!-- UPDATES -->
-
-
-<div class="card" onclick="location.href='updates.html'">
-
-
-<img src="https://mc-heads.net/avatar/Zombie/100">
-
-
-<h3>
-
-Updates
-
-</h3>
-
-
-<p>
-
-Neue Funktionen,
-Änderungen und News.
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- FAQ -->
-
-
-<div class="card" onclick="location.href='faq.html'">
-
-
-<img src="https://mc-heads.net/avatar/Villager/100">
-
-
-<h3>
-
-FAQ
-
-</h3>
-
-
-<p>
-
-Antworten auf häufige
-Fragen zum Server.
-
-</p>
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-</div>
-<!-- INFO BEREICH -->
-
-<div class="hero">
-
-
-<h2>
-
-LMS SERVER Informationen
+PARCOUR ONLYUP<br>
+BUILDER GESUCHT!
 
 </h2>
 
 
 <p>
 
-Der LMS SERVER bietet verschiedene Minecraft-Erlebnisse.
+Du liebst Minecraft-Building und hast Lust,
+deine Ideen auf dem LMS SERVER umzusetzen?
+
+Dann suchen wir dich!
+
+</p>
+
+
+<h3>
+
+LOS, BAU MIT!
+
+</h3>
+
+
+<p>
+
+Der LMS SERVER möchte gemeinsam mit seiner
+Builder-Community neue Maps, Strukturen und
+Spielwelten entwickeln.
+
+Dabei suchen wir kreative Leute, die Spaß daran
+haben, aus einer einfachen Idee eine komplette
+Minecraft-Welt entstehen zu lassen.
 
 <br><br>
 
-Minigames, Survival, Events und eine eigene Community.
+Gesucht werden unter anderem Builder für unseren
+<strong>Parcour- und OnlyUp-Bereich</strong> sowie
+für zukünftige Projekte auf dem LMS SERVER.
+
+</p>
+
+
+<h3>
+
+Was dich erwartet
+
+</h3>
+
+
+<p>
+
+Beim Bauen geht es nicht nur darum, einzelne
+Gebäude zu errichten. Wir möchten komplette
+Spielerlebnisse erschaffen.
+
+Dazu gehören große Bauwerke, Lobby- und Map-
+Strukturen, Parcours, Spielbereiche und später
+auch größere Spielmodi.
 
 <br><br>
 
-Alle wichtigen Informationen findest du in unserem Wiki.
+Deine eigenen Ideen sind dabei ausdrücklich
+willkommen. Wenn du eine kreative Idee hast,
+kann daraus möglicherweise ein Teil einer
+zukünftigen LMS-Map werden.
 
 </p>
 
 
-</div>
-
-
-
-
-
-<!-- SCHNELLZUGRIFF -->
-
-
-<div class="hero">
-
-
-<h2>
-
-Schnellzugriff
-
-</h2>
-
-
-
-<div class="grid">
-
-
-
-<div class="card" onclick="location.href='regeln.html'">
-
-
-<img src="https://mc-heads.net/avatar/Book/100">
-
-
 <h3>
 
-Server Regeln
+Gemeinsam statt alleine
 
 </h3>
 
 
 <p>
 
-Lies dir die Regeln durch,
-bevor du spielst.
+Der LMS SERVER soll ein Netzwerk sein, an dem
+mehrere Menschen gemeinsam arbeiten können.
+
+Deshalb möchten wir unseren Buildern Raum geben,
+ihre eigenen Fähigkeiten einzubringen und
+gemeinsam mit anderen an größeren Projekten
+zu arbeiten.
+
+<br><br>
+
+Egal ob du bereits viel Erfahrung im Bauen hast
+oder dich gerade weiterentwickelst:
+Entscheidend sind Kreativität, Motivation und
+die Freude daran, etwas Neues zu erschaffen.
 
 </p>
 
 
-</div>
-
-
-
-
-
-<div class="card" onclick="location.href='minigames.html'">
-
-
-<img src="https://mc-heads.net/avatar/Diamond_Sword/100">
-
-
 <h3>
 
-Spiele
+Unser eigener Stil
 
 </h3>
 
 
 <p>
 
-Entdecke unsere Minecraft
-Minigames.
+Bei der Gestaltung des LMS SERVER lassen wir uns
+natürlich von verschiedenen Minecraft-Netzwerken,
+Spielen und modernen Webdesigns inspirieren.
+
+Auch bekannte Server-Websites wie Cytooxien können
+dabei als <strong>gestalterisches Vorbild</strong>
+dienen, beispielsweise bei der Idee, Informationen
+modern, übersichtlich und mit großen visuellen
+Elementen zu präsentieren.
+
+<br><br>
+
+Wichtig ist dabei:
+
+<strong>
+Der LMS SERVER ist ein eigenständiges Projekt.
+</strong>
+
+Wir möchten keine bestehenden Designs, Inhalte,
+Texte, Maps oder Konzepte kopieren.
+
+Stattdessen nehmen wir Inspirationen auf und
+entwickeln daraus unseren eigenen Stil, unsere
+eigenen Ideen und unsere eigene Identität.
+
+<br><br>
+
+Das Ziel ist eine Website und ein Minecraft-
+Netzwerk, bei dem man sofort erkennt:
+
+<strong>
+Das ist LMS SERVER.
+</strong>
 
 </p>
 
 
-</div>
+<div class="note">
 
+<strong>💡 Idee hinter dem Projekt:</strong><br>
 
-
-
-
-<div class="card" onclick="location.href='updates.html'">
-
-
-<img src="https://mc-heads.net/avatar/Redstone_Block/100">
-
-
-<h3>
-
-Neuigkeiten
-
-</h3>
-
-
-<p>
-
-Neue Projekte und
-Serveränderungen.
-
-</p>
-
-
-</div>
-
-
+Wir möchten gemeinsam etwas Eigenes aufbauen.
+Jede Map, jedes Bauwerk und jede Idee soll dazu
+beitragen, den LMS SERVER Schritt für Schritt
+größer und abwechslungsreicher zu machen.
 
 </div>
 
 
 </div>
+
+</div>
+
+
+
+<!-- =========================
+FOOTER
+========================= -->
+
 <footer>
 
 <p>
@@ -701,59 +687,7 @@ Serveränderungen.
 </footer>
 
 
-
-
-
-<style>
-
-
-footer{
-
-padding:40px;
-
-margin-top:50px;
-
-opacity:.8;
-
-}
-
-
-
-</style>
-
-
-
-
-
-
-<script>
-
-
-// kleiner Effekt beim Laden
-
-document.querySelectorAll(".card").forEach(card=>{
-
-
-card.addEventListener("mouseenter",()=>{
-
-
-card.style.transition=".35s";
-
-
-});
-
-
-});
-
-
-
-</script>
-
-
-
-
-
-
 </body>
 
 </html>
+```
