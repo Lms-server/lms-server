@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="de">
 
@@ -181,13 +180,15 @@ margin-bottom:20px;
 
 font-size:20px;
 
-line-height:1.7;
+line-height:1.8;
+
+color:#e8e8e8;
 
 }
 
 
 /* =========================
-REGELWERK KARTE
+REGELWERK
 ========================= */
 
 .rule-card{
@@ -196,7 +197,7 @@ display:block;
 
 width:320px;
 
-margin:50px auto 10px;
+margin:50px auto 0;
 
 padding:35px 25px;
 
@@ -254,7 +255,7 @@ line-height:1.5;
 
 
 /* =========================
-BUILDER BEREICH
+BUILDER PROJEKT
 ========================= */
 
 .builder-section{
@@ -264,8 +265,6 @@ width:90%;
 max-width:1200px;
 
 margin:70px auto;
-
-padding:0;
 
 border-radius:30px;
 
@@ -283,9 +282,11 @@ box-shadow:0 0 35px rgba(0,0,0,.5);
 
 width:100%;
 
-display:block;
+height:auto;
 
-max-height:520px;
+max-height:600px;
+
+display:block;
 
 object-fit:cover;
 
@@ -293,25 +294,27 @@ object-fit:cover;
 
 .builder-content{
 
-padding:45px;
+padding:50px 55px 55px;
 
 }
 
 .builder-content h2{
 
-font-size:46px;
+font-size:48px;
+
+line-height:1.15;
 
 color:#ffb000;
 
-margin-bottom:20px;
+margin-bottom:25px;
 
 }
 
 .builder-content h3{
 
-font-size:28px;
+font-size:29px;
 
-margin-top:30px;
+margin-top:40px;
 
 margin-bottom:15px;
 
@@ -323,28 +326,34 @@ color:#4da3ff;
 
 font-size:19px;
 
-line-height:1.8;
+line-height:1.85;
 
 color:#e5e5e5;
 
-max-width:950px;
+max-width:1000px;
 
 margin:0 auto;
 
 }
 
+.builder-content strong{
+
+color:#ffffff;
+
+}
+
 
 /* =========================
-INFO HINWEIS
+HINWEIS
 ========================= */
 
 .note{
 
-margin:35px auto 0;
+margin:40px auto 0;
 
-max-width:900px;
+max-width:950px;
 
-padding:20px;
+padding:25px 30px;
 
 border-left:4px solid #ffb000;
 
@@ -354,7 +363,11 @@ border-radius:12px;
 
 color:#ddd;
 
-line-height:1.6;
+font-size:17px;
+
+line-height:1.7;
+
+text-align:left;
 
 }
 
@@ -365,11 +378,106 @@ FOOTER
 
 footer{
 
-padding:40px;
+padding:45px;
 
 margin-top:70px;
 
 opacity:.8;
+
+}
+
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:700px){
+
+h1{
+
+font-size:42px;
+
+}
+
+header{
+
+padding:40px 15px;
+
+}
+
+header p{
+
+font-size:17px;
+
+}
+
+.hero{
+
+width:94%;
+
+padding:30px 20px;
+
+}
+
+.hero h2{
+
+font-size:34px;
+
+}
+
+.builder-section{
+
+width:94%;
+
+}
+
+.builder-content{
+
+padding:35px 22px 40px;
+
+}
+
+.builder-content h2{
+
+font-size:36px;
+
+}
+
+.builder-content h3{
+
+font-size:25px;
+
+}
+
+.builder-content p{
+
+font-size:17px;
+
+line-height:1.7;
+
+}
+
+.nav{
+
+gap:8px;
+
+}
+
+.nav button{
+
+padding:11px 16px;
+
+font-size:14px;
+
+}
+
+.rule-card{
+
+width:90%;
+
+max-width:320px;
+
+}
 
 }
 
@@ -454,13 +562,19 @@ Willkommen im LMS SERVER Wiki
 
 <p>
 
-Hier findest du wichtige Informationen
-rund um den LMS SERVER.
+Das LMS SERVER Wiki ist die zentrale Anlaufstelle
+für Informationen rund um unser Netzwerk.
 
 <br><br>
 
-Wir bauen das Wiki Schritt für Schritt aus,
-damit du schnell findest, was du wissen möchtest.
+Hier möchten wir wichtige Informationen,
+Regelungen und aktuelle Projekte übersichtlich
+an einem Ort zusammenführen.
+
+<br><br>
+
+Das Wiki wird mit der Entwicklung des LMS SERVER
+nach und nach erweitert und aktualisiert.
 
 </p>
 
@@ -484,7 +598,11 @@ Regelwerk
 <p>
 
 Alle wichtigen Regeln für den LMS SERVER.
-Bitte lies sie dir vor dem Spielen durch.
+
+<br>
+
+Bitte informiere dich vor dem Spielen
+über unsere Regeln.
 
 </p>
 
@@ -495,7 +613,7 @@ Bitte lies sie dir vor dem Spielen durch.
 
 
 <!-- =========================
-BUILDER GESUCHT
+BUILDER PROJEKT
 ========================= -->
 
 <div class="builder-section">
@@ -503,7 +621,7 @@ BUILDER GESUCHT
 
 <img
 class="builder-image"
-src="https://github.com/Lms-server/lms-server/blob/main/Screenshot%20%28254%29.png"
+src="https://raw.githubusercontent.com/Lms-server/lms-server/main/Screenshot%20%28254%29.png"
 alt="LMS SERVER Builder Projekt">
 
 
@@ -520,65 +638,82 @@ BUILDER GESUCHT!
 
 <p>
 
-Du liebst Minecraft-Building und hast Lust,
-deine Ideen auf dem LMS SERVER umzusetzen?
+<strong>LOS, BAU MIT.</strong>
 
-Dann suchen wir dich!
+<br><br>
+
+Der LMS SERVER entwickelt sich stetig weiter –
+und dafür suchen wir kreative Builder, die Lust
+darauf haben, gemeinsam neue Welten und
+Spielerlebnisse zu erschaffen.
 
 </p>
 
 
+
 <h3>
 
-LOS, BAU MIT!
+Ein Projekt mit eigenen Ideen
 
 </h3>
 
 
 <p>
 
-Der LMS SERVER möchte gemeinsam mit seiner
-Builder-Community neue Maps, Strukturen und
-Spielwelten entwickeln.
+Unser Ziel ist es, auf dem LMS SERVER langfristig
+eigene Maps, Strukturen und Spielbereiche zu
+entwickeln.
 
-Dabei suchen wir kreative Leute, die Spaß daran
-haben, aus einer einfachen Idee eine komplette
-Minecraft-Welt entstehen zu lassen.
+Dazu gehören unter anderem große Bauwerke,
+Lobby- und Map-Strukturen, Parcours sowie
+komplette Bereiche für zukünftige Spielmodi.
 
 <br><br>
 
-Gesucht werden unter anderem Builder für unseren
-<strong>Parcour- und OnlyUp-Bereich</strong> sowie
-für zukünftige Projekte auf dem LMS SERVER.
+Besonders im Bereich unseres
+<strong>Parcour- und OnlyUp-Projekts</strong>
+möchten wir eine abwechslungsreiche und
+anspruchsvolle Umgebung schaffen, die nicht nur
+gut aussieht, sondern sich auch spannend spielen
+lässt.
+
+<br><br>
+
+Dabei sollen nicht einfach bestehende Konzepte
+nachgebaut werden. Wir möchten eigene Ideen
+entwickeln und daraus etwas schaffen, das zum
+LMS SERVER passt.
 
 </p>
 
 
+
 <h3>
 
-Was dich erwartet
+Kreativität steht im Mittelpunkt
 
 </h3>
 
 
 <p>
 
-Beim Bauen geht es nicht nur darum, einzelne
-Gebäude zu errichten. Wir möchten komplette
-Spielerlebnisse erschaffen.
+Beim Bauen geht es für uns nicht ausschließlich
+um technische Perfektion.
 
-Dazu gehören große Bauwerke, Lobby- und Map-
-Strukturen, Parcours, Spielbereiche und später
-auch größere Spielmodi.
+Viel wichtiger ist die Fähigkeit, Ideen zu
+entwickeln, kreativ zu denken und gemeinsam mit
+anderen aus einer Vorstellung eine funktionierende
+Map entstehen zu lassen.
 
 <br><br>
 
-Deine eigenen Ideen sind dabei ausdrücklich
-willkommen. Wenn du eine kreative Idee hast,
-kann daraus möglicherweise ein Teil einer
-zukünftigen LMS-Map werden.
+Ob beeindruckende Gebäude, interessante
+Parkour-Abschnitte, besondere Landschaften,
+clevere Details oder komplett neue Ideen –
+jede kreative Idee kann einen Unterschied machen.
 
 </p>
+
 
 
 <h3>
@@ -590,78 +725,135 @@ Gemeinsam statt alleine
 
 <p>
 
-Der LMS SERVER soll ein Netzwerk sein, an dem
-mehrere Menschen gemeinsam arbeiten können.
+Der LMS SERVER soll nicht nur ein Server sein,
+auf dem fertige Inhalte veröffentlicht werden.
 
-Deshalb möchten wir unseren Buildern Raum geben,
-ihre eigenen Fähigkeiten einzubringen und
-gemeinsam mit anderen an größeren Projekten
-zu arbeiten.
+Wir möchten ein Projekt aufbauen, an dem mehrere
+Menschen gemeinsam arbeiten und ihre eigenen
+Fähigkeiten einbringen können.
 
 <br><br>
 
-Egal ob du bereits viel Erfahrung im Bauen hast
-oder dich gerade weiterentwickelst:
-Entscheidend sind Kreativität, Motivation und
-die Freude daran, etwas Neues zu erschaffen.
+Builder arbeiten dabei nicht einfach nur einzelne
+Aufgaben ab. Wir möchten gemeinsam planen,
+Ideen besprechen, Konzepte weiterentwickeln und
+am Ende ein zusammenhängendes Spielerlebnis
+erschaffen.
+
+<br><br>
+
+Genau diese Zusammenarbeit soll langfristig einen
+wichtigen Teil der Entwicklung des LMS SERVER
+ausmachen.
 
 </p>
 
 
+
 <h3>
 
-Unser eigener Stil
+Inspiration ja – Kopieren nein
 
 </h3>
 
 
 <p>
 
-Bei der Gestaltung des LMS SERVER lassen wir uns
-natürlich von verschiedenen Minecraft-Netzwerken,
-Spielen und modernen Webdesigns inspirieren.
+Bei der Entwicklung des LMS SERVER orientieren
+wir uns selbstverständlich an verschiedenen
+Minecraft-Netzwerken, Spielen und modernen
+Webdesigns.
 
-Auch bekannte Server-Websites wie Cytooxien können
-dabei als <strong>gestalterisches Vorbild</strong>
-dienen, beispielsweise bei der Idee, Informationen
-modern, übersichtlich und mit großen visuellen
-Elementen zu präsentieren.
+Auch größere und etablierte Netzwerke können
+dabei als <strong>Inspiration und gestalterisches
+Vorbild</strong> dienen.
 
 <br><br>
 
-Wichtig ist dabei:
+Dabei ist uns jedoch wichtig, eine klare Grenze
+zu ziehen:
 
 <strong>
 Der LMS SERVER ist ein eigenständiges Projekt.
 </strong>
 
-Wir möchten keine bestehenden Designs, Inhalte,
-Texte, Maps oder Konzepte kopieren.
-
-Stattdessen nehmen wir Inspirationen auf und
-entwickeln daraus unseren eigenen Stil, unsere
-eigenen Ideen und unsere eigene Identität.
+Wir möchten keine bestehenden Websites,
+Designs, Texte, Maps, Inhalte oder Konzepte
+kopieren oder den Eindruck erwecken, dass eine
+Verbindung zu einem anderen Netzwerk besteht.
 
 <br><br>
 
-Das Ziel ist eine Website und ein Minecraft-
-Netzwerk, bei dem man sofort erkennt:
+Stattdessen nehmen wir einzelne Ideen als
+Inspiration und entwickeln daraus unsere eigenen
+Designentscheidungen, eigenen Inhalte und
+eigenen Projekte.
 
-<strong>
-Das ist LMS SERVER.
-</strong>
+<br><br>
+
+Das bedeutet auch: Wenn uns beispielsweise die
+Art gefällt, wie ein anderes Minecraft-Netzwerk
+seine Website modern und übersichtlich aufbaut,
+können wir uns davon inspirieren lassen.
+
+Die konkrete Umsetzung, Inhalte, Gestaltung und
+Identität des LMS SERVER werden jedoch selbst
+entwickelt.
 
 </p>
 
 
+
+<h3>
+
+Unser Anspruch
+
+</h3>
+
+
+<p>
+
+Mit dem LMS SERVER möchten wir Schritt für
+Schritt ein eigenes Minecraft-Projekt aufbauen,
+das sich durch Kreativität, gemeinschaftliche
+Entwicklung und eigene Ideen auszeichnet.
+
+<br><br>
+
+Jede Map, jedes Bauwerk und jeder neue Spielmodus
+soll dabei ein weiterer Baustein unseres eigenen
+Netzwerks werden.
+
+<br><br>
+
+Der Weg dorthin beginnt mit kleinen Projekten –
+und genau daraus können mit der Zeit große
+Welten entstehen.
+
+</p>
+
+
+
 <div class="note">
 
-<strong>💡 Idee hinter dem Projekt:</strong><br>
+<strong>LOS, BAU MIT.</strong>
 
-Wir möchten gemeinsam etwas Eigenes aufbauen.
-Jede Map, jedes Bauwerk und jede Idee soll dazu
-beitragen, den LMS SERVER Schritt für Schritt
-größer und abwechslungsreicher zu machen.
+<br><br>
+
+Du möchtest deine Bauideen auf dem LMS SERVER
+einbringen und gemeinsam an zukünftigen Projekten
+arbeiten?
+
+Dann halte Ausschau nach weiteren Informationen
+zu unserem Builder-Team und den kommenden
+Projekten.
+
+<br><br>
+
+<strong>
+Gemeinsam bauen. Eigene Ideen entwickeln.
+LMS SERVER gestalten.
+</strong>
 
 </div>
 
@@ -690,4 +882,3 @@ FOOTER
 </body>
 
 </html>
-```
