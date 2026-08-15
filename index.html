@@ -42,7 +42,9 @@ background-size:45px 45px;
 
 
 
-/* Banner */
+/* =========================
+BANNER
+========================= */
 
 header{
 
@@ -83,8 +85,9 @@ margin:10px;
 
 
 
-/* Navigation */
-
+/* =========================
+NAVIGATION
+========================= */
 
 .nav{
 
@@ -167,8 +170,9 @@ transform:translateY(-4px);
 
 
 
-/* Karten */
-
+/* =========================
+KARTEN
+========================= */
 
 .box{
 
@@ -240,6 +244,10 @@ border:2px solid #4da3ff;
 
 
 
+/* =========================
+COOKIE CLICKER
+========================= */
+
 .cookie{
 
 
@@ -266,6 +274,116 @@ transform:scale(1.2);
 
 
 
+/* =========================
+ONLY UP
+========================= */
+
+.onlyup-box{
+
+overflow:hidden;
+
+padding:30px;
+
+}
+
+
+
+.onlyup-img{
+
+width:100%;
+
+height:350px;
+
+object-fit:cover;
+
+border-radius:20px;
+
+display:block;
+
+margin-bottom:25px;
+
+}
+
+
+
+.onlyup-box h2{
+
+font-size:38px;
+
+color:#ffb000;
+
+margin-bottom:15px;
+
+}
+
+
+
+.onlyup-box p{
+
+font-size:18px;
+
+line-height:1.7;
+
+color:#e5e5e5;
+
+}
+
+
+
+.onlyup-box button{
+
+margin-top:10px;
+
+padding:14px 30px;
+
+border-radius:15px;
+
+border:1px solid #4da3ff;
+
+background:rgba(40,120,210,.6);
+
+color:white;
+
+font-size:16px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+
+
+.onlyup-box button:hover{
+
+background:white;
+
+color:#071a33;
+
+transform:translateY(-4px);
+
+}
+
+
+
+/* =========================
+ALLGEMEINE BUTTONS
+========================= */
+
+button{
+
+cursor:pointer;
+
+}
+
+
+
+/* =========================
+SURVIVAL CAMP
+========================= */
+
 .survival-img{
 
 
@@ -279,16 +397,6 @@ object-fit:cover;
 
 
 border-radius:20px;
-
-
-}
-
-
-
-button{
-
-
-cursor:pointer;
 
 
 }
@@ -319,6 +427,74 @@ border-radius:15px;
 }
 
 
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:700px){
+
+h1{
+
+font-size:42px;
+
+}
+
+
+header{
+
+padding:40px 15px;
+
+}
+
+
+.nav button{
+
+padding:11px 16px;
+
+font-size:14px;
+
+}
+
+
+.box{
+
+width:94%;
+
+padding:25px 20px;
+
+}
+
+
+.onlyup-img{
+
+height:230px;
+
+}
+
+
+.onlyup-box h2{
+
+font-size:30px;
+
+}
+
+
+.onlyup-box p{
+
+font-size:16px;
+
+}
+
+
+.survival-img{
+
+height:240px;
+
+}
+
+}
+
 </style>
 
 
@@ -327,6 +503,10 @@ border-radius:15px;
 
 <body>
 
+
+<!-- =========================
+HEADER
+========================= -->
 
 <header id="top">
 
@@ -350,6 +530,10 @@ Minecraft Minigames • Survival • Events
 </header>
 
 
+
+<!-- =========================
+NAVIGATION
+========================= -->
 
 <div class="nav">
 
@@ -404,8 +588,12 @@ Info
 
 
 </div>
-<!-- SERVER STATUS -->
 
+
+
+<!-- =========================
+SERVER STATUS
+========================= -->
 
 <div class="box status">
 
@@ -463,10 +651,60 @@ Wird geladen...
 
 
 
+<!-- =========================
+ONLY UP OUT NOW
+========================= -->
+
+<div class="box onlyup-box">
 
 
-<!-- SHOP -->
+<img
 
+class="onlyup-img"
+
+src="onlyupmc_screenshot_1.jpg"
+
+alt="LMS SERVER Only Up">
+
+
+<h2>
+
+ONLY UP – OUT NOW
+
+</h2>
+
+
+<p>
+
+<strong>Bereit für den Aufstieg?</strong>
+
+<br><br>
+
+Starte jetzt dein Only-Up-Abenteuer auf dem
+LMS SERVER und kämpfe dich Schritt für Schritt
+nach oben.
+
+<br><br>
+
+Jeder Sprung zählt.
+
+</p>
+
+
+<button onclick="location.href='#games'">
+
+Starte rein
+
+</button>
+
+
+</div>
+
+
+
+<!-- =========================
+SHOP
+========================= -->
 
 <div class="box" id="shop">
 
@@ -490,10 +728,9 @@ Ränge und Extras.
 
 
 
-
-
-<!-- MINIGAMES -->
-
+<!-- =========================
+MINIGAMES
+========================= -->
 
 <div class="box" id="games">
 
@@ -527,6 +764,10 @@ Explorer Trip
 
 <br>
 
+Only Up
+
+<br>
+
 Viele weitere Spiele
 
 </p>
@@ -536,10 +777,9 @@ Viele weitere Spiele
 
 
 
-
-
-<!-- LMS LIVE -->
-
+<!-- =========================
+LMS LIVE
+========================= -->
 
 <div class="box" id="live">
 
@@ -590,10 +830,9 @@ Abstimmen
 
 
 
-
-
-<!-- COOKIE CLICKER -->
-
+<!-- =========================
+COOKIE CLICKER
+========================= -->
 
 <div class="box">
 
@@ -629,8 +868,12 @@ Cookies:
 
 
 </div>
-<!-- TEAM -->
 
+
+
+<!-- =========================
+TEAM
+========================= -->
 
 <div class="box" id="team">
 
@@ -644,7 +887,9 @@ Cookies:
 
 <div>
 
-<img src="https://mc-heads.net/avatar/CC_Minecarft/100" style="border-radius:15px;">
+<img
+src="https://mc-heads.net/avatar/CC_Minecarft/100"
+style="border-radius:15px;">
 
 <p>
 
@@ -660,10 +905,11 @@ CC_Minecarft
 
 
 
-
 <div>
 
-<img src="https://mc-heads.net/avatar/Hobbit2304/100" style="border-radius:15px;">
+<img
+src="https://mc-heads.net/avatar/Hobbit2304/100"
+style="border-radius:15px;">
 
 <p>
 
@@ -679,10 +925,11 @@ Hobbit2304
 
 
 
-
 <div>
 
-<img src="https://mc-heads.net/avatar/King_Luma1/100" style="border-radius:15px;">
+<img
+src="https://mc-heads.net/avatar/King_Luma1/100"
+style="border-radius:15px;">
 
 <p>
 
@@ -698,10 +945,11 @@ King_Luma1
 
 
 
-
 <div>
 
-<img src="https://mc-heads.net/avatar/Lennyy20/100" style="border-radius:15px;">
+<img
+src="https://mc-heads.net/avatar/Lennyy20/100"
+style="border-radius:15px;">
 
 <p>
 
@@ -717,10 +965,11 @@ Lennyy20
 
 
 
-
 <div>
 
-<img src="https://mc-heads.net/avatar/Thrumx/100" style="border-radius:15px;">
+<img
+src="https://mc-heads.net/avatar/Thrumx/100"
+style="border-radius:15px;">
 
 <p>
 
@@ -736,10 +985,11 @@ Thrumx
 
 
 
-
 <div>
 
-<img src="https://mc-heads.net/avatar/Takatonka/100" style="border-radius:15px;">
+<img
+src="https://mc-heads.net/avatar/Takatonka/100"
+style="border-radius:15px;">
 
 <p>
 
@@ -755,10 +1005,11 @@ Takatonka
 
 
 
-
 <div>
 
-<img src="https://mc-heads.net/avatar/LemonadeFruit/100" style="border-radius:15px;">
+<img
+src="https://mc-heads.net/avatar/LemonadeFruit/100"
+style="border-radius:15px;">
 
 <p>
 
@@ -780,11 +1031,9 @@ LemonadeFruit
 
 
 
-
-
-
-<!-- KONTAKT -->
-
+<!-- =========================
+KONTAKT
+========================= -->
 
 <div class="box" id="kontakt">
 
@@ -799,15 +1048,20 @@ Fragen, Ideen oder Probleme?
 </p>
 
 
-<input id="playername" placeholder="Minecraft Name" style="width:80%;padding:12px;border-radius:12px;">
+<input
+id="playername"
+placeholder="Minecraft Name"
+style="width:80%;padding:12px;border-radius:12px;">
 
 
 <br><br>
 
 
 
-<textarea id="message" placeholder="Deine Nachricht" style="width:80%;height:120px;border-radius:12px;padding:12px;">
-
+<textarea
+id="message"
+placeholder="Deine Nachricht"
+style="width:80%;height:120px;border-radius:12px;padding:12px;">
 </textarea>
 
 
@@ -824,7 +1078,9 @@ An Discord senden
 <br><br>
 
 
-<a href="https://discord.gg/N5ZYVRpMMU" target="_blank">
+<a
+href="https://discord.gg/N5ZYVRpMMU"
+target="_blank">
 
 
 <button>
@@ -841,16 +1097,17 @@ Discord öffnen
 
 
 
-
-
-
-<!-- SURVIVAL CAMP -->
-
+<!-- =========================
+SURVIVAL CAMP
+========================= -->
 
 <div class="box" id="survival">
 
 
-<img class="survival-img" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23" alt="Minecraft Survival Camp">
+<img
+class="survival-img"
+src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23"
+alt="Minecraft Survival Camp">
 
 
 
@@ -863,7 +1120,8 @@ Starte dein eigenes Abenteuer.
 
 <br><br>
 
-Baue deine Base, sammle Ressourcen und erkunde die Welt.
+Baue deine Base, sammle Ressourcen und erkunde
+die Welt.
 
 </p>
 
@@ -875,19 +1133,30 @@ Code erhalten
 </button>
 
 
-<div id="slot" style="display:none;margin-top:20px;font-size:25px;">
+<div
+id="slot"
+style="display:none;margin-top:20px;font-size:25px;">
 
 Code wird erstellt...
 
 </div>
 
 
-<div id="campCode" class="camp-code">
+<div
+id="campCode"
+class="camp-code">
 
 </div>
 
 
 </div>
+
+
+
+<!-- =========================
+JAVASCRIPT
+========================= -->
+
 <script>
 
 
@@ -895,50 +1164,42 @@ let cookies = 0;
 
 
 
-function clickCookie(){
+/* COOKIE */
 
+function clickCookie(){
 
 cookies++;
 
-
 document.getElementById("cookies").innerHTML = cookies;
-
 
 }
 
 
 
-
+/* LMS LIVE */
 
 function liveVote(){
-
 
 document.getElementById("vote").innerHTML =
 
 "Deine Stimme wurde gespeichert.";
 
-
 }
 
 
 
-
+/* SURVIVAL CAMP */
 
 function joinCamp(){
 
-
 let slot = document.getElementById("slot");
-
 
 let codeBox = document.getElementById("campCode");
 
 
-
 slot.style.display="block";
 
-
 codeBox.innerHTML="";
-
 
 
 let symbols=[
@@ -952,9 +1213,7 @@ let symbols=[
 ];
 
 
-
 let count=0;
-
 
 
 let animation=setInterval(function(){
@@ -963,48 +1222,35 @@ let animation=setInterval(function(){
 let random="";
 
 
-
 for(let i=0;i<8;i++){
-
 
 random += symbols[Math.floor(Math.random()*symbols.length)];
 
-
 }
-
 
 
 slot.innerHTML=random;
 
 
-
 count++;
-
 
 
 if(count>=15){
 
-
 clearInterval(animation);
-
 
 
 let finalCode="CAMP-";
 
 
-
 for(let i=0;i<6;i++){
 
-
 finalCode += symbols[Math.floor(Math.random()*symbols.length)];
-
 
 }
 
 
-
 slot.innerHTML="Code erstellt";
-
 
 
 codeBox.innerHTML=
@@ -1012,7 +1258,6 @@ codeBox.innerHTML=
 "Dein Survival Camp Code:<br><br>"
 
 +finalCode;
-
 
 
 codeBox.scrollIntoView({
@@ -1023,53 +1268,40 @@ block:"center"
 
 });
 
-
 }
 
 
 },100);
 
-
 }
 
 
 
-
+/* KONTAKT */
 
 function sendDiscord(){
 
-
 let name=document.getElementById("playername").value;
-
 
 let message=document.getElementById("message").value;
 
 
-
 if(name==""){
-
 
 alert("Bitte Minecraft Name eintragen.");
 
-
 return;
 
-
 }
-
 
 
 if(message==""){
 
-
 alert("Bitte Nachricht schreiben.");
-
 
 return;
 
-
 }
-
 
 
 alert(
@@ -1084,23 +1316,17 @@ alert(
 
 );
 
-
 }
 
 
 
-
-
-
+/* SERVER STATUS */
 
 function updateServerStatus(){
 
-
 fetch("https://api.mcstatus.io/v2/status/java/LMS_server.aternos.me")
 
-
 .then(response=>response.json())
-
 
 .then(data=>{
 
@@ -1113,11 +1339,9 @@ document.getElementById("serverStatus").innerHTML=
 "Online";
 
 
-
 document.getElementById("players").innerHTML=
 
 data.players.online+"/"+data.players.max;
-
 
 
 document.getElementById("version").innerHTML=
@@ -1125,8 +1349,8 @@ document.getElementById("version").innerHTML=
 data.version.name;
 
 
-
 }
+
 
 else{
 
@@ -1136,11 +1360,9 @@ document.getElementById("serverStatus").innerHTML=
 "Offline";
 
 
-
 document.getElementById("players").innerHTML=
 
 "0/40";
-
 
 
 document.getElementById("version").innerHTML=
@@ -1149,7 +1371,6 @@ document.getElementById("version").innerHTML=
 
 
 }
-
 
 })
 
@@ -1164,26 +1385,20 @@ document.getElementById("serverStatus").innerHTML=
 
 });
 
-
 }
 
 
 
-
+/* STATUS AKTUALISIEREN */
 
 updateServerStatus();
 
-
-
 setInterval(updateServerStatus,60000);
-
 
 
 </script>
 
 
-
 </body>
-
 
 </html>
