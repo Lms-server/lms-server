@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>LMS SERVER – Credits</title>
 
@@ -34,7 +38,10 @@ body{
 
     color:white;
 
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
 }
 
@@ -176,16 +183,16 @@ body{
 
 .end-space{
 
-    height:500px;
+    height:600px;
 
 }
 
 
 /* =========================================================
-   FINALE-TEXT
+   STORY MOMENT
 ========================================================= */
 
-.final-overlay{
+.story-overlay{
 
     position:fixed;
 
@@ -206,22 +213,24 @@ body{
 }
 
 
-.final-overlay.active{
+.story-overlay.active{
 
-    animation:finalText 6s ease forwards;
+    animation:
+        storyAppear 7s ease forwards;
 
 }
 
 
-.final-overlay-text{
-
-    max-width:1000px;
-
-    padding:30px;
+.story-text{
 
     text-align:center;
 
-    font-size:clamp(34px,5vw,70px);
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            70px
+        );
 
     font-weight:bold;
 
@@ -231,36 +240,41 @@ body{
 
     text-shadow:
 
-        0 5px 30px rgba(0,0,0,.9),
+        0 5px 30px
+        rgba(0,0,0,.9),
 
-        0 0 40px rgba(255,255,255,.15);
+        0 0 50px
+        rgba(255,255,255,.15);
 
 }
 
 
-@keyframes finalText{
+@keyframes storyAppear{
 
     0%{
 
         opacity:0;
 
-        transform:scale(.94);
+        transform:
+            scale(.94);
 
     }
 
-    18%{
+    20%{
 
         opacity:1;
 
-        transform:scale(1);
+        transform:
+            scale(1);
 
     }
 
-    70%{
+    75%{
 
         opacity:1;
 
-        transform:scale(1.02);
+        transform:
+            scale(1.02);
 
     }
 
@@ -268,7 +282,8 @@ body{
 
         opacity:0;
 
-        transform:scale(1.05);
+        transform:
+            scale(1.05);
 
     }
 
@@ -276,7 +291,7 @@ body{
 
 
 /* =========================================================
-   BILD-BÜHNE
+   BILDER-MONTAGE
 ========================================================= */
 
 .final-images{
@@ -292,10 +307,6 @@ body{
 }
 
 
-/* =========================================================
-   EINZELNES BILD
-========================================================= */
-
 .final-image{
 
     position:absolute;
@@ -304,7 +315,10 @@ body{
 
     top:50%;
 
-    width:min(720px,82vw);
+    width:min(
+        720px,
+        82vw
+    );
 
     max-height:65vh;
 
@@ -314,9 +328,11 @@ body{
 
     box-shadow:
 
-        0 20px 70px rgba(0,0,0,.8),
+        0 20px 70px
+        rgba(0,0,0,.8),
 
-        0 0 45px rgba(77,163,255,.18);
+        0 0 45px
+        rgba(77,163,255,.18);
 
     opacity:0;
 
@@ -329,15 +345,14 @@ body{
 }
 
 
-/* =========================================================
-   BILD ERSCHEINT
-========================================================= */
-
 .final-image.show{
 
     animation:
 
-        imageMoment 7s ease forwards;
+        imageMoment
+        7s
+        ease
+        forwards;
 
 }
 
@@ -356,7 +371,6 @@ body{
 
     }
 
-
     15%{
 
         opacity:1;
@@ -368,7 +382,6 @@ body{
             scale(.97);
 
     }
-
 
     65%{
 
@@ -382,7 +395,6 @@ body{
 
     }
 
-
     100%{
 
         opacity:0;
@@ -392,6 +404,288 @@ body{
             translate(-50%,-50%)
 
             scale(1.07);
+
+    }
+
+}
+
+
+/* =========================================================
+   FINALES MOJANG-BILD
+========================================================= */
+
+.mojang-final{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:60;
+
+    background:#000;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:
+        opacity 2s ease;
+
+}
+
+
+.mojang-final.active{
+
+    opacity:1;
+
+}
+
+
+.mojang-image{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+
+/* =========================================================
+   DUNKLER OVERLAY ÜBER MOJANG
+========================================================= */
+
+.mojang-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.15),
+            rgba(0,0,0,.65)
+        );
+
+    padding:30px;
+
+}
+
+
+.mojang-title{
+
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            72px
+        );
+
+    font-weight:bold;
+
+    letter-spacing:6px;
+
+    text-shadow:
+        0 5px 30px
+        rgba(0,0,0,.9);
+
+}
+
+
+.mojang-ip{
+
+    margin-top:25px;
+
+    font-size:
+        clamp(
+            20px,
+            3vw,
+            34px
+        );
+
+    letter-spacing:3px;
+
+    opacity:.9;
+
+    text-shadow:
+        0 4px 20px
+        rgba(0,0,0,.9);
+
+}
+
+
+/* =========================================================
+   FINALE TEXT-SEITE
+========================================================= */
+
+.final-ending{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:70;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            #10233d,
+            #03070c 75%
+        );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    overflow:hidden;
+
+    opacity:0;
+
+    pointer-events:none;
+
+}
+
+
+.final-ending.active{
+
+    opacity:1;
+
+}
+
+
+.final-ending-content{
+
+    width:90%;
+
+    max-width:1000px;
+
+    text-align:center;
+
+    padding-top:110vh;
+
+    animation:none;
+
+}
+
+
+.final-ending-content.scroll{
+
+    animation:
+        endingScroll
+        45s
+        linear
+        forwards;
+
+}
+
+
+.final-heading{
+
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            68px
+        );
+
+    font-weight:bold;
+
+    letter-spacing:5px;
+
+    line-height:1.25;
+
+    margin-bottom:80px;
+
+}
+
+
+.final-subheading{
+
+    font-size:
+        clamp(
+            25px,
+            3vw,
+            42px
+        );
+
+    font-weight:bold;
+
+    line-height:1.5;
+
+    margin-bottom:130px;
+
+}
+
+
+.final-community{
+
+    font-size:
+        clamp(
+            20px,
+            2vw,
+            30px
+        );
+
+    line-height:1.8;
+
+    max-width:900px;
+
+    margin:auto;
+
+}
+
+
+.final-lms{
+
+    margin-top:180px;
+
+    margin-bottom:400px;
+
+    font-size:
+        clamp(
+            45px,
+            7vw,
+            90px
+        );
+
+    font-weight:bold;
+
+    letter-spacing:10px;
+
+}
+
+
+@keyframes endingScroll{
+
+    from{
+
+        transform:
+            translateY(0);
+
+    }
+
+    to{
+
+        transform:
+            translateY(-230vh);
 
     }
 
@@ -412,15 +706,18 @@ body{
 
     top:50%;
 
-    transform:translate(-50%,-50%);
+    transform:
+        translate(-50%,-50%);
 
     padding:18px 35px;
 
-    border:1px solid #4da3ff;
+    border:
+        1px solid #4da3ff;
 
     border-radius:15px;
 
-    background:rgba(40,120,210,.85);
+    background:
+        rgba(40,120,210,.85);
 
     color:white;
 
@@ -434,7 +731,8 @@ body{
 
     box-shadow:
 
-        0 0 30px rgba(77,163,255,.35);
+        0 0 30px
+        rgba(77,163,255,.35);
 
 }
 
@@ -446,9 +744,7 @@ body{
     color:#061426;
 
     transform:
-
         translate(-50%,-50%)
-
         scale(1.05);
 
 }
@@ -496,7 +792,8 @@ body{
 
         font-size:28px;
 
-        padding:0 25px;
+        padding:
+            0 25px;
 
     }
 
@@ -505,7 +802,8 @@ body{
 
         font-size:34px;
 
-        padding:0 20px;
+        padding:
+            0 20px;
 
     }
 
@@ -519,9 +817,31 @@ body{
     }
 
 
+    .mojang-title{
+
+        letter-spacing:3px;
+
+    }
+
+
+    .mojang-ip{
+
+        letter-spacing:1px;
+
+    }
+
+
+    .final-lms{
+
+        letter-spacing:5px;
+
+    }
+
+
     #startButton{
 
-        padding:15px 25px;
+        padding:
+            15px 25px;
 
         font-size:16px;
 
@@ -556,7 +876,7 @@ body{
 
 
 <!-- =====================================================
-     START BUTTON
+     START
 ===================================================== -->
 
 <button
@@ -622,7 +942,7 @@ body{
         </div>
 
 
-        <!-- BUILDER -->
+        <!-- BUILD TEAM -->
 
         <div class="credit-block">
 
@@ -800,76 +1120,16 @@ body{
 
 
 <!-- =====================================================
-     BILDER
+     STORY MOMENT
 ===================================================== -->
 
 <div
-    class="final-images"
-    id="finalImages"
+    class="story-overlay"
+    id="storyOverlay"
 >
 
 
-    <img
-        class="final-image"
-        id="image1"
-        src="Screenshot%20%28270%29.png"
-        alt="LMS SERVER Moment"
-    >
-
-
-    <img
-        class="final-image"
-        id="image2"
-        src="Screenshot%20%28271%29.png"
-        alt="LMS SERVER Moment"
-    >
-
-
-    <img
-        class="final-image"
-        id="image3"
-        src="Screenshot%20%28272%29.png"
-        alt="LMS SERVER Moment"
-    >
-
-
-    <img
-        class="final-image"
-        id="image4"
-        src="Screenshot%20%28273%29.png"
-        alt="LMS SERVER Moment"
-    >
-
-
-    <img
-        class="final-image"
-        id="image5"
-        src="Screenshot%20%28274%29.png"
-        alt="LMS SERVER Moment"
-    >
-
-
-    <img
-        class="final-image"
-        id="image6"
-        src="Screenshot%20%28275%29.png"
-        alt="LMS SERVER Moment"
-    >
-
-</div>
-
-
-<!-- =====================================================
-     STORY-FINALE
-===================================================== -->
-
-<div
-    class="final-overlay"
-    id="finalOverlay"
->
-
-
-    <div class="final-overlay-text">
+    <div class="story-text">
 
         THE STORY IS STILL
         <br>
@@ -882,6 +1142,205 @@ body{
 
 
 <!-- =====================================================
+     BILDER-MONTAGE
+===================================================== -->
+
+<div
+    class="final-images"
+    id="finalImages"
+>
+
+
+    <!-- 270 wird später als finales Vollbild benutzt -->
+
+    <img
+        class="final-image"
+        id="image1"
+        src="Screenshot%20%28271%29.png"
+        alt="LMS SERVER Moment"
+    >
+
+
+    <img
+        class="final-image"
+        id="image2"
+        src="Screenshot%20%28272%29.png"
+        alt="LMS SERVER Moment"
+    >
+
+
+    <img
+        class="final-image"
+        id="image3"
+        src="Screenshot%20%28273%29.png"
+        alt="LMS SERVER Moment"
+    >
+
+
+    <img
+        class="final-image"
+        id="image4"
+        src="Screenshot%20%28274%29.png"
+        alt="LMS SERVER Moment"
+    >
+
+
+    <img
+        class="final-image"
+        id="image5"
+        src="Screenshot%20%28275%29.png"
+        alt="LMS SERVER Moment"
+    >
+
+</div>
+
+
+<!-- =====================================================
+     MOJANG-FINALE
+===================================================== -->
+
+<div
+    class="mojang-final"
+    id="mojangFinal"
+>
+
+
+    <img
+        class="mojang-image"
+        src="Screenshot%20%28270%29.png"
+        alt="LMS SERVER Final Moment"
+    >
+
+
+    <div class="mojang-overlay">
+
+
+        <div class="mojang-title">
+
+            WRITE THE STORY WITH US.
+
+        </div>
+
+
+        <div class="mojang-ip">
+
+            LMS_server.aternos.me
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- =====================================================
+     FINALE TEXT
+===================================================== -->
+
+<div
+    class="final-ending"
+    id="finalEnding"
+>
+
+
+    <div
+        class="final-ending-content"
+        id="finalEndingContent"
+    >
+
+
+        <div class="final-heading">
+
+            OUR STORY HAS NO ENDING.
+
+            <br><br>
+
+            IT IS SIMPLY
+            <br>
+            UNWRITTEN.
+
+        </div>
+
+
+        <div class="final-subheading">
+
+            Thank you for being such
+            an incredible community.
+
+        </div>
+
+
+        <div class="final-community">
+
+            On behalf of everyone at
+            <strong>LMS SERVER</strong>,
+
+            <br><br>
+
+            we want to thank every single person
+            who has been part of our journey.
+
+            <br><br>
+
+            Every player.
+
+            Every builder.
+
+            Every tester.
+
+            Every supporter.
+
+            Every friend.
+
+            <br><br>
+
+            You are what makes this community
+            what it is.
+
+            <br><br>
+
+            Thank you for every adventure,
+            every laugh, every idea and every
+            moment we have shared together.
+
+            <br><br>
+
+            The story is not finished.
+
+            <br>
+
+            There are still worlds to explore,
+            ideas to build and memories
+            waiting to be created.
+
+            <br><br>
+
+            <strong>
+                Thank you for being part of LMS SERVER.
+            </strong>
+
+            <br><br>
+
+            &lt;3
+
+        </div>
+
+
+        <div class="final-lms">
+
+            LMS SERVER
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
      JAVASCRIPT
 ===================================================== -->
 
@@ -889,19 +1348,45 @@ body{
 
 
 const music =
-    document.getElementById("creditsMusic");
+    document.getElementById(
+        "creditsMusic"
+    );
 
 
 const credits =
-    document.getElementById("credits");
+    document.getElementById(
+        "credits"
+    );
 
 
 const startButton =
-    document.getElementById("startButton");
+    document.getElementById(
+        "startButton"
+    );
 
 
-const finalOverlay =
-    document.getElementById("finalOverlay");
+const storyOverlay =
+    document.getElementById(
+        "storyOverlay"
+    );
+
+
+const mojangFinal =
+    document.getElementById(
+        "mojangFinal"
+    );
+
+
+const finalEnding =
+    document.getElementById(
+        "finalEnding"
+    );
+
+
+const finalEndingContent =
+    document.getElementById(
+        "finalEndingContent"
+    );
 
 
 const images = [
@@ -914,9 +1399,7 @@ const images = [
 
     document.getElementById("image4"),
 
-    document.getElementById("image5"),
-
-    document.getElementById("image6")
+    document.getElementById("image5")
 
 ];
 
@@ -926,6 +1409,10 @@ let started = false;
 let lastTime = 0;
 
 let scrollPosition = 0;
+
+let storyStarted = false;
+
+let imagesStarted = false;
 
 let finalStarted = false;
 
@@ -946,7 +1433,8 @@ function startCredits(){
     started = true;
 
 
-    startButton.style.display = "none";
+    startButton.style.display =
+        "none";
 
 
     music.currentTime = 0;
@@ -955,14 +1443,17 @@ function startCredits(){
     music.play()
         .then(() => {
 
-            requestAnimationFrame(updateCredits);
+            requestAnimationFrame(
+                updateCredits
+            );
 
         })
         .catch(() => {
 
             started = false;
 
-            startButton.style.display = "block";
+            startButton.style.display =
+                "block";
 
         });
 
@@ -970,7 +1461,7 @@ function startCredits(){
 
 
 /* =====================================================
-   AUTOPLAY VERSUCH
+   AUTOPLAY
 ===================================================== */
 
 window.addEventListener(
@@ -982,16 +1473,19 @@ window.addEventListener(
 
                 started = true;
 
-                startButton.style.display = "none";
+                startButton.style.display =
+                    "none";
 
-                requestAnimationFrame(updateCredits);
+                requestAnimationFrame(
+                    updateCredits
+                );
 
             })
             .catch(() => {
 
                 /*
                     Browser blockiert Autoplay.
-                    Dann bleibt der Button sichtbar.
+                    Button bleibt sichtbar.
                 */
 
             });
@@ -1001,7 +1495,7 @@ window.addEventListener(
 
 
 /* =====================================================
-   CREDIT-ROLL
+   ABSPANN
 ===================================================== */
 
 function updateCredits(timestamp){
@@ -1028,7 +1522,6 @@ function updateCredits(timestamp){
 
 
     /*
-        BIS 01:05
         NORMALER ABSPANN
     */
 
@@ -1037,10 +1530,12 @@ function updateCredits(timestamp){
 
     /*
         AB 01:05
-        DEUTLICH SCHNELLER
+        SCHNELLER
     */
 
-    if(music.currentTime >= 65){
+    if(
+        music.currentTime >= 65
+    ){
 
         speed = 70;
 
@@ -1058,12 +1553,42 @@ function updateCredits(timestamp){
 
 
     /*
-        STORY-MOMENT
-        EXAKT BEI 01:05
+        01:05
+        STORY MOMENT
     */
 
     if(
         music.currentTime >= 65 &&
+        !storyStarted
+    ){
+
+        startStoryMoment();
+
+    }
+
+
+    /*
+        01:25
+        BILDER
+    */
+
+    if(
+        music.currentTime >= 85 &&
+        !imagesStarted
+    ){
+
+        startImages();
+
+    }
+
+
+    /*
+        CA. 02:35
+        MOJANG FINALE
+    */
+
+    if(
+        music.currentTime >= 155 &&
         !finalStarted
     ){
 
@@ -1077,7 +1602,9 @@ function updateCredits(timestamp){
         RESET
     */
 
-    if(music.currentTime >= 179.8){
+    if(
+        music.currentTime >= 179.8
+    ){
 
         resetCredits();
 
@@ -1086,65 +1613,60 @@ function updateCredits(timestamp){
     }
 
 
-    requestAnimationFrame(updateCredits);
-
-}
-
-
-/* =====================================================
-   FINALE
-===================================================== */
-
-function startFinale(){
-
-    finalStarted = true;
-
-
-    /*
-        01:05
-        STORY-TEXT
-    */
-
-    finalOverlay.classList.add("active");
-
-
-    /*
-        Nach dem Story-Moment
-        20 Sekunden Pause.
-        
-        01:05 + 20 Sekunden
-        = 01:25
-    */
-
-    setTimeout(
-        function(){
-
-            startImages();
-
-        },
-        20000
+    requestAnimationFrame(
+        updateCredits
     );
 
 }
 
 
 /* =====================================================
-   BILDER STARTEN
+   STORY-MOMENT
+===================================================== */
+
+function startStoryMoment(){
+
+    storyStarted = true;
+
+
+    storyOverlay.classList.add(
+        "active"
+    );
+
+
+    setTimeout(
+        function(){
+
+            storyOverlay.classList.remove(
+                "active"
+            );
+
+        },
+        7000
+    );
+
+}
+
+
+/* =====================================================
+   BILDER-MONTAGE
 ===================================================== */
 
 function startImages(){
 
+    imagesStarted = true;
+
 
     /*
-        Erstes Bild bei ca. 01:25
+        Erstes Bild sofort
     */
 
     showImage(0);
 
 
     /*
-        Jedes weitere Bild
-        ca. 7 Sekunden später
+        Danach jeweils
+        7 Sekunden Abstand
     */
 
     for(
@@ -1180,32 +1702,91 @@ function showImage(index){
     }
 
 
-    /*
-        Animation zurücksetzen
-    */
-
-    images[index].classList.remove("show");
+    images[index].classList.remove(
+        "show"
+    );
 
 
     void images[index].offsetWidth;
 
 
+    images[index].classList.add(
+        "show"
+    );
+
+
+    setTimeout(
+        function(){
+
+            images[index].classList.remove(
+                "show"
+            );
+
+        },
+        7000
+    );
+
+}
+
+
+/* =====================================================
+   MOJANG-FINALE
+===================================================== */
+
+function startFinale(){
+
+    finalStarted = true;
+
+
     /*
-        Bild anzeigen
+        Bilder ausblenden
     */
 
-    images[index].classList.add("show");
+    images.forEach(
+        function(image){
+
+            image.classList.remove(
+                "show"
+            );
+
+        }
+    );
 
 
     /*
-        Nach der Animation
-        wieder zurücksetzen
+        MOJANG-BILD EINBLENDEN
+    */
+
+    mojangFinal.classList.add(
+        "active"
+    );
+
+
+    /*
+        7 SEKUNDEN STEHEN LASSEN
     */
 
     setTimeout(
         function(){
 
-            images[index].classList.remove("show");
+            mojangFinal.classList.remove(
+                "active"
+            );
+
+
+            /*
+                Danach kommt
+                das große Text-Finale
+            */
+
+            finalEnding.classList.add(
+                "active"
+            );
+
+
+            finalEndingContent.classList.add(
+                "scroll"
+            );
 
         },
         7000
@@ -1220,13 +1801,16 @@ function showImage(index){
 
 function resetCredits(){
 
-
     music.currentTime = 0;
 
 
     scrollPosition = 0;
 
     lastTime = 0;
+
+    storyStarted = false;
+
+    imagesStarted = false;
 
     finalStarted = false;
 
@@ -1235,19 +1819,40 @@ function resetCredits(){
         "translateY(0)";
 
 
-    finalOverlay.classList.remove("active");
+    storyOverlay.classList.remove(
+        "active"
+    );
+
+
+    mojangFinal.classList.remove(
+        "active"
+    );
+
+
+    finalEnding.classList.remove(
+        "active"
+    );
+
+
+    finalEndingContent.classList.remove(
+        "scroll"
+    );
 
 
     images.forEach(
         function(image){
 
-            image.classList.remove("show");
+            image.classList.remove(
+                "show"
+            );
 
         }
     );
 
 
-    requestAnimationFrame(updateCredits);
+    requestAnimationFrame(
+        updateCredits
+    );
 
 }
 
