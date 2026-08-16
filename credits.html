@@ -161,17 +161,6 @@ body{
 }
 
 
-.end-space{
-
-    height:500px;
-
-}
-
-
-/* =========================================================
-   FINALE-TEXT
-========================================================= */
-
 .final-message{
 
     font-size:55px;
@@ -185,127 +174,15 @@ body{
 }
 
 
-/* =========================================================
-   BILDER-FINALE
-========================================================= */
+.end-space{
 
-.final-images{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:20;
-
-    pointer-events:none;
-
-    opacity:0;
-
-}
-
-
-.final-image{
-
-    position:absolute;
-
-    left:50%;
-
-    top:50%;
-
-    width:min(720px,82vw);
-
-    max-height:65vh;
-
-    object-fit:cover;
-
-    border-radius:22px;
-
-    box-shadow:
-
-        0 20px 70px rgba(0,0,0,.75),
-
-        0 0 45px rgba(77,163,255,.18);
-
-    opacity:0;
-
-    transform:
-
-        translate(-50%,-50%)
-
-        scale(.92);
+    height:500px;
 
 }
 
 
 /* =========================================================
-   BILDER-ANIMATIONEN
-========================================================= */
-
-.final-images.active{
-
-    opacity:1;
-
-}
-
-
-.final-image.show{
-
-    animation:
-
-        imageAppear 5s ease forwards;
-
-}
-
-
-@keyframes imageAppear{
-
-    0%{
-
-        opacity:0;
-
-        transform:
-
-            translate(-50%,-50%)
-
-            scale(.92);
-
-    }
-
-    18%{
-
-        opacity:1;
-
-    }
-
-    80%{
-
-        opacity:1;
-
-        transform:
-
-            translate(-50%,-50%)
-
-            scale(1.02);
-
-    }
-
-    100%{
-
-        opacity:0;
-
-        transform:
-
-            translate(-50%,-50%)
-
-            scale(1.07);
-
-    }
-
-}
-
-
-/* =========================================================
-   FINALE OVERLAY
+   FINALE-TEXT
 ========================================================= */
 
 .final-overlay{
@@ -314,7 +191,7 @@ body{
 
     inset:0;
 
-    z-index:30;
+    z-index:40;
 
     display:flex;
 
@@ -326,28 +203,12 @@ body{
 
     opacity:0;
 
-    background:
-
-        radial-gradient(
-
-            circle,
-
-            rgba(6,20,38,.15),
-
-            rgba(0,0,0,.55)
-
-        );
-
-    transition:
-
-        opacity 2s ease;
-
 }
 
 
 .final-overlay.active{
 
-    opacity:1;
+    animation:finalText 6s ease forwards;
 
 }
 
@@ -370,13 +231,175 @@ body{
 
     text-shadow:
 
-        0 5px 30px rgba(0,0,0,.9);
+        0 5px 30px rgba(0,0,0,.9),
+
+        0 0 40px rgba(255,255,255,.15);
+
+}
+
+
+@keyframes finalText{
+
+    0%{
+
+        opacity:0;
+
+        transform:scale(.94);
+
+    }
+
+    18%{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+    70%{
+
+        opacity:1;
+
+        transform:scale(1.02);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:scale(1.05);
+
+    }
 
 }
 
 
 /* =========================================================
-   START-BUTTON
+   BILD-BÜHNE
+========================================================= */
+
+.final-images{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:30;
+
+    pointer-events:none;
+
+}
+
+
+/* =========================================================
+   EINZELNES BILD
+========================================================= */
+
+.final-image{
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    width:min(720px,82vw);
+
+    max-height:65vh;
+
+    object-fit:contain;
+
+    border-radius:22px;
+
+    box-shadow:
+
+        0 20px 70px rgba(0,0,0,.8),
+
+        0 0 45px rgba(77,163,255,.18);
+
+    opacity:0;
+
+    transform:
+
+        translate(-50%,-50%)
+
+        scale(.90);
+
+}
+
+
+/* =========================================================
+   BILD ERSCHEINT
+========================================================= */
+
+.final-image.show{
+
+    animation:
+
+        imageMoment 7s ease forwards;
+
+}
+
+
+@keyframes imageMoment{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+
+            translate(-50%,-50%)
+
+            scale(.90);
+
+    }
+
+
+    15%{
+
+        opacity:1;
+
+        transform:
+
+            translate(-50%,-50%)
+
+            scale(.97);
+
+    }
+
+
+    65%{
+
+        opacity:1;
+
+        transform:
+
+            translate(-50%,-50%)
+
+            scale(1.02);
+
+    }
+
+
+    100%{
+
+        opacity:0;
+
+        transform:
+
+            translate(-50%,-50%)
+
+            scale(1.07);
+
+    }
+
+}
+
+
+/* =========================================================
+   MUSIK-BUTTON
 ========================================================= */
 
 #startButton{
@@ -487,20 +510,20 @@ body{
     }
 
 
-    #startButton{
-
-        padding:15px 25px;
-
-        font-size:16px;
-
-    }
-
-
     .final-image{
 
         width:88vw;
 
         max-height:55vh;
+
+    }
+
+
+    #startButton{
+
+        padding:15px 25px;
+
+        font-size:16px;
 
     }
 
@@ -533,7 +556,7 @@ body{
 
 
 <!-- =====================================================
-     START-BUTTON
+     START BUTTON
 ===================================================== -->
 
 <button
@@ -753,13 +776,14 @@ body{
         </div>
 
 
-        <!-- ENDE -->
+        <!-- STORY -->
 
         <div class="credit-block">
 
             <div class="final-message">
 
                 THE STORY IS STILL
+                <br>
                 BEING WRITTEN.
 
             </div>
@@ -836,7 +860,7 @@ body{
 
 
 <!-- =====================================================
-     FINALE-TEXT
+     STORY-FINALE
 ===================================================== -->
 
 <div
@@ -874,10 +898,6 @@ const credits =
 
 const startButton =
     document.getElementById("startButton");
-
-
-const finalImages =
-    document.getElementById("finalImages");
 
 
 const finalOverlay =
@@ -933,6 +953,11 @@ function startCredits(){
 
 
     music.play()
+        .then(() => {
+
+            requestAnimationFrame(updateCredits);
+
+        })
         .catch(() => {
 
             started = false;
@@ -941,14 +966,11 @@ function startCredits(){
 
         });
 
-
-    requestAnimationFrame(updateCredits);
-
 }
 
 
 /* =====================================================
-   AUTOMATISCHER START
+   AUTOPLAY VERSUCH
 ===================================================== */
 
 window.addEventListener(
@@ -968,14 +990,9 @@ window.addEventListener(
             .catch(() => {
 
                 /*
-
-                Browser blockiert Autoplay.
-
-                Der Button bleibt sichtbar.
-
+                    Browser blockiert Autoplay.
+                    Dann bleibt der Button sichtbar.
                 */
-
-                requestAnimationFrame(updateCredits);
 
             });
 
@@ -984,10 +1001,17 @@ window.addEventListener(
 
 
 /* =====================================================
-   ABSPANN-STEUERUNG
+   CREDIT-ROLL
 ===================================================== */
 
 function updateCredits(timestamp){
+
+    if(!started){
+
+        return;
+
+    }
+
 
     if(!lastTime){
 
@@ -1004,16 +1028,16 @@ function updateCredits(timestamp){
 
 
     /*
-        NORMAL:
-        langsamer Film-Abspann
+        BIS 01:05
+        NORMALER ABSPANN
     */
 
     let speed = 25;
 
 
     /*
-        AB 01:05:
-        schnellerer Abspann
+        AB 01:05
+        DEUTLICH SCHNELLER
     */
 
     if(music.currentTime >= 65){
@@ -1034,7 +1058,8 @@ function updateCredits(timestamp){
 
 
     /*
-        FINALE STARTET BEI 01:05
+        STORY-MOMENT
+        EXAKT BEI 01:05
     */
 
     if(
@@ -1048,8 +1073,8 @@ function updateCredits(timestamp){
 
 
     /*
-        NACH 03:00
-        alles zurücksetzen
+        03:00
+        RESET
     */
 
     if(music.currentTime >= 179.8){
@@ -1075,66 +1100,115 @@ function startFinale(){
     finalStarted = true;
 
 
-    finalImages.classList.add("active");
-
+    /*
+        01:05
+        STORY-TEXT
+    */
 
     finalOverlay.classList.add("active");
 
 
     /*
-        Bilder nacheinander
-    */
-
-    images.forEach(
-        function(image, index){
-
-            setTimeout(
-                function(){
-
-                    image.classList.add("show");
-
-                },
-                index * 4200
-            );
-
-        }
-    );
-
-
-    /*
-        Finale-Text etwas später
+        Nach dem Story-Moment
+        20 Sekunden Pause.
+        
+        01:05 + 20 Sekunden
+        = 01:25
     */
 
     setTimeout(
         function(){
 
-            finalOverlay.classList.remove("active");
+            startImages();
 
         },
-        9000
+        20000
     );
+
+}
+
+
+/* =====================================================
+   BILDER STARTEN
+===================================================== */
+
+function startImages(){
 
 
     /*
-        Bilder komplett entfernen
+        Erstes Bild bei ca. 01:25
+    */
+
+    showImage(0);
+
+
+    /*
+        Jedes weitere Bild
+        ca. 7 Sekunden später
+    */
+
+    for(
+        let i = 1;
+        i < images.length;
+        i++
+    ){
+
+        setTimeout(
+            function(){
+
+                showImage(i);
+
+            },
+            i * 7000
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   EINZELNES BILD
+===================================================== */
+
+function showImage(index){
+
+    if(!images[index]){
+
+        return;
+
+    }
+
+
+    /*
+        Animation zurücksetzen
+    */
+
+    images[index].classList.remove("show");
+
+
+    void images[index].offsetWidth;
+
+
+    /*
+        Bild anzeigen
+    */
+
+    images[index].classList.add("show");
+
+
+    /*
+        Nach der Animation
+        wieder zurücksetzen
     */
 
     setTimeout(
         function(){
 
-            finalImages.classList.remove("active");
-
-
-            images.forEach(
-                function(image){
-
-                    image.classList.remove("show");
-
-                }
-            );
+            images[index].classList.remove("show");
 
         },
-        30000
+        7000
     );
 
 }
@@ -1145,6 +1219,7 @@ function startFinale(){
 ===================================================== */
 
 function resetCredits(){
+
 
     music.currentTime = 0;
 
@@ -1158,9 +1233,6 @@ function resetCredits(){
 
     credits.style.transform =
         "translateY(0)";
-
-
-    finalImages.classList.remove("active");
 
 
     finalOverlay.classList.remove("active");
