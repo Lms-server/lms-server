@@ -41,7 +41,6 @@ body{
     overflow:hidden;
 
     background:
-
         radial-gradient(
             circle at center,
             #10233d 0%,
@@ -178,6 +177,55 @@ body{
 
 
 /* =========================
+   MUSIK-BUTTON
+========================= */
+
+#startButton{
+
+    position:fixed;
+
+    z-index:9999;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    padding:18px 35px;
+
+    border:1px solid #4da3ff;
+
+    border-radius:15px;
+
+    background:rgba(40,120,210,.85);
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:0 0 30px rgba(77,163,255,.35);
+
+}
+
+
+#startButton:hover{
+
+    background:white;
+
+    color:#061426;
+
+    transform:translate(-50%,-50%) scale(1.05);
+
+}
+
+
+/* =========================
    MOBILE
 ========================= */
 
@@ -211,6 +259,14 @@ body{
         padding:0 20px;
     }
 
+    #startButton{
+
+        padding:15px 25px;
+
+        font-size:16px;
+
+    }
+
 }
 
 </style>
@@ -220,6 +276,33 @@ body{
 
 <body>
 
+
+<!-- =========================
+     MUSIK
+========================= -->
+
+<audio id="creditsMusic" loop preload="auto">
+
+    <source src="credits-song.mp3" type="audio/mpeg">
+
+</audio>
+
+
+<!-- =========================
+     START BUTTON
+========================= -->
+
+<button id="startButton" onclick="startCredits()">
+
+    ABSPANN STARTEN
+
+</button>
+
+
+
+<!-- =========================
+     CREDIT-BÜHNE
+========================= -->
 
 <div class="credits-screen">
 
@@ -408,6 +491,40 @@ body{
 
 
 </div>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+function startCredits(){
+
+    const music = document.getElementById("creditsMusic");
+
+    const button = document.getElementById("startButton");
+
+
+    music.currentTime = 0;
+
+
+    music.play()
+        .then(() => {
+
+            button.style.display = "none";
+
+        })
+        .catch(() => {
+
+            alert("Die Musik konnte nicht gestartet werden.");
+
+        });
+
+}
+
+</script>
 
 
 </body>
