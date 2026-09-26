@@ -6,497 +6,1131 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>🦆 LMS SERVER</title>
-
+<title>LMS SERVER</title>
 
 <style>
 
 *{
-box-sizing:border-box;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
+html{
+    scroll-behavior:smooth;
+}
 
 body{
-
-margin:0;
-
-font-family:Arial,sans-serif;
-
-text-align:center;
-
-color:white;
-
-background:#061426;
-
-
-background-image:
-
-linear-gradient(#153252 1px,transparent 1px),
-
-linear-gradient(90deg,#153252 1px,transparent 1px);
-
-
-background-size:45px 45px;
-
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050b14;
+    color:white;
+    overflow-x:hidden;
 }
 
-
-
 /* =========================
-BANNER
+   BACKGROUND
 ========================= */
 
-header{
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-2;
 
-padding:50px 20px;
-
-
-background:
-
-linear-gradient(135deg,#ffb000,#ffe27a);
-
-
-color:#071a33;
-
-
-border-bottom:5px solid #ffb000;
-
+    background:
+        radial-gradient(circle at 20% 20%,rgba(255,176,0,.10),transparent 30%),
+        radial-gradient(circle at 80% 60%,rgba(40,120,210,.10),transparent 35%),
+        linear-gradient(180deg,#07111f 0%,#040810 100%);
 }
 
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
 
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
 
-header a{
-
-color:#071a33;
-
-text-decoration:none;
-
+    background-size:50px 50px;
 }
-
-
-
-h1{
-
-font-size:55px;
-
-margin:10px;
-
-}
-
-
 
 /* =========================
-NAVIGATION
+   NAVIGATION
 ========================= */
 
 .nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
 
+    height:78px;
 
-position:sticky;
+    display:flex;
+    align-items:center;
 
-top:0;
+    padding:0 45px;
 
-z-index:999;
+    background:rgba(4,9,16,.78);
+    backdrop-filter:blur(18px);
 
+    border-bottom:1px solid rgba(255,255,255,.08);
 
-display:flex;
-
-justify-content:center;
-
-gap:12px;
-
-flex-wrap:wrap;
-
-
-padding:15px;
-
-
-background:rgba(6,20,38,0.85);
-
-
-backdrop-filter:blur(10px);
-
+    z-index:1000;
 }
 
+/* LOGO */
 
+.logo{
+    display:flex;
+    align-items:center;
+
+    text-decoration:none;
+
+    margin-right:auto;
+}
+
+.logo img{
+    width:55px;
+    height:55px;
+
+    object-fit:contain;
+
+    border-radius:12px;
+
+    transition:.3s;
+}
+
+.logo img:hover{
+    transform:scale(1.07);
+}
+
+.logo-text{
+    margin-left:12px;
+
+    font-size:20px;
+    font-weight:900;
+    letter-spacing:1px;
+
+    color:white;
+}
+
+/* NAV LINKS */
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
 
 .nav button{
+    border:0;
+    background:transparent;
 
+    color:#dce5ef;
 
-background:rgba(40,120,210,0.55);
+    padding:12px 17px;
 
+    border-radius:10px;
 
-border:1px solid #4da3ff;
+    font-size:14px;
+    font-weight:bold;
 
+    cursor:pointer;
 
-color:white;
-
-
-padding:13px 25px;
-
-
-border-radius:15px;
-
-
-font-size:16px;
-
-
-font-weight:bold;
-
-
-cursor:pointer;
-
-
-transition:.3s;
-
-
+    transition:.25s;
 }
-
-
 
 .nav button:hover{
-
-
-background:white;
-
-
-color:#071a33;
-
-
-transform:translateY(-4px);
-
-
+    background:rgba(255,176,0,.12);
+    color:#ffb000;
 }
 
+.nav-play{
+    margin-left:12px;
 
+    background:#ffb000 !important;
+    color:#07111f !important;
+
+    padding:12px 22px !important;
+
+    border-radius:10px !important;
+}
+
+.nav-play:hover{
+    background:#ffd45c !important;
+    color:#07111f !important;
+}
 
 /* =========================
-KARTEN
+   HERO
 ========================= */
 
-.box{
+.hero{
+    min-height:720px;
 
+    position:relative;
 
-width:85%;
+    display:flex;
+    align-items:center;
 
+    padding:130px 8% 80px;
 
-max-width:950px;
+    overflow:hidden;
 
-
-margin:35px auto;
-
-
-padding:30px;
-
-
-background:rgba(255,255,255,0.08);
-
-
-border:1px solid rgba(255,255,255,0.15);
-
-
-border-radius:25px;
-
-
-box-shadow:0 0 25px rgba(0,0,0,.5);
-
-
-backdrop-filter:blur(8px);
-
-
-transition:.3s;
-
-
+    background:
+        linear-gradient(90deg,
+            rgba(3,8,15,.96) 0%,
+            rgba(3,8,15,.78) 38%,
+            rgba(3,8,15,.25) 75%,
+            rgba(3,8,15,.72) 100%
+        ),
+        url("onlyupmc_screenshot_1.jpg") center/cover no-repeat;
 }
 
+.hero::after{
+    content:"";
 
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
 
-.box:hover{
+    height:180px;
 
+    background:linear-gradient(transparent,#050b14);
 
-transform:translateY(-5px);
-
-
+    pointer-events:none;
 }
 
-
-
-h2{
-
-
-color:#ffb000;
-
-
-font-size:32px;
-
-
+.hero-content{
+    max-width:700px;
+    position:relative;
+    z-index:2;
 }
 
+.hero-small{
+    display:inline-block;
 
+    color:#ffb000;
 
-.status{
+    font-size:14px;
+    font-weight:900;
 
+    letter-spacing:3px;
 
-border:2px solid #4da3ff;
-
-
+    margin-bottom:18px;
 }
 
+.hero h1{
+    font-size:76px;
+    line-height:.95;
 
+    font-weight:900;
+
+    letter-spacing:-3px;
+
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:#ffb000;
+}
+
+.hero p{
+    color:#c8d2de;
+
+    font-size:19px;
+    line-height:1.7;
+
+    max-width:620px;
+
+    margin-bottom:32px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:0;
+
+    padding:15px 28px;
+
+    border-radius:10px;
+
+    font-size:15px;
+    font-weight:900;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.btn-primary{
+    background:#ffb000;
+    color:#07111f;
+}
+
+.btn-primary:hover{
+    background:#ffd45c;
+    transform:translateY(-3px);
+}
+
+.btn-secondary{
+    background:rgba(255,255,255,.08);
+    color:white;
+
+    border:1px solid rgba(255,255,255,.15);
+}
+
+.btn-secondary:hover{
+    background:rgba(255,255,255,.15);
+    transform:translateY(-3px);
+}
+
+/* SERVER MINI STATUS */
+
+.hero-status{
+    position:absolute;
+
+    right:7%;
+    bottom:90px;
+
+    z-index:3;
+
+    width:260px;
+
+    padding:20px;
+
+    background:rgba(5,12,22,.82);
+
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:15px;
+}
+
+.hero-status-title{
+    color:#aeb9c7;
+
+    font-size:12px;
+    font-weight:bold;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    margin-bottom:12px;
+}
+
+.status-row{
+    display:flex;
+    justify-content:space-between;
+
+    padding:8px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+    font-size:14px;
+}
+
+.status-row:last-child{
+    border-bottom:0;
+}
+
+.online-dot{
+    display:inline-block;
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#37e27c;
+
+    margin-right:6px;
+
+    box-shadow:0 0 10px #37e27c;
+}
 
 /* =========================
-COOKIE CLICKER
+   GENERAL
 ========================= */
 
-.cookie{
+.section{
+    width:90%;
+    max-width:1250px;
 
+    margin:0 auto;
 
-font-size:90px;
-
-
-cursor:pointer;
-
-
-transition:.3s;
-
-
+    padding:95px 0;
 }
 
-
-
-.cookie:hover{
-
-
-transform:scale(1.2);
-
-
+.section-header{
+    margin-bottom:40px;
 }
 
+.section-label{
+    color:#ffb000;
 
+    font-size:12px;
+    font-weight:900;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    margin-bottom:10px;
+}
+
+.section-title{
+    font-size:42px;
+    font-weight:900;
+
+    letter-spacing:-1px;
+}
+
+.section-description{
+    color:#8e9bab;
+
+    max-width:650px;
+
+    line-height:1.7;
+
+    margin-top:12px;
+}
 
 /* =========================
-ONLY UP
+   SERVER STATUS
 ========================= */
 
-.onlyup-box{
+.status-card{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
 
-overflow:hidden;
+    background:linear-gradient(
+        135deg,
+        rgba(255,176,0,.12),
+        rgba(255,255,255,.035)
+    );
 
-padding:30px;
+    border:1px solid rgba(255,176,0,.22);
 
+    border-radius:18px;
+
+    overflow:hidden;
 }
 
+.status-item{
+    padding:28px;
 
-
-.onlyup-img{
-
-width:100%;
-
-height:350px;
-
-object-fit:cover;
-
-border-radius:20px;
-
-display:block;
-
-margin-bottom:25px;
-
+    border-right:1px solid rgba(255,255,255,.08);
 }
 
-
-
-.onlyup-box h2{
-
-font-size:38px;
-
-color:#ffb000;
-
-margin-bottom:15px;
-
+.status-item:last-child{
+    border-right:0;
 }
 
+.status-item small{
+    display:block;
 
+    color:#8794a5;
 
-.onlyup-box p{
+    font-size:12px;
+    font-weight:bold;
 
-font-size:18px;
+    text-transform:uppercase;
 
-line-height:1.7;
-
-color:#e5e5e5;
-
+    margin-bottom:10px;
 }
 
-
-
-.onlyup-box button{
-
-margin-top:10px;
-
-padding:14px 30px;
-
-border-radius:15px;
-
-border:1px solid #4da3ff;
-
-background:rgba(40,120,210,.6);
-
-color:white;
-
-font-size:16px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-transition:.3s;
-
+.status-item strong{
+    font-size:20px;
 }
-
-
-
-.onlyup-box button:hover{
-
-background:white;
-
-color:#071a33;
-
-transform:translateY(-4px);
-
-}
-
-
 
 /* =========================
-ALLGEMEINE BUTTONS
+   GAMES
 ========================= */
 
-button{
+.games-grid{
+    display:grid;
 
-cursor:pointer;
+    grid-template-columns:
+        repeat(3,1fr);
 
+    gap:18px;
 }
 
+.game-card{
+    position:relative;
 
+    height:270px;
+
+    overflow:hidden;
+
+    border-radius:16px;
+
+    background:#0b1421;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    cursor:pointer;
+
+    transition:.35s;
+}
+
+.game-card:hover{
+    transform:translateY(-7px);
+
+    border-color:rgba(255,176,0,.55);
+
+    box-shadow:0 18px 50px rgba(0,0,0,.4);
+}
+
+.game-card img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.5s;
+}
+
+.game-card:hover img{
+    transform:scale(1.08);
+}
+
+.game-overlay{
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+
+    padding:25px;
+
+    background:
+        linear-gradient(
+            transparent 30%,
+            rgba(3,8,15,.95) 100%
+        );
+}
+
+.game-overlay h3{
+    font-size:25px;
+
+    margin-bottom:6px;
+}
+
+.game-overlay p{
+    color:#aeb8c5;
+
+    font-size:13px;
+
+    line-height:1.5;
+}
+
+.game-tag{
+    position:absolute;
+
+    top:15px;
+    left:15px;
+
+    padding:7px 10px;
+
+    background:rgba(255,176,0,.95);
+
+    color:#07111f;
+
+    border-radius:7px;
+
+    font-size:10px;
+    font-weight:900;
+
+    text-transform:uppercase;
+}
 
 /* =========================
-SURVIVAL CAMP
+   FEATURE
 ========================= */
 
-.survival-img{
+.feature{
+    display:grid;
 
+    grid-template-columns:1.15fr .85fr;
 
-width:100%;
+    gap:30px;
 
-
-height:320px;
-
-
-object-fit:cover;
-
-
-border-radius:20px;
-
-
+    align-items:stretch;
 }
 
+.feature-image{
+    min-height:430px;
 
+    border-radius:18px;
+
+    overflow:hidden;
+
+    background:
+        url("onlyupmc_screenshot_1.jpg")
+        center/cover no-repeat;
+}
+
+.feature-content{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    padding:45px;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,176,0,.12),
+            rgba(255,255,255,.035)
+        );
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.feature-content h2{
+    font-size:44px;
+
+    margin-bottom:18px;
+}
+
+.feature-content h2 span{
+    color:#ffb000;
+}
+
+.feature-content p{
+    color:#aab5c2;
+
+    line-height:1.8;
+
+    margin-bottom:25px;
+}
+
+/* =========================
+   LMS LIVE
+========================= */
+
+.live{
+    position:relative;
+
+    overflow:hidden;
+
+    padding:60px;
+
+    border-radius:20px;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(255,176,0,.25),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #101b2b,
+            #070d17
+        );
+
+    border:1px solid rgba(255,176,0,.18);
+}
+
+.live h2{
+    font-size:40px;
+
+    margin-bottom:15px;
+}
+
+.live h2 span{
+    color:#ffb000;
+}
+
+.live p{
+    max-width:650px;
+
+    color:#aeb8c5;
+
+    line-height:1.7;
+
+    margin-bottom:25px;
+}
+
+#vote{
+    margin-top:15px;
+
+    color:#ffb000;
+
+    font-weight:bold;
+}
+
+/* =========================
+   TEAM
+========================= */
+
+.team-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:16px;
+}
+
+.team-card{
+    padding:25px;
+
+    text-align:center;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.035);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.3s;
+}
+
+.team-card:hover{
+    transform:translateY(-5px);
+
+    border-color:rgba(255,176,0,.35);
+}
+
+.team-card img{
+    width:85px;
+    height:85px;
+
+    border-radius:14px;
+
+    margin-bottom:15px;
+}
+
+.team-card h3{
+    font-size:16px;
+
+    margin-bottom:5px;
+}
+
+.team-card span{
+    color:#ffb000;
+
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-box{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:30px;
+}
+
+.contact-info{
+    padding:40px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.035);
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.contact-info h2{
+    font-size:35px;
+
+    margin-bottom:15px;
+}
+
+.contact-info p{
+    color:#9eabba;
+
+    line-height:1.7;
+}
+
+.contact-form{
+    padding:35px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.035);
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.input{
+    width:100%;
+
+    padding:14px 16px;
+
+    margin-bottom:12px;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    border-radius:10px;
+
+    background:#080f19;
+
+    color:white;
+
+    outline:none;
+
+    font-family:inherit;
+}
+
+.input:focus{
+    border-color:#ffb000;
+}
+
+textarea.input{
+    height:130px;
+
+    resize:vertical;
+}
+
+/* =========================
+   SURVIVAL
+========================= */
+
+.survival{
+    padding:45px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(40,120,210,.13),
+            rgba(255,255,255,.035)
+        );
+
+    border:1px solid rgba(255,255,255,.08);
+
+    text-align:center;
+}
+
+.survival h2{
+    font-size:35px;
+
+    margin-bottom:12px;
+}
+
+.survival p{
+    color:#aeb8c5;
+
+    margin-bottom:25px;
+}
 
 .camp-code{
+    margin-top:20px;
 
+    padding:20px;
 
-margin-top:20px;
+    color:#ffb000;
 
+    background:#050b13;
 
-padding:20px;
+    border-radius:12px;
 
-
-font-size:24px;
-
-
-color:#ffb000;
-
-
-background:rgba(0,0,0,.4);
-
-
-border-radius:15px;
-
-
+    font-size:22px;
+    font-weight:900;
 }
-
-
 
 /* =========================
-MOBILE
+   COOKIE
 ========================= */
 
-@media(max-width:700px){
+.cookie-section{
+    text-align:center;
 
-h1{
+    padding:50px;
 
-font-size:42px;
+    border-radius:18px;
+
+    background:rgba(255,255,255,.025);
+
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.cookie{
+    display:inline-block;
+
+    font-size:80px;
+
+    margin:20px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.cookie:hover{
+    transform:scale(1.15);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    margin-top:40px;
+
+    padding:50px 8%;
+
+    background:#03070d;
+
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.footer-inner{
+    max-width:1250px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:30px;
+
+    flex-wrap:wrap;
+}
+
+.footer-logo{
+    display:flex;
+    align-items:center;
+}
+
+.footer-logo img{
+    width:45px;
+    height:45px;
+
+    object-fit:contain;
+
+    border-radius:10px;
+
+    margin-right:10px;
+}
+
+.footer-text{
+    color:#687687;
+
+    font-size:13px;
+
+    line-height:1.6;
+}
+
+.footer-links{
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+}
+
+.footer-links a{
+    color:#8d99a8;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    transition:.2s;
+}
+
+.footer-links a:hover{
+    color:#ffb000;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    .nav{
+        padding:0 20px;
+    }
+
+    .logo-text{
+        display:none;
+    }
+
+    .nav-links button:not(.nav-play){
+        display:none;
+    }
+
+    .hero{
+        min-height:650px;
+
+        padding:130px 25px 80px;
+    }
+
+    .hero h1{
+        font-size:54px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .hero-status{
+        position:relative;
+
+        right:auto;
+        bottom:auto;
+
+        margin-top:40px;
+
+        width:100%;
+    }
+
+    .status-card{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .status-item:nth-child(2){
+        border-right:0;
+    }
+
+    .status-item{
+        border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .games-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .team-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .feature{
+        grid-template-columns:1fr;
+    }
+
+    .contact-box{
+        grid-template-columns:1fr;
+    }
 
 }
 
+@media(max-width:600px){
 
-header{
+    .nav{
+        height:68px;
+    }
 
-padding:40px 15px;
+    .logo img{
+        width:48px;
+        height:48px;
+    }
+
+    .nav-play{
+        margin-left:0;
+    }
+
+    .hero{
+        min-height:680px;
+    }
+
+    .hero h1{
+        font-size:45px;
+    }
+
+    .section{
+        width:92%;
+
+        padding:70px 0;
+    }
+
+    .section-title{
+        font-size:34px;
+    }
+
+    .games-grid{
+        grid-template-columns:1fr;
+    }
+
+    .team-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .status-card{
+        grid-template-columns:1fr;
+    }
+
+    .status-item{
+        border-right:0;
+    }
+
+    .feature-content{
+        padding:30px;
+    }
+
+    .feature-content h2{
+        font-size:35px;
+    }
+
+    .live{
+        padding:35px 25px;
+    }
+
+    .live h2{
+        font-size:32px;
+    }
+
+    .survival{
+        padding:35px 20px;
+    }
 
 }
 
+/* =========================
+   ANIMATION
+========================= */
 
-.nav button{
+@keyframes fadeUp{
 
-padding:11px 16px;
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
 
-font-size:14px;
-
-}
-
-
-.box{
-
-width:94%;
-
-padding:25px 20px;
-
-}
-
-
-.onlyup-img{
-
-height:230px;
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 
 }
 
-
-.onlyup-box h2{
-
-font-size:30px;
-
-}
-
-
-.onlyup-box p{
-
-font-size:16px;
-
-}
-
-
-.survival-img{
-
-height:240px;
-
-}
-
+.hero-content{
+    animation:fadeUp .8s ease both;
 }
 
 </style>
-
 
 </head>
 
@@ -505,896 +1139,1331 @@ height:240px;
 
 
 <!-- =========================
-HEADER
+     NAVIGATION
 ========================= -->
 
-<header id="top">
+<nav class="nav">
+
+    <a class="logo" href="#top">
+
+        <img
+            src="WhatsApp%20Image%202026-07-11%20at%2015.30.43.jpeg"
+            alt="LMS Logo"
+        >
+
+        <span class="logo-text">
+            LMS SERVER
+        </span>
+
+    </a>
 
 
-<a href="index.html">
+    <div class="nav-links">
+
+        <button onclick="scrollToSection('top')">
+            Start
+        </button>
+
+        <button onclick="scrollToSection('games')">
+            Spiele
+        </button>
+
+        <button onclick="scrollToSection('shop')">
+            Shop
+        </button>
+
+        <button onclick="scrollToSection('live')">
+            LMS LIVE
+        </button>
+
+        <button onclick="scrollToSection('team')">
+            Team
+        </button>
+
+        <button onclick="scrollToSection('kontakt')">
+            Kontakt
+        </button>
+
+        <button
+            class="nav-play"
+            onclick="copyIP()"
+        >
+            Spielen
+        </button>
+
+    </div>
+
+</nav>
 
 
-<h1>🦆 LMS SERVER</h1>
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero" id="top">
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            LMS NETWORK
+        </div>
+
+        <h1>
+            Dein Server.<br>
+            <span>Deine Spiele.</span>
+        </h1>
+
+        <p>
+            Willkommen auf dem LMS SERVER.
+            Entdecke Minigames, Events, Survival
+            und viele weitere Abenteuer mit deiner Community.
+        </p>
 
 
-</a>
+        <div class="hero-buttons">
+
+            <button
+                class="btn btn-primary"
+                onclick="copyIP()"
+            >
+                Jetzt spielen
+            </button>
+
+            <button
+                class="btn btn-secondary"
+                onclick="scrollToSection('games')"
+            >
+                Spiele entdecken
+            </button>
+
+        </div>
+
+    </div>
 
 
-<p>
+    <div class="hero-status">
 
-Minecraft Minigames • Survival • Events
+        <div class="hero-status-title">
+            Server Status
+        </div>
 
-</p>
+        <div class="status-row">
 
+            <span>Status</span>
+
+            <strong id="heroServerStatus">
+                Prüfe...
+            </strong>
+
+        </div>
+
+        <div class="status-row">
+
+            <span>Spieler</span>
+
+            <strong id="heroPlayers">
+                0/40
+            </strong>
+
+        </div>
+
+        <div class="status-row">
+
+            <span>Version</span>
+
+            <strong id="heroVersion">
+                —
+            </strong>
+
+        </div>
+
+        <div class="status-row">
+
+            <span>IP</span>
+
+            <strong>
+                LMS_server.aternos.me
+            </strong>
+
+        </div>
+
+    </div>
 
 </header>
 
 
-
 <!-- =========================
-NAVIGATION
+     SERVER STATUS
 ========================= -->
 
-<div class="nav">
+<section class="section">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            SERVER
+        </div>
+
+        <h2 class="section-title">
+            LMS Server Status
+        </h2>
+
+        <p class="section-description">
+            Alle wichtigen Informationen über den aktuellen Serverstatus
+            auf einen Blick.
+        </p>
+
+    </div>
 
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <div class="status-card">
 
-Start
+        <div class="status-item">
 
-</button>
+            <small>Status</small>
 
+            <strong id="serverStatus">
+                Prüfe Server...
+            </strong>
 
-<button onclick="location.href='#shop'">
-
-Shop
-
-</button>
-
-
-<button onclick="location.href='#games'">
-
-Minigames
-
-</button>
+        </div>
 
 
-<button onclick="location.href='#live'">
+        <div class="status-item">
 
-LMS LIVE
+            <small>Spieler</small>
 
-</button>
+            <strong id="players">
+                0/40
+            </strong>
 
-
-<button onclick="location.href='#team'">
-
-Team
-
-</button>
+        </div>
 
 
-<button onclick="location.href='#kontakt'">
+        <div class="status-item">
 
-Kontakt
+            <small>Version</small>
 
-</button>
+            <strong id="version">
+                Wird geladen...
+            </strong>
 
-
-<button onclick="location.href='info.html'">
-
-Info
-
-</button>
+        </div>
 
 
-</div>
+        <div class="status-item">
 
+            <small>Server IP</small>
+
+            <strong>
+                LMS_server.aternos.me
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
 
 
 <!-- =========================
-SERVER STATUS
+     GAMES
 ========================= -->
 
-<div class="box status">
+<section class="section" id="games">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            LMS GAMES
+        </div>
+
+        <h2 class="section-title">
+            Spiele entdecken
+        </h2>
+
+        <p class="section-description">
+            Von verrückten Minigames bis zu großen Abenteuern:
+            Hier findest du die Spiele des LMS SERVER.
+        </p>
+
+    </div>
 
 
-<h2>LMS SERVER STATUS</h2>
+    <div class="games-grid">
 
 
-<p id="serverStatus">
+        <div class="game-card">
 
-🔄 Prüfe Server...
+            <div class="game-tag">
+                NEU
+            </div>
 
-</p>
+            <img
+                src="onlyupmc_screenshot_1.jpg"
+                alt="Only Up"
+            >
 
+            <div class="game-overlay">
 
-<p>
+                <h3>
+                    Only Up
+                </h3>
 
-Spieler:
+                <p>
+                    Kämpfe dich immer weiter nach oben.
+                    Jeder Sprung zählt.
+                </p>
 
-<span id="players">
+            </div>
 
-0/40
-
-</span>
-
-</p>
-
-
-<p>
-
-Adresse:
-
-<br>
-
-LMS_server.aternos.me
-
-</p>
+        </div>
 
 
-<p>
+        <div class="game-card">
 
-Version:
+            <div class="game-overlay">
 
-<br>
+                <h3>
+                    Happy Ghast Flug
+                </h3>
 
-<span id="version">
+                <p>
+                    Fliege durch die Welt und entdecke
+                    neue Herausforderungen.
+                </p>
 
-Wird geladen...
+            </div>
 
-</span>
+            <div
+                style="
+                    position:absolute;
+                    inset:0;
+                    background:
+                    linear-gradient(
+                        135deg,
+                        #162f50,
+                        #07101d
+                    );
+                "
+            ></div>
 
-</p>
+        </div>
 
 
-</div>
+        <div class="game-card">
 
+            <div class="game-overlay">
+
+                <h3>
+                    Bugworld
+                </h3>
+
+                <p>
+                    Eine verrückte Welt voller Überraschungen.
+                </p>
+
+            </div>
+
+            <div
+                style="
+                    position:absolute;
+                    inset:0;
+                    background:
+                    linear-gradient(
+                        135deg,
+                        #304218,
+                        #0a1208
+                    );
+                "
+            ></div>
+
+        </div>
+
+
+        <div class="game-card">
+
+            <div class="game-overlay">
+
+                <h3>
+                    Waterhopper
+                </h3>
+
+                <p>
+                    Springe, lande und meistere
+                    die Wasserstrecken.
+                </p>
+
+            </div>
+
+            <div
+                style="
+                    position:absolute;
+                    inset:0;
+                    background:
+                    linear-gradient(
+                        135deg,
+                        #0c4770,
+                        #06121d
+                    );
+                "
+            ></div>
+
+        </div>
+
+
+        <div class="game-card">
+
+            <div class="game-overlay">
+
+                <h3>
+                    Elytraparcour
+                </h3>
+
+                <p>
+                    Geschwindigkeit, Flug und Präzision
+                    in einem Parcours.
+                </p>
+
+            </div>
+
+            <div
+                style="
+                    position:absolute;
+                    inset:0;
+                    background:
+                    linear-gradient(
+                        135deg,
+                        #522e68,
+                        #100818
+                    );
+                "
+            ></div>
+
+        </div>
+
+
+        <div class="game-card">
+
+            <div class="game-overlay">
+
+                <h3>
+                    Explorer Trip
+                </h3>
+
+                <p>
+                    Erkunde die Welt und entdecke
+                    unbekannte Orte.
+                </p>
+
+            </div>
+
+            <div
+                style="
+                    position:absolute;
+                    inset:0;
+                    background:
+                    linear-gradient(
+                        135deg,
+                        #61451b,
+                        #120d06
+                    );
+                "
+            ></div>
+
+        </div>
+
+
+    </div>
+
+</section>
 
 
 <!-- =========================
-ONLY UP OUT NOW
+     ONLY UP FEATURE
 ========================= -->
 
-<div class="box onlyup-box">
+<section class="section">
+
+    <div class="feature">
+
+        <div class="feature-image"></div>
 
 
-<img
+        <div class="feature-content">
 
-class="onlyup-img"
+            <div class="section-label">
+                LMS HIGHLIGHT
+            </div>
 
-src="onlyupmc_screenshot_1.jpg"
+            <h2>
+                ONLY <span>UP</span>
+            </h2>
 
-alt="LMS SERVER Only Up">
+            <p>
+                Bereit für den Aufstieg?
+                Starte dein Only-Up-Abenteuer auf dem
+                LMS SERVER und kämpfe dich Schritt für
+                Schritt nach oben.
+            </p>
 
+            <button
+                class="btn btn-primary"
+                onclick="scrollToSection('games')"
+            >
+                Spiel entdecken
+            </button>
 
-<h2>
+        </div>
 
-ONLY UP – OUT NOW
+    </div>
 
-</h2>
-
-
-<p>
-
-<strong>Bereit für den Aufstieg?</strong>
-
-<br><br>
-
-Starte jetzt dein Only-Up-Abenteuer auf dem
-LMS SERVER und kämpfe dich Schritt für Schritt
-nach oben.
-
-<br><br>
-
-Jeder Sprung zählt.
-
-</p>
-
-
-<button onclick="location.href='#games'">
-
-Starte rein
-
-</button>
-
-
-</div>
-
+</section>
 
 
 <!-- =========================
-SHOP
+     SHOP
 ========================= -->
 
-<div class="box" id="shop">
+<section class="section" id="shop">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            LMS SHOP
+        </div>
+
+        <h2 class="section-title">
+            Shop
+        </h2>
+
+        <p class="section-description">
+            Der LMS Shop befindet sich aktuell im Aufbau.
+            Bald findest du hier Ränge, Extras und weitere Inhalte.
+        </p>
+
+    </div>
 
 
-<h2>Shop</h2>
+    <div class="live">
 
+        <h2>
+            Bald <span>verfügbar</span>
+        </h2>
 
-<p>
+        <p>
+            Der Shop wird in Zukunft mit besonderen LMS-Inhalten
+            und Extras erweitert.
+        </p>
 
-Der LMS SERVER Shop kommt bald.
+    </div>
 
-<br><br>
-
-Hier entstehen später besondere Inhalte,
-Ränge und Extras.
-
-</p>
-
-
-</div>
-
+</section>
 
 
 <!-- =========================
-MINIGAMES
+     LMS LIVE
 ========================= -->
 
-<div class="box" id="games">
+<section class="section" id="live">
 
+    <div class="live">
 
-<h2>Minigames</h2>
+        <div class="section-label">
+            LMS LIVE
+        </div>
 
+        <h2>
+            Die interaktive <span>Show</span>
+        </h2>
 
-<p>
+        <p>
+            Events, Community-Aktionen, Abstimmungen und
+            besondere Shows direkt aus dem LMS SERVER.
+        </p>
 
-Happy Ghast Flug
+        <button
+            class="btn btn-primary"
+            onclick="liveVote()"
+        >
+            Abstimmen
+        </button>
 
-<br>
+        <p id="vote"></p>
 
-Bugworld
+    </div>
 
-<br>
-
-Trainingsplatz
-
-<br>
-
-Waterhopper
-
-<br>
-
-Elytraparcour
-
-<br>
-
-Explorer Trip
-
-<br>
-
-Only Up
-
-<br>
-
-Viele weitere Spiele
-
-</p>
-
-
-</div>
-
+</section>
 
 
 <!-- =========================
-LMS LIVE
+     TEAM
 ========================= -->
 
-<div class="box" id="live">
+<section class="section" id="team">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            LMS TEAM
+        </div>
+
+        <h2 class="section-title">
+            Das Team
+        </h2>
+
+        <p class="section-description">
+            Die Menschen hinter dem LMS SERVER.
+        </p>
+
+    </div>
 
 
-<h2>LMS LIVE</h2>
+    <div class="team-grid">
 
 
-<p>
+        <div class="team-card">
 
-Die interaktive Show vom LMS SERVER.
+            <img
+                src="https://mc-heads.net/avatar/CC_Minecarft/100"
+                alt="CC_Minecarft"
+            >
 
-<br><br>
+            <h3>
+                CC_Minecarft
+            </h3>
 
-Events, Community-Aktionen und besondere Shows.
+            <span>
+                OWNER
+            </span>
 
-<br><br>
-
-Bald verfügbar:
-
-<br><br>
-
-Live-Events
-
-<br>
-
-Abstimmungen
-
-<br>
-
-Challenges
-
-</p>
+        </div>
 
 
-<button onclick="liveVote()">
+        <div class="team-card">
 
-Abstimmen
+            <img
+                src="https://mc-heads.net/avatar/Hobbit2304/100"
+                alt="Hobbit2304"
+            >
 
-</button>
+            <h3>
+                Hobbit2304
+            </h3>
+
+            <span>
+                BUILDER
+            </span>
+
+        </div>
 
 
-<p id="vote">
+        <div class="team-card">
 
-</p>
+            <img
+                src="https://mc-heads.net/avatar/King_Luma1/100"
+                alt="King_Luma1"
+            >
+
+            <h3>
+                King_Luma1
+            </h3>
+
+            <span>
+                BUILDER
+            </span>
+
+        </div>
 
 
-</div>
+        <div class="team-card">
 
+            <img
+                src="https://mc-heads.net/avatar/Lennyy20/100"
+                alt="Lennyy20"
+            >
+
+            <h3>
+                Lennyy20
+            </h3>
+
+            <span>
+                BUILDER
+            </span>
+
+        </div>
+
+
+        <div class="team-card">
+
+            <img
+                src="https://mc-heads.net/avatar/Thrumx/100"
+                alt="Thrumx"
+            >
+
+            <h3>
+                Thrumx
+            </h3>
+
+            <span>
+                ADMIN
+            </span>
+
+        </div>
+
+
+        <div class="team-card">
+
+            <img
+                src="https://mc-heads.net/avatar/Takatonka/100"
+                alt="Takatonka"
+            >
+
+            <h3>
+                Takatonka
+            </h3>
+
+            <span>
+                PREMIUM
+            </span>
+
+        </div>
+
+
+        <div class="team-card">
+
+            <img
+                src="https://mc-heads.net/avatar/LemonadeFruit/100"
+                alt="LemonadeFruit"
+            >
+
+            <h3>
+                LemonadeFruit
+            </h3>
+
+            <span>
+                PREMIUM
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
 
 
 <!-- =========================
-COOKIE CLICKER
+     CONTACT
 ========================= -->
 
-<div class="box">
+<section class="section" id="kontakt">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            KONTAKT
+        </div>
+
+        <h2 class="section-title">
+            Kontakt aufnehmen
+        </h2>
+
+    </div>
 
 
-<h2>Cookie Clicker</h2>
+    <div class="contact-box">
 
 
-<p>
+        <div class="contact-info">
 
-Klicke den Cookie!
+            <h2>
+                Wir hören zu.
+            </h2>
 
-</p>
+            <p>
+                Du hast eine Frage, eine Idee oder
+                hast einen Fehler entdeckt?
+                Schreib uns und wir kümmern uns darum.
+            </p>
 
+            <br>
 
-<div class="cookie" onclick="clickCookie()">
+            <button
+                class="btn btn-primary"
+                onclick="openDiscord()"
+            >
+                Discord öffnen
+            </button>
 
-🍪
-
-</div>
-
-
-<p>
-
-Cookies:
-
-<span id="cookies">
-
-0
-
-</span>
-
-</p>
+        </div>
 
 
-</div>
+        <div class="contact-form">
 
+            <input
+                id="playername"
+                class="input"
+                placeholder="Minecraft Name"
+            >
+
+            <textarea
+                id="message"
+                class="input"
+                placeholder="Deine Nachricht"
+            ></textarea>
+
+            <button
+                class="btn btn-primary"
+                onclick="sendDiscord()"
+            >
+                Nachricht vorbereiten
+            </button>
+
+        </div>
+
+
+    </div>
+
+</section>
 
 
 <!-- =========================
-TEAM
+     SURVIVAL CAMP
 ========================= -->
 
-<div class="box" id="team">
-
-
-<h2>Team</h2>
-
-
-<div style="display:flex;justify-content:center;gap:25px;flex-wrap:wrap;">
-
-
-
-<div>
-
-<img
-src="https://mc-heads.net/avatar/CC_Minecarft/100"
-style="border-radius:15px;">
-
-<p>
-
-Owner
-
-<br>
-
-CC_Minecarft
-
-</p>
-
-</div>
-
-
-
-<div>
-
-<img
-src="https://mc-heads.net/avatar/Hobbit2304/100"
-style="border-radius:15px;">
-
-<p>
-
-Builder
-
-<br>
-
-Hobbit2304
-
-</p>
-
-</div>
-
-
-
-<div>
-
-<img
-src="https://mc-heads.net/avatar/King_Luma1/100"
-style="border-radius:15px;">
-
-<p>
-
-Builder
-
-<br>
-
-King_Luma1
-
-</p>
-
-</div>
-
-
-
-<div>
-
-<img
-src="https://mc-heads.net/avatar/Lennyy20/100"
-style="border-radius:15px;">
-
-<p>
-
-Builder
-
-<br>
-
-Lennyy20
-
-</p>
-
-</div>
-
-
-
-<div>
-
-<img
-src="https://mc-heads.net/avatar/Thrumx/100"
-style="border-radius:15px;">
-
-<p>
-
-Admin
-
-<br>
-
-Thrumx
-
-</p>
-
-</div>
-
-
-
-<div>
-
-<img
-src="https://mc-heads.net/avatar/Takatonka/100"
-style="border-radius:15px;">
-
-<p>
-
-Premium
-
-<br>
-
-Takatonka
-
-</p>
-
-</div>
-
-
-
-<div>
-
-<img
-src="https://mc-heads.net/avatar/LemonadeFruit/100"
-style="border-radius:15px;">
-
-<p>
-
-Premium
-
-<br>
-
-LemonadeFruit
-
-</p>
-
-</div>
-
-
-</div>
-
-
-</div>
-
+<section class="section" id="survival">
+
+    <div class="survival">
+
+        <div class="section-label">
+            SURVIVAL
+        </div>
+
+        <h2>
+            Survival Camp
+        </h2>
+
+        <p>
+            Starte dein eigenes Abenteuer,
+            baue deine Base und erkunde die Welt.
+        </p>
+
+        <button
+            class="btn btn-primary"
+            onclick="joinCamp()"
+        >
+            Code erhalten
+        </button>
+
+
+        <div
+            id="slot"
+            style="
+                display:none;
+                margin-top:20px;
+                color:#aeb8c5;
+            "
+        >
+            Code wird erstellt...
+        </div>
+
+
+        <div
+            id="campCode"
+            class="camp-code"
+        ></div>
+
+    </div>
+
+</section>
 
 
 <!-- =========================
-KONTAKT
+     COOKIE
 ========================= -->
 
-<div class="box" id="kontakt">
+<section class="section">
+
+    <div class="cookie-section">
+
+        <div class="section-label">
+            EASTER EGG
+        </div>
+
+        <h2>
+            Cookie Clicker
+        </h2>
+
+        <p>
+            Wie viele Cookies schaffst du?
+        </p>
 
 
-<h2>Kontakt</h2>
+        <div
+            class="cookie"
+            onclick="clickCookie()"
+        >
+            🍪
+        </div>
 
 
-<p>
+        <p>
+            Cookies:
+            <strong id="cookies">
+                0
+            </strong>
+        </p>
 
-Fragen, Ideen oder Probleme?
+    </div>
 
-</p>
-
-
-<input
-id="playername"
-placeholder="Minecraft Name"
-style="width:80%;padding:12px;border-radius:12px;">
-
-
-<br><br>
-
-
-
-<textarea
-id="message"
-placeholder="Deine Nachricht"
-style="width:80%;height:120px;border-radius:12px;padding:12px;">
-</textarea>
-
-
-<br><br>
-
-
-<button onclick="sendDiscord()">
-
-An Discord senden
-
-</button>
-
-
-<br><br>
-
-
-<a
-href="https://discord.gg/N5ZYVRpMMU"
-target="_blank">
-
-
-<button>
-
-Discord öffnen
-
-</button>
-
-
-</a>
-
-
-</div>
-
+</section>
 
 
 <!-- =========================
-SURVIVAL CAMP
+     FOOTER
 ========================= -->
 
-<div class="box" id="survival">
+<footer>
+
+    <div class="footer-inner">
 
 
-<img
-class="survival-img"
-src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23"
-alt="Minecraft Survival Camp">
+        <div>
+
+            <div class="footer-logo">
+
+                <img
+                    src="WhatsApp%20Image%202026-07-11%20at%2015.30.43.jpeg"
+                    alt="LMS Logo"
+                >
+
+                <strong>
+                    LMS SERVER
+                </strong>
+
+            </div>
+
+            <div class="footer-text">
+
+                Minecraft Minigames • Survival • Events
+                <br>
+                LMS_server.aternos.me
+
+            </div>
+
+        </div>
 
 
+        <div class="footer-links">
 
-<h2>Survival Camp</h2>
+            <a href="#top">
+                Start
+            </a>
 
+            <a href="#games">
+                Spiele
+            </a>
 
-<p>
+            <a href="#shop">
+                Shop
+            </a>
 
-Starte dein eigenes Abenteuer.
+            <a href="#live">
+                LMS LIVE
+            </a>
 
-<br><br>
+            <a href="#team">
+                Team
+            </a>
 
-Baue deine Base, sammle Ressourcen und erkunde
-die Welt.
+            <a href="info.html">
+                Info
+            </a>
 
-</p>
+            <a
+                href="https://discord.gg/N5ZYVRpMMU"
+                target="_blank"
+            >
+                Discord
+            </a>
 
-
-<button onclick="joinCamp()">
-
-Code erhalten
-
-</button>
-
-
-<div
-id="slot"
-style="display:none;margin-top:20px;font-size:25px;">
-
-Code wird erstellt...
-
-</div>
-
-
-<div
-id="campCode"
-class="camp-code">
-
-</div>
+        </div>
 
 
-</div>
+    </div>
 
+</footer>
 
 
 <!-- =========================
-JAVASCRIPT
+     JAVASCRIPT
 ========================= -->
 
 <script>
 
+/* =========================
+   NAVIGATION
+========================= */
 
-let cookies = 0;
+function scrollToSection(id){
 
+    const element=document.getElementById(id);
 
+    if(element){
 
-/* COOKIE */
+        element.scrollIntoView({
+            behavior:"smooth"
+        });
 
-function clickCookie(){
-
-cookies++;
-
-document.getElementById("cookies").innerHTML = cookies;
-
-}
-
-
-
-/* LMS LIVE */
-
-function liveVote(){
-
-document.getElementById("vote").innerHTML =
-
-"Deine Stimme wurde gespeichert.";
+    }
 
 }
 
 
+/* =========================
+   COPY SERVER IP
+========================= */
 
-/* SURVIVAL CAMP */
+function copyIP(){
 
-function joinCamp(){
+    navigator.clipboard.writeText(
+        "LMS_server.aternos.me"
+    );
 
-let slot = document.getElementById("slot");
-
-let codeBox = document.getElementById("campCode");
-
-
-slot.style.display="block";
-
-codeBox.innerHTML="";
-
-
-let symbols=[
-
-"A","B","C","D","E","F",
-
-"1","2","3","4","5","6",
-
-"7","8","9"
-
-];
-
-
-let count=0;
-
-
-let animation=setInterval(function(){
-
-
-let random="";
-
-
-for(let i=0;i<8;i++){
-
-random += symbols[Math.floor(Math.random()*symbols.length)];
+    alert(
+        "Server-IP kopiert:\nLMS_server.aternos.me"
+    );
 
 }
 
 
-slot.innerHTML=random;
+/* =========================
+   DISCORD
+========================= */
 
+function openDiscord(){
 
-count++;
-
-
-if(count>=15){
-
-clearInterval(animation);
-
-
-let finalCode="CAMP-";
-
-
-for(let i=0;i<6;i++){
-
-finalCode += symbols[Math.floor(Math.random()*symbols.length)];
+    window.open(
+        "https://discord.gg/N5ZYVRpMMU",
+        "_blank"
+    );
 
 }
 
-
-slot.innerHTML="Code erstellt";
-
-
-codeBox.innerHTML=
-
-"Dein Survival Camp Code:<br><br>"
-
-+finalCode;
-
-
-codeBox.scrollIntoView({
-
-behavior:"smooth",
-
-block:"center"
-
-});
-
-}
-
-
-},100);
-
-}
-
-
-
-/* KONTAKT */
 
 function sendDiscord(){
 
-let name=document.getElementById("playername").value;
+    const name=
+        document.getElementById("playername").value.trim();
 
-let message=document.getElementById("message").value;
+    const message=
+        document.getElementById("message").value.trim();
 
 
-if(name==""){
+    if(name===""){
 
-alert("Bitte Minecraft Name eintragen.");
+        alert(
+            "Bitte Minecraft Name eintragen."
+        );
 
-return;
+        return;
+
+    }
+
+
+    if(message===""){
+
+        alert(
+            "Bitte Nachricht schreiben."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+        "Nachricht vorbereitet:\n\n"+
+        "Minecraft Name: "+
+        name+
+        "\n\n"+
+        message
+    );
 
 }
 
 
-if(message==""){
+/* =========================
+   LMS LIVE
+========================= */
 
-alert("Bitte Nachricht schreiben.");
+function liveVote(){
 
-return;
-
-}
-
-
-alert(
-
-"Nachricht vorbereitet:\n\nMinecraft Name: "
-
-+name+
-
-"\n\n"
-
-+message
-
-);
+    document.getElementById("vote").innerHTML=
+        "Deine Stimme wurde gespeichert.";
 
 }
 
 
+/* =========================
+   COOKIE
+========================= */
 
-/* SERVER STATUS */
+let cookies=0;
+
+
+function clickCookie(){
+
+    cookies++;
+
+    document.getElementById(
+        "cookies"
+    ).innerHTML=cookies;
+
+}
+
+
+/* =========================
+   SURVIVAL CAMP
+========================= */
+
+function joinCamp(){
+
+    const slot=
+        document.getElementById("slot");
+
+    const codeBox=
+        document.getElementById("campCode");
+
+
+    slot.style.display="block";
+
+    codeBox.innerHTML="";
+
+
+    const symbols=[
+        "A","B","C","D","E","F",
+        "1","2","3","4","5","6",
+        "7","8","9"
+    ];
+
+
+    let count=0;
+
+
+    const animation=
+        setInterval(function(){
+
+            let random="";
+
+
+            for(
+                let i=0;
+                i<8;
+                i++
+            ){
+
+                random+=
+                    symbols[
+                        Math.floor(
+                            Math.random()*
+                            symbols.length
+                        )
+                    ];
+
+            }
+
+
+            slot.innerHTML=random;
+
+            count++;
+
+
+            if(count>=15){
+
+                clearInterval(animation);
+
+
+                let finalCode="CAMP-";
+
+
+                for(
+                    let i=0;
+                    i<6;
+                    i++
+                ){
+
+                    finalCode+=
+                        symbols[
+                            Math.floor(
+                                Math.random()*
+                                symbols.length
+                            )
+                        ];
+
+                }
+
+
+                slot.innerHTML=
+                    "Code erstellt";
+
+
+                codeBox.innerHTML=
+                    "Dein Survival Camp Code:<br><br>"+
+                    finalCode;
+
+
+                codeBox.scrollIntoView({
+                    behavior:"smooth",
+                    block:"center"
+                });
+
+            }
+
+        },100);
+
+}
+
+
+/* =========================
+   SERVER STATUS
+========================= */
 
 function updateServerStatus(){
 
-fetch("https://api.mcstatus.io/v2/status/java/LMS_server.aternos.me")
+    fetch(
+        "https://api.mcstatus.io/v2/status/java/LMS_server.aternos.me"
+    )
 
-.then(response=>response.json())
+    .then(
+        response=>response.json()
+    )
 
-.then(data=>{
-
-
-if(data.online){
-
-
-document.getElementById("serverStatus").innerHTML=
-
-"Online";
+    .then(
+        data=>{
 
 
-document.getElementById("players").innerHTML=
+            if(data.online){
 
-data.players.online+"/"+data.players.max;
+                const players=
+                    data.players.online+
+                    "/"+
+                    data.players.max;
+
+                const version=
+                    data.version.name;
 
 
-document.getElementById("version").innerHTML=
+                document.getElementById(
+                    "serverStatus"
+                ).innerHTML=
+                    '<span class="online-dot"></span>Online';
 
-data.version.name;
 
+                document.getElementById(
+                    "players"
+                ).innerHTML=
+                    players;
+
+
+                document.getElementById(
+                    "version"
+                ).innerHTML=
+                    version;
+
+
+                document.getElementById(
+                    "heroServerStatus"
+                ).innerHTML=
+                    '<span class="online-dot"></span>Online';
+
+
+                document.getElementById(
+                    "heroPlayers"
+                ).innerHTML=
+                    players;
+
+
+                document.getElementById(
+                    "heroVersion"
+                ).innerHTML=
+                    version;
+
+            }
+
+
+            else{
+
+                document.getElementById(
+                    "serverStatus"
+                ).innerHTML=
+                    "Offline";
+
+
+                document.getElementById(
+                    "players"
+                ).innerHTML=
+                    "0/40";
+
+
+                document.getElementById(
+                    "version"
+                ).innerHTML=
+                    "Nicht erreichbar";
+
+
+                document.getElementById(
+                    "heroServerStatus"
+                ).innerHTML=
+                    "Offline";
+
+
+                document.getElementById(
+                    "heroPlayers"
+                ).innerHTML=
+                    "0/40";
+
+
+                document.getElementById(
+                    "heroVersion"
+                ).innerHTML=
+                    "—";
+
+            }
+
+        }
+
+    )
+
+    .catch(()=>{
+
+        document.getElementById(
+            "serverStatus"
+        ).innerHTML=
+            "Nicht erreichbar";
+
+
+        document.getElementById(
+            "heroServerStatus"
+        ).innerHTML=
+            "Nicht erreichbar";
+
+    });
 
 }
 
 
-else{
-
-
-document.getElementById("serverStatus").innerHTML=
-
-"Offline";
-
-
-document.getElementById("players").innerHTML=
-
-"0/40";
-
-
-document.getElementById("version").innerHTML=
-
-"Nicht erreichbar";
-
-
-}
-
-})
-
-
-.catch(()=>{
-
-
-document.getElementById("serverStatus").innerHTML=
-
-"Status konnte nicht geladen werden";
-
-
-});
-
-}
-
-
-
-/* STATUS AKTUALISIEREN */
+/* =========================
+   START
+========================= */
 
 updateServerStatus();
 
-setInterval(updateServerStatus,60000);
-
+setInterval(
+    updateServerStatus,
+    60000
+);
 
 </script>
 
