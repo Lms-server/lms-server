@@ -10,6 +10,10 @@
 
 <style>
 
+/* =========================================================
+   GRUNDLAGEN
+========================================================= */
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -23,13 +27,9 @@ html{
 body{
     font-family:Arial,Helvetica,sans-serif;
     background:#050b14;
-    color:white;
+    color:#fff;
     overflow-x:hidden;
 }
-
-/* =========================
-   BACKGROUND
-========================= */
 
 body::before{
     content:"";
@@ -39,9 +39,21 @@ body::before{
     z-index:-2;
 
     background:
-        radial-gradient(circle at 20% 20%,rgba(255,176,0,.10),transparent 30%),
-        radial-gradient(circle at 80% 60%,rgba(40,120,210,.10),transparent 35%),
-        linear-gradient(180deg,#07111f 0%,#040810 100%);
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255,176,0,.09),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 60%,
+            rgba(30,100,190,.10),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #07111f 0%,
+            #040810 100%
+        );
 }
 
 body::after{
@@ -52,15 +64,23 @@ body::after{
     z-index:-1;
 
     background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+        linear-gradient(
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        );
 
     background-size:50px 50px;
 }
 
-/* =========================
+
+/* =========================================================
    NAVIGATION
-========================= */
+========================================================= */
 
 .nav{
     position:fixed;
@@ -82,8 +102,6 @@ body::after{
 
     z-index:1000;
 }
-
-/* LOGO */
 
 .logo{
     display:flex;
@@ -112,19 +130,18 @@ body::after{
 .logo-text{
     margin-left:12px;
 
+    color:#fff;
+
     font-size:20px;
     font-weight:900;
+
     letter-spacing:1px;
-
-    color:white;
 }
-
-/* NAV LINKS */
 
 .nav-links{
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:5px;
 }
 
 .nav button{
@@ -133,7 +150,7 @@ body::after{
 
     color:#dce5ef;
 
-    padding:12px 17px;
+    padding:12px 15px;
 
     border-radius:10px;
 
@@ -151,26 +168,26 @@ body::after{
 }
 
 .nav-play{
-    margin-left:12px;
+    margin-left:10px;
 
     background:#ffb000 !important;
+
     color:#07111f !important;
 
     padding:12px 22px !important;
-
-    border-radius:10px !important;
 }
 
 .nav-play:hover{
     background:#ffd45c !important;
-    color:#07111f !important;
 }
 
-/* =========================
-   HERO
-========================= */
+
+/* =========================================================
+   HERO / BANNER
+========================================================= */
 
 .hero{
+
     min-height:720px;
 
     position:relative;
@@ -178,39 +195,49 @@ body::after{
     display:flex;
     align-items:center;
 
-    padding:130px 8% 80px;
+    padding:140px 8% 90px;
 
     overflow:hidden;
 
     background:
-        linear-gradient(90deg,
+        linear-gradient(
+            90deg,
             rgba(3,8,15,.96) 0%,
-            rgba(3,8,15,.78) 38%,
-            rgba(3,8,15,.25) 75%,
+            rgba(3,8,15,.80) 32%,
+            rgba(3,8,15,.40) 65%,
             rgba(3,8,15,.72) 100%
         ),
-        url("onlyupmc_screenshot_1.jpg") center/cover no-repeat;
+        url("images.jpg")
+        center/cover no-repeat;
 }
 
 .hero::after{
     content:"";
 
     position:absolute;
+
     left:0;
     right:0;
     bottom:0;
 
-    height:180px;
+    height:190px;
 
-    background:linear-gradient(transparent,#050b14);
+    background:
+        linear-gradient(
+            transparent,
+            #050b14
+        );
 
     pointer-events:none;
 }
 
 .hero-content{
-    max-width:700px;
+    max-width:720px;
+
     position:relative;
-    z-index:2;
+    z-index:3;
+
+    animation:fadeUp .8s ease both;
 }
 
 .hero-small{
@@ -218,23 +245,24 @@ body::after{
 
     color:#ffb000;
 
-    font-size:14px;
+    font-size:13px;
     font-weight:900;
 
-    letter-spacing:3px;
+    letter-spacing:4px;
 
     margin-bottom:18px;
 }
 
 .hero h1{
-    font-size:76px;
+    font-size:78px;
+
     line-height:.95;
 
     font-weight:900;
 
-    letter-spacing:-3px;
+    letter-spacing:-4px;
 
-    margin-bottom:25px;
+    margin-bottom:26px;
 }
 
 .hero h1 span{
@@ -242,19 +270,22 @@ body::after{
 }
 
 .hero p{
-    color:#c8d2de;
+    max-width:620px;
+
+    color:#d0d8e2;
 
     font-size:19px;
-    line-height:1.7;
 
-    max-width:620px;
+    line-height:1.7;
 
     margin-bottom:32px;
 }
 
 .hero-buttons{
     display:flex;
+
     gap:14px;
+
     flex-wrap:wrap;
 }
 
@@ -275,78 +306,108 @@ body::after{
 
 .btn-primary{
     background:#ffb000;
+
     color:#07111f;
 }
 
 .btn-primary:hover{
     background:#ffd45c;
+
     transform:translateY(-3px);
 }
 
 .btn-secondary{
     background:rgba(255,255,255,.08);
-    color:white;
+
+    color:#fff;
 
     border:1px solid rgba(255,255,255,.15);
 }
 
 .btn-secondary:hover{
     background:rgba(255,255,255,.15);
+
     transform:translateY(-3px);
 }
 
-/* SERVER MINI STATUS */
+
+/* =========================================================
+   HERO STATUS
+========================================================= */
 
 .hero-status{
+
     position:absolute;
 
     right:7%;
-    bottom:90px;
+    bottom:95px;
 
-    z-index:3;
+    z-index:4;
 
-    width:260px;
+    width:280px;
 
-    padding:20px;
+    padding:22px;
 
-    background:rgba(5,12,22,.82);
+    background:rgba(5,12,22,.84);
 
-    backdrop-filter:blur(14px);
+    backdrop-filter:blur(16px);
 
-    border:1px solid rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.13);
 
-    border-radius:15px;
+    border-radius:16px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35);
 }
 
 .hero-status-title{
-    color:#aeb9c7;
 
-    font-size:12px;
-    font-weight:bold;
+    color:#8e9aaa;
+
+    font-size:11px;
+    font-weight:900;
 
     text-transform:uppercase;
 
-    letter-spacing:1px;
+    letter-spacing:2px;
 
     margin-bottom:12px;
 }
 
 .status-row{
+
     display:flex;
+
     justify-content:space-between;
 
-    padding:8px 0;
+    align-items:center;
+
+    gap:10px;
+
+    padding:10px 0;
 
     border-bottom:1px solid rgba(255,255,255,.06);
 
-    font-size:14px;
+    font-size:13px;
 }
 
 .status-row:last-child{
     border-bottom:0;
 }
 
+.status-row span{
+    color:#aab5c2;
+}
+
+.status-row strong{
+    text-align:right;
+    max-width:170px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
 .online-dot{
+
     display:inline-block;
 
     width:8px;
@@ -358,15 +419,19 @@ body::after{
 
     margin-right:6px;
 
-    box-shadow:0 0 10px #37e27c;
+    box-shadow:
+        0 0 10px #37e27c;
 }
 
-/* =========================
-   GENERAL
-========================= */
+
+/* =========================================================
+   SECTIONS
+========================================================= */
 
 .section{
+
     width:90%;
+
     max-width:1250px;
 
     margin:0 auto;
@@ -379,6 +444,7 @@ body::after{
 }
 
 .section-label{
+
     color:#ffb000;
 
     font-size:12px;
@@ -392,35 +458,43 @@ body::after{
 }
 
 .section-title{
+
     font-size:42px;
+
     font-weight:900;
 
     letter-spacing:-1px;
 }
 
 .section-description{
+
     color:#8e9bab;
 
-    max-width:650px;
+    max-width:680px;
 
     line-height:1.7;
 
     margin-top:12px;
 }
 
-/* =========================
+
+/* =========================================================
    SERVER STATUS
-========================= */
+========================================================= */
 
 .status-card{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr 1fr;
 
-    background:linear-gradient(
-        135deg,
-        rgba(255,176,0,.12),
-        rgba(255,255,255,.035)
-    );
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,176,0,.12),
+            rgba(255,255,255,.035)
+        );
 
     border:1px solid rgba(255,176,0,.22);
 
@@ -430,9 +504,11 @@ body::after{
 }
 
 .status-item{
+
     padding:28px;
 
-    border-right:1px solid rgba(255,255,255,.08);
+    border-right:
+        1px solid rgba(255,255,255,.08);
 }
 
 .status-item:last-child{
@@ -440,11 +516,12 @@ body::after{
 }
 
 .status-item small{
+
     display:block;
 
     color:#8794a5;
 
-    font-size:12px;
+    font-size:11px;
     font-weight:bold;
 
     text-transform:uppercase;
@@ -453,14 +530,16 @@ body::after{
 }
 
 .status-item strong{
-    font-size:20px;
+    font-size:18px;
 }
 
-/* =========================
-   GAMES
-========================= */
+
+/* =========================================================
+   SPIELE
+========================================================= */
 
 .games-grid{
+
     display:grid;
 
     grid-template-columns:
@@ -470,9 +549,10 @@ body::after{
 }
 
 .game-card{
+
     position:relative;
 
-    height:270px;
+    height:280px;
 
     overflow:hidden;
 
@@ -480,7 +560,8 @@ body::after{
 
     background:#0b1421;
 
-    border:1px solid rgba(255,255,255,.08);
+    border:
+        1px solid rgba(255,255,255,.08);
 
     cursor:pointer;
 
@@ -488,52 +569,147 @@ body::after{
 }
 
 .game-card:hover{
+
     transform:translateY(-7px);
 
-    border-color:rgba(255,176,0,.55);
+    border-color:
+        rgba(255,176,0,.55);
 
-    box-shadow:0 18px 50px rgba(0,0,0,.4);
+    box-shadow:
+        0 18px 50px rgba(0,0,0,.4);
 }
 
-.game-card img{
-    width:100%;
-    height:100%;
+.game-background{
 
-    object-fit:cover;
+    position:absolute;
+
+    inset:0;
 
     transition:.5s;
 }
 
-.game-card:hover img{
+.game-card:hover .game-background{
     transform:scale(1.08);
 }
 
+.game-onlyup{
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(15,30,55,.35),
+            rgba(2,7,14,.65)
+        ),
+        url("images.jpg")
+        center/cover no-repeat;
+}
+
+.game-blue{
+
+    background:
+        radial-gradient(
+            circle at 70% 25%,
+            rgba(50,150,255,.35),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #12385b,
+            #06101d
+        );
+}
+
+.game-green{
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            rgba(130,190,50,.28),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #304218,
+            #081006
+        );
+}
+
+.game-water{
+
+    background:
+        radial-gradient(
+            circle at 70% 20%,
+            rgba(0,190,255,.35),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #0b537c,
+            #05121d
+        );
+}
+
+.game-purple{
+
+    background:
+        radial-gradient(
+            circle at 65% 25%,
+            rgba(190,80,255,.28),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #4a2861,
+            #100717
+        );
+}
+
+.game-orange{
+
+    background:
+        radial-gradient(
+            circle at 70% 20%,
+            rgba(255,180,50,.35),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #65471d,
+            #130c05
+        );
+}
+
 .game-overlay{
+
     position:absolute;
 
     inset:0;
 
     display:flex;
+
     flex-direction:column;
+
     justify-content:flex-end;
 
     padding:25px;
 
     background:
         linear-gradient(
-            transparent 30%,
+            transparent 25%,
             rgba(3,8,15,.95) 100%
         );
 }
 
 .game-overlay h3{
+
     font-size:25px;
 
-    margin-bottom:6px;
+    margin-bottom:7px;
 }
 
 .game-overlay p{
-    color:#aeb8c5;
+
+    color:#b1bdc9;
 
     font-size:13px;
 
@@ -541,14 +717,17 @@ body::after{
 }
 
 .game-tag{
+
     position:absolute;
 
     top:15px;
     left:15px;
 
+    z-index:3;
+
     padding:7px 10px;
 
-    background:rgba(255,176,0,.95);
+    background:#ffb000;
 
     color:#07111f;
 
@@ -560,14 +739,17 @@ body::after{
     text-transform:uppercase;
 }
 
-/* =========================
-   FEATURE
-========================= */
+
+/* =========================================================
+   ONLY UP FEATURE
+========================================================= */
 
 .feature{
+
     display:grid;
 
-    grid-template-columns:1.15fr .85fr;
+    grid-template-columns:
+        1.15fr .85fr;
 
     gap:30px;
 
@@ -575,6 +757,7 @@ body::after{
 }
 
 .feature-image{
+
     min-height:430px;
 
     border-radius:18px;
@@ -582,13 +765,20 @@ body::after{
     overflow:hidden;
 
     background:
-        url("onlyupmc_screenshot_1.jpg")
+        linear-gradient(
+            rgba(0,0,0,.15),
+            rgba(0,0,0,.3)
+        ),
+        url("images.jpg")
         center/cover no-repeat;
 }
 
 .feature-content{
+
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
 
     padding:45px;
@@ -602,10 +792,12 @@ body::after{
             rgba(255,255,255,.035)
         );
 
-    border:1px solid rgba(255,255,255,.08);
+    border:
+        1px solid rgba(255,255,255,.08);
 }
 
 .feature-content h2{
+
     font-size:44px;
 
     margin-bottom:18px;
@@ -616,6 +808,7 @@ body::after{
 }
 
 .feature-content p{
+
     color:#aab5c2;
 
     line-height:1.8;
@@ -623,11 +816,62 @@ body::after{
     margin-bottom:25px;
 }
 
-/* =========================
+
+/* =========================================================
+   SHOP
+========================================================= */
+
+.shop-box{
+
+    padding:55px;
+
+    border-radius:20px;
+
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(255,176,0,.18),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #101b2b,
+            #070d17
+        );
+
+    border:
+        1px solid rgba(255,176,0,.17);
+}
+
+.shop-box h2{
+
+    font-size:40px;
+
+    margin-bottom:14px;
+}
+
+.shop-box h2 span{
+    color:#ffb000;
+}
+
+.shop-box p{
+
+    max-width:650px;
+
+    color:#aeb8c5;
+
+    line-height:1.7;
+
+    margin-bottom:25px;
+}
+
+
+/* =========================================================
    LMS LIVE
-========================= */
+========================================================= */
 
 .live{
+
     position:relative;
 
     overflow:hidden;
@@ -648,10 +892,12 @@ body::after{
             #070d17
         );
 
-    border:1px solid rgba(255,176,0,.18);
+    border:
+        1px solid rgba(255,176,0,.18);
 }
 
 .live h2{
+
     font-size:40px;
 
     margin-bottom:15px;
@@ -662,6 +908,7 @@ body::after{
 }
 
 .live p{
+
     max-width:650px;
 
     color:#aeb8c5;
@@ -672,18 +919,21 @@ body::after{
 }
 
 #vote{
-    margin-top:15px;
+
+    margin-top:18px;
 
     color:#ffb000;
 
     font-weight:bold;
 }
 
-/* =========================
+
+/* =========================================================
    TEAM
-========================= */
+========================================================= */
 
 .team-grid{
+
     display:grid;
 
     grid-template-columns:
@@ -693,26 +943,32 @@ body::after{
 }
 
 .team-card{
+
     padding:25px;
 
     text-align:center;
 
     border-radius:15px;
 
-    background:rgba(255,255,255,.035);
+    background:
+        rgba(255,255,255,.035);
 
-    border:1px solid rgba(255,255,255,.08);
+    border:
+        1px solid rgba(255,255,255,.08);
 
     transition:.3s;
 }
 
 .team-card:hover{
+
     transform:translateY(-5px);
 
-    border-color:rgba(255,176,0,.35);
+    border-color:
+        rgba(255,176,0,.35);
 }
 
 .team-card img{
+
     width:85px;
     height:85px;
 
@@ -722,76 +978,91 @@ body::after{
 }
 
 .team-card h3{
+
     font-size:16px;
 
     margin-bottom:5px;
 }
 
 .team-card span{
+
     color:#ffb000;
 
     font-size:12px;
     font-weight:bold;
 }
 
-/* =========================
-   CONTACT
-========================= */
+
+/* =========================================================
+   KONTAKT
+========================================================= */
 
 .contact-box{
+
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
     gap:30px;
 }
 
 .contact-info{
+
     padding:40px;
 
     border-radius:18px;
 
-    background:rgba(255,255,255,.035);
+    background:
+        rgba(255,255,255,.035);
 
-    border:1px solid rgba(255,255,255,.08);
+    border:
+        1px solid rgba(255,255,255,.08);
 }
 
 .contact-info h2{
+
     font-size:35px;
 
     margin-bottom:15px;
 }
 
 .contact-info p{
+
     color:#9eabba;
 
     line-height:1.7;
 }
 
 .contact-form{
+
     padding:35px;
 
     border-radius:18px;
 
-    background:rgba(255,255,255,.035);
+    background:
+        rgba(255,255,255,.035);
 
-    border:1px solid rgba(255,255,255,.08);
+    border:
+        1px solid rgba(255,255,255,.08);
 }
 
 .input{
+
     width:100%;
 
     padding:14px 16px;
 
     margin-bottom:12px;
 
-    border:1px solid rgba(255,255,255,.1);
+    border:
+        1px solid rgba(255,255,255,.1);
 
     border-radius:10px;
 
     background:#080f19;
 
-    color:white;
+    color:#fff;
 
     outline:none;
 
@@ -803,16 +1074,19 @@ body::after{
 }
 
 textarea.input{
+
     height:130px;
 
     resize:vertical;
 }
 
-/* =========================
-   SURVIVAL
-========================= */
+
+/* =========================================================
+   SURVIVAL CAMP
+========================================================= */
 
 .survival{
+
     padding:45px;
 
     border-radius:20px;
@@ -824,24 +1098,28 @@ textarea.input{
             rgba(255,255,255,.035)
         );
 
-    border:1px solid rgba(255,255,255,.08);
+    border:
+        1px solid rgba(255,255,255,.08);
 
     text-align:center;
 }
 
 .survival h2{
+
     font-size:35px;
 
     margin-bottom:12px;
 }
 
 .survival p{
+
     color:#aeb8c5;
 
     margin-bottom:25px;
 }
 
 .camp-code{
+
     margin-top:20px;
 
     padding:20px;
@@ -856,23 +1134,28 @@ textarea.input{
     font-weight:900;
 }
 
-/* =========================
+
+/* =========================================================
    COOKIE
-========================= */
+========================================================= */
 
 .cookie-section{
+
     text-align:center;
 
     padding:50px;
 
     border-radius:18px;
 
-    background:rgba(255,255,255,.025);
+    background:
+        rgba(255,255,255,.025);
 
-    border:1px solid rgba(255,255,255,.07);
+    border:
+        1px solid rgba(255,255,255,.07);
 }
 
 .cookie{
+
     display:inline-block;
 
     font-size:80px;
@@ -888,21 +1171,25 @@ textarea.input{
     transform:scale(1.15);
 }
 
-/* =========================
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer{
+
     margin-top:40px;
 
     padding:50px 8%;
 
     background:#03070d;
 
-    border-top:1px solid rgba(255,255,255,.08);
+    border-top:
+        1px solid rgba(255,255,255,.08);
 }
 
 .footer-inner{
+
     max-width:1250px;
 
     margin:auto;
@@ -919,11 +1206,16 @@ footer{
 }
 
 .footer-logo{
+
     display:flex;
+
     align-items:center;
+
+    margin-bottom:10px;
 }
 
 .footer-logo img{
+
     width:45px;
     height:45px;
 
@@ -935,6 +1227,7 @@ footer{
 }
 
 .footer-text{
+
     color:#687687;
 
     font-size:13px;
@@ -943,6 +1236,7 @@ footer{
 }
 
 .footer-links{
+
     display:flex;
 
     gap:20px;
@@ -951,6 +1245,7 @@ footer{
 }
 
 .footer-links a{
+
     color:#8d99a8;
 
     text-decoration:none;
@@ -964,88 +1259,90 @@ footer{
     color:#ffb000;
 }
 
-/* =========================
-   MOBILE
-========================= */
 
-@media(max-width:900px){
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1000px){
 
     .nav{
         padding:0 20px;
+    }
+
+    .nav-links{
+        gap:0;
+    }
+
+    .nav button{
+        padding:10px 10px;
     }
 
     .logo-text{
         display:none;
     }
 
-    .nav-links button:not(.nav-play){
-        display:none;
-    }
-
-    .hero{
-        min-height:650px;
-
-        padding:130px 25px 80px;
-    }
-
     .hero h1{
-        font-size:54px;
-    }
-
-    .hero p{
-        font-size:16px;
+        font-size:62px;
     }
 
     .hero-status{
-        position:relative;
-
-        right:auto;
-        bottom:auto;
-
-        margin-top:40px;
-
-        width:100%;
-    }
-
-    .status-card{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .status-item:nth-child(2){
-        border-right:0;
-    }
-
-    .status-item{
-        border-bottom:1px solid rgba(255,255,255,.08);
+        right:3%;
     }
 
     .games-grid{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
     .team-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .feature{
-        grid-template-columns:1fr;
-    }
-
-    .contact-box{
-        grid-template-columns:1fr;
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
 }
 
-@media(max-width:600px){
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px){
 
     .nav{
+
         height:68px;
+
+        padding:0 15px;
     }
 
     .logo img{
+
         width:48px;
         height:48px;
+    }
+
+    .nav-links button:not(.nav-play){
+        display:none;
     }
 
     .nav-play{
@@ -1053,14 +1350,40 @@ footer{
     }
 
     .hero{
-        min-height:680px;
+
+        min-height:700px;
+
+        padding:
+            125px
+            25px
+            70px;
     }
 
     .hero h1{
-        font-size:45px;
+
+        font-size:48px;
+
+        letter-spacing:-2px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .hero-status{
+
+        position:relative;
+
+        right:auto;
+        bottom:auto;
+
+        width:100%;
+
+        margin-top:40px;
     }
 
     .section{
+
         width:92%;
 
         padding:70px 0;
@@ -1070,20 +1393,38 @@ footer{
         font-size:34px;
     }
 
-    .games-grid{
-        grid-template-columns:1fr;
-    }
-
-    .team-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
     .status-card{
-        grid-template-columns:1fr;
+
+        grid-template-columns:
+            1fr;
     }
 
     .status-item{
+
         border-right:0;
+
+        border-bottom:
+            1px solid rgba(255,255,255,.08);
+    }
+
+    .status-item:last-child{
+        border-bottom:0;
+    }
+
+    .games-grid{
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .feature{
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .feature-image{
+        min-height:300px;
     }
 
     .feature-content{
@@ -1102,32 +1443,64 @@ footer{
         font-size:32px;
     }
 
+    .shop-box{
+        padding:35px 25px;
+    }
+
+    .shop-box h2{
+        font-size:32px;
+    }
+
+    .team-grid{
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .contact-box{
+
+        grid-template-columns:
+            1fr;
+    }
+
     .survival{
         padding:35px 20px;
     }
 
-}
-
-/* =========================
-   ANIMATION
-========================= */
-
-@keyframes fadeUp{
-
-    from{
-        opacity:0;
-        transform:translateY(25px);
+    .cookie-section{
+        padding:35px 20px;
     }
 
-    to{
-        opacity:1;
-        transform:translateY(0);
+    .footer-inner{
+        align-items:flex-start;
+        flex-direction:column;
     }
 
 }
 
-.hero-content{
-    animation:fadeUp .8s ease both;
+
+/* =========================================================
+   SEHR KLEINE HANDYS
+========================================================= */
+
+@media(max-width:420px){
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .team-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .hero-buttons .btn{
+        width:100%;
+    }
+
 }
 
 </style>
@@ -1138,13 +1511,16 @@ footer{
 <body>
 
 
-<!-- =========================
+<!-- =========================================================
      NAVIGATION
-========================= -->
+========================================================= -->
 
 <nav class="nav">
 
-    <a class="logo" href="#top">
+    <a
+        class="logo"
+        href="#top"
+    >
 
         <img
             src="WhatsApp%20Image%202026-07-11%20at%2015.30.43.jpeg"
@@ -1160,28 +1536,48 @@ footer{
 
     <div class="nav-links">
 
-        <button onclick="scrollToSection('top')">
+        <button
+            onclick="scrollToSection('top')"
+        >
             Start
         </button>
 
-        <button onclick="scrollToSection('games')">
+        <button
+            onclick="scrollToSection('games')"
+        >
             Spiele
         </button>
 
-        <button onclick="scrollToSection('shop')">
+        <button
+            onclick="scrollToSection('shop')"
+        >
             Shop
         </button>
 
-        <button onclick="scrollToSection('live')">
+        <button
+            onclick="scrollToSection('live')"
+        >
             LMS LIVE
         </button>
 
-        <button onclick="scrollToSection('team')">
+        <button
+            onclick="scrollToSection('team')"
+        >
             Team
         </button>
 
-        <button onclick="scrollToSection('kontakt')">
+        <button
+            onclick="scrollToSection('kontakt')"
+        >
             Kontakt
+        </button>
+
+        <!-- NEU: INFO -->
+
+        <button
+            onclick="window.location.href='info.html'"
+        >
+            Info
         </button>
 
         <button
@@ -1196,11 +1592,15 @@ footer{
 </nav>
 
 
-<!-- =========================
-     HERO
-========================= -->
 
-<header class="hero" id="top">
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<header
+    class="hero"
+    id="top"
+>
 
     <div class="hero-content">
 
@@ -1208,15 +1608,22 @@ footer{
             LMS NETWORK
         </div>
 
+
         <h1>
+
             Dein Server.<br>
+
             <span>Deine Spiele.</span>
+
         </h1>
 
+
         <p>
+
             Willkommen auf dem LMS SERVER.
             Entdecke Minigames, Events, Survival
             und viele weitere Abenteuer mit deiner Community.
+
         </p>
 
 
@@ -1228,6 +1635,7 @@ footer{
             >
                 Jetzt spielen
             </button>
+
 
             <button
                 class="btn btn-secondary"
@@ -1241,15 +1649,21 @@ footer{
     </div>
 
 
+
+    <!-- HERO SERVER STATUS -->
+
     <div class="hero-status">
 
         <div class="hero-status-title">
             Server Status
         </div>
 
+
         <div class="status-row">
 
-            <span>Status</span>
+            <span>
+                Status
+            </span>
 
             <strong id="heroServerStatus">
                 Prüfe...
@@ -1257,9 +1671,12 @@ footer{
 
         </div>
 
+
         <div class="status-row">
 
-            <span>Spieler</span>
+            <span>
+                Spieler
+            </span>
 
             <strong id="heroPlayers">
                 0/40
@@ -1267,9 +1684,12 @@ footer{
 
         </div>
 
+
         <div class="status-row">
 
-            <span>Version</span>
+            <span>
+                Version
+            </span>
 
             <strong id="heroVersion">
                 —
@@ -1277,9 +1697,12 @@ footer{
 
         </div>
 
+
         <div class="status-row">
 
-            <span>IP</span>
+            <span>
+                IP
+            </span>
 
             <strong>
                 LMS_server.aternos.me
@@ -1292,9 +1715,10 @@ footer{
 </header>
 
 
-<!-- =========================
+
+<!-- =========================================================
      SERVER STATUS
-========================= -->
+========================================================= -->
 
 <section class="section">
 
@@ -1309,8 +1733,10 @@ footer{
         </h2>
 
         <p class="section-description">
-            Alle wichtigen Informationen über den aktuellen Serverstatus
-            auf einen Blick.
+
+            Alle wichtigen Informationen über den aktuellen
+            Serverstatus auf einen Blick.
+
         </p>
 
     </div>
@@ -1318,9 +1744,12 @@ footer{
 
     <div class="status-card">
 
+
         <div class="status-item">
 
-            <small>Status</small>
+            <small>
+                Status
+            </small>
 
             <strong id="serverStatus">
                 Prüfe Server...
@@ -1331,7 +1760,9 @@ footer{
 
         <div class="status-item">
 
-            <small>Spieler</small>
+            <small>
+                Spieler
+            </small>
 
             <strong id="players">
                 0/40
@@ -1342,7 +1773,9 @@ footer{
 
         <div class="status-item">
 
-            <small>Version</small>
+            <small>
+                Version
+            </small>
 
             <strong id="version">
                 Wird geladen...
@@ -1353,7 +1786,9 @@ footer{
 
         <div class="status-item">
 
-            <small>Server IP</small>
+            <small>
+                Server IP
+            </small>
 
             <strong>
                 LMS_server.aternos.me
@@ -1366,11 +1801,15 @@ footer{
 </section>
 
 
-<!-- =========================
-     GAMES
-========================= -->
 
-<section class="section" id="games">
+<!-- =========================================================
+     SPIELE
+========================================================= -->
+
+<section
+    class="section"
+    id="games"
+>
 
     <div class="section-header">
 
@@ -1383,8 +1822,10 @@ footer{
         </h2>
 
         <p class="section-description">
+
             Von verrückten Minigames bis zu großen Abenteuern:
             Hier findest du die Spiele des LMS SERVER.
+
         </p>
 
     </div>
@@ -1393,16 +1834,17 @@ footer{
     <div class="games-grid">
 
 
+        <!-- ONLY UP -->
+
         <div class="game-card">
+
+            <div
+                class="game-background game-onlyup"
+            ></div>
 
             <div class="game-tag">
                 NEU
             </div>
-
-            <img
-                src="onlyupmc_screenshot_1.jpg"
-                alt="Only Up"
-            >
 
             <div class="game-overlay">
 
@@ -1411,8 +1853,10 @@ footer{
                 </h3>
 
                 <p>
+
                     Kämpfe dich immer weiter nach oben.
                     Jeder Sprung zählt.
+
                 </p>
 
             </div>
@@ -1420,7 +1864,13 @@ footer{
         </div>
 
 
+        <!-- HAPPY GHAST -->
+
         <div class="game-card">
+
+            <div
+                class="game-background game-blue"
+            ></div>
 
             <div class="game-overlay">
 
@@ -1429,29 +1879,24 @@ footer{
                 </h3>
 
                 <p>
+
                     Fliege durch die Welt und entdecke
                     neue Herausforderungen.
+
                 </p>
 
             </div>
 
-            <div
-                style="
-                    position:absolute;
-                    inset:0;
-                    background:
-                    linear-gradient(
-                        135deg,
-                        #162f50,
-                        #07101d
-                    );
-                "
-            ></div>
-
         </div>
 
 
+        <!-- BUGWORLD -->
+
         <div class="game-card">
+
+            <div
+                class="game-background game-green"
+            ></div>
 
             <div class="game-overlay">
 
@@ -1460,28 +1905,24 @@ footer{
                 </h3>
 
                 <p>
-                    Eine verrückte Welt voller Überraschungen.
+
+                    Eine verrückte Welt voller
+                    Überraschungen.
+
                 </p>
 
             </div>
 
-            <div
-                style="
-                    position:absolute;
-                    inset:0;
-                    background:
-                    linear-gradient(
-                        135deg,
-                        #304218,
-                        #0a1208
-                    );
-                "
-            ></div>
-
         </div>
 
 
+        <!-- WATERHOPPER -->
+
         <div class="game-card">
+
+            <div
+                class="game-background game-water"
+            ></div>
 
             <div class="game-overlay">
 
@@ -1490,29 +1931,24 @@ footer{
                 </h3>
 
                 <p>
+
                     Springe, lande und meistere
                     die Wasserstrecken.
+
                 </p>
 
             </div>
 
-            <div
-                style="
-                    position:absolute;
-                    inset:0;
-                    background:
-                    linear-gradient(
-                        135deg,
-                        #0c4770,
-                        #06121d
-                    );
-                "
-            ></div>
-
         </div>
 
 
+        <!-- ELYTRA -->
+
         <div class="game-card">
+
+            <div
+                class="game-background game-purple"
+            ></div>
 
             <div class="game-overlay">
 
@@ -1521,29 +1957,24 @@ footer{
                 </h3>
 
                 <p>
+
                     Geschwindigkeit, Flug und Präzision
                     in einem Parcours.
+
                 </p>
 
             </div>
 
-            <div
-                style="
-                    position:absolute;
-                    inset:0;
-                    background:
-                    linear-gradient(
-                        135deg,
-                        #522e68,
-                        #100818
-                    );
-                "
-            ></div>
-
         </div>
 
 
+        <!-- EXPLORER -->
+
         <div class="game-card">
+
+            <div
+                class="game-background game-orange"
+            ></div>
 
             <div class="game-overlay">
 
@@ -1552,24 +1983,13 @@ footer{
                 </h3>
 
                 <p>
+
                     Erkunde die Welt und entdecke
                     unbekannte Orte.
+
                 </p>
 
             </div>
-
-            <div
-                style="
-                    position:absolute;
-                    inset:0;
-                    background:
-                    linear-gradient(
-                        135deg,
-                        #61451b,
-                        #120d06
-                    );
-                "
-            ></div>
 
         </div>
 
@@ -1579,15 +1999,18 @@ footer{
 </section>
 
 
-<!-- =========================
+
+<!-- =========================================================
      ONLY UP FEATURE
-========================= -->
+========================================================= -->
 
 <section class="section">
 
     <div class="feature">
 
-        <div class="feature-image"></div>
+
+        <div class="feature-image">
+        </div>
 
 
         <div class="feature-content">
@@ -1596,16 +2019,25 @@ footer{
                 LMS HIGHLIGHT
             </div>
 
+
             <h2>
-                ONLY <span>UP</span>
+
+                ONLY
+                <span>UP</span>
+
             </h2>
 
+
             <p>
+
                 Bereit für den Aufstieg?
-                Starte dein Only-Up-Abenteuer auf dem
-                LMS SERVER und kämpfe dich Schritt für
-                Schritt nach oben.
+
+                Starte dein Only-Up-Abenteuer
+                auf dem LMS SERVER und kämpfe dich
+                Schritt für Schritt nach oben.
+
             </p>
+
 
             <button
                 class="btn btn-primary"
@@ -1621,11 +2053,15 @@ footer{
 </section>
 
 
-<!-- =========================
-     SHOP
-========================= -->
 
-<section class="section" id="shop">
+<!-- =========================================================
+     SHOP
+========================================================= -->
+
+<section
+    class="section"
+    id="shop"
+>
 
     <div class="section-header">
 
@@ -1638,22 +2074,30 @@ footer{
         </h2>
 
         <p class="section-description">
+
             Der LMS Shop befindet sich aktuell im Aufbau.
-            Bald findest du hier Ränge, Extras und weitere Inhalte.
+            Bald findest du hier weitere Inhalte.
+
         </p>
 
     </div>
 
 
-    <div class="live">
+    <div class="shop-box">
 
         <h2>
-            Bald <span>verfügbar</span>
+
+            Bald
+            <span>verfügbar</span>
+
         </h2>
 
+
         <p>
-            Der Shop wird in Zukunft mit besonderen LMS-Inhalten
-            und Extras erweitert.
+
+            Der Shop wird in Zukunft mit besonderen
+            LMS-Inhalten und Extras erweitert.
+
         </p>
 
     </div>
@@ -1661,11 +2105,15 @@ footer{
 </section>
 
 
-<!-- =========================
-     LMS LIVE
-========================= -->
 
-<section class="section" id="live">
+<!-- =========================================================
+     LMS LIVE
+========================================================= -->
+
+<section
+    class="section"
+    id="live"
+>
 
     <div class="live">
 
@@ -1673,14 +2121,23 @@ footer{
             LMS LIVE
         </div>
 
+
         <h2>
-            Die interaktive <span>Show</span>
+
+            Die interaktive
+            <span>Show</span>
+
         </h2>
 
+
         <p>
-            Events, Community-Aktionen, Abstimmungen und
-            besondere Shows direkt aus dem LMS SERVER.
+
+            Events, Community-Aktionen,
+            Abstimmungen und besondere Shows
+            direkt aus dem LMS SERVER.
+
         </p>
+
 
         <button
             class="btn btn-primary"
@@ -1689,6 +2146,7 @@ footer{
             Abstimmen
         </button>
 
+
         <p id="vote"></p>
 
     </div>
@@ -1696,11 +2154,15 @@ footer{
 </section>
 
 
-<!-- =========================
-     TEAM
-========================= -->
 
-<section class="section" id="team">
+<!-- =========================================================
+     TEAM
+========================================================= -->
+
+<section
+    class="section"
+    id="team"
+>
 
     <div class="section-header">
 
@@ -1713,7 +2175,9 @@ footer{
         </h2>
 
         <p class="section-description">
+
             Die Menschen hinter dem LMS SERVER.
+
         </p>
 
     </div>
@@ -1853,11 +2317,15 @@ footer{
 </section>
 
 
-<!-- =========================
-     CONTACT
-========================= -->
 
-<section class="section" id="kontakt">
+<!-- =========================================================
+     KONTAKT
+========================================================= -->
+
+<section
+    class="section"
+    id="kontakt"
+>
 
     <div class="section-header">
 
@@ -1881,13 +2349,19 @@ footer{
                 Wir hören zu.
             </h2>
 
+
             <p>
-                Du hast eine Frage, eine Idee oder
-                hast einen Fehler entdeckt?
+
+                Du hast eine Frage, eine Idee
+                oder hast einen Fehler entdeckt?
+
                 Schreib uns und wir kümmern uns darum.
+
             </p>
 
+
             <br>
+
 
             <button
                 class="btn btn-primary"
@@ -1899,6 +2373,7 @@ footer{
         </div>
 
 
+
         <div class="contact-form">
 
             <input
@@ -1907,11 +2382,13 @@ footer{
                 placeholder="Minecraft Name"
             >
 
+
             <textarea
                 id="message"
                 class="input"
                 placeholder="Deine Nachricht"
             ></textarea>
+
 
             <button
                 class="btn btn-primary"
@@ -1922,17 +2399,20 @@ footer{
 
         </div>
 
-
     </div>
 
 </section>
 
 
-<!-- =========================
-     SURVIVAL CAMP
-========================= -->
 
-<section class="section" id="survival">
+<!-- =========================================================
+     SURVIVAL CAMP
+========================================================= -->
+
+<section
+    class="section"
+    id="survival"
+>
 
     <div class="survival">
 
@@ -1940,14 +2420,19 @@ footer{
             SURVIVAL
         </div>
 
+
         <h2>
             Survival Camp
         </h2>
 
+
         <p>
+
             Starte dein eigenes Abenteuer,
             baue deine Base und erkunde die Welt.
+
         </p>
+
 
         <button
             class="btn btn-primary"
@@ -1979,9 +2464,10 @@ footer{
 </section>
 
 
-<!-- =========================
+
+<!-- =========================================================
      COOKIE
-========================= -->
+========================================================= -->
 
 <section class="section">
 
@@ -1991,9 +2477,11 @@ footer{
             EASTER EGG
         </div>
 
+
         <h2>
             Cookie Clicker
         </h2>
+
 
         <p>
             Wie viele Cookies schaffst du?
@@ -2009,10 +2497,13 @@ footer{
 
 
         <p>
+
             Cookies:
+
             <strong id="cookies">
                 0
             </strong>
+
         </p>
 
     </div>
@@ -2020,9 +2511,10 @@ footer{
 </section>
 
 
-<!-- =========================
+
+<!-- =========================================================
      FOOTER
-========================= -->
+========================================================= -->
 
 <footer>
 
@@ -2038,21 +2530,26 @@ footer{
                     alt="LMS Logo"
                 >
 
+
                 <strong>
                     LMS SERVER
                 </strong>
 
             </div>
 
+
             <div class="footer-text">
 
                 Minecraft Minigames • Survival • Events
+
                 <br>
+
                 LMS_server.aternos.me
 
             </div>
 
         </div>
+
 
 
         <div class="footer-links">
@@ -2077,6 +2574,12 @@ footer{
                 Team
             </a>
 
+            <a href="#kontakt">
+                Kontakt
+            </a>
+
+            <!-- INFO -->
+
             <a href="info.html">
                 Info
             </a>
@@ -2090,25 +2593,27 @@ footer{
 
         </div>
 
-
     </div>
 
 </footer>
 
 
-<!-- =========================
+
+<!-- =========================================================
      JAVASCRIPT
-========================= -->
+========================================================= -->
 
 <script>
 
-/* =========================
+
+/* =========================================================
    NAVIGATION
-========================= */
+========================================================= */
 
 function scrollToSection(id){
 
-    const element=document.getElementById(id);
+    const element =
+        document.getElementById(id);
 
     if(element){
 
@@ -2121,26 +2626,57 @@ function scrollToSection(id){
 }
 
 
-/* =========================
-   COPY SERVER IP
-========================= */
+/* =========================================================
+   SERVER IP
+========================================================= */
 
 function copyIP(){
 
-    navigator.clipboard.writeText(
-        "LMS_server.aternos.me"
-    );
+    const ip =
+        "LMS_server.aternos.me";
 
-    alert(
-        "Server-IP kopiert:\nLMS_server.aternos.me"
-    );
+    if(
+        navigator.clipboard &&
+        navigator.clipboard.writeText
+    ){
+
+        navigator.clipboard.writeText(ip)
+
+        .then(function(){
+
+            alert(
+                "Server-IP kopiert:\n" +
+                ip
+            );
+
+        })
+
+        .catch(function(){
+
+            alert(
+                "Server-IP:\n" +
+                ip
+            );
+
+        });
+
+    }
+
+    else{
+
+        alert(
+            "Server-IP:\n" +
+            ip
+        );
+
+    }
 
 }
 
 
-/* =========================
+/* =========================================================
    DISCORD
-========================= */
+========================================================= */
 
 function openDiscord(){
 
@@ -2154,14 +2690,21 @@ function openDiscord(){
 
 function sendDiscord(){
 
-    const name=
-        document.getElementById("playername").value.trim();
+    const name =
+        document
+        .getElementById("playername")
+        .value
+        .trim();
 
-    const message=
-        document.getElementById("message").value.trim();
+
+    const message =
+        document
+        .getElementById("message")
+        .value
+        .trim();
 
 
-    if(name===""){
+    if(name === ""){
 
         alert(
             "Bitte Minecraft Name eintragen."
@@ -2172,7 +2715,7 @@ function sendDiscord(){
     }
 
 
-    if(message===""){
+    if(message === ""){
 
         alert(
             "Bitte Nachricht schreiben."
@@ -2184,90 +2727,107 @@ function sendDiscord(){
 
 
     alert(
-        "Nachricht vorbereitet:\n\n"+
-        "Minecraft Name: "+
-        name+
-        "\n\n"+
+
+        "Nachricht vorbereitet:\n\n" +
+
+        "Minecraft Name: " +
+        name +
+
+        "\n\n" +
+
         message
+
     );
 
 }
 
 
-/* =========================
+/* =========================================================
    LMS LIVE
-========================= */
+========================================================= */
 
 function liveVote(){
 
-    document.getElementById("vote").innerHTML=
+    document
+        .getElementById("vote")
+        .innerHTML =
         "Deine Stimme wurde gespeichert.";
 
 }
 
 
-/* =========================
+/* =========================================================
    COOKIE
-========================= */
+========================================================= */
 
-let cookies=0;
+let cookies = 0;
 
 
 function clickCookie(){
 
     cookies++;
 
-    document.getElementById(
-        "cookies"
-    ).innerHTML=cookies;
+    document
+        .getElementById("cookies")
+        .innerHTML =
+        cookies;
 
 }
 
 
-/* =========================
+/* =========================================================
    SURVIVAL CAMP
-========================= */
+========================================================= */
 
 function joinCamp(){
 
-    const slot=
+    const slot =
         document.getElementById("slot");
 
-    const codeBox=
+
+    const codeBox =
         document.getElementById("campCode");
 
 
-    slot.style.display="block";
+    slot.style.display =
+        "block";
 
-    codeBox.innerHTML="";
+
+    codeBox.innerHTML =
+        "";
 
 
-    const symbols=[
-        "A","B","C","D","E","F",
-        "1","2","3","4","5","6",
-        "7","8","9"
+    const symbols = [
+
+        "A","B","C","D","E",
+        "F","G","H","J","K",
+
+        "1","2","3","4","5",
+        "6","7","8","9"
+
     ];
 
 
-    let count=0;
+    let count = 0;
 
 
-    const animation=
+    const animation =
         setInterval(function(){
 
-            let random="";
+
+            let random = "";
 
 
             for(
-                let i=0;
-                i<8;
+                let i = 0;
+                i < 8;
                 i++
             ){
 
-                random+=
+                random +=
                     symbols[
                         Math.floor(
-                            Math.random()*
+                            Math.random() *
                             symbols.length
                         )
                     ];
@@ -2275,29 +2835,34 @@ function joinCamp(){
             }
 
 
-            slot.innerHTML=random;
+            slot.innerHTML =
+                random;
+
 
             count++;
 
 
-            if(count>=15){
+            if(count >= 15){
 
-                clearInterval(animation);
+                clearInterval(
+                    animation
+                );
 
 
-                let finalCode="CAMP-";
+                let finalCode =
+                    "CAMP-";
 
 
                 for(
-                    let i=0;
-                    i<6;
+                    let i = 0;
+                    i < 6;
                     i++
                 ){
 
-                    finalCode+=
+                    finalCode +=
                         symbols[
                             Math.floor(
-                                Math.random()*
+                                Math.random() *
                                 symbols.length
                             )
                         ];
@@ -2305,12 +2870,15 @@ function joinCamp(){
                 }
 
 
-                slot.innerHTML=
+                slot.innerHTML =
                     "Code erstellt";
 
 
-                codeBox.innerHTML=
-                    "Dein Survival Camp Code:<br><br>"+
+                codeBox.innerHTML =
+
+                    "Dein Survival Camp Code:" +
+                    "<br><br>" +
+
                     finalCode;
 
 
@@ -2326,9 +2894,9 @@ function joinCamp(){
 }
 
 
-/* =========================
+/* =========================================================
    SERVER STATUS
-========================= */
+========================================================= */
 
 function updateServerStatus(){
 
@@ -2337,57 +2905,89 @@ function updateServerStatus(){
     )
 
     .then(
-        response=>response.json()
+        response =>
+            response.json()
     )
 
     .then(
-        data=>{
+        data => {
 
 
             if(data.online){
 
-                const players=
-                    data.players.online+
-                    "/"+
-                    data.players.max;
 
-                const version=
-                    data.version.name;
+                const onlinePlayers =
+                    data.players &&
+                    typeof data.players.online === "number"
+                    ? data.players.online
+                    : 0;
 
 
-                document.getElementById(
-                    "serverStatus"
-                ).innerHTML=
+                const maxPlayers =
+                    data.players &&
+                    typeof data.players.max === "number"
+                    ? data.players.max
+                    : 40;
+
+
+                const players =
+                    onlinePlayers +
+                    "/" +
+                    maxPlayers;
+
+
+                const version =
+                    data.version &&
+                    data.version.name
+                    ? data.version.name
+                    : "Unbekannt";
+
+
+                document
+                    .getElementById(
+                        "serverStatus"
+                    )
+                    .innerHTML =
                     '<span class="online-dot"></span>Online';
 
 
-                document.getElementById(
-                    "players"
-                ).innerHTML=
+                document
+                    .getElementById(
+                        "players"
+                    )
+                    .innerHTML =
                     players;
 
 
-                document.getElementById(
-                    "version"
-                ).innerHTML=
+                document
+                    .getElementById(
+                        "version"
+                    )
+                    .innerHTML =
                     version;
 
 
-                document.getElementById(
-                    "heroServerStatus"
-                ).innerHTML=
+                document
+                    .getElementById(
+                        "heroServerStatus"
+                    )
+                    .innerHTML =
                     '<span class="online-dot"></span>Online';
 
 
-                document.getElementById(
-                    "heroPlayers"
-                ).innerHTML=
+                document
+                    .getElementById(
+                        "heroPlayers"
+                    )
+                    .innerHTML =
                     players;
 
 
-                document.getElementById(
-                    "heroVersion"
-                ).innerHTML=
+                document
+                    .getElementById(
+                        "heroVersion"
+                    )
+                    .innerHTML =
                     version;
 
             }
@@ -2395,39 +2995,52 @@ function updateServerStatus(){
 
             else{
 
-                document.getElementById(
-                    "serverStatus"
-                ).innerHTML=
+
+                document
+                    .getElementById(
+                        "serverStatus"
+                    )
+                    .innerHTML =
                     "Offline";
 
 
-                document.getElementById(
-                    "players"
-                ).innerHTML=
+                document
+                    .getElementById(
+                        "players"
+                    )
+                    .innerHTML =
                     "0/40";
 
 
-                document.getElementById(
-                    "version"
-                ).innerHTML=
+                document
+                    .getElementById(
+                        "version"
+                    )
+                    .innerHTML =
                     "Nicht erreichbar";
 
 
-                document.getElementById(
-                    "heroServerStatus"
-                ).innerHTML=
+                document
+                    .getElementById(
+                        "heroServerStatus"
+                    )
+                    .innerHTML =
                     "Offline";
 
 
-                document.getElementById(
-                    "heroPlayers"
-                ).innerHTML=
+                document
+                    .getElementById(
+                        "heroPlayers"
+                    )
+                    .innerHTML =
                     "0/40";
 
 
-                document.getElementById(
-                    "heroVersion"
-                ).innerHTML=
+                document
+                    .getElementById(
+                        "heroVersion"
+                    )
+                    .innerHTML =
                     "—";
 
             }
@@ -2436,34 +3049,73 @@ function updateServerStatus(){
 
     )
 
-    .catch(()=>{
+    .catch(function(){
 
-        document.getElementById(
-            "serverStatus"
-        ).innerHTML=
+
+        document
+            .getElementById(
+                "serverStatus"
+            )
+            .innerHTML =
             "Nicht erreichbar";
 
 
-        document.getElementById(
-            "heroServerStatus"
-        ).innerHTML=
+        document
+            .getElementById(
+                "players"
+            )
+            .innerHTML =
+            "—";
+
+
+        document
+            .getElementById(
+                "version"
+            )
+            .innerHTML =
+            "—";
+
+
+        document
+            .getElementById(
+                "heroServerStatus"
+            )
+            .innerHTML =
             "Nicht erreichbar";
+
+
+        document
+            .getElementById(
+                "heroPlayers"
+            )
+            .innerHTML =
+            "—";
+
+
+        document
+            .getElementById(
+                "heroVersion"
+            )
+            .innerHTML =
+            "—";
 
     });
 
 }
 
 
-/* =========================
+/* =========================================================
    START
-========================= */
+========================================================= */
 
 updateServerStatus();
+
 
 setInterval(
     updateServerStatus,
     60000
 );
+
 
 </script>
 
