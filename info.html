@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="de">
 
 <head>
@@ -7,389 +6,861 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>🦆 LMS SERVER Wiki</title>
+<title>LMS SERVER Wiki</title>
 
 <style>
 
+/* =========================================================
+   GRUNDLAGEN
+========================================================= */
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 html{
-scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-font-family:Arial,sans-serif;
-background:#061426;
-color:white;
-text-align:center;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050b14;
+    color:white;
+    overflow-x:hidden;
+}
 
-background-image:
-linear-gradient(#153252 1px,transparent 1px),
-linear-gradient(90deg,#153252 1px,transparent 1px);
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-2;
 
-background-size:45px 45px;
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255,176,0,.09),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 60%,
+            rgba(30,100,190,.10),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #07111f 0%,
+            #040810 100%
+        );
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        );
+
+    background-size:50px 50px;
 }
 
 
-/* =========================
-HEADER
-========================= */
-
-header{
-padding:60px 20px;
-
-background:
-linear-gradient(135deg,#ffb000,#ffe27a);
-
-color:#071a33;
-border-bottom:5px solid #ffb000;
-}
-
-header a{
-text-decoration:none;
-color:#071a33;
-}
-
-h1{
-font-size:60px;
-margin:10px;
-}
-
-header p{
-font-size:22px;
-}
-
-
-/* =========================
-NAVIGATION
-========================= */
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
 .nav{
-position:sticky;
-top:0;
-z-index:999;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
 
-display:flex;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
+    height:78px;
 
-padding:15px;
+    display:flex;
+    align-items:center;
 
-background:rgba(6,20,38,.88);
-backdrop-filter:blur(10px);
+    padding:0 45px;
+
+    background:rgba(4,9,16,.82);
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+
+    text-decoration:none;
+
+    margin-right:auto;
+}
+
+.logo img{
+    width:55px;
+    height:55px;
+
+    object-fit:contain;
+
+    border-radius:12px;
+
+    transition:.3s;
+}
+
+.logo img:hover{
+    transform:scale(1.07);
+}
+
+.logo-text{
+    margin-left:12px;
+
+    color:white;
+
+    font-size:20px;
+    font-weight:900;
+
+    letter-spacing:1px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:5px;
 }
 
 .nav button{
-background:rgba(40,120,210,.6);
-border:1px solid #4da3ff;
+    border:0;
 
-color:white;
+    background:transparent;
 
-padding:13px 25px;
+    color:#dce5ef;
 
-border-radius:15px;
+    padding:12px 15px;
 
-font-size:16px;
-font-weight:bold;
+    border-radius:10px;
 
-cursor:pointer;
+    font-size:14px;
+    font-weight:bold;
 
-transition:.3s;
+    cursor:pointer;
+
+    transition:.25s;
 }
 
 .nav button:hover{
-background:white;
-color:#071a33;
-transform:translateY(-5px);
+    background:rgba(255,176,0,.12);
+    color:#ffb000;
+}
+
+.nav-info{
+    color:#ffb000 !important;
+}
+
+.nav-play{
+    margin-left:10px;
+
+    background:#ffb000 !important;
+
+    color:#07111f !important;
+
+    padding:12px 22px !important;
+}
+
+.nav-play:hover{
+    background:#ffd45c !important;
 }
 
 
-/* =========================
-ALLGEMEINE BOX
-========================= */
+/* =========================================================
+   PAGE HEADER
+========================================================= */
 
-.hero{
-width:90%;
-max-width:1200px;
+.page-header{
 
-margin:45px auto;
-padding:45px;
+    position:relative;
 
-border-radius:30px;
+    min-height:430px;
 
-background:rgba(255,255,255,.08);
-border:1px solid rgba(255,255,255,.18);
+    display:flex;
 
-backdrop-filter:blur(10px);
+    align-items:center;
 
-box-shadow:0 0 35px rgba(0,0,0,.45);
+    justify-content:center;
+
+    text-align:center;
+
+    padding:
+        140px
+        25px
+        90px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(3,8,15,.94),
+            rgba(3,8,15,.58),
+            rgba(3,8,15,.90)
+        ),
+        url("images.jpg")
+        center/cover no-repeat;
 }
 
-.hero h2{
-font-size:45px;
-color:#ffb000;
-margin-bottom:20px;
+.page-header::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:150px;
+
+    background:
+        linear-gradient(
+            transparent,
+            #050b14
+        );
 }
 
-.hero p{
-font-size:20px;
-line-height:1.8;
-color:#e8e8e8;
+.header-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:850px;
+}
+
+.header-label{
+
+    color:#ffb000;
+
+    font-size:13px;
+    font-weight:900;
+
+    letter-spacing:4px;
+
+    margin-bottom:15px;
+}
+
+.page-header h1{
+
+    font-size:64px;
+
+    font-weight:900;
+
+    letter-spacing:-3px;
+
+    margin-bottom:18px;
+}
+
+.page-header h1 span{
+    color:#ffb000;
+}
+
+.page-header p{
+
+    color:#c5cfda;
+
+    font-size:18px;
+
+    line-height:1.7;
 }
 
 
-/* =========================
-REGELWERK
-========================= */
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:0 auto;
+
+    padding:30px 0 90px;
+}
+
+
+/* =========================================================
+   WIKI INTRO
+========================================================= */
+
+.wiki-intro{
+
+    padding:50px;
+
+    margin-bottom:30px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,176,0,.10),
+            rgba(255,255,255,.035)
+        );
+
+    border:
+        1px solid rgba(255,176,0,.18);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.25);
+}
+
+.section-label{
+
+    color:#ffb000;
+
+    font-size:12px;
+    font-weight:900;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    margin-bottom:10px;
+}
+
+.wiki-intro h2{
+
+    font-size:42px;
+
+    margin-bottom:20px;
+}
+
+.wiki-intro p{
+
+    color:#b8c3cf;
+
+    font-size:18px;
+
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   REGELWERK CARD
+========================================================= */
 
 .rule-card{
-display:block;
 
-width:320px;
+    display:flex;
 
-margin:50px auto 0;
-padding:35px 25px;
+    align-items:center;
 
-border-radius:30px;
+    gap:25px;
 
-background:rgba(40,120,210,.18);
-border:1px solid #4da3ff;
+    margin-top:35px;
 
-text-decoration:none;
-color:white;
+    padding:25px 30px;
 
-transition:.35s;
+    text-decoration:none;
+
+    color:white;
+
+    border-radius:16px;
+
+    background:
+        rgba(255,176,0,.08);
+
+    border:
+        1px solid rgba(255,176,0,.30);
+
+    transition:.3s;
 }
 
 .rule-card:hover{
-transform:translateY(-10px) scale(1.03);
 
-background:rgba(40,120,210,.35);
+    transform:translateY(-5px);
 
-box-shadow:0 0 35px #4da3ff;
+    background:
+        rgba(255,176,0,.14);
+
+    border-color:#ffb000;
+
+    box-shadow:
+        0 15px 40px rgba(255,176,0,.12);
 }
 
 .rule-icon{
-font-size:75px;
-margin-bottom:15px;
+
+    width:65px;
+    height:65px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+
+    border-radius:14px;
+
+    background:#ffb000;
+
+    color:#07111f;
+
+    font-size:30px;
 }
 
 .rule-card h3{
-font-size:32px;
-color:#ffb000;
-margin-bottom:12px;
+
+    color:#ffb000;
+
+    font-size:25px;
+
+    margin-bottom:6px;
 }
 
 .rule-card p{
-font-size:17px;
-color:#ddd;
-line-height:1.5;
+
+    color:#aeb9c5;
+
+    font-size:14px;
+
+    line-height:1.6;
 }
 
 
-/* =========================
-HAUPT SEKTIONEN
-========================= */
+/* =========================================================
+   MAIN INFORMATION CARDS
+========================================================= */
 
-.builder-section{
+.info-card{
 
-width:90%;
-max-width:1200px;
+    margin-top:30px;
 
-margin:70px auto;
+    border-radius:20px;
 
-border-radius:30px;
+    overflow:hidden;
 
-overflow:hidden;
+    background:
+        rgba(255,255,255,.035);
 
-background:rgba(255,255,255,.08);
+    border:
+        1px solid rgba(255,255,255,.08);
 
-border:1px solid rgba(255,255,255,.18);
-
-box-shadow:0 0 35px rgba(0,0,0,.5);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.25);
 }
 
-.builder-image{
+.info-image{
 
-width:100%;
-height:auto;
+    width:100%;
 
-max-height:650px;
+    max-height:620px;
 
-display:block;
+    display:block;
 
-object-fit:cover;
+    object-fit:cover;
 }
 
-.builder-content{
+.info-content{
 
-padding:50px 55px 55px;
+    padding:50px 55px 60px;
 }
 
-.builder-content h2{
+.info-content h2{
 
-font-size:48px;
-line-height:1.15;
+    color:#ffb000;
 
-color:#ffb000;
+    font-size:48px;
 
-margin-bottom:25px;
+    line-height:1.15;
+
+    margin-bottom:25px;
 }
 
-.builder-content h3{
+.info-content h3{
 
-font-size:29px;
+    color:#4da3ff;
 
-margin-top:40px;
-margin-bottom:15px;
+    font-size:28px;
 
-color:#4da3ff;
+    margin-top:42px;
+
+    margin-bottom:15px;
 }
 
-.builder-content p{
+.info-content p{
 
-font-size:19px;
+    color:#d3dbe4;
 
-line-height:1.85;
+    font-size:17px;
 
-color:#e5e5e5;
+    line-height:1.85;
 
-max-width:1000px;
-
-margin:0 auto;
+    max-width:1050px;
 }
 
-.builder-content strong{
-
-color:#ffffff;
+.info-content strong{
+    color:#fff;
 }
 
 
-/* =========================
-HINWEIS
-========================= */
+/* =========================================================
+   NOTE
+========================================================= */
 
 .note{
 
-margin:40px auto 0;
+    margin-top:40px;
 
-max-width:950px;
+    padding:25px 30px;
 
-padding:25px 30px;
+    border-left:
+        4px solid #ffb000;
 
-border-left:4px solid #ffb000;
+    border-radius:12px;
 
-background:rgba(255,176,0,.08);
+    background:
+        rgba(255,176,0,.07);
 
-border-radius:12px;
+    color:#cfd7df;
 
-color:#ddd;
+    font-size:16px;
 
-font-size:17px;
-
-line-height:1.7;
-
-text-align:left;
+    line-height:1.75;
 }
 
 
-/* =========================
-PRIDE BEREICH
-========================= */
+/* =========================================================
+   PRIDE SECTION
+========================================================= */
 
-.pride-section{
+.pride-card{
 
-margin-top:90px;
+    margin-top:35px;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.25);
 }
 
-.pride-section .builder-image{
+.pride-image{
 
-max-height:650px;
+    width:100%;
 
-object-fit:cover;
+    max-height:620px;
+
+    display:block;
+
+    object-fit:cover;
+}
+
+.pride-content{
+
+    padding:50px 55px 60px;
+}
+
+.pride-content h2{
+
+    color:#ffb000;
+
+    font-size:48px;
+
+    line-height:1.15;
+
+    margin-bottom:25px;
+}
+
+.pride-content h3{
+
+    color:#4da3ff;
+
+    font-size:27px;
+
+    margin-top:40px;
+
+    margin-bottom:15px;
+}
+
+.pride-content p{
+
+    color:#d3dbe4;
+
+    font-size:17px;
+
+    line-height:1.85;
+
+    max-width:1050px;
+}
+
+.pride-content strong{
+    color:#fff;
 }
 
 
-/* =========================
-FOOTER
-========================= */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
 
-padding:45px;
+    margin-top:20px;
 
-margin-top:70px;
+    padding:50px 8%;
 
-opacity:.8;
+    background:#03070d;
+
+    border-top:
+        1px solid rgba(255,255,255,.08);
+}
+
+.footer-inner{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:30px;
+
+    flex-wrap:wrap;
+}
+
+.footer-brand{
+
+    display:flex;
+
+    align-items:center;
+}
+
+.footer-brand img{
+
+    width:45px;
+    height:45px;
+
+    object-fit:contain;
+
+    border-radius:10px;
+
+    margin-right:10px;
+}
+
+.footer-text{
+
+    color:#687687;
+
+    font-size:13px;
+
+    line-height:1.6;
+}
+
+.footer-links{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+}
+
+.footer-links a{
+
+    color:#8d99a8;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    transition:.2s;
+}
+
+.footer-links a:hover{
+    color:#ffb000;
 }
 
 
-/* =========================
-MOBILE
-========================= */
+/* =========================================================
+   MOBILE
+========================================================= */
 
-@media(max-width:700px){
+@media(max-width:850px){
 
-h1{
-font-size:42px;
+    .nav{
+        padding:0 20px;
+    }
+
+    .logo-text{
+        display:none;
+    }
+
+    .nav-links button:not(.nav-play){
+        display:none;
+    }
+
+    .page-header h1{
+        font-size:50px;
+    }
+
+    .wiki-intro{
+        padding:35px;
+    }
+
+    .info-content,
+    .pride-content{
+        padding:35px 25px 45px;
+    }
+
+    .info-content h2,
+    .pride-content h2{
+        font-size:36px;
+    }
+
+    .info-content h3,
+    .pride-content h3{
+        font-size:24px;
+    }
+
 }
 
-header{
-padding:40px 15px;
-}
+@media(max-width:600px){
 
-header p{
-font-size:17px;
-}
+    .nav{
+        height:68px;
+    }
 
-.hero{
-width:94%;
-padding:30px 20px;
-}
+    .logo img{
+        width:48px;
+        height:48px;
+    }
 
-.hero h2{
-font-size:34px;
-}
+    .page-header{
 
-.builder-section{
-width:94%;
-}
+        min-height:430px;
 
-.builder-content{
-padding:35px 22px 40px;
-}
+        padding:
+            120px
+            20px
+            80px;
+    }
 
-.builder-content h2{
-font-size:36px;
-}
+    .page-header h1{
 
-.builder-content h3{
-font-size:25px;
-}
+        font-size:42px;
 
-.builder-content p{
-font-size:17px;
-line-height:1.7;
-}
+        letter-spacing:-2px;
+    }
 
-.nav{
-gap:8px;
-}
+    .page-header p{
+        font-size:16px;
+    }
 
-.nav button{
-padding:11px 16px;
-font-size:14px;
-}
+    .content{
 
-.rule-card{
-width:90%;
-max-width:320px;
-}
+        width:92%;
+
+        padding-bottom:60px;
+    }
+
+    .wiki-intro{
+
+        padding:28px 22px;
+    }
+
+    .wiki-intro h2{
+        font-size:32px;
+    }
+
+    .wiki-intro p{
+        font-size:16px;
+    }
+
+    .rule-card{
+
+        align-items:flex-start;
+
+        padding:20px;
+    }
+
+    .rule-icon{
+
+        width:52px;
+        height:52px;
+
+        font-size:24px;
+    }
+
+    .rule-card h3{
+        font-size:21px;
+    }
+
+    .rule-card p{
+        font-size:13px;
+    }
+
+    .info-content,
+    .pride-content{
+
+        padding:
+            30px 20px
+            40px;
+    }
+
+    .info-content h2,
+    .pride-content h2{
+
+        font-size:31px;
+    }
+
+    .info-content h3,
+    .pride-content h3{
+
+        font-size:22px;
+    }
+
+    .info-content p,
+    .pride-content p{
+
+        font-size:16px;
+
+        line-height:1.7;
+    }
+
+    .footer-inner{
+
+        align-items:flex-start;
+
+        flex-direction:column;
+    }
 
 }
 
@@ -397,775 +868,946 @@ max-width:320px;
 
 </head>
 
+
 <body>
 
-<!-- =========================
-HEADER
-========================= -->
 
-<header>
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
 
-<a href="index.html">
+<nav class="nav">
 
-<h1>🦆 LMS SERVER</h1>
+    <a
+        class="logo"
+        href="index.html"
+    >
 
-</a>
+        <img
+            src="WhatsApp%20Image%202026-07-11%20at%2015.30.43.jpeg"
+            alt="LMS Logo"
+        >
 
-<p>
-LMS SERVER Wiki • Informationen • Hilfe
-</p>
+        <span class="logo-text">
+            LMS SERVER
+        </span>
+
+    </a>
+
+
+    <div class="nav-links">
+
+        <button onclick="location.href='index.html'">
+            Start
+        </button>
+
+        <button onclick="location.href='index.html#games'">
+            Spiele
+        </button>
+
+        <button onclick="location.href='index.html#shop'">
+            Shop
+        </button>
+
+        <button onclick="location.href='index.html#live'">
+            LMS LIVE
+        </button>
+
+        <button onclick="location.href='index.html#team'">
+            Team
+        </button>
+
+        <button onclick="location.href='index.html#kontakt'">
+            Kontakt
+        </button>
+
+        <button
+            class="nav-info"
+            onclick="location.href='info.html'"
+        >
+            Info
+        </button>
+
+        <button
+            class="nav-play"
+            onclick="location.href='index.html'"
+        >
+            Spielen
+        </button>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="page-header">
+
+    <div class="header-content">
+
+        <div class="header-label">
+            LMS INFORMATION
+        </div>
+
+        <h1>
+            LMS SERVER <span>WIKI</span>
+        </h1>
+
+        <p>
+            Informationen, Projekte, Community und alles,
+            was du über den LMS SERVER wissen solltest.
+        </p>
+
+    </div>
 
 </header>
 
-<!-- =========================
-NAVIGATION
-========================= -->
 
-<div class="nav">
 
-<button onclick="location.href='index.html'">
-Start
-</button>
+<main class="content">
 
-<button onclick="location.href='index.html#games'">
-Minigames
-</button>
 
-<button onclick="location.href='index.html#team'">
-Team
-</button>
+<!-- =========================================================
+     WILLKOMMEN
+========================================================= -->
 
-<button onclick="location.href='index.html#kontakt'">
-Kontakt
-</button>
+<section class="wiki-intro">
 
-</div>
+    <div class="section-label">
+        WIKI
+    </div>
 
-<!-- =========================
-WILLKOMMEN
-========================= -->
+    <h2>
+        Willkommen im LMS SERVER Wiki
+    </h2>
 
-<div class="hero">
+    <p>
 
-<h2>
-Willkommen im LMS SERVER Wiki
-</h2>
+        Das LMS SERVER Wiki ist die zentrale Anlaufstelle
+        für Informationen rund um unser Netzwerk.
 
-<p>
+        <br><br>
 
-Das LMS SERVER Wiki ist die zentrale Anlaufstelle
-für Informationen rund um unser Netzwerk.
+        Hier möchten wir wichtige Informationen,
+        Regelungen und aktuelle Projekte übersichtlich
+        an einem Ort zusammenführen.
 
-<br><br>
+        <br><br>
 
-Hier möchten wir wichtige Informationen,
-Regelungen und aktuelle Projekte übersichtlich
-an einem Ort zusammenführen.
+        Das Wiki wird mit der Entwicklung des LMS SERVER
+        nach und nach erweitert und aktualisiert.
 
-<br><br>
+    </p>
 
-Das Wiki wird mit der Entwicklung des LMS SERVER
-nach und nach erweitert und aktualisiert.
 
-</p>
+    <a
+        href="regeln.html"
+        class="rule-card"
+    >
 
-<!-- REGELWERK -->
+        <div class="rule-icon">
+            📖
+        </div>
 
-<a href="regeln.html" class="rule-card">
+        <div>
 
-<div class="rule-icon">
-📖
-</div>
+            <h3>
+                Regelwerk
+            </h3>
 
-<h3>
-Regelwerk
-</h3>
+            <p>
 
-<p>
+                Alle wichtigen Regeln für den LMS SERVER.
 
-Alle wichtigen Regeln für den LMS SERVER.
+                <br>
 
-<br>
+                Bitte informiere dich vor dem Spielen
+                über unsere Regeln.
 
-Bitte informiere dich vor dem Spielen
-über unsere Regeln.
+            </p>
 
-</p>
+        </div>
 
-</a>
+    </a>
 
-</div>
+</section>
 
-<!-- =========================
-BUILDER PROJEKT
-========================= -->
 
-<div class="builder-section">
 
-<img
-class="builder-image"
-src="https://raw.githubusercontent.com/Lms-server/lms-server/main/Screenshot%20%28254%29.png"
-alt="LMS SERVER Builder Projekt">
+<!-- =========================================================
+     BUILDER
+========================================================= -->
 
-<div class="builder-content">
+<section class="info-card">
 
-<h2>
-PARCOUR ONLYUP<br>
-BUILDER GESUCHT!
-</h2>
+    <img
+        class="info-image"
+        src="https://raw.githubusercontent.com/Lms-server/lms-server/main/Screenshot%20%28254%29.png"
+        alt="LMS SERVER Builder Projekt"
+    >
 
-<p>
 
-<strong>LOS, BAU MIT.</strong>
+    <div class="info-content">
 
-<br><br>
+        <h2>
+            PARCOUR ONLYUP<br>
+            BUILDER GESUCHT!
+        </h2>
 
-Der LMS SERVER entwickelt sich stetig weiter –
-und dafür suchen wir kreative Builder, die Lust
-darauf haben, gemeinsam neue Welten und
-Spielerlebnisse zu erschaffen.
 
-</p>
+        <p>
 
-<h3>
-Ein Projekt mit eigenen Ideen
-</h3>
+            <strong>LOS, BAU MIT.</strong>
 
-<p>
+            <br><br>
 
-Unser Ziel ist es, auf dem LMS SERVER langfristig
-eigene Maps, Strukturen und Spielbereiche zu
-entwickeln.
+            Der LMS SERVER entwickelt sich stetig weiter –
+            und dafür suchen wir kreative Builder, die Lust
+            darauf haben, gemeinsam neue Welten und
+            Spielerlebnisse zu erschaffen.
 
-Dazu gehören unter anderem große Bauwerke,
-Lobby- und Map-Strukturen, Parcours sowie
-komplette Bereiche für zukünftige Spielmodi.
+        </p>
 
-<br><br>
 
-Besonders im Bereich unseres <strong>Parcour- und OnlyUp-Projekts</strong>
-möchten wir eine abwechslungsreiche und
-anspruchsvolle Umgebung schaffen, die nicht nur
-gut aussieht, sondern sich auch spannend spielen
-lässt.
+        <h3>
+            Ein Projekt mit eigenen Ideen
+        </h3>
 
-<br><br>
+        <p>
 
-Dabei sollen nicht einfach bestehende Konzepte
-nachgebaut werden.
+            Unser Ziel ist es, auf dem LMS SERVER langfristig
+            eigene Maps, Strukturen und Spielbereiche zu
+            entwickeln.
 
-Wir möchten eigene Ideen entwickeln und daraus
-etwas schaffen, das zum LMS SERVER passt.
+            Dazu gehören unter anderem große Bauwerke,
+            Lobby- und Map-Strukturen, Parcours sowie
+            komplette Bereiche für zukünftige Spielmodi.
 
-</p>
+            <br><br>
 
-<h3>
-Kreativität steht im Mittelpunkt
-</h3>
+            Besonders im Bereich unseres
+            <strong>Parcour- und OnlyUp-Projekts</strong>
+            möchten wir eine abwechslungsreiche und
+            anspruchsvolle Umgebung schaffen, die nicht nur
+            gut aussieht, sondern sich auch spannend spielen
+            lässt.
 
-<p>
+            <br><br>
 
-Beim Bauen geht es für uns nicht ausschließlich
-um technische Perfektion.
+            Dabei sollen nicht einfach bestehende Konzepte
+            nachgebaut werden.
 
-Viel wichtiger ist die Fähigkeit, Ideen zu
-entwickeln, kreativ zu denken und gemeinsam mit
-anderen aus einer Vorstellung eine funktionierende
-Map entstehen zu lassen.
+            Wir möchten eigene Ideen entwickeln und daraus
+            etwas schaffen, das zum LMS SERVER passt.
 
-<br><br>
+        </p>
 
-Ob beeindruckende Gebäude, interessante
-Parkour-Abschnitte, besondere Landschaften,
-clevere Details oder komplett neue Ideen –
-jede kreative Idee kann einen Unterschied machen.
 
-</p>
+        <h3>
+            Kreativität steht im Mittelpunkt
+        </h3>
 
-<h3>
-Gemeinsam statt alleine
-</h3>
+        <p>
 
-<p>
+            Beim Bauen geht es für uns nicht ausschließlich
+            um technische Perfektion.
 
-Der LMS SERVER soll nicht nur ein Server sein,
-auf dem fertige Inhalte veröffentlicht werden.
+            Viel wichtiger ist die Fähigkeit, Ideen zu
+            entwickeln, kreativ zu denken und gemeinsam mit
+            anderen aus einer Vorstellung eine funktionierende
+            Map entstehen zu lassen.
 
-Wir möchten ein Projekt aufbauen, an dem mehrere
-Menschen gemeinsam arbeiten und ihre eigenen
-Fähigkeiten einbringen können.
+            <br><br>
 
-<br><br>
+            Ob beeindruckende Gebäude, interessante
+            Parkour-Abschnitte, besondere Landschaften,
+            clevere Details oder komplett neue Ideen –
+            jede kreative Idee kann einen Unterschied machen.
 
-Builder arbeiten dabei nicht einfach nur einzelne
-Aufgaben ab.
+        </p>
 
-Wir möchten gemeinsam planen, Ideen besprechen,
-Konzepte weiterentwickeln und am Ende ein
-zusammenhängendes Spielerlebnis erschaffen.
 
-<br><br>
+        <h3>
+            Gemeinsam statt alleine
+        </h3>
 
-Genau diese Zusammenarbeit soll langfristig einen
-wichtigen Teil der Entwicklung des LMS SERVER
-ausmachen.
+        <p>
 
-</p>
+            Der LMS SERVER soll nicht nur ein Server sein,
+            auf dem fertige Inhalte veröffentlicht werden.
 
-<h3>
-Inspiration ja – Kopieren nein
-</h3>
+            Wir möchten ein Projekt aufbauen, an dem mehrere
+            Menschen gemeinsam arbeiten und ihre eigenen
+            Fähigkeiten einbringen können.
 
-<p>
+            <br><br>
 
-Bei der Entwicklung des LMS SERVER orientieren
-wir uns selbstverständlich an verschiedenen
-Minecraft-Netzwerken, Spielen und modernen
-Webdesigns.
+            Builder arbeiten dabei nicht einfach nur einzelne
+            Aufgaben ab.
 
-Auch größere und etablierte Netzwerke können
-dabei als <strong>Inspiration und gestalterisches
-Vorbild</strong> dienen.
+            Wir möchten gemeinsam planen, Ideen besprechen,
+            Konzepte weiterentwickeln und am Ende ein
+            zusammenhängendes Spielerlebnis erschaffen.
 
-<br><br>
+            <br><br>
 
-Dabei ist uns jedoch wichtig, eine klare Grenze
-zu ziehen:
+            Genau diese Zusammenarbeit soll langfristig einen
+            wichtigen Teil der Entwicklung des LMS SERVER
+            ausmachen.
 
-<strong>
-Der LMS SERVER ist ein eigenständiges Projekt.
-</strong>
+        </p>
 
-<br><br>
 
-Wir möchten keine bestehenden Websites,
-Designs, Texte, Maps, Inhalte oder Konzepte
-kopieren oder den Eindruck erwecken, dass eine
-Verbindung zu einem anderen Netzwerk besteht.
+        <h3>
+            Inspiration ja – Kopieren nein
+        </h3>
 
-<br><br>
+        <p>
 
-Stattdessen nehmen wir einzelne Ideen als
-Inspiration und entwickeln daraus unsere eigenen
-Designentscheidungen, eigenen Inhalte und
-eigenen Projekte.
+            Bei der Entwicklung des LMS SERVER orientieren
+            wir uns selbstverständlich an verschiedenen
+            Minecraft-Netzwerken, Spielen und modernen
+            Webdesigns.
 
-<br><br>
+            Auch größere und etablierte Netzwerke können
+            dabei als <strong>Inspiration und gestalterisches
+            Vorbild</strong> dienen.
 
-Die konkrete Umsetzung, Inhalte, Gestaltung und
-Identität des LMS SERVER werden selbst entwickelt.
+            <br><br>
 
-</p>
+            Dabei ist uns jedoch wichtig, eine klare Grenze
+            zu ziehen:
 
-<h3>
-Unser Anspruch
-</h3>
+            <strong>
+                Der LMS SERVER ist ein eigenständiges Projekt.
+            </strong>
 
-<p>
+            <br><br>
 
-Mit dem LMS SERVER möchten wir Schritt für
-Schritt ein eigenes Minecraft-Projekt aufbauen,
-das sich durch Kreativität, gemeinschaftliche
-Entwicklung und eigene Ideen auszeichnet.
+            Wir möchten keine bestehenden Websites,
+            Designs, Texte, Maps, Inhalte oder Konzepte
+            kopieren oder den Eindruck erwecken, dass eine
+            Verbindung zu einem anderen Netzwerk besteht.
 
-<br><br>
+            <br><br>
 
-Jede Map, jedes Bauwerk und jeder neue Spielmodus
-soll dabei ein weiterer Baustein unseres eigenen
-Netzwerks werden.
+            Stattdessen nehmen wir einzelne Ideen als
+            Inspiration und entwickeln daraus unsere eigenen
+            Designentscheidungen, eigenen Inhalte und
+            eigenen Projekte.
 
-<br><br>
+            <br><br>
 
-Der Weg dorthin beginnt mit kleinen Projekten –
-und genau daraus können mit der Zeit große
-Welten entstehen.
+            Die konkrete Umsetzung, Inhalte, Gestaltung und
+            Identität des LMS SERVER werden selbst entwickelt.
 
-</p>
+        </p>
 
-<div class="note">
 
-<strong>LOS, BAU MIT.</strong>
+        <h3>
+            Unser Anspruch
+        </h3>
 
-<br><br>
+        <p>
 
-Du möchtest deine Bauideen auf dem LMS SERVER
-einbringen und gemeinsam an zukünftigen Projekten
-arbeiten?
+            Mit dem LMS SERVER möchten wir Schritt für
+            Schritt ein eigenes Minecraft-Projekt aufbauen,
+            das sich durch Kreativität, gemeinschaftliche
+            Entwicklung und eigene Ideen auszeichnet.
 
-Dann halte Ausschau nach weiteren Informationen
-zu unserem Builder-Team und den kommenden
-Projekten.
+            <br><br>
 
-<br><br>
+            Jede Map, jedes Bauwerk und jeder neue Spielmodus
+            soll dabei ein weiterer Baustein unseres eigenen
+            Netzwerks werden.
 
-<strong>
-Gemeinsam bauen. Eigene Ideen entwickeln.
-LMS SERVER gestalten.
-</strong>
+            <br><br>
 
-</div>
+            Der Weg dorthin beginnt mit kleinen Projekten –
+            und genau daraus können mit der Zeit große
+            Welten entstehen.
 
-</div>
+        </p>
 
-</div>
 
-<!-- =========================
-PRIDE MONTH / GEMEINSCHAFT
-========================= -->
+        <div class="note">
 
-<div class="builder-section pride-section">
+            <strong>
+                LOS, BAU MIT.
+            </strong>
 
-<img
-class="builder-image"
-src="images.jpg"
-alt="LMS SERVER – Gemeinschaft und Vielfalt">
+            <br><br>
 
-<div class="builder-content">
+            Du möchtest deine Bauideen auf dem LMS SERVER
+            einbringen und gemeinsam an zukünftigen Projekten
+            arbeiten?
 
-<h2>
-GEMEINSAM FÜR ALLE
-</h2>
+            Dann halte Ausschau nach weiteren Informationen
+            zu unserem Builder-Team und den kommenden
+            Projekten.
 
-<p>
+            <br><br>
 
-<strong>Eine Community ist mehr als ein Server.</strong>
+            <strong>
+                Gemeinsam bauen. Eigene Ideen entwickeln.
+                LMS SERVER gestalten.
+            </strong>
 
-<br><br>
+        </div>
 
-Der LMS SERVER soll ein Ort sein, an dem Menschen
-gemeinsam spielen, bauen, entdecken und Spaß haben
-können.
+    </div>
 
-Dabei ist uns wichtig, dass dieser Anspruch nicht
-nur für einen bestimmten Teil unserer Community
-gilt, sondern für <strong>jeden Menschen</strong>,
-der Teil unseres Netzwerks sein möchte.
+</section>
 
-<br><br>
 
-Unabhängig davon, wer jemand ist, woher jemand
-kommt, wie jemand aussieht, welche Sprache jemand
-spricht oder wen jemand liebt: Auf dem LMS SERVER
-soll jeder die Möglichkeit haben, sich als Teil einer
-Gemeinschaft zu fühlen und mit anderen eine gute
-Zeit zu verbringen.
 
-<br><br>
+<!-- =========================================================
+     GEMEINSAM FÜR ALLE
+========================================================= -->
 
-Genau deshalb möchten wir auch im Rahmen des <strong>Pride Month</strong> ein Zeichen für
-Respekt, Akzeptanz und gegenseitige Unterstützung
-setzen.
+<section class="pride-card">
 
-</p>
+    <img
+        class="pride-image"
+        src="images.jpg"
+        alt="LMS SERVER – Gemeinschaft und Vielfalt"
+    >
 
-<h3>
-WARUM IST UNS DAS WICHTIG?
-</h3>
 
-<p>
+    <div class="pride-content">
 
-Minecraft lebt davon, dass Menschen gemeinsam
-Welten erschaffen.
+        <h2>
+            GEMEINSAM FÜR ALLE
+        </h2>
 
-Unterschiedliche Ideen, Persönlichkeiten und
-Spielweisen treffen aufeinander und machen eine
-Community überhaupt erst vielfältig.
 
-<br><br>
+        <p>
 
-Genau diese Vielfalt möchten wir nicht als etwas
-betrachten, das Menschen voneinander trennt,
-sondern als etwas, das eine Gemeinschaft stärker
-machen kann.
+            <strong>
+                Eine Community ist mehr als ein Server.
+            </strong>
 
-<br><br>
+            <br><br>
 
-Für uns bedeutet Akzeptanz deshalb nicht, dass alle
-Menschen gleich sein müssen.
+            Der LMS SERVER soll ein Ort sein, an dem Menschen
+            gemeinsam spielen, bauen, entdecken und Spaß haben
+            können.
 
-Es bedeutet vielmehr, dass jeder Mensch mit Respekt
-behandelt werden soll und niemand aufgrund seiner
-persönlichen Identität oder seines Lebens
-ausgeschlossen, beleidigt oder schlechter behandelt
-werden darf.
+            Dabei ist uns wichtig, dass dieser Anspruch nicht
+            nur für einen bestimmten Teil unserer Community
+            gilt, sondern für <strong>jeden Menschen</strong>,
+            der Teil unseres Netzwerks sein möchte.
 
-<br><br>
+            <br><br>
 
-Gerade in Online-Communities ist dieser Grundsatz
-besonders wichtig.
+            Unabhängig davon, wer jemand ist, woher jemand
+            kommt, wie jemand aussieht, welche Sprache jemand
+            spricht oder wen jemand liebt: Auf dem LMS SERVER
+            soll jeder die Möglichkeit haben, sich als Teil einer
+            Gemeinschaft zu fühlen und mit anderen eine gute
+            Zeit zu verbringen.
 
-Hinter jedem Minecraft-Account sitzt ein echter
-Mensch.
+            <br><br>
 
-Ein Satz, der für eine Person vielleicht nur als
-„Witz“ gemeint ist, kann für eine andere Person
-verletzend sein.
+            Genau deshalb möchten wir auch im Rahmen des
+            <strong>Pride Month</strong> ein Zeichen für
+            Respekt, Akzeptanz und gegenseitige Unterstützung
+            setzen.
 
-<br><br>
+        </p>
 
-Deshalb möchten wir auf dem LMS SERVER eine
-Community fördern, in der <strong>Respekt nicht
-davon abhängig ist, wer gerade vor einem
-steht.</strong>
 
-</p>
+        <h3>
+            WARUM IST UNS DAS WICHTIG?
+        </h3>
 
-<h3>
-PRIDE BEDEUTET FÜR UNS MEHR ALS EIN BUNTES DESIGN
-</h3>
+        <p>
 
-<p>
+            Minecraft lebt davon, dass Menschen gemeinsam
+            Welten erschaffen.
 
-Der Pride Month wird häufig mit Regenbogenfarben,
-besonderen Aktionen und sichtbaren Symbolen
-verbunden.
+            Unterschiedliche Ideen, Persönlichkeiten und
+            Spielweisen treffen aufeinander und machen eine
+            Community überhaupt erst vielfältig.
 
-Sichtbarkeit kann wichtig sein, aber für uns soll
-Pride nicht bei einem Design oder einer einzelnen
-Aktion enden.
+            <br><br>
 
-<br><br>
+            Genau diese Vielfalt möchten wir nicht als etwas
+            betrachten, das Menschen voneinander trennt,
+            sondern als etwas, das eine Gemeinschaft stärker
+            machen kann.
 
-Für den LMS SERVER bedeutet die Unterstützung von
-Pride vor allem, eine klare Haltung zu zeigen:
+            <br><br>
 
-<br><br>
+            Für uns bedeutet Akzeptanz deshalb nicht, dass alle
+            Menschen gleich sein müssen.
 
-<strong>Jeder Mensch verdient Respekt.</strong>
+            Es bedeutet vielmehr, dass jeder Mensch mit Respekt
+            behandelt werden soll und niemand aufgrund seiner
+            persönlichen Identität oder seines Lebens
+            ausgeschlossen, beleidigt oder schlechter behandelt
+            werden darf.
 
-<br><br>
+            <br><br>
 
-Wir möchten damit nicht behaupten, dass eine
-Community allein durch einen Beitrag oder ein Bild
-automatisch perfekt wird.
+            Gerade in Online-Communities ist dieser Grundsatz
+            besonders wichtig.
 
-Eine respektvolle Community entsteht jeden Tag aufs
-Neue – durch die Art, wie Spieler miteinander
-umgehen, wie Teammitglieder reagieren und wie mit
-Problemen innerhalb der Community umgegangen wird.
+            Hinter jedem Minecraft-Account sitzt ein echter
+            Mensch.
 
-<br><br>
+            Ein Satz, der für eine Person vielleicht nur als
+            „Witz“ gemeint ist, kann für eine andere Person
+            verletzend sein.
 
-Deshalb verstehen wir diesen Bereich nicht als
-kurzfristige Dekoration, sondern als Teil unserer
-grundsätzlichen Vorstellung davon, wie der LMS
-SERVER funktionieren soll.
+            <br><br>
 
-</p>
+            Deshalb möchten wir auf dem LMS SERVER eine
+            Community fördern, in der <strong>Respekt nicht
+            davon abhängig ist, wer gerade vor einem
+            steht.</strong>
 
-<h3>
-FAIRER SPIELSPASS FÜR JEDEN
-</h3>
+        </p>
 
-<p>
 
-Unser Ziel ist ein möglichst fairer und angenehmer
-Spielspaß für alle.
+        <h3>
+            PRIDE BEDEUTET FÜR UNS MEHR ALS EIN BUNTES DESIGN
+        </h3>
 
-<br><br>
+        <p>
 
-Dabei geht es nicht nur um technische Fairness
-innerhalb unserer Minigames.
+            Der Pride Month wird häufig mit Regenbogenfarben,
+            besonderen Aktionen und sichtbaren Symbolen
+            verbunden.
 
-Ein faires Spielerlebnis bedeutet für uns auch,
-dass niemand Angst haben sollte, wegen seiner
-Persönlichkeit, seiner Identität oder seiner
-Lebensweise ausgelacht oder ausgeschlossen zu
-werden.
+            Sichtbarkeit kann wichtig sein, aber für uns soll
+            Pride nicht bei einem Design oder einer einzelnen
+            Aktion enden.
 
-<br><br>
+            <br><br>
 
-Wir möchten, dass Spieler sich auf das konzentrieren
-können, worum es auf einem Minecraft-Server
-eigentlich gehen sollte:
+            Für den LMS SERVER bedeutet die Unterstützung von
+            Pride vor allem, eine klare Haltung zu zeigen:
 
-<br><br>
+            <br><br>
 
-<strong>
-gemeinsam spielen, kreativ sein, neue Dinge
-ausprobieren und Spaß haben.
-</strong>
+            <strong>
+                Jeder Mensch verdient Respekt.
+            </strong>
 
-<br><br>
+            <br><br>
 
-Natürlich werden auch auf dem LMS SERVER
-unterschiedliche Meinungen und Persönlichkeiten
-aufeinandertreffen.
+            Wir möchten damit nicht behaupten, dass eine
+            Community allein durch einen Beitrag oder ein Bild
+            automatisch perfekt wird.
 
-Das ist normal und gehört zu jeder größeren
-Community.
+            Eine respektvolle Community entsteht jeden Tag aufs
+            Neue – durch die Art, wie Spieler miteinander
+            umgehen, wie Teammitglieder reagieren und wie mit
+            Problemen innerhalb der Community umgegangen wird.
 
-<br><br>
+            <br><br>
 
-Entscheidend ist für uns jedoch der Umgang
-miteinander.
+            Deshalb verstehen wir diesen Bereich nicht als
+            kurzfristige Dekoration, sondern als Teil unserer
+            grundsätzlichen Vorstellung davon, wie der LMS
+            SERVER funktionieren soll.
 
-Unterschiedliche Ansichten müssen nicht automatisch
-zu Respektlosigkeit führen.
+        </p>
 
-</p>
 
-<h3>
-AKZEPTANZ HEISST NICHT, DASS ALLE GLEICH DENKEN MÜSSEN
-</h3>
+        <h3>
+            FAIRER SPIELSPASS FÜR JEDEN
+        </h3>
 
-<p>
+        <p>
 
-Eine offene Community bedeutet nicht, dass jeder
-Mensch dieselben Gedanken, Interessen oder
-Meinungen haben muss.
+            Unser Ziel ist ein möglichst fairer und angenehmer
+            Spielspaß für alle.
 
-Menschen dürfen unterschiedlich sein.
+            <br><br>
 
-Sie dürfen unterschiedliche Erfahrungen gemacht
-haben und unterschiedliche Perspektiven besitzen.
+            Dabei geht es nicht nur um technische Fairness
+            innerhalb unserer Minigames.
 
-<br><br>
+            Ein faires Spielerlebnis bedeutet für uns auch,
+            dass niemand Angst haben sollte, wegen seiner
+            Persönlichkeit, seiner Identität oder seiner
+            Lebensweise ausgelacht oder ausgeschlossen zu
+            werden.
 
-Was für uns jedoch nicht verhandelbar sein sollte,
-ist der respektvolle Umgang miteinander.
+            <br><br>
 
-Niemand muss die gesamte Persönlichkeit eines
-anderen Menschen verstehen, um ihn respektvoll
-zu behandeln.
+            Wir möchten, dass Spieler sich auf das konzentrieren
+            können, worum es auf einem Minecraft-Server
+            eigentlich gehen sollte:
 
-<br><br>
+            <br><br>
 
-Genau darin sehen wir einen wichtigen Bestandteil
-einer funktionierenden Community:
+            <strong>
+                gemeinsam spielen, kreativ sein, neue Dinge
+                ausprobieren und Spaß haben.
+            </strong>
 
-<strong>
-Man muss nicht identisch sein, um gemeinsam Spaß
-haben zu können.
-</strong>
+            <br><br>
 
-</p>
+            Natürlich werden auch auf dem LMS SERVER
+            unterschiedliche Meinungen und Persönlichkeiten
+            aufeinandertreffen.
 
-<h3>
-EIN SERVER FÜR DIE GEMEINSCHAFT
-</h3>
+            Das ist normal und gehört zu jeder größeren
+            Community.
 
-<p>
+            <br><br>
 
-Der LMS SERVER befindet sich noch im Aufbau.
+            Entscheidend ist für uns jedoch der Umgang
+            miteinander.
 
-Viele Bereiche werden erst entwickelt, Maps
-entstehen nach und nach und auch unsere Community
-wird mit der Zeit wachsen.
+            Unterschiedliche Ansichten müssen nicht automatisch
+            zu Respektlosigkeit führen.
 
-<br><br>
+        </p>
 
-Das bedeutet gleichzeitig, dass wir jetzt die
-Möglichkeit haben, festzulegen, welche Art von
-Gemeinschaft wir langfristig aufbauen möchten.
 
-<br><br>
+        <h3>
+            AKZEPTANZ HEISST NICHT, DASS ALLE GLEICH DENKEN MÜSSEN
+        </h3>
 
-Wir möchten keinen Server schaffen, bei dem nur
-einzelne Personen bestimmen, wer dazugehört.
+        <p>
 
-Wir möchten einen Server schaffen, bei dem sich
-möglichst viele unterschiedliche Menschen
-willkommen fühlen können und bei dem gemeinsame
-Interessen im Vordergrund stehen.
+            Eine offene Community bedeutet nicht, dass jeder
+            Mensch dieselben Gedanken, Interessen oder
+            Meinungen haben muss.
 
-<br><br>
+            Menschen dürfen unterschiedlich sein.
 
-Minecraft bietet dafür eine besondere Grundlage:
+            Sie dürfen unterschiedliche Erfahrungen gemacht
+            haben und unterschiedliche Perspektiven besitzen.
 
-Auf einem Server können Menschen zusammenkommen,
-die sich im echten Leben wahrscheinlich niemals
-begegnet wären.
+            <br><br>
 
-<br><br>
+            Was für uns jedoch nicht verhandelbar sein sollte,
+            ist der respektvolle Umgang miteinander.
 
-Sie können gemeinsam bauen, Minigames spielen,
-Projekte entwickeln oder einfach eine gute Zeit
-verbringen.
+            Niemand muss die gesamte Persönlichkeit eines
+            anderen Menschen verstehen, um ihn respektvoll
+            zu behandeln.
 
-<br><br>
+            <br><br>
 
-<strong>
-Diese Möglichkeit möchten wir nutzen.
-</strong>
+            Genau darin sehen wir einen wichtigen Bestandteil
+            einer funktionierenden Community:
 
-</p>
+            <strong>
+                Man muss nicht identisch sein, um gemeinsam Spaß
+                haben zu können.
+            </strong>
 
-<h3>
-RESPEKT BEGINNT IM KLEINEN
-</h3>
+        </p>
 
-<p>
 
-Eine respektvolle Community entsteht nicht erst
-durch große Aktionen.
+        <h3>
+            EIN SERVER FÜR DIE GEMEINSCHAFT
+        </h3>
 
-Sie beginnt bei kleinen Dingen:
+        <p>
 
-<br><br>
+            Der LMS SERVER befindet sich noch im Aufbau.
 
-Jemanden ausreden lassen.
+            Viele Bereiche werden erst entwickelt, Maps
+            entstehen nach und nach und auch unsere Community
+            wird mit der Zeit wachsen.
 
-<br>
+            <br><br>
 
-Andere nicht absichtlich provozieren.
+            Das bedeutet gleichzeitig, dass wir jetzt die
+            Möglichkeit haben, festzulegen, welche Art von
+            Gemeinschaft wir langfristig aufbauen möchten.
 
-<br>
+            <br><br>
 
-Keine beleidigenden Begriffe verwenden.
+            Wir möchten keinen Server schaffen, bei dem nur
+            einzelne Personen bestimmen, wer dazugehört.
 
-<br>
+            Wir möchten einen Server schaffen, bei dem sich
+            möglichst viele unterschiedliche Menschen
+            willkommen fühlen können und bei dem gemeinsame
+            Interessen im Vordergrund stehen.
 
-Andere Spieler nicht aufgrund persönlicher
-Merkmale herabsetzen.
+            <br><br>
 
-<br>
+            Minecraft bietet dafür eine besondere Grundlage:
 
-Neue Spieler nicht absichtlich ausschließen.
+            Auf einem Server können Menschen zusammenkommen,
+            die sich im echten Leben wahrscheinlich niemals
+            begegnet wären.
 
-<br>
+            <br><br>
 
-Probleme sachlich ansprechen.
+            Sie können gemeinsam bauen, Minigames spielen,
+            Projekte entwickeln oder einfach eine gute Zeit
+            verbringen.
 
-<br>
+            <br><br>
 
-Und vor allem: daran denken, dass hinter jedem
-Spieler ein echter Mensch steht.
+            <strong>
+                Diese Möglichkeit möchten wir nutzen.
+            </strong>
 
-<br><br>
+        </p>
 
-Genau diese kleinen Entscheidungen können
-langfristig einen großen Unterschied für die
-Atmosphäre eines Servers machen.
 
-</p>
+        <h3>
+            RESPEKT BEGINNT IM KLEINEN
+        </h3>
 
-<h3>
-UNSER VERSPRECHEN AN DIE COMMUNITY
-</h3>
+        <p>
 
-<p>
+            Eine respektvolle Community entsteht nicht erst
+            durch große Aktionen.
 
-Wir können nicht versprechen, dass auf einem
-wachsenden Server niemals jemand einen Fehler macht.
+            Sie beginnt bei kleinen Dingen:
 
-Das wäre unrealistisch.
+            <br><br>
 
-<br><br>
+            Jemanden ausreden lassen.
 
-Wir können aber versprechen, dass wir uns darum
-bemühen möchten, Probleme ernst zu nehmen und eine
-Community aufzubauen, in der Respekt und Fairness
-einen festen Platz haben.
+            <br>
 
-<br><br>
+            Andere nicht absichtlich provozieren.
 
-Wenn sich jemand auf dem LMS SERVER unwohl fühlt,
-weil er beleidigt, ausgeschlossen oder aufgrund
-seiner persönlichen Identität angegriffen wird,
-soll dieses Verhalten nicht einfach als normal
-akzeptiert werden.
+            <br>
 
-<br><br>
+            Keine beleidigenden Begriffe verwenden.
 
-Wir möchten eine Umgebung schaffen, in der Spieler
-wissen:
+            <br>
 
-<br><br>
+            Andere Spieler nicht aufgrund persönlicher
+            Merkmale herabsetzen.
 
-<strong>
-Du musst dich nicht verstellen, um hier mitspielen
-zu dürfen.
-</strong>
+            <br>
 
-</p>
+            Neue Spieler nicht absichtlich ausschließen.
 
-<h3>
-UNSERE VISION
-</h3>
+            <br>
 
-<p>
+            Probleme sachlich ansprechen.
 
-Der LMS SERVER soll mit der Zeit mehr werden als
-eine Sammlung von Minigames.
+            <br>
 
-Wir möchten eine eigene Community aufbauen.
+            Und vor allem: daran denken, dass hinter jedem
+            Spieler ein echter Mensch steht.
 
-Eine Community, in der Menschen gemeinsam Projekte
-verwirklichen, neue Freundschaften entstehen können,
-kreative Ideen ihren Platz finden und jeder Spieler
-die Möglichkeit bekommt, seinen eigenen Teil zum
-Netzwerk beizutragen.
+            <br><br>
 
-<br><br>
+            Genau diese kleinen Entscheidungen können
+            langfristig einen großen Unterschied für die
+            Atmosphäre eines Servers machen.
 
-Vielfalt bedeutet für uns dabei nicht, dass jeder
-Mensch dieselben Interessen haben muss.
+        </p>
 
-Vielfalt bedeutet, dass unterschiedliche Menschen
-gemeinsam einen Platz finden können.
 
-<br><br>
+        <h3>
+            UNSER VERSPRECHEN AN DIE COMMUNITY
+        </h3>
 
-Genau deshalb unterstützen wir die Idee hinter
-Pride und möchten gleichzeitig deutlich machen,
-dass Respekt und Akzeptanz für uns nicht nur im
-Pride Month wichtig sind.
+        <p>
 
-<br><br>
+            Wir können nicht versprechen, dass auf einem
+            wachsenden Server niemals jemand einen Fehler macht.
 
-<strong>
-Sie sollten das ganze Jahr über selbstverständlich
-sein.
-</strong>
+            Das wäre unrealistisch.
 
-</p>
+            <br><br>
 
-<div class="note">
+            Wir können aber versprechen, dass wir uns darum
+            bemühen möchten, Probleme ernst zu nehmen und eine
+            Community aufzubauen, in der Respekt und Fairness
+            einen festen Platz haben.
 
-<strong>GEMEINSAM. RESPEKTVOLL. FÜR ALLE.</strong>
+            <br><br>
 
-<br><br>
+            Wenn sich jemand auf dem LMS SERVER unwohl fühlt,
+            weil er beleidigt, ausgeschlossen oder aufgrund
+            seiner persönlichen Identität angegriffen wird,
+            soll dieses Verhalten nicht einfach als normal
+            akzeptiert werden.
 
-Der LMS SERVER soll ein Ort sein, an dem Menschen
-gemeinsam spielen können, ohne aufgrund ihrer
-Identität oder Persönlichkeit ausgeschlossen zu
-werden.
+            <br><br>
 
-Wir unterstützen Vielfalt, gegenseitigen Respekt
-und einen fairen Umgang miteinander.
+            Wir möchten eine Umgebung schaffen, in der Spieler
+            wissen:
 
-<br><br>
+            <br><br>
 
-Denn am Ende sollte es auf einem Minecraft-Server
-nicht darum gehen, wer jemand sein „muss“.
+            <strong>
+                Du musst dich nicht verstellen, um hier mitspielen
+                zu dürfen.
+            </strong>
 
-Es sollte darum gehen, was wir <strong>gemeinsam erschaffen können.</strong>
+        </p>
 
-<br><br>
 
-<strong>
-LMS SERVER – Ein Netzwerk für gemeinsame Erlebnisse.
-</strong>
+        <h3>
+            UNSERE VISION
+        </h3>
 
-</div>
+        <p>
 
-</div>
+            Der LMS SERVER soll mit der Zeit mehr werden als
+            eine Sammlung von Minigames.
 
-</div>
+            Wir möchten eine eigene Community aufbauen.
 
-<!-- =========================
-FOOTER
-========================= -->
+            Eine Community, in der Menschen gemeinsam Projekte
+            verwirklichen, neue Freundschaften entstehen können,
+            kreative Ideen ihren Platz finden und jeder Spieler
+            die Möglichkeit bekommt, seinen eigenen Teil zum
+            Netzwerk beizutragen.
+
+            <br><br>
+
+            Vielfalt bedeutet für uns dabei nicht, dass jeder
+            Mensch dieselben Interessen haben muss.
+
+            Vielfalt bedeutet, dass unterschiedliche Menschen
+            gemeinsam einen Platz finden können.
+
+            <br><br>
+
+            Genau deshalb unterstützen wir die Idee hinter
+            Pride und möchten gleichzeitig deutlich machen,
+            dass Respekt und Akzeptanz für uns nicht nur im
+            Pride Month wichtig sind.
+
+            <br><br>
+
+            <strong>
+                Sie sollten das ganze Jahr über selbstverständlich
+                sein.
+            </strong>
+
+        </p>
+
+
+        <div class="note">
+
+            <strong>
+                GEMEINSAM. RESPEKTVOLL. FÜR ALLE.
+            </strong>
+
+            <br><br>
+
+            Der LMS SERVER soll ein Ort sein, an dem Menschen
+            gemeinsam spielen können, ohne aufgrund ihrer
+            Identität oder Persönlichkeit ausgeschlossen zu
+            werden.
+
+            Wir unterstützen Vielfalt, gegenseitigen Respekt
+            und einen fairen Umgang miteinander.
+
+            <br><br>
+
+            Denn am Ende sollte es auf einem Minecraft-Server
+            nicht darum gehen, wer jemand sein „muss“.
+
+            Es sollte darum gehen, was wir
+            <strong>gemeinsam erschaffen können.</strong>
+
+            <br><br>
+
+            <strong>
+                LMS SERVER – Ein Netzwerk für gemeinsame Erlebnisse.
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer>
 
-<p>
-🦆 LMS SERVER © 2026 | CC_Minecarft
-</p>
+    <div class="footer-inner">
+
+        <div>
+
+            <div class="footer-brand">
+
+                <img
+                    src="WhatsApp%20Image%202026-07-11%20at%2015.30.43.jpeg"
+                    alt="LMS Logo"
+                >
+
+                <strong>
+                    LMS SERVER
+                </strong>
+
+            </div>
+
+            <div class="footer-text">
+
+                Minecraft Minigames • Survival • Events
+                <br>
+                LMS_server.aternos.me
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Start
+            </a>
+
+            <a href="index.html#games">
+                Spiele
+            </a>
+
+            <a href="index.html#shop">
+                Shop
+            </a>
+
+            <a href="index.html#live">
+                LMS LIVE
+            </a>
+
+            <a href="index.html#team">
+                Team
+            </a>
+
+            <a href="index.html#kontakt">
+                Kontakt
+            </a>
+
+            <a href="info.html">
+                Info
+            </a>
+
+            <a href="regeln.html">
+                Regeln
+            </a>
+
+        </div>
+
+    </div>
 
 </footer>
 
-</body>
 
+</body>
 </html>
