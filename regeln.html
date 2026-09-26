@@ -6,224 +6,745 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>🦆 LMS SERVER Regeln</title>
+<title>LMS SERVER Regeln</title>
 
 <style>
 
+/* =========================================================
+   GRUNDLAGEN
+========================================================= */
+
 *{
-box-sizing:border-box;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
+    font-family:Arial,Helvetica,sans-serif;
 
-margin:0;
+    background:#050b14;
 
-font-family:Arial,sans-serif;
+    color:#fff;
 
-color:white;
+    overflow-x:hidden;
+}
 
-text-align:center;
+body::before{
 
-background:#061426;
+    content:"";
 
-background-image:
-linear-gradient(#153252 1px,transparent 1px),
-linear-gradient(90deg,#153252 1px,transparent 1px);
+    position:fixed;
 
-background-size:45px 45px;
+    inset:0;
 
+    pointer-events:none;
+
+    z-index:-2;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255,176,0,.09),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 80% 60%,
+            rgba(30,100,190,.10),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            180deg,
+            #07111f 0%,
+            #040810 100%
+        );
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:-1;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        );
+
+    background-size:50px 50px;
 }
 
 
-/* HEADER */
-
-header{
-
-padding:60px 20px;
-
-background:linear-gradient(135deg,#ffb000,#ffe27a);
-
-color:#071a33;
-
-border-bottom:5px solid #ffb000;
-
-}
-
-
-header a{
-
-text-decoration:none;
-
-color:#071a33;
-
-}
-
-
-h1{
-
-font-size:60px;
-
-margin:10px;
-
-}
-
-
-
-/* NAV */
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
 .nav{
 
-position:sticky;
+    position:fixed;
 
-top:0;
+    top:0;
+    left:0;
+    right:0;
 
-z-index:100;
+    height:78px;
 
-display:flex;
+    display:flex;
 
-justify-content:center;
+    align-items:center;
 
-gap:15px;
+    padding:0 45px;
 
-flex-wrap:wrap;
+    background:rgba(4,9,16,.82);
 
-padding:15px;
+    backdrop-filter:blur(18px);
 
-background:rgba(6,20,38,.9);
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
 
-backdrop-filter:blur(10px);
-
+    z-index:1000;
 }
 
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    text-decoration:none;
+
+    margin-right:auto;
+}
+
+.logo img{
+
+    width:55px;
+    height:55px;
+
+    object-fit:contain;
+
+    border-radius:12px;
+
+    transition:.3s;
+}
+
+.logo img:hover{
+    transform:scale(1.07);
+}
+
+.logo-text{
+
+    margin-left:12px;
+
+    color:#fff;
+
+    font-size:20px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+}
+
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
+}
 
 .nav button{
 
-background:rgba(40,120,210,.6);
+    border:0;
 
-border:1px solid #4da3ff;
+    background:transparent;
 
-color:white;
+    color:#dce5ef;
 
-padding:13px 25px;
+    padding:12px 15px;
 
-border-radius:15px;
+    border-radius:10px;
 
-font-weight:bold;
+    font-size:14px;
 
-cursor:pointer;
+    font-weight:bold;
 
-transition:.3s;
+    cursor:pointer;
 
+    transition:.25s;
 }
-
 
 .nav button:hover{
 
-background:white;
+    background:
+        rgba(255,176,0,.12);
 
-color:#071a33;
+    color:#ffb000;
+}
 
-transform:translateY(-5px);
+.nav-info{
 
+    color:#ffb000 !important;
+}
+
+.nav-play{
+
+    margin-left:10px;
+
+    background:#ffb000 !important;
+
+    color:#07111f !important;
+
+    padding:12px 22px !important;
+}
+
+.nav-play:hover{
+
+    background:#ffd45c !important;
 }
 
 
+/* =========================================================
+   PAGE HEADER
+========================================================= */
 
-/* REGEL BOXEN */
+.page-header{
 
+    position:relative;
+
+    min-height:430px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:
+        140px
+        25px
+        90px;
+
+    overflow:hidden;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(3,8,15,.94),
+            rgba(3,8,15,.58),
+            rgba(3,8,15,.90)
+        ),
+
+        url("images.jpg")
+        center/cover no-repeat;
+}
+
+.page-header::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:150px;
+
+    background:
+        linear-gradient(
+            transparent,
+            #050b14
+        );
+}
+
+.header-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:850px;
+}
+
+.header-label{
+
+    color:#ffb000;
+
+    font-size:13px;
+
+    font-weight:900;
+
+    letter-spacing:4px;
+
+    margin-bottom:15px;
+}
+
+.page-header h1{
+
+    font-size:64px;
+
+    font-weight:900;
+
+    letter-spacing:-3px;
+
+    margin-bottom:18px;
+}
+
+.page-header h1 span{
+    color:#ffb000;
+}
+
+.page-header p{
+
+    color:#c5cfda;
+
+    font-size:18px;
+
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content{
+
+    width:90%;
+
+    max-width:1100px;
+
+    margin:0 auto;
+
+    padding:30px 0 90px;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro-card{
+
+    padding:40px;
+
+    margin-bottom:30px;
+
+    border-radius:20px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255,176,0,.10),
+            rgba(255,255,255,.035)
+        );
+
+    border:
+        1px solid rgba(255,176,0,.18);
+
+    text-align:center;
+}
+
+.intro-card h2{
+
+    color:#ffb000;
+
+    font-size:38px;
+
+    margin-bottom:15px;
+}
+
+.intro-card p{
+
+    color:#aeb9c5;
+
+    font-size:16px;
+
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   RULE CARDS
+========================================================= */
 
 .rule-box{
 
-width:85%;
+    margin-top:22px;
 
-max-width:1100px;
+    padding:38px 42px;
 
-margin:35px auto;
+    border-radius:18px;
 
-padding:35px;
+    background:
+        rgba(255,255,255,.035);
 
+    border:
+        1px solid rgba(255,255,255,.08);
 
-background:rgba(255,255,255,.08);
+    box-shadow:
+        0 18px 50px rgba(0,0,0,.25);
 
-border:1px solid rgba(255,255,255,.2);
+    transition:.3s;
+}
 
-border-radius:30px;
+.rule-box:hover{
 
-box-shadow:0 0 25px rgba(0,0,0,.5);
+    border-color:
+        rgba(255,176,0,.28);
 
-text-align:left;
+    transform:translateY(-2px);
+}
 
+.rule-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:25px;
+}
+
+.rule-number{
+
+    width:48px;
+    height:48px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+
+    border-radius:12px;
+
+    background:#ffb000;
+
+    color:#07111f;
+
+    font-size:16px;
+
+    font-weight:900;
+}
+
+.rule-box h2{
+
+    color:#ffb000;
+
+    font-size:30px;
+}
+
+.rule-box p{
+
+    color:#cbd4dd;
+
+    line-height:1.7;
+
+    font-size:16px;
+
+    margin-bottom:15px;
+}
+
+.rule-box h3{
+
+    color:#4da3ff;
+
+    font-size:22px;
+
+    margin-top:25px;
+
+    margin-bottom:12px;
+}
+
+.rule-box ol,
+.rule-box ul{
+
+    padding-left:25px;
+
+    color:#d3dbe4;
+}
+
+.rule-box li{
+
+    margin:11px 0;
+
+    line-height:1.6;
 }
 
 
+/* =========================================================
+   BOTTOM
+========================================================= */
 
-h2{
+.back-area{
 
-color:#ffb000;
+    text-align:center;
 
-font-size:35px;
-
-text-align:center;
-
+    padding-top:35px;
 }
-
-
-
-h3{
-
-color:#4da3ff;
-
-font-size:25px;
-
-}
-
-
-li{
-
-margin:12px;
-
-line-height:1.5;
-
-}
-
-
 
 .back{
 
-margin:30px;
+    display:inline-block;
 
-background:#ffb000;
+    border:0;
 
-color:#071a33;
+    padding:15px 30px;
 
-border:none;
+    border-radius:10px;
 
-padding:15px 35px;
+    background:#ffb000;
 
-border-radius:20px;
+    color:#07111f;
 
-font-size:18px;
+    font-size:15px;
 
-font-weight:bold;
+    font-weight:900;
 
-cursor:pointer;
+    text-decoration:none;
 
+    cursor:pointer;
+
+    transition:.25s;
 }
-
-
 
 .back:hover{
 
-transform:scale(1.05);
+    background:#ffd45c;
 
+    transform:translateY(-3px);
 }
 
 
+/* =========================================================
+   FOOTER
+========================================================= */
+
 footer{
 
-padding:30px;
+    margin-top:20px;
 
-opacity:.8;
+    padding:50px 8%;
+
+    background:#03070d;
+
+    border-top:
+        1px solid rgba(255,255,255,.08);
+}
+
+.footer-inner{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:30px;
+
+    flex-wrap:wrap;
+}
+
+.footer-brand{
+
+    display:flex;
+
+    align-items:center;
+
+    margin-bottom:10px;
+}
+
+.footer-brand img{
+
+    width:45px;
+    height:45px;
+
+    object-fit:contain;
+
+    border-radius:10px;
+
+    margin-right:10px;
+}
+
+.footer-text{
+
+    color:#687687;
+
+    font-size:13px;
+
+    line-height:1.6;
+}
+
+.footer-links{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+}
+
+.footer-links a{
+
+    color:#8d99a8;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    transition:.2s;
+}
+
+.footer-links a:hover{
+    color:#ffb000;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:850px){
+
+    .nav{
+        padding:0 20px;
+    }
+
+    .logo-text{
+        display:none;
+    }
+
+    .nav-links button:not(.nav-play){
+        display:none;
+    }
+
+    .page-header h1{
+        font-size:50px;
+    }
+
+    .rule-box{
+        padding:30px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .nav{
+        height:68px;
+    }
+
+    .logo img{
+
+        width:48px;
+        height:48px;
+    }
+
+    .page-header{
+
+        min-height:400px;
+
+        padding:
+            120px
+            20px
+            75px;
+    }
+
+    .page-header h1{
+
+        font-size:42px;
+
+        letter-spacing:-2px;
+    }
+
+    .page-header p{
+        font-size:16px;
+    }
+
+    .content{
+
+        width:92%;
+
+        padding-bottom:60px;
+    }
+
+    .intro-card{
+
+        padding:30px 22px;
+    }
+
+    .intro-card h2{
+        font-size:31px;
+    }
+
+    .rule-box{
+
+        padding:25px 20px;
+    }
+
+    .rule-title{
+
+        align-items:flex-start;
+    }
+
+    .rule-number{
+
+        width:42px;
+        height:42px;
+    }
+
+    .rule-box h2{
+        font-size:24px;
+    }
+
+    .rule-box h3{
+        font-size:20px;
+    }
+
+    .rule-box li{
+        font-size:15px;
+    }
+
+    .footer-inner{
+
+        align-items:flex-start;
+
+        flex-direction:column;
+    }
 
 }
 
@@ -235,245 +756,503 @@ opacity:.8;
 <body>
 
 
-<header>
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
 
-<a href="index.html">
+<nav class="nav">
 
-<h1>🦆 LMS SERVER</h1>
+    <a
+        class="logo"
+        href="index.html"
+    >
 
-</a>
+        <img
+            src="WhatsApp%20Image%202026-07-11%20at%2015.30.43.jpeg"
+            alt="LMS Logo"
+        >
 
-<p>
+        <span class="logo-text">
+            LMS SERVER
+        </span>
 
-Server Regeln
+    </a>
 
-</p>
+
+    <div class="nav-links">
+
+        <button onclick="location.href='index.html'">
+            Start
+        </button>
+
+        <button onclick="location.href='index.html#games'">
+            Spiele
+        </button>
+
+        <button onclick="location.href='index.html#shop'">
+            Shop
+        </button>
+
+        <button onclick="location.href='index.html#live'">
+            LMS LIVE
+        </button>
+
+        <button onclick="location.href='index.html#team'">
+            Team
+        </button>
+
+        <button onclick="location.href='index.html#kontakt'">
+            Kontakt
+        </button>
+
+        <button
+            class="nav-info"
+            onclick="location.href='info.html'"
+        >
+            Info
+        </button>
+
+        <button
+            class="nav-play"
+            onclick="location.href='index.html'"
+        >
+            Spielen
+        </button>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="page-header">
+
+    <div class="header-content">
+
+        <div class="header-label">
+            LMS COMMUNITY
+        </div>
+
+        <h1>
+            SERVER <span>REGELN</span>
+        </h1>
+
+        <p>
+            Fair spielen. Respektvoll bleiben.
+            Gemeinsam den LMS SERVER gestalten.
+        </p>
+
+    </div>
 
 </header>
 
 
 
-<div class="nav">
-
-<button onclick="location.href='index.html'">
-
-Start
-
-</button>
+<main class="content">
 
 
-<button onclick="location.href='info.html'">
+<!-- =========================================================
+     INTRO
+========================================================= -->
 
-Info
+<section class="intro-card">
 
-</button>
+    <h2>
+        LMS SERVER Regeln
+    </h2>
+
+    <p>
+
+        Bitte lies dir die folgenden Regeln vor dem
+        Spielen auf dem LMS SERVER aufmerksam durch.
+
+    </p>
+
+</section>
 
 
-<button onclick="location.href='index.html#games'">
 
-Minigames
+<!-- =========================================================
+     §1
+========================================================= -->
 
-</button>
+<section class="rule-box">
+
+    <div class="rule-title">
+
+        <div class="rule-number">
+            §1
+        </div>
+
+        <h2>
+            Allgemeines
+        </h2>
+
+    </div>
 
 
-<button onclick="location.href='index.html#team'">
+    <ol>
 
-Team
+        <li>
+            Den Anweisungen von Teammitgliedern ist Folge zu leisten.
+        </li>
 
-</button>
+        <li>
+            Jeder Spieler ist verpflichtet, Regelverstöße und Bugs dem Team zu melden.
+        </li>
 
+        <li>
+            Verluste durch Serverfehler können nur mit eindeutigen Beweisen geprüft werden.
+        </li>
+
+        <li>
+            Jeder Spieler ist für seinen eigenen Account verantwortlich.
+        </li>
+
+        <li>
+            Das Team behält sich das Hausrecht auf dem LMS SERVER vor.
+        </li>
+
+        <li>
+            Mehrere Accounts sind erlaubt, solange sie nicht zum Umgehen von Strafen genutzt werden.
+        </li>
+
+    </ol>
+
+</section>
+
+
+
+<!-- =========================================================
+     §2
+========================================================= -->
+
+<section class="rule-box">
+
+    <div class="rule-title">
+
+        <div class="rule-number">
+            §2
+        </div>
+
+        <h2>
+            Modifikationen
+        </h2>
+
+    </div>
+
+
+    <p>
+
+        Mods, die Spielern einen unfairen Vorteil geben, sind verboten.
+
+    </p>
+
+
+    <h3>
+        Erlaubt:
+    </h3>
+
+    <ul>
+
+        <li>
+            Performance-Mods
+        </li>
+
+        <li>
+            Grafik-Mods
+        </li>
+
+        <li>
+            Optifine
+        </li>
+
+        <li>
+            Replay Mod
+        </li>
+
+        <li>
+            Optimierungen
+        </li>
+
+    </ul>
+
+
+    <h3>
+        Verboten:
+    </h3>
+
+    <ul>
+
+        <li>
+            Cheats
+        </li>
+
+        <li>
+            X-Ray
+        </li>
+
+        <li>
+            Autoklicker
+        </li>
+
+        <li>
+            Freecam
+        </li>
+
+        <li>
+            Mods mit unfairen Vorteilen
+        </li>
+
+    </ul>
+
+</section>
+
+
+
+<!-- =========================================================
+     §3
+========================================================= -->
+
+<section class="rule-box">
+
+    <div class="rule-title">
+
+        <div class="rule-number">
+            §3
+        </div>
+
+        <h2>
+            Kommunikation
+        </h2>
+
+    </div>
+
+
+    <ul>
+
+        <li>
+            Behandle andere Spieler respektvoll.
+        </li>
+
+        <li>
+            Beleidigungen, Diskriminierung und Belästigungen sind verboten.
+        </li>
+
+        <li>
+            Spam und Caps sind verboten.
+        </li>
+
+        <li>
+            Werbung für andere Server ist nicht erlaubt.
+        </li>
+
+        <li>
+            Private Daten dürfen nicht veröffentlicht werden.
+        </li>
+
+        <li>
+            Irreführende Links sind verboten.
+        </li>
+
+    </ul>
+
+</section>
+
+
+
+<!-- =========================================================
+     §4
+========================================================= -->
+
+<section class="rule-box">
+
+    <div class="rule-title">
+
+        <div class="rule-number">
+            §4
+        </div>
+
+        <h2>
+            Spielgeschehen
+        </h2>
+
+    </div>
+
+
+    <ul>
+
+        <li>
+            Das Ausnutzen von Bugs ist verboten.
+        </li>
+
+        <li>
+            Unfaires Teaming ist verboten.
+        </li>
+
+        <li>
+            Absichtliches Stören anderer Spieler ist verboten.
+        </li>
+
+        <li>
+            Cheaten oder Manipulieren von Spielen führt zu Strafen.
+        </li>
+
+        <li>
+            Unfaire Vorteile gegenüber anderen Spielern sind verboten.
+        </li>
+
+    </ul>
+
+</section>
+
+
+
+<!-- =========================================================
+     §5
+========================================================= -->
+
+<section class="rule-box">
+
+    <div class="rule-title">
+
+        <div class="rule-number">
+            §5
+        </div>
+
+        <h2>
+            Sonstige Regeln
+        </h2>
+
+    </div>
+
+
+    <ul>
+
+        <li>
+            Betrug und Täuschung sind verboten.
+        </li>
+
+        <li>
+            AFK-Kick Umgehungen sind nicht erlaubt.
+        </li>
+
+        <li>
+            Spielerfallen und gefährliche Fallen sind verboten.
+        </li>
+
+        <li>
+            Werbung und Spam sind nur in erlaubten Bereichen gestattet.
+        </li>
+
+        <li>
+            Glücksspiel-Werbung ist verboten.
+        </li>
+
+    </ul>
+
+</section>
+
+
+
+<!-- =========================================================
+     ZURÜCK
+========================================================= -->
+
+<div class="back-area">
+
+    <a
+        class="back"
+        href="index.html"
+    >
+        Zurück zur Website
+    </a>
 
 </div>
 
 
+</main>
 
 
-<div class="rule-box">
 
-<h2>§1 Allgemeines</h2>
-
-
-<ol>
-
-<li>Den Anweisungen von Teammitgliedern ist Folge zu leisten.</li>
-
-<li>Jeder Spieler ist verpflichtet, Regelverstöße und Bugs dem Team zu melden.</li>
-
-<li>Verluste durch Serverfehler können nur mit eindeutigen Beweisen geprüft werden.</li>
-
-<li>Jeder Spieler ist für seinen eigenen Account verantwortlich.</li>
-
-<li>Das Team behält sich das Hausrecht auf dem LMS SERVER vor.</li>
-
-<li>Mehrere Accounts sind erlaubt, solange sie nicht zum Umgehen von Strafen genutzt werden.</li>
-
-</ol>
-
-</div>
-
-
-
-
-
-<div class="rule-box">
-
-<h2>§2 Modifikationen</h2>
-
-
-<p>
-
-Mods, die Spielern einen unfairen Vorteil geben, sind verboten.
-
-</p>
-
-
-<h3>Erlaubt:</h3>
-
-<ul>
-
-<li>Performance-Mods</li>
-
-<li>Grafik-Mods</li>
-
-<li>Optifine</li>
-
-<li>Replay Mod</li>
-
-<li>Optimierungen</li>
-
-</ul>
-
-
-
-<h3>Verboten:</h3>
-
-<ul>
-
-<li>Cheats</li>
-
-<li>X-Ray</li>
-
-<li>Autoklicker</li>
-
-<li>Freecam</li>
-
-<li>Mods mit unfairen Vorteilen</li>
-
-</ul>
-
-</div>
-
-
-
-
-
-
-
-<div class="rule-box">
-
-<h2>§3 Kommunikation</h2>
-
-
-<ul>
-
-<li>Behandle andere Spieler respektvoll.</li>
-
-<li>Beleidigungen, Diskriminierung und Belästigungen sind verboten.</li>
-
-<li>Spam und Caps sind verboten.</li>
-
-<li>Werbung für andere Server ist nicht erlaubt.</li>
-
-<li>Private Daten dürfen nicht veröffentlicht werden.</li>
-
-<li>Irreführende Links sind verboten.</li>
-
-</ul>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="rule-box">
-
-<h2>§4 Spielgeschehen</h2>
-
-
-<ul>
-
-<li>Das Ausnutzen von Bugs ist verboten.</li>
-
-<li>Unfaires Teaming ist verboten.</li>
-
-<li>Absichtliches Stören anderer Spieler ist verboten.</li>
-
-<li>Cheaten oder Manipulieren von Spielen führt zu Strafen.</li>
-
-<li>Unfaire Vorteile gegenüber anderen Spielern sind verboten.</li>
-
-</ul>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="rule-box">
-
-<h2>§5 Sonstige Regeln</h2>
-
-
-<ul>
-
-<li>Betrug und Täuschung sind verboten.</li>
-
-<li>AFK-Kick Umgehungen sind nicht erlaubt.</li>
-
-<li>Spielerfallen und gefährliche Fallen sind verboten.</li>
-
-<li>Werbung und Spam sind nur in erlaubten Bereichen gestattet.</li>
-
-<li>Glücksspiel-Werbung ist verboten.</li>
-
-</ul>
-
-
-</div>
-
-
-
-
-
-
-<button class="back" onclick="location.href='index.html'">
-
-Zurück zur Website
-
-</button>
-
-
-
-
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer>
 
-🦆 LMS SERVER © 2026 
+    <div class="footer-inner">
+
+        <div>
+
+            <div class="footer-brand">
+
+                <img
+                    src="WhatsApp%20Image%202026-07-11%20at%2015.30.43.jpeg"
+                    alt="LMS Logo"
+                >
+
+                <strong>
+                    LMS SERVER
+                </strong>
+
+            </div>
+
+            <div class="footer-text">
+
+                Minecraft Minigames • Survival • Events
+                <br>
+                LMS_server.aternos.me
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Start
+            </a>
+
+            <a href="index.html#games">
+                Spiele
+            </a>
+
+            <a href="index.html#shop">
+                Shop
+            </a>
+
+            <a href="index.html#live">
+                LMS LIVE
+            </a>
+
+            <a href="index.html#team">
+                Team
+            </a>
+
+            <a href="index.html#kontakt">
+                Kontakt
+            </a>
+
+            <a href="info.html">
+                Info
+            </a>
+
+            <a href="regeln.html">
+                Regeln
+            </a>
+
+        </div>
+
+    </div>
 
 </footer>
 
 
-
 </body>
-
 </html>
