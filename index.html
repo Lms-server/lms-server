@@ -3,2967 +3,481 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>LMS SERVER – Minecraft Netzwerk</title>
-
 <style>
-
 :root{
-    --yellow:#ffb000;
-    --yellow2:#ffd34f;
-    --yellow-light:#ffe27a;
-
-    --dark:#040912;
-    --dark2:#07111f;
-    --dark3:#0a1627;
-
-    --card:rgba(10,22,38,.72);
-    --card2:rgba(12,27,45,.82);
-
-    --border:rgba(255,255,255,.09);
-    --border-yellow:rgba(255,176,0,.25);
-
-    --text:#f5f7fa;
-    --muted:#96a4b5;
-
-    --green:#45e27a;
-    --red:#ef4444;
-}
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:
-        radial-gradient(circle at 20% 10%,rgba(255,176,0,.06),transparent 30%),
-        radial-gradient(circle at 85% 45%,rgba(255,176,0,.035),transparent 30%),
-        #040912;
-    color:var(--text);
-    overflow-x:hidden;
-}
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:9999;
-    opacity:.25;
-
-    background:
-        repeating-linear-gradient(
-            0deg,
-            transparent 0,
-            transparent 47px,
-            rgba(255,255,255,.018) 48px
-        ),
-        repeating-linear-gradient(
-            90deg,
-            transparent 0,
-            transparent 47px,
-            rgba(255,255,255,.018) 48px
-        );
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-button{
-    font-family:inherit;
-}
-
-/* =========================
-   SCROLLBAR
-========================= */
-
-::-webkit-scrollbar{
-    width:8px;
-}
-
-::-webkit-scrollbar-track{
-    background:#03070e;
-}
-
-::-webkit-scrollbar-thumb{
-    background:#263446;
-    border-radius:20px;
-}
-
-::-webkit-scrollbar-thumb:hover{
-    background:var(--yellow);
-}
-
-/* =========================
-   NAVIGATION
-========================= */
-
-.navbar{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:78px;
-
-    z-index:1000;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 5%;
-
-    background:rgba(3,8,15,.70);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-
-    border-bottom:1px solid rgba(255,255,255,.07);
-
-    transition:.3s ease;
-}
-
-.navbar.scrolled{
-    background:rgba(3,8,15,.94);
-    box-shadow:0 10px 40px rgba(0,0,0,.3);
-}
-
-.nav-logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-
-    font-size:19px;
-    font-weight:900;
-    letter-spacing:.5px;
-
-    flex-shrink:0;
-}
-
-.nav-logo img{
-    width:45px;
-    height:45px;
-
-    object-fit:cover;
-    border-radius:10px;
-
-    border:1px solid rgba(255,176,0,.45);
-
-    box-shadow:
-        0 0 25px rgba(255,176,0,.08);
-
-    transition:.3s;
-}
-
-.nav-logo:hover img{
-    transform:rotate(-3deg) scale(1.05);
-    border-color:var(--yellow);
-}
-
-.nav-links{
-    display:flex;
-    align-items:center;
-    gap:5px;
-}
-
-.nav-links a{
-    position:relative;
-
-    padding:11px 14px;
-    border-radius:9px;
-
-    color:#cbd4df;
-
-    font-size:13px;
-    font-weight:800;
-
-    transition:.25s ease;
-}
-
-.nav-links a::after{
-    content:"";
-
-    position:absolute;
-
-    left:14px;
-    right:14px;
-    bottom:5px;
-
-    height:2px;
-
-    background:var(--yellow);
-
-    transform:scaleX(0);
-    transform-origin:center;
-
-    transition:.25s ease;
-}
-
-.nav-links a:hover{
-    color:white;
-    background:rgba(255,255,255,.05);
-}
-
-.nav-links a:hover::after{
-    transform:scaleX(1);
-}
-
-.nav-links .play{
-    margin-left:7px;
-
-    background:linear-gradient(
-        135deg,
-        var(--yellow),
-        var(--yellow2)
-    );
-
-    color:#111;
-
-    box-shadow:
-        0 8px 30px rgba(255,176,0,.18);
-}
-
-.nav-links .play::after{
-    display:none;
-}
-
-.nav-links .play:hover{
-    color:#000;
-    transform:translateY(-2px);
-
-    box-shadow:
-        0 12px 35px rgba(255,176,0,.28);
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-    position:relative;
-
-    min-height:850px;
-    height:100vh;
-
-    display:flex;
-    align-items:center;
-
-    overflow:hidden;
-
-    background-image:
-        linear-gradient(
-            90deg,
-            rgba(3,8,15,.97) 0%,
-            rgba(3,8,15,.88) 30%,
-            rgba(3,8,15,.48) 65%,
-            rgba(3,8,15,.78) 100%
-        ),
-        url("images.jpg");
-
-    background-size:cover;
-    background-position:center;
-}
-
-.hero::before{
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-        radial-gradient(
-            circle at 72% 45%,
-            rgba(255,176,0,.16),
-            transparent 25%
-        );
-
-    pointer-events:none;
-}
-
-.hero::after{
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(3,8,15,.1),
-            rgba(3,8,15,.15) 55%,
-            #040912 100%
-        );
-
-    pointer-events:none;
-}
-
-.hero-grid{
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        );
-
-    background-size:70px 70px;
-
-    mask-image:linear-gradient(
-        to bottom,
-        black,
-        transparent 85%
-    );
-
-    opacity:.45;
-}
-
-.particle{
-    position:absolute;
-
-    width:3px;
-    height:3px;
-
-    border-radius:50%;
-
-    background:var(--yellow);
-
-    box-shadow:
-        0 0 12px rgba(255,176,0,.8);
-
-    opacity:.35;
-
-    animation:floatParticle linear infinite;
-}
-
-.p1{left:10%;top:35%;animation-duration:12s}
-.p2{left:23%;top:65%;animation-duration:17s}
-.p3{left:43%;top:25%;animation-duration:14s}
-.p4{left:66%;top:60%;animation-duration:19s}
-.p5{left:81%;top:30%;animation-duration:15s}
-.p6{left:91%;top:72%;animation-duration:20s}
-
-@keyframes floatParticle{
-    0%{
-        transform:translateY(40px);
-        opacity:0;
-    }
-
-    20%{
-        opacity:.4;
-    }
-
-    80%{
-        opacity:.35;
-    }
-
-    100%{
-        transform:translateY(-120px);
-        opacity:0;
-    }
-}
-
-.hero-content{
-    position:relative;
-    z-index:5;
-
-    width:min(1200px,90%);
-
-    padding-top:65px;
-}
-
-.hero-small{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-
-    color:var(--yellow);
-
-    font-size:13px;
-    font-weight:900;
-
-    text-transform:uppercase;
-    letter-spacing:3px;
-
-    margin-bottom:20px;
-}
-
-.hero-small::before{
-    content:"";
-
-    width:38px;
-    height:2px;
-
-    background:var(--yellow);
-
-    box-shadow:
-        0 0 12px rgba(255,176,0,.5);
-}
-
-.hero h1{
-    max-width:900px;
-
-    font-size:clamp(55px,8vw,112px);
-    line-height:.87;
-
-    font-weight:1000;
-
-    letter-spacing:-6px;
-
-    text-shadow:
-        0 20px 60px rgba(0,0,0,.45);
-
-    animation:heroIn .8s ease both;
-}
-
-.hero h1 span{
-    color:var(--yellow);
-
-    text-shadow:
-        0 0 35px rgba(255,176,0,.18);
-}
-
-.hero p{
-    max-width:650px;
-
-    margin-top:30px;
-
-    color:#c2ccd8;
-
-    font-size:18px;
-    line-height:1.7;
-
-    animation:heroIn .8s .12s ease both;
-}
-
-.hero-buttons{
-    display:flex;
-    flex-wrap:wrap;
-    gap:13px;
-
-    margin-top:34px;
-
-    animation:heroIn .8s .22s ease both;
-}
-
-@keyframes heroIn{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-.btn{
-    display:inline-flex;
-
-    align-items:center;
-    justify-content:center;
-
-    min-height:52px;
-
-    padding:0 24px;
-
-    border-radius:9px;
-
-    font-weight:900;
-    font-size:14px;
-
-    transition:.25s ease;
-
-    cursor:pointer;
-}
-
-.btn-primary{
-    background:
-        linear-gradient(
-            135deg,
-            var(--yellow),
-            var(--yellow2)
-        );
-
-    color:#111;
-
-    box-shadow:
-        0 10px 35px rgba(255,176,0,.18);
-}
-
-.btn-primary:hover{
-    transform:translateY(-3px);
-
-    box-shadow:
-        0 15px 45px rgba(255,176,0,.28);
-}
-
-.btn-secondary{
-    border:1px solid rgba(255,255,255,.15);
-
-    background:rgba(255,255,255,.045);
-
-    color:white;
-
-    backdrop-filter:blur(12px);
-}
-
-.btn-secondary:hover{
-    background:rgba(255,255,255,.09);
-
-    transform:translateY(-3px);
-}
-
-.hero-status{
-    position:absolute;
-
-    right:5%;
-    bottom:70px;
-
-    z-index:10;
-
-    width:270px;
-
-    padding:18px;
-
-    border-radius:14px;
-
-    background:rgba(5,12,22,.68);
-
-    border:1px solid rgba(255,255,255,.1);
-
-    backdrop-filter:blur(18px);
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.3);
-}
-
-.hero-status-top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.hero-status-label{
-    color:#8d9aaa;
-
-    font-size:10px;
-    font-weight:900;
-
-    text-transform:uppercase;
-    letter-spacing:1.5px;
-}
-
-.hero-status-state{
-    display:flex;
-    align-items:center;
-    gap:7px;
-
-    font-size:11px;
-    font-weight:900;
-}
-
-.mini-dot{
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
-
-    background:#777;
-}
-
-.mini-dot.online{
-    background:var(--green);
-
-    box-shadow:
-        0 0 10px rgba(69,226,122,.8);
-}
-
-.mini-dot.offline{
-    background:var(--red);
-}
-
-.hero-status-ip{
-    margin-top:10px;
-
-    font-family:monospace;
-
-    font-size:13px;
-
-    color:white;
-}
-
-.hero-status-players{
-    margin-top:6px;
-
-    color:var(--muted);
-
-    font-size:12px;
-}
-
-/* =========================
-   GENERAL
-========================= */
-
-.section{
-    position:relative;
-
-    width:min(1200px,90%);
-
-    margin:auto;
-
-    padding:110px 0;
-}
-
-.section-header{
-    margin-bottom:42px;
-}
-
-.section-label{
-    color:var(--yellow);
-
-    font-size:11px;
-    font-weight:900;
-
-    text-transform:uppercase;
-    letter-spacing:2.5px;
-
-    margin-bottom:10px;
-}
-
-.section-title{
-    font-size:clamp(34px,5vw,58px);
-
-    font-weight:1000;
-
-    letter-spacing:-2.5px;
-}
-
-.section-description{
-    max-width:700px;
-
-    margin-top:15px;
-
-    color:var(--muted);
-
-    line-height:1.7;
-
-    font-size:15px;
-}
-
-/* =========================
-   SERVER STATUS
-========================= */
-
-.status-card{
-    display:grid;
-
-    grid-template-columns:1fr auto;
-
-    gap:30px;
-
-    align-items:center;
-
-    padding:30px;
-
-    background:
-        radial-gradient(
-            circle at 0% 50%,
-            rgba(255,176,0,.09),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            rgba(10,25,42,.9),
-            rgba(7,15,27,.88)
-        );
-
-    border:1px solid var(--border-yellow);
-
-    border-radius:20px;
-
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.22);
-
-    transition:.3s;
-}
-
-.status-card:hover{
-    border-color:rgba(255,176,0,.38);
-    transform:translateY(-2px);
-}
-
-.status-left{
-    display:flex;
-    align-items:center;
-
-    gap:18px;
-}
-
-.status-dot{
-    width:15px;
-    height:15px;
-
-    border-radius:50%;
-
-    background:#777;
-}
-
-.status-dot.online{
-    background:var(--green);
-
-    box-shadow:
-        0 0 20px rgba(69,226,122,.7);
-}
-
-.status-dot.offline{
-    background:var(--red);
-
-    box-shadow:
-        0 0 18px rgba(239,68,68,.5);
-}
-
-.status-title{
-    font-size:20px;
-    font-weight:900;
-}
-
-.status-text{
-    color:var(--muted);
-
-    margin-top:5px;
-
-    font-size:13px;
-}
-
-.status-right{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.status-ip{
-    padding:13px 17px;
-
-    background:rgba(0,0,0,.25);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:9px;
-
-    color:white;
-
-    font-family:monospace;
-
-    font-size:13px;
-}
-
-.copy-ip{
-    width:44px;
-    height:44px;
-
-    border:1px solid rgba(255,255,255,.1);
-
-    background:rgba(255,255,255,.045);
-
-    color:white;
-
-    border-radius:9px;
-
-    cursor:pointer;
-
-    transition:.2s;
-}
-
-.copy-ip:hover{
-    background:rgba(255,176,0,.12);
-
-    border-color:rgba(255,176,0,.3);
-
-    color:var(--yellow);
-}
-
-.player-bar{
-    height:4px;
-
-    margin-top:15px;
-
-    width:min(300px,100%);
-
-    background:rgba(255,255,255,.07);
-
-    border-radius:10px;
-
-    overflow:hidden;
-}
-
-.player-bar-fill{
-    height:100%;
-
-    width:0%;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--yellow),
-            var(--yellow2)
-        );
-
-    border-radius:10px;
-
-    transition:width .6s ease;
-}
-
-/* =========================
-   GAME CARDS
-========================= */
-
-.games-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:20px;
-}
-
-.game-card{
-    position:relative;
-
-    min-height:330px;
-
-    overflow:hidden;
-
-    border-radius:18px;
-
-    border:1px solid var(--border);
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(5,11,20,.05),
-            rgba(5,11,20,.96)
-        ),
-        var(--dark2);
-
-    transition:.35s ease;
-}
-
-.game-card::before{
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-        radial-gradient(
-            circle at 80% 15%,
-            rgba(255,176,0,.17),
-            transparent 32%
-        );
-
-    transition:.35s;
-}
-
-.game-card::after{
-    content:"";
-
-    position:absolute;
-
-    inset:1px;
-
-    border-radius:17px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.05),
-            transparent 30%
-        );
-
-    pointer-events:none;
-}
-
-.game-card:hover{
-    transform:translateY(-8px);
-
-    border-color:rgba(255,176,0,.35);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.32);
-}
-
-.game-card:hover::before{
-    transform:scale(1.3);
-}
-
-.game-number{
-    position:absolute;
-
-    top:22px;
-    right:24px;
-
-    color:rgba(255,255,255,.12);
-
-    font-size:55px;
-    font-weight:1000;
-
-    line-height:1;
-}
-
-.game-content{
-    position:absolute;
-
-    left:25px;
-    right:25px;
-    bottom:25px;
-
-    z-index:3;
-}
-
-.game-tag{
-    display:inline-block;
-
-    padding:6px 9px;
-
-    margin-bottom:11px;
-
-    background:rgba(255,176,0,.1);
-
-    border:1px solid rgba(255,176,0,.18);
-
-    border-radius:6px;
-
-    color:var(--yellow);
-
-    font-size:10px;
-    font-weight:900;
-
-    text-transform:uppercase;
-    letter-spacing:1px;
-}
-
-.game-card h3{
-    font-size:28px;
-    font-weight:1000;
-
-    letter-spacing:-1px;
-}
-
-.game-card p{
-    margin-top:8px;
-
-    color:#aab5c3;
-
-    line-height:1.55;
-
-    font-size:13px;
-}
-
-/* =========================
-   SHOP
-========================= */
-
-.shop-box{
-    position:relative;
-
-    overflow:hidden;
-
-    padding:55px;
-
-    background:
-        radial-gradient(
-            circle at 90% 30%,
-            rgba(255,176,0,.13),
-            transparent 30%
-        ),
-        var(--card);
-
-    border:1px solid var(--border);
-
-    border-radius:20px;
-
-    text-align:left;
-}
-
-.shop-box::before{
-    content:"SHOP";
-
-    position:absolute;
-
-    right:35px;
-    top:20px;
-
-    font-size:80px;
-    font-weight:1000;
-
-    color:rgba(255,255,255,.025);
-}
-
-.shop-box h3{
-    font-size:35px;
-    font-weight:1000;
-
-    position:relative;
-}
-
-.shop-box p{
-    max-width:650px;
-
-    margin:14px 0 25px;
-
-    color:var(--muted);
-
-    line-height:1.7;
-
-    position:relative;
-}
-
-/* =========================
-   LMS LIVE
-========================= */
-
-.live-card{
-    position:relative;
-
-    overflow:hidden;
-
-    padding:50px;
-
-    border-radius:22px;
-
-    background:
-        radial-gradient(
-            circle at 85% 20%,
-            rgba(255,176,0,.16),
-            transparent 28%
-        ),
-        linear-gradient(
-            135deg,
-            rgba(255,176,0,.09),
-            rgba(8,19,33,.95)
-        );
-
-    border:1px solid rgba(255,176,0,.2);
-}
-
-.live-card::before{
-    content:"";
-
-    position:absolute;
-
-    width:380px;
-    height:380px;
-
-    right:-170px;
-    top:-180px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(255,176,0,.08);
-}
-
-.live-card::after{
-    content:"";
-
-    position:absolute;
-
-    width:250px;
-    height:250px;
-
-    right:-105px;
-    top:-115px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(255,176,0,.06);
-}
-
-.live-content{
-    position:relative;
-    z-index:2;
-}
-
-.live-badge{
-    display:inline-flex;
-
-    align-items:center;
-    gap:8px;
-
-    color:var(--yellow);
-
-    font-size:11px;
-    font-weight:900;
-
-    letter-spacing:2px;
-
-    text-transform:uppercase;
-}
-
-.live-badge::before{
-    content:"";
-
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
-
-    background:var(--yellow);
-
-    box-shadow:
-        0 0 10px rgba(255,176,0,.8);
-}
-
-.live-card h3{
-    margin-top:12px;
-
-    font-size:42px;
-
-    font-weight:1000;
-
-    letter-spacing:-1.5px;
-}
-
-.live-card p{
-    max-width:700px;
-
-    margin-top:12px;
-
-    color:#aeb9c8;
-
-    line-height:1.7;
-}
-
-/* =========================
-   TEAM
-========================= */
-
-.team-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:17px;
-}
-
-.team-card{
-    position:relative;
-
-    display:flex;
-    align-items:center;
-
-    gap:17px;
-
-    padding:20px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.035),
-            rgba(255,255,255,.015)
-        ),
-        var(--card);
-
-    border:1px solid var(--border);
-
-    border-radius:16px;
-
-    transition:.3s ease;
-
-    overflow:hidden;
-}
-
-.team-card::before{
-    content:"";
-
-    position:absolute;
-
-    left:0;
-    top:0;
-    bottom:0;
-
-    width:2px;
-
-    background:var(--yellow);
-
-    transform:scaleY(0);
-
-    transition:.3s;
-}
-
-.team-card:hover{
-    border-color:rgba(255,176,0,.25);
-
-    transform:translateY(-4px);
-
-    box-shadow:
-        0 18px 50px rgba(0,0,0,.22);
-}
-
-.team-card:hover::before{
-    transform:scaleY(1);
-}
-
-.team-avatar{
-    width:58px;
-    height:58px;
-
-    flex-shrink:0;
-
-    border-radius:11px;
-
-    image-rendering:auto;
-
-    background:#101c2c;
-
-    border:1px solid rgba(255,255,255,.1);
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.3);
-}
-
-.team-role{
-    color:var(--yellow);
-
-    font-size:10px;
-    font-weight:900;
-
-    text-transform:uppercase;
-    letter-spacing:1.2px;
-}
-
-.team-name{
-    margin-top:5px;
-
-    font-size:18px;
-    font-weight:900;
-}
-
-.team-description{
-    margin-top:4px;
-
-    color:var(--muted);
-
-    font-size:12px;
-}
-
-/* =========================
-   CONTACT
-========================= */
-
-.contact-grid{
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:20px;
-}
-
-.contact-card{
-    padding:32px;
-
-    background:var(--card);
-
-    border:1px solid var(--border);
-
-    border-radius:17px;
-
-    transition:.3s;
-}
-
-.contact-card:hover{
-    border-color:rgba(255,176,0,.2);
-
-    transform:translateY(-3px);
-}
-
-.contact-card h3{
-    font-size:25px;
-    font-weight:1000;
-}
-
-.contact-card p{
-    margin-top:11px;
-
-    color:var(--muted);
-
-    line-height:1.7;
-}
-
-.contact-item{
-    margin-top:22px;
-}
-
-.contact-label{
-    color:var(--yellow);
-
-    font-size:10px;
-    font-weight:900;
-
-    text-transform:uppercase;
-    letter-spacing:1px;
-}
-
-.contact-value{
-    margin-top:5px;
-
-    font-size:16px;
-    font-weight:800;
-}
-
-/* =========================
-   SURVIVAL CAMP
-========================= */
-
-.camp{
-    position:relative;
-
-    overflow:hidden;
-
-    padding:55px;
-
-    border-radius:22px;
-
-    background:
-        radial-gradient(
-            circle at 85% 30%,
-            rgba(255,176,0,.11),
-            transparent 30%
-        ),
-        linear-gradient(
-            120deg,
-            rgba(255,176,0,.08),
-            rgba(5,11,20,.92)
-        );
-
-    border:1px solid rgba(255,255,255,.08);
-}
-
-.camp h3{
-    font-size:40px;
-    font-weight:1000;
-
-    letter-spacing:-1px;
-}
-
-.camp p{
-    max-width:700px;
-
-    margin-top:13px;
-
-    color:var(--muted);
-
-    line-height:1.7;
-}
-
-/* =========================
-   COOKIE CLICKER
-========================= */
-
-.cookie-section{
-    text-align:center;
-}
-
-.cookie-button{
-    position:relative;
-
-    margin-top:25px;
-
-    width:150px;
-    height:150px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #f4bc70,
-            #b96d32 55%,
-            #713b20
-        );
-
-    cursor:pointer;
-
-    box-shadow:
-        inset -12px -15px 25px rgba(0,0,0,.2),
-        inset 8px 8px 18px rgba(255,255,255,.12),
-        0 25px 60px rgba(0,0,0,.3);
-
-    font-size:45px;
-
-    transition:.12s ease;
-}
-
-.cookie-button:hover{
-    transform:scale(1.04);
-}
-
-.cookie-button:active{
-    transform:scale(.93);
-}
-
-.cookie-count{
-    margin-top:18px;
-
-    font-size:22px;
-    font-weight:900;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-    position:relative;
-
-    padding:50px 5% 35px;
-
-    border-top:1px solid rgba(255,255,255,.07);
-
-    background:#02060c;
-}
-
-.footer-inner{
-    width:min(1200px,100%);
-
-    margin:auto;
-
-    display:flex;
-
-    justify-content:space-between;
-    align-items:center;
-
-    gap:25px;
-}
-
-.footer-logo{
-    display:flex;
-    align-items:center;
-
-    gap:10px;
-
-    font-weight:900;
-}
-
-.footer-logo img{
-    width:38px;
-    height:38px;
-
-    object-fit:cover;
-
-    border-radius:8px;
-}
-
-.footer-links{
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:18px;
-}
-
-.footer-links a{
-    color:#8995a5;
-
-    font-size:12px;
-
-    transition:.2s;
-}
-
-.footer-links a:hover{
-    color:var(--yellow);
-}
-
-.footer-copy{
-    margin-top:25px;
-
-    color:#586474;
-
-    font-size:11px;
-
-    text-align:center;
-}
-
-/* =========================
-   SCROLL REVEAL
-========================= */
-
-.reveal{
-    opacity:0;
-
-    transform:translateY(25px);
-
-    transition:
-        opacity .7s ease,
-        transform .7s ease;
-}
-
-.reveal.visible{
-    opacity:1;
-
-    transform:translateY(0);
-}
-
-/* =========================
-   TOAST
-========================= */
-
-.toast{
-    position:fixed;
-
-    left:50%;
-    bottom:25px;
-
-    transform:
-        translate(-50%,20px);
-
-    z-index:99999;
-
-    padding:12px 18px;
-
-    background:rgba(8,16,27,.94);
-
-    border:1px solid rgba(255,176,0,.25);
-
-    border-radius:10px;
-
-    color:white;
-
-    font-size:13px;
-    font-weight:800;
-
-    box-shadow:
-        0 15px 50px rgba(0,0,0,.4);
-
-    opacity:0;
-
-    pointer-events:none;
-
-    transition:.3s;
-}
-
-.toast.show{
-    opacity:1;
-
-    transform:
-        translate(-50%,0);
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:1000px){
-
-    .navbar{
-        height:auto;
-        min-height:70px;
-
-        padding:10px 5%;
-
-        flex-wrap:wrap;
-
-        gap:8px;
-    }
-
-    .nav-links{
-        width:100%;
-
-        overflow-x:auto;
-
-        padding-bottom:3px;
-
-        justify-content:flex-start;
-    }
-
-    .nav-links a{
-        flex-shrink:0;
-
-        font-size:12px;
-
-        padding:9px 11px;
-    }
-
-    .hero{
-        min-height:750px;
-
-        height:auto;
-
-        padding:150px 0 120px;
-    }
-
-    .hero-status{
-        position:relative;
-
-        right:auto;
-        bottom:auto;
-
-        margin-top:55px;
-
-        width:min(100%,350px);
-    }
-
-    .games-grid,
-    .team-grid{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-    .status-card{
-        grid-template-columns:1fr;
-    }
-
-    .status-right{
-        justify-content:flex-start;
-    }
-
-    .contact-grid{
-        grid-template-columns:1fr;
-    }
-
-    .footer-inner{
-        flex-direction:column;
-
-        align-items:flex-start;
-    }
-}
-
-@media(max-width:600px){
-
-    .navbar{
-        padding-left:4%;
-        padding-right:4%;
-    }
-
-    .nav-logo span{
-        font-size:16px;
-    }
-
-    .nav-logo img{
-        width:40px;
-        height:40px;
-    }
-
-    .hero{
-        min-height:720px;
-    }
-
-    .hero-content{
-        width:90%;
-    }
-
-    .hero h1{
-        font-size:clamp(52px,16vw,80px);
-
-        letter-spacing:-4px;
-    }
-
-    .hero p{
-        font-size:15px;
-    }
-
-    .hero-buttons{
-        flex-direction:column;
-
-        align-items:stretch;
-    }
-
-    .btn{
-        width:100%;
-    }
-
-    .section{
-        width:90%;
-
-        padding:75px 0;
-    }
-
-    .section-title{
-        font-size:39px;
-    }
-
-    .games-grid,
-    .team-grid{
-        grid-template-columns:1fr;
-    }
-
-    .status-card,
-    .shop-box,
-    .live-card,
-    .camp,
-    .contact-card{
-        padding:25px;
-    }
-
-    .status-right{
-        width:100%;
-    }
-
-    .status-ip{
-        flex:1;
-
-        overflow:hidden;
-
-        text-overflow:ellipsis;
-
-        white-space:nowrap;
-    }
-
-    .live-card h3,
-    .camp h3{
-        font-size:30px;
-    }
-
-    .shop-box::before{
-        display:none;
-    }
-
-    .footer-links{
-        gap:12px;
-    }
+  --yellow:#ffb000;
+  --yellow2:#ffd45a;
+  --bg:#0b0e13;
+  --bg2:#10151c;
+  --panel:#151b23;
+  --panel2:#1a212b;
+  --line:rgba(255,255,255,.09);
+  --text:#f4f5f7;
+  --muted:#9da6b2;
+  --green:#4ade80;
+  --red:#ef4444;
+  --max:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+img{max-width:100%;display:block}
+::-webkit-scrollbar{width:9px}
+::-webkit-scrollbar-track{background:#080a0e}
+::-webkit-scrollbar-thumb{background:#343b45;border-radius:20px}
+::-webkit-scrollbar-thumb:hover{background:#555e6b}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;height:72px;z-index:1000;background:rgba(9,12,17,.88);border-bottom:1px solid transparent;transition:.25s;backdrop-filter:blur(12px)}
+.header.scrolled{border-color:var(--line);background:rgba(9,12,17,.97)}
+.header-inner{width:min(var(--max),92%);height:100%;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.logo{display:flex;align-items:center;gap:11px;font-weight:900;font-size:17px;white-space:nowrap}
+.logo img{width:42px;height:42px;object-fit:cover;border-radius:7px}
+.nav{display:flex;align-items:center;gap:4px}
+.nav a{padding:10px 13px;color:#c5cbd3;font-size:13px;font-weight:700;border-radius:6px;transition:.2s}
+.nav a:hover{color:#fff;background:rgba(255,255,255,.055)}
+.nav .nav-play{margin-left:7px;background:var(--yellow);color:#111;padding:10px 17px}
+.nav .nav-play:hover{background:var(--yellow2);color:#111}
+
+/* HERO */
+.hero{position:relative;min-height:690px;height:86vh;max-height:900px;background:url("images.jpg") center/cover no-repeat;display:flex;align-items:flex-end}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,7,10,.94) 0%,rgba(5,7,10,.63) 38%,rgba(5,7,10,.12) 70%),linear-gradient(0deg,#0b0e13 0%,rgba(11,14,19,.12) 45%,rgba(11,14,19,.18) 100%)}
+.hero-content{position:relative;width:min(var(--max),92%);margin:0 auto;padding:0 0 78px}
+.hero-kicker{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--yellow);margin-bottom:13px}
+.hero h1{font-size:clamp(48px,7vw,88px);line-height:.94;letter-spacing:-4px;font-weight:950;max-width:760px}
+.hero h1 span{color:var(--yellow)}
+.hero-text{max-width:570px;margin-top:20px;color:#d0d5db;font-size:16px;line-height:1.65}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 19px;border-radius:6px;font-size:13px;font-weight:800;transition:.2s;border:1px solid transparent}
+.btn-primary{background:var(--yellow);color:#111}
+.btn-primary:hover{background:var(--yellow2);transform:translateY(-1px)}
+.btn-dark{background:rgba(10,13,18,.72);border-color:rgba(255,255,255,.18);color:#fff}
+.btn-dark:hover{background:rgba(255,255,255,.1)}
+
+/* SERVER BAR */
+.server-bar{position:relative;margin-top:-1px;background:#11161d;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid var(--line)}
+.server-inner{width:min(var(--max),92%);margin:auto;min-height:88px;display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:35px}
+.server-main{display:flex;align-items:center;gap:13px}
+.server-dot{width:11px;height:11px;border-radius:50%;background:#777;flex:none}
+.server-dot.online{background:var(--green);box-shadow:0 0 0 4px rgba(74,222,128,.09)}
+.server-dot.offline{background:var(--red);box-shadow:0 0 0 4px rgba(239,68,68,.08)}
+.server-title{font-size:14px;font-weight:850}
+.server-sub{font-size:11px;color:var(--muted);margin-top:3px}
+.server-players{font-size:13px;font-weight:800;white-space:nowrap}
+.server-ip{display:flex;align-items:center;gap:7px}
+.server-ip span{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#cdd3db;font-size:12px}
+.copy{border:1px solid var(--line);background:#171d25;color:#cbd0d7;border-radius:5px;padding:7px 9px;cursor:pointer;font-size:10px;font-weight:800}
+.copy:hover{border-color:rgba(255,176,0,.45);color:var(--yellow)}
+
+/* GENERAL */
+.section{width:min(var(--max),92%);margin:auto;padding:92px 0}
+.section-top{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:28px}
+.section-kicker{font-size:11px;text-transform:uppercase;letter-spacing:1.8px;color:var(--yellow);font-weight:850;margin-bottom:7px}
+.section-title{font-size:34px;line-height:1.05;letter-spacing:-1.5px;font-weight:900}
+.section-intro{max-width:590px;color:var(--muted);font-size:13px;line-height:1.65;margin-top:9px}
+.section-link{font-size:12px;color:#c5cbd3;font-weight:800;white-space:nowrap}
+.section-link:hover{color:var(--yellow)}
+
+/* GAMES */
+.games{display:grid;grid-template-columns:1.7fr 1fr 1fr;grid-auto-rows:245px;gap:12px}
+.game{position:relative;overflow:hidden;background:var(--panel);border:1px solid var(--line);border-radius:8px;min-height:245px;transition:.25s}
+.game:first-child{grid-row:span 2;min-height:502px}
+.game:before{content:"";position:absolute;inset:0;background:var(--game-image,linear-gradient(135deg,#263442,#11161d)) center/cover no-repeat;transition:.4s;opacity:.92}
+.game:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,7,10,.94) 0%,rgba(4,7,10,.5) 38%,rgba(4,7,10,.08) 75%)}
+.game:hover{transform:translateY(-3px);border-color:rgba(255,176,0,.35)}
+.game:hover:before{transform:scale(1.04)}
+.game:nth-child(1){--game-image:url("images.jpg")}
+.game:nth-child(2){--game-image:linear-gradient(135deg,#183d25,#0c1510)}
+.game:nth-child(3){--game-image:linear-gradient(135deg,#3b2911,#15110a)}
+.game:nth-child(4){--game-image:linear-gradient(135deg,#172b45,#0b111a)}
+.game-body{position:absolute;left:20px;right:20px;bottom:18px;z-index:2}
+.game-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px}
+.tag{font-size:9px;text-transform:uppercase;letter-spacing:.8px;font-weight:850;color:#f1c15a;background:rgba(255,176,0,.12);border:1px solid rgba(255,176,0,.2);padding:5px 7px;border-radius:4px}
+.game h3{font-size:25px;font-weight:900;letter-spacing:-.7px}
+.game p{font-size:11px;color:#c0c6cd;line-height:1.5;margin-top:5px;max-width:560px}
+
+/* NEWS / FEATURES */
+.feature-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:12px}
+.feature{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:25px;min-height:205px;position:relative;overflow:hidden}
+.feature:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;right:-70px;top:-70px;border:1px solid rgba(255,176,0,.08)}
+.feature-label{color:var(--yellow);font-size:10px;text-transform:uppercase;letter-spacing:1.4px;font-weight:850}
+.feature h3{font-size:22px;margin-top:9px;font-weight:900}
+.feature p{color:var(--muted);font-size:12px;line-height:1.65;margin-top:8px;max-width:420px}
+.feature .btn{margin-top:18px;min-height:39px;font-size:11px}
+
+/* SHOP / DISCORD */
+.promo-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.promo{border-radius:8px;min-height:245px;padding:32px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;border:1px solid var(--line)}
+.promo:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,176,0,.16),transparent 55%);pointer-events:none}
+.promo.shop{background:linear-gradient(135deg,#201a0e,#12161b)}
+.promo.discord{background:linear-gradient(135deg,#171c2a,#10151d)}
+.promo-content{position:relative;z-index:1}
+.promo-label{font-size:10px;color:var(--yellow);font-weight:850;text-transform:uppercase;letter-spacing:1.5px}
+.promo h3{font-size:29px;margin-top:8px;font-weight:900}
+.promo p{max-width:510px;color:#b6bdc6;font-size:12px;line-height:1.65;margin-top:7px}
+.promo .btn{margin-top:18px}
+
+/* TEAM */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.member{background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:15px;display:flex;align-items:center;gap:13px;transition:.2s}
+.member:hover{border-color:rgba(255,176,0,.28);background:var(--panel2)}
+.member img{width:54px;height:54px;border-radius:5px;background:#0d1117}
+.member-role{font-size:9px;text-transform:uppercase;letter-spacing:1.1px;color:var(--yellow);font-weight:850}
+.member-name{font-size:15px;font-weight:850;margin-top:3px}
+.member-desc{font-size:10px;color:var(--muted);margin-top:3px}
+
+/* CONTACT */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.contact-card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:25px}
+.contact-card h3{font-size:20px;font-weight:900}
+.contact-card p{color:var(--muted);font-size:12px;line-height:1.65;margin-top:8px}
+.contact-value{margin-top:20px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;color:#e4e7eb}
+
+/* COOKIE */
+.cookie-wrap{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0e1319;text-align:center;padding:45px 20px}
+.cookie-wrap h2{font-size:25px;font-weight:900}
+.cookie-wrap p{font-size:11px;color:var(--muted);margin-top:6px}
+.cookie-button{margin-top:18px;border:0;background:none;font-size:62px;cursor:pointer;transition:.12s}
+.cookie-button:active{transform:scale(.88)}
+.cookie-count{font-size:13px;font-weight:850}
+
+/* FOOTER */
+footer{background:#080b10;padding:45px 0 25px;border-top:1px solid var(--line)}
+.footer{width:min(var(--max),92%);margin:auto}
+.footer-top{display:flex;justify-content:space-between;gap:30px;align-items:flex-start}
+.footer-brand{display:flex;gap:10px;align-items:center;font-weight:900}
+.footer-brand img{width:38px;height:38px;border-radius:6px}
+.footer-brand p{font-size:10px;color:#727b86;font-weight:500;margin-top:3px}
+.footer-links{display:flex;flex-wrap:wrap;gap:17px}
+.footer-links a{font-size:11px;color:#8f98a3}
+.footer-links a:hover{color:var(--yellow)}
+.footer-bottom{display:flex;justify-content:space-between;gap:20px;margin-top:35px;padding-top:18px;border-top:1px solid rgba(255,255,255,.06);font-size:10px;color:#5e6772}
+
+/* TOAST + REVEAL */
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,15px);background:#171d25;border:1px solid rgba(255,176,0,.3);padding:10px 14px;border-radius:5px;font-size:11px;font-weight:800;opacity:0;pointer-events:none;z-index:3000;transition:.2s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.reveal{opacity:0;transform:translateY(18px);transition:.55s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .nav a:not(.nav-play){display:none}
+  .server-inner{grid-template-columns:1fr auto;gap:18px;padding:16px 0}
+  .server-ip{grid-column:1/-1}
+  .games{grid-template-columns:1fr 1fr;grid-auto-rows:230px}
+  .game:first-child{grid-row:span 1;min-height:230px}
+  .feature-grid,.team{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  .header{height:64px}
+  .logo img{width:38px;height:38px}
+  .logo{font-size:15px}
+  .hero{min-height:640px;height:78vh}
+  .hero-content{padding-bottom:55px}
+  .hero h1{font-size:47px;letter-spacing:-2.5px}
+  .hero-text{font-size:14px}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .btn{width:100%}
+  .server-inner{display:block;padding:17px 0}
+  .server-players{margin:12px 0}
+  .server-ip{justify-content:space-between}
+  .section{padding:65px 0}
+  .section-top{display:block}
+  .section-link{display:inline-block;margin-top:13px}
+  .games,.feature-grid,.promo-grid,.team,.contact{grid-template-columns:1fr}
+  .game:first-child{min-height:300px}
+  .game{min-height:220px}
+  .promo{min-height:220px;padding:25px}
+  .footer-top,.footer-bottom{display:block}
+  .footer-links{margin-top:22px}
+  .footer-bottom div+div{margin-top:8px}
 }
-
 </style>
 </head>
-
 <body>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
-
-<nav class="navbar" id="navbar">
-
-    <a href="#start" class="nav-logo">
-
-        <img
-            src="WhatsApp%20Image%202026-07-11%20at%2015.30.43.jpeg"
-            alt="LMS SERVER Logo"
-        >
-
-        <span>LMS SERVER</span>
-
+<header class="header" id="header">
+  <div class="header-inner">
+    <a class="logo" href="#start">
+      <img src="WhatsApp%20Image%202026-07-11%20at%2015.30.43.jpeg" alt="LMS SERVER">
+      <span>LMS SERVER</span>
     </a>
-
-    <div class="nav-links">
-
-        <a href="#start">Start</a>
-
-        <a href="#games">Spiele</a>
-
-        <a href="#shop">Shop</a>
-
-        <a href="#live">LMS LIVE</a>
-
-        <a href="#team">Team</a>
-
-        <a href="#kontakt">Kontakt</a>
-
-        <a href="info.html">Info</a>
-
-        <a href="#spielen" class="play">
-            Spielen
-        </a>
-
-    </div>
-
-</nav>
-
-
-<!-- =========================
-     HERO
-========================= -->
+    <nav class="nav">
+      <a href="#games">Spiele</a>
+      <a href="#news">News</a>
+      <a href="#shop">Shop</a>
+      <a href="#team">Team</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="info.html">Info</a>
+      <a class="nav-play" href="#spielen">Spielen</a>
+    </nav>
+  </div>
+</header>
 
 <section class="hero" id="start">
-
-    <div class="hero-grid"></div>
-
-    <div class="particle p1"></div>
-    <div class="particle p2"></div>
-    <div class="particle p3"></div>
-    <div class="particle p4"></div>
-    <div class="particle p5"></div>
-    <div class="particle p6"></div>
-
-    <div class="hero-content">
-
-        <div class="hero-small">
-            LMS SERVER
-        </div>
-
-        <h1>
-            DEIN<br>
-            <span>MINECRAFT</span><br>
-            SERVER.
-        </h1>
-
-        <p>
-            Willkommen auf dem LMS SERVER.
-            Entdecke unsere Spielmodi, Events und Projekte
-            und werde Teil unserer Community.
-        </p>
-
-        <div class="hero-buttons">
-
-            <a
-                href="#spielen"
-                class="btn btn-primary"
-            >
-                Jetzt spielen
-            </a>
-
-            <a
-                href="#games"
-                class="btn btn-secondary"
-            >
-                Spiele entdecken
-            </a>
-
-        </div>
-
+  <div class="hero-content">
+    <div class="hero-kicker">LMS SERVER</div>
+    <h1>Minecraft.<br><span>Neu gedacht.</span></h1>
+    <p class="hero-text">Entdecke den LMS SERVER mit eigenen Spielideen, Events und Community-Projekten. Einfach beitreten und losspielen.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#spielen">Jetzt spielen</a>
+      <a class="btn btn-dark" href="#games">Unsere Spiele</a>
     </div>
-
-
-    <div class="hero-status">
-
-        <div class="hero-status-top">
-
-            <div class="hero-status-label">
-                Server Status
-            </div>
-
-            <div class="hero-status-state">
-
-                <span
-                    class="mini-dot"
-                    id="heroDot"
-                ></span>
-
-                <span id="heroState">
-                    Prüfe...
-                </span>
-
-            </div>
-
-        </div>
-
-        <div class="hero-status-ip">
-            LMS_server.aternos.me
-        </div>
-
-        <div
-            class="hero-status-players"
-            id="heroPlayers"
-        >
-            Status wird geladen...
-        </div>
-
-    </div>
-
+  </div>
 </section>
 
-
-<!-- =========================
-     SERVER STATUS
-========================= -->
-
-<section class="section reveal">
-
-    <div class="section-header">
-
-        <div class="section-label">
-            Server
-        </div>
-
-        <div class="section-title">
-            Aktueller Status
-        </div>
-
-        <div class="section-description">
-            Prüfe direkt, ob der LMS SERVER online ist
-            und wie viele Spieler gerade auf dem Server sind.
-        </div>
-
+<section class="server-bar" id="spielen">
+  <div class="server-inner">
+    <div class="server-main">
+      <span class="server-dot" id="serverDot"></span>
+      <div>
+        <div class="server-title" id="serverTitle">Serverstatus wird geprüft...</div>
+        <div class="server-sub" id="serverSub">LMS_server.aternos.me</div>
+      </div>
     </div>
-
-
-    <div class="status-card">
-
-        <div class="status-left">
-
-            <div
-                class="status-dot"
-                id="statusDot"
-            ></div>
-
-            <div>
-
-                <div
-                    class="status-title"
-                    id="statusTitle"
-                >
-                    Server wird geprüft...
-                </div>
-
-                <div
-                    class="status-text"
-                    id="statusPlayers"
-                >
-                    Verbindung wird hergestellt...
-                </div>
-
-                <div class="player-bar">
-
-                    <div
-                        class="player-bar-fill"
-                        id="playerBar"
-                    ></div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="status-right">
-
-            <div class="status-ip">
-                LMS_server.aternos.me
-            </div>
-
-            <button
-                class="copy-ip"
-                onclick="copyIP()"
-                title="IP kopieren"
-            >
-                COPY
-            </button>
-
-        </div>
-
+    <div class="server-players" id="serverPlayers">— Spieler online</div>
+    <div class="server-ip">
+      <span>LMS_server.aternos.me</span>
+      <button class="copy" onclick="copyIP()">KOPIEREN</button>
     </div>
-
+  </div>
 </section>
 
-
-<!-- =========================
-     SPIELE
-========================= -->
-
-<section
-    class="section reveal"
-    id="games"
->
-
-    <div class="section-header">
-
-        <div class="section-label">
-            Spiele
-        </div>
-
-        <div class="section-title">
-            Entdecke LMS
-        </div>
-
-        <div class="section-description">
-            Verschiedene Projekte und Spielmöglichkeiten
-            warten auf dich.
-        </div>
-
+<main>
+  <section class="section reveal" id="games">
+    <div class="section-top">
+      <div>
+        <div class="section-kicker">LMS Netzwerk</div>
+        <h2 class="section-title">Unsere Spiele</h2>
+        <p class="section-intro">Spielmodi und Projekte, die direkt auf dem LMS SERVER entstehen. Keine überladene Übersicht – nur das, was es bei uns wirklich gibt.</p>
+      </div>
+      <a class="section-link" href="info.html">Mehr über LMS →</a>
     </div>
-
-
-    <div class="games-grid">
-
-
-        <div class="game-card">
-
-            <div class="game-number">
-                01
-            </div>
-
-            <div class="game-content">
-
-                <div class="game-tag">
-                    Featured
-                </div>
-
-                <h3>
-                    Only Up
-                </h3>
-
-                <p>
-                    Springe immer weiter nach oben
-                    und stelle deine Bestzeit unter Beweis.
-                </p>
-
-            </div>
-
+    <div class="games">
+      <a class="game" href="#onlyup">
+        <div class="game-body">
+          <div class="game-tags"><span class="tag">Parkour</span><span class="tag">Speedrun</span></div>
+          <h3>Only Up</h3>
+          <p>Springe nach oben, meistere Hindernisse und verbessere deine Bestzeit.</p>
         </div>
-
-
-        <div class="game-card">
-
-            <div class="game-number">
-                02
-            </div>
-
-            <div class="game-content">
-
-                <div class="game-tag">
-                    Projekt
-                </div>
-
-                <h3>
-                    Survival Camp
-                </h3>
-
-                <p>
-                    Gemeinsam bauen, erkunden
-                    und neue Abenteuer erleben.
-                </p>
-
-            </div>
-
+      </a>
+      <a class="game" href="#survival">
+        <div class="game-body">
+          <div class="game-tags"><span class="tag">Survival</span><span class="tag">Community</span></div>
+          <h3>Survival Camp</h3>
+          <p>Gemeinsam bauen, erkunden und eine eigene Welt entstehen lassen.</p>
         </div>
-
-
-        <div class="game-card">
-
-            <div class="game-number">
-                03
-            </div>
-
-            <div class="game-content">
-
-                <div class="game-tag">
-                    LMS
-                </div>
-
-                <h3>
-                    Weitere Projekte
-                </h3>
-
-                <p>
-                    Auf dem LMS SERVER entstehen
-                    laufend neue Ideen und Projekte.
-                </p>
-
-            </div>
-
+      </a>
+      <a class="game" href="#live">
+        <div class="game-body">
+          <div class="game-tags"><span class="tag">LMS</span><span class="tag">Events</span></div>
+          <h3>LMS LIVE</h3>
+          <p>Neuigkeiten, Aktionen und Community-Momente rund um den Server.</p>
         </div>
-
+      </a>
+      <a class="game" href="#projects">
+        <div class="game-body">
+          <div class="game-tags"><span class="tag">Projekt</span></div>
+          <h3>Weitere Projekte</h3>
+          <p>Neue Ideen werden laufend geplant und auf LMS umgesetzt.</p>
+        </div>
+      </a>
     </div>
+  </section>
 
+  <section class="section reveal" id="news">
+    <div class="section-top">
+      <div>
+        <div class="section-kicker">Aktuelles</div>
+        <h2 class="section-title">Was gibt's bei LMS?</h2>
+        <p class="section-intro">Die wichtigsten Bereiche der Website kompakt an einem Ort.</p>
+      </div>
+    </div>
+    <div class="feature-grid">
+      <article class="feature" id="live">
+        <div class="feature-label">LMS LIVE</div>
+        <h3>Deine Stimme zählt.</h3>
+        <p>Unterstütze den LMS SERVER mit einem Vote und hilf dabei, das Netzwerk bekannter zu machen.</p>
+        <a class="btn btn-primary" href="https://minecraft-mp.com/server/337812/vote/" target="_blank" rel="noopener noreferrer">Für LMS voten</a>
+      </article>
+      <article class="feature" id="survival">
+        <div class="feature-label">Community</div>
+        <h3>Survival Camp</h3>
+        <p>Ein gemeinsames Survival-Projekt mit Platz für eigene Basen, Abenteuer und gemeinsame Builds.</p>
+        <a class="btn btn-dark" href="#kontakt">Kontakt</a>
+      </article>
+      <article class="feature" id="projects">
+        <div class="feature-label">LMS</div>
+        <h3>Neue Projekte</h3>
+        <p>Der Server entwickelt sich weiter. Neue Spielideen und Events können jederzeit dazukommen.</p>
+        <a class="btn btn-dark" href="info.html">Mehr erfahren</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section reveal" id="shop">
+    <div class="section-top">
+      <div>
+        <div class="section-kicker">Unterstützen</div>
+        <h2 class="section-title">LMS Shop</h2>
+        <p class="section-intro">Der Shop befindet sich aktuell im Aufbau. Hier werden später weitere LMS-Inhalte und Angebote zu finden sein.</p>
+      </div>
+    </div>
+    <div class="promo-grid">
+      <article class="promo shop">
+        <div class="promo-content">
+          <div class="promo-label">LMS Shop</div>
+          <h3>Kommt bald.</h3>
+          <p>Wir bauen den Bereich aktuell weiter aus. Sobald es etwas Neues gibt, findest du es hier.</p>
+          <a class="btn btn-primary" href="#kontakt">Kontakt aufnehmen</a>
+        </div>
+      </article>
+      <article class="promo discord">
+        <div class="promo-content">
+          <div class="promo-label">Community</div>
+          <h3>LMS Discord</h3>
+          <p>Für Fragen, Feedback und den direkten Austausch mit der Community und dem Team.</p>
+          <a class="btn btn-dark" href="#kontakt">Kontakt</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section reveal" id="team">
+    <div class="section-top">
+      <div>
+        <div class="section-kicker">Hinter LMS</div>
+        <h2 class="section-title">Unser Team</h2>
+        <p class="section-intro">Die Menschen hinter dem LMS SERVER.</p>
+      </div>
+    </div>
+    <div class="team">
+      <div class="member"><img src="https://mc-heads.net/avatar/CC_Minecarft/100" alt="CC_Minecarft"><div><div class="member-role">Owner</div><div class="member-name">CC_Minecarft</div><div class="member-desc">Serverleitung</div></div></div>
+      <div class="member"><img src="https://mc-heads.net/avatar/Hobbit2304/100" alt="Hobbit2304"><div><div class="member-role">Builder</div><div class="member-name">Hobbit2304</div><div class="member-desc">Bau-Team</div></div></div>
+      <div class="member"><img src="https://mc-heads.net/avatar/King_Luma1/100" alt="King_Luma1"><div><div class="member-role">Builder</div><div class="member-name">King_Luma1</div><div class="member-desc">Bau-Team</div></div></div>
+      <div class="member"><img src="https://mc-heads.net/avatar/Lennyy20/100" alt="Lennyy20"><div><div class="member-role">Builder</div><div class="member-name">Lennyy20</div><div class="member-desc">Bau-Team</div></div></div>
+      <div class="member"><img src="https://mc-heads.net/avatar/Takatonka/100" alt="Takatonka"><div><div class="member-role">Premium</div><div class="member-name">Takatonka</div><div class="member-desc">Premium-Team</div></div></div>
+      <div class="member"><img src="https://mc-heads.net/avatar/Vanielle/100" alt="Vanielle"><div><div class="member-role">Premium</div><div class="member-name">Vanielle</div><div class="member-desc">Premium-Team</div></div></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="kontakt">
+    <div class="section-top">
+      <div>
+        <div class="section-kicker">Kontakt</div>
+        <h2 class="section-title">Noch Fragen?</h2>
+        <p class="section-intro">Du möchtest einen Bug melden, hast eine Frage oder willst mit dem Team sprechen?</p>
+      </div>
+    </div>
+    <div class="contact">
+      <div class="contact-card">
+        <h3>Minecraft</h3>
+        <p>Du kannst das Team direkt auf dem LMS SERVER ansprechen.</p>
+        <div class="contact-value">LMS_server.aternos.me</div>
+      </div>
+      <div class="contact-card">
+        <h3>Discord</h3>
+        <p>Für Feedback, Fragen und weitere Informationen steht dir die LMS Community zur Verfügung.</p>
+        <div class="contact-value">LMS Discord</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="cookie-wrap reveal">
+  <h2>Cookie Clicker</h2>
+  <p>Ein kleines Extra für zwischendurch.</p>
+  <button class="cookie-button" onclick="clickCookie()">🍪</button>
+  <div class="cookie-count">Cookies: <span id="cookieCount">0</span></div>
 </section>
-
-
-<!-- =========================
-     SHOP
-========================= -->
-
-<section
-    class="section reveal"
-    id="shop"
->
-
-    <div class="section-header">
-
-        <div class="section-label">
-            Shop
-        </div>
-
-        <div class="section-title">
-            LMS Shop
-        </div>
-
-        <div class="section-description">
-            Unterstütze den LMS SERVER und entdecke
-            kommende Inhalte.
-        </div>
-
-    </div>
-
-
-    <div class="shop-box">
-
-        <h3>
-            Shop kommt bald
-        </h3>
-
-        <p>
-            Unser Shop befindet sich aktuell noch im Aufbau.
-            Weitere Informationen und Inhalte folgen.
-        </p>
-
-        <a
-            href="#kontakt"
-            class="btn btn-primary"
-        >
-            Kontakt aufnehmen
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     LMS LIVE
-========================= -->
-
-<section
-    class="section reveal"
-    id="live"
->
-
-    <div class="live-card">
-
-        <div class="live-content">
-
-            <div class="live-badge">
-                LMS LIVE
-            </div>
-
-            <h3>
-                Deine Stimme zählt.
-            </h3>
-
-            <p>
-                Unterstütze den LMS SERVER mit einem Vote
-                und hilf uns dabei, unsere Community
-                weiter aufzubauen.
-            </p>
-
-            <div style="margin-top:25px;">
-
-                <a
-                    href="https://minecraft-mp.com/server/337812/vote/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-primary"
-                >
-                    Für LMS voten
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     TEAM
-========================= -->
-
-<section
-    class="section reveal"
-    id="team"
->
-
-    <div class="section-header">
-
-        <div class="section-label">
-            Team
-        </div>
-
-        <div class="section-title">
-            Das LMS Team
-        </div>
-
-        <div class="section-description">
-            Die Menschen hinter dem LMS SERVER.
-        </div>
-
-    </div>
-
-
-    <div class="team-grid">
-
-
-        <div class="team-card">
-
-            <img
-                class="team-avatar"
-                src="https://mc-heads.net/avatar/CC_Minecarft/100"
-                alt="CC_Minecarft"
-            >
-
-            <div>
-
-                <div class="team-role">
-                    Owner
-                </div>
-
-                <div class="team-name">
-                    CC_Minecarft
-                </div>
-
-                <div class="team-description">
-                    Serverleitung
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="team-card">
-
-            <img
-                class="team-avatar"
-                src="https://mc-heads.net/avatar/Hobbit2304/100"
-                alt="Hobbit2304"
-            >
-
-            <div>
-
-                <div class="team-role">
-                    Builder
-                </div>
-
-                <div class="team-name">
-                    Hobbit2304
-                </div>
-
-                <div class="team-description">
-                    Bau-Team
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="team-card">
-
-            <img
-                class="team-avatar"
-                src="https://mc-heads.net/avatar/King_Luma1/100"
-                alt="King_Luma1"
-            >
-
-            <div>
-
-                <div class="team-role">
-                    Builder
-                </div>
-
-                <div class="team-name">
-                    King_Luma1
-                </div>
-
-                <div class="team-description">
-                    Bau-Team
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="team-card">
-
-            <img
-                class="team-avatar"
-                src="https://mc-heads.net/avatar/Lennyy20/100"
-                alt="Lennyy20"
-            >
-
-            <div>
-
-                <div class="team-role">
-                    Builder
-                </div>
-
-                <div class="team-name">
-                    Lennyy20
-                </div>
-
-                <div class="team-description">
-                    Bau-Team
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="team-card">
-
-            <img
-                class="team-avatar"
-                src="https://mc-heads.net/avatar/Takatonka/100"
-                alt="Takatonka"
-            >
-
-            <div>
-
-                <div class="team-role">
-                    Premium
-                </div>
-
-                <div class="team-name">
-                    Takatonka
-                </div>
-
-                <div class="team-description">
-                    Premium-Team
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="team-card">
-
-            <img
-                class="team-avatar"
-                src="https://mc-heads.net/avatar/Vanielle/100"
-                alt="Vanielle"
-            >
-
-            <div>
-
-                <div class="team-role">
-                    Premium
-                </div>
-
-                <div class="team-name">
-                    Vanielle
-                </div>
-
-                <div class="team-description">
-                    Premium-Team
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     KONTAKT
-========================= -->
-
-<section
-    class="section reveal"
-    id="kontakt"
->
-
-    <div class="section-header">
-
-        <div class="section-label">
-            Kontakt
-        </div>
-
-        <div class="section-title">
-            Kontakt zum LMS Team
-        </div>
-
-        <div class="section-description">
-            Du hast Fragen, möchtest einen Bug melden
-            oder mit dem Team Kontakt aufnehmen?
-        </div>
-
-    </div>
-
-
-    <div class="contact-grid">
-
-
-        <div class="contact-card">
-
-            <h3>
-                Minecraft
-            </h3>
-
-            <p>
-                Du kannst uns direkt auf dem LMS SERVER
-                ansprechen.
-            </p>
-
-            <div class="contact-item">
-
-                <div class="contact-label">
-                    Server
-                </div>
-
-                <div class="contact-value">
-                    LMS_server.aternos.me
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="contact-card">
-
-            <h3>
-                Discord
-            </h3>
-
-            <p>
-                Für Fragen, Feedback und weitere Informationen
-                kannst du unser Team kontaktieren.
-            </p>
-
-            <div class="contact-item">
-
-                <div class="contact-label">
-                    Community
-                </div>
-
-                <div class="contact-value">
-                    LMS Discord
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     SURVIVAL CAMP
-========================= -->
-
-<section class="section reveal">
-
-    <div class="camp">
-
-        <div class="section-label">
-            Projekt
-        </div>
-
-        <h3>
-            Survival Camp
-        </h3>
-
-        <p>
-            Ein gemeinsames Survival-Projekt des LMS SERVER.
-            Baue deine eigene Basis, erkunde die Welt und erlebe
-            Abenteuer mit anderen Spielern.
-        </p>
-
-        <div style="margin-top:25px;">
-
-            <a
-                href="#spielen"
-                class="btn btn-primary"
-            >
-                Mehr erfahren
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     COOKIE CLICKER
-========================= -->
-
-<section
-    class="section cookie-section reveal"
-    id="spielen"
->
-
-    <div class="section-header">
-
-        <div class="section-label">
-            Kleines Extra
-        </div>
-
-        <div class="section-title">
-            Cookie Clicker
-        </div>
-
-        <div
-            class="section-description"
-            style="margin-left:auto;margin-right:auto;"
-        >
-            Ein kleines Spiel direkt auf der Website.
-        </div>
-
-    </div>
-
-
-    <button
-        class="cookie-button"
-        onclick="clickCookie()"
-    >
-        🍪
-    </button>
-
-    <div class="cookie-count">
-        Cookies:
-        <span id="cookieCount">0</span>
-    </div>
-
-</section>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
-
-    <div class="footer-inner">
-
-        <div class="footer-logo">
-
-            <img
-                src="WhatsApp%20Image%202026-07-11%20at%2015.30.43.jpeg"
-                alt="LMS SERVER"
-            >
-
-            <span>
-                LMS SERVER
-            </span>
-
-        </div>
-
-
-        <div class="footer-links">
-
-            <a href="#start">
-                Start
-            </a>
-
-            <a href="#games">
-                Spiele
-            </a>
-
-            <a href="#shop">
-                Shop
-            </a>
-
-            <a href="#live">
-                LMS LIVE
-            </a>
-
-            <a href="#team">
-                Team
-            </a>
-
-            <a href="#kontakt">
-                Kontakt
-            </a>
-
-            <a href="info.html">
-                Info
-            </a>
-
-            <a href="regeln.html">
-                Regeln
-            </a>
-
-        </div>
-
+  <div class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="WhatsApp%20Image%202026-07-11%20at%2015.30.43.jpeg" alt="LMS SERVER">
+        <div>LMS SERVER<p>Dein Minecraft Netzwerk</p></div>
+      </div>
+      <div class="footer-links">
+        <a href="#start">Start</a>
+        <a href="#games">Spiele</a>
+        <a href="#news">News</a>
+        <a href="#shop">Shop</a>
+        <a href="#team">Team</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="info.html">Info</a>
+        <a href="regeln.html">Regeln</a>
+      </div>
     </div>
-
-
-    <div class="footer-copy">
-        © 2026 LMS SERVER. Alle Rechte vorbehalten.
+    <div class="footer-bottom">
+      <div>© 2026 LMS SERVER. Alle Rechte vorbehalten.</div>
+      <div>LMS_server.aternos.me</div>
     </div>
-
+  </div>
 </footer>
 
-
-<!-- =========================
-     TOAST
-========================= -->
-
-<div
-    class="toast"
-    id="toast"
->
-    IP kopiert
-</div>
-
+<div class="toast" id="toast">IP kopiert</div>
 
 <script>
+const IP="LMS_server.aternos.me";
 
-/* =========================
-   SERVER STATUS
-========================= */
-
-async function updateServerStatus(){
-
-    const dot =
-        document.getElementById("statusDot");
-
-    const title =
-        document.getElementById("statusTitle");
-
-    const players =
-        document.getElementById("statusPlayers");
-
-    const bar =
-        document.getElementById("playerBar");
-
-    const heroDot =
-        document.getElementById("heroDot");
-
-    const heroState =
-        document.getElementById("heroState");
-
-    const heroPlayers =
-        document.getElementById("heroPlayers");
-
-
-    try{
-
-        const response =
-            await fetch(
-                "https://api.mcstatus.io/v2/status/java/LMS_server.aternos.me"
-            );
-
-
-        if(!response.ok){
-
-            throw new Error(
-                "Status konnte nicht geladen werden."
-            );
-
-        }
-
-
-        const data =
-            await response.json();
-
-
-        if(data.online){
-
-            dot.className =
-                "status-dot online";
-
-            title.textContent =
-                "Server ist online";
-
-
-            const online =
-                data.players?.online ?? 0;
-
-            const max =
-                data.players?.max ?? 0;
-
-
-            players.textContent =
-                online +
-                " / " +
-                max +
-                " Spieler online";
-
-
-            let percentage = 0;
-
-            if(max > 0){
-
-                percentage =
-                    Math.min(
-                        100,
-                        (online / max) * 100
-                    );
-
-            }
-
-
-            bar.style.width =
-                percentage + "%";
-
-
-            heroDot.className =
-                "mini-dot online";
-
-            heroState.textContent =
-                "ONLINE";
-
-            heroPlayers.textContent =
-                online +
-                " / " +
-                max +
-                " Spieler online";
-
-        }else{
-
-            dot.className =
-                "status-dot offline";
-
-            title.textContent =
-                "Server ist offline";
-
-            players.textContent =
-                "Der LMS SERVER ist momentan nicht erreichbar.";
-
-            bar.style.width =
-                "0%";
-
-
-            heroDot.className =
-                "mini-dot offline";
-
-            heroState.textContent =
-                "OFFLINE";
-
-            heroPlayers.textContent =
-                "Server momentan offline";
-
-        }
-
-
-    }catch(error){
-
-        dot.className =
-            "status-dot offline";
-
-        title.textContent =
-            "Status nicht verfügbar";
-
-        players.textContent =
-            "Der Serverstatus konnte momentan nicht abgerufen werden.";
-
-        bar.style.width =
-            "0%";
-
-
-        heroDot.className =
-            "mini-dot offline";
-
-        heroState.textContent =
-            "UNBEKANNT";
-
-        heroPlayers.textContent =
-            "Status momentan nicht verfügbar";
-
+async function updateStatus(){
+  const dot=document.getElementById("serverDot");
+  const title=document.getElementById("serverTitle");
+  const players=document.getElementById("serverPlayers");
+  try{
+    const res=await fetch("https://api.mcstatus.io/v2/status/java/"+IP);
+    if(!res.ok) throw new Error();
+    const data=await res.json();
+    if(data.online){
+      const online=data.players?.online ?? 0;
+      const max=data.players?.max ?? 0;
+      dot.className="server-dot online";
+      title.textContent="LMS SERVER ist online";
+      players.textContent=online+" / "+max+" Spieler online";
+    }else{
+      dot.className="server-dot offline";
+      title.textContent="LMS SERVER ist offline";
+      players.textContent="Momentan nicht erreichbar";
     }
-
+  }catch(e){
+    dot.className="server-dot offline";
+    title.textContent="Serverstatus nicht verfügbar";
+    players.textContent="Status konnte nicht geladen werden";
+  }
 }
-
-
-updateServerStatus();
-
-setInterval(
-    updateServerStatus,
-    30000
-);
-
-
-/* =========================
-   COPY IP
-========================= */
+updateStatus();
+setInterval(updateStatus,30000);
 
 function copyIP(){
-
-    const ip =
-        "LMS_server.aternos.me";
-
-
-    navigator.clipboard
-        .writeText(ip)
-        .then(() => {
-
-            showToast(
-                "IP kopiert"
-            );
-
-        })
-        .catch(() => {
-
-            showToast(
-                "Kopieren nicht möglich"
-            );
-
-        });
-
+  navigator.clipboard.writeText(IP).then(()=>showToast("IP kopiert")).catch(()=>showToast("Kopieren nicht möglich"));
+}
+function showToast(text){
+  const t=document.getElementById("toast");
+  t.textContent=text;
+  t.classList.add("show");
+  clearTimeout(window.toastTimer);
+  window.toastTimer=setTimeout(()=>t.classList.remove("show"),1800);
 }
 
-
-/* =========================
-   TOAST
-========================= */
-
-function showToast(message){
-
-    const toast =
-        document.getElementById("toast");
-
-    toast.textContent =
-        message;
-
-    toast.classList.add("show");
-
-
-    setTimeout(() => {
-
-        toast.classList.remove("show");
-
-    },2200);
-
-}
-
-
-/* =========================
-   COOKIE CLICKER
-========================= */
-
-let cookies = 0;
-
-
+let cookies=0;
 function clickCookie(){
-
-    cookies++;
-
-    document.getElementById(
-        "cookieCount"
-    ).textContent =
-        cookies;
-
+  cookies++;
+  document.getElementById("cookieCount").textContent=cookies;
 }
 
+window.addEventListener("scroll",()=>{
+  document.getElementById("header").classList.toggle("scrolled",window.scrollY>20);
+},{passive:true});
 
-/* =========================
-   NAVBAR
-========================= */
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        const navbar =
-            document.getElementById("navbar");
-
-
-        if(window.scrollY > 30){
-
-            navbar.classList.add(
-                "scrolled"
-            );
-
-        }else{
-
-            navbar.classList.remove(
-                "scrolled"
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================
-   SCROLL REVEAL
-========================= */
-
-const observer =
-    new IntersectionObserver(
-        entries => {
-
-            entries.forEach(
-                entry => {
-
-                    if(entry.isIntersecting){
-
-                        entry.target.classList.add(
-                            "visible"
-                        );
-
-                    }
-
-                }
-            );
-
-        },
-        {
-            threshold:.12
-        }
-    );
-
-
-document
-    .querySelectorAll(".reveal")
-    .forEach(
-        element => observer.observe(element)
-    );
-
-
-/* =========================
-   SMOOTH NAVIGATION
-========================= */
-
-document
-    .querySelectorAll(
-        '.nav-links a[href^="#"], .footer-links a[href^="#"]'
-    )
-    .forEach(
-        link => {
-
-            link.addEventListener(
-                "click",
-                event => {
-
-                    const target =
-                        document.querySelector(
-                            link.getAttribute("href")
-                        );
-
-
-                    if(target){
-
-                        event.preventDefault();
-
-                        target.scrollIntoView({
-                            behavior:"smooth",
-                            block:"start"
-                        });
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting) entry.target.classList.add("visible");
+  });
+},{threshold:.08});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 </script>
-
 </body>
 </html>
