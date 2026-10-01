@@ -2,88 +2,75 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>LMS Server</title>
 
 <style>
+:root{
+    --black:#111318;
+    --black2:#181b21;
+    --text:#181a1f;
+    --muted:#747982;
+    --light:#f4f5f7;
+    --border:#e2e4e8;
+    --white:#fff;
 
-/* =========================================================
-   GRUNDLAGEN
-========================================================= */
-
-:root {
-    --owner: #8f1515;
-    --supporter: #e86b9b;
-    --admin: #2674d9;
-    --builder: #2e9b59;
-    --premium: #e58a19;
-
-    --dark: #111318;
-    --text: #17191d;
-    --muted: #6d737c;
-    --light: #f4f5f7;
-    --border: #e3e5e8;
-
-    --shadow: 0 20px 60px rgba(0,0,0,.10);
+    --owner:#8f1515;
+    --supporter:#e75a9d;
+    --admin:#2777d5;
+    --builder:#32a852;
+    --premium:#e88b20;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    background: #fff;
-    color: var(--text);
-    overflow-x: hidden;
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#fff;
+    color:var(--text);
+    overflow-x:hidden;
 }
 
 button,
-a {
-    font: inherit;
+a{
+    font-family:inherit;
 }
 
-button {
-    cursor: pointer;
+button{
+    border:0;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+img{
+    max-width:100%;
 }
 
 
 /* =========================================================
-   TOP NOTICE
+   TOP BAR
 ========================================================= */
 
-.top-notice {
-    height: 34px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #111318;
-    color: rgba(255,255,255,.72);
-
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
+.top-notice{
+    width:100%;
+    background:#15171c;
+    color:#fff;
+    padding:10px 20px;
+    text-align:center;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:.7px;
 }
 
 
@@ -91,109 +78,194 @@ a {
    NAVIGATION
 ========================================================= */
 
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 900;
+.navbar{
+    height:82px;
+    background:rgba(255,255,255,.98);
+    border-bottom:1px solid #e8e9ec;
 
-    min-height: 82px;
+    display:flex;
+    align-items:center;
 
-    display: flex;
-    align-items: center;
+    padding:0 5%;
+    gap:38px;
 
-    padding: 10px 42px;
-
-    background: rgba(255,255,255,.96);
-    backdrop-filter: blur(18px);
-
-    border-bottom: 1px solid rgba(0,0,0,.07);
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
-.logo-area {
-    width: 64px;
-    height: 64px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    flex-shrink: 0;
+.logo-area{
+    display:flex;
+    align-items:center;
+    flex-shrink:0;
 }
 
-.logo-area img {
-    width: 62px;
-    height: 62px;
-
-    object-fit: contain;
+.logo-area img{
+    width:68px;
+    height:68px;
+    object-fit:contain;
 }
 
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-
-    margin-left: 38px;
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    flex:1;
 }
 
-.nav-links a {
-    position: relative;
-
-    color: #525861;
-
-    font-size: 13px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: .7px;
-
-    transition: .2s ease;
+.nav-links a{
+    color:#44474e;
+    font-size:13px;
+    font-weight:900;
+    transition:.2s;
 }
 
-.nav-links a::after {
-    content: "";
-
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-
-    width: 0;
-    height: 2px;
-
-    background: var(--premium);
-
-    transition: .2s ease;
+.nav-links a:hover{
+    color:#111318;
 }
 
-.nav-links a:hover {
-    color: #111;
+.server-nav-button{
+    background:var(--black);
+    color:#fff;
+
+    border-radius:7px;
+
+    padding:13px 19px;
+
+    font-size:12px;
+    font-weight:950;
+    letter-spacing:.7px;
+
+    cursor:pointer;
+
+    box-shadow:0 4px 0 #050609;
+
+    transition:.2s;
 }
 
-.nav-links a:hover::after {
-    width: 100%;
+.server-nav-button:hover{
+    transform:translateY(-2px);
 }
 
-.server-nav-button {
-    margin-left: auto;
 
-    border: 0;
-    border-radius: 8px;
+/* =========================================================
+   RANG-BUTTONS
+========================================================= */
 
-    padding: 14px 20px;
+.rank-button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
 
-    background: var(--owner);
-    color: #fff;
+    border:2px solid transparent;
+    border-radius:7px;
 
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: .8px;
+    padding:12px 18px;
 
-    box-shadow: 0 8px 22px rgba(143,21,21,.22);
+    font-size:11px;
+    font-weight:950;
 
-    transition: .2s ease;
+    letter-spacing:.8px;
+
+    cursor:pointer;
+
+    transition:
+        transform .18s,
+        box-shadow .18s,
+        filter .18s;
 }
 
-.server-nav-button:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.08);
+.rank-button:hover{
+    transform:translateY(-2px);
+    filter:brightness(1.05);
+}
+
+.rank-button:active{
+    transform:translateY(2px);
+}
+
+
+/* OWNER */
+
+.rank-button.owner{
+    background:var(--owner);
+    color:#fff;
+
+    border-color:#b92c2c;
+
+    box-shadow:0 4px 0 #5d0b0b;
+}
+
+
+/* SUPPORTER */
+
+.rank-button.supporter{
+    background:var(--supporter);
+    color:#fff;
+
+    border-color:#f488ba;
+
+    box-shadow:0 4px 0 #a9376e;
+}
+
+
+/* ADMIN */
+
+.rank-button.admin{
+    background:var(--admin);
+    color:#fff;
+
+    border-color:#5d9ce7;
+
+    box-shadow:0 4px 0 #174b89;
+}
+
+
+/* BUILDER */
+
+.rank-button.builder{
+    background:var(--builder);
+    color:#fff;
+
+    border-color:#64ca7d;
+
+    box-shadow:0 4px 0 #216f37;
+}
+
+
+/* PREMIUM */
+
+.rank-button.premium{
+    background:var(--premium);
+    color:#fff;
+
+    border-color:#f4ad50;
+
+    box-shadow:0 4px 0 #99590e;
+}
+
+
+/* DARK */
+
+.rank-button.dark{
+    background:#181b21;
+    color:#fff;
+
+    border-color:#373b44;
+
+    box-shadow:0 4px 0 #07080a;
+}
+
+
+/* LIGHT */
+
+.rank-button.light{
+    background:#fff;
+    color:#181a1f;
+
+    border-color:#d9dce1;
+
+    box-shadow:0 4px 0 #c2c5ca;
 }
 
 
@@ -201,307 +273,198 @@ a {
    HERO
 ========================================================= */
 
-.hero {
-    position: relative;
-
-    min-height: 650px;
-
-    display: flex;
-    align-items: center;
-
-    padding: 100px 8%;
-
-    overflow: hidden;
-
-    background:
-        radial-gradient(circle at 85% 35%, rgba(229,138,25,.13), transparent 30%),
-        radial-gradient(circle at 20% 80%, rgba(38,116,217,.08), transparent 28%),
-        #fff;
-}
-
-.hero::after {
-    content: "";
-
-    position: absolute;
-
-    right: -150px;
-    bottom: -180px;
-
-    width: 520px;
-    height: 520px;
-
-    border-radius: 50%;
-
-    background: rgba(229,138,25,.055);
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-
-    max-width: 760px;
-}
-
-.hero-label,
-.section-label {
-    color: var(--premium);
-
-    font-size: 12px;
-    font-weight: 900;
-
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.hero h1 {
-    margin-top: 15px;
-
-    font-size: clamp(58px, 7vw, 105px);
-    line-height: .91;
-
-    letter-spacing: -5px;
-
-    font-weight: 950;
-}
-
-.hero p {
-    max-width: 650px;
-
-    margin-top: 30px;
-
-    color: var(--muted);
-
-    font-size: 18px;
-    line-height: 1.7;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 12px;
-
-    margin-top: 36px;
-}
-
-
-/* =========================================================
-   RANK BUTTONS
-========================================================= */
-
-.rank-button {
-    border: 0;
-    border-radius: 7px;
-
-    padding: 14px 21px;
-
-    color: #fff;
-
-    font-size: 11px;
-    font-weight: 900;
-
-    letter-spacing: 1px;
-
-    transition:
-        transform .2s ease,
-        filter .2s ease,
-        box-shadow .2s ease;
-}
-
-.rank-button:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.08);
-}
-
-.rank-button.owner {
-    background: var(--owner);
-}
-
-.rank-button.supporter {
-    background: var(--supporter);
-}
-
-.rank-button.admin {
-    background: var(--admin);
-}
-
-.rank-button.builder {
-    background: var(--builder);
-}
-
-.rank-button.premium {
-    background: var(--premium);
-}
-
-.rank-button.dark {
-    background: #17191d;
-}
-
-.rank-button.light {
-    background: #e8eaed;
-    color: #202328;
-}
-
-
-/* =========================================================
-   ALLGEMEINE SECTIONS
-========================================================= */
-
-.section {
-    padding: 105px 8%;
-}
-
-.section-header {
-    max-width: 780px;
-    margin-bottom: 50px;
-}
-
-.section h2 {
-    margin-top: 12px;
-
-    font-size: clamp(40px, 5vw, 68px);
-    line-height: 1;
-
-    letter-spacing: -3px;
-
-    font-weight: 950;
-}
-
-.section-description {
-    margin-top: 20px;
-
-    color: var(--muted);
-
-    font-size: 17px;
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   BLOG / NEWS
-========================================================= */
-
-.news-section {
-    background: #f5f6f8;
-}
-
-.news-grid {
-    display: grid;
-
-    grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr);
-
-    gap: 24px;
-}
-
-.news-main {
-    min-height: 430px;
-
-    padding: 44px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-
-    border-radius: 16px;
+.hero{
+    min-height:590px;
 
     background:
         linear-gradient(
-            180deg,
-            rgba(17,19,24,.04),
-            rgba(17,19,24,.92)
-        ),
-        linear-gradient(135deg, #dfe2e7, #fff);
+            115deg,
+            #101217 0%,
+            #1b2028 48%,
+            #303741 100%
+        );
 
-    box-shadow: var(--shadow);
+    display:flex;
+    align-items:center;
 
-    overflow: hidden;
+    padding:90px 7%;
+
+    position:relative;
+    overflow:hidden;
 }
 
-.news-tag {
-    align-self: flex-start;
+.hero:after{
+    content:"";
 
-    margin-bottom: auto;
+    position:absolute;
 
-    padding: 8px 11px;
+    right:-100px;
+    bottom:-180px;
 
-    border-radius: 5px;
+    width:600px;
+    height:600px;
 
-    background: var(--owner);
-    color: #fff;
+    border-radius:50%;
 
-    font-size: 10px;
-    font-weight: 900;
-    letter-spacing: 1px;
+    background:rgba(255,255,255,.035);
 }
 
-.news-main h3 {
-    color: #fff;
+.hero-content{
+    max-width:680px;
 
-    font-size: clamp(34px, 4vw, 56px);
-    line-height: 1;
+    color:#fff;
 
-    letter-spacing: -2px;
+    position:relative;
+    z-index:2;
 }
 
-.news-main p {
-    max-width: 700px;
+.hero-label{
+    font-size:12px;
+    font-weight:950;
 
-    margin-top: 15px;
+    letter-spacing:2.5px;
 
-    color: rgba(255,255,255,.76);
+    margin-bottom:18px;
 
-    font-size: 15px;
-    line-height: 1.65;
+    color:#b8bdc5;
 }
 
-.news-date {
-    margin-top: 20px;
+.hero h1{
+    font-size:72px;
 
-    color: rgba(255,255,255,.5);
+    line-height:.98;
 
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing:-2px;
+
+    margin-bottom:25px;
 }
 
-.news-side {
-    display: grid;
-    gap: 24px;
+.hero p{
+    font-size:17px;
+
+    line-height:1.7;
+
+    color:#c7cbd2;
+
+    max-width:610px;
+
+    margin-bottom:30px;
 }
 
-.news-card {
-    padding: 30px;
+.hero-buttons{
+    display:flex;
 
-    border-radius: 14px;
+    gap:14px;
 
-    background: #fff;
-
-    border: 1px solid var(--border);
-
-    box-shadow: 0 12px 35px rgba(0,0,0,.05);
+    flex-wrap:wrap;
 }
 
-.news-card span {
-    color: var(--premium);
 
-    font-size: 10px;
-    font-weight: 900;
-    letter-spacing: 1.5px;
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.section{
+    padding:105px 6%;
 }
 
-.news-card h3 {
-    margin-top: 12px;
+.section-header{
+    max-width:720px;
 
-    font-size: 26px;
-    letter-spacing: -1px;
+    margin-bottom:45px;
 }
 
-.news-card p {
-    margin-top: 12px;
+.section-label{
+    font-size:10px;
 
-    color: var(--muted);
+    font-weight:950;
 
-    line-height: 1.6;
-    font-size: 14px;
+    letter-spacing:2px;
+
+    color:#8b8f97;
+
+    margin-bottom:12px;
+}
+
+.section-header h2{
+    font-size:42px;
+
+    line-height:1.05;
+
+    margin-bottom:15px;
+}
+
+.section-description{
+    color:var(--muted);
+
+    font-size:15px;
+
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   BLOG
+========================================================= */
+
+.blog-section{
+    background:#f5f6f8;
+}
+
+.blog-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+    gap:22px;
+}
+
+.blog-card{
+    background:#fff;
+
+    border:1px solid #e4e6e9;
+
+    border-radius:10px;
+
+    padding:29px;
+
+    transition:.2s;
+}
+
+.blog-card:hover{
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.08);
+}
+
+.blog-date{
+    color:#8b8f97;
+
+    font-size:10px;
+
+    font-weight:950;
+
+    letter-spacing:1.2px;
+
+    margin-bottom:14px;
+}
+
+.blog-card h3{
+    font-size:22px;
+
+    margin-bottom:12px;
+}
+
+.blog-card p{
+    color:#747880;
+
+    font-size:14px;
+
+    line-height:1.6;
+
+    margin-bottom:20px;
 }
 
 
@@ -509,156 +472,120 @@ a {
    LMS LIVE
 ========================================================= */
 
-.live-section {
-    position: relative;
+.live-section{
+    background:#111318;
 
-    padding: 105px 8%;
+    color:#fff;
 
-    background: #111318;
-    color: #fff;
+    padding:105px 6%;
 
-    overflow: hidden;
+    position:relative;
+
+    overflow:hidden;
 }
 
-.live-grid {
-    position: relative;
-    z-index: 2;
+.live-grid{
+    display:grid;
 
-    max-width: 1350px;
-    margin: auto;
+    grid-template-columns:
+        1.05fr 1.4fr;
 
-    display: grid;
+    gap:55px;
 
-    grid-template-columns: .8fr 1.2fr;
-
-    gap: 55px;
-
-    align-items: center;
+    align-items:center;
 }
 
-.live-text h2 {
-    margin-top: 12px;
-
-    font-size: clamp(48px, 6vw, 80px);
-    line-height: .95;
-
-    letter-spacing: -4px;
+.live-text{
+    max-width:520px;
 }
 
-.live-text .section-description {
-    color: rgba(255,255,255,.6);
+.live-section .section-label{
+    color:#9297a0;
 }
 
-.live-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
+.live-section .section-description{
+    color:#aeb2ba;
 
-    margin-top: 20px;
-
-    padding: 8px 11px;
-
-    border-radius: 5px;
-
-    background: rgba(255,255,255,.08);
-
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 1px;
+    margin-bottom:27px;
 }
 
-.live-dot {
-    width: 7px;
-    height: 7px;
+.live-badge{
+    display:inline-flex;
 
-    border-radius: 50%;
+    align-items:center;
 
-    background: #e33;
+    gap:9px;
 
-    box-shadow: 0 0 0 5px rgba(227,51,51,.12);
+    padding:7px 11px;
+
+    border-radius:5px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.13);
+
+    font-size:10px;
+
+    font-weight:950;
+
+    letter-spacing:1px;
+
+    margin-bottom:18px;
 }
 
-.live-image-box {
-    min-height: 390px;
+.live-dot{
+    width:8px;
+    height:8px;
 
-    border-radius: 15px;
+    border-radius:50%;
 
-    overflow: hidden;
+    background:#e04545;
 
-    background: #1c1f25;
-
-    box-shadow: 0 30px 80px rgba(0,0,0,.3);
+    box-shadow:
+        0 0 0 5px rgba(224,69,69,.12);
 }
 
-.live-image-box img {
-    width: 100%;
-    height: 100%;
+.live-countdown{
+    font-size:68px;
 
-    min-height: 390px;
+    font-weight:950;
 
-    display: block;
+    letter-spacing:2px;
 
-    object-fit: cover;
+    line-height:1;
+
+    margin:15px 0 18px;
 }
 
+.live-status{
+    color:#aeb2ba;
 
-/* =========================================================
-   LIVE COUNTDOWN
-========================================================= */
+    font-size:14px;
 
-.live-countdown-box {
-    margin-top: 32px;
-
-    max-width: 430px;
-
-    padding: 24px;
-
-    border-radius: 12px;
-
-    background: rgba(255,255,255,.065);
-    border: 1px solid rgba(255,255,255,.1);
+    line-height:1.6;
 }
 
-.live-countdown-label {
-    color: rgba(255,255,255,.55);
+.live-image-box{
+    background:#050609;
 
-    font-size: 10px;
-    font-weight: 900;
+    border-radius:13px;
 
-    letter-spacing: 1.5px;
+    overflow:hidden;
+
+    border:1px solid #30333a;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.35);
 }
 
-.live-countdown {
-    margin-top: 5px;
+.live-image-box img{
+    width:100%;
 
-    font-size: 62px;
-    line-height: 1;
+    display:block;
 
-    font-weight: 950;
-    letter-spacing: -3px;
-}
+    aspect-ratio:16/9;
 
-.live-result {
-    display: none;
-
-    margin-top: 10px;
-}
-
-.live-result strong {
-    display: block;
-
-    font-size: 25px;
-    line-height: 1.1;
-}
-
-.live-result span {
-    display: block;
-
-    margin-top: 8px;
-
-    color: rgba(255,255,255,.58);
-
-    font-size: 14px;
+    object-fit:cover;
 }
 
 
@@ -666,76 +593,86 @@ a {
    DISCORD
 ========================================================= */
 
-.discord-section {
-    position: relative;
+.discord-section{
+    background:#15171c;
 
-    min-height: 520px;
+    color:#fff;
 
-    display: flex;
-    align-items: center;
-
-    padding: 90px 8%;
-
-    overflow: hidden;
-
-    background: #15171c;
+    overflow:hidden;
 }
 
-.discord-image {
-    position: absolute;
-    inset: 0;
+.discord-grid{
+    display:grid;
 
-    width: 100%;
-    height: 100%;
+    grid-template-columns:
+        1fr 1fr;
 
-    object-fit: cover;
+    align-items:center;
 
-    opacity: .38;
+    gap:60px;
 }
 
-.discord-overlay {
-    position: absolute;
-    inset: 0;
+.discord-content{
+    max-width:560px;
+}
+
+.discord-content .section-label{
+    color:#9297a0;
+}
+
+.discord-content p{
+    color:#aeb2ba;
+
+    line-height:1.7;
+
+    margin-bottom:25px;
+}
+
+.discord-visual{
+    position:relative;
+
+    min-height:420px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    border-radius:14px;
+
+    background:#101217;
+
+    border:1px solid #2c3037;
+}
+
+.discord-visual:after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
 
     background:
         linear-gradient(
             90deg,
-            rgba(8,10,14,.97) 0%,
-            rgba(8,10,14,.82) 38%,
-            rgba(8,10,14,.35) 75%,
-            rgba(8,10,14,.65) 100%
+            rgba(15,17,21,.15),
+            rgba(15,17,21,.02)
         );
+
+    pointer-events:none;
 }
 
-.discord-content {
-    position: relative;
-    z-index: 2;
+.discord-visual img{
+    width:100%;
+    height:100%;
 
-    max-width: 700px;
-}
+    object-fit:contain;
 
-.discord-content h2 {
-    margin-top: 12px;
+    display:block;
 
-    color: #fff;
-
-    font-size: clamp(48px, 6vw, 78px);
-    line-height: .95;
-
-    letter-spacing: -4px;
-}
-
-.discord-content p {
-    margin-top: 22px;
-
-    color: rgba(255,255,255,.68);
-
-    font-size: 17px;
-    line-height: 1.7;
-}
-
-.discord-content .rank-button {
-    margin-top: 30px;
+    opacity:.82;
 }
 
 
@@ -743,64 +680,90 @@ a {
    MINECRAFT DEKO
 ========================================================= */
 
-.minecraft-decoration {
-    position: relative;
+.minecraft-decoration{
+    min-height:300px;
 
-    height: 250px;
+    height:300px;
 
-    overflow: hidden;
+    position:relative;
 
-    background: #fff;
+    background:#fff;
 
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    border-top:1px solid #eef0f2;
+    border-bottom:1px solid #eef0f2;
+
+    overflow:visible;
 }
 
-.minecraft-decoration-text {
-    position: absolute;
+.minecraft-decoration-content{
+    width:88%;
 
-    left: 8%;
-    top: 50%;
+    margin:0 auto;
 
-    transform: translateY(-50%);
+    height:100%;
 
-    z-index: 2;
+    display:flex;
+
+    align-items:center;
 }
 
-.minecraft-decoration-text span {
-    display: block;
+.minecraft-decoration-text{
+    max-width:420px;
 
-    color: var(--premium);
+    position:relative;
 
-    font-size: 10px;
-    font-weight: 900;
-    letter-spacing: 2px;
+    z-index:2;
 }
 
-.minecraft-decoration-text strong {
-    display: block;
+.minecraft-decoration-text span{
+    display:block;
 
-    margin-top: 8px;
+    color:#8b8f97;
 
-    font-size: 28px;
-    line-height: 1.05;
+    font-size:10px;
+
+    font-weight:950;
+
+    letter-spacing:2px;
+
+    margin-bottom:8px;
 }
 
-.minecraft-decoration img {
-    position: absolute;
+.minecraft-decoration-text strong{
+    font-size:25px;
 
-    right: -110px;
-    bottom: -115px;
+    line-height:1.15;
+}
 
-    width: min(620px, 50vw);
+.minecraft-decoration img{
+    position:absolute;
 
-    max-height: 450px;
+    right:-35px;
 
-    object-fit: contain;
+    bottom:-5px;
 
-    object-position: center;
+    width:min(610px,50vw);
 
-    pointer-events: none;
+    max-width:none;
+
+    height:auto;
+
+    max-height:330px;
+
+    object-fit:contain;
+
+    object-position:center bottom;
+
+    pointer-events:none;
+
+    user-select:none;
+
+    z-index:1;
+
+    filter:
+        drop-shadow(
+            0 20px 25px rgba(0,0,0,.10)
+        );
 }
 
 
@@ -808,85 +771,87 @@ a {
    TEAM
 ========================================================= */
 
-.team-grid {
-    display: grid;
+.team-grid{
+    display:grid;
 
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
 
-    gap: 15px;
+    gap:20px;
 }
 
-.team-card {
-    padding: 30px 15px;
+.team-card{
+    background:#fff;
 
-    text-align: center;
+    border:1px solid var(--border);
 
-    border: 1px solid var(--border);
-    border-radius: 13px;
+    border-radius:10px;
 
-    background: #fff;
+    padding:30px;
 
-    transition: .2s ease;
+    text-align:center;
+
+    transition:.2s;
 }
 
-.team-card:hover {
-    transform: translateY(-5px);
+.team-card:hover{
+    transform:translateY(-4px);
 
-    box-shadow: 0 15px 35px rgba(0,0,0,.07);
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.07);
 }
 
-.team-card img {
-    width: 105px;
-    height: 105px;
+.team-card img{
+    width:92px;
+    height:92px;
 
-    display: block;
+    image-rendering:pixelated;
 
-    margin: 0 auto 18px;
-
-    image-rendering: pixelated;
+    margin-bottom:17px;
 }
 
-.team-name {
-    font-size: 14px;
-    font-weight: 900;
+.team-name{
+    font-size:18px;
 
-    word-break: break-word;
+    font-weight:950;
+
+    margin-bottom:10px;
 }
 
-.rank {
-    display: inline-block;
+.rank{
+    display:inline-block;
 
-    margin-top: 9px;
+    padding:6px 10px;
 
-    padding: 5px 8px;
+    border-radius:5px;
 
-    border-radius: 4px;
+    color:#fff;
 
-    color: #fff;
+    font-size:9px;
 
-    font-size: 9px;
-    font-weight: 900;
-    letter-spacing: 1px;
+    font-weight:950;
+
+    letter-spacing:1px;
 }
 
-.rank.owner {
-    background: var(--owner);
+.rank.owner{
+    background:var(--owner);
 }
 
-.rank.supporter {
-    background: var(--supporter);
+.rank.supporter{
+    background:var(--supporter);
 }
 
-.rank.admin {
-    background: var(--admin);
+.rank.admin{
+    background:var(--admin);
 }
 
-.rank.builder {
-    background: var(--builder);
+.rank.builder{
+    background:var(--builder);
 }
 
-.rank.premium {
-    background: var(--premium);
+.rank.premium{
+    background:var(--premium);
 }
 
 
@@ -894,63 +859,73 @@ a {
    SERVER STATUS
 ========================================================= */
 
-.status-section {
-    background: #f5f6f8;
+.status-section{
+    background:#f5f6f8;
 }
 
-.status-box {
-    max-width: 1000px;
+.status-box{
+    background:#fff;
 
-    margin: auto;
+    border:1px solid #e2e4e8;
 
-    padding: 25px 30px;
+    border-radius:12px;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding:34px;
 
-    gap: 20px;
+    display:flex;
 
-    border-radius: 13px;
+    align-items:center;
 
-    background: #fff;
+    justify-content:space-between;
 
-    border: 1px solid var(--border);
+    gap:30px;
 
-    box-shadow: 0 12px 35px rgba(0,0,0,.05);
+    transition:.2s;
 }
 
-.status-left {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+.status-box:hover{
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.06);
 }
 
-.status-dot {
-    width: 13px;
-    height: 13px;
+.status-left{
+    display:flex;
 
-    border-radius: 50%;
+    align-items:center;
 
-    background: #aaa;
+    gap:18px;
 }
 
-.status-title {
-    font-weight: 900;
+.status-dot{
+    width:14px;
+    height:14px;
+
+    border-radius:50%;
+
+    background:#36b85a;
+
+    box-shadow:
+        0 0 0 6px rgba(54,184,90,.12);
 }
 
-.status-subtitle {
-    margin-top: 4px;
+.status-title{
+    font-size:19px;
 
-    color: var(--muted);
-
-    font-size: 12px;
+    font-weight:950;
 }
 
-.player-count {
-    font-weight: 900;
+.status-subtitle{
+    color:#858990;
 
-    color: #555;
+    font-size:13px;
+
+    margin-top:4px;
+}
+
+.player-count{
+    font-size:29px;
+
+    font-weight:950;
 }
 
 
@@ -958,80 +933,51 @@ a {
    KONTAKT
 ========================================================= */
 
-.contact-grid {
-    display: grid;
+.contact-grid{
+    display:grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
-    gap: 70px;
-
-    align-items: center;
+    gap:60px;
 }
 
-.contact-text h2 {
-    margin-top: 12px;
+.contact-text p{
+    color:var(--muted);
 
-    font-size: clamp(45px, 5vw, 68px);
-    line-height: 1;
+    line-height:1.7;
 
-    letter-spacing: -3px;
+    margin-bottom:25px;
 }
 
-.contact-text p {
-    margin-top: 20px;
+.contact-box{
+    background:#f5f6f8;
 
-    max-width: 560px;
+    border-radius:10px;
 
-    color: var(--muted);
-
-    line-height: 1.7;
+    padding:30px;
 }
 
-.contact-text .rank-button {
-    display: inline-block;
+.contact-item{
+    padding:17px 0;
 
-    margin-top: 28px;
+    border-bottom:1px solid #dddfe3;
 }
 
-.contact-box {
-    padding: 35px;
-
-    border-radius: 14px;
-
-    background: #f5f6f8;
-
-    border: 1px solid var(--border);
+.contact-item:last-child{
+    border-bottom:none;
 }
 
-.contact-item {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
+.contact-item strong{
+    display:block;
 
-    padding: 20px 0;
-
-    border-bottom: 1px solid var(--border);
+    margin-bottom:5px;
 }
 
-.contact-item:first-child {
-    padding-top: 0;
-}
+.contact-item span{
+    color:#777b82;
 
-.contact-item:last-child {
-    padding-bottom: 0;
-    border-bottom: 0;
-}
-
-.contact-item strong {
-    font-size: 13px;
-}
-
-.contact-item span {
-    color: var(--muted);
-
-    font-size: 13px;
-
-    text-align: right;
+    font-size:14px;
 }
 
 
@@ -1039,410 +985,473 @@ a {
    FOOTER
 ========================================================= */
 
-footer {
-    padding: 70px 8% 30px;
+footer{
+    background:#0f1115;
 
-    background: #111318;
+    color:#fff;
 
-    color: #fff;
+    padding:55px 6% 30px;
 }
 
-.footer-grid {
-    display: grid;
+.footer-grid{
+    display:grid;
 
-    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    grid-template-columns:
+        2fr 1fr 1fr;
 
-    gap: 50px;
+    gap:50px;
 
-    padding-bottom: 50px;
+    padding-bottom:45px;
 }
 
-.footer-brand img {
-    width: 70px;
-    height: 70px;
-
-    object-fit: contain;
+.footer-brand{
+    max-width:400px;
 }
 
-.footer-brand p {
-    max-width: 330px;
+.footer-brand img{
+    width:65px;
 
-    margin-top: 15px;
-
-    color: rgba(255,255,255,.5);
-
-    font-size: 13px;
-    line-height: 1.7;
+    margin-bottom:15px;
 }
 
-.footer-column {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 11px;
+.footer-brand p{
+    color:#8d929b;
+
+    line-height:1.6;
+
+    font-size:14px;
 }
 
-.footer-column h4 {
-    margin-bottom: 8px;
+.footer-column h4{
+    font-size:12px;
 
-    color: #fff;
+    letter-spacing:1px;
 
-    font-size: 11px;
-    font-weight: 900;
-
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+    margin-bottom:17px;
 }
 
-.footer-column a {
-    color: rgba(255,255,255,.5);
+.footer-column a{
+    display:block;
 
-    font-size: 13px;
+    color:#8d929b;
 
-    transition: .2s ease;
+    font-size:14px;
+
+    margin-bottom:11px;
+
+    transition:.2s;
 }
 
-.footer-column a:hover {
-    color: #fff;
+.footer-column a:hover{
+    color:#fff;
 }
 
-.footer-bottom {
-    padding-top: 25px;
+.footer-bottom{
+    border-top:1px solid #24272e;
 
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    padding-top:25px;
 
-    border-top: 1px solid rgba(255,255,255,.08);
+    display:flex;
 
-    color: rgba(255,255,255,.35);
+    justify-content:space-between;
 
-    font-size: 11px;
+    color:#666b74;
+
+    font-size:12px;
 }
 
 
 /* =========================================================
-   CONNECTION MODAL
+   VERBINDUNGS-MODAL
 ========================================================= */
 
-.connection-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 2000;
+.connection-modal{
+    position:fixed;
 
-    display: none;
+    inset:0;
 
-    padding: 25px;
+    background:rgba(8,9,12,.8);
 
-    align-items: center;
-    justify-content: center;
+    display:none;
 
-    background: rgba(0,0,0,.72);
+    align-items:center;
+    justify-content:center;
 
-    backdrop-filter: blur(7px);
+    padding:30px;
+
+    z-index:3000;
 }
 
-.connection-modal.open {
-    display: flex;
+.connection-modal.active{
+    display:flex;
 }
 
-.connection-window {
-    position: relative;
+.connection-window{
+    width:min(1180px,100%);
 
-    width: min(1250px, 100%);
+    max-height:90vh;
 
-    max-height: 92vh;
+    background:#fff;
 
-    display: grid;
+    border-radius:13px;
 
-    grid-template-columns: 1.15fr .85fr;
+    overflow:hidden;
 
-    overflow: hidden;
+    position:relative;
 
-    border-radius: 16px;
+    display:grid;
 
-    background: #fff;
+    grid-template-columns:
+        1.12fr 1fr;
 
-    box-shadow: 0 40px 100px rgba(0,0,0,.35);
+    box-shadow:
+        0 40px 100px rgba(0,0,0,.45);
 }
 
-.connection-close {
-    position: absolute;
+.close-connection{
+    position:absolute;
 
-    right: 18px;
-    top: 15px;
+    right:16px;
+    top:13px;
 
-    z-index: 5;
+    width:38px;
+    height:38px;
 
-    width: 40px;
-    height: 40px;
+    border-radius:50%;
 
-    border: 0;
-    border-radius: 50%;
+    background:rgba(0,0,0,.06);
 
-    background: rgba(0,0,0,.07);
+    font-size:28px;
 
-    color: #222;
+    line-height:1;
 
-    font-size: 25px;
-    line-height: 40px;
+    cursor:pointer;
 
-    transition: .2s ease;
+    z-index:10;
+
+    transition:.18s;
 }
 
-.connection-close:hover {
-    background: rgba(0,0,0,.13);
-}
+.close-connection:hover{
+    background:rgba(0,0,0,.15);
 
-.connection-image {
-    min-height: 690px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 25px;
-
-    background: #17191d;
-}
-
-.connection-image img {
-    width: 100%;
-    height: 100%;
-
-    max-height: 640px;
-
-    display: block;
-
-    object-fit: contain;
-}
-
-.connection-content {
-    padding: 60px 45px;
-
-    overflow-y: auto;
-}
-
-.connection-label {
-    color: var(--premium);
-
-    font-size: 10px;
-    font-weight: 900;
-
-    letter-spacing: 2px;
-}
-
-.connection-content h2 {
-    margin-top: 10px;
-
-    font-size: 43px;
-    line-height: .98;
-
-    letter-spacing: -2px;
-}
-
-.connection-content > p {
-    margin-top: 15px;
-
-    color: var(--muted);
-
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-.copy-address {
-    width: 100%;
-
-    margin-top: 23px;
-
-    padding: 15px;
-
-    border: 0;
-    border-radius: 7px;
-
-    background: var(--premium);
-    color: #fff;
-
-    font-size: 11px;
-    font-weight: 900;
-
-    letter-spacing: 1px;
-
-    transition: .2s ease;
-}
-
-.copy-address:hover {
-    filter: brightness(1.08);
-    transform: translateY(-1px);
-}
-
-.connection-ip {
-    margin-top: 12px;
-
-    padding: 12px;
-
-    border-radius: 6px;
-
-    background: #f1f2f4;
-
-    color: #4d5259;
-
-    font-family: monospace;
-
-    font-size: 12px;
-
-    text-align: center;
-}
-
-.connection-steps {
-    display: grid;
-
-    gap: 12px;
-
-    margin-top: 27px;
-}
-
-.connection-step {
-    display: grid;
-
-    grid-template-columns: 42px 1fr;
-
-    gap: 13px;
-
-    padding: 17px;
-
-    border: 1px solid var(--border);
-    border-radius: 9px;
-
-    background: #fff;
-
-    text-align: left;
-
-    transition: .2s ease;
-}
-
-.connection-step:hover,
-.connection-step.active {
-    border-color: rgba(229,138,25,.45);
-
-    box-shadow: 0 8px 25px rgba(0,0,0,.06);
-
-    transform: translateX(2px);
-}
-
-.connection-number {
-    width: 38px;
-    height: 38px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 6px;
-
-    background: #17191d;
-    color: #fff;
-
-    font-size: 13px;
-    font-weight: 900;
-}
-
-.connection-step h3 {
-    font-size: 14px;
-}
-
-.connection-step p {
-    margin-top: 5px;
-
-    color: var(--muted);
-
-    font-size: 12px;
-    line-height: 1.5;
-}
-
-.connection-finished {
-    margin-top: 20px;
-
-    color: #888;
-
-    font-size: 12px;
+    transform:scale(1.05);
 }
 
 
 /* =========================================================
-   KONFETTI
+   MODAL BILD
 ========================================================= */
 
-.confetti-container {
-    position: fixed;
-    inset: 0;
+.connection-image{
+    min-height:650px;
 
-    z-index: 5000;
+    background:#111318;
 
-    pointer-events: none;
+    display:flex;
 
-    overflow: hidden;
+    align-items:center;
+    justify-content:center;
+
+    padding:25px;
+
+    overflow:hidden;
 }
 
-.confetti {
-    position: absolute;
+.connection-image img{
+    width:auto;
+    height:auto;
 
-    top: -30px;
+    max-width:100%;
+    max-height:600px;
 
-    width: 10px;
-    height: 17px;
+    object-fit:contain;
 
-    animation: confettiFall linear forwards;
+    object-position:center;
+
+    display:block;
 }
 
-@keyframes confettiFall {
-    from {
+
+/* =========================================================
+   MODAL RECHTS
+========================================================= */
+
+.connection-content{
+    padding:52px 45px;
+
+    overflow-y:auto;
+}
+
+.connection-content h2{
+    font-size:38px;
+
+    line-height:1.05;
+
+    margin-bottom:14px;
+}
+
+.connection-subtitle{
+    color:#747982;
+
+    font-size:14px;
+
+    line-height:1.6;
+
+    margin-bottom:22px;
+}
+
+.copy-button{
+    background:#f0b000;
+
+    color:#15171c;
+
+    border:2px solid #f7cf56;
+
+    border-radius:7px;
+
+    padding:13px 17px;
+
+    font-size:11px;
+
+    font-weight:950;
+
+    letter-spacing:.8px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 4px 0 #9a6e00;
+
+    margin-bottom:28px;
+
+    transition:.18s;
+}
+
+.copy-button:hover{
+    transform:translateY(-2px);
+}
+
+.copy-button.copied{
+    background:#32a852;
+
+    color:#fff;
+
+    border-color:#64ca7d;
+
+    box-shadow:
+        0 4px 0 #216f37;
+}
+
+.connection-steps{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.connection-step{
+    width:100%;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    text-align:left;
+
+    gap:16px;
+
+    background:#f5f6f8;
+
+    border:1px solid #e0e2e6;
+
+    border-radius:9px;
+
+    padding:17px;
+
+    cursor:pointer;
+
+    transition:.18s;
+}
+
+.connection-step:hover{
+    transform:translateY(-2px);
+
+    border-color:#c8cbd1;
+}
+
+.connection-step.active{
+    border-color:#181b21;
+
+    background:#eef0f3;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.06);
+}
+
+.step-number{
+    width:31px;
+    height:31px;
+
+    flex:0 0 31px;
+
+    border-radius:50%;
+
+    background:#181b21;
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:12px;
+
+    font-weight:950;
+}
+
+.step-text h4{
+    font-size:15px;
+
+    margin-bottom:5px;
+}
+
+.step-text p{
+    color:#747982;
+
+    font-size:12px;
+
+    line-height:1.5;
+}
+
+.step-text code{
+    background:#e3e5e9;
+
+    padding:2px 5px;
+
+    border-radius:4px;
+
+    color:#181a1f;
+}
+
+.connection-finished{
+    margin-top:23px;
+
+    color:#747982;
+
+    font-size:13px;
+
+    font-weight:800;
+}
+
+
+/* =========================================================
+   COOKIE
+========================================================= */
+
+.cookie-button{
+    position:fixed;
+
+    right:20px;
+    bottom:20px;
+
+    width:58px;
+    height:58px;
+
+    border-radius:50%;
+
+    border:2px solid #d9dadd;
+
+    background:#fff;
+
+    cursor:pointer;
+
+    font-size:27px;
+
+    z-index:1200;
+
+    box-shadow:
+        0 7px 25px rgba(0,0,0,.14);
+
+    transition:.2s;
+}
+
+.cookie-button:hover{
+    transform:scale(1.08);
+}
+
+
+/* =========================================================
+   CONFETTI
+========================================================= */
+
+.confetti-side{
+    position:absolute;
+
+    top:0;
+    bottom:0;
+
+    width:120px;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    opacity:0;
+
+    transition:opacity .2s;
+}
+
+.confetti-side.left{
+    left:0;
+}
+
+.confetti-side.right{
+    right:0;
+}
+
+.live-section.celebrate .confetti-side{
+    opacity:1;
+}
+
+.confetti-piece{
+    position:absolute;
+
+    top:50%;
+
+    width:8px;
+    height:18px;
+
+    animation:
+        confettiFly 1.5s ease-out forwards;
+}
+
+.confetti-side.left .confetti-piece{
+    left:0;
+}
+
+.confetti-side.right .confetti-piece{
+    right:0;
+}
+
+@keyframes confettiFly{
+    0%{
         transform:
-            translate3d(0, -30px, 0)
-            rotate(0deg);
+            translate(0,0)
+            rotate(0);
+
+        opacity:1;
     }
 
-    to {
+    100%{
         transform:
-            translate3d(var(--x), 110vh, 0)
+            translate(var(--x),var(--y))
             rotate(720deg);
+
+        opacity:0;
     }
-}
-
-
-/* =========================================================
-   COOKIE CLICKER
-========================================================= */
-
-.cookie-clicker {
-    position: fixed;
-
-    right: 20px;
-    bottom: 20px;
-
-    z-index: 1200;
-
-    padding: 13px 16px;
-
-    border-radius: 10px;
-
-    background: #17191d;
-    color: #fff;
-
-    border: 1px solid rgba(255,255,255,.08);
-
-    box-shadow: 0 12px 35px rgba(0,0,0,.2);
-
-    font-size: 12px;
-    font-weight: 900;
-
-    cursor: pointer;
-}
-
-.cookie-score {
-    margin-left: 7px;
-
-    color: var(--premium);
 }
 
 
@@ -1450,237 +1459,202 @@ footer {
    RESPONSIVE
 ========================================================= */
 
-@media (max-width: 1100px) {
+@media(max-width:1050px){
 
-    .navbar {
-        padding-left: 25px;
-        padding-right: 25px;
+    .navbar{
+        gap:20px;
     }
 
-    .nav-links {
-        gap: 18px;
-        margin-left: 25px;
+    .nav-links{
+        gap:16px;
     }
 
-    .team-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .blog-grid{
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
-    .news-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .connection-window {
-        grid-template-columns: 1fr;
-    }
-
-    .connection-image {
-        min-height: 390px;
-    }
-
-    .connection-image img {
-        max-height: 350px;
-    }
-}
-
-
-@media (max-width: 800px) {
-
-    .navbar {
-        min-height: 72px;
-
-        flex-wrap: wrap;
-
-        padding: 8px 18px;
-    }
-
-    .logo-area,
-    .logo-area img {
-        width: 55px;
-        height: 55px;
-    }
-
-    .nav-links {
-        order: 3;
-
-        width: 100%;
-
-        margin-left: 0;
-
-        overflow-x: auto;
-
-        padding: 9px 0 4px;
-
-        scrollbar-width: none;
-    }
-
-    .nav-links::-webkit-scrollbar {
-        display: none;
-    }
-
-    .server-nav-button {
-        margin-left: auto;
-    }
-
-    .hero {
-        min-height: 580px;
-
-        padding: 75px 22px;
-    }
-
-    .hero h1 {
-        font-size: 62px;
-        letter-spacing: -3px;
-    }
-
-    .section {
-        padding: 75px 22px;
-    }
-
-    .live-section {
-        padding: 75px 22px;
+    .team-grid{
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
     .live-grid,
-    .contact-grid {
-        grid-template-columns: 1fr;
+    .discord-grid{
+        grid-template-columns:1fr;
     }
 
-    .live-image-box {
-        min-height: 300px;
+    .live-text{
+        max-width:700px;
     }
 
-    .live-image-box img {
-        min-height: 300px;
+    .connection-window{
+        grid-template-columns:1fr;
+
+        max-height:94vh;
+
+        overflow-y:auto;
     }
 
-    .team-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .connection-image{
+        min-height:360px;
+
+        max-height:420px;
     }
 
-    .footer-grid {
-        grid-template-columns: 1fr 1fr;
+    .connection-content{
+        padding:35px;
     }
 
-    .minecraft-decoration {
-        height: 200px;
-    }
+    .minecraft-decoration img{
+        right:-70px;
 
-    .minecraft-decoration img {
-        width: 450px;
-        right: -190px;
-        bottom: -90px;
-    }
-
-    .minecraft-decoration-text {
-        left: 22px;
-    }
-
-    .discord-section {
-        min-height: 480px;
-
-        padding: 75px 22px;
+        width:560px;
     }
 }
 
 
-@media (max-width: 520px) {
+@media(max-width:700px){
 
-    .top-notice {
-        font-size: 9px;
+    .navbar{
+        height:auto;
+
+        min-height:72px;
+
+        padding:8px 18px;
+
+        flex-wrap:wrap;
     }
 
-    .server-nav-button {
-        padding: 11px 13px;
-        font-size: 10px;
+    .logo-area img{
+        width:55px;
+        height:55px;
     }
 
-    .hero h1 {
-        font-size: 48px;
+    .nav-links{
+        order:3;
+
+        width:100%;
+
+        overflow-x:auto;
+
+        padding:7px 0;
     }
 
-    .hero-buttons {
-        flex-direction: column;
-        align-items: stretch;
+    .server-nav-button{
+        margin-left:auto;
     }
 
-    .hero-buttons .rank-button {
-        width: 100%;
+    .hero{
+        padding:70px 24px;
     }
 
-    .team-grid {
-        grid-template-columns: 1fr 1fr;
+    .hero h1{
+        font-size:55px;
     }
 
-    .news-main {
-        min-height: 390px;
-        padding: 28px;
+    .section{
+        padding:70px 22px;
     }
 
-    .live-countdown {
-        font-size: 51px;
+    .blog-grid,
+    .team-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
     }
 
-    .footer-grid {
-        grid-template-columns: 1fr;
+    .live-section{
+        padding:75px 22px;
     }
 
-    .footer-bottom {
-        flex-direction: column;
+    .status-box{
+        flex-direction:column;
+
+        align-items:flex-start;
     }
 
-    .minecraft-decoration-text {
-        width: 48%;
+    .footer-grid{
+        grid-template-columns:1fr;
     }
 
-    .minecraft-decoration-text strong {
-        font-size: 18px;
+    .footer-bottom{
+        flex-direction:column;
+
+        gap:10px;
     }
 
-    .minecraft-decoration img {
-        width: 350px;
-        right: -155px;
-        bottom: -55px;
+    .minecraft-decoration{
+        height:220px;
+
+        min-height:220px;
     }
 
-    .connection-modal {
-        padding: 8px;
+    .minecraft-decoration-text{
+        width:48%;
     }
 
-    .connection-window {
-        max-height: 96vh;
+    .minecraft-decoration-text strong{
+        font-size:19px;
     }
 
-    .connection-image {
-        min-height: 245px;
-        padding: 12px;
+    .minecraft-decoration img{
+        width:420px;
+
+        right:-115px;
+
+        bottom:-5px;
+
+        max-height:235px;
     }
 
-    .connection-image img {
-        max-height: 220px;
+    .discord-visual{
+        min-height:280px;
     }
 
-    .connection-content {
-        padding: 30px 20px;
+    .connection-modal{
+        padding:10px;
     }
 
-    .connection-content h2 {
-        font-size: 34px;
+    .connection-image{
+        min-height:270px;
+
+        max-height:330px;
     }
 
-    .connection-step {
-        grid-template-columns: 36px 1fr;
-        padding: 13px;
+    .connection-content{
+        padding:30px 22px;
     }
 
-    .connection-number {
-        width: 34px;
-        height: 34px;
+    .connection-content h2{
+        font-size:31px;
     }
 
-    .cookie-clicker {
-        right: 12px;
-        bottom: 12px;
+    .live-countdown{
+        font-size:54px;
+    }
+}
+
+
+@media(max-width:450px){
+
+    .hero h1{
+        font-size:45px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+
+        align-items:stretch;
+    }
+
+    .hero-buttons .rank-button{
+        width:100%;
+    }
+
+    .minecraft-decoration img{
+        width:350px;
+
+        right:-105px;
     }
 }
 
@@ -1691,22 +1665,25 @@ footer {
 <body>
 
 
-<!-- =========================================================
+<!-- =======================================================
      TOP
-========================================================= -->
+======================================================= -->
 
 <div class="top-notice">
     LMS SERVER · DEIN MINECRAFT NETZWERK
 </div>
 
 
-<!-- =========================================================
+<!-- =======================================================
      NAVIGATION
-========================================================= -->
+======================================================= -->
 
 <header class="navbar">
 
-    <a href="#start" class="logo-area">
+    <a
+        href="#start"
+        class="logo-area"
+    >
         <img
             src="WhatsApp Image 2026-07-11 at 15.30.43.jpeg"
             alt="LMS Server"
@@ -1724,8 +1701,8 @@ footer {
             LMS Live
         </a>
 
-        <a href="#discord">
-            Discord
+        <a href="#community">
+            Shop
         </a>
 
         <a href="#team">
@@ -1757,11 +1734,14 @@ footer {
 </header>
 
 
-<!-- =========================================================
+<!-- =======================================================
      HERO
-========================================================= -->
+======================================================= -->
 
-<section class="hero" id="start">
+<section
+    class="hero"
+    id="start"
+>
 
     <div class="hero-content">
 
@@ -1784,9 +1764,9 @@ footer {
 
             <button
                 class="rank-button premium"
-                onclick="document.getElementById('news').scrollIntoView()"
+                onclick="document.getElementById('news').scrollIntoView({behavior:'smooth'})"
             >
-                NEUESTE INFOS
+                NEUIGKEITEN
             </button>
 
             <button
@@ -1803,118 +1783,139 @@ footer {
 </section>
 
 
-<!-- =========================================================
-     BLOG / NEUIGKEITEN
-========================================================= -->
+<!-- =======================================================
+     BLOG
+======================================================= -->
 
 <section
-    class="section news-section"
+    class="section blog-section"
     id="news"
 >
 
     <div class="section-header">
 
         <div class="section-label">
-            LMS BLOG
+            NEWS
         </div>
 
         <h2>
-            Die neuesten Infos.
+            Neuigkeiten vom LMS Server.
         </h2>
 
         <p class="section-description">
-            Hier findest du aktuelle Informationen rund um
-            den LMS Server, kommende Projekte und wichtige
-            Änderungen.
+            Aktuelle Informationen, Wartungen und Updates
+            rund um LMS.
         </p>
 
     </div>
 
 
-    <div class="news-grid">
+    <div class="blog-grid">
 
 
-        <article class="news-main">
+        <article class="blog-card">
 
-            <span class="news-tag">
-                AKTUELL
-            </span>
+            <div class="blog-date">
+                LMS SERVER · WARTUNG
+            </div>
 
             <h3>
-                Wartungsarbeiten
-                am LMS Server
+                Wartungsarbeiten bis Mitte Dezember
             </h3>
 
             <p>
                 Der LMS Server befindet sich aktuell in
-                Wartungsarbeiten. Die Arbeiten dauern
-                voraussichtlich bis Mitte Dezember.
-                Weitere Informationen folgen, sobald es
-                neue Entwicklungen gibt.
+                Wartungsarbeiten. Der reguläre Betrieb startet
+                voraussichtlich wieder bis Mitte Dezember.
             </p>
 
-            <div class="news-date">
-                LMS SERVER · AKTUELLE INFORMATION
-            </div>
+            <a
+                href="#live"
+                class="rank-button owner"
+            >
+                STATUS
+            </a>
 
         </article>
 
 
-        <div class="news-side">
+        <article class="blog-card">
+
+            <div class="blog-date">
+                LMS SERVER · UPDATE
+            </div>
+
+            <h3>
+                Wir arbeiten weiter
+            </h3>
+
+            <p>
+                Während der Wartung werden Inhalte, Projekte
+                und weitere Bereiche des LMS Servers
+                vorbereitet und überarbeitet.
+            </p>
+
+            <a
+                href="#kontakt"
+                class="rank-button builder"
+            >
+                KONTAKT
+            </a>
+
+        </article>
 
 
-            <article class="news-card">
+        <article class="blog-card">
 
-                <span>
-                    INFORMATION
-                </span>
+            <div class="blog-date">
+                LMS SERVER · INFORMATION
+            </div>
 
-                <h3>
-                    Server vorübergehend offline
-                </h3>
+            <h3>
+                Alle Neuigkeiten auf einen Blick
+            </h3>
 
-                <p>
-                    Während der Wartungsarbeiten kann der
-                    Server zeitweise nicht erreichbar sein.
-                </p>
+            <p>
+                Neue Informationen werden hier veröffentlicht,
+                sobald es etwas Wichtiges zum Server oder zu
+                unseren Projekten gibt.
+            </p>
 
-            </article>
+            <a
+                href="info.html"
+                class="rank-button dark"
+            >
+                MEHR ERFAHREN
+            </a>
 
+        </article>
 
-            <article class="news-card">
-
-                <span>
-                    DEMNÄCHST
-                </span>
-
-                <h3>
-                    Neue Projekte
-                </h3>
-
-                <p>
-                    Nach Abschluss der Arbeiten warten neue
-                    Inhalte und Projekte auf die Community.
-                </p>
-
-            </article>
-
-
-        </div>
 
     </div>
 
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      LMS LIVE
      hq720.jpg NUR HIER
-========================================================= -->
+======================================================= -->
 
 <section
     class="live-section"
     id="live"
 >
+
+    <div
+        class="confetti-side left"
+        id="confettiLeft"
+    ></div>
+
+    <div
+        class="confetti-side right"
+        id="confettiRight"
+    ></div>
+
 
     <div class="live-grid">
 
@@ -1925,51 +1926,52 @@ footer {
                 LMS NETWORK
             </div>
 
+
             <div class="live-badge">
+
                 <span class="live-dot"></span>
+
                 LMS LIVE
+
             </div>
+
 
             <h2>
                 LMS LIVE
             </h2>
 
+
             <p class="section-description">
-                Warte auf den offiziellen Countdown und
-                erfahre direkt, ob LMS LIVE stattfindet.
+                Verfolge unsere LMS Inhalte und bleib
+                bei besonderen Aktionen und Projekten dabei.
             </p>
 
 
-            <div class="live-countdown-box">
-
-                <div class="live-countdown-label">
-                    LIVE STARTET IN
-                </div>
-
-                <div
-                    class="live-countdown"
-                    id="liveCountdown"
-                >
-                    01:00
-                </div>
-
-
-                <div
-                    class="live-result"
-                    id="liveResult"
-                >
-
-                    <strong>
-                        LMS LIVE findet nicht statt
-                    </strong>
-
-                    <span>
-                        Warte auf den offiziellen Countdown.
-                    </span>
-
-                </div>
-
+            <div
+                class="live-countdown"
+                id="liveCountdown"
+            >
+                01:00
             </div>
+
+
+            <div
+                class="live-status"
+                id="liveStatus"
+            >
+                Offizieller Countdown läuft.
+            </div>
+
+
+            <br>
+
+
+            <button
+                class="rank-button premium"
+                onclick="openConnection()"
+            >
+                LMS SERVER
+            </button>
 
         </div>
 
@@ -1989,73 +1991,83 @@ footer {
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      DISCORD
      images.jpg NUR HIER
-========================================================= -->
+======================================================= -->
 
 <section
-    class="discord-section"
-    id="discord"
+    class="section discord-section"
+    id="community"
 >
 
-    <img
-        class="discord-image"
-        src="images.jpg"
-        alt="LMS Discord"
-    >
-
-    <div class="discord-overlay"></div>
+    <div class="discord-grid">
 
 
-    <div class="discord-content">
+        <div class="discord-content">
 
-        <div class="section-label">
-            LMS COMMUNITY
+            <div class="section-label">
+                COMMUNITY
+            </div>
+
+            <h2>
+                Unsere Community.
+            </h2>
+
+            <p>
+                Bleib mit dem LMS Server verbunden,
+                erfahre Neuigkeiten und tausche dich
+                mit anderen aus.
+            </p>
+
+            <a
+                class="rank-button admin"
+                href="https://discord.gg/N5ZYVRpMMU"
+                target="_blank"
+                rel="noopener"
+            >
+                DISCORD ÖFFNEN
+            </a>
+
         </div>
 
-        <h2>
-            Komm auf<br>
-            unseren Discord.
-        </h2>
 
-        <p>
-            Bleib mit der LMS Community verbunden,
-            erfahre von neuen Projekten und verpasse
-            keine wichtigen Informationen.
-        </p>
+        <div class="discord-visual">
 
-        <a
-            class="rank-button admin"
-            href="https://discord.gg/N5ZYVRpMMU"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            DISCORD BEITRETEN
-        </a>
+            <img
+                src="images.jpg"
+                alt="LMS Discord"
+            >
+
+        </div>
+
 
     </div>
 
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      MINECRAFT DEKO
      minecraft-bg2.webp NUR HIER
-========================================================= -->
+======================================================= -->
 
 <section class="minecraft-decoration">
 
-    <div class="minecraft-decoration-text">
+    <div class="minecraft-decoration-content">
 
-        <span>
-            LMS NETWORK
-        </span>
+        <div class="minecraft-decoration-text">
 
-        <strong>
-            Deine Welt.<br>
-            Dein Server.
-        </strong>
+            <span>
+                LMS NETWORK
+            </span>
+
+            <strong>
+                Deine Welt.<br>
+                Dein Server.
+            </strong>
+
+        </div>
 
     </div>
 
@@ -2069,9 +2081,9 @@ footer {
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      TEAM
-========================================================= -->
+======================================================= -->
 
 <section
     class="section"
@@ -2211,9 +2223,9 @@ footer {
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      SERVER STATUS
-========================================================= -->
+======================================================= -->
 
 <section
     class="section status-section"
@@ -2265,7 +2277,7 @@ footer {
             class="player-count"
             id="playerCount"
         >
-            Serverstatus wird geladen...
+            ...
         </div>
 
     </div>
@@ -2273,9 +2285,9 @@ footer {
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      KONTAKT
-========================================================= -->
+======================================================= -->
 
 <section
     class="section"
@@ -2303,10 +2315,10 @@ footer {
             <a
                 href="https://discord.gg/N5ZYVRpMMU"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 class="rank-button supporter"
             >
-                KONTAKT ÜBER DISCORD
+                KONTAKT AUFNEHMEN
             </a>
 
         </div>
@@ -2335,7 +2347,7 @@ footer {
                 </strong>
 
                 <span>
-                    LMS Community
+                    Unsere Community
                 </span>
 
             </div>
@@ -2356,15 +2368,14 @@ footer {
 
         </div>
 
-
     </div>
 
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      FOOTER
-========================================================= -->
+======================================================= -->
 
 <footer>
 
@@ -2392,10 +2403,6 @@ footer {
                 Navigation
             </h4>
 
-            <a href="#start">
-                Startseite
-            </a>
-
             <a href="#news">
                 Blog
             </a>
@@ -2404,8 +2411,8 @@ footer {
                 LMS Live
             </a>
 
-            <a href="#discord">
-                Discord
+            <a href="#community">
+                Shop
             </a>
 
             <a href="#team">
@@ -2414,6 +2421,10 @@ footer {
 
             <a href="#kontakt">
                 Kontakt
+            </a>
+
+            <a href="sponsoren.html">
+                Sponsoren & Mitwirkende
             </a>
 
         </div>
@@ -2433,37 +2444,8 @@ footer {
                 Regeln
             </a>
 
-            <a href="sponsoren.html">
-                Sponsoren & Mitwirkende
-            </a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h4>
-                Community
-            </h4>
-
-            <a
-                href="https://discord.gg/N5ZYVRpMMU"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Discord
-            </a>
-
-            <a
-                href="#live"
-            >
-                LMS Live
-            </a>
-
-            <a
-                href="#kontakt"
-            >
-                Kontakt
+            <a href="#start">
+                Nach oben
             </a>
 
         </div>
@@ -2475,7 +2457,7 @@ footer {
     <div class="footer-bottom">
 
         <span>
-            © 2026 LMS Server
+            LMS SERVER © 2026
         </span>
 
         <span>
@@ -2487,21 +2469,20 @@ footer {
 </footer>
 
 
-<!-- =========================================================
-     CONNECTION MODAL
-========================================================= -->
+<!-- =======================================================
+     VERBINDUNGS-MODAL
+======================================================= -->
 
 <div
     class="connection-modal"
     id="connectionModal"
-    onclick="backgroundClose(event)"
 >
 
     <div class="connection-window">
 
 
         <button
-            class="connection-close"
+            class="close-connection"
             onclick="closeConnection()"
             aria-label="Schließen"
         >
@@ -2514,7 +2495,7 @@ footer {
             <img
                 id="connectionImage"
                 src="Screenshot (420).png"
-                alt="Minecraft Verbindung Schritt"
+                alt="Minecraft Verbindung"
             >
 
         </div>
@@ -2522,33 +2503,25 @@ footer {
 
         <div class="connection-content">
 
-            <div class="connection-label">
-                LMS SERVER
-            </div>
 
             <h2>
                 Wie verbinde ich mich?
             </h2>
 
-            <p>
-                Betrete unseren Server mit der
+
+            <p class="connection-subtitle">
+                Betrete den LMS Server mit der
                 Minecraft Java-Edition.
-                100% kostenlos.
             </p>
 
 
             <button
-                class="copy-address"
-                id="copyAddressButton"
+                class="copy-button"
+                id="copyButton"
                 onclick="copyServerAddress()"
             >
                 ADRESSE KOPIEREN
             </button>
-
-
-            <div class="connection-ip">
-                LMS_server.aternos.me
-            </div>
 
 
             <div class="connection-steps">
@@ -2560,22 +2533,22 @@ footer {
                     onclick="changeConnectionStep(1)"
                 >
 
-                    <span class="connection-number">
+                    <div class="step-number">
                         1
-                    </span>
+                    </div>
 
-                    <span>
+                    <div class="step-text">
 
-                        <h3>
+                        <h4>
                             Minecraft starten
-                        </h3>
+                        </h4>
 
                         <p>
                             Starte Minecraft Java Edition
-                            auf deinem PC.
+                            auf deinem Computer.
                         </p>
 
-                    </span>
+                    </div>
 
                 </button>
 
@@ -2586,22 +2559,22 @@ footer {
                     onclick="changeConnectionStep(2)"
                 >
 
-                    <span class="connection-number">
+                    <div class="step-number">
                         2
-                    </span>
+                    </div>
 
-                    <span>
+                    <div class="step-text">
 
-                        <h3>
+                        <h4>
                             Mehrspieler öffnen
-                        </h3>
+                        </h4>
 
                         <p>
-                            Öffne den Mehrspieler-Modus
-                            und füge einen neuen Server hinzu.
+                            Öffne im Minecraft-Hauptmenü
+                            den Bereich „Mehrspieler“.
                         </p>
 
-                    </span>
+                    </div>
 
                 </button>
 
@@ -2612,22 +2585,23 @@ footer {
                     onclick="changeConnectionStep(3)"
                 >
 
-                    <span class="connection-number">
+                    <div class="step-number">
                         3
-                    </span>
+                    </div>
 
-                    <span>
+                    <div class="step-text">
 
-                        <h3>
-                            Serveradresse eintragen
-                        </h3>
+                        <h4>
+                            LMS Server hinzufügen
+                        </h4>
 
                         <p>
-                            Gib LMS_server.aternos.me ein,
-                            speichere den Server und trete bei.
+                            Gib als Serveradresse
+                            <code>LMS_server.aternos.me</code>
+                            ein und verbinde dich.
                         </p>
 
-                    </span>
+                    </div>
 
                 </button>
 
@@ -2636,8 +2610,9 @@ footer {
 
 
             <div class="connection-finished">
-                Das wars, viel Spaß!
+                Das war's, viel Spaß!
             </div>
+
 
         </div>
 
@@ -2646,138 +2621,125 @@ footer {
 </div>
 
 
-<!-- =========================================================
-     KONFETTI
-========================================================= -->
-
-<div
-    class="confetti-container"
-    id="confettiContainer"
-></div>
-
-
-<!-- =========================================================
+<!-- =======================================================
      COOKIE CLICKER
-========================================================= -->
+======================================================= -->
 
-<div
-    class="cookie-clicker"
+<button
+    class="cookie-button"
     onclick="cookieClick()"
+    title="Cookie Clicker"
 >
+    🍪
+</button>
 
-    COOKIE CLICKER
 
-    <span
-        class="cookie-score"
-        id="cookieScore"
-    >
-        0
-    </span>
-
-</div>
-
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
 
 <script>
 
-/* =========================================================
-   SERVER
-========================================================= */
-
-const SERVER_IP = "LMS_server.aternos.me";
+const SERVER_IP =
+    "LMS_server.aternos.me";
 
 
 /* =========================================================
-   CONNECTION MODAL
+   MODAL
 ========================================================= */
+
+const connectionModal =
+    document.getElementById("connectionModal");
+
+const connectionImage =
+    document.getElementById("connectionImage");
+
+const copyButton =
+    document.getElementById("copyButton");
+
 
 const connectionStepImages = {
 
     1: "Screenshot (420).png",
+
     2: "Screenshot (421).png",
+
     3: "Screenshot (423).png"
 
 };
 
 
-function openConnection() {
-
-    const modal =
-        document.getElementById("connectionModal");
-
-    modal.classList.add("open");
-
-    document.body.style.overflow = "hidden";
+function openConnection(){
 
     changeConnectionStep(1);
-}
 
+    connectionModal.classList.add("active");
 
-function closeConnection() {
-
-    const modal =
-        document.getElementById("connectionModal");
-
-    modal.classList.remove("open");
-
-    document.body.style.overflow = "";
-}
-
-
-function backgroundClose(event) {
-
-    if (
-        event.target ===
-        document.getElementById("connectionModal")
-    ) {
-
-        closeConnection();
-
-    }
+    document.body.style.overflow =
+        "hidden";
 
 }
 
 
-function changeConnectionStep(step) {
+function closeConnection(){
 
-    const image =
-        document.getElementById("connectionImage");
+    connectionModal.classList.remove("active");
 
-    image.src =
+    document.body.style.overflow =
+        "";
+
+}
+
+
+function changeConnectionStep(step){
+
+    connectionImage.src =
         connectionStepImages[step];
 
 
     document
         .querySelectorAll(".connection-step")
-        .forEach(element => {
+        .forEach(function(element){
 
             element.classList.remove("active");
 
         });
 
 
-    const selected =
+    const selectedStep =
         document.getElementById(
             "connectionStep" + step
         );
 
-    if (selected) {
 
-        selected.classList.add("active");
+    if(selectedStep){
+
+        selectedStep.classList.add("active");
 
     }
 
 }
 
 
-/* =========================================================
-   ESC MODAL
-========================================================= */
+connectionModal.addEventListener(
+    "click",
+    function(event){
+
+        if(event.target === connectionModal){
+
+            closeConnection();
+
+        }
+
+    }
+);
+
 
 document.addEventListener(
     "keydown",
-    function(event) {
+    function(event){
 
-        if (event.key === "Escape") {
+        if(event.key === "Escape"){
 
             closeConnection();
 
@@ -2788,43 +2750,67 @@ document.addEventListener(
 
 
 /* =========================================================
-   SERVER IP KOPIEREN
+   IP KOPIEREN
 ========================================================= */
 
-async function copyServerAddress() {
+function copyServerAddress(){
 
-    const button =
-        document.getElementById(
-            "copyAddressButton"
-        );
+    const done = function(){
 
-    try {
+        copyButton.textContent =
+            "ADRESSE KOPIERT ✓";
 
-        await navigator.clipboard.writeText(
-            SERVER_IP
-        );
+        copyButton.classList.add("copied");
 
-        button.textContent =
-            "ADRESSE KOPIERT";
 
-        setTimeout(() => {
+        setTimeout(function(){
 
-            button.textContent =
+            copyButton.textContent =
                 "ADRESSE KOPIEREN";
 
-        }, 1800);
+            copyButton.classList.remove("copied");
 
-    } catch (error) {
+        },2000);
 
-        button.textContent =
-            "BITTE MANUELL KOPIEREN";
+    };
 
-        setTimeout(() => {
 
-            button.textContent =
-                "ADRESSE KOPIEREN";
+    if(
+        navigator.clipboard &&
+        window.isSecureContext
+    ){
 
-        }, 1800);
+        navigator.clipboard
+            .writeText(SERVER_IP)
+            .then(done)
+            .catch(fallbackCopy);
+
+    }else{
+
+        fallbackCopy();
+
+    }
+
+
+    function fallbackCopy(){
+
+        const textarea =
+            document.createElement("textarea");
+
+        textarea.value =
+            SERVER_IP;
+
+        document.body.appendChild(
+            textarea
+        );
+
+        textarea.select();
+
+        document.execCommand("copy");
+
+        textarea.remove();
+
+        done();
 
     }
 
@@ -2835,16 +2821,20 @@ async function copyServerAddress() {
    SERVER STATUS
 ========================================================= */
 
-async function updateServerStatus() {
+async function updateServerStatus(){
 
-    const dot =
-        document.getElementById("statusDot");
+    const playerCount =
+        document.getElementById(
+            "playerCount"
+        );
 
-    const count =
-        document.getElementById("playerCount");
+    const statusDot =
+        document.getElementById(
+            "statusDot"
+        );
 
 
-    try {
+    try{
 
         const response =
             await fetch(
@@ -2853,64 +2843,58 @@ async function updateServerStatus() {
             );
 
 
-        if (!response.ok) {
-
-            throw new Error(
-                "Status konnte nicht geladen werden."
-            );
-
-        }
-
-
         const data =
             await response.json();
 
 
-        if (data.online) {
-
-            dot.style.background =
-                "#2e9b59";
-
-            dot.style.boxShadow =
-                "0 0 0 6px rgba(46,155,89,.12)";
-
+        if(data.online){
 
             const online =
-                data.players?.online ?? 0;
+                data.players &&
+                typeof data.players.online === "number"
+                    ? data.players.online
+                    : 0;
 
-            const max =
-                data.players?.max ?? "?";
+
+            playerCount.textContent =
+                online + " Spieler";
 
 
-            count.textContent =
-                online +
-                " / " +
-                max +
-                " Spieler online";
+            statusDot.style.background =
+                "#36b85a";
 
-        } else {
 
-            dot.style.background =
-                "#8f1515";
+            statusDot.style.boxShadow =
+                "0 0 0 6px rgba(54,184,90,.12)";
 
-            dot.style.boxShadow =
-                "0 0 0 6px rgba(143,21,21,.12)";
+        }else{
 
-            count.textContent =
-                "Server offline";
+            playerCount.textContent =
+                "OFFLINE";
+
+
+            statusDot.style.background =
+                "#d64545";
+
+
+            statusDot.style.boxShadow =
+                "0 0 0 6px rgba(214,69,69,.12)";
 
         }
 
-    } catch (error) {
 
-        dot.style.background =
-            "#999";
+    }catch(error){
 
-        dot.style.boxShadow =
-            "none";
+        playerCount.textContent =
+            "—";
 
-        count.textContent =
-            "Status nicht verfügbar";
+
+        statusDot.style.background =
+            "#8b8f97";
+
+
+        statusDot.style.boxShadow =
+            "0 0 0 6px rgba(139,143,151,.12)";
 
     }
 
@@ -2919,10 +2903,47 @@ async function updateServerStatus() {
 
 updateServerStatus();
 
+
 setInterval(
     updateServerStatus,
     30000
 );
+
+
+/* =========================================================
+   COOKIE CLICKER
+========================================================= */
+
+let cookies = 0;
+
+
+function cookieClick(){
+
+    cookies++;
+
+
+    const button =
+        document.querySelector(
+            ".cookie-button"
+        );
+
+
+    button.style.transform =
+        "scale(1.2)";
+
+
+    setTimeout(function(){
+
+        button.style.transform =
+            "";
+
+    },100);
+
+
+    button.title =
+        cookies + " Cookies";
+
+}
 
 
 /* =========================================================
@@ -2934,43 +2955,181 @@ let liveSeconds = 60;
 let liveFinished = false;
 
 
-const liveCountdown =
+const countdown =
     document.getElementById(
         "liveCountdown"
     );
 
-const liveResult =
+
+const liveStatus =
     document.getElementById(
-        "liveResult"
+        "liveStatus"
     );
 
 
-function updateLiveCountdown() {
+const liveSection =
+    document.getElementById(
+        "live"
+    );
 
-    if (liveFinished) {
+
+function formatTime(seconds){
+
+    return (
+        String(
+            Math.floor(seconds / 60)
+        ).padStart(2,"0")
+        +
+        ":"
+        +
+        String(
+            seconds % 60
+        ).padStart(2,"0")
+    );
+
+}
+
+
+function makeConfetti(){
+
+    const sides = [
+
+        document.getElementById(
+            "confettiLeft"
+        ),
+
+        document.getElementById(
+            "confettiRight"
+        )
+
+    ];
+
+
+    sides.forEach(function(side){
+
+        for(
+            let i = 0;
+            i < 22;
+            i++
+        ){
+
+            const piece =
+                document.createElement(
+                    "span"
+                );
+
+
+            piece.className =
+                "confetti-piece";
+
+
+            piece.style.top =
+                (
+                    35 +
+                    Math.random() * 35
+                ) + "%";
+
+
+            const isLeft =
+                side.classList.contains(
+                    "left"
+                );
+
+
+            piece.style.setProperty(
+                "--x",
+                (
+                    isLeft
+                        ? 80 + Math.random() * 160
+                        : -80 - Math.random() * 160
+                ) + "px"
+            );
+
+
+            piece.style.setProperty(
+                "--y",
+                (
+                    -120 +
+                    Math.random() * 260
+                ) + "px"
+            );
+
+
+            piece.style.transform =
+                "rotate(" +
+                (
+                    Math.random() * 360
+                ) +
+                "deg)";
+
+
+            piece.style.background =
+                [
+                    "#e75a9d",
+                    "#2777d5",
+                    "#32a852",
+                    "#e88b20",
+                    "#8f1515"
+                ][i % 5];
+
+
+            side.appendChild(
+                piece
+            );
+
+        }
+
+    });
+
+}
+
+
+function tickLive(){
+
+    if(liveFinished){
+
         return;
+
     }
 
 
-    const minutes =
-        Math.floor(liveSeconds / 60)
-            .toString()
-            .padStart(2, "0");
+    countdown.textContent =
+        formatTime(liveSeconds);
 
 
-    const seconds =
-        (liveSeconds % 60)
-            .toString()
-            .padStart(2, "0");
+    if(liveSeconds <= 0){
+
+        liveFinished = true;
 
 
-    liveCountdown.textContent =
-        minutes + ":" + seconds;
+        liveStatus.textContent =
+            "LMS LIVE findet nicht statt";
 
 
-    if (liveSeconds <= 0) {
+        liveStatus.insertAdjacentHTML(
+            "afterend",
+            "<div style=\"color:#fff;font-size:13px;font-weight:900;margin-top:6px\">" +
+            "Warte auf den offiziellen Countdown." +
+            "</div>"
+        );
 
-        finishLiveCountdown();
+
+        liveSection.classList.add(
+            "celebrate"
+        );
+
+
+        makeConfetti();
+
+
+        setTimeout(function(){
+
+            liveSection.classList.remove(
+                "celebrate"
+            );
+
+        },1800);
+
 
         return;
 
@@ -2982,182 +3141,13 @@ function updateLiveCountdown() {
 }
 
 
-function finishLiveCountdown() {
+tickLive();
 
-    liveFinished = true;
-
-    liveCountdown.textContent =
-        "00:00";
-
-    liveResult.style.display =
-        "block";
-
-    createConfetti();
-
-}
-
-
-updateLiveCountdown();
 
 setInterval(
-    updateLiveCountdown,
+    tickLive,
     1000
 );
-
-
-/* =========================================================
-   KONFETTI
-========================================================= */
-
-function createConfetti() {
-
-    const container =
-        document.getElementById(
-            "confettiContainer"
-        );
-
-
-    const pieces = 120;
-
-
-    for (
-        let i = 0;
-        i < pieces;
-        i++
-    ) {
-
-        const piece =
-            document.createElement(
-                "div"
-            );
-
-
-        piece.className =
-            "confetti";
-
-
-        const fromLeft =
-            i % 2 === 0;
-
-
-        if (fromLeft) {
-
-            piece.style.left =
-                Math.random() * 15 + "%";
-
-        } else {
-
-            piece.style.left =
-                85 +
-                Math.random() * 15 +
-                "%";
-
-        }
-
-
-        piece.style.background =
-            getConfettiColor();
-
-
-        piece.style.setProperty(
-            "--x",
-            (
-                (Math.random() * 2 - 1) *
-                300
-            ) + "px"
-        );
-
-
-        piece.style.animationDuration =
-            (
-                2.5 +
-                Math.random() * 3
-            ) + "s";
-
-
-        piece.style.animationDelay =
-            (
-                Math.random() * .8
-            ) + "s";
-
-
-        container.appendChild(
-            piece
-        );
-
-
-        setTimeout(() => {
-
-            piece.remove();
-
-        }, 6000);
-
-    }
-
-}
-
-
-function getConfettiColor() {
-
-    const colors = [
-        "#8f1515",
-        "#e86b9b",
-        "#2674d9",
-        "#2e9b59",
-        "#e58a19",
-        "#ffffff"
-    ];
-
-    return colors[
-        Math.floor(
-            Math.random() *
-            colors.length
-        )
-    ];
-
-}
-
-
-/* =========================================================
-   COOKIE CLICKER
-========================================================= */
-
-let cookieScore = 0;
-
-
-function cookieClick() {
-
-    cookieScore++;
-
-
-    document.getElementById(
-        "cookieScore"
-    ).textContent =
-        cookieScore;
-
-}
-
-
-/* =========================================================
-   LINK ZUM DISCORD
-========================================================= */
-
-document
-    .querySelectorAll(
-        'a[href="https://discord.gg/N5ZYVRpMMU"]'
-    )
-    .forEach(link => {
-
-        link.addEventListener(
-            "click",
-            function() {
-
-                // Discord öffnet in neuem Tab.
-
-            }
-        );
-
-    });
 
 </script>
 
