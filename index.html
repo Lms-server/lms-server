@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,19 +13,19 @@
 ========================================================= */
 
 :root {
-    --black: #111318;
-    --black2: #181b21;
-    --text: #181a1f;
-    --muted: #747982;
-    --light: #f4f5f7;
-    --border: #e2e4e8;
-    --white: #ffffff;
-
     --owner: #8f1515;
-    --supporter: #e75a9d;
-    --admin: #2777d5;
-    --builder: #32a852;
-    --premium: #e88b20;
+    --supporter: #e86b9b;
+    --admin: #2674d9;
+    --builder: #2e9b59;
+    --premium: #e58a19;
+
+    --dark: #111318;
+    --text: #17191d;
+    --muted: #6d737c;
+    --light: #f4f5f7;
+    --border: #e3e5e8;
+
+    --shadow: 0 20px 60px rgba(0,0,0,.10);
 }
 
 * {
@@ -40,19 +39,26 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #ffffff;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background: #fff;
     color: var(--text);
     overflow-x: hidden;
 }
 
 button,
 a {
-    font-family: inherit;
+    font: inherit;
 }
 
 button {
-    border: none;
+    cursor: pointer;
 }
 
 a {
@@ -60,27 +66,24 @@ a {
     color: inherit;
 }
 
-img {
-    max-width: 100%;
-}
-
 
 /* =========================================================
-   TOP BAR
+   TOP NOTICE
 ========================================================= */
 
 .top-notice {
-    width: 100%;
-    background: #15171c;
-    color: #ffffff;
+    height: 34px;
 
-    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    text-align: center;
+    background: #111318;
+    color: rgba(255,255,255,.72);
 
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: .7px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
 }
 
 
@@ -89,35 +92,37 @@ img {
 ========================================================= */
 
 .navbar {
-    height: 82px;
+    position: sticky;
+    top: 0;
+    z-index: 900;
 
-    background: rgba(255,255,255,.98);
-
-    border-bottom: 1px solid #e8e9ec;
+    min-height: 82px;
 
     display: flex;
     align-items: center;
 
-    padding: 0 5%;
+    padding: 10px 42px;
 
-    gap: 38px;
+    background: rgba(255,255,255,.96);
+    backdrop-filter: blur(18px);
 
-    position: sticky;
-    top: 0;
-
-    z-index: 1000;
+    border-bottom: 1px solid rgba(0,0,0,.07);
 }
 
 .logo-area {
+    width: 64px;
+    height: 64px;
+
     display: flex;
     align-items: center;
+    justify-content: center;
 
     flex-shrink: 0;
 }
 
 .logo-area img {
-    width: 68px;
-    height: 68px;
+    width: 62px;
+    height: 62px;
 
     object-fit: contain;
 }
@@ -125,169 +130,70 @@ img {
 .nav-links {
     display: flex;
     align-items: center;
+    gap: 30px;
 
-    gap: 28px;
-
-    flex: 1;
+    margin-left: 38px;
 }
 
 .nav-links a {
-    color: #44474e;
+    position: relative;
+
+    color: #525861;
 
     font-size: 13px;
-    font-weight: 900;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .7px;
 
-    transition: .2s;
+    transition: .2s ease;
+}
+
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--premium);
+
+    transition: .2s ease;
 }
 
 .nav-links a:hover {
-    color: #111318;
+    color: #111;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 .server-nav-button {
-    border: none;
+    margin-left: auto;
 
-    background: var(--black);
-    color: #ffffff;
+    border: 0;
+    border-radius: 8px;
 
-    border-radius: 7px;
+    padding: 14px 20px;
 
-    padding: 13px 19px;
+    background: var(--owner);
+    color: #fff;
 
     font-size: 12px;
-    font-weight: 950;
-    letter-spacing: .7px;
+    font-weight: 900;
+    letter-spacing: .8px;
 
-    cursor: pointer;
+    box-shadow: 0 8px 22px rgba(143,21,21,.22);
 
-    box-shadow: 0 4px 0 #050609;
-
-    transition: .2s;
+    transition: .2s ease;
 }
 
 .server-nav-button:hover {
     transform: translateY(-2px);
-}
-
-
-/* =========================================================
-   RANG-BUTTONS
-========================================================= */
-
-.rank-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 2px solid transparent;
-    border-radius: 7px;
-
-    padding: 12px 18px;
-
-    font-size: 11px;
-    font-weight: 950;
-
-    letter-spacing: .8px;
-
-    cursor: pointer;
-
-    transition:
-        transform .18s,
-        box-shadow .18s,
-        filter .18s;
-}
-
-.rank-button:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.05);
-}
-
-.rank-button:active {
-    transform: translateY(2px);
-}
-
-
-/* OWNER */
-
-.rank-button.owner {
-    background: var(--owner);
-    color: #ffffff;
-
-    border-color: #b92c2c;
-
-    box-shadow: 0 4px 0 #5d0b0b;
-}
-
-
-/* SUPPORTER */
-
-.rank-button.supporter {
-    background: var(--supporter);
-    color: #ffffff;
-
-    border-color: #f488ba;
-
-    box-shadow: 0 4px 0 #a9376e;
-}
-
-
-/* ADMIN */
-
-.rank-button.admin {
-    background: var(--admin);
-    color: #ffffff;
-
-    border-color: #5d9ce7;
-
-    box-shadow: 0 4px 0 #174b89;
-}
-
-
-/* BUILDER */
-
-.rank-button.builder {
-    background: var(--builder);
-    color: #ffffff;
-
-    border-color: #64ca7d;
-
-    box-shadow: 0 4px 0 #216f37;
-}
-
-
-/* PREMIUM */
-
-.rank-button.premium {
-    background: var(--premium);
-    color: #ffffff;
-
-    border-color: #f4ad50;
-
-    box-shadow: 0 4px 0 #99590e;
-}
-
-
-/* DARK */
-
-.rank-button.dark {
-    background: #181b21;
-    color: #ffffff;
-
-    border-color: #373b44;
-
-    box-shadow: 0 4px 0 #07080a;
-}
-
-
-/* LIGHT */
-
-.rank-button.light {
-    background: #ffffff;
-    color: #181a1f;
-
-    border-color: #d9dce1;
-
-    box-shadow: 0 4px 0 #c2c5ca;
+    filter: brightness(1.08);
 }
 
 
@@ -296,509 +202,567 @@ img {
 ========================================================= */
 
 .hero {
-    min-height: 590px;
+    position: relative;
 
-    background:
-        linear-gradient(
-            90deg,
-            rgba(0,0,0,.74),
-            rgba(0,0,0,.40),
-            rgba(0,0,0,.08)
-        ),
-        url("images.jpg") center center / cover no-repeat;
+    min-height: 650px;
 
     display: flex;
     align-items: center;
 
-    padding: 90px 7%;
+    padding: 100px 8%;
 
-    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 85% 35%, rgba(229,138,25,.13), transparent 30%),
+        radial-gradient(circle at 20% 80%, rgba(38,116,217,.08), transparent 28%),
+        #fff;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    right: -150px;
+    bottom: -180px;
+
+    width: 520px;
+    height: 520px;
+
+    border-radius: 50%;
+
+    background: rgba(229,138,25,.055);
 }
 
 .hero-content {
-    max-width: 680px;
+    position: relative;
+    z-index: 2;
 
-    color: #ffffff;
+    max-width: 760px;
 }
 
-.hero-label {
+.hero-label,
+.section-label {
+    color: var(--premium);
+
     font-size: 12px;
-    font-weight: 950;
+    font-weight: 900;
 
-    letter-spacing: 2.5px;
-
-    margin-bottom: 18px;
-
-    opacity: .9;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .hero h1 {
-    font-size: clamp(48px, 7vw, 82px);
+    margin-top: 15px;
 
-    line-height: .95;
+    font-size: clamp(58px, 7vw, 105px);
+    line-height: .91;
+
+    letter-spacing: -5px;
 
     font-weight: 950;
-
-    margin-bottom: 25px;
 }
 
 .hero p {
-    max-width: 600px;
+    max-width: 650px;
 
-    font-size: 17px;
+    margin-top: 30px;
 
-    line-height: 1.65;
+    color: var(--muted);
 
-    color: rgba(255,255,255,.88);
-
-    margin-bottom: 30px;
+    font-size: 18px;
+    line-height: 1.7;
 }
 
 .hero-buttons {
     display: flex;
     gap: 12px;
 
-    flex-wrap: wrap;
+    margin-top: 36px;
 }
 
 
 /* =========================================================
-   SEKTIONEN
+   RANK BUTTONS
+========================================================= */
+
+.rank-button {
+    border: 0;
+    border-radius: 7px;
+
+    padding: 14px 21px;
+
+    color: #fff;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    transition:
+        transform .2s ease,
+        filter .2s ease,
+        box-shadow .2s ease;
+}
+
+.rank-button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+
+.rank-button.owner {
+    background: var(--owner);
+}
+
+.rank-button.supporter {
+    background: var(--supporter);
+}
+
+.rank-button.admin {
+    background: var(--admin);
+}
+
+.rank-button.builder {
+    background: var(--builder);
+}
+
+.rank-button.premium {
+    background: var(--premium);
+}
+
+.rank-button.dark {
+    background: #17191d;
+}
+
+.rank-button.light {
+    background: #e8eaed;
+    color: #202328;
+}
+
+
+/* =========================================================
+   ALLGEMEINE SECTIONS
 ========================================================= */
 
 .section {
-    padding: 100px 6%;
-
-    position: relative;
+    padding: 105px 8%;
 }
 
 .section-header {
-    max-width: 760px;
-
-    margin-bottom: 48px;
-}
-
-.section-label {
-    font-size: 11px;
-    font-weight: 950;
-
-    letter-spacing: 2px;
-
-    color: #7d8189;
-
-    margin-bottom: 13px;
+    max-width: 780px;
+    margin-bottom: 50px;
 }
 
 .section h2 {
-    font-size: clamp(34px, 5vw, 52px);
+    margin-top: 12px;
 
+    font-size: clamp(40px, 5vw, 68px);
     line-height: 1;
 
-    margin-bottom: 18px;
+    letter-spacing: -3px;
+
+    font-weight: 950;
 }
 
 .section-description {
+    margin-top: 20px;
+
     color: var(--muted);
 
-    font-size: 16px;
-
+    font-size: 17px;
     line-height: 1.7;
 }
 
 
 /* =========================================================
-   SPIELE
+   BLOG / NEWS
 ========================================================= */
 
-.games-section {
-    background: #ffffff;
+.news-section {
+    background: #f5f6f8;
 }
 
-.games-grid {
+.news-grid {
     display: grid;
 
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr);
 
-    gap: 22px;
+    gap: 24px;
 }
 
-.game-card {
-    min-height: 310px;
+.news-main {
+    min-height: 430px;
 
-    border-radius: 12px;
-
-    padding: 30px;
-
-    color: #ffffff;
-
-    position: relative;
-
-    overflow: hidden;
+    padding: 44px;
 
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 
-    transition: .25s;
-}
-
-.game-card::after {
-    content: "";
-
-    position: absolute;
-    inset: 0;
+    border-radius: 16px;
 
     background:
         linear-gradient(
-            to top,
-            rgba(0,0,0,.48),
-            transparent 65%
-        );
+            180deg,
+            rgba(17,19,24,.04),
+            rgba(17,19,24,.92)
+        ),
+        linear-gradient(135deg, #dfe2e7, #fff);
 
-    pointer-events: none;
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
 }
 
-.game-card > * {
-    position: relative;
-    z-index: 2;
-}
+.news-tag {
+    align-self: flex-start;
 
-.game-card:hover {
-    transform: translateY(-5px);
+    margin-bottom: auto;
 
-    box-shadow:
-        0 20px 45px rgba(0,0,0,.17);
-}
-
-.game-card:nth-child(1) {
-    background:
-        linear-gradient(135deg,#111d31,#294361);
-}
-
-.game-card:nth-child(2) {
-    background:
-        linear-gradient(135deg,#32141d,#72303f);
-}
-
-.game-card:nth-child(3) {
-    background:
-        linear-gradient(135deg,#15291c,#397149);
-}
-
-.game-card:nth-child(4) {
-    background:
-        linear-gradient(135deg,#251a35,#60407e);
-}
-
-.game-card:nth-child(5) {
-    background:
-        linear-gradient(135deg,#142a31,#277180);
-}
-
-.game-card:nth-child(6) {
-    background:
-        linear-gradient(135deg,#302617,#796129);
-}
-
-.game-type {
-    position: absolute;
-
-    top: 21px;
-    left: 21px;
-
-    padding: 7px 10px;
+    padding: 8px 11px;
 
     border-radius: 5px;
 
-    background: rgba(255,255,255,.12);
+    background: var(--owner);
+    color: #fff;
 
-    border: 1px solid rgba(255,255,255,.18);
-
-    font-size: 9px;
-    font-weight: 950;
-
+    font-size: 10px;
+    font-weight: 900;
     letter-spacing: 1px;
 }
 
-.game-card h3 {
-    font-size: 28px;
+.news-main h3 {
+    color: #fff;
 
-    margin-bottom: 9px;
+    font-size: clamp(34px, 4vw, 56px);
+    line-height: 1;
+
+    letter-spacing: -2px;
 }
 
-.game-card p {
-    color: rgba(255,255,255,.75);
+.news-main p {
+    max-width: 700px;
 
-    font-size: 14px;
+    margin-top: 15px;
 
-    line-height: 1.55;
+    color: rgba(255,255,255,.76);
 
-    margin-bottom: 20px;
+    font-size: 15px;
+    line-height: 1.65;
 }
 
-.game-actions {
-    display: flex;
+.news-date {
+    margin-top: 20px;
 
-    gap: 10px;
+    color: rgba(255,255,255,.5);
 
-    flex-wrap: wrap;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-
-/* =========================================================
-   BLOG
-========================================================= */
-
-.blog-section {
-    background: #f5f6f8;
-}
-
-.blog-grid {
+.news-side {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-    gap: 22px;
+    gap: 24px;
 }
 
-.blog-card {
-    background: #ffffff;
+.news-card {
+    padding: 30px;
 
-    border: 1px solid #e4e6e9;
+    border-radius: 14px;
 
-    border-radius: 10px;
+    background: #fff;
 
-    padding: 29px;
+    border: 1px solid var(--border);
 
-    transition: .2s;
+    box-shadow: 0 12px 35px rgba(0,0,0,.05);
 }
 
-.blog-card:hover {
-    transform: translateY(-4px);
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.08);
-}
-
-.blog-date {
-    color: #8b8f97;
+.news-card span {
+    color: var(--premium);
 
     font-size: 10px;
-    font-weight: 950;
-
-    letter-spacing: 1.2px;
-
-    margin-bottom: 14px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
 }
 
-.blog-card h3 {
-    font-size: 22px;
+.news-card h3 {
+    margin-top: 12px;
 
-    margin-bottom: 12px;
+    font-size: 26px;
+    letter-spacing: -1px;
 }
 
-.blog-card p {
-    color: #747880;
+.news-card p {
+    margin-top: 12px;
 
-    font-size: 14px;
+    color: var(--muted);
 
     line-height: 1.6;
-
-    margin-bottom: 20px;
+    font-size: 14px;
 }
 
 
 /* =========================================================
    LMS LIVE
-   hq720.jpg wird NUR HIER verwendet.
 ========================================================= */
 
 .live-section {
+    position: relative;
+
+    padding: 105px 8%;
+
     background: #111318;
+    color: #fff;
 
-    color: #ffffff;
-
-    padding: 105px 6%;
+    overflow: hidden;
 }
 
 .live-grid {
+    position: relative;
+    z-index: 2;
+
+    max-width: 1350px;
+    margin: auto;
+
     display: grid;
 
-    grid-template-columns:
-        1.05fr 1.4fr;
+    grid-template-columns: .8fr 1.2fr;
 
     gap: 55px;
 
     align-items: center;
 }
 
-.live-text {
-    max-width: 520px;
+.live-text h2 {
+    margin-top: 12px;
+
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: .95;
+
+    letter-spacing: -4px;
 }
 
-.live-section .section-label {
-    color: #9297a0;
-}
-
-.live-section h2 {
-    margin-bottom: 20px;
-}
-
-.live-section .section-description {
-    color: #aeb2ba;
-
-    margin-bottom: 27px;
+.live-text .section-description {
+    color: rgba(255,255,255,.6);
 }
 
 .live-badge {
     display: inline-flex;
-
     align-items: center;
-
     gap: 9px;
 
-    padding: 7px 11px;
+    margin-top: 20px;
+
+    padding: 8px 11px;
 
     border-radius: 5px;
 
     background: rgba(255,255,255,.08);
 
-    border: 1px solid rgba(255,255,255,.13);
-
-    font-size: 10px;
-
-    font-weight: 950;
-
+    font-size: 11px;
+    font-weight: 900;
     letter-spacing: 1px;
-
-    margin-bottom: 18px;
 }
 
 .live-dot {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
 
     border-radius: 50%;
 
-    background: #e04545;
+    background: #e33;
 
-    box-shadow:
-        0 0 0 5px rgba(224,69,69,.12);
+    box-shadow: 0 0 0 5px rgba(227,51,51,.12);
 }
 
 .live-image-box {
-    background: #050609;
+    min-height: 390px;
 
-    border-radius: 13px;
+    border-radius: 15px;
 
     overflow: hidden;
 
-    border: 1px solid #30333a;
+    background: #1c1f25;
 
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.35);
+    box-shadow: 0 30px 80px rgba(0,0,0,.3);
 }
 
 .live-image-box img {
     width: 100%;
+    height: 100%;
+
+    min-height: 390px;
 
     display: block;
-
-    aspect-ratio: 16 / 9;
 
     object-fit: cover;
 }
 
 
 /* =========================================================
-   COMMUNITY
+   LIVE COUNTDOWN
 ========================================================= */
 
-.community-section {
-    background: #15171c;
+.live-countdown-box {
+    margin-top: 32px;
 
-    color: #ffffff;
+    max-width: 430px;
 
-    overflow: hidden;
+    padding: 24px;
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,.065);
+    border: 1px solid rgba(255,255,255,.1);
 }
 
-.community-grid {
-    display: grid;
+.live-countdown-label {
+    color: rgba(255,255,255,.55);
 
-    grid-template-columns:
-        1.35fr 1fr;
+    font-size: 10px;
+    font-weight: 900;
 
-    gap: 60px;
-
-    align-items: center;
+    letter-spacing: 1.5px;
 }
 
-.community-section .section-label {
-    color: #8d929c;
+.live-countdown {
+    margin-top: 5px;
+
+    font-size: 62px;
+    line-height: 1;
+
+    font-weight: 950;
+    letter-spacing: -3px;
 }
 
-.community-section p {
-    color: #aeb2ba;
+.live-result {
+    display: none;
 
-    line-height: 1.7;
-
-    margin-bottom: 25px;
+    margin-top: 10px;
 }
 
-.community-box {
-    background: #20232a;
+.live-result strong {
+    display: block;
 
-    border: 1px solid #353941;
-
-    border-radius: 11px;
-
-    padding: 35px;
-}
-
-.community-box h3 {
     font-size: 25px;
+    line-height: 1.1;
+}
 
-    margin-bottom: 12px;
+.live-result span {
+    display: block;
+
+    margin-top: 8px;
+
+    color: rgba(255,255,255,.58);
+
+    font-size: 14px;
 }
 
 
 /* =========================================================
-   MINECRAFT BG DECORATION
-   minecraft-bg2.webp wird NUR HIER verwendet.
-   Das Bild ragt bewusst rechts aus dem Layout.
+   DISCORD
 ========================================================= */
 
-.minecraft-decoration {
-    height: 250px;
-
+.discord-section {
     position: relative;
 
-    background: #ffffff;
+    min-height: 520px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 90px 8%;
 
     overflow: hidden;
 
-    border-top: 1px solid #eef0f2;
-    border-bottom: 1px solid #eef0f2;
+    background: #15171c;
 }
 
-.minecraft-decoration-content {
-    width: 88%;
+.discord-image {
+    position: absolute;
+    inset: 0;
 
-    margin: 0 auto;
-
+    width: 100%;
     height: 100%;
 
-    display: flex;
+    object-fit: cover;
 
-    align-items: center;
+    opacity: .38;
+}
+
+.discord-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(8,10,14,.97) 0%,
+            rgba(8,10,14,.82) 38%,
+            rgba(8,10,14,.35) 75%,
+            rgba(8,10,14,.65) 100%
+        );
+}
+
+.discord-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 700px;
+}
+
+.discord-content h2 {
+    margin-top: 12px;
+
+    color: #fff;
+
+    font-size: clamp(48px, 6vw, 78px);
+    line-height: .95;
+
+    letter-spacing: -4px;
+}
+
+.discord-content p {
+    margin-top: 22px;
+
+    color: rgba(255,255,255,.68);
+
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.discord-content .rank-button {
+    margin-top: 30px;
+}
+
+
+/* =========================================================
+   MINECRAFT DEKO
+========================================================= */
+
+.minecraft-decoration {
+    position: relative;
+
+    height: 250px;
+
+    overflow: hidden;
+
+    background: #fff;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
 .minecraft-decoration-text {
-    max-width: 420px;
+    position: absolute;
 
-    position: relative;
+    left: 8%;
+    top: 50%;
+
+    transform: translateY(-50%);
 
     z-index: 2;
 }
@@ -806,44 +770,37 @@ img {
 .minecraft-decoration-text span {
     display: block;
 
-    color: #8b8f97;
+    color: var(--premium);
 
     font-size: 10px;
-
-    font-weight: 950;
-
+    font-weight: 900;
     letter-spacing: 2px;
-
-    margin-bottom: 8px;
 }
 
 .minecraft-decoration-text strong {
-    font-size: 25px;
+    display: block;
 
-    line-height: 1.15;
+    margin-top: 8px;
+
+    font-size: 28px;
+    line-height: 1.05;
 }
 
 .minecraft-decoration img {
     position: absolute;
 
-    right: -125px;
+    right: -110px;
+    bottom: -115px;
 
-    bottom: -100px;
+    width: min(620px, 50vw);
 
-    width: min(570px, 48vw);
+    max-height: 450px;
 
-    max-width: none;
+    object-fit: contain;
 
-    height: auto;
+    object-position: center;
 
     pointer-events: none;
-
-    user-select: none;
-
-    z-index: 1;
-
-    filter:
-        drop-shadow(0 20px 25px rgba(0,0,0,.10));
 }
 
 
@@ -854,61 +811,61 @@ img {
 .team-grid {
     display: grid;
 
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
 
-    gap: 20px;
+    gap: 15px;
 }
 
 .team-card {
-    background: #ffffff;
-
-    border: 1px solid var(--border);
-
-    border-radius: 10px;
-
-    padding: 30px;
+    padding: 30px 15px;
 
     text-align: center;
 
-    transition: .2s;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+
+    background: #fff;
+
+    transition: .2s ease;
 }
 
 .team-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
 
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.07);
+    box-shadow: 0 15px 35px rgba(0,0,0,.07);
 }
 
 .team-card img {
-    width: 92px;
-    height: 92px;
+    width: 105px;
+    height: 105px;
+
+    display: block;
+
+    margin: 0 auto 18px;
 
     image-rendering: pixelated;
-
-    margin-bottom: 17px;
 }
 
 .team-name {
-    font-size: 18px;
-    font-weight: 950;
+    font-size: 14px;
+    font-weight: 900;
 
-    margin-bottom: 10px;
+    word-break: break-word;
 }
 
 .rank {
     display: inline-block;
 
-    padding: 6px 10px;
+    margin-top: 9px;
 
-    border-radius: 5px;
+    padding: 5px 8px;
 
-    color: #ffffff;
+    border-radius: 4px;
+
+    color: #fff;
 
     font-size: 9px;
-    font-weight: 950;
-
+    font-weight: 900;
     letter-spacing: 1px;
 }
 
@@ -942,68 +899,58 @@ img {
 }
 
 .status-box {
-    background: #ffffff;
+    max-width: 1000px;
 
-    border: 1px solid #e2e4e8;
+    margin: auto;
 
-    border-radius: 12px;
-
-    padding: 34px;
+    padding: 25px 30px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
-    gap: 30px;
+    gap: 20px;
 
-    transition: .2s;
-}
+    border-radius: 13px;
 
-.status-box:hover {
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.06);
+    background: #fff;
+
+    border: 1px solid var(--border);
+
+    box-shadow: 0 12px 35px rgba(0,0,0,.05);
 }
 
 .status-left {
     display: flex;
-
     align-items: center;
-
-    gap: 18px;
+    gap: 15px;
 }
 
 .status-dot {
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 13px;
 
     border-radius: 50%;
 
-    background: #36b85a;
-
-    box-shadow:
-        0 0 0 6px rgba(54,184,90,.12);
+    background: #aaa;
 }
 
 .status-title {
-    font-size: 19px;
-
-    font-weight: 950;
+    font-weight: 900;
 }
 
 .status-subtitle {
-    color: #858990;
-
-    font-size: 13px;
-
     margin-top: 4px;
+
+    color: var(--muted);
+
+    font-size: 12px;
 }
 
 .player-count {
-    font-size: 29px;
+    font-weight: 900;
 
-    font-weight: 950;
+    color: #555;
 }
 
 
@@ -1014,48 +961,77 @@ img {
 .contact-grid {
     display: grid;
 
-    grid-template-columns:
-        1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 
-    gap: 60px;
+    gap: 70px;
+
+    align-items: center;
+}
+
+.contact-text h2 {
+    margin-top: 12px;
+
+    font-size: clamp(45px, 5vw, 68px);
+    line-height: 1;
+
+    letter-spacing: -3px;
 }
 
 .contact-text p {
+    margin-top: 20px;
+
+    max-width: 560px;
+
     color: var(--muted);
 
     line-height: 1.7;
+}
 
-    margin-bottom: 25px;
+.contact-text .rank-button {
+    display: inline-block;
+
+    margin-top: 28px;
 }
 
 .contact-box {
+    padding: 35px;
+
+    border-radius: 14px;
+
     background: #f5f6f8;
 
-    border-radius: 10px;
-
-    padding: 30px;
+    border: 1px solid var(--border);
 }
 
 .contact-item {
-    padding: 17px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
 
-    border-bottom: 1px solid #dddfe3;
+    padding: 20px 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.contact-item:first-child {
+    padding-top: 0;
 }
 
 .contact-item:last-child {
-    border-bottom: none;
+    padding-bottom: 0;
+    border-bottom: 0;
 }
 
 .contact-item strong {
-    display: block;
-
-    margin-bottom: 5px;
+    font-size: 13px;
 }
 
 .contact-item span {
-    color: #777b82;
+    color: var(--muted);
 
-    font-size: 14px;
+    font-size: 13px;
+
+    text-align: right;
 }
 
 
@@ -1064,433 +1040,409 @@ img {
 ========================================================= */
 
 footer {
-    background: #0f1115;
+    padding: 70px 8% 30px;
 
-    color: #ffffff;
+    background: #111318;
 
-    padding: 55px 6% 30px;
+    color: #fff;
 }
 
 .footer-grid {
     display: grid;
 
-    grid-template-columns:
-        2fr 1fr 1fr;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
 
     gap: 50px;
 
-    padding-bottom: 45px;
-}
-
-.footer-brand {
-    max-width: 400px;
+    padding-bottom: 50px;
 }
 
 .footer-brand img {
-    width: 65px;
+    width: 70px;
+    height: 70px;
 
-    margin-bottom: 15px;
+    object-fit: contain;
 }
 
 .footer-brand p {
-    color: #8d929b;
+    max-width: 330px;
 
-    line-height: 1.6;
+    margin-top: 15px;
 
-    font-size: 14px;
+    color: rgba(255,255,255,.5);
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 11px;
 }
 
 .footer-column h4 {
-    font-size: 12px;
+    margin-bottom: 8px;
 
-    letter-spacing: 1px;
+    color: #fff;
 
-    margin-bottom: 17px;
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
 }
 
 .footer-column a {
-    display: block;
+    color: rgba(255,255,255,.5);
 
-    color: #8d929b;
+    font-size: 13px;
 
-    font-size: 14px;
-
-    margin-bottom: 11px;
-
-    transition: .2s;
+    transition: .2s ease;
 }
 
 .footer-column a:hover {
-    color: #ffffff;
+    color: #fff;
 }
 
 .footer-bottom {
-    border-top: 1px solid #24272e;
-
     padding-top: 25px;
 
     display: flex;
-
     justify-content: space-between;
+    gap: 20px;
 
-    color: #666b74;
+    border-top: 1px solid rgba(255,255,255,.08);
 
-    font-size: 12px;
+    color: rgba(255,255,255,.35);
+
+    font-size: 11px;
 }
 
 
 /* =========================================================
-   VERBINDUNGS-MODAL
+   CONNECTION MODAL
 ========================================================= */
 
 .connection-modal {
     position: fixed;
-
     inset: 0;
-
-    background: rgba(8,9,12,.80);
+    z-index: 2000;
 
     display: none;
+
+    padding: 25px;
 
     align-items: center;
     justify-content: center;
 
-    padding: 30px;
+    background: rgba(0,0,0,.72);
 
-    z-index: 3000;
+    backdrop-filter: blur(7px);
 }
 
-.connection-modal.active {
+.connection-modal.open {
     display: flex;
 }
 
 .connection-window {
-    width: min(1180px, 100%);
-
-    max-height: 90vh;
-
-    background: #ffffff;
-
-    border-radius: 13px;
-
-    overflow: hidden;
-
     position: relative;
+
+    width: min(1250px, 100%);
+
+    max-height: 92vh;
 
     display: grid;
 
-    grid-template-columns:
-        1.12fr 1fr;
+    grid-template-columns: 1.15fr .85fr;
 
-    box-shadow:
-        0 40px 100px rgba(0,0,0,.45);
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    background: #fff;
+
+    box-shadow: 0 40px 100px rgba(0,0,0,.35);
 }
 
+.connection-close {
+    position: absolute;
 
-/* =========================================================
-   MODAL BILD
-========================================================= */
+    right: 18px;
+    top: 15px;
+
+    z-index: 5;
+
+    width: 40px;
+    height: 40px;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: rgba(0,0,0,.07);
+
+    color: #222;
+
+    font-size: 25px;
+    line-height: 40px;
+
+    transition: .2s ease;
+}
+
+.connection-close:hover {
+    background: rgba(0,0,0,.13);
+}
 
 .connection-image {
-    min-height: 650px;
-
-    background: #111318;
+    min-height: 690px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    overflow: hidden;
+    padding: 25px;
+
+    background: #17191d;
 }
 
 .connection-image img {
     width: 100%;
     height: 100%;
 
-    object-fit: contain;
+    max-height: 640px;
 
     display: block;
+
+    object-fit: contain;
 }
 
-
-/* =========================================================
-   MODAL RECHTS
-========================================================= */
-
 .connection-content {
-    padding: 52px 45px;
+    padding: 60px 45px;
 
     overflow-y: auto;
 }
 
-.connection-content h2 {
-    font-size: 38px;
+.connection-label {
+    color: var(--premium);
 
-    line-height: 1.05;
+    font-size: 10px;
+    font-weight: 900;
 
-    margin-bottom: 14px;
+    letter-spacing: 2px;
 }
 
-.connection-subtitle {
-    color: #777b82;
+.connection-content h2 {
+    margin-top: 10px;
+
+    font-size: 43px;
+    line-height: .98;
+
+    letter-spacing: -2px;
+}
+
+.connection-content > p {
+    margin-top: 15px;
+
+    color: var(--muted);
 
     font-size: 14px;
-
     line-height: 1.6;
-
-    margin-bottom: 24px;
 }
 
-
-/* =========================================================
-   IP BUTTON
-========================================================= */
-
-.copy-button {
+.copy-address {
     width: 100%;
 
-    padding: 14px;
+    margin-top: 23px;
 
+    padding: 15px;
+
+    border: 0;
     border-radius: 7px;
 
-    border: 2px solid #f4ad50;
-
     background: var(--premium);
-
-    color: #ffffff;
-
-    box-shadow: 0 4px 0 #99590e;
+    color: #fff;
 
     font-size: 11px;
-
-    font-weight: 950;
+    font-weight: 900;
 
     letter-spacing: 1px;
 
-    cursor: pointer;
-
-    margin-bottom: 27px;
-
-    transition: .18s;
+    transition: .2s ease;
 }
 
-.copy-button:hover {
-    transform: translateY(-2px);
+.copy-address:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
 }
 
-.copy-button.copied {
-    background: var(--builder);
+.connection-ip {
+    margin-top: 12px;
 
-    border-color: #67d180;
-
-    box-shadow: 0 4px 0 #216f37;
-}
-
-
-/* =========================================================
-   DIE 3 KLICKBARREN SCHRITTE
-========================================================= */
-
-.connection-steps {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 11px;
-}
-
-.connection-step {
-    width: 100%;
-
-    border: 1px solid #e3e5e9;
-
-    background: #f5f6f8;
-
-    border-radius: 9px;
-
-    padding: 16px;
-
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 14px;
-
-    text-align: left;
-
-    cursor: pointer;
-
-    transition:
-        background .18s,
-        border-color .18s,
-        transform .18s,
-        box-shadow .18s;
-}
-
-.connection-step:hover {
-    background: #eceef1;
-
-    transform: translateX(3px);
-}
-
-.connection-step.active {
-    background: #fff5e8;
-
-    border-color: #e88b20;
-
-    box-shadow:
-        inset 4px 0 0 #e88b20;
-}
-
-.step-number {
-    width: 36px;
-    height: 36px;
-
-    flex-shrink: 0;
+    padding: 12px;
 
     border-radius: 6px;
 
-    display: flex;
+    background: #f1f2f4;
 
-    align-items: center;
-    justify-content: center;
+    color: #4d5259;
 
-    background: #191b20;
-
-    color: #ffffff;
-
-    font-size: 13px;
-
-    font-weight: 950;
-}
-
-.connection-step.active .step-number {
-    background: var(--premium);
-}
-
-.step-text {
-    min-width: 0;
-}
-
-.step-text h4 {
-    color: #181a1f;
-
-    font-size: 14px;
-
-    margin-bottom: 5px;
-}
-
-.step-text p {
-    color: #777b82;
+    font-family: monospace;
 
     font-size: 12px;
 
+    text-align: center;
+}
+
+.connection-steps {
+    display: grid;
+
+    gap: 12px;
+
+    margin-top: 27px;
+}
+
+.connection-step {
+    display: grid;
+
+    grid-template-columns: 42px 1fr;
+
+    gap: 13px;
+
+    padding: 17px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    background: #fff;
+
+    text-align: left;
+
+    transition: .2s ease;
+}
+
+.connection-step:hover,
+.connection-step.active {
+    border-color: rgba(229,138,25,.45);
+
+    box-shadow: 0 8px 25px rgba(0,0,0,.06);
+
+    transform: translateX(2px);
+}
+
+.connection-number {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
+
+    background: #17191d;
+    color: #fff;
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.connection-step h3 {
+    font-size: 14px;
+}
+
+.connection-step p {
+    margin-top: 5px;
+
+    color: var(--muted);
+
+    font-size: 12px;
     line-height: 1.5;
 }
 
-.step-text code {
-    display: inline-block;
-
-    background: #e5e7eb;
-
-    color: #181a1f;
-
-    border-radius: 4px;
-
-    padding: 3px 6px;
-
-    font-size: 10px;
-}
-
-
-/* =========================================================
-   FERTIG
-========================================================= */
-
 .connection-finished {
-    text-align: center;
+    margin-top: 20px;
 
-    font-size: 14px;
+    color: #888;
 
-    font-weight: 950;
-
-    margin-top: 23px;
+    font-size: 12px;
 }
 
 
 /* =========================================================
-   SCHLIESSEN
+   KONFETTI
 ========================================================= */
 
-.close-connection {
+.confetti-container {
+    position: fixed;
+    inset: 0;
+
+    z-index: 5000;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+.confetti {
     position: absolute;
 
-    top: 14px;
-    right: 14px;
+    top: -30px;
 
-    width: 39px;
-    height: 39px;
+    width: 10px;
+    height: 17px;
 
-    border: none;
-
-    border-radius: 7px;
-
-    background: rgba(0,0,0,.08);
-
-    color: #22252b;
-
-    font-size: 25px;
-
-    line-height: 1;
-
-    cursor: pointer;
-
-    z-index: 10;
-
-    transition: .18s;
+    animation: confettiFall linear forwards;
 }
 
-.close-connection:hover {
-    background: rgba(0,0,0,.15);
+@keyframes confettiFall {
+    from {
+        transform:
+            translate3d(0, -30px, 0)
+            rotate(0deg);
+    }
 
-    transform: scale(1.05);
+    to {
+        transform:
+            translate3d(var(--x), 110vh, 0)
+            rotate(720deg);
+    }
 }
 
 
 /* =========================================================
-   COOKIE
+   COOKIE CLICKER
 ========================================================= */
 
-.cookie-button {
+.cookie-clicker {
     position: fixed;
 
     right: 20px;
     bottom: 20px;
 
-    width: 58px;
-    height: 58px;
-
-    border-radius: 50%;
-
-    border: 2px solid #d9dadd;
-
-    background: #ffffff;
-
-    cursor: pointer;
-
-    font-size: 27px;
-
     z-index: 1200;
 
-    box-shadow:
-        0 7px 25px rgba(0,0,0,.14);
+    padding: 13px 16px;
 
-    transition: .2s;
+    border-radius: 10px;
+
+    background: #17191d;
+    color: #fff;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    box-shadow: 0 12px 35px rgba(0,0,0,.2);
+
+    font-size: 12px;
+    font-weight: 900;
+
+    cursor: pointer;
 }
 
-.cookie-button:hover {
-    transform: scale(1.08);
+.cookie-score {
+    margin-left: 7px;
+
+    color: var(--premium);
 }
 
 
@@ -1498,71 +1450,51 @@ footer {
    RESPONSIVE
 ========================================================= */
 
-@media (max-width: 1050px) {
+@media (max-width: 1100px) {
 
     .navbar {
-        gap: 20px;
+        padding-left: 25px;
+        padding-right: 25px;
     }
 
     .nav-links {
-        gap: 16px;
-    }
-
-    .games-grid,
-    .blog-grid {
-        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+        margin-left: 25px;
     }
 
     .team-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
-    .live-grid {
+    .news-grid {
         grid-template-columns: 1fr;
-    }
-
-    .live-text {
-        max-width: 700px;
     }
 
     .connection-window {
         grid-template-columns: 1fr;
-
-        max-height: 94vh;
-
-        overflow-y: auto;
     }
 
     .connection-image {
-        min-height: 360px;
-
-        max-height: 420px;
+        min-height: 390px;
     }
 
-    .connection-content {
-        padding: 35px;
-    }
-
-    .minecraft-decoration img {
-        right: -160px;
-
-        width: 560px;
+    .connection-image img {
+        max-height: 350px;
     }
 }
 
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
 
     .navbar {
-        height: auto;
-
         min-height: 72px;
 
-        padding: 8px 18px;
-
         flex-wrap: wrap;
+
+        padding: 8px 18px;
     }
 
+    .logo-area,
     .logo-area img {
         width: 55px;
         height: 55px;
@@ -1573,9 +1505,17 @@ footer {
 
         width: 100%;
 
+        margin-left: 0;
+
         overflow-x: auto;
 
-        padding: 7px 0;
+        padding: 9px 0 4px;
+
+        scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
     }
 
     .server-nav-button {
@@ -1583,29 +1523,102 @@ footer {
     }
 
     .hero {
-        padding: 70px 24px;
+        min-height: 580px;
+
+        padding: 75px 22px;
+    }
+
+    .hero h1 {
+        font-size: 62px;
+        letter-spacing: -3px;
     }
 
     .section {
-        padding: 70px 22px;
-    }
-
-    .games-grid,
-    .blog-grid,
-    .team-grid,
-    .contact-grid,
-    .community-grid {
-        grid-template-columns: 1fr;
+        padding: 75px 22px;
     }
 
     .live-section {
         padding: 75px 22px;
     }
 
-    .status-box {
-        flex-direction: column;
+    .live-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
 
-        align-items: flex-start;
+    .live-image-box {
+        min-height: 300px;
+    }
+
+    .live-image-box img {
+        min-height: 300px;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .minecraft-decoration {
+        height: 200px;
+    }
+
+    .minecraft-decoration img {
+        width: 450px;
+        right: -190px;
+        bottom: -90px;
+    }
+
+    .minecraft-decoration-text {
+        left: 22px;
+    }
+
+    .discord-section {
+        min-height: 480px;
+
+        padding: 75px 22px;
+    }
+}
+
+
+@media (max-width: 520px) {
+
+    .top-notice {
+        font-size: 9px;
+    }
+
+    .server-nav-button {
+        padding: 11px 13px;
+        font-size: 10px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-buttons .rank-button {
+        width: 100%;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .news-main {
+        min-height: 390px;
+        padding: 28px;
+    }
+
+    .live-countdown {
+        font-size: 51px;
     }
 
     .footer-grid {
@@ -1614,62 +1627,6 @@ footer {
 
     .footer-bottom {
         flex-direction: column;
-
-        gap: 10px;
-    }
-
-    .minecraft-decoration {
-        height: 190px;
-    }
-
-    .minecraft-decoration-text {
-        width: 50%;
-    }
-
-    .minecraft-decoration-text strong {
-        font-size: 19px;
-    }
-
-    .minecraft-decoration img {
-        width: 430px;
-
-        right: -190px;
-
-        bottom: -65px;
-    }
-
-    .connection-modal {
-        padding: 10px;
-    }
-
-    .connection-image {
-        min-height: 270px;
-    }
-
-    .connection-content {
-        padding: 30px 22px;
-    }
-
-    .connection-content h2 {
-        font-size: 31px;
-    }
-}
-
-
-@media (max-width: 450px) {
-
-    .hero h1 {
-        font-size: 46px;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-
-        align-items: stretch;
-    }
-
-    .hero-buttons .rank-button {
-        width: 100%;
     }
 
     .minecraft-decoration-text {
@@ -1677,15 +1634,53 @@ footer {
     }
 
     .minecraft-decoration-text strong {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .minecraft-decoration img {
         width: 350px;
+        right: -155px;
+        bottom: -55px;
+    }
 
-        right: -165px;
+    .connection-modal {
+        padding: 8px;
+    }
 
-        bottom: -35px;
+    .connection-window {
+        max-height: 96vh;
+    }
+
+    .connection-image {
+        min-height: 245px;
+        padding: 12px;
+    }
+
+    .connection-image img {
+        max-height: 220px;
+    }
+
+    .connection-content {
+        padding: 30px 20px;
+    }
+
+    .connection-content h2 {
+        font-size: 34px;
+    }
+
+    .connection-step {
+        grid-template-columns: 36px 1fr;
+        padding: 13px;
+    }
+
+    .connection-number {
+        width: 34px;
+        height: 34px;
+    }
+
+    .cookie-clicker {
+        right: 12px;
+        bottom: 12px;
     }
 }
 
@@ -1696,25 +1691,22 @@ footer {
 <body>
 
 
-<!-- =======================================================
+<!-- =========================================================
      TOP
-======================================================= -->
+========================================================= -->
 
 <div class="top-notice">
     LMS SERVER · DEIN MINECRAFT NETZWERK
 </div>
 
 
-<!-- =======================================================
+<!-- =========================================================
      NAVIGATION
-======================================================= -->
+========================================================= -->
 
 <header class="navbar">
 
-    <a
-        href="#start"
-        class="logo-area"
-    >
+    <a href="#start" class="logo-area">
         <img
             src="WhatsApp Image 2026-07-11 at 15.30.43.jpeg"
             alt="LMS Server"
@@ -1724,10 +1716,6 @@ footer {
 
     <nav class="nav-links">
 
-        <a href="#spiele">
-            Spiele
-        </a>
-
         <a href="#news">
             Blog
         </a>
@@ -1736,8 +1724,8 @@ footer {
             LMS Live
         </a>
 
-        <a href="#community">
-            Shop
+        <a href="#discord">
+            Discord
         </a>
 
         <a href="#team">
@@ -1746,6 +1734,10 @@ footer {
 
         <a href="#kontakt">
             Kontakt
+        </a>
+
+        <a href="sponsoren.html">
+            Sponsoren & Mitwirkende
         </a>
 
         <a href="info.html">
@@ -1765,14 +1757,11 @@ footer {
 </header>
 
 
-<!-- =======================================================
+<!-- =========================================================
      HERO
-======================================================= -->
+========================================================= -->
 
-<section
-    class="hero"
-    id="start"
->
+<section class="hero" id="start">
 
     <div class="hero-content">
 
@@ -1795,9 +1784,9 @@ footer {
 
             <button
                 class="rank-button premium"
-                onclick="scrollToGames()"
+                onclick="document.getElementById('news').scrollIntoView()"
             >
-                SPIELE ENTDECKEN
+                NEUESTE INFOS
             </button>
 
             <button
@@ -1814,331 +1803,113 @@ footer {
 </section>
 
 
-<!-- =======================================================
-     SPIELE
-======================================================= -->
+<!-- =========================================================
+     BLOG / NEUIGKEITEN
+========================================================= -->
 
 <section
-    class="section games-section"
-    id="spiele"
->
-
-    <div class="section-header">
-
-        <div class="section-label">
-            LMS NETWORK
-        </div>
-
-        <h2>
-            Spiele etwas Neues.
-        </h2>
-
-        <p class="section-description">
-            Entdecke unsere Spielmodi und Projekte.
-            Klicke auf ein Spiel, um direkt zu erfahren,
-            wie du dich mit dem LMS Server verbindest.
-        </p>
-
-    </div>
-
-
-    <div class="games-grid">
-
-
-        <article class="game-card">
-
-            <span class="game-type">
-                PARKOUR
-            </span>
-
-            <h3>
-                OnlyUp
-            </h3>
-
-            <p>
-                Erklimme den Parkour und versuche,
-                so weit wie möglich nach oben zu kommen.
-            </p>
-
-            <div class="game-actions">
-
-                <button
-                    class="rank-button premium"
-                    onclick="openConnection()"
-                >
-                    SPIELEN
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <article class="game-card">
-
-            <span class="game-type">
-                PARTY
-            </span>
-
-            <h3>
-                LMS Party
-            </h3>
-
-            <p>
-                Verschiedene Minispiele,
-                schnelle Runden und jede Menge Chaos.
-            </p>
-
-            <div class="game-actions">
-
-                <button
-                    class="rank-button admin"
-                    onclick="openConnection()"
-                >
-                    SPIELEN
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <article class="game-card">
-
-            <span class="game-type">
-                SURVIVAL
-            </span>
-
-            <h3>
-                Survival
-            </h3>
-
-            <p>
-                Sammle Ressourcen, baue deine Welt
-                und spiele gemeinsam mit anderen.
-            </p>
-
-            <div class="game-actions">
-
-                <button
-                    class="rank-button builder"
-                    onclick="openConnection()"
-                >
-                    SPIELEN
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <article class="game-card">
-
-            <span class="game-type">
-                EVENT
-            </span>
-
-            <h3>
-                Events
-            </h3>
-
-            <p>
-                Besondere Aktionen und gemeinsame
-                Events auf dem LMS Server.
-            </p>
-
-            <div class="game-actions">
-
-                <button
-                    class="rank-button supporter"
-                    onclick="openConnection()"
-                >
-                    SPIELEN
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <article class="game-card">
-
-            <span class="game-type">
-                COMMUNITY
-            </span>
-
-            <h3>
-                Community
-            </h3>
-
-            <p>
-                Gemeinsam bauen, spielen und neue
-                LMS Projekte entdecken.
-            </p>
-
-            <div class="game-actions">
-
-                <button
-                    class="rank-button premium"
-                    onclick="openConnection()"
-                >
-                    SPIELEN
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <article class="game-card">
-
-            <span class="game-type">
-                PROJEKT
-            </span>
-
-            <h3>
-                LMS Projekte
-            </h3>
-
-            <p>
-                Neue Ideen, besondere Welten und
-                zukünftige LMS Projekte.
-            </p>
-
-            <div class="game-actions">
-
-                <button
-                    class="rank-button owner"
-                    onclick="openConnection()"
-                >
-                    SPIELEN
-                </button>
-
-            </div>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     BLOG
-======================================================= -->
-
-<section
-    class="section blog-section"
+    class="section news-section"
     id="news"
 >
 
     <div class="section-header">
 
         <div class="section-label">
-            NEWS
+            LMS BLOG
         </div>
 
         <h2>
-            Neuigkeiten vom LMS Server.
+            Die neuesten Infos.
         </h2>
 
         <p class="section-description">
-            Updates, neue Projekte und wichtige
-            Informationen rund um den Server.
+            Hier findest du aktuelle Informationen rund um
+            den LMS Server, kommende Projekte und wichtige
+            Änderungen.
         </p>
 
     </div>
 
 
-    <div class="blog-grid">
+    <div class="news-grid">
 
 
-        <article class="blog-card">
+        <article class="news-main">
 
-            <div class="blog-date">
-                LMS SERVER · UPDATE
-            </div>
+            <span class="news-tag">
+                AKTUELL
+            </span>
 
             <h3>
-                Willkommen auf LMS
+                Wartungsarbeiten
+                am LMS Server
             </h3>
 
             <p>
-                Unser Netzwerk entwickelt sich ständig weiter.
-                Hier findest du aktuelle Informationen
-                und Updates.
+                Der LMS Server befindet sich aktuell in
+                Wartungsarbeiten. Die Arbeiten dauern
+                voraussichtlich bis Mitte Dezember.
+                Weitere Informationen folgen, sobald es
+                neue Entwicklungen gibt.
             </p>
 
-            <a
-                href="info.html"
-                class="rank-button dark"
-            >
-                MEHR ERFAHREN
-            </a>
+            <div class="news-date">
+                LMS SERVER · AKTUELLE INFORMATION
+            </div>
 
         </article>
 
 
-        <article class="blog-card">
-
-            <div class="blog-date">
-                LMS SERVER · COMMUNITY
-            </div>
-
-            <h3>
-                Gemeinsam spielen
-            </h3>
-
-            <p>
-                Entdecke unsere Projekte und verbringe
-                Zeit mit anderen Spielern auf dem Server.
-            </p>
-
-            <a
-                href="#community"
-                class="rank-button builder"
-            >
-                COMMUNITY
-            </a>
-
-        </article>
+        <div class="news-side">
 
 
-        <article class="blog-card">
+            <article class="news-card">
 
-            <div class="blog-date">
-                LMS SERVER · INFORMATION
-            </div>
+                <span>
+                    INFORMATION
+                </span>
 
-            <h3>
-                Regeln & Informationen
-            </h3>
+                <h3>
+                    Server vorübergehend offline
+                </h3>
 
-            <p>
-                Lies dir vor dem Spielen unsere Regeln
-                und wichtigen Informationen durch.
-            </p>
+                <p>
+                    Während der Wartungsarbeiten kann der
+                    Server zeitweise nicht erreichbar sein.
+                </p>
 
-            <a
-                href="regeln.html"
-                class="rank-button owner"
-            >
-                REGELN
-            </a>
+            </article>
 
-        </article>
 
+            <article class="news-card">
+
+                <span>
+                    DEMNÄCHST
+                </span>
+
+                <h3>
+                    Neue Projekte
+                </h3>
+
+                <p>
+                    Nach Abschluss der Arbeiten warten neue
+                    Inhalte und Projekte auf die Community.
+                </p>
+
+            </article>
+
+
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- =======================================================
+<!-- =========================================================
      LMS LIVE
      hq720.jpg NUR HIER
-======================================================= -->
+========================================================= -->
 
 <section
     class="live-section"
@@ -2146,6 +1917,7 @@ footer {
 >
 
     <div class="live-grid">
+
 
         <div class="live-text">
 
@@ -2163,16 +1935,41 @@ footer {
             </h2>
 
             <p class="section-description">
-                Verfolge unsere LMS Inhalte und bleib
-                bei besonderen Aktionen und Projekten dabei.
+                Warte auf den offiziellen Countdown und
+                erfahre direkt, ob LMS LIVE stattfindet.
             </p>
 
-            <button
-                class="rank-button premium"
-                onclick="openConnection()"
-            >
-                LMS SERVER
-            </button>
+
+            <div class="live-countdown-box">
+
+                <div class="live-countdown-label">
+                    LIVE STARTET IN
+                </div>
+
+                <div
+                    class="live-countdown"
+                    id="liveCountdown"
+                >
+                    01:00
+                </div>
+
+
+                <div
+                    class="live-result"
+                    id="liveResult"
+                >
+
+                    <strong>
+                        LMS LIVE findet nicht statt
+                    </strong>
+
+                    <span>
+                        Warte auf den offiziellen Countdown.
+                    </span>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -2186,97 +1983,79 @@ footer {
 
         </div>
 
+
     </div>
 
 </section>
 
 
-<!-- =======================================================
-     COMMUNITY
-======================================================= -->
+<!-- =========================================================
+     DISCORD
+     images.jpg NUR HIER
+========================================================= -->
 
 <section
-    class="section community-section"
-    id="community"
+    class="discord-section"
+    id="discord"
 >
 
-    <div class="community-grid">
+    <img
+        class="discord-image"
+        src="images.jpg"
+        alt="LMS Discord"
+    >
+
+    <div class="discord-overlay"></div>
 
 
-        <div>
+    <div class="discord-content">
 
-            <div class="section-label">
-                COMMUNITY
-            </div>
-
-            <h2>
-                LMS ist mehr<br>
-                als ein Server.
-            </h2>
-
-            <p>
-                Spiele mit deinen Freunden, entdecke neue
-                Projekte und bleib über die Entwicklung
-                des LMS Servers informiert.
-            </p>
-
-            <button
-                class="rank-button premium"
-                type="button"
-            >
-                SHOP
-            </button>
-
+        <div class="section-label">
+            LMS COMMUNITY
         </div>
 
+        <h2>
+            Komm auf<br>
+            unseren Discord.
+        </h2>
 
-        <div class="community-box">
+        <p>
+            Bleib mit der LMS Community verbunden,
+            erfahre von neuen Projekten und verpasse
+            keine wichtigen Informationen.
+        </p>
 
-            <h3>
-                Komm in unsere Community
-            </h3>
-
-            <p>
-                Hier entstehen neue Ideen, Projekte
-                und gemeinsame Minecraft-Erlebnisse.
-            </p>
-
-            <button
-                class="rank-button admin"
-                type="button"
-            >
-                DISCORD
-            </button>
-
-        </div>
-
+        <a
+            class="rank-button admin"
+            href="https://discord.gg/N5ZYVRpMMU"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            DISCORD BEITRETEN
+        </a>
 
     </div>
 
 </section>
 
 
-<!-- =======================================================
+<!-- =========================================================
      MINECRAFT DEKO
      minecraft-bg2.webp NUR HIER
-======================================================= -->
+========================================================= -->
 
 <section class="minecraft-decoration">
 
-    <div class="minecraft-decoration-content">
+    <div class="minecraft-decoration-text">
 
-        <div class="minecraft-decoration-text">
+        <span>
+            LMS NETWORK
+        </span>
 
-            <span>
-                LMS NETWORK
-            </span>
-
-            <strong>
-                Deine Welt.<br>
-                Dein Server.
-            </strong>
-
-        </div>
+        <strong>
+            Deine Welt.<br>
+            Dein Server.
+        </strong>
 
     </div>
 
@@ -2290,9 +2069,9 @@ footer {
 </section>
 
 
-<!-- =======================================================
+<!-- =========================================================
      TEAM
-======================================================= -->
+========================================================= -->
 
 <section
     class="section"
@@ -2432,9 +2211,9 @@ footer {
 </section>
 
 
-<!-- =======================================================
+<!-- =========================================================
      SERVER STATUS
-======================================================= -->
+========================================================= -->
 
 <section
     class="section status-section"
@@ -2486,7 +2265,7 @@ footer {
             class="player-count"
             id="playerCount"
         >
-            ...
+            Serverstatus wird geladen...
         </div>
 
     </div>
@@ -2494,9 +2273,9 @@ footer {
 </section>
 
 
-<!-- =======================================================
+<!-- =========================================================
      KONTAKT
-======================================================= -->
+========================================================= -->
 
 <section
     class="section"
@@ -2522,10 +2301,12 @@ footer {
             </p>
 
             <a
-                href="mailto:"
+                href="https://discord.gg/N5ZYVRpMMU"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="rank-button supporter"
             >
-                KONTAKT AUFNEHMEN
+                KONTAKT ÜBER DISCORD
             </a>
 
         </div>
@@ -2554,7 +2335,7 @@ footer {
                 </strong>
 
                 <span>
-                    Unsere Community
+                    LMS Community
                 </span>
 
             </div>
@@ -2567,7 +2348,7 @@ footer {
                 </strong>
 
                 <span>
-                    lms-server.github.io
+                    lms-server.github.io/lms-server
                 </span>
 
             </div>
@@ -2581,9 +2362,9 @@ footer {
 </section>
 
 
-<!-- =======================================================
+<!-- =========================================================
      FOOTER
-======================================================= -->
+========================================================= -->
 
 <footer>
 
@@ -2599,7 +2380,7 @@ footer {
 
             <p>
                 LMS Server – dein Minecraft Netzwerk
-                mit eigenen Spielen, Projekten und Community.
+                mit eigenen Projekten und Community.
             </p>
 
         </div>
@@ -2611,8 +2392,8 @@ footer {
                 Navigation
             </h4>
 
-            <a href="#spiele">
-                Spiele
+            <a href="#start">
+                Startseite
             </a>
 
             <a href="#news">
@@ -2623,8 +2404,8 @@ footer {
                 LMS Live
             </a>
 
-            <a href="#community">
-                Shop
+            <a href="#discord">
+                Discord
             </a>
 
             <a href="#team">
@@ -2652,8 +2433,37 @@ footer {
                 Regeln
             </a>
 
-            <a href="#start">
-                Nach oben
+            <a href="sponsoren.html">
+                Sponsoren & Mitwirkende
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Community
+            </h4>
+
+            <a
+                href="https://discord.gg/N5ZYVRpMMU"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Discord
+            </a>
+
+            <a
+                href="#live"
+            >
+                LMS Live
+            </a>
+
+            <a
+                href="#kontakt"
+            >
+                Kontakt
             </a>
 
         </div>
@@ -2665,7 +2475,7 @@ footer {
     <div class="footer-bottom">
 
         <span>
-            LMS SERVER © 2026
+            © 2026 LMS Server
         </span>
 
         <span>
@@ -2677,21 +2487,21 @@ footer {
 </footer>
 
 
-<!-- =======================================================
-     VERBINDUNGS-MODAL
-======================================================= -->
+<!-- =========================================================
+     CONNECTION MODAL
+========================================================= -->
 
 <div
     class="connection-modal"
     id="connectionModal"
+    onclick="backgroundClose(event)"
 >
-
 
     <div class="connection-window">
 
 
         <button
-            class="close-connection"
+            class="connection-close"
             onclick="closeConnection()"
             aria-label="Schließen"
         >
@@ -2699,17 +2509,12 @@ footer {
         </button>
 
 
-        <!--
-            NUR DIE DREI VERBINDUNGSBILDER
-            WERDEN HIER ANGEZEIGT.
-        -->
-
         <div class="connection-image">
 
             <img
                 id="connectionImage"
                 src="Screenshot (420).png"
-                alt="Minecraft Verbindung"
+                alt="Minecraft Verbindung Schritt"
             >
 
         </div>
@@ -2717,25 +2522,33 @@ footer {
 
         <div class="connection-content">
 
+            <div class="connection-label">
+                LMS SERVER
+            </div>
 
             <h2>
                 Wie verbinde ich mich?
             </h2>
 
-
-            <p class="connection-subtitle">
-                Betrete den LMS Server mit der
+            <p>
+                Betrete unseren Server mit der
                 Minecraft Java-Edition.
+                100% kostenlos.
             </p>
 
 
             <button
-                class="copy-button"
-                id="copyButton"
+                class="copy-address"
+                id="copyAddressButton"
                 onclick="copyServerAddress()"
             >
                 ADRESSE KOPIEREN
             </button>
+
+
+            <div class="connection-ip">
+                LMS_server.aternos.me
+            </div>
 
 
             <div class="connection-steps">
@@ -2747,22 +2560,22 @@ footer {
                     onclick="changeConnectionStep(1)"
                 >
 
-                    <div class="step-number">
+                    <span class="connection-number">
                         1
-                    </div>
+                    </span>
 
-                    <div class="step-text">
+                    <span>
 
-                        <h4>
+                        <h3>
                             Minecraft starten
-                        </h4>
+                        </h3>
 
                         <p>
                             Starte Minecraft Java Edition
-                            auf deinem Computer.
+                            auf deinem PC.
                         </p>
 
-                    </div>
+                    </span>
 
                 </button>
 
@@ -2773,22 +2586,22 @@ footer {
                     onclick="changeConnectionStep(2)"
                 >
 
-                    <div class="step-number">
+                    <span class="connection-number">
                         2
-                    </div>
+                    </span>
 
-                    <div class="step-text">
+                    <span>
 
-                        <h4>
+                        <h3>
                             Mehrspieler öffnen
-                        </h4>
+                        </h3>
 
                         <p>
-                            Öffne im Minecraft-Hauptmenü
-                            den Bereich „Mehrspieler“.
+                            Öffne den Mehrspieler-Modus
+                            und füge einen neuen Server hinzu.
                         </p>
 
-                    </div>
+                    </span>
 
                 </button>
 
@@ -2799,23 +2612,22 @@ footer {
                     onclick="changeConnectionStep(3)"
                 >
 
-                    <div class="step-number">
+                    <span class="connection-number">
                         3
-                    </div>
+                    </span>
 
-                    <div class="step-text">
+                    <span>
 
-                        <h4>
-                            LMS Server hinzufügen
-                        </h4>
+                        <h3>
+                            Serveradresse eintragen
+                        </h3>
 
                         <p>
-                            Gib als Serveradresse
-                            <code>LMS_server.aternos.me</code>
-                            ein und verbinde dich.
+                            Gib LMS_server.aternos.me ein,
+                            speichere den Server und trete bei.
                         </p>
 
-                    </div>
+                    </span>
 
                 </button>
 
@@ -2824,9 +2636,8 @@ footer {
 
 
             <div class="connection-finished">
-                Das war's, viel Spaß!
+                Das wars, viel Spaß!
             </div>
-
 
         </div>
 
@@ -2835,113 +2646,123 @@ footer {
 </div>
 
 
-<!-- =======================================================
+<!-- =========================================================
+     KONFETTI
+========================================================= -->
+
+<div
+    class="confetti-container"
+    id="confettiContainer"
+></div>
+
+
+<!-- =========================================================
      COOKIE CLICKER
-======================================================= -->
+========================================================= -->
 
-<button
-    class="cookie-button"
+<div
+    class="cookie-clicker"
     onclick="cookieClick()"
-    title="Cookie Clicker"
 >
-    🍪
-</button>
 
+    COOKIE CLICKER
 
-<!-- =======================================================
-     JAVASCRIPT
-======================================================= -->
+    <span
+        class="cookie-score"
+        id="cookieScore"
+    >
+        0
+    </span>
+
+</div>
+
 
 <script>
+
+/* =========================================================
+   SERVER
+========================================================= */
 
 const SERVER_IP = "LMS_server.aternos.me";
 
 
 /* =========================================================
-   MODAL
-========================================================= */
-
-const connectionModal =
-    document.getElementById("connectionModal");
-
-const connectionImage =
-    document.getElementById("connectionImage");
-
-const copyButton =
-    document.getElementById("copyButton");
-
-
-/* =========================================================
-   VERBINDUNGSBILDER
+   CONNECTION MODAL
 ========================================================= */
 
 const connectionStepImages = {
 
     1: "Screenshot (420).png",
-
     2: "Screenshot (421).png",
-
     3: "Screenshot (423).png"
 
 };
 
 
-/* =========================================================
-   MODAL ÖFFNEN
-========================================================= */
-
 function openConnection() {
 
-    changeConnectionStep(1);
+    const modal =
+        document.getElementById("connectionModal");
 
-    connectionModal.classList.add("active");
+    modal.classList.add("open");
 
     document.body.style.overflow = "hidden";
 
+    changeConnectionStep(1);
 }
 
-
-/* =========================================================
-   MODAL SCHLIESSEN
-========================================================= */
 
 function closeConnection() {
 
-    connectionModal.classList.remove("active");
+    const modal =
+        document.getElementById("connectionModal");
+
+    modal.classList.remove("open");
 
     document.body.style.overflow = "";
+}
+
+
+function backgroundClose(event) {
+
+    if (
+        event.target ===
+        document.getElementById("connectionModal")
+    ) {
+
+        closeConnection();
+
+    }
 
 }
 
 
-/* =========================================================
-   SCHRITT WECHSELN
-========================================================= */
-
 function changeConnectionStep(step) {
 
-    connectionImage.src =
+    const image =
+        document.getElementById("connectionImage");
+
+    image.src =
         connectionStepImages[step];
 
 
     document
         .querySelectorAll(".connection-step")
-        .forEach(function(element) {
+        .forEach(element => {
 
             element.classList.remove("active");
 
         });
 
 
-    const selectedStep =
+    const selected =
         document.getElementById(
             "connectionStep" + step
         );
 
+    if (selected) {
 
-    if (selectedStep) {
-
-        selectedStep.classList.add("active");
+        selected.classList.add("active");
 
     }
 
@@ -2949,25 +2770,7 @@ function changeConnectionStep(step) {
 
 
 /* =========================================================
-   HINTERGRUND KLICK
-========================================================= */
-
-connectionModal.addEventListener(
-    "click",
-    function(event) {
-
-        if (event.target === connectionModal) {
-
-            closeConnection();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   ESC
+   ESC MODAL
 ========================================================= */
 
 document.addEventListener(
@@ -2985,78 +2788,45 @@ document.addEventListener(
 
 
 /* =========================================================
-   IP KOPIEREN
+   SERVER IP KOPIEREN
 ========================================================= */
 
-function copyServerAddress() {
+async function copyServerAddress() {
 
-    navigator.clipboard
-        .writeText(SERVER_IP)
-        .then(function() {
+    const button =
+        document.getElementById(
+            "copyAddressButton"
+        );
 
-            copyButton.textContent =
-                "ADRESSE KOPIERT ✓";
+    try {
 
-            copyButton.classList.add("copied");
+        await navigator.clipboard.writeText(
+            SERVER_IP
+        );
 
+        button.textContent =
+            "ADRESSE KOPIERT";
 
-            setTimeout(function() {
+        setTimeout(() => {
 
-                copyButton.textContent =
-                    "ADRESSE KOPIEREN";
+            button.textContent =
+                "ADRESSE KOPIEREN";
 
-                copyButton.classList.remove("copied");
+        }, 1800);
 
-            }, 2000);
+    } catch (error) {
 
-        })
-        .catch(function() {
+        button.textContent =
+            "BITTE MANUELL KOPIEREN";
 
-            const textarea =
-                document.createElement("textarea");
+        setTimeout(() => {
 
-            textarea.value = SERVER_IP;
+            button.textContent =
+                "ADRESSE KOPIEREN";
 
-            document.body.appendChild(textarea);
+        }, 1800);
 
-            textarea.select();
-
-            document.execCommand("copy");
-
-            textarea.remove();
-
-
-            copyButton.textContent =
-                "ADRESSE KOPIERT ✓";
-
-            copyButton.classList.add("copied");
-
-
-            setTimeout(function() {
-
-                copyButton.textContent =
-                    "ADRESSE KOPIEREN";
-
-                copyButton.classList.remove("copied");
-
-            }, 2000);
-
-        });
-
-}
-
-
-/* =========================================================
-   ZU SPIELEN
-========================================================= */
-
-function scrollToGames() {
-
-    document
-        .getElementById("spiele")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
+    }
 
 }
 
@@ -3067,11 +2837,11 @@ function scrollToGames() {
 
 async function updateServerStatus() {
 
-    const playerCount =
-        document.getElementById("playerCount");
-
-    const statusDot =
+    const dot =
         document.getElementById("statusDot");
+
+    const count =
+        document.getElementById("playerCount");
 
 
     try {
@@ -3083,56 +2853,64 @@ async function updateServerStatus() {
             );
 
 
+        if (!response.ok) {
+
+            throw new Error(
+                "Status konnte nicht geladen werden."
+            );
+
+        }
+
+
         const data =
             await response.json();
 
 
         if (data.online) {
 
+            dot.style.background =
+                "#2e9b59";
+
+            dot.style.boxShadow =
+                "0 0 0 6px rgba(46,155,89,.12)";
+
+
             const online =
-                data.players &&
-                typeof data.players.online === "number"
-                    ? data.players.online
-                    : 0;
+                data.players?.online ?? 0;
+
+            const max =
+                data.players?.max ?? "?";
 
 
-            playerCount.textContent =
-                online + " Spieler";
-
-
-            statusDot.style.background =
-                "#36b85a";
-
-
-            statusDot.style.boxShadow =
-                "0 0 0 6px rgba(54,184,90,.12)";
+            count.textContent =
+                online +
+                " / " +
+                max +
+                " Spieler online";
 
         } else {
 
-            playerCount.textContent =
-                "OFFLINE";
+            dot.style.background =
+                "#8f1515";
 
+            dot.style.boxShadow =
+                "0 0 0 6px rgba(143,21,21,.12)";
 
-            statusDot.style.background =
-                "#d64545";
-
-
-            statusDot.style.boxShadow =
-                "0 0 0 6px rgba(214,69,69,.12)";
+            count.textContent =
+                "Server offline";
 
         }
 
-
     } catch (error) {
 
-        playerCount.textContent =
-            "—";
+        dot.style.background =
+            "#999";
 
-        statusDot.style.background =
-            "#8b8f97";
+        dot.style.boxShadow =
+            "none";
 
-        statusDot.style.boxShadow =
-            "0 0 0 6px rgba(139,143,151,.12)";
+        count.textContent =
+            "Status nicht verfügbar";
 
     }
 
@@ -3141,7 +2919,6 @@ async function updateServerStatus() {
 
 updateServerStatus();
 
-
 setInterval(
     updateServerStatus,
     30000
@@ -3149,39 +2926,240 @@ setInterval(
 
 
 /* =========================================================
+   LMS LIVE COUNTDOWN
+========================================================= */
+
+let liveSeconds = 60;
+
+let liveFinished = false;
+
+
+const liveCountdown =
+    document.getElementById(
+        "liveCountdown"
+    );
+
+const liveResult =
+    document.getElementById(
+        "liveResult"
+    );
+
+
+function updateLiveCountdown() {
+
+    if (liveFinished) {
+        return;
+    }
+
+
+    const minutes =
+        Math.floor(liveSeconds / 60)
+            .toString()
+            .padStart(2, "0");
+
+
+    const seconds =
+        (liveSeconds % 60)
+            .toString()
+            .padStart(2, "0");
+
+
+    liveCountdown.textContent =
+        minutes + ":" + seconds;
+
+
+    if (liveSeconds <= 0) {
+
+        finishLiveCountdown();
+
+        return;
+
+    }
+
+
+    liveSeconds--;
+
+}
+
+
+function finishLiveCountdown() {
+
+    liveFinished = true;
+
+    liveCountdown.textContent =
+        "00:00";
+
+    liveResult.style.display =
+        "block";
+
+    createConfetti();
+
+}
+
+
+updateLiveCountdown();
+
+setInterval(
+    updateLiveCountdown,
+    1000
+);
+
+
+/* =========================================================
+   KONFETTI
+========================================================= */
+
+function createConfetti() {
+
+    const container =
+        document.getElementById(
+            "confettiContainer"
+        );
+
+
+    const pieces = 120;
+
+
+    for (
+        let i = 0;
+        i < pieces;
+        i++
+    ) {
+
+        const piece =
+            document.createElement(
+                "div"
+            );
+
+
+        piece.className =
+            "confetti";
+
+
+        const fromLeft =
+            i % 2 === 0;
+
+
+        if (fromLeft) {
+
+            piece.style.left =
+                Math.random() * 15 + "%";
+
+        } else {
+
+            piece.style.left =
+                85 +
+                Math.random() * 15 +
+                "%";
+
+        }
+
+
+        piece.style.background =
+            getConfettiColor();
+
+
+        piece.style.setProperty(
+            "--x",
+            (
+                (Math.random() * 2 - 1) *
+                300
+            ) + "px"
+        );
+
+
+        piece.style.animationDuration =
+            (
+                2.5 +
+                Math.random() * 3
+            ) + "s";
+
+
+        piece.style.animationDelay =
+            (
+                Math.random() * .8
+            ) + "s";
+
+
+        container.appendChild(
+            piece
+        );
+
+
+        setTimeout(() => {
+
+            piece.remove();
+
+        }, 6000);
+
+    }
+
+}
+
+
+function getConfettiColor() {
+
+    const colors = [
+        "#8f1515",
+        "#e86b9b",
+        "#2674d9",
+        "#2e9b59",
+        "#e58a19",
+        "#ffffff"
+    ];
+
+    return colors[
+        Math.floor(
+            Math.random() *
+            colors.length
+        )
+    ];
+
+}
+
+
+/* =========================================================
    COOKIE CLICKER
 ========================================================= */
 
-let cookies = 0;
+let cookieScore = 0;
 
 
 function cookieClick() {
 
-    cookies++;
+    cookieScore++;
 
 
-    const button =
-        document.querySelector(".cookie-button");
-
-
-    button.style.transform =
-        "scale(1.2)";
-
-
-    setTimeout(function() {
-
-        button.style.transform = "";
-
-    }, 100);
-
-
-    button.title =
-        cookies + " Cookies";
+    document.getElementById(
+        "cookieScore"
+    ).textContent =
+        cookieScore;
 
 }
 
-</script>
 
+/* =========================================================
+   LINK ZUM DISCORD
+========================================================= */
+
+document
+    .querySelectorAll(
+        'a[href="https://discord.gg/N5ZYVRpMMU"]'
+    )
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            function() {
+
+                // Discord öffnet in neuem Tab.
+
+            }
+        );
+
+    });
+
+</script>
 
 </body>
 </html>
