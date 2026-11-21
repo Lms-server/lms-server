@@ -2,24 +2,27 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LMS NETWORK</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 <style>
 :root{
-    --black:#111318;
-    --black2:#181b21;
-    --text:#181a1f;
-    --muted:#747982;
-    --light:#f4f5f7;
-    --border:#e2e4e8;
-    --white:#fff;
+    --bg:#191b20;
+    --panel:#22252c;
+    --panel-light:#292d35;
+    --gold:#d9b65d;
+    --gold-light:#f0d58c;
+    --white:#f5f5f6;
+    --muted:#b9bbc1;
+    --border:#383b43;
 
-    --owner:#8f1515;
-    --supporter:#e75a9d;
-    --admin:#2777d5;
-    --builder:#32a852;
-    --premium:#e88b20;
+    --owner:#c62828;
+    --builder:#28a85c;
+    --premium:#f2bd45;
 }
 
 *{
@@ -34,13 +37,12 @@ html{
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#fff;
-    color:var(--text);
+    background:var(--bg);
+    color:var(--white);
     overflow-x:hidden;
 }
 
-button,
-a{
+button,a{
     font-family:inherit;
 }
 
@@ -49,8 +51,8 @@ button{
 }
 
 a{
-    text-decoration:none;
     color:inherit;
+    text-decoration:none;
 }
 
 img{
@@ -58,40 +60,32 @@ img{
 }
 
 
-/* =========================================================
-   TOP BAR
-========================================================= */
+/* TOP */
 
 .top-notice{
-    width:100%;
-    background:#15171c;
-    color:#fff;
-    padding:10px 20px;
+    padding:8px 15px;
     text-align:center;
-    font-size:12px;
-    font-weight:900;
-    letter-spacing:.7px;
+    background:#111318;
+    color:var(--gold-light);
+    font-size:11px;
+    font-weight:950;
+    letter-spacing:2px;
 }
 
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
+/* NAVIGATION */
 
 .navbar{
-    height:82px;
-    background:rgba(255,255,255,.98);
-    border-bottom:1px solid #e8e9ec;
-
+    min-height:70px;
+    padding:8px 5%;
     display:flex;
     align-items:center;
-
-    padding:0 5%;
-    gap:38px;
-
+    gap:25px;
     position:sticky;
     top:0;
     z-index:1000;
+    background:#202329;
+    border-bottom:1px solid var(--border);
 }
 
 .logo-area{
@@ -101,46 +95,40 @@ img{
 }
 
 .logo-area img{
-    width:68px;
-    height:68px;
+    width:55px;
+    height:55px;
     object-fit:contain;
 }
 
 .nav-links{
     display:flex;
     align-items:center;
-    gap:28px;
+    gap:22px;
     flex:1;
 }
 
 .nav-links a{
-    color:#44474e;
-    font-size:13px;
+    color:#dedfe2;
+    font-size:12px;
     font-weight:900;
+    white-space:nowrap;
     transition:.2s;
 }
 
 .nav-links a:hover{
-    color:#111318;
+    color:var(--gold-light);
 }
 
 .server-nav-button{
-    background:var(--black);
-    color:#fff;
-
-    border-radius:7px;
-
-    padding:13px 19px;
-
-    font-size:12px;
+    padding:12px 17px;
+    background:var(--gold);
+    color:#17191e;
+    border-radius:6px;
+    font-size:11px;
     font-weight:950;
-    letter-spacing:.7px;
-
     cursor:pointer;
-
-    box-shadow:0 4px 0 #050609;
-
-    transition:.2s;
+    box-shadow:0 4px 0 #8d6c2c;
+    white-space:nowrap;
 }
 
 .server-nav-button:hover{
@@ -148,1278 +136,412 @@ img{
 }
 
 
-/* =========================================================
-   RANG-BUTTONS
-========================================================= */
+/* PLAYER SEARCH */
+
+.player-search-wrap{
+    position:relative;
+    flex:0 1 220px;
+    min-width:160px;
+    z-index:1010;
+}
+
+.player-search-form{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:5px 9px;
+    background:#f1f2f4;
+    border:1px solid #dfe2e7;
+    border-radius:7px;
+}
+
+.player-search-form:focus-within{
+    border-color:var(--gold);
+    box-shadow:0 0 0 3px #d9b65d22;
+}
+
+.player-search-icon{
+    color:#777d86;
+    font-size:17px;
+}
+
+.player-search-input{
+    width:100%;
+    min-width:0;
+    padding:7px 0;
+    background:transparent;
+    border:0;
+    outline:0;
+    color:#181a1f;
+    font-size:12px;
+}
+
+.player-search-input::placeholder{
+    color:#858a93;
+}
+
+.player-suggestions,
+.player-search-result{
+    display:none;
+    position:absolute;
+    top:calc(100% + 7px);
+    left:0;
+    right:0;
+    padding:7px;
+    background:#fff;
+    color:#181a1f;
+    border:1px solid #e0e3e8;
+    border-radius:9px;
+    box-shadow:0 14px 35px #0004;
+    z-index:2000;
+}
+
+.player-suggestions.open,
+.player-search-result.open{
+    display:block;
+}
+
+.player-suggestion{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:8px;
+    background:#fff;
+    color:#181a1f;
+    text-align:left;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.player-suggestion:hover{
+    background:#f0f1f3;
+}
+
+.player-suggestion img{
+    width:32px;
+    height:32px;
+    image-rendering:pixelated;
+}
+
+.player-suggestion-name{
+    font-size:12px;
+    font-weight:900;
+}
+
+.player-suggestion-detail{
+    display:block;
+    margin-top:3px;
+    color:#858a93;
+    font-size:10px;
+    font-weight:400;
+}
+
+.player-result-main{
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
+
+.player-result-main img{
+    width:45px;
+    height:45px;
+    image-rendering:pixelated;
+}
+
+.player-result-name{
+    font-size:13px;
+    font-weight:950;
+    color:#181a1f;
+}
+
+.player-result-note{
+    margin-top:4px;
+    color:#777d86;
+    font-size:10px;
+}
+
+.player-result-link{
+    display:inline-block;
+    margin-top:12px;
+    color:#30343b;
+    font-size:11px;
+    font-weight:900;
+    text-decoration:underline;
+}
+
+
+/* BUTTONS */
 
 .rank-button{
     display:inline-flex;
     align-items:center;
     justify-content:center;
-
+    padding:13px 19px;
     border:2px solid transparent;
     border-radius:7px;
-
-    padding:12px 18px;
-
     font-size:11px;
     font-weight:950;
-
-    letter-spacing:.8px;
-
+    letter-spacing:.7px;
     cursor:pointer;
-
-    transition:
-        transform .18s,
-        box-shadow .18s,
-        filter .18s;
+    transition:.2s;
 }
 
 .rank-button:hover{
-    transform:translateY(-2px);
-    filter:brightness(1.05);
+    transform:translateY(-3px);
 }
 
-.rank-button:active{
-    transform:translateY(2px);
+.rank-button.gold{
+    background:var(--gold);
+    color:#17191e;
+    border-color:var(--gold-light);
+    box-shadow:0 4px 0 #8d6c2c;
 }
-
-
-/* OWNER */
-
-.rank-button.owner{
-    background:var(--owner);
-    color:#fff;
-
-    border-color:#b92c2c;
-
-    box-shadow:0 4px 0 #5d0b0b;
-}
-
-
-/* SUPPORTER */
-
-.rank-button.supporter{
-    background:var(--supporter);
-    color:#fff;
-
-    border-color:#f488ba;
-
-    box-shadow:0 4px 0 #a9376e;
-}
-
-
-/* ADMIN */
-
-.rank-button.admin{
-    background:var(--admin);
-    color:#fff;
-
-    border-color:#5d9ce7;
-
-    box-shadow:0 4px 0 #174b89;
-}
-
-
-/* BUILDER */
-
-.rank-button.builder{
-    background:var(--builder);
-    color:#fff;
-
-    border-color:#64ca7d;
-
-    box-shadow:0 4px 0 #216f37;
-}
-
-
-/* PREMIUM */
-
-.rank-button.premium{
-    background:var(--premium);
-    color:#fff;
-
-    border-color:#f3b45d;
-
-    box-shadow:0 4px 0 #99500b;
-}
-
-
-/* DARK */
 
 .rank-button.dark{
-    background:#202329;
+    background:#292d35;
     color:#fff;
+    border-color:#414650;
+    box-shadow:0 4px 0 #111318;
+}
 
-    border-color:#353941;
-
-    box-shadow:0 4px 0 #090a0d;
+.rank-button.blue{
+    background:#5865f2;
+    color:#fff;
+    border-color:#8991ff;
+    box-shadow:0 4px 0 #343ca5;
 }
 
 
-/* =========================================================
-   HERO
-========================================================= */
+/* HERO / BANNER */
 
 .hero{
-    min-height:570px;
-
+    min-height:510px;
+    padding:75px 8%;
     display:flex;
     align-items:center;
-
-    padding:80px 9%;
-
     position:relative;
+    overflow:hidden;
 
     background:
-        linear-gradient(90deg,rgba(0,0,0,.86),rgba(0,0,0,.32)),
-        url("minecraft-bg2.webp");
+        linear-gradient(90deg,rgba(10,12,16,.91),rgba(10,12,16,.35)),
+        url("Screenshot (271).png");
 
     background-size:cover;
     background-position:center;
 }
 
 .hero-content{
-    max-width:650px;
-    color:#fff;
+    position:relative;
+    z-index:2;
+    max-width:670px;
 }
 
 .hero-label{
-    display:inline-flex;
-    align-items:center;
-
-    color:#f1c96e;
-
+    margin-bottom:17px;
+    color:var(--gold-light);
     font-size:12px;
     font-weight:950;
-    letter-spacing:2px;
-
-    margin-bottom:20px;
+    letter-spacing:2.5px;
 }
 
 .hero h1{
-    font-size:clamp(44px,6vw,76px);
-    line-height:1.03;
-    font-weight:1000;
-    letter-spacing:-2px;
     margin-bottom:22px;
+    color:#fff;
+    font-size:clamp(43px,6vw,72px);
+    line-height:1.02;
+    letter-spacing:-2px;
 }
 
 .hero p{
-    max-width:550px;
-    color:#e0e0e0;
+    max-width:570px;
+    margin-bottom:28px;
+    color:#dedfe2;
     font-size:16px;
     line-height:1.7;
-    margin-bottom:30px;
 }
 
 .hero-buttons{
     display:flex;
-    align-items:center;
-    gap:13px;
     flex-wrap:wrap;
+    gap:13px;
 }
 
 
-/* =========================================================
-   SECTIONS
-========================================================= */
+/* GENERAL SECTIONS */
 
 .section{
-    padding:82px 8%;
+    padding:80px 7%;
 }
 
 .section-header{
-    text-align:center;
     max-width:760px;
-    margin:0 auto 38px;
+    margin:0 auto 40px;
+    text-align:center;
 }
 
 .section-label{
-    color:#bd8b2f;
-    font-size:11px;
+    margin-bottom:12px;
+    color:var(--gold);
+    font-size:10px;
     font-weight:950;
     letter-spacing:2px;
-    margin-bottom:12px;
 }
 
 .section-header h2{
-    font-size:clamp(30px,4vw,43px);
-    line-height:1.15;
     margin-bottom:13px;
+    color:#fff;
+    font-size:clamp(29px,4vw,42px);
 }
 
 .section-description{
-    color:#777c85;
+    color:var(--muted);
     font-size:14px;
     line-height:1.7;
 }
 
 
-/* =========================================================
-   GAMES
-========================================================= */
-
-.games-section{
-    background:#f4f5f7;
-}
-
-.games-grid{
-    display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:20px;
-}
-
-.game-card{
-    background:#fff;
-    border:1px solid #e4e6e9;
-    border-radius:12px;
-    overflow:hidden;
-    transition:.2s;
-}
-
-.game-card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 14px 35px rgba(0,0,0,.09);
-}
-
-.game-image{
-    height:175px;
-    background:#242831;
-    overflow:hidden;
-}
-
-.game-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.game-content{
-    padding:23px;
-}
-
-.game-content h3{
-    font-size:19px;
-    margin-bottom:9px;
-}
-
-.game-content p{
-    color:#737983;
-    font-size:13px;
-    line-height:1.65;
-    margin-bottom:18px;
-}
-
-
-/* =========================================================
-   NEWS
-========================================================= */
-
-.news-section{
-    background:#fff;
-}
-
-.news-grid{
-    display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:18px;
-}
-
-.news-card{
-    padding:24px;
-    background:#f6f7f8;
-    border:1px solid #e6e7e9;
-    border-radius:10px;
-}
-
-.news-card h3{
-    font-size:18px;
-    margin-bottom:10px;
-}
-
-.news-card p{
-    color:#777c85;
-    font-size:13px;
-    line-height:1.7;
-}
-
-
-/* =========================================================
-   LMS LIVE
-========================================================= */
-
-.live-section{
-    background:#f4f5f7;
-    padding:80px 8%;
-}
-
-.live-grid{
-    max-width:1120px;
-    margin:auto;
-
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    align-items:center;
-    gap:50px;
-}
-
-.live-text h2{
-    font-size:42px;
-    margin:15px 0;
-}
-
-.live-text p{
-    color:#777c85;
-    font-size:14px;
-    line-height:1.7;
-    margin-bottom:22px;
-}
-
-.live-badge{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-
-    color:#b88931;
-    font-size:11px;
-    font-weight:950;
-    letter-spacing:1.5px;
-}
-
-.live-dot{
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:#dc4242;
-    box-shadow:0 0 0 5px rgba(220,66,66,.12);
-}
-
-.live-image-box{
-    height:310px;
-    overflow:hidden;
-    border-radius:12px;
-    background:#222;
-}
-
-.live-image-box img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.live-countdown{
-    font-size:32px;
-    font-weight:950;
-    color:#bd8b2f;
-    margin:18px 0 5px;
-}
-
-.live-status{
-    color:#777c85;
-    font-size:12px;
-}
-
-
-/* =========================================================
-   DISCORD / COMMUNITY
-========================================================= */
+/* DISCORD COMMUNITY */
 
 .discord-section{
-    background:#191b20;
-    color:#f1f1f2;
+    background:#17191e;
+    overflow:hidden;
 }
 
 .discord-grid{
-    max-width:1120px;
-    margin:auto;
-
     display:grid;
     grid-template-columns:1fr 1fr;
     align-items:center;
     gap:55px;
 }
 
+.discord-content{
+    max-width:560px;
+}
+
 .discord-content h2{
-    font-size:42px;
     margin:13px 0 18px;
+    font-size:clamp(30px,4vw,43px);
 }
 
 .discord-content p{
-    color:#b9bbc1;
-    font-size:14px;
-    line-height:1.75;
     margin-bottom:25px;
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.8;
 }
 
 .discord-visual{
-    position:relative;
-    min-height:260px;
+    min-height:330px;
     display:flex;
     align-items:center;
     justify-content:center;
+    padding:25px;
+    background:#202329;
+    border:1px solid var(--border);
+    border-radius:13px;
 }
 
 .discord-visual img{
-    width:220px;
-    height:220px;
+    width:100%;
+    max-height:280px;
     object-fit:contain;
-    border-radius:18px;
 }
 
 
-/* =========================================================
-   MINECRAFT DEKO
-========================================================= */
+/* MINECRAFT DECORATION */
 
 .minecraft-decoration{
     min-height:230px;
-    background:#111318;
     position:relative;
     overflow:hidden;
-
     display:flex;
     align-items:center;
-
-    padding:40px 9%;
-}
-
-.minecraft-decoration-content{
-    position:relative;
-    z-index:2;
-    width:100%;
+    padding:35px 8%;
+    background:#111318;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
 }
 
 .minecraft-decoration-text{
-    color:#fff;
-    width:60%;
+    position:relative;
+    z-index:2;
 }
 
 .minecraft-decoration-text span{
     display:block;
-    color:#d9b65d;
-    font-size:11px;
+    margin-bottom:10px;
+    color:var(--gold);
+    font-size:10px;
     font-weight:950;
     letter-spacing:2px;
-    margin-bottom:12px;
 }
 
 .minecraft-decoration-text strong{
+    color:#fff;
     font-size:30px;
     line-height:1.2;
 }
 
 .minecraft-decoration img{
     position:absolute;
-    right:5%;
-    bottom:-45px;
-    width:390px;
+    right:4%;
+    bottom:-40px;
+    width:min(430px,45vw);
     max-height:280px;
     object-fit:contain;
+    pointer-events:none;
 }
 
 
-/* =========================================================
-   TEAM
-========================================================= */
-
-.team-section{
-    background:#fff;
-}
-
-.team-grid{
-    display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:18px;
-    max-width:1000px;
-    margin:30px auto 0;
-}
-
-.team-card{
-    display:flex;
-    align-items:center;
-    gap:12px;
-
-    padding:15px;
-
-    background:#f7f7f8;
-    border:1px solid #e7e8eb;
-    border-radius:9px;
-}
-
-.team-card img{
-    width:48px;
-    height:48px;
-    image-rendering:pixelated;
-    border-radius:5px;
-}
-
-.team-info{
-    min-width:0;
-    flex:1;
-}
-
-.team-name{
-    font-size:13px;
-    font-weight:950;
-    margin-bottom:5px;
-    overflow-wrap:anywhere;
-}
-
-.rank{
-    display:inline-flex;
-    align-items:center;
-
-    font-size:9px;
-    font-weight:950;
-    letter-spacing:.6px;
-
-    padding:4px 7px;
-    border-radius:4px;
-}
-
-.rank.owner{background:#8f1515;color:#fff}
-.rank.supporter{background:#e75a9d;color:#fff}
-.rank.admin{background:#2777d5;color:#fff}
-.rank.builder{background:#32a852;color:#fff}
-.rank.premium{background:#e88b20;color:#fff}
-
-
-/* =========================================================
-   SERVER STATUS
-========================================================= */
-
-.status-section{
-    background:#191b20;
-    color:#f4f4f5;
-    text-align:center;
-}
-
-.status-section .section-description{
-    color:#b7bac1;
-}
-
-.status-box{
-    max-width:680px;
-    margin:30px auto 0;
-
-    padding:24px;
-
-    background:#22252c;
-    border:1px solid #383b43;
-    border-radius:12px;
-}
-
-.status-top{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:12px;
-    margin-bottom:20px;
-}
-
-.status-indicator{
-    width:10px;
-    height:10px;
-    border-radius:50%;
-    background:#888;
-}
-
-.status-indicator.online{
-    background:#39c56b;
-    box-shadow:0 0 0 5px rgba(57,197,107,.12);
-}
-
-.status-indicator.offline{
-    background:#e34b4b;
-}
-
-.status-title{
-    font-size:19px;
-    font-weight:950;
-}
-
-.status-settings{
-    position:relative;
-    margin-left:8px;
-}
-
-.status-settings-button{
-    width:34px;
-    height:34px;
-    border:1px solid #4a4c53;
-    border-radius:8px;
-    background:#22242a;
-    color:#e7c36d;
-    font-size:18px;
-    cursor:pointer;
-}
-
-.status-settings-menu{
-    position:absolute;
-    right:0;
-    top:40px;
-    z-index:20;
-    min-width:205px;
-    padding:12px;
-    background:#24262c;
-    border:1px solid #44464d;
-    border-radius:9px;
-    box-shadow:0 12px 30px #0008;
-    color:#eee;
-    font-size:12px;
-}
-
-.status-settings-menu label{
-    display:flex;
-    gap:8px;
-    align-items:center;
-    padding:6px 0;
-    cursor:pointer;
-}
-
-.status-values{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:35px;
-    flex-wrap:wrap;
-}
-
-.status-value{
-    min-width:100px;
-}
-
-.status-value strong{
-    display:block;
-    font-size:24px;
-    color:#e7c36d;
-    margin-bottom:5px;
-}
-
-.status-value span{
-    font-size:11px;
-    color:#b7bac1;
-}
-
-.status-address{
-    margin-top:20px;
-    color:#d7d9de;
-    font-size:12px;
-}
-
-.status-address button{
-    color:#e7c36d;
-    background:none;
-    cursor:pointer;
-    font-weight:900;
-    margin-left:7px;
-}
-
-
-/* =========================================================
-   KONTAKT
-========================================================= */
-
-.contact-section{
-    background:#f4f5f7;
-}
-
-.contact-box{
-    max-width:850px;
-    margin:auto;
-    text-align:center;
-}
-
-.contact-box h2{
-    font-size:36px;
-    margin-bottom:13px;
-}
-
-.contact-box p{
-    color:#777c85;
-    line-height:1.7;
-    font-size:14px;
-    margin-bottom:22px;
-}
-
-.contact-items{
-    display:flex;
-    justify-content:center;
-    gap:14px;
-    flex-wrap:wrap;
-}
-
-.contact-item{
-    background:#fff;
-    border:1px solid #e3e5e8;
-    padding:13px 18px;
-    border-radius:8px;
-    font-size:12px;
-    font-weight:900;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-    background:#111318;
-    color:#d5d6d9;
-    padding:35px 8%;
-    text-align:center;
-    font-size:12px;
-}
-
-.footer-links{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-    margin-bottom:15px;
-}
-
-.footer-links a{
-    color:#e7c36d;
-    font-weight:800;
-}
-
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-.connection-overlay{
-    position:fixed;
-    inset:0;
-    z-index:3000;
-
-    display:none;
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
-
-    background:rgba(0,0,0,.78);
-    backdrop-filter:blur(5px);
-}
-
-.connection-overlay.active{
-    display:flex;
-}
-
-.connection-modal{
-    position:relative;
-    width:min(900px,100%);
-    max-height:90vh;
-    overflow:auto;
-
-    display:grid;
-    grid-template-columns:1fr 1fr;
-
-    background:#fff;
-    border-radius:13px;
-    overflow:hidden;
-}
-
-.connection-image{
-    min-height:350px;
-    background:#17191e;
-}
-
-.connection-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.connection-content{
-    padding:45px 35px;
-}
-
-.connection-content h2{
-    font-size:30px;
-    margin-bottom:12px;
-}
-
-.connection-content p{
-    color:#707681;
-    font-size:13px;
-    line-height:1.7;
-    margin-bottom:18px;
-}
-
-.connection-ip{
-    padding:14px;
-    background:#f0f1f3;
-    border:1px solid #e0e2e5;
-    border-radius:7px;
-
-    font-family:monospace;
-    font-size:14px;
-    font-weight:900;
-
-    margin-bottom:15px;
-    overflow-wrap:anywhere;
-}
-
-.connection-close{
-    position:absolute;
-    top:12px;
-    right:12px;
-
-    width:34px;
-    height:34px;
-
-    background:#191b20;
-    color:#fff;
-
-    border-radius:50%;
-    font-size:19px;
-    cursor:pointer;
-}
-
-
-/* =========================================================
-   COOKIE CLICKER
-========================================================= */
-
-.cookie-game{
-    position:fixed;
-    right:18px;
-    bottom:18px;
-    z-index:900;
-
-    display:flex;
-    align-items:center;
-    gap:10px;
-
-    padding:10px 13px;
-
-    background:#202329;
-    color:#fff;
-
-    border:1px solid #42464e;
-    border-radius:12px;
-
-    box-shadow:0 8px 25px rgba(0,0,0,.25);
-}
-
-.cookie-game button{
-    background:none;
-    font-size:25px;
-    cursor:pointer;
-}
-
-.cookie-game span{
-    color:#e7c36d;
-    font-size:12px;
-    font-weight:950;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media(max-width:900px){
-
-    .navbar{
-        gap:18px;
-        padding:0 3%;
-    }
-
-    .nav-links{
-        gap:14px;
-    }
-
-    .nav-links a{
-        font-size:11px;
-    }
-
-    .games-grid,
-    .news-grid{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-    }
-
-    .team-grid{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-    }
-
-    .discord-grid,
-    .live-grid{
-        gap:30px;
-    }
-}
-
-@media(max-width:700px){
-
-    .navbar{
-        height:auto;
-        min-height:75px;
-        flex-wrap:wrap;
-        justify-content:space-between;
-        padding:10px 5%;
-    }
-
-    .logo-area img{
-        width:55px;
-        height:55px;
-    }
-
-    .nav-links{
-        order:3;
-        width:100%;
-        overflow-x:auto;
-        padding:10px 0 4px;
-    }
-
-    .server-nav-button{
-        padding:11px 13px;
-    }
-
-    .hero{
-        min-height:510px;
-        padding:65px 7%;
-    }
-
-    .section{
-        padding:60px 6%;
-    }
-
-    .live-section{
-        padding:60px 6%;
-    }
-
-    .live-grid,
-    .discord-grid{
-        grid-template-columns:1fr;
-    }
-
-    .live-text h2,
-    .discord-content h2{
-        font-size:34px;
-    }
-
-    .live-image-box{
-        height:230px;
-    }
-
-    .discord-visual{
-        min-height:180px;
-    }
-
-    .discord-visual img{
-        width:170px;
-        height:170px;
-    }
-
-    .minecraft-decoration{
-        min-height:190px;
-        padding:30px 7%;
-    }
-
-    .minecraft-decoration-text{
-        width:48%;
-    }
-
-    .minecraft-decoration-text strong{
-        font-size:22px;
-    }
-
-    .minecraft-decoration img{
-        width:290px;
-        right:-45px;
-        bottom:-35px;
-    }
-
-    .games-grid,
-    .news-grid,
-    .team-grid{
-        grid-template-columns:1fr;
-    }
-
-    .connection-modal{
-        grid-template-columns:1fr;
-    }
-
-    .connection-image{
-        min-height:200px;
-        max-height:220px;
-    }
-
-    .connection-content{
-        padding:30px 22px;
-    }
-
-    .connection-content h2{
-        font-size:27px;
-    }
-
-    .cookie-game{
-        right:10px;
-        bottom:10px;
-    }
-}
-
-@media(max-width:450px){
-
-    .hero h1{
-        font-size:46px;
-    }
-
-    .hero-buttons{
-        flex-direction:column;
-        align-items:stretch;
-    }
-
-    .hero-buttons .rank-button{
-        width:100%;
-    }
-
-    .minecraft-decoration-text{
-        width:48%;
-    }
-
-    .minecraft-decoration-text strong{
-        font-size:16px;
-    }
-
-    .minecraft-decoration img{
-        width:250px;
-        right:-90px;
-        bottom:-35px;
-    }
-}
-
-
-/* =========================================================
-   LMS NETWORK – GOLD / CHARCOAL REDESIGN
-========================================================= */
-
-:root{
-    --black:#17191e;
-    --black2:#202329;
-    --gold:#d9b65d;
-    --gold-light:#f0d58c;
-    --gold-dark:#98752e;
-}
-
-body{
-    background:#191b20;
-    color:#f1f1f2;
-}
-
-.top-notice{
-    background:#111318;
-    color:var(--gold-light);
-}
-
-.navbar{
-    background:#202329;
-    border-bottom:1px solid #34373e;
-}
-
-.nav-links a{
-    color:#dedfe2;
-}
-
-.nav-links a:hover{
-    color:var(--gold-light);
-}
-
-.logo-area img{
-    filter:drop-shadow(0 2px 8px #0008);
-}
-
-.server-nav-button{
-    background:var(--gold);
-    color:#17191e;
-    box-shadow:0 4px 0 #8d6c2c;
-}
-
-.hero{
-    background:
-        linear-gradient(90deg,rgba(12,13,16,.92),rgba(12,13,16,.45)),
-        url("minecraft-bg2.webp");
-    background-size:cover;
-    background-position:center;
-}
-
-.hero-label,
-.section-label{
-    color:var(--gold);
-}
-
-.hero h1{
-    color:#fff;
-}
-
-.hero p{
-    color:#d0d1d5;
-}
-
-.rank-button.premium{
-    background:var(--gold);
-    color:#17191e;
-    border-color:var(--gold-light);
-    box-shadow:0 4px 0 #8c6a2b;
-}
-
-.rank-button.dark{
-    background:#292c33;
-    color:#fff;
-    border-color:#41454e;
-    box-shadow:0 4px 0 #101115;
-}
-
-.section,
-.games-section,
-.news-section,
-.live-section,
-.contact-section{
-    background:#191b20;
-    color:#f1f1f2;
-}
-
-.section-header h2,
-.game-content h3,
-.news-card h3,
-.contact-box h2{
-    color:#f5f5f6;
-}
-
-.section-description,
-.game-content p,
-.news-card p,
-.contact-box p{
-    color:#b9bbc1;
-}
-
-.games-grid,
-.news-grid{
-    gap:22px;
-}
-
-.game-card,
-.news-card{
-    background:#22252c;
-    border:1px solid #383b43;
-}
-
-.game-card:hover{
-    box-shadow:0 14px 35px rgba(0,0,0,.28);
-}
-
-.game-content p,
-.news-card p{
-    color:#b9bbc1;
-}
-
-.discord-section,
-.community-section{
-    background:#191b20;
-    color:#f1f1f2;
-}
-
-.discord-content h2,
-.community-grid h2,
-.contact-box,
-.contact-item{
-    color:#f1f1f2;
-}
-
-.discord-content p,
-.community-grid p{
-    color:#b9bbc1;
-}
-
-.minecraft-decoration{
-    background:#111318;
-    border-top:1px solid #292c33;
-    border-bottom:1px solid #292c33;
-}
+/* DOCUMENT FOLDERS */
 
 .docs-section{
     background:#191b20;
-    color:#f1f1f2;
-}
-
-.docs-section .section-header h2{
-    color:#f5f5f6;
-}
-
-.docs-section .section-description{
-    color:#b9bbc1;
 }
 
 .docs-grid{
     display:flex;
     justify-content:center;
     align-items:flex-start;
-    gap:clamp(28px,7vw,90px);
     flex-wrap:wrap;
-    margin-top:34px;
+    gap:clamp(25px,6vw,75px);
 }
 
 .doc-card{
+    width:135px;
+    min-height:125px;
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:10px;
-    width:125px;
-    min-height:130px;
+    gap:12px;
     padding:8px;
-    background:transparent;
-    border:0;
-    border-radius:0;
     text-align:center;
-    transition:transform .2s;
+    transition:.2s;
 }
 
 .doc-card:hover{
     transform:translateY(-5px);
-    background:transparent;
-    box-shadow:none;
-}
-
-.doc-card h3{
-    color:#f1f1f2;
-    font-size:12px;
-    line-height:1.35;
-    margin:0;
-}
-
-.doc-card p{
-    display:none;
-}
-
-.doc-card a{
-    display:block;
-    color:var(--gold-light);
-    font-size:10px;
-    font-weight:900;
-    margin-top:5px;
 }
 
 .doc-folder{
-    width:66px;
-    height:48px;
+    width:67px;
+    height:49px;
     position:relative;
-    background:linear-gradient(145deg,#f0d58c,#bd913b);
+    flex-shrink:0;
     border:1px solid #e9ca7b;
     border-radius:5px 7px 6px 6px;
+    background:linear-gradient(145deg,#f0d58c,#bd913b);
     box-shadow:0 5px 12px #0005;
 }
 
 .doc-folder:before{
     content:"";
     position:absolute;
-    width:28px;
-    height:8px;
+    top:-8px;
     left:4px;
-    top:-7px;
+    width:29px;
+    height:9px;
     background:#d9b65d;
     border:1px solid #e9ca7b;
     border-bottom:0;
@@ -1435,249 +557,914 @@ body{
     opacity:.55;
 }
 
+.doc-card h3{
+    color:#f1f1f2;
+    font-size:12px;
+    line-height:1.5;
+}
+
+.doc-card p{
+    display:none;
+}
+
+.doc-card a{
+    color:var(--gold-light);
+    font-size:10px;
+    font-weight:950;
+}
+
+.doc-card a:hover{
+    text-decoration:underline;
+}
+
+
+/* TEAM */
+
 .team-section{
     background:#191b20;
 }
 
-.team-section .section-header h2{
-    color:#f5f5f6;
-}
-
-.team-section .section-description{
-    color:#b9bbc1;
-}
-
 .team-grid{
+    max-width:1000px;
+    margin:auto;
     display:flex;
-    flex-wrap:wrap;
     justify-content:center;
     align-items:center;
-    gap:9px 24px;
-    max-width:900px;
-    margin:25px auto 0;
+    flex-wrap:wrap;
+    gap:12px 22px;
 }
 
 .team-card{
+    min-width:205px;
+    width:auto;
     display:flex;
     align-items:center;
-    justify-content:flex-start;
     gap:9px;
-    padding:5px 0;
-    width:auto;
-    min-width:190px;
+    padding:8px 10px;
     background:transparent;
     border:0;
-    border-radius:0;
+    border-radius:7px;
+    text-align:left;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.team-card:hover{
+    background:#292d35;
+    transform:translateY(-3px);
 }
 
 .team-card img{
-    width:34px;
-    height:34px;
-    border-radius:4px;
-}
-
-.team-info{
-    display:flex;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:7px;
+    width:39px;
+    height:39px;
+    margin:0;
+    border-radius:3px;
+    image-rendering:pixelated;
 }
 
 .team-name{
-    color:#f1f1f2;
-    font-size:12px;
-    margin:0;
+    color:#fff;
+    font-family:'Press Start 2P',monospace;
+    font-size:8px;
+    line-height:1.8;
+    text-shadow:2px 2px #000;
+    overflow-wrap:anywhere;
 }
 
 .rank{
-    font-size:8px;
-    padding:3px 6px;
+    display:inline-block;
+    padding:6px 7px;
+    border-radius:3px;
+    color:#fff;
+    font-family:'Press Start 2P',monospace;
+    font-size:6px;
+    letter-spacing:0;
+    white-space:nowrap;
+    text-shadow:1px 1px #0005;
 }
+
+/* Cytooxien-inspirierte Rangfarben */
+
+.rank.owner{
+    background:#c62828;
+    border:1px solid #f05a5a;
+    color:#fff;
+}
+
+.rank.builder{
+    background:#28a85c;
+    border:1px solid #63df91;
+    color:#fff;
+}
+
+.rank.premium{
+    background:#f2bd45;
+    border:1px solid #ffe08a;
+    color:#3a2600;
+    text-shadow:none;
+}
+
+
+/* TEAM PROFILE */
+
+.team-profile-overlay{
+    position:fixed;
+    inset:0;
+    z-index:4000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.83);
+    backdrop-filter:blur(7px);
+}
+
+.team-profile-overlay.active{
+    display:flex;
+}
+
+.team-profile{
+    position:relative;
+    width:min(390px,100%);
+    padding:38px 25px;
+    background:#202329;
+    border:1px solid var(--gold);
+    border-radius:14px;
+    text-align:center;
+    box-shadow:0 20px 70px #0009;
+}
+
+.profile-head{
+    width:125px;
+    height:125px;
+    margin:0 auto 20px;
+    padding:8px;
+    background:#30343c;
+    border:1px solid var(--gold);
+    border-radius:12px;
+}
+
+.profile-head img{
+    width:100%;
+    height:100%;
+    image-rendering:pixelated;
+}
+
+.team-profile h2{
+    margin-bottom:14px;
+    color:#fff;
+    font-size:22px;
+    overflow-wrap:anywhere;
+}
+
+.team-profile p{
+    margin:20px 0;
+    color:var(--muted);
+    font-size:12px;
+}
+
+.profile-close{
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:33px;
+    height:33px;
+    border-radius:50%;
+    background:#343840;
+    color:#fff;
+    font-size:21px;
+    cursor:pointer;
+}
+
+
+/* SERVER STATUS */
 
 .status-section{
     background:#191b20;
 }
 
 .status-box{
+    max-width:700px;
+    margin:auto;
+    padding:25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
     background:#22252c;
-    border:1px solid #383b43;
-    box-shadow:0 10px 30px #0002;
+    border:1px solid var(--border);
+    border-radius:12px;
+}
+
+.status-left{
+    display:flex;
+    align-items:center;
+    gap:17px;
+}
+
+.status-dot{
+    width:13px;
+    height:13px;
+    flex-shrink:0;
+    border-radius:50%;
+    background:#888;
 }
 
 .status-title{
-    color:#f5f5f6;
+    color:#fff;
+    font-size:17px;
+    font-weight:950;
 }
 
-.status-value strong{
+.status-subtitle{
+    margin-top:5px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+.player-count{
     color:var(--gold-light);
+    font-size:23px;
+    font-weight:950;
+    text-align:right;
 }
 
-.status-address{
-    color:#c8c9ce;
-}
+
+/* CONTACT */
 
 .contact-section{
     background:#191b20;
 }
 
-.contact-item{
-    background:#22252c;
-    border:1px solid #383b43;
+.contact-grid{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
 }
+
+.contact-text h2{
+    margin:12px 0;
+    color:#fff;
+    font-size:35px;
+}
+
+.contact-text p{
+    margin-bottom:23px;
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.7;
+}
+
+.contact-box{
+    padding:25px;
+    background:#22252c;
+    border:1px solid var(--border);
+    border-radius:10px;
+}
+
+.contact-item{
+    padding:14px 0;
+    border-bottom:1px solid var(--border);
+}
+
+.contact-item:last-child{
+    border-bottom:0;
+}
+
+.contact-item strong{
+    display:block;
+    margin-bottom:5px;
+    color:#fff;
+}
+
+.contact-item span{
+    color:var(--muted);
+    font-size:12px;
+}
+
+
+/* LMS COOKIES */
+
+.cookie-section{
+    padding:75px 8%;
+    background:#202329;
+    text-align:center;
+}
+
+.cookie-center{
+    margin-top:25px;
+}
+
+.cookie-give{
+    padding:16px 27px;
+    background:var(--gold);
+    color:#17191e;
+    border:2px solid var(--gold-light);
+    border-radius:9px;
+    font-size:13px;
+    font-weight:1000;
+    cursor:pointer;
+    box-shadow:0 5px 0 #8d6c2c;
+    transition:.2s;
+}
+
+.cookie-give:hover{
+    transform:translateY(-3px);
+}
+
+#cookieCount{
+    margin-top:20px;
+    color:var(--gold-light);
+    font-size:13px;
+    font-weight:900;
+}
+
+.cookie-rain{
+    position:fixed;
+    top:-55px;
+    z-index:5000;
+    pointer-events:none;
+    animation:cookieFall 2.7s linear forwards;
+}
+
+@keyframes cookieFall{
+    0%{
+        transform:translateY(-30px) rotate(0deg);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(110vh) rotate(650deg);
+        opacity:0;
+    }
+}
+
+
+/* PARTNER */
+
+.partner-section{
+    padding:75px 8%;
+    background:#17191e;
+    border-top:1px solid var(--border);
+}
+
+.partner-content{
+    max-width:750px;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:65px;
+    flex-wrap:wrap;
+}
+
+.partner-logo{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+}
+
+.partner-logo img{
+    width:145px;
+    height:110px;
+    object-fit:contain;
+}
+
+.partner-logo span{
+    color:var(--gold);
+    font-size:10px;
+    font-weight:1000;
+    letter-spacing:2px;
+}
+
+.partner-support{
+    max-width:300px;
+    text-align:left;
+}
+
+.partner-support span{
+    color:var(--gold);
+    font-size:10px;
+    font-weight:1000;
+    letter-spacing:1px;
+}
+
+.partner-support h3{
+    margin:10px 0;
+    color:#fff;
+    font-size:27px;
+}
+
+.partner-support p{
+    margin-bottom:15px;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.7;
+}
+
+.partner-support a{
+    color:var(--gold-light);
+    font-size:11px;
+    font-weight:950;
+}
+
+
+/* DISCORD CTA */
+
+.discord-footer{
+    padding:75px 8%;
+    background:#202329;
+    text-align:center;
+}
+
+.discord-footer h2{
+    margin:13px 0;
+    color:#fff;
+    font-size:clamp(27px,4vw,40px);
+}
+
+.discord-footer p{
+    margin-bottom:25px;
+    color:var(--muted);
+    font-size:14px;
+}
+
+.discord-footer-button{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    padding:13px 22px;
+    background:#5865f2;
+    color:#fff;
+    border:1px solid #8991ff;
+    border-radius:8px;
+    font-size:12px;
+    font-weight:1000;
+    box-shadow:0 4px 0 #343ca5;
+    transition:.2s;
+}
+
+.discord-footer-button:hover{
+    transform:translateY(-3px);
+}
+
+.discord-footer-button img{
+    width:25px;
+    height:25px;
+    object-fit:contain;
+}
+
+
+/* FOOTER */
 
 footer{
+    padding:45px 7% 25px;
     background:#111318;
-    border-top:1px solid #34373e;
+    border-top:1px solid var(--border);
+    color:#d5d6d9;
 }
 
-.footer-links a{
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:30px;
+}
+
+.footer-brand img{
+    width:60px;
+    height:60px;
+    object-fit:contain;
+    margin-bottom:13px;
+}
+
+.footer-brand p{
+    max-width:340px;
+    color:#9da1a9;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.footer-column h4{
+    margin-bottom:15px;
+    color:#fff;
+    font-size:12px;
+    letter-spacing:1px;
+}
+
+.footer-column a{
+    display:block;
+    margin-bottom:11px;
+    color:#aeb2ba;
+    font-size:12px;
+}
+
+.footer-column a:hover{
     color:var(--gold-light);
 }
 
+.footer-bottom{
+    padding-top:20px;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    border-top:1px solid var(--border);
+    color:#858a93;
+    font-size:11px;
+}
+
+
+/* CONNECTION MODAL */
+
 .connection-modal{
-    background:#202329;
-    color:#f1f1f2;
-    border:1px solid #41454e;
-    box-shadow:0 25px 70px #0008;
+    position:fixed;
+    inset:0;
+    z-index:3000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.82);
+}
+
+.connection-modal.active{
+    display:flex;
+}
+
+.connection-window{
+    position:relative;
+    width:min(1050px,100%);
+    max-height:92vh;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    overflow:hidden;
+    background:#fff;
+    color:#181a1f;
+    border-radius:13px;
+    box-shadow:0 30px 90px #0008;
+}
+
+.close-connection{
+    position:absolute;
+    top:12px;
+    right:12px;
+    z-index:5;
+    width:37px;
+    height:37px;
+    border-radius:50%;
+    background:#e8e9ec;
+    color:#17191e;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.connection-image{
+    min-height:500px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+    background:#111318;
+}
+
+.connection-image img{
+    max-width:100%;
+    max-height:570px;
+    object-fit:contain;
+}
+
+.connection-content{
+    padding:45px 35px;
+    overflow-y:auto;
 }
 
 .connection-content h2{
-    color:#f5f5f6;
+    margin-bottom:12px;
+    font-size:30px;
 }
 
-.connection-content p{
-    color:#b9bbc1;
+.connection-subtitle{
+    margin-bottom:22px;
+    color:#777d86;
+    font-size:13px;
+    line-height:1.6;
 }
 
-.connection-ip{
-    background:#17191e;
-    color:var(--gold-light);
-    border:1px solid #41454e;
-}
-
-.connection-close{
+.copy-button{
+    margin-bottom:25px;
+    padding:13px 17px;
     background:var(--gold);
     color:#17191e;
+    border:2px solid var(--gold-light);
+    border-radius:7px;
+    font-size:11px;
+    font-weight:950;
+    cursor:pointer;
 }
 
-.cookie-game{
+.copy-button.copied{
+    background:#28a85c;
+    color:#fff;
+    border-color:#63df91;
+}
+
+.connection-steps{
+    display:flex;
+    flex-direction:column;
+    gap:11px;
+}
+
+.connection-step{
+    width:100%;
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    padding:15px;
+    background:#f5f6f8;
+    border:1px solid #e0e2e6;
+    border-radius:9px;
+    text-align:left;
+    cursor:pointer;
+}
+
+.connection-step.active{
+    background:#eef0f3;
+    border-color:#242832;
+}
+
+.step-number{
+    width:30px;
+    height:30px;
+    flex:0 0 30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     background:#202329;
-    border-color:#55504a;
+    color:#fff;
+    border-radius:50%;
+    font-size:12px;
+    font-weight:950;
 }
 
-.cookie-game span{
-    color:var(--gold-light);
+.step-text h4{
+    margin-bottom:5px;
+    font-size:14px;
 }
 
-@media(max-width:600px){
-    .docs-grid{
+.step-text p{
+    color:#777d86;
+    font-size:12px;
+    line-height:1.5;
+}
+
+.step-text code{
+    padding:2px 4px;
+    background:#e3e5e9;
+    border-radius:4px;
+}
+
+.connection-finished{
+    margin-top:20px;
+    color:#777d86;
+    font-size:12px;
+    font-weight:800;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:1050px){
+    .navbar{
         gap:14px;
+        padding:8px 3%;
     }
 
-    .doc-card{
-        width:105px;
-        min-height:110px;
+    .nav-links{
+        gap:12px;
     }
 
-    .team-grid{
-        gap:7px;
+    .nav-links a{
+        font-size:11px;
+    }
+
+    .player-search-wrap{
+        flex-basis:180px;
     }
 
     .team-card{
-        min-width:0;
-        width:100%;
-        max-width:270px;
-    }
-
-    .status-box{
-        padding:14px;
+        min-width:190px;
     }
 }
 
+@media(max-width:800px){
+    .navbar{
+        flex-wrap:wrap;
+        gap:12px;
+    }
+
+    .nav-links{
+        order:4;
+        width:100%;
+        flex:1 0 100%;
+        overflow-x:auto;
+        padding:5px 0;
+    }
+
+    .player-search-wrap{
+        margin-left:auto;
+        flex:0 1 220px;
+    }
+
+    .discord-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .connection-window{
+        grid-template-columns:1fr;
+        overflow-y:auto;
+    }
+
+    .connection-image{
+        min-height:250px;
+        max-height:300px;
+    }
+
+    .connection-image img{
+        max-height:260px;
+    }
+
+    .connection-content{
+        padding:28px 22px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .minecraft-decoration img{
+        right:-70px;
+        width:340px;
+    }
+}
+
+@media(max-width:600px){
+    .top-notice{
+        font-size:9px;
+    }
+
+    .navbar{
+        padding:8px 15px;
+    }
+
+    .logo-area img{
+        width:48px;
+        height:48px;
+    }
+
+    .player-search-wrap{
+        order:3;
+        flex:1 1 100%;
+        max-width:none;
+        margin:0;
+    }
+
+    .server-nav-button{
+        margin-left:auto;
+    }
+
+    .hero{
+        min-height:390px;
+        padding:55px 23px;
+    }
+
+    .hero h1{
+        font-size:45px;
+    }
+
+    .hero p{
+        font-size:14px;
+    }
+
+    .section{
+        padding:60px 22px;
+    }
+
+    .team-grid{
+        gap:8px;
+    }
+
+    .team-card{
+        width:100%;
+        max-width:320px;
+        min-width:0;
+    }
+
+    .status-box{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .player-count{
+        text-align:left;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+    }
+
+    .partner-content{
+        gap:30px;
+    }
+
+    .partner-support{
+        text-align:center;
+    }
+
+    .minecraft-decoration{
+        min-height:190px;
+    }
+
+    .minecraft-decoration-text strong{
+        font-size:22px;
+    }
+
+    .minecraft-decoration img{
+        width:260px;
+        right:-90px;
+    }
+
+    .discord-visual{
+        min-height:220px;
+    }
+}
 </style>
 </head>
 
 
 <body>
 
-
-<!-- =======================================================
-     TOP
-======================================================= -->
-
 <div class="top-notice">
     LMS NETWORK
 </div>
 
 
-<!-- =======================================================
-     NAVIGATION
-======================================================= -->
+<!-- NAVIGATION -->
 
 <header class="navbar">
 
-    <a
-        href="#start"
-        class="logo-area"
-    >
+    <a href="#start" class="logo-area">
         <img
             src="WhatsApp Image 2026-07-11 at 15.30.43.jpeg"
-            alt="LMS Server"
+            alt="LMS NETWORK Logo"
         >
     </a>
 
-
     <nav class="nav-links">
-
-        <a href="#spiele">
-            Spiele
-        </a>
-
-        <a href="#news">
-            Blog
-        </a>
-
-        <a href="#live">
-            LMS Live
-        </a>
-
-        <a href="#community">
-            Community
-        </a>
-
-        <a href="#team">
-            Team
-        </a>
-
-        <a href="#informationen">
-            Informationen
-        </a>
-
-        <a href="#kontakt">
-            Kontakt
-        </a>
-
+        <a href="#community">Community</a>
+        <a href="#team">Team</a>
+        <a href="#status">Serverstatus</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="#informationen">Informationen</a>
+        <a href="blog.html">Blog</a>
     </nav>
 
+    <div class="player-search-wrap" id="playerSearchWrap">
 
-    <button
-        class="server-nav-button"
-        onclick="openConnection()"
-    >
-        SERVER
+        <form class="player-search-form" id="playerSearchForm" autocomplete="off">
+            <span class="player-search-icon">⌕</span>
+            <input
+                class="player-search-input"
+                id="playerSearchInput"
+                type="search"
+                maxlength="16"
+                placeholder="Minecraft-Spieler suchen …"
+                aria-label="Minecraft-Spieler suchen"
+            >
+        </form>
+
+        <div class="player-suggestions" id="playerSuggestions"></div>
+        <div class="player-search-result" id="playerSearchResult"></div>
+
+    </div>
+
+    <button class="server-nav-button" onclick="openConnection()">
+        LMS.SERVER
     </button>
 
 </header>
 
 
-<!-- =======================================================
-     HERO
-======================================================= -->
+<!-- HERO / BANNER -->
 
-<section
-    class="hero"
-    id="start"
->
+<section class="hero" id="start">
 
     <div class="hero-content">
 
@@ -1692,23 +1479,16 @@ footer{
 
         <p>
             Spiele gemeinsam mit anderen auf dem LMS Server,
-            entdecke unsere Projekte und werde Teil unserer
-            Community.
+            entdecke unsere Projekte und werde Teil unserer Community.
         </p>
 
         <div class="hero-buttons">
 
-            <button
-                class="rank-button premium"
-                onclick="scrollToGames()"
-            >
-                SPIELE ENTDECKEN
-            </button>
+            <a class="rank-button gold" href="info.html">
+                INFORMATIONEN
+            </a>
 
-            <button
-                class="rank-button dark"
-                onclick="openConnection()"
-            >
+            <button class="rank-button dark" onclick="openConnection()">
                 SERVER BEITRETEN
             </button>
 
@@ -1719,279 +1499,11 @@ footer{
 </section>
 
 
-<!-- =======================================================
-     SPIELE
-======================================================= -->
+<!-- COMMUNITY / DISCORD -->
 
-<section
-    class="section games-section"
-    id="spiele"
->
-
-    <div class="section-header">
-
-        <div class="section-label">
-            LMS NETWORK
-        </div>
-
-        <h2>
-            Spiele entdecken
-        </h2>
-
-        <p class="section-description">
-            Entdecke unsere Spielmodi und Projekte.
-        </p>
-
-    </div>
-
-
-    <div class="games-grid">
-
-
-        <article class="game-card">
-
-            <div class="game-image">
-                <img
-                    src="minecraft-bg2.webp"
-                    alt="Minecraft Server"
-                >
-            </div>
-
-            <div class="game-content">
-
-                <h3>
-                    LMS Minecraft
-                </h3>
-
-                <p>
-                    Erkunde die Welt, spiele gemeinsam
-                    und werde Teil unseres Servers.
-                </p>
-
-                <button
-                    class="rank-button premium"
-                    onclick="openConnection()"
-                >
-                    SERVER BEITRETEN
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <article class="game-card">
-
-            <div class="game-image">
-                <img
-                    src="hq720.jpg"
-                    alt="LMS Live"
-                >
-            </div>
-
-            <div class="game-content">
-
-                <h3>
-                    LMS Live
-                </h3>
-
-                <p>
-                    Verfolge unsere Inhalte und
-                    bleib bei Projekten auf dem Laufenden.
-                </p>
-
-                <a
-                    href="#live"
-                    class="rank-button dark"
-                >
-                    MEHR ERFAHREN
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="game-card">
-
-            <div class="game-image">
-                <img
-                    src="minecraft-bg2.webp"
-                    alt="LMS Community"
-                >
-            </div>
-
-            <div class="game-content">
-
-                <h3>
-                    Community
-                </h3>
-
-                <p>
-                    Tausche dich mit anderen aus
-                    und entdecke gemeinsame Projekte.
-                </p>
-
-                <a
-                    href="https://discord.gg/N5ZYVRpMMU"
-                    target="_blank"
-                    rel="noopener"
-                    class="rank-button dark"
-                >
-                    DISCORD
-                </a>
-
-            </div>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     BLOG / NEWS
-======================================================= -->
-
-<section
-    class="section news-section"
-    id="news"
->
-
-    <div class="section-header">
-
-        <div class="section-label">
-            AKTUELLES
-        </div>
-
-        <h2>
-            LMS Neuigkeiten
-        </h2>
-
-        <p class="section-description">
-            Hier findest du aktuelle Informationen
-            und Neuigkeiten rund um LMS.
-        </p>
-
-    </div>
-
-
-    <div class="news-grid">
-
-        <article class="news-card">
-
-            <h3>
-                LMS NETWORK
-            </h3>
-
-            <p>
-                Entdecke unsere Projekte und
-                bleib über die Entwicklung informiert.
-            </p>
-
-        </article>
-
-
-        <article class="news-card">
-
-            <h3>
-                Community
-            </h3>
-
-            <p>
-                Tausche dich mit anderen Spielern aus
-                und werde Teil unserer Community.
-            </p>
-
-        </article>
-
-
-        <article class="news-card">
-
-            <h3>
-                Minecraft
-            </h3>
-
-            <p>
-                Verbinde dich mit dem Server
-                und entdecke unsere Minecraft-Welt.
-            </p>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     LMS LIVE
-======================================================= -->
-
-<section
-    class="live-section"
-    id="live"
->
-
-    <div class="live-grid">
-
-        <div class="live-text">
-
-            <div class="section-label">
-                LMS NETWORK
-            </div>
-
-            <div class="live-badge">
-                <span class="live-dot"></span>
-                LMS LIVE
-            </div>
-
-            <h2>
-                LMS LIVE
-            </h2>
-
-            <p class="section-description">
-                Verfolge unsere LMS Inhalte und bleib
-                bei besonderen Aktionen und Projekten dabei.
-            </p>
-
-            <button
-                class="rank-button premium"
-                onclick="openConnection()"
-            >
-                LMS SERVER
-            </button>
-
-        </div>
-
-
-        <div class="live-image-box">
-
-            <img
-                src="hq720.jpg"
-                alt="LMS LIVE"
-            >
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     DISCORD
-======================================================= -->
-
-<section
-    class="section discord-section"
-    id="community"
->
+<section class="section discord-section" id="community">
 
     <div class="discord-grid">
-
 
         <div class="discord-content">
 
@@ -2010,55 +1522,39 @@ footer{
             </p>
 
             <a
-                class="rank-button admin"
+                class="rank-button blue"
                 href="https://discord.gg/N5ZYVRpMMU"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
             >
                 DISCORD ÖFFNEN
             </a>
 
         </div>
 
-
         <div class="discord-visual">
-
             <img
                 src="social-media-day-png-hochwertige-transparente-ikonen-beliebter-apps_1093584-372.avif"
-                alt="LMS Discord"
+                alt="Discord Community"
             >
-
         </div>
-
 
     </div>
 
 </section>
 
 
-<!-- =======================================================
-     MINECRAFT DEKO
-======================================================= -->
+<!-- MINECRAFT DEKORATION -->
 
 <section class="minecraft-decoration">
 
-    <div class="minecraft-decoration-content">
-
-        <div class="minecraft-decoration-text">
-
-            <span>
-                LMS NETWORK
-            </span>
-
-            <strong>
-                Deine Welt.<br>
-                Dein Server.
-            </strong>
-
-        </div>
-
+    <div class="minecraft-decoration-text">
+        <span>LMS NETWORK</span>
+        <strong>
+            Deine Welt.<br>
+            Dein Server.
+        </strong>
     </div>
-
 
     <img
         src="minecraft-bg2.webp"
@@ -2069,9 +1565,7 @@ footer{
 </section>
 
 
-<!-- =======================================================
-     INFO-ORDNER / DOKUMENTATION
-======================================================= -->
+<!-- INFORMATIONEN / ORDNER -->
 
 <section class="section docs-section" id="informationen">
 
@@ -2091,86 +1585,34 @@ footer{
 
     </div>
 
-
     <div class="docs-grid">
 
-
         <article class="doc-card">
-
-            <div class="doc-folder" aria-hidden="true"></div>
-
-            <div>
-                <h3>
-                    Server-Informationen
-                </h3>
-
-                <p>
-                    Verbindung, Versionen, Mods und wichtige Hinweise zum Server.
-                </p>
-
-                <a href="info.html">
-                    INFO ÖFFNEN
-                </a>
-            </div>
-
+            <div class="doc-folder"></div>
+            <h3>Server-Informationen</h3>
+            <a href="info.html">INFO ÖFFNEN</a>
         </article>
 
-
         <article class="doc-card">
-
-            <div class="doc-folder" aria-hidden="true"></div>
-
-            <div>
-                <h3>
-                    Server-Regeln
-                </h3>
-
-                <p>
-                    Die wichtigsten Regeln für ein faires Miteinander auf LMS.
-                </p>
-
-                <a href="regeln.html">
-                    REGELN LESEN
-                </a>
-            </div>
-
+            <div class="doc-folder"></div>
+            <h3>Server-Regeln</h3>
+            <a href="regeln.html">REGELN LESEN</a>
         </article>
 
-
         <article class="doc-card">
-
-            <div class="doc-folder" aria-hidden="true"></div>
-
-            <div>
-                <h3>
-                    Sponsoren
-                </h3>
-
-                <p>
-                    Ein Überblick über die Menschen, die LMS unterstützen.
-                </p>
-
-                <a href="sponsoren.html">
-                    ORDNER ÖFFNEN
-                </a>
-            </div>
-
+            <div class="doc-folder"></div>
+            <h3>Sponsoren & Mitwirkende</h3>
+            <a href="sponsoren.html">ORDNER ÖFFNEN</a>
         </article>
-
 
     </div>
 
 </section>
 
 
-<!-- =======================================================
-     TEAM
-======================================================= -->
+<!-- TEAM -->
 
-<section
-    class="section team-section"
-    id="team"
->
+<section class="section team-section" id="team">
 
     <div class="section-header">
 
@@ -2179,468 +1621,495 @@ footer{
         </div>
 
         <h2>
-            Das LMS Team
+            Das LMS Team.
         </h2>
 
         <p class="section-description">
-            Die Menschen hinter dem Server.
+            Klicke auf ein Teammitglied, um das Spielerprofil anzusehen.
         </p>
 
     </div>
-
 
     <div class="team-grid">
 
+        <button class="team-card" onclick="openTeamProfile('CC_Minecarft','OWNER')">
+            <img src="https://mc-heads.net/avatar/CC_Minecarft/112" alt="CC_Minecarft">
+            <span class="team-name">CC_Minecarft</span>
+            <span class="rank owner">OWNER</span>
+        </button>
 
-        <div class="team-card">
+        <button class="team-card" onclick="openTeamProfile('Hobbit2304','BUILDER')">
+            <img src="https://mc-heads.net/avatar/Hobbit2304/112" alt="Hobbit2304">
+            <span class="team-name">Hobbit2304</span>
+            <span class="rank builder">BUILDER</span>
+        </button>
 
-            <img
-                src="https://mc-heads.net/avatar/CC_Minecarft/112"
-                alt="CC_Minecarft"
-            >
+        <button class="team-card" onclick="openTeamProfile('King_Luma1','BUILDER')">
+            <img src="https://mc-heads.net/avatar/King_Luma1/112" alt="King_Luma1">
+            <span class="team-name">King_Luma1</span>
+            <span class="rank builder">BUILDER</span>
+        </button>
 
-            <div class="team-info">
+        <button class="team-card" onclick="openTeamProfile('Lennyy20','BUILDER')">
+            <img src="https://mc-heads.net/avatar/Lennyy20/112" alt="Lennyy20">
+            <span class="team-name">Lennyy20</span>
+            <span class="rank builder">BUILDER</span>
+        </button>
 
-                <div class="team-name">
-                    CC_Minecarft
-                </div>
+        <button class="team-card" onclick="openTeamProfile('Takatonka','PREMIUM')">
+            <img src="https://mc-heads.net/avatar/Takatonka/112" alt="Takatonka">
+            <span class="team-name">Takatonka</span>
+            <span class="rank premium">PREMIUM</span>
+        </button>
 
-                <span class="rank owner">
-                    OWNER
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="team-card">
-
-            <img
-                src="https://mc-heads.net/avatar/Hobbit2304/112"
-                alt="Hobbit2304"
-            >
-
-            <div class="team-info">
-
-                <div class="team-name">
-                    Hobbit2304
-                </div>
-
-                <span class="rank builder">
-                    BUILDER
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="team-card">
-
-            <img
-                src="https://mc-heads.net/avatar/King_Luma1/112"
-                alt="King_Luma1"
-            >
-
-            <div class="team-info">
-
-                <div class="team-name">
-                    King_Luma1
-                </div>
-
-                <span class="rank builder">
-                    BUILDER
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="team-card">
-
-            <img
-                src="https://mc-heads.net/avatar/Lennyy20/112"
-                alt="Lennyy20"
-            >
-
-            <div class="team-info">
-
-                <div class="team-name">
-                    Lennyy20
-                </div>
-
-                <span class="rank builder">
-                    BUILDER
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="team-card">
-
-            <img
-                src="https://mc-heads.net/avatar/Takatonka/112"
-                alt="Takatonka"
-            >
-
-            <div class="team-info">
-
-                <div class="team-name">
-                    Takatonka
-                </div>
-
-                <span class="rank premium">
-                    PREMIUM
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="team-card">
-
-            <img
-                src="https://mc-heads.net/avatar/Vanielle/112"
-                alt="Vanielle"
-            >
-
-            <div class="team-info">
-
-                <div class="team-name">
-                    Vanielle
-                </div>
-
-                <span class="rank premium">
-                    PREMIUM
-                </span>
-
-            </div>
-
-        </div>
-
+        <button class="team-card" onclick="openTeamProfile('Vanielle','PREMIUM')">
+            <img src="https://mc-heads.net/avatar/Vanielle/112" alt="Vanielle">
+            <span class="team-name">Vanielle</span>
+            <span class="rank premium">PREMIUM</span>
+        </button>
 
     </div>
 
 </section>
 
 
-<!-- =======================================================
-     SERVER STATUS
-======================================================= -->
-
-<section
-    class="section status-section"
-    id="status"
->
-
-    <div class="section-header">
-
-        <div class="section-label">
-            SERVER
-        </div>
-
-        <h2>
-            Serverstatus
-        </h2>
-
-        <p class="section-description">
-            Der aktuelle Status des LMS Minecraft Servers.
-        </p>
-
-    </div>
-
-
-    <div class="status-box">
-
-        <div class="status-top">
-
-            <span
-                class="status-indicator"
-                id="serverIndicator"
-            ></span>
-
-            <div
-                class="status-title"
-                id="serverStatusText"
-            >
-                Status wird geladen...
-            </div>
-
-
-            <div class="status-settings">
-
-                <button
-                    class="status-settings-button"
-                    type="button"
-                    aria-label="Statusanzeige einstellen"
-                    onclick="toggleStatusSettings()"
-                >
-                    ⚙
-                </button>
-
-
-                <div
-                    class="status-settings-menu"
-                    id="statusSettingsMenu"
-                    hidden
-                >
-
-                    <strong>
-                        Anzeige einstellen
-                    </strong>
-
-                    <label>
-                        <input
-                            type="checkbox"
-                            data-status-setting="players"
-                            checked
-                        >
-                        Spieler anzeigen
-                    </label>
-
-                    <label>
-                        <input
-                            type="checkbox"
-                            data-status-setting="version"
-                            checked
-                        >
-                        Version anzeigen
-                    </label>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="status-values">
-
-            <div
-                class="status-value"
-                id="playerCount"
-            >
-
-                <strong id="playersOnline">
-                    --
-                </strong>
-
-                <span>
-                    Spieler online
-                </span>
-
-            </div>
-
-
-            <div
-                class="status-value"
-                id="statusVersion"
-            >
-
-                <strong id="serverVersion">
-                    --
-                </strong>
-
-                <span>
-                    Version
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="status-address">
-
-            Server-Adresse:
-
-            <strong>
-                LMS_server.aternos.me
-            </strong>
-
-            <button
-                type="button"
-                onclick="copyServerIP()"
-            >
-                KOPIEREN
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     KONTAKT
-======================================================= -->
-
-<section
-    class="section contact-section"
-    id="kontakt"
->
-
-    <div class="contact-box">
-
-        <div class="section-label">
-            KONTAKT
-        </div>
-
-        <h2>
-            Bleib mit LMS verbunden.
-        </h2>
-
-        <p>
-            Bei Fragen oder Anliegen kannst du dich
-            über unsere Community melden.
-        </p>
-
-
-        <div class="contact-items">
-
-            <a
-                class="contact-item"
-                href="https://discord.gg/N5ZYVRpMMU"
-                target="_blank"
-                rel="noopener"
-            >
-                DISCORD
-            </a>
-
-            <a
-                class="contact-item"
-                href="info.html"
-            >
-                INFORMATIONEN
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     FOOTER
-======================================================= -->
-
-<footer>
-
-    <div class="footer-links">
-
-        <a href="info.html">
-            Informationen
-        </a>
-
-        <a href="regeln.html">
-            Regeln
-        </a>
-
-        <a href="sponsoren.html">
-            Sponsoren
-        </a>
-
-        <a href="blog.html">
-            Blog
-        </a>
-
-        <a
-            href="https://discord.gg/N5ZYVRpMMU"
-            target="_blank"
-            rel="noopener"
-        >
-            Discord
-        </a>
-
-    </div>
-
-
-    <p>
-        © 2026 LMS NETWORK
-    </p>
-
-</footer>
-
-
-<!-- =======================================================
-     CONNECTION MODAL
-======================================================= -->
+<!-- TEAM PROFILE POPUP -->
 
 <div
-    class="connection-overlay"
-    id="connectionOverlay"
-    onclick="closeConnectionOutside(event)"
+    class="team-profile-overlay"
+    id="teamProfile"
+    onclick="closeTeamProfileOutside(event)"
+    aria-hidden="true"
 >
 
-    <div class="connection-modal">
+    <div class="team-profile" role="dialog" aria-modal="true">
 
         <button
-            class="connection-close"
-            type="button"
-            onclick="closeConnection()"
+            class="profile-close"
+            onclick="closeTeamProfile()"
+            aria-label="Profil schließen"
         >
             ×
         </button>
 
+        <div class="profile-head">
+            <img id="profileHead" src="" alt="Minecraft-Spielerkopf">
+        </div>
+
+        <h2 id="profileName">Spielername</h2>
+
+        <span id="profileRank" class="rank owner">
+            OWNER
+        </span>
+
+        <p>
+            Minecraft-Spielerprofil von LMS NETWORK
+        </p>
+
+        <a
+            id="profileNameMC"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rank-button gold"
+        >
+            SKIN AUF NAMEMC ANSEHEN ↗
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- SERVER STATUS -->
+
+<section class="section status-section" id="status">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            SERVER STATUS
+        </div>
+
+        <h2>
+            LMS Server Status.
+        </h2>
+
+        <p class="section-description">
+            Prüfe direkt, ob der LMS Server online ist
+            und wie viele Spieler gerade darauf sind.
+        </p>
+
+    </div>
+
+    <div class="status-box">
+
+        <div class="status-left">
+
+            <div class="status-dot" id="statusDot"></div>
+
+            <div>
+                <div class="status-title">
+                    LMS Server
+                </div>
+
+                <div class="status-subtitle">
+                    LMS_server.aternos.me
+                </div>
+            </div>
+
+        </div>
+
+        <div class="player-count" id="playerCount">
+            Status wird geladen...
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- KONTAKT -->
+
+<section class="section contact-section" id="kontakt">
+
+    <div class="contact-grid">
+
+        <div class="contact-text">
+
+            <div class="section-label">
+                KONTAKT
+            </div>
+
+            <h2>
+                Du hast eine Frage?
+            </h2>
+
+            <p>
+                Egal ob Feedback, eine Frage zum Server
+                oder ein Problem – melde dich bei uns.
+            </p>
+
+            <a
+                href="https://discord.gg/N5ZYVRpMMU"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="rank-button gold"
+            >
+                KONTAKT AUFNEHMEN
+            </a>
+
+        </div>
+
+        <div class="contact-box">
+
+            <div class="contact-item">
+                <strong>Minecraft</strong>
+                <span>LMS_server.aternos.me</span>
+            </div>
+
+            <div class="contact-item">
+                <strong>Discord</strong>
+                <span>Unsere Community</span>
+            </div>
+
+            <div class="contact-item">
+                <strong>Website</strong>
+                <span>lms-server.github.io/lms-server</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- LMS COOKIES -->
+
+<section class="cookie-section" id="lms-cookies">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            LMS COOKIES
+        </div>
+
+        <h2>
+            Eine Portion LMS Cookies?
+        </h2>
+
+        <p class="section-description">
+            Unterstütze LMS mit ein paar virtuellen Cookies.
+            Ein Klick und es regnet Kekse auf der ganzen Seite!
+        </p>
+
+    </div>
+
+    <div class="cookie-center">
+
+        <button
+            class="cookie-give"
+            type="button"
+            onclick="giveLMSCookies()"
+        >
+            🍪 LMS COOKIES GEBEN
+        </button>
+
+        <div id="cookieCount" aria-live="polite">
+            0 LMS Cookies gegeben
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PARTNER -->
+
+<section class="partner-section" id="partner">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            PARTNER
+        </div>
+
+        <h2>
+            Gemeinsam stärker.
+        </h2>
+
+        <p class="section-description">
+            Danke an unsere Partner und Unterstützer.
+        </p>
+
+    </div>
+
+    <div class="partner-content">
+
+        <div class="partner-logo">
+
+            <img
+                src="logo-03.cc5e5332-removebg-preview.png"
+                alt="LMS Partnerlogo"
+                loading="lazy"
+            >
+
+            <span>PARTNER</span>
+
+        </div>
+
+        <div class="partner-support">
+
+            <span>MIT LIEBER UNTERSTÜTZUNG VON</span>
+
+            <h3>GitHub.io</h3>
+
+            <p>
+                Danke für die Bereitstellung der Plattform
+                und die Unterstützung unserer Website.
+            </p>
+
+            <a
+                href="https://github.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                GITHUB.IO ↗
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DISCORD AUFRUF GANZ UNTEN -->
+
+<section class="discord-footer">
+
+    <div class="section-label">
+        LMS NETWORK COMMUNITY
+    </div>
+
+    <h2>
+        Werde Teil unserer Community!
+    </h2>
+
+    <p>
+        Triff andere Spieler, entdecke Neuigkeiten
+        und bleib mit LMS verbunden.
+    </p>
+
+    <a
+        href="https://discord.gg/N5ZYVRpMMU"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="discord-footer-button"
+    >
+
+        <img
+            src="social-media-day-png-hochwertige-transparente-ikonen-beliebter-apps_1093584-372.avif"
+            alt=""
+        >
+
+        DISCORD BEITRETEN
+
+    </a>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div class="footer-brand">
+
+            <img
+                src="WhatsApp Image 2026-07-11 at 15.30.43.jpeg"
+                alt="LMS NETWORK"
+            >
+
+            <p>
+                LMS NETWORK – dein Minecraft Netzwerk
+                mit eigenen Projekten und Community.
+            </p>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h4>NAVIGATION</h4>
+
+            <a href="#community">Community</a>
+            <a href="#team">Team</a>
+            <a href="#status">Serverstatus</a>
+            <a href="#kontakt">Kontakt</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h4>INFORMATIONEN</h4>
+
+            <a href="info.html">Info</a>
+            <a href="regeln.html">Regeln</a>
+            <a href="sponsoren.html">Sponsoren</a>
+            <a href="blog.html">Blog</a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <span>LMS NETWORK © 2026</span>
+        <span>LMS_server.aternos.me</span>
+
+    </div>
+
+</footer>
+
+
+<!-- VERBINDUNGS-MODAL -->
+
+<div class="connection-modal" id="connectionModal">
+
+    <div class="connection-window">
+
+        <button
+            class="close-connection"
+            onclick="closeConnection()"
+            aria-label="Schließen"
+        >
+            ×
+        </button>
 
         <div class="connection-image">
 
             <img
+                id="connectionImage"
                 src="Screenshot (420).png"
                 alt="Minecraft Verbindung"
             >
 
         </div>
 
-
         <div class="connection-content">
 
-            <div class="section-label">
-                LMS NETWORK
-            </div>
-
             <h2>
-                Server beitreten
+                Wie verbinde ich mich?
             </h2>
 
-            <p>
-                Kopiere die Server-Adresse und füge sie
-                in Minecraft unter Mehrspieler hinzu.
+            <p class="connection-subtitle">
+                Betrete den LMS Server mit der Minecraft Java-Edition.
             </p>
-
-
-            <div class="connection-ip">
-                LMS_server.aternos.me
-            </div>
-
 
             <button
-                class="rank-button premium"
-                type="button"
-                onclick="copyServerIP()"
+                class="copy-button"
+                id="copyButton"
+                onclick="copyServerAddress()"
             >
-                SERVER-IP KOPIEREN
+                ADRESSE KOPIEREN
             </button>
 
+            <div class="connection-steps">
 
-            <p style="margin-top:18px">
-                Falls du Hilfe benötigst, findest du
-                weitere Informationen in unserem Info-Bereich.
-            </p>
+                <button
+                    class="connection-step active"
+                    id="connectionStep1"
+                    onclick="changeConnectionStep(1)"
+                >
+                    <div class="step-number">1</div>
+                    <div class="step-text">
+                        <h4>Minecraft starten</h4>
+                        <p>
+                            Starte Minecraft Java Edition
+                            auf deinem Computer.
+                        </p>
+                    </div>
+                </button>
 
-            <a
-                href="info.html"
-                class="rank-button dark"
-            >
-                ZUR ANLEITUNG
-            </a>
+                <button
+                    class="connection-step"
+                    id="connectionStep2"
+                    onclick="changeConnectionStep(2)"
+                >
+                    <div class="step-number">2</div>
+                    <div class="step-text">
+                        <h4>Mehrspieler öffnen</h4>
+                        <p>
+                            Öffne im Minecraft-Hauptmenü
+                            den Bereich „Mehrspieler“.
+                        </p>
+                    </div>
+                </button>
+
+                <button
+                    class="connection-step"
+                    id="connectionStep3"
+                    onclick="changeConnectionStep(3)"
+                >
+                    <div class="step-number">3</div>
+                    <div class="step-text">
+                        <h4>LMS Server hinzufügen</h4>
+                        <p>
+                            Gib als Serveradresse
+                            <code>LMS_server.aternos.me</code>
+                            ein und verbinde dich.
+                        </p>
+                    </div>
+                </button>
+
+            </div>
+
+            <div class="connection-finished">
+                Das war's, viel Spaß!
+            </div>
 
         </div>
 
@@ -2649,205 +2118,526 @@ footer{
 </div>
 
 
-<!-- =======================================================
-     COOKIE CLICKER
-======================================================= -->
-
-<div class="cookie-game">
-
-    <button
-        type="button"
-        onclick="clickCookie(this)"
-        aria-label="Cookie klicken"
-    >
-        🍪
-    </button>
-
-    <span id="cookieCount">
-        0 Cookies
-    </span>
-
-</div>
-
-
-<!-- =======================================================
-     JAVASCRIPT
-======================================================= -->
-
 <script>
 
-/* =========================================================
-   SERVER CONNECTION
-========================================================= */
+const SERVER_IP = "LMS_server.aternos.me";
+
+
+/* TEAM-DATEN */
+
+const lmsPlayers = [
+    {name:"CC_Minecarft",rank:"OWNER"},
+    {name:"Hobbit2304",rank:"BUILDER"},
+    {name:"King_Luma1",rank:"BUILDER"},
+    {name:"Lennyy20",rank:"BUILDER"},
+    {name:"Takatonka",rank:"PREMIUM"},
+    {name:"Vanielle",rank:"PREMIUM"}
+];
+
+
+/* TEAM PROFILE */
+
+let skinRefreshInterval = null;
+
+function openTeamProfile(name,rank){
+
+    const overlay = document.getElementById("teamProfile");
+    const head = document.getElementById("profileHead");
+    const nameElement = document.getElementById("profileName");
+    const rankElement = document.getElementById("profileRank");
+    const nameMC = document.getElementById("profileNameMC");
+
+    nameElement.textContent = name;
+
+    rankElement.textContent = rank;
+    rankElement.className = "rank " + rank.toLowerCase();
+
+    nameMC.href =
+        "https://namemc.com/profile/" + encodeURIComponent(name);
+
+    overlay.classList.add("active");
+    overlay.setAttribute("aria-hidden","false");
+
+    document.body.style.overflow = "hidden";
+
+    refreshTeamSkin(name);
+
+    // Während das Profil geöffnet ist, wird der Skin regelmäßig neu geladen.
+    clearInterval(skinRefreshInterval);
+
+    skinRefreshInterval = setInterval(function(){
+        if(overlay.classList.contains("active")){
+            refreshTeamSkin(name);
+        }
+    },60000);
+
+}
+
+
+function refreshTeamSkin(name){
+
+    const head = document.getElementById("profileHead");
+
+    // Cache-Buster fragt beim erneuten Laden eine aktuelle Bildversion ab.
+    head.src =
+        "https://mc-heads.net/avatar/" +
+        encodeURIComponent(name) +
+        "/256?refresh=" + Date.now();
+
+    head.alt = "Aktueller Minecraft-Kopf von " + name;
+
+}
+
+
+function closeTeamProfile(){
+
+    const overlay = document.getElementById("teamProfile");
+
+    overlay.classList.remove("active");
+    overlay.setAttribute("aria-hidden","true");
+
+    document.body.style.overflow = "";
+
+    clearInterval(skinRefreshInterval);
+
+}
+
+
+function closeTeamProfileOutside(event){
+
+    if(event.target.id === "teamProfile"){
+        closeTeamProfile();
+    }
+
+}
+
+
+/* SPIELERSUCHE */
+
+const playerSearchInput =
+    document.getElementById("playerSearchInput");
+
+const playerSearchForm =
+    document.getElementById("playerSearchForm");
+
+const playerSuggestions =
+    document.getElementById("playerSuggestions");
+
+const playerSearchResult =
+    document.getElementById("playerSearchResult");
+
+
+function safeMinecraftName(name){
+    return /^[A-Za-z0-9_]{1,16}$/.test(name);
+}
+
+
+function closePlayerSuggestions(){
+
+    playerSuggestions.classList.remove("open");
+    playerSuggestions.replaceChildren();
+
+}
+
+
+function makePlayerSuggestion(player){
+
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.className = "player-suggestion";
+
+    const avatar = document.createElement("img");
+
+    avatar.src =
+        "https://mc-heads.net/avatar/" +
+        encodeURIComponent(player.name) +
+        "/60";
+
+    avatar.alt = "";
+
+    const info = document.createElement("span");
+
+    info.className = "player-suggestion-name";
+    info.textContent = player.name;
+
+    const detail = document.createElement("span");
+
+    detail.className = "player-suggestion-detail";
+
+    detail.textContent =
+        player.rank
+        ? "LMS · " + player.rank
+        : "Minecraft-Spieler";
+
+    info.appendChild(detail);
+
+    button.appendChild(avatar);
+    button.appendChild(info);
+
+    button.addEventListener("click",function(){
+
+        playerSearchInput.value = player.name;
+
+        showPlayerResult(
+            player.name,
+            player.rank || ""
+        );
+
+        closePlayerSuggestions();
+
+    });
+
+    return button;
+
+}
+
+
+function showPlayerSuggestions(value){
+
+    const query = value.trim().toLowerCase();
+
+    playerSearchResult.classList.remove("open");
+    playerSearchResult.replaceChildren();
+
+    playerSuggestions.replaceChildren();
+
+    if(query.length === 0){
+        closePlayerSuggestions();
+        return;
+    }
+
+    const matches = lmsPlayers.filter(function(player){
+
+        return player.name.toLowerCase().includes(query);
+
+    }).slice(0,6);
+
+    matches.forEach(function(player){
+
+        playerSuggestions.appendChild(
+            makePlayerSuggestion(player)
+        );
+
+    });
+
+    const exact = lmsPlayers.some(function(player){
+
+        return player.name.toLowerCase() === query;
+
+    });
+
+    if(safeMinecraftName(value.trim()) && !exact){
+
+        playerSuggestions.appendChild(
+            makePlayerSuggestion({
+                name:value.trim(),
+                rank:"Beliebigen Namen suchen"
+            })
+        );
+
+    }
+
+    if(playerSuggestions.children.length > 0){
+        playerSuggestions.classList.add("open");
+    }else{
+        closePlayerSuggestions();
+    }
+
+}
+
+
+function showPlayerResult(name,rank){
+
+    if(!safeMinecraftName(name)){
+
+        playerSearchResult.replaceChildren();
+
+        const message = document.createElement("div");
+
+        message.className = "player-result-note";
+        message.textContent =
+            "Bitte gib einen gültigen Minecraft-Namen ein.";
+
+        playerSearchResult.appendChild(message);
+        playerSearchResult.classList.add("open");
+
+        return;
+
+    }
+
+    playerSearchResult.replaceChildren();
+
+    const main = document.createElement("div");
+    main.className = "player-result-main";
+
+    const avatar = document.createElement("img");
+
+    avatar.src =
+        "https://mc-heads.net/avatar/" +
+        encodeURIComponent(name) +
+        "/84";
+
+    avatar.alt = "Minecraft-Kopf von " + name;
+
+    const textWrap = document.createElement("div");
+
+    const title = document.createElement("div");
+
+    title.className = "player-result-name";
+    title.textContent = name;
+
+    const note = document.createElement("div");
+
+    note.className = "player-result-note";
+
+    note.textContent =
+        rank && rank !== "Beliebigen Namen suchen"
+        ? "LMS-Rang: " + rank
+        : "Minecraft-Spieler · Nicht als LMS-Teammitglied gelistet";
+
+    textWrap.appendChild(title);
+    textWrap.appendChild(note);
+
+    main.appendChild(avatar);
+    main.appendChild(textWrap);
+
+    playerSearchResult.appendChild(main);
+
+    const link = document.createElement("a");
+
+    link.className = "player-result-link";
+    link.href =
+        "https://namemc.com/search?q=" +
+        encodeURIComponent(name);
+
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "Spielerprofil auf NameMC ansehen ↗";
+
+    playerSearchResult.appendChild(link);
+
+    playerSearchResult.classList.add("open");
+
+}
+
+
+playerSearchInput.addEventListener("input",function(){
+
+    showPlayerSuggestions(playerSearchInput.value);
+
+});
+
+
+playerSearchForm.addEventListener("submit",function(event){
+
+    event.preventDefault();
+
+    const name = playerSearchInput.value.trim();
+
+    const found = lmsPlayers.find(function(player){
+
+        return player.name.toLowerCase() === name.toLowerCase();
+
+    });
+
+    showPlayerResult(name,found ? found.rank : "");
+
+    closePlayerSuggestions();
+
+});
+
+
+document.addEventListener("click",function(event){
+
+    if(!document.getElementById("playerSearchWrap").contains(event.target)){
+
+        closePlayerSuggestions();
+        playerSearchResult.classList.remove("open");
+
+    }
+
+});
+
+
+playerSearchInput.addEventListener("keydown",function(event){
+
+    if(event.key === "Escape"){
+
+        closePlayerSuggestions();
+        playerSearchResult.classList.remove("open");
+
+    }
+
+    if(event.key === "ArrowDown"){
+
+        const first = playerSuggestions.querySelector("button");
+
+        if(first){
+            event.preventDefault();
+            first.focus();
+        }
+
+    }
+
+});
+
+
+/* VERBINDUNGS-MODAL */
+
+const connectionModal =
+    document.getElementById("connectionModal");
+
+const connectionImage =
+    document.getElementById("connectionImage");
+
+const copyButton =
+    document.getElementById("copyButton");
+
+
+const connectionStepImages = {
+    1:"Screenshot (420).png",
+    2:"Screenshot (421).png",
+    3:"Screenshot (423).png"
+};
+
 
 function openConnection(){
 
-    const overlay =
-        document.getElementById("connectionOverlay");
+    changeConnectionStep(1);
 
-    if(overlay){
-        overlay.classList.add("active");
-    }
+    connectionModal.classList.add("active");
+
+    document.body.style.overflow = "hidden";
 
 }
 
 
 function closeConnection(){
 
-    const overlay =
-        document.getElementById("connectionOverlay");
+    connectionModal.classList.remove("active");
 
-    if(overlay){
-        overlay.classList.remove("active");
+    document.body.style.overflow = "";
+
+}
+
+
+function changeConnectionStep(step){
+
+    connectionImage.src = connectionStepImages[step];
+
+    document.querySelectorAll(".connection-step")
+    .forEach(function(element){
+
+        element.classList.remove("active");
+
+    });
+
+    const selectedStep =
+        document.getElementById("connectionStep" + step);
+
+    if(selectedStep){
+        selectedStep.classList.add("active");
     }
 
 }
 
 
-function closeConnectionOutside(event){
+connectionModal.addEventListener("click",function(event){
 
-    if(
-        event.target &&
-        event.target.id === "connectionOverlay"
-    ){
-        closeConnection();
-    }
-
-}
-
-
-document.addEventListener("keydown",function(event){
-
-    if(event.key === "Escape"){
+    if(event.target === connectionModal){
         closeConnection();
     }
 
 });
 
 
-/* =========================================================
-   SCROLL
-========================================================= */
+document.addEventListener("keydown",function(event){
 
-function scrollToGames(){
+    if(event.key === "Escape"){
 
-    const target =
-        document.getElementById("spiele");
+        closeConnection();
+        closeTeamProfile();
 
-    if(target){
-        target.scrollIntoView({
-            behavior:"smooth"
-        });
     }
 
-}
+});
 
 
-/* =========================================================
-   COPY SERVER IP
-========================================================= */
+/* SERVER-IP KOPIEREN */
 
-function copyServerIP(){
+function copyServerAddress(){
 
-    const ip =
-        "LMS_server.aternos.me";
+    const done = function(){
+
+        copyButton.textContent = "ADRESSE KOPIERT ✓";
+        copyButton.classList.add("copied");
+
+        setTimeout(function(){
+
+            copyButton.textContent = "ADRESSE KOPIEREN";
+            copyButton.classList.remove("copied");
+
+        },2000);
+
+    };
+
 
     if(navigator.clipboard && window.isSecureContext){
 
-        navigator.clipboard.writeText(ip)
-        .then(function(){
-            showCopyFeedback();
-        })
-        .catch(function(){
-            fallbackCopy(ip);
-        });
+        navigator.clipboard
+            .writeText(SERVER_IP)
+            .then(done)
+            .catch(fallbackCopy);
 
     }else{
 
-        fallbackCopy(ip);
+        fallbackCopy();
 
     }
 
-}
 
+    function fallbackCopy(){
 
-function fallbackCopy(text){
+        const textarea = document.createElement("textarea");
 
-    const input =
-        document.createElement("textarea");
+        textarea.value = SERVER_IP;
 
-    input.value = text;
+        document.body.appendChild(textarea);
 
-    input.style.position = "fixed";
-    input.style.opacity = "0";
+        textarea.select();
 
-    document.body.appendChild(input);
-
-    input.select();
-
-    try{
         document.execCommand("copy");
-        showCopyFeedback();
-    }catch(error){
-        alert("Bitte kopiere die Server-Adresse: " + text);
+
+        textarea.remove();
+
+        done();
+
     }
 
-    document.body.removeChild(input);
-
 }
 
 
-function showCopyFeedback(){
-
-    const buttons =
-        document.querySelectorAll(".status-address button,.connection-content button");
-
-    buttons.forEach(function(button){
-
-        if(button.textContent.includes("KOPIEREN")){
-
-            const oldText = button.textContent;
-
-            button.textContent = "KOPIERT!";
-
-            setTimeout(function(){
-                button.textContent = oldText;
-            },1600);
-
-        }
-
-    });
-
-}
-
-
-/* =========================================================
-   SERVER STATUS API
-========================================================= */
+/* SERVER STATUS */
 
 async function updateServerStatus(){
 
-    const indicator =
-        document.getElementById("serverIndicator");
+    const playerCount =
+        document.getElementById("playerCount");
 
-    const statusText =
-        document.getElementById("serverStatusText");
-
-    const playersOnline =
-        document.getElementById("playersOnline");
-
-    const serverVersion =
-        document.getElementById("serverVersion");
+    const statusDot =
+        document.getElementById("statusDot");
 
 
     try{
 
         const response = await fetch(
-            "https://api.mcstatus.io/v2/status/java/LMS_server.aternos.me"
+            "https://api.mcstatus.io/v2/status/java/" +
+            encodeURIComponent(SERVER_IP)
         );
 
         if(!response.ok){
-            throw new Error("Status API nicht erreichbar");
+            throw new Error("Serverstatus konnte nicht geladen werden.");
         }
 
         const data = await response.json();
@@ -2855,61 +2645,45 @@ async function updateServerStatus(){
 
         if(data.online){
 
-            indicator.classList.remove("offline");
-            indicator.classList.add("online");
+            const online =
+                data.players &&
+                typeof data.players.online === "number"
+                ? data.players.online
+                : 0;
 
-            statusText.textContent =
-                "Server ist online";
+            const max =
+                data.players &&
+                typeof data.players.max === "number"
+                ? data.players.max
+                : null;
 
+            playerCount.textContent =
+                max !== null
+                ? online + " / " + max + " Spieler"
+                : online + " Spieler";
 
-            if(data.players){
-
-                playersOnline.textContent =
-                    data.players.online + " / " + data.players.max;
-
-            }else{
-
-                playersOnline.textContent = "--";
-
-            }
-
-
-            if(data.version){
-
-                serverVersion.textContent =
-                    data.version.name_clean || data.version.name || "--";
-
-            }else{
-
-                serverVersion.textContent = "--";
-
-            }
+            statusDot.style.background = "#36c56a";
+            statusDot.style.boxShadow =
+                "0 0 0 6px rgba(54,197,106,.13)";
 
         }else{
 
-            indicator.classList.remove("online");
-            indicator.classList.add("offline");
+            playerCount.textContent = "OFFLINE";
 
-            statusText.textContent =
-                "Server ist offline";
-
-            playersOnline.textContent = "0";
-
-            serverVersion.textContent = "--";
+            statusDot.style.background = "#d64545";
+            statusDot.style.boxShadow =
+                "0 0 0 6px rgba(214,69,69,.13)";
 
         }
 
     }catch(error){
 
-        indicator.classList.remove("online");
-        indicator.classList.add("offline");
+        playerCount.textContent = "—";
 
-        statusText.textContent =
-            "Status momentan nicht verfügbar";
+        statusDot.style.background = "#888";
 
-        playersOnline.textContent = "--";
-
-        serverVersion.textContent = "--";
+        statusDot.style.boxShadow =
+            "0 0 0 6px rgba(139,143,151,.12)";
 
     }
 
@@ -2921,79 +2695,50 @@ updateServerStatus();
 setInterval(updateServerStatus,30000);
 
 
-/* =========================================================
-   STATUS SETTINGS
-========================================================= */
+/* LMS COOKIES – KEKSE-REGEN */
 
-function toggleStatusSettings(){
+let lmsCookiesGiven = 0;
 
-    const menu =
-        document.getElementById("statusSettingsMenu");
+function giveLMSCookies(){
 
-    if(menu){
-        menu.hidden = !menu.hidden;
+    lmsCookiesGiven++;
+
+    const counter = document.getElementById("cookieCount");
+
+    counter.textContent =
+        lmsCookiesGiven +
+        (lmsCookiesGiven === 1
+        ? " LMS Cookie gegeben"
+        : " LMS Cookies gegeben");
+
+
+    // Kurzer Kekse-Regen über die komplette Website.
+
+    for(let i = 0; i < 75; i++){
+
+        const cookie = document.createElement("span");
+
+        cookie.className = "cookie-rain";
+        cookie.textContent = "🍪";
+
+        cookie.style.left =
+            Math.random() * 100 + "vw";
+
+        cookie.style.animationDelay =
+            Math.random() * 1.2 + "s";
+
+        cookie.style.fontSize =
+            18 + Math.random() * 22 + "px";
+
+        document.body.appendChild(cookie);
+
+        setTimeout(function(){
+
+            cookie.remove();
+
+        },4200);
+
     }
-
-}
-
-
-document.querySelectorAll("[data-status-setting]")
-.forEach(function(control){
-
-    control.addEventListener("change",function(){
-
-        const key =
-            control.getAttribute("data-status-setting");
-
-        const target =
-            key === "players"
-            ? document.getElementById("playerCount")
-            : document.getElementById("statusVersion");
-
-        if(target){
-            target.style.display =
-                control.checked ? "" : "none";
-        }
-
-    });
-
-});
-
-
-/* =========================================================
-   COOKIE CLICKER
-========================================================= */
-
-let cookies = 0;
-
-
-function clickCookie(button){
-
-    cookies++;
-
-    const counter =
-        document.getElementById("cookieCount");
-
-    if(counter){
-        counter.textContent =
-            cookies + (cookies === 1 ? " Cookie" : " Cookies");
-    }
-
-
-    button.style.transform =
-        "scale(1.2)";
-
-
-    setTimeout(function(){
-
-        button.style.transform =
-            "";
-
-    },100);
-
-
-    button.title =
-        cookies + " Cookies";
 
 }
 
