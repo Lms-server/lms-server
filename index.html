@@ -55,64 +55,16 @@ img{max-width:100%}
 .section-header h2{font-size:42px;line-height:1.05;margin-bottom:15px;color:#f5f5f6}
 .section-description{color:#b9bbc1;font-size:15px;line-height:1.7}
 
-.discord-section{background:#191b20;color:#fff;overflow:hidden}
-.discord-grid{display:grid;grid-template-columns:1fr;align-items:center;gap:30px}
-.discord-content{max-width:760px}
+.discord-section{background:#191b20;color:#fff;padding:65px 6%;overflow:hidden}
+.discord-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:25px;max-width:1200px;margin:0 auto}
+.discord-content{max-width:600px}
 .discord-content .section-label{color:#9297a0}
 .discord-content p{color:#b9bbc1;line-height:1.7;margin-bottom:25px}
 .discord-actions{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
 .discord-app-icon{width:62px;height:62px;object-fit:contain;display:block;filter:drop-shadow(0 5px 12px #0005)}
-.discord-visual{display:none}
-
-/* MINECRAFT-BILD IM VORDERGRUND – OHNE BESCHRIFTUNG */
-.minecraft-decoration{
-min-height:340px;
-height:340px;
-position:relative;
-background:#191b20;
-border-top:1px solid #34353a;
-border-bottom:1px solid #34353a;
-overflow:hidden;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.minecraft-decoration-content{
-display:none;
-}
-
-.minecraft-decoration img.minecraft-bg{
-position:absolute;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%);
-width:min(900px,92vw);
-max-width:none;
-height:100%;
-max-height:340px;
-object-fit:contain;
-object-position:center;
-pointer-events:none;
-user-select:none;
-z-index:2;
-filter:drop-shadow(0 15px 25px rgba(0,0,0,.25));
-}
-
-/* MINECRAFT UPDATE SCHWEBT IM VORDERGRUND */
-.minecraft-decoration img.minecraft-update-fly{
-position:absolute;
-right:8%;
-top:8px;
-width:min(260px,30vw);
-height:auto;
-max-height:220px;
-object-fit:contain;
-pointer-events:none;
-user-select:none;
-z-index:5;
-filter:drop-shadow(0 12px 18px rgba(0,0,0,.45));
-}
+.discord-visual{position:relative;display:flex;align-items:center;justify-content:center;min-width:0;min-height:280px}
+.discord-visual img.minecraft-bg{width:100%;max-width:440px;height:280px;object-fit:contain;object-position:center;display:block;filter:drop-shadow(0 15px 25px rgba(0,0,0,.25))}
+.discord-visual img.minecraft-update-fly{position:absolute;right:0;top:0;width:min(190px,42%);height:auto;max-height:150px;object-fit:contain;z-index:2;filter:drop-shadow(0 12px 18px rgba(0,0,0,.45));pointer-events:none}
 
 /* TEAM */
 .team-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px 20px;max-width:1000px;margin:25px auto 0}
@@ -222,7 +174,7 @@ filter:drop-shadow(0 12px 18px rgba(0,0,0,.45));
 .partner-section{background:#191b20;color:#f1f1f2;text-align:center;padding:70px 6%}
 .partner-section .section-header{margin:0 auto 30px;text-align:center}
 .partner-logos{display:flex;justify-content:center;align-items:center;gap:35px;flex-wrap:nowrap}
-.partner-item{flex:0 1 180px;min-width:0;display:flex;flex-direction:column;align-items:center;gap:13px}
+.partner-item{flex:0 1 220px;min-width:150px;display:flex;flex-direction:column;align-items:center;gap:13px}
 .partner-logo{display:block;width:min(180px,35vw);height:100px;object-fit:contain;margin:0 auto}
 .partner-caption{color:#b9bbc1;font-size:13px}
 .partner-caption strong{color:var(--gold2)}
@@ -236,7 +188,7 @@ align-items:flex-end;
 justify-content:center;
 width:100%;
 padding:0 12px;
-margin:5px auto 22px;
+margin:22px auto 0;
 overflow:hidden;
 }
 .footer-figures img{
@@ -271,8 +223,6 @@ body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:6
 .connection-window{grid-template-columns:1fr;max-height:94vh;overflow-y:auto}
 .connection-image{min-height:360px;max-height:420px}
 .connection-content{padding:35px}
-.minecraft-decoration img.minecraft-bg{width:min(760px,95vw)}
-.minecraft-decoration img.minecraft-update-fly{right:7%;top:8px;width:230px}
 }
 @media(max-width:900px){
 .navbar{height:auto;min-height:66px;flex-wrap:wrap;padding:8px 18px;gap:12px}
@@ -295,10 +245,11 @@ body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:6
 .status-box{flex-direction:column;align-items:flex-start}
 .footer-grid{grid-template-columns:1fr}
 .footer-bottom{flex-direction:column;gap:10px}
-.minecraft-decoration{height:250px;min-height:250px}
-.minecraft-decoration img.minecraft-bg{width:95vw;max-height:245px}
-.minecraft-decoration img.minecraft-update-fly{width:175px;right:4%;top:8px}
-.discord-visual{display:none}
+.discord-section{padding:55px 22px}
+.discord-grid{grid-template-columns:1fr;gap:10px}
+.discord-visual{min-height:190px}
+.discord-visual img.minecraft-bg{height:190px;max-width:300px}
+.discord-visual img.minecraft-update-fly{width:125px;right:5%;top:0}
 }
 @media(max-width:600px){
 .top-notice{font-size:9px;padding:7px 10px}
@@ -322,9 +273,6 @@ body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:6
 .hero h1{font-size:45px}
 .hero-buttons{flex-direction:column;align-items:stretch}
 .hero-buttons .rank-button{width:100%}
-.minecraft-decoration{height:210px;min-height:210px}
-.minecraft-decoration img.minecraft-bg{width:100vw;max-height:205px}
-.minecraft-decoration img.minecraft-update-fly{width:145px;right:2%;top:5px}
 }
 </style>
 </head>
@@ -383,13 +331,11 @@ body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:6
 <a class="rank-button admin" href="https://discord.gg/N5ZYVRpMMU" target="_blank" rel="noopener">DISCORD ÖFFNEN</a>
 </div>
 </div>
-</div>
-</section>
-
-<!-- MINECRAFT-BILD OHNE BESCHRIFTUNG -->
-<section class="minecraft-decoration" aria-label="Minecraft-Dekoration">
-<img class="minecraft-bg" src="minecraft-bg2.webp" alt="">
+<div class="discord-visual" aria-label="Minecraft-Ghast und Updates">
+<img class="minecraft-bg" src="minecraft-bg2.webp" alt="Minecraft Ghast">
 <img class="minecraft-update-fly" src="Minecraft-Update-removebg-preview.png" alt="Minecraft Updates">
+</div>
+</div>
 </section>
 
 <section class="section docs-section" id="informationen">
@@ -563,16 +509,14 @@ body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:6
 </div>
 </div>
 
-<!-- TIPPS-BILD DIREKT IM FOOTER -->
-<div class="footer-figures">
-<img
-src="Tips-for-Beginners_Media-Block-B_Pals-1_704x326_2x-removebg-preview.png"
-alt="Minecraft-Figuren">
-</div>
-
 <div class="footer-bottom">
 <span>LMS SERVER © 2026</span>
 <span>LMS_server.aternos.me</span>
+</div>
+
+<!-- TIPPS-FIGUREN GANZ UNTEN IM FOOTER -->
+<div class="footer-figures">
+<img src="Tips-for-Beginners_Media-Block-B_Pals-1_704x326_2x-removebg-preview.png" alt="Minecraft-Figuren">
 </div>
 </footer>
 
