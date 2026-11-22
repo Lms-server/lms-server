@@ -6,269 +6,80 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LMS NETWORK | Rollenverwaltung</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 :root {
-    --gold: #d8aa43;
-    --gold-light: #f0cb70;
-    --bg: #17191d;
-    --panel: #202329;
-    --panel2: #292d34;
-    --text: #f4f4f4;
-    --muted: #a5a8af;
-    --red: #d95757;
-    --green: #55bd83;
+    --gold:#d8aa43;
+    --bg:#17191d;
+    --panel:#202329;
+    --panel2:#292d34;
+    --text:#f4f4f4;
+    --muted:#a5a8af;
+    --red:#d95757;
+    --green:#55bd83;
 }
-
-* {
-    box-sizing: border-box;
+*{box-sizing:border-box}
+body{
+    margin:0;background:var(--bg);color:var(--text);
+    font-family:Arial,sans-serif;min-height:100vh;
 }
-
-body {
-    margin: 0;
-    min-height: 100vh;
-    background: var(--bg);
-    color: var(--text);
-    font-family: Arial, sans-serif;
+header{
+    height:76px;padding:0 5%;display:flex;
+    align-items:center;justify-content:space-between;
+    background:#191b20;border-bottom:1px solid #343840;
 }
-
-header {
-    height: 76px;
-    padding: 0 5%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #343840;
-    background: #191b20;
+.logo{font-weight:800;letter-spacing:1px}
+.logo span{color:var(--gold)}
+.back{color:var(--gold);text-decoration:none;font-weight:bold}
+main{width:min(1000px,92%);margin:55px auto}
+.eyebrow{color:var(--gold);font-size:11px;letter-spacing:3px;font-weight:bold}
+h1{font-size:38px;margin:12px 0}
+h2{font-size:20px}
+.subtitle,.muted{color:var(--muted);line-height:1.6}
+.panel{
+    background:var(--panel);border:1px solid #343840;
+    border-radius:13px;padding:25px;margin-bottom:22px;
 }
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    font-weight: 800;
-    letter-spacing: 1px;
+.login-box{max-width:450px;margin:50px auto}
+input,select{
+    width:100%;background:#17191d;color:white;
+    border:1px solid #414650;border-radius:7px;
+    padding:12px;font-size:14px;outline:none;
 }
-
-.logo span {
-    color: var(--gold);
+input:focus,select:focus{border-color:var(--gold)}
+button{
+    border:0;border-radius:7px;padding:12px 17px;
+    font-weight:bold;cursor:pointer;transition:.2s;
 }
-
-.back {
-    color: var(--gold-light);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
+button:hover{filter:brightness(1.12)}
+.primary{background:var(--gold);color:#171717}
+.secondary{background:#353a43;color:white}
+.danger{background:#572d32;color:#ffb3b3}
+.login-box input{margin:8px 0 15px}
+.login-box button{width:100%}
+.hidden{display:none!important}
+.member{
+    display:grid;
+    grid-template-columns:minmax(150px,1.5fr) minmax(130px,1fr) auto;
+    gap:12px;align-items:center;padding:14px;
+    background:var(--panel2);border:1px solid #3a3f48;
+    border-radius:9px;margin-bottom:10px;
 }
-
-main {
-    width: min(1050px, 92%);
-    margin: 55px auto;
+.member small{display:block;color:var(--muted);font-size:11px;margin-bottom:6px}
+.member-actions{display:flex;gap:7px}
+.member-actions button{padding:11px;font-size:12px}
+.toolbar,.actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.status{font-size:13px;margin-top:15px;min-height:20px}
+.notice{
+    padding:13px;background:#29251c;border-left:3px solid var(--gold);
+    color:#d8c69f;font-size:12px;line-height:1.6;
 }
-
-.eyebrow {
-    color: var(--gold);
-    font-size: 11px;
-    letter-spacing: 3px;
-    font-weight: bold;
-}
-
-h1 {
-    font-size: clamp(28px, 5vw, 42px);
-    margin: 12px 0;
-}
-
-.subtitle {
-    color: var(--muted);
-    line-height: 1.6;
-    margin-bottom: 35px;
-}
-
-.panel {
-    background: var(--panel);
-    border: 1px solid #343840;
-    border-radius: 13px;
-    padding: 25px;
-    margin-bottom: 22px;
-}
-
-.panel h2 {
-    margin: 0 0 12px;
-    font-size: 19px;
-}
-
-.muted {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.6;
-}
-
-input, select {
-    background: #17191d;
-    color: white;
-    border: 1px solid #414650;
-    border-radius: 7px;
-    padding: 12px;
-    font-size: 14px;
-    outline: none;
-    width: 100%;
-}
-
-input:focus, select:focus {
-    border-color: var(--gold);
-}
-
-button {
-    border: 0;
-    border-radius: 7px;
-    padding: 12px 17px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: .2s;
-}
-
-button:hover {
-    transform: translateY(-1px);
-    filter: brightness(1.1);
-}
-
-.primary {
-    background: linear-gradient(135deg, var(--gold-light), #bd8b2b);
-    color: #171717;
-}
-
-.secondary {
-    background: #353a43;
-    color: white;
-    border: 1px solid #484e58;
-}
-
-.danger {
-    background: #572d32;
-    color: #ffb3b3;
-    border: 1px solid #82434a;
-}
-
-.login-box {
-    max-width: 440px;
-    margin: 70px auto;
-}
-
-.login-box input {
-    margin: 15px 0;
-}
-
-.login-box button {
-    width: 100%;
-}
-
-#error {
-    color: #ff8585;
-    font-size: 13px;
-    margin-top: 12px;
-}
-
-.hidden {
-    display: none !important;
-}
-
-.toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.toolbar h2 {
-    margin: 0;
-}
-
-.member {
-    display: grid;
-    grid-template-columns: minmax(150px, 1.5fr) minmax(130px, 1fr) auto;
-    gap: 13px;
-    align-items: center;
-    padding: 15px;
-    background: var(--panel2);
-    border: 1px solid #3a3f48;
-    border-radius: 9px;
-    margin-bottom: 10px;
-}
-
-.member-name {
-    font-weight: bold;
-    overflow-wrap: anywhere;
-}
-
-.member small {
-    display: block;
-    color: var(--muted);
-    font-size: 11px;
-    margin-bottom: 5px;
-}
-
-.member-actions {
-    display: flex;
-    gap: 7px;
-}
-
-.member-actions button {
-    padding: 10px 12px;
-    font-size: 12px;
-}
-
-.actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.status {
-    color: var(--green);
-    font-size: 13px;
-    margin-top: 15px;
-    min-height: 18px;
-}
-
-.notice {
-    border-left: 3px solid var(--gold);
-    padding: 12px 15px;
-    background: #29251c;
-    color: #d8c69f;
-    font-size: 12px;
-    line-height: 1.6;
-    border-radius: 4px;
-}
-
-footer {
-    text-align: center;
-    color: #777d86;
-    font-size: 12px;
-    padding: 35px 15px;
-}
-
-@media (max-width: 650px) {
-    header {
-        padding: 0 4%;
-    }
-
-    main {
-        margin-top: 35px;
-    }
-
-    .panel {
-        padding: 18px;
-    }
-
-    .member {
-        grid-template-columns: 1fr;
-    }
-
-    .member-actions button {
-        flex: 1;
-    }
+footer{text-align:center;color:#777d86;padding:35px;font-size:12px}
+@media(max-width:650px){
+    .member{grid-template-columns:1fr}
+    .member-actions button{flex:1}
+    main{margin-top:35px}
 }
 </style>
 </head>
@@ -276,41 +87,33 @@ footer {
 <body>
 
 <header>
-    <div class="logo">
-        LMS <span>NETWORK</span>
-    </div>
-
+    <div class="logo">LMS <span>NETWORK</span></div>
     <a class="back" href="index.html">← Zurück zur Website</a>
 </header>
 
 <main>
-
     <div class="eyebrow">LMS NETWORK · ADMINISTRATION</div>
     <h1>Rollenverwaltung</h1>
     <p class="subtitle">
         Verwalte hier die Mitglieder und Rollen des LMS-Teams.
-        Deine Änderungen können anschließend auf der Startseite angezeigt werden.
     </p>
 
     <!-- LOGIN -->
-    <section id="login" class="panel login-box">
-        <h2>OWNER-Zugang</h2>
-        <p class="muted">
-            Dieser Bereich ist für die Verwaltung durch den OWNER vorgesehen.
-        </p>
+    <section id="loginPanel" class="panel login-box">
+        <h2>OWNER-Anmeldung</h2>
+        <p class="muted">Melde dich mit deinem Supabase-Konto an.</p>
 
-        <input
-            type="password"
-            id="ownerCode"
-            placeholder="OWNER-Code eingeben"
-            autocomplete="off"
-        >
+        <label>E-Mail-Adresse</label>
+        <input id="email" type="email" placeholder="Deine E-Mail-Adresse">
 
-        <button class="primary" onclick="login()">Zugang öffnen</button>
-        <div id="error"></div>
+        <label>Passwort</label>
+        <input id="password" type="password" placeholder="Dein Passwort">
+
+        <button class="primary" onclick="login()">Anmelden</button>
+        <div id="loginStatus" class="status"></div>
     </section>
 
-    <!-- VERWALTUNG -->
+    <!-- DASHBOARD -->
     <section id="dashboard" class="hidden">
 
         <div class="panel">
@@ -320,170 +123,179 @@ footer {
             </div>
 
             <p class="muted">
-                Bearbeite Spielernamen und Rollen. Mit „Speichern“ übernimmst du
-                die Änderungen für diesen Browser.
+                Änderungen werden direkt in der gemeinsamen Datenbank gespeichert.
             </p>
 
             <div id="memberList"></div>
+            <div id="status" class="status"></div>
 
             <div class="actions">
-                <button class="primary" onclick="saveMembers()">Änderungen speichern</button>
-                <button class="secondary" onclick="resetMembers()">Standard-Team laden</button>
                 <button class="secondary" onclick="logout()">Abmelden</button>
             </div>
-
-            <div class="status" id="status"></div>
         </div>
 
         <div class="panel">
-            <h2>Hinweis zur Veröffentlichung</h2>
-            <p class="muted">
-                Die Teamdaten werden aktuell im lokalen Browser gespeichert.
-                Damit die Änderungen für alle Besucher der Website sichtbar sind,
-                muss die Startseite dieselben Daten aus einer gemeinsamen Datenbank
-                laden. Das richten wir als nächsten Schritt ein.
-            </p>
-
+            <h2>Verwaltung</h2>
             <div class="notice">
-                Der Zugangscode ist in dieser ersten Version nur eine einfache
-                Zugangssperre. Er ist im Quellcode sichtbar und schützt nicht
-                vor technisch versierten Besuchern. Für einen echten OWNER-Zugang
-                benötigen wir später eine serverseitige Anmeldung.
+                Nur angemeldete Benutzer, die in der LMS-Admin-Tabelle
+                freigeschaltet sind, dürfen Teamdaten bearbeiten.
             </div>
         </div>
 
     </section>
-
 </main>
 
-<footer>
-    LMS NETWORK · TEAM ADMINISTRATION
-</footer>
+<footer>LMS NETWORK · TEAM ADMINISTRATION</footer>
 
 <script>
-/* ==================================
-   EINSTELLUNGEN
-================================== */
+/* ======================================
+   SUPABASE EINSTELLUNGEN
+====================================== */
 
-// Ändere diesen Code vor der Veröffentlichung.
-const OWNER_CODE = "LMS-OWNER-2026";
+const SUPABASE_URL =
+    "https://kxafgbrdybonjxwfziee.supabase.co";
 
-// Dieser Schlüssel wird später auch von index.html verwendet.
-const STORAGE_KEY = "lms-team-data-v1";
+const SUPABASE_KEY =
+    "DEIN_SB_PUBLISHABLE_KEY";
 
+const db = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 
-/* ==================================
-   STANDARD-TEAM
-================================== */
-
-const defaultMembers = [
-    { name: "CC_Minecarft", role: "OWNER" },
-    { name: "Hobbit2304", role: "BUILDER" },
-    { name: "King_Luma1", role: "BUILDER" },
-    { name: "Lennyy20", role: "BUILDER" },
-    { name: "Takatonka", role: "PREMIUM" },
-    { name: "Vanielle", role: "PREMIUM" }
+const roles = [
+    "OWNER",
+    "ADMIN",
+    "MODERATOR",
+    "BUILDER",
+    "PREMIUM",
+    "MEMBER"
 ];
 
 let members = [];
 
 
-/* ==================================
-   LOGIN
-================================== */
+/* ======================================
+   STATUS
+====================================== */
 
-function login() {
-    const enteredCode = document.getElementById("ownerCode").value;
+function message(element, text, color) {
+    const el = document.getElementById(element);
+    el.textContent = text;
+    el.style.color = color || "#d8aa43";
+}
 
-    if (enteredCode !== OWNER_CODE) {
-        document.getElementById("error").textContent =
-            "Der eingegebene Code ist nicht korrekt.";
+
+/* ======================================
+   ANMELDUNG
+====================================== */
+
+async function login() {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    if (!email || !password) {
+        message("loginStatus", "Bitte E-Mail und Passwort eingeben.", "#ff8585");
         return;
     }
 
-    document.getElementById("login").classList.add("hidden");
-    document.getElementById("dashboard").classList.remove("hidden");
+    message("loginStatus", "Anmeldung läuft ...");
 
-    loadMembers();
-}
+    const { data, error } = await db.auth.signInWithPassword({
+        email,
+        password
+    });
 
-function logout() {
-    document.getElementById("dashboard").classList.add("hidden");
-    document.getElementById("login").classList.remove("hidden");
-    document.getElementById("ownerCode").value = "";
-    document.getElementById("error").textContent = "";
-}
-
-
-/* ==================================
-   DATEN LADEN
-================================== */
-
-function loadMembers() {
-    try {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        members = stored ? JSON.parse(stored) : structuredClone(defaultMembers);
-
-        if (!Array.isArray(members)) {
-            throw new Error("Ungültige Teamdaten");
-        }
-
-        members = members.filter(member =>
-            member &&
-            typeof member.name === "string" &&
-            typeof member.role === "string"
-        );
-
-    } catch (error) {
-        members = structuredClone(defaultMembers);
+    if (error) {
+        message("loginStatus", "Anmeldung fehlgeschlagen: " + error.message, "#ff8585");
+        return;
     }
 
-    renderMembers();
+    await checkAdmin(data.user);
 }
 
 
-/* ==================================
+/* ======================================
+   ADMIN-BERECHTIGUNG PRÜFEN
+====================================== */
+
+async function checkAdmin(user) {
+    if (!user) {
+        showLogin();
+        return;
+    }
+
+    const { data, error } = await db.rpc("is_lms_admin");
+
+    if (error || data !== true) {
+        await db.auth.signOut();
+        showLogin();
+        message(
+            "loginStatus",
+            "Dieses Konto besitzt keine LMS-Admin-Berechtigung.",
+            "#ff8585"
+        );
+        return;
+    }
+
+    document.getElementById("loginPanel").classList.add("hidden");
+    document.getElementById("dashboard").classList.remove("hidden");
+
+    await loadMembers();
+}
+
+
+/* ======================================
+   TEAM LADEN
+====================================== */
+
+async function loadMembers() {
+    message("status", "Team wird geladen ...");
+
+    const { data, error } = await db
+        .from("team_members")
+        .select("*")
+        .order("sort_order", { ascending: true });
+
+    if (error) {
+        message("status", "Fehler beim Laden: " + error.message, "#ff8585");
+        return;
+    }
+
+    members = data || [];
+    renderMembers();
+
+    message("status", "Teamdaten erfolgreich geladen.", "#55bd83");
+}
+
+
+/* ======================================
    TEAM ANZEIGEN
-================================== */
+====================================== */
 
 function renderMembers() {
     const container = document.getElementById("memberList");
     container.innerHTML = "";
 
-    members.forEach((member, index) => {
+    members.forEach(member => {
         const row = document.createElement("div");
         row.className = "member";
 
         const nameArea = document.createElement("div");
-
         const nameLabel = document.createElement("small");
         nameLabel.textContent = "SPIELERNAME";
 
         const nameInput = document.createElement("input");
-        nameInput.value = member.name;
-        nameInput.placeholder = "Minecraft-Name";
+        nameInput.value = member.player_name;
         nameInput.maxLength = 32;
-        nameInput.addEventListener("input", () => {
-            members[index].name = nameInput.value;
-        });
 
         nameArea.append(nameLabel, nameInput);
 
         const roleArea = document.createElement("div");
-
         const roleLabel = document.createElement("small");
         roleLabel.textContent = "ROLLE";
 
         const roleSelect = document.createElement("select");
-
-        const roles = [
-            "OWNER",
-            "ADMIN",
-            "MODERATOR",
-            "BUILDER",
-            "PREMIUM",
-            "MEMBER"
-        ];
 
         roles.forEach(role => {
             const option = document.createElement("option");
@@ -492,34 +304,29 @@ function renderMembers() {
             roleSelect.appendChild(option);
         });
 
-        if (!roles.includes(member.role)) {
-            const option = document.createElement("option");
-            option.value = member.role;
-            option.textContent = member.role;
-            roleSelect.appendChild(option);
-        }
-
         roleSelect.value = member.role;
-
-        roleSelect.addEventListener("change", () => {
-            members[index].role = roleSelect.value;
-        });
-
         roleArea.append(roleLabel, roleSelect);
 
-        const buttonArea = document.createElement("div");
-        buttonArea.className = "member-actions";
+        const actions = document.createElement("div");
+        actions.className = "member-actions";
+
+        const saveButton = document.createElement("button");
+        saveButton.className = "primary";
+        saveButton.textContent = "Speichern";
+
+        saveButton.onclick = () => saveMember(
+            member.id,
+            nameInput.value,
+            roleSelect.value
+        );
 
         const deleteButton = document.createElement("button");
         deleteButton.className = "danger";
         deleteButton.textContent = "Löschen";
-        deleteButton.addEventListener("click", () => {
-            deleteMember(index);
-        });
+        deleteButton.onclick = () => deleteMember(member.id);
 
-        buttonArea.appendChild(deleteButton);
-
-        row.append(nameArea, roleArea, buttonArea);
+        actions.append(saveButton, deleteButton);
+        row.append(nameArea, roleArea, actions);
         container.appendChild(row);
     });
 
@@ -532,88 +339,112 @@ function renderMembers() {
 }
 
 
-/* ==================================
-   MITGLIEDER VERWALTEN
-================================== */
+/* ======================================
+   MITGLIED SPEICHERN
+====================================== */
 
-function addMember() {
-    members.push({
-        name: "",
-        role: "MEMBER"
-    });
+async function saveMember(id, name, role) {
+    name = name.trim();
 
-    renderMembers();
-
-    const inputs = document.querySelectorAll("#memberList input");
-    if (inputs.length) {
-        inputs[inputs.length - 1].focus();
+    if (!name) {
+        message("status", "Bitte einen Spielernamen eingeben.", "#ff8585");
+        return;
     }
+
+    const { error } = await db
+        .from("team_members")
+        .update({
+            player_name: name,
+            role: role
+        })
+        .eq("id", id);
+
+    if (error) {
+        message("status", "Speichern fehlgeschlagen: " + error.message, "#ff8585");
+        return;
+    }
+
+    message("status", "Änderungen gespeichert!", "#55bd83");
+    await loadMembers();
 }
 
-function deleteMember(index) {
+
+/* ======================================
+   MITGLIED HINZUFÜGEN
+====================================== */
+
+async function addMember() {
+    const { error } = await db
+        .from("team_members")
+        .insert({
+            player_name: "NeuerSpieler",
+            role: "MEMBER",
+            sort_order: members.length + 1
+        });
+
+    if (error) {
+        message("status", "Hinzufügen fehlgeschlagen: " + error.message, "#ff8585");
+        return;
+    }
+
+    message("status", "Mitglied hinzugefügt!", "#55bd83");
+    await loadMembers();
+}
+
+
+/* ======================================
+   MITGLIED LÖSCHEN
+====================================== */
+
+async function deleteMember(id) {
     if (!confirm("Dieses Teammitglied wirklich löschen?")) {
         return;
     }
 
-    members.splice(index, 1);
-    renderMembers();
-}
+    const { error } = await db
+        .from("team_members")
+        .delete()
+        .eq("id", id);
 
-
-/* ==================================
-   SPEICHERN
-================================== */
-
-function saveMembers() {
-    members = members.map(member => ({
-        name: member.name.trim(),
-        role: member.role.trim()
-    }));
-
-    if (members.some(member => !member.name)) {
-        document.getElementById("status").textContent =
-            "Bitte fülle zuerst alle Spielernamen aus.";
-        document.getElementById("status").style.color = "#ff8585";
+    if (error) {
+        message("status", "Löschen fehlgeschlagen: " + error.message, "#ff8585");
         return;
     }
 
-    try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(members));
-
-        document.getElementById("status").textContent =
-            "✓ Teamdaten erfolgreich gespeichert.";
-
-        document.getElementById("status").style.color = "#55bd83";
-
-        renderMembers();
-
-    } catch (error) {
-        document.getElementById("status").textContent =
-            "Speichern fehlgeschlagen. Bitte Browser-Einstellungen prüfen.";
-
-        document.getElementById("status").style.color = "#ff8585";
-    }
+    message("status", "Mitglied gelöscht!", "#55bd83");
+    await loadMembers();
 }
 
 
-/* ==================================
-   STANDARD WIEDERHERSTELLEN
-================================== */
+/* ======================================
+   ABMELDEN
+====================================== */
 
-function resetMembers() {
-    if (!confirm("Das Standard-Team wirklich wiederherstellen?")) {
-        return;
-    }
-
-    members = structuredClone(defaultMembers);
-    renderMembers();
-
-    document.getElementById("status").textContent =
-        "Standard-Team geladen. Zum Übernehmen bitte speichern.";
-
-    document.getElementById("status").style.color = "#d8aa43";
+async function logout() {
+    await db.auth.signOut();
+    showLogin();
 }
+
+function showLogin() {
+    document.getElementById("dashboard").classList.add("hidden");
+    document.getElementById("loginPanel").classList.remove("hidden");
+}
+
+
+/* ======================================
+   BESTEHENDE SITZUNG PRÜFEN
+====================================== */
+
+async function checkSession() {
+    const { data } = await db.auth.getSession();
+
+    if (data.session) {
+        await checkAdmin(data.session.user);
+    }
+}
+
+checkSession();
+
 </script>
-
 </body>
 </html>
