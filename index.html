@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -65,42 +64,46 @@ img{max-width:100%}
 .discord-app-icon{width:62px;height:62px;object-fit:contain;display:block;filter:drop-shadow(0 5px 12px #0005)}
 .discord-visual{display:none}
 
+/* MINECRAFT-BILD IM VORDERGRUND – OHNE BESCHRIFTUNG */
 .minecraft-decoration{
-min-height:300px;
-height:300px;
+min-height:340px;
+height:340px;
 position:relative;
 background:#191b20;
 border-top:1px solid #34353a;
 border-bottom:1px solid #34353a;
-overflow:visible;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
 }
-.minecraft-decoration-content{width:88%;margin:0 auto;height:100%;display:flex;align-items:center}
-.minecraft-decoration-text{max-width:420px;position:relative;z-index:2}
-.minecraft-decoration-text span{display:block;color:#b9bbc1;font-size:10px;font-weight:950;letter-spacing:2px;margin-bottom:8px}
-.minecraft-decoration-text strong{font-size:25px;line-height:1.15;color:#f5f5f6}
 
-/* BISHERIGES MINECRAFT-BILD BLEIBT ERHALTEN */
+.minecraft-decoration-content{
+display:none;
+}
+
 .minecraft-decoration img.minecraft-bg{
 position:absolute;
-right:-35px;
-bottom:-5px;
-width:min(610px,50vw);
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+width:min(900px,92vw);
 max-width:none;
-height:auto;
-max-height:330px;
+height:100%;
+max-height:340px;
 object-fit:contain;
-object-position:center bottom;
+object-position:center;
 pointer-events:none;
 user-select:none;
-z-index:1;
-filter:drop-shadow(0 20px 25px rgba(0,0,0,.10));
+z-index:2;
+filter:drop-shadow(0 15px 25px rgba(0,0,0,.25));
 }
 
-/* NEUES MINECRAFT-UPDATE-BILD IM VORDERGRUND */
+/* MINECRAFT UPDATE SCHWEBT IM VORDERGRUND */
 .minecraft-decoration img.minecraft-update-fly{
 position:absolute;
 right:8%;
-top:-48px;
+top:8px;
 width:min(260px,30vw);
 height:auto;
 max-height:220px;
@@ -218,38 +221,35 @@ filter:drop-shadow(0 12px 18px rgba(0,0,0,.45));
 /* PARTNER */
 .partner-section{background:#191b20;color:#f1f1f2;text-align:center;padding:70px 6%}
 .partner-section .section-header{margin:0 auto 30px;text-align:center}
-.partner-logos{display:flex;justify-content:center;align-items:center;gap:35px;flex-wrap:wrap}
-.partner-item{min-width:180px;display:flex;flex-direction:column;align-items:center;gap:13px}
-.partner-logo{display:block;width:min(220px,60vw);height:110px;object-fit:contain;margin:0 auto}
+.partner-logos{display:flex;justify-content:center;align-items:center;gap:35px;flex-wrap:nowrap}
+.partner-item{flex:0 1 180px;min-width:0;display:flex;flex-direction:column;align-items:center;gap:13px}
+.partner-logo{display:block;width:min(180px,35vw);height:100px;object-fit:contain;margin:0 auto}
 .partner-caption{color:#b9bbc1;font-size:13px}
 .partner-caption strong{color:var(--gold2)}
 .partner-github{width:100px;height:100px;object-fit:contain;filter:brightness(0) invert(1)}
+.partner-aternos{width:180px;height:100px;object-fit:contain}
 
-/* NEUE FIGUREN GANZ UNTEN */
-.bottom-figures{
-width:100%;
-min-height:105px;
-height:105px;
-background:#151619;
+/* TIPPS-BILD IM FOOTER */
+.footer-figures{
 display:flex;
 align-items:flex-end;
 justify-content:center;
-overflow:hidden;
+width:100%;
 padding:0 12px;
-border-top:1px solid #292b31;
+margin:5px auto 22px;
+overflow:hidden;
 }
-.bottom-figures img{
+.footer-figures img{
 display:block;
-width:min(240px,42vw);
-height:95px;
-max-height:95px;
+width:min(190px,35vw);
+height:75px;
 object-fit:contain;
 object-position:center bottom;
-margin:0 auto;
 }
 
+/* FOOTER */
 footer{background:#101114;color:#bfc0c4;padding:55px 6% 30px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:50px;padding-bottom:45px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:50px;padding-bottom:30px}
 .footer-brand{max-width:400px}
 .footer-brand img{width:65px;height:65px;object-fit:contain;margin-bottom:15px}
 .footer-brand p{color:#8d929b;line-height:1.6;font-size:14px}
@@ -271,8 +271,8 @@ body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:6
 .connection-window{grid-template-columns:1fr;max-height:94vh;overflow-y:auto}
 .connection-image{min-height:360px;max-height:420px}
 .connection-content{padding:35px}
-.minecraft-decoration img.minecraft-bg{right:-70px;width:560px}
-.minecraft-decoration img.minecraft-update-fly{right:7%;top:-35px;width:230px}
+.minecraft-decoration img.minecraft-bg{width:min(760px,95vw)}
+.minecraft-decoration img.minecraft-update-fly{right:7%;top:8px;width:230px}
 }
 @media(max-width:900px){
 .navbar{height:auto;min-height:66px;flex-wrap:wrap;padding:8px 18px;gap:12px}
@@ -295,11 +295,9 @@ body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:6
 .status-box{flex-direction:column;align-items:flex-start}
 .footer-grid{grid-template-columns:1fr}
 .footer-bottom{flex-direction:column;gap:10px}
-.minecraft-decoration{height:220px;min-height:220px}
-.minecraft-decoration-text{width:48%}
-.minecraft-decoration-text strong{font-size:19px}
-.minecraft-decoration img.minecraft-bg{width:420px;right:-115px;bottom:-5px;max-height:235px}
-.minecraft-decoration img.minecraft-update-fly{width:175px;right:4%;top:-25px}
+.minecraft-decoration{height:250px;min-height:250px}
+.minecraft-decoration img.minecraft-bg{width:95vw;max-height:245px}
+.minecraft-decoration img.minecraft-update-fly{width:175px;right:4%;top:8px}
 .discord-visual{display:none}
 }
 @media(max-width:600px){
@@ -314,16 +312,19 @@ body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:6
 .team-grid{gap:8px}
 .team-card{min-width:0;width:100%;max-width:320px}
 .status-box{padding:14px}
-.partner-logo{width:min(180px,70vw)}
-.bottom-figures{height:85px;min-height:85px}
-.bottom-figures img{height:78px;max-height:78px;width:min(210px,55vw)}
+.partner-logos{gap:15px}
+.partner-item{flex:1 1 0}
+.partner-github{width:80px;height:80px}
+.partner-aternos{width:140px;height:80px}
+.footer-figures img{width:min(160px,40vw);height:65px}
 }
 @media(max-width:450px){
 .hero h1{font-size:45px}
 .hero-buttons{flex-direction:column;align-items:stretch}
 .hero-buttons .rank-button{width:100%}
-.minecraft-decoration img.minecraft-bg{width:350px;right:-105px}
-.minecraft-decoration img.minecraft-update-fly{width:145px;right:2%;top:-18px}
+.minecraft-decoration{height:210px;min-height:210px}
+.minecraft-decoration img.minecraft-bg{width:100vw;max-height:205px}
+.minecraft-decoration img.minecraft-update-fly{width:145px;right:2%;top:5px}
 }
 </style>
 </head>
@@ -385,14 +386,8 @@ body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:6
 </div>
 </section>
 
-<section class="minecraft-decoration">
-<div class="minecraft-decoration-content">
-<div class="minecraft-decoration-text">
-<span>LMS NETWORK</span>
-<strong>Deine Welt.<br>Dein Server.</strong>
-</div>
-</div>
-
+<!-- MINECRAFT-BILD OHNE BESCHRIFTUNG -->
+<section class="minecraft-decoration" aria-label="Minecraft-Dekoration">
 <img class="minecraft-bg" src="minecraft-bg2.webp" alt="">
 <img class="minecraft-update-fly" src="Minecraft-Update-removebg-preview.png" alt="Minecraft Updates">
 </section>
@@ -527,11 +522,19 @@ body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:6
 <div class="section-label">PARTNER</div>
 <h2>Unsere Unterstützung.</h2>
 </div>
+
 <div class="partner-logos">
+
 <div class="partner-item">
 <img class="partner-github" src="logo-03.cc5e5332-removebg-preview.png" alt="GitHub Logo">
 <p class="partner-caption">Mit lieber Unterstützung von <strong>GitHub.io</strong></p>
 </div>
+
+<div class="partner-item">
+<img class="partner-aternos" src="images-removebg-preview.png" alt="Aternos Logo">
+<p class="partner-caption">Server-Hosting mit <strong>Aternos</strong></p>
+</div>
+
 </div>
 </section>
 
@@ -541,6 +544,7 @@ body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:6
 <img src="WhatsApp_Image_2026-07-11_at_15.30.43-removebg-preview.png" alt="LMS">
 <p>LMS Server – dein Minecraft Netzwerk mit eigenen Projekten und Community.</p>
 </div>
+
 <div class="footer-column">
 <h4>Navigation</h4>
 <a href="#community">Shop</a>
@@ -548,6 +552,7 @@ body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:6
 <a href="#kontakt">Kontakt</a>
 <a href="sponsoren.html">Sponsoren & Mitwirkende</a>
 </div>
+
 <div class="footer-column">
 <h4>Informationen</h4>
 <a href="info.html">Info</a>
@@ -557,18 +562,19 @@ body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:6
 <a href="#start">Nach oben</a>
 </div>
 </div>
+
+<!-- TIPPS-BILD DIREKT IM FOOTER -->
+<div class="footer-figures">
+<img
+src="Tips-for-Beginners_Media-Block-B_Pals-1_704x326_2x-removebg-preview.png"
+alt="Minecraft-Figuren">
+</div>
+
 <div class="footer-bottom">
 <span>LMS SERVER © 2026</span>
 <span>LMS_server.aternos.me</span>
 </div>
 </footer>
-
-<!-- FIGURENBILD GANZ UNTEN -->
-<section class="bottom-figures" aria-label="Minecraft-Figuren">
-<img
-src="Tips-for-Beginners_Media-Block-B_Pals-1_704x326_2x-removebg-preview.png"
-alt="Minecraft-Figuren">
-</section>
 
 <div class="connection-modal" id="connectionModal">
 <div class="connection-window">
@@ -600,6 +606,7 @@ alt="Minecraft-Figuren">
 </div>
 
 <button class="cookie-button" onclick="cookieClick()" title="Cookie Clicker">🍪</button>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const LMS_SUPABASE_URL="https://kxafgbrdybonjxwfziee.supabase.co";
