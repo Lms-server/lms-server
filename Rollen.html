@@ -98,22 +98,20 @@ footer{text-align:center;color:#777d86;padding:35px;font-size:12px}
         Verwalte hier die Mitglieder und Rollen des LMS-Teams.
     </p>
 
-    <!-- LOGIN -->
     <section id="loginPanel" class="panel login-box">
         <h2>OWNER-Anmeldung</h2>
         <p class="muted">Melde dich mit deinem Supabase-Konto an.</p>
 
-        <label>E-Mail-Adresse</label>
+        <label for="email">E-Mail-Adresse</label>
         <input id="email" type="email" placeholder="Deine E-Mail-Adresse">
 
-        <label>Passwort</label>
+        <label for="password">Passwort</label>
         <input id="password" type="password" placeholder="Dein Passwort">
 
         <button class="primary" onclick="login()">Anmelden</button>
         <div id="loginStatus" class="status"></div>
     </section>
 
-    <!-- DASHBOARD -->
     <section id="dashboard" class="hidden">
 
         <div class="panel">
@@ -137,8 +135,8 @@ footer{text-align:center;color:#777d86;padding:35px;font-size:12px}
         <div class="panel">
             <h2>Verwaltung</h2>
             <div class="notice">
-                Nur angemeldete Benutzer, die in der LMS-Admin-Tabelle
-                freigeschaltet sind, dürfen Teamdaten bearbeiten.
+                Nur angemeldete und freigeschaltete LMS-Administratoren
+                dürfen Teamdaten bearbeiten.
             </div>
         </div>
 
@@ -148,15 +146,13 @@ footer{text-align:center;color:#777d86;padding:35px;font-size:12px}
 <footer>LMS NETWORK · TEAM ADMINISTRATION</footer>
 
 <script>
-/* ======================================
-   SUPABASE EINSTELLUNGEN
-====================================== */
+/* SUPABASE VERBINDUNG */
 
 const SUPABASE_URL =
     "https://kxafgbrdybonjxwfziee.supabase.co";
 
 const SUPABASE_KEY =
-    "DEIN_SB_PUBLISHABLE_KEY";
+    "sb_publishable_d8qB9cKr2st2FVwAAYHorQ_sho1knUD";
 
 const db = window.supabase.createClient(
     SUPABASE_URL,
@@ -174,21 +170,13 @@ const roles = [
 
 let members = [];
 
-
-/* ======================================
-   STATUS
-====================================== */
-
 function message(element, text, color) {
     const el = document.getElementById(element);
     el.textContent = text;
     el.style.color = color || "#d8aa43";
 }
 
-
-/* ======================================
-   ANMELDUNG
-====================================== */
+/* ANMELDUNG */
 
 async function login() {
     const email = document.getElementById("email").value.trim();
@@ -214,10 +202,7 @@ async function login() {
     await checkAdmin(data.user);
 }
 
-
-/* ======================================
-   ADMIN-BERECHTIGUNG PRÜFEN
-====================================== */
+/* ADMIN PRÜFEN */
 
 async function checkAdmin(user) {
     if (!user) {
@@ -232,7 +217,7 @@ async function checkAdmin(user) {
         showLogin();
         message(
             "loginStatus",
-            "Dieses Konto besitzt keine LMS-Admin-Berechtigung.",
+            "Keine LMS-Admin-Berechtigung. Bitte Datenbankeinrichtung prüfen.",
             "#ff8585"
         );
         return;
@@ -244,10 +229,7 @@ async function checkAdmin(user) {
     await loadMembers();
 }
 
-
-/* ======================================
-   TEAM LADEN
-====================================== */
+/* TEAM LADEN */
 
 async function loadMembers() {
     message("status", "Team wird geladen ...");
@@ -268,10 +250,7 @@ async function loadMembers() {
     message("status", "Teamdaten erfolgreich geladen.", "#55bd83");
 }
 
-
-/* ======================================
-   TEAM ANZEIGEN
-====================================== */
+/* TEAM ANZEIGEN */
 
 function renderMembers() {
     const container = document.getElementById("memberList");
@@ -338,10 +317,7 @@ function renderMembers() {
     }
 }
 
-
-/* ======================================
-   MITGLIED SPEICHERN
-====================================== */
+/* MITGLIED SPEICHERN */
 
 async function saveMember(id, name, role) {
     name = name.trim();
@@ -368,10 +344,7 @@ async function saveMember(id, name, role) {
     await loadMembers();
 }
 
-
-/* ======================================
-   MITGLIED HINZUFÜGEN
-====================================== */
+/* MITGLIED HINZUFÜGEN */
 
 async function addMember() {
     const { error } = await db
@@ -391,10 +364,7 @@ async function addMember() {
     await loadMembers();
 }
 
-
-/* ======================================
-   MITGLIED LÖSCHEN
-====================================== */
+/* MITGLIED LÖSCHEN */
 
 async function deleteMember(id) {
     if (!confirm("Dieses Teammitglied wirklich löschen?")) {
@@ -415,10 +385,7 @@ async function deleteMember(id) {
     await loadMembers();
 }
 
-
-/* ======================================
-   ABMELDEN
-====================================== */
+/* ABMELDEN */
 
 async function logout() {
     await db.auth.signOut();
@@ -430,10 +397,7 @@ function showLogin() {
     document.getElementById("loginPanel").classList.remove("hidden");
 }
 
-
-/* ======================================
-   BESTEHENDE SITZUNG PRÜFEN
-====================================== */
+/* SITZUNG PRÜFEN */
 
 async function checkSession() {
     const { data } = await db.auth.getSession();
