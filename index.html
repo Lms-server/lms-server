@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -5,23 +6,31 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>LMS NETWORK</title>
 <style>
-:root{--black:#111318;--black2:#181b21;--text:#181a1f;--muted:#747982;--light:#f4f5f7;--border:#e2e4e8;--white:#fff;--owner:#8f1515;--supporter:#e75a9d;--admin:#2777d5;--builder:#32a852;--premium:#e88b20}
+:root{
+--black:#111318;--black2:#181b21;--text:#f1f1f2;--muted:#a9abb1;
+--gold:#e4c16d;--gold2:#e5c779;--border:#34353a;--white:#fff;
+--owner:#8f1515;--supporter:#e75a9d;--admin:#2777d5;
+--builder:#32a852;--premium:#e88b20;
+}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-snap-type:y proximity;scroll-padding-top:66px}
-body{font-family:Arial,Helvetica,sans-serif;background:#151619;color:#f1f1f2;overflow-x:hidden}
+body{font-family:Arial,Helvetica,sans-serif;background:#151619;color:var(--text);overflow-x:hidden}
 button,a{font-family:inherit}
 button{border:0}
 a{text-decoration:none;color:inherit}
 img{max-width:100%}
+
 .top-notice{width:100%;background:#c59a3c;color:#151515;padding:7px 16px;text-align:center;font-size:10px;font-weight:900;letter-spacing:2px}
-.navbar{height:66px;background:rgba(24,25,29,.97);border-bottom:1px solid #34353a;display:flex;align-items:center;padding:0 4%;gap:22px;position:sticky;top:0;z-index:1000}
+
+.navbar{min-height:66px;background:rgba(24,25,29,.98);border-bottom:1px solid #34353a;display:flex;align-items:center;padding:0 4%;gap:22px;position:sticky;top:0;z-index:1000}
 .logo-area{display:flex;align-items:center;flex-shrink:0}
-.logo-area img{width:52px;height:52px;object-fit:contain}
+.logo-area img{width:55px;height:55px;object-fit:contain}
 .nav-links{display:flex;align-items:center;gap:19px;flex:1}
 .nav-links a{color:#dedfe2;font-size:12px;font-weight:900;white-space:nowrap;transition:.2s}
 .nav-links a:hover{color:var(--gold2)}
 .server-nav-button{background:linear-gradient(135deg,#e4c16d,#b88b2e);color:#171717;border-radius:7px;padding:10px 15px;font-size:11px;font-weight:950;letter-spacing:.7px;cursor:pointer;transition:.2s;white-space:nowrap}
 .server-nav-button:hover{transform:translateY(-2px)}
+
 .rank-button{display:inline-flex;align-items:center;justify-content:center;border:2px solid transparent;border-radius:7px;padding:12px 18px;font-size:11px;font-weight:950;letter-spacing:.8px;cursor:pointer;transition:transform .18s,box-shadow .18s,filter .18s}
 .rank-button:hover{transform:translateY(-2px);filter:brightness(1.05)}
 .rank-button:active{transform:translateY(2px)}
@@ -32,49 +41,62 @@ img{max-width:100%}
 .rank-button.premium{background:linear-gradient(135deg,#e4c16d,#b88b2e);color:#171717;border:0}
 .rank-button.dark{background:#292b31;color:#f5f5f5;border:1px solid #555861}
 .rank-button.light{background:#fff;color:#181a1f;border-color:#d9dce1;box-shadow:0 4px 0 #c2c5ca}
+
 .hero{min-height:440px;background:linear-gradient(115deg,#101217 0%,#1b2028 48%,#303741 100%);display:flex;align-items:center;padding:58px 7%;position:relative;overflow:hidden}
 .hero:after{content:"";position:absolute;right:-100px;bottom:-180px;width:600px;height:600px;border-radius:50%;background:rgba(255,255,255,.035)}
 .hero-content{max-width:680px;color:#fff;position:relative;z-index:2}
-.hero-label{font-size:12px;font-weight:950;letter-spacing:2.5px;margin-bottom:12px;color:#e5c779}
+.hero-label{font-size:12px;font-weight:950;letter-spacing:2.5px;margin-bottom:12px;color:var(--gold2)}
 .hero h1{font-size:58px;line-height:.98;letter-spacing:-2px;margin-bottom:18px}
 .hero p{font-size:15px;line-height:1.6;color:#c7cbd2;max-width:610px;margin-bottom:22px}
 .hero-buttons{display:flex;gap:14px;flex-wrap:wrap}
+
 .section{padding:105px 6%;background:#151619;color:#f1f1f2}
 .section-header{max-width:720px;margin-bottom:45px}
-.section-label{font-size:10px;font-weight:950;letter-spacing:2px;color:#e5c779;margin-bottom:12px}
+.section-label{font-size:10px;font-weight:950;letter-spacing:2px;color:var(--gold2);margin-bottom:12px}
 .section-header h2{font-size:42px;line-height:1.05;margin-bottom:15px;color:#f5f5f6}
 .section-description{color:#b9bbc1;font-size:15px;line-height:1.7}
+
 .discord-section{background:#191b20;color:#fff;overflow:hidden}
 .discord-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px}
 .discord-content{max-width:560px}
 .discord-content .section-label{color:#9297a0}
 .discord-content p{color:#b9bbc1;line-height:1.7;margin-bottom:25px}
-.discord-visual{position:relative;min-height:420px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:14px;background:#101217;border:1px solid #2c3037}
+.discord-actions{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
+.discord-app-icon{width:62px;height:62px;object-fit:contain;display:block;filter:drop-shadow(0 5px 12px #0005)}
+.discord-visual{position:relative;min-height:340px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:14px;background:#101217;border:1px solid #2c3037}
 .discord-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,17,21,.15),rgba(15,17,21,.02));pointer-events:none}
 .discord-visual img{width:100%;height:100%;object-fit:contain;display:block;opacity:.82}
+
 .minecraft-decoration{min-height:300px;height:300px;position:relative;background:#191b20;border-top:1px solid #34353a;border-bottom:1px solid #34353a;overflow:visible}
 .minecraft-decoration-content{width:88%;margin:0 auto;height:100%;display:flex;align-items:center}
 .minecraft-decoration-text{max-width:420px;position:relative;z-index:2}
 .minecraft-decoration-text span{display:block;color:#b9bbc1;font-size:10px;font-weight:950;letter-spacing:2px;margin-bottom:8px}
 .minecraft-decoration-text strong{font-size:25px;line-height:1.15;color:#f5f5f6}
 .minecraft-decoration img{position:absolute;right:-35px;bottom:-5px;width:min(610px,50vw);max-width:none;height:auto;max-height:330px;object-fit:contain;object-position:center bottom;pointer-events:none;user-select:none;z-index:1;filter:drop-shadow(0 20px 25px rgba(0,0,0,.10))}
-.team-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:9px 24px;max-width:900px;margin:25px auto 0}
-.team-card{display:flex;align-items:center;justify-content:flex-start;gap:9px;padding:7px 10px;background:transparent;border:0;border-radius:8px;min-width:210px;text-align:left;box-shadow:none;transition:.2s}
-.team-card:hover{transform:none;background:#22242a;box-shadow:none}
-.team-card img{width:38px;height:38px;margin:0;flex:0 0 38px;image-rendering:pixelated}
-.team-name{font-size:13px;font-weight:800;margin:0;color:#f1f1f2;white-space:nowrap}
-.rank{display:inline-block;padding:4px 7px;border-radius:4px;color:#fff;font-size:9px;font-weight:950;letter-spacing:.5px}
+
+/* TEAM */
+.team-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px 20px;max-width:1000px;margin:25px auto 0}
+.team-card{display:flex;align-items:center;gap:10px;padding:9px 12px;background:#202228;border:1px solid #34363e;border-radius:9px;min-width:245px;text-align:left;transition:.2s}
+.team-card:hover{transform:translateY(-3px);border-color:#8c7545;background:#252830}
+.team-card img{width:38px;height:38px;flex:0 0 38px;image-rendering:pixelated;border-radius:4px}
+.team-info{display:flex;flex-direction:column;gap:5px;min-width:0;flex:1}
+.team-name{font-size:13px;font-weight:800;color:#f1f1f2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.team-profile{font-size:9px;color:#aeb2ba;text-decoration:underline;width:max-content}
+.team-profile:hover{color:var(--gold2)}
+.rank{display:inline-block;padding:4px 7px;border-radius:4px;color:#fff;font-size:9px;font-weight:950;letter-spacing:.5px;white-space:nowrap}
 .rank.owner{background:var(--owner)}
 .rank.supporter{background:var(--supporter)}
 .rank.admin{background:var(--admin)}
 .rank.builder{background:var(--builder)}
 .rank.premium{background:var(--premium)}
+
+/* SERVERSTATUS */
 .status-section{background:#151619}
 .status-tools{position:relative;display:flex;justify-content:flex-end;max-width:620px;margin:0 auto 8px}
 .status-settings-button{width:34px;height:34px;border:1px solid #4a4c53;border-radius:8px;background:#22242a;color:#e7c36d;font-size:18px;cursor:pointer}
 .status-settings-menu{position:absolute;right:0;top:40px;z-index:20;min-width:205px;padding:12px;background:#24262c;border:1px solid #44464d;border-radius:9px;box-shadow:0 12px 30px #0008;color:#eee;font-size:12px}
 .status-settings-menu label{display:flex;gap:8px;align-items:center;padding:6px 0;cursor:pointer}
-.status-box{max-width:620px;margin:0 auto;background:#202228;border:1px solid #3a3c43;border-radius:12px;padding:17px 20px;color:#f3f3f4;box-shadow:none;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.status-box{max-width:620px;margin:0 auto;background:#202228;border:1px solid #3a3c43;border-radius:12px;padding:17px 20px;color:#f3f3f4;display:flex;align-items:center;justify-content:space-between;gap:30px}
 .status-left{display:flex;align-items:center;gap:18px}
 .status-dot{width:14px;height:14px;border-radius:50%;background:#36b85a;box-shadow:0 0 0 6px rgba(54,184,90,.12)}
 .status-title{font-size:19px;font-weight:950;color:#f4f4f4}
@@ -82,6 +104,8 @@ img{max-width:100%}
 .status-right{text-align:right}
 .player-count{font-size:29px;font-weight:950;color:#e6c36e}
 .status-version{font-size:10px;color:#a9abb1;margin-top:4px}
+
+/* KONTAKT */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
 .contact-text p{color:#b9bbc1;line-height:1.7;margin-bottom:25px}
 .contact-box{background:#202228;border:1px solid #393b42;border-radius:10px;padding:30px;color:#f1f1f2}
@@ -89,22 +113,24 @@ img{max-width:100%}
 .contact-item:last-child{border-bottom:none}
 .contact-item strong{display:block;margin-bottom:5px}
 .contact-item span{color:#b9bbc1;font-size:14px}
-.docs-section{background:#151619;color:#f1f1f2}
-.docs-section .section-header{text-align:center}
-.docs-grid{display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:center;align-items:flex-start;gap:clamp(28px,7vw,90px);margin-top:34px}
-.doc-card{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:12px;flex:0 1 150px;min-height:125px;padding:8px 6px;background:transparent;border:0;border-radius:8px;text-align:center;box-shadow:none;transition:.2s}
-.doc-card:hover{transform:translateY(-4px);background:#22242a;box-shadow:none}
-.docs-grid a.doc-card{color:inherit;text-decoration:none;cursor:pointer;pointer-events:auto}
-.docs-grid a.doc-card:focus-visible{outline:2px solid #e5c779;outline-offset:5px}
-.docs-grid a.doc-card h3{color:#e7e7e9;display:block}
 
-.doc-folder{width:66px;height:48px;flex:0 0 48px;position:relative;border-radius:5px;background:linear-gradient(145deg,#f0d17d,#bd9139);margin:4px 0 0;filter:drop-shadow(0 5px 7px rgba(0,0,0,.3))}
-.doc-folder:before{content:"";position:absolute;left:2px;top:-7px;width:30px;height:10px;border-radius:4px 4px 0 0;background:#e4c16d}
-.doc-card h3{font-size:12px;font-weight:700;color:#e7e7e9;line-height:1.35;margin:0}
+/* DESKTOP-ORDNER */
+.docs-section{background:#151619;color:#f1f1f2}
+.docs-section .section-header{text-align:center;margin-left:auto;margin-right:auto}
+.docs-grid{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:35px;margin-top:38px}
+.doc-card{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:13px;flex:0 1 175px;min-height:155px;padding:17px 12px;background:#202228;border:1px solid #383a41;border-radius:10px;text-align:center;transition:.2s}
+.doc-card:hover{transform:translateY(-5px);background:#292c33;border-color:#b18c42;box-shadow:0 12px 25px #0004}
+.docs-grid a.doc-card{color:inherit;text-decoration:none;cursor:pointer}
+.docs-grid a.doc-card:focus-visible{outline:2px solid var(--gold2);outline-offset:5px}
+.doc-folder{width:76px;height:53px;flex:0 0 53px;position:relative;border-radius:5px 7px 6px 6px;background:linear-gradient(145deg,#f0d17d,#bd9139);margin:8px 0 0;filter:drop-shadow(0 5px 7px rgba(0,0,0,.3))}
+.doc-folder:before{content:"";position:absolute;left:2px;top:-9px;width:34px;height:13px;border-radius:5px 5px 0 0;background:#e4c16d}
+.doc-folder:after{content:"";position:absolute;inset:7px 5px 5px;border-radius:3px;background:linear-gradient(145deg,rgba(255,255,255,.18),transparent 60%)}
+.doc-card h3{font-size:12px;font-weight:800;color:#e7e7e9;line-height:1.35;margin:0}
 .doc-card p{display:none}
-.doc-card a{display:none}
+
+/* SPIELERSUCHE */
 .player-search-wrap{position:relative;flex:0 1 230px;min-width:175px;max-width:250px;z-index:1010}
-.player-search-form{display:flex;align-items:center;gap:7px;background:#f4f5f7;border:1px solid #dfe2e7;border-radius:7px;padding:4px 8px;transition:border-color .18s,box-shadow .18s}
+.player-search-form{display:flex;align-items:center;gap:7px;background:#f4f5f7;border:1px solid #dfe2e7;border-radius:7px;padding:4px 8px}
 .player-search-form:focus-within{border-color:#8e949e;box-shadow:0 0 0 3px rgba(30,35,43,.07)}
 .player-search-icon{font-size:15px;color:#777d86;line-height:1}
 .player-search-input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#181a1f;font-size:12px;padding:7px 0}
@@ -121,10 +147,12 @@ img{max-width:100%}
 .player-result-name{font-size:13px;font-weight:900;overflow-wrap:anywhere}
 .player-result-note{font-size:10px;color:#777d86;margin-top:4px;line-height:1.4}
 .player-result-link{display:inline-block;margin-top:10px;font-size:10px;font-weight:900;color:#30343b;text-decoration:underline}
+
+/* VERBINDUNGSFENSTER */
 .connection-modal{position:fixed;inset:0;background:rgba(8,9,12,.8);display:none;align-items:center;justify-content:center;padding:30px;z-index:3000}
 .connection-modal.active{display:flex}
 .connection-window{width:min(1180px,100%);max-height:90vh;background:#fff;color:#181a1f;border-radius:13px;overflow:hidden;position:relative;display:grid;grid-template-columns:1.12fr 1fr;box-shadow:0 40px 100px rgba(0,0,0,.45)}
-.close-connection{position:absolute;right:16px;top:13px;width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.06);font-size:28px;line-height:1;cursor:pointer;z-index:10;transition:.18s}
+.close-connection{position:absolute;right:16px;top:13px;width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.06);font-size:28px;line-height:1;cursor:pointer;z-index:10}
 .close-connection:hover{background:rgba(0,0,0,.15);transform:scale(1.05)}
 .connection-image{min-height:650px;background:#111318;display:flex;align-items:center;justify-content:center;padding:25px;overflow:hidden}
 .connection-image img{width:auto;height:auto;max-width:100%;max-height:600px;object-fit:contain;object-position:center;display:block}
@@ -143,29 +171,97 @@ img{max-width:100%}
 .step-text p{color:#747982;font-size:12px;line-height:1.5}
 .step-text code{background:#e3e5e9;padding:2px 5px;border-radius:4px;color:#181a1f}
 .connection-finished{margin-top:23px;color:#747982;font-size:13px;font-weight:800}
+
+/* COOKIE */
 .cookie-button{position:fixed;right:20px;bottom:20px;width:58px;height:58px;border-radius:50%;border:2px solid #d9dadd;background:#fff;cursor:pointer;font-size:27px;z-index:1200;box-shadow:0 7px 25px rgba(0,0,0,.14);transition:.2s}
 .cookie-button:hover{transform:scale(1.08)}
-.partner-section{background:#191b20;color:#f1f1f2;text-align:center;padding:58px 6%}
-.partner-section .section-header{margin:0 auto 20px;text-align:center}
-.partner-logo{display:block;width:min(430px,80vw);max-height:220px;object-fit:contain;margin:0 auto 12px}
-.partner-caption{color:#b9bbc1;font-size:14px}
-.partner-caption strong{color:#e5c779}
+
+/* PARTNER */
+.partner-section{background:#191b20;color:#f1f1f2;text-align:center;padding:70px 6%}
+.partner-section .section-header{margin:0 auto 30px;text-align:center}
+.partner-logos{display:flex;justify-content:center;align-items:center;gap:35px;flex-wrap:wrap}
+.partner-item{min-width:180px;display:flex;flex-direction:column;align-items:center;gap:13px}
+.partner-logo{display:block;width:min(220px,60vw);height:110px;object-fit:contain;margin:0 auto}
+.partner-caption{color:#b9bbc1;font-size:13px}
+.partner-caption strong{color:var(--gold2)}
+.partner-github{width:100px;height:100px;object-fit:contain;filter:brightness(0) invert(1)}
+
 footer{background:#101114;color:#bfc0c4;padding:55px 6% 30px}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:50px;padding-bottom:45px}
 .footer-brand{max-width:400px}
-.footer-brand img{width:65px;margin-bottom:15px}
+.footer-brand img{width:65px;height:65px;object-fit:contain;margin-bottom:15px}
 .footer-brand p{color:#8d929b;line-height:1.6;font-size:14px}
 .footer-column h4{font-size:12px;letter-spacing:1px;margin-bottom:17px}
 .footer-column a{display:block;color:#8d929b;font-size:14px;margin-bottom:11px;transition:.2s}
 .footer-column a:hover{color:#fff}
 .footer-bottom{border-top:1px solid #24272e;padding-top:25px;display:flex;justify-content:space-between;color:#666b74;font-size:12px}
-@media(max-width:1180px){.navbar{gap:14px;padding:0 3%}.nav-links{gap:12px}.nav-links a{font-size:11px}.player-search-wrap{flex-basis:190px;min-width:150px}}
-@media(max-width:1050px){.team-grid{grid-template-columns:repeat(2,1fr)}.discord-grid{grid-template-columns:1fr}.connection-window{grid-template-columns:1fr;max-height:94vh;overflow-y:auto}.connection-image{min-height:360px;max-height:420px}.connection-content{padding:35px}.minecraft-decoration img{right:-70px;width:560px}}
-@media(max-width:900px){.navbar{height:auto;min-height:66px;flex-wrap:wrap;padding:8px 18px;gap:12px}.nav-links{order:4;width:100%;flex:1 0 100%;overflow-x:auto;padding:5px 0}.player-search-wrap{margin-left:auto;flex:0 1 220px}.server-nav-button{margin-left:0}.hero{min-height:390px;padding:52px 24px}.hero h1{font-size:50px}.docs-grid{flex-wrap:wrap}}
-@media(max-width:700px){.navbar{height:auto;min-height:72px;padding:8px 18px;flex-wrap:wrap}.logo-area img{width:55px;height:55px}.nav-links{order:3;width:100%;overflow-x:auto;padding:7px 0}.server-nav-button{margin-left:auto}.hero{padding:70px 24px}.hero h1{font-size:55px}.section{padding:70px 22px}.team-grid,.contact-grid{grid-template-columns:1fr}.status-box{flex-direction:column;align-items:flex-start}.footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:10px}.minecraft-decoration{height:220px;min-height:220px}.minecraft-decoration-text{width:48%}.minecraft-decoration-text strong{font-size:19px}.minecraft-decoration img{width:420px;right:-115px;bottom:-5px;max-height:235px}.discord-visual{min-height:280px}.connection-modal{padding:10px}.connection-image{min-height:270px;max-height:330px}.connection-content{padding:30px 22px}.connection-content h2{font-size:31px}}
-@media(max-width:600px){.top-notice{font-size:9px;padding:7px 10px}.player-search-wrap{order:3;flex:1 1 100%;max-width:none;margin:0}.server-nav-button{margin-left:auto}.docs-grid{gap:18px 24px}.doc-card{flex:0 1 105px}.hero{min-height:360px;padding:45px 22px}.hero h1{font-size:43px;letter-spacing:-1px}.hero p{font-size:14px}.team-grid{gap:7px}.team-card{min-width:0;width:100%;max-width:270px}.status-box{padding:14px}.partner-logo{width:min(330px,82vw)}}
-@media(max-width:450px){.hero h1{font-size:45px}.hero-buttons{flex-direction:column;align-items:stretch}.hero-buttons .rank-button{width:100%}.minecraft-decoration img{width:350px;right:-105px}}
+
 body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:66px}
+
+@media(max-width:1180px){
+.navbar{gap:14px;padding:0 3%}
+.nav-links{gap:12px}
+.nav-links a{font-size:11px}
+.player-search-wrap{flex-basis:190px;min-width:150px}
+}
+@media(max-width:1050px){
+.discord-grid{grid-template-columns:1fr}
+.connection-window{grid-template-columns:1fr;max-height:94vh;overflow-y:auto}
+.connection-image{min-height:360px;max-height:420px}
+.connection-content{padding:35px}
+.minecraft-decoration img{right:-70px;width:560px}
+}
+@media(max-width:900px){
+.navbar{height:auto;min-height:66px;flex-wrap:wrap;padding:8px 18px;gap:12px}
+.nav-links{order:4;width:100%;flex:1 0 100%;overflow-x:auto;padding:5px 0}
+.player-search-wrap{margin-left:auto;flex:0 1 220px}
+.server-nav-button{margin-left:0}
+.hero{min-height:390px;padding:52px 24px}
+.hero h1{font-size:50px}
+.docs-grid{flex-wrap:wrap}
+}
+@media(max-width:700px){
+.navbar{height:auto;min-height:72px;padding:8px 18px;flex-wrap:wrap}
+.logo-area img{width:55px;height:55px}
+.nav-links{order:3;width:100%;overflow-x:auto;padding:7px 0}
+.server-nav-button{margin-left:auto}
+.hero{padding:70px 24px}
+.hero h1{font-size:55px}
+.section{padding:70px 22px}
+.contact-grid{grid-template-columns:1fr}
+.status-box{flex-direction:column;align-items:flex-start}
+.footer-grid{grid-template-columns:1fr}
+.footer-bottom{flex-direction:column;gap:10px}
+.minecraft-decoration{height:220px;min-height:220px}
+.minecraft-decoration-text{width:48%}
+.minecraft-decoration-text strong{font-size:19px}
+.minecraft-decoration img{width:420px;right:-115px;bottom:-5px;max-height:235px}
+.discord-visual{min-height:280px}
+.connection-modal{padding:10px}
+.connection-image{min-height:270px;max-height:330px}
+.connection-content{padding:30px 22px}
+.connection-content h2{font-size:31px}
+}
+@media(max-width:600px){
+.top-notice{font-size:9px;padding:7px 10px}
+.player-search-wrap{order:3;flex:1 1 100%;max-width:none;margin:0}
+.server-nav-button{margin-left:auto}
+.docs-grid{gap:18px 24px}
+.doc-card{flex:0 1 125px}
+.hero{min-height:360px;padding:45px 22px}
+.hero h1{font-size:43px;letter-spacing:-1px}
+.hero p{font-size:14px}
+.team-grid{gap:8px}
+.team-card{min-width:0;width:100%;max-width:320px}
+.status-box{padding:14px}
+.partner-logo{width:min(180px,70vw)}
+}
+@media(max-width:450px){
+.hero h1{font-size:45px}
+.hero-buttons{flex-direction:column;align-items:stretch}
+.hero-buttons .rank-button{width:100%}
+.minecraft-decoration img{width:350px;right:-105px}
+}
 </style>
 </head>
 <body>
@@ -174,7 +270,7 @@ body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:6
 
 <header class="navbar">
 <a href="#start" class="logo-area">
-<img src="WhatsApp Image 2026-07-11 at 15.30.43.jpeg" alt="LMS Server">
+<img src="WhatsApp_Image_2026-07-11_at_15.30.43-removebg-preview.png" alt="LMS Server">
 </a>
 
 <nav class="nav-links">
@@ -218,7 +314,10 @@ body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:6
 <div class="section-label">COMMUNITY</div>
 <h2>Unsere Community.</h2>
 <p>Bleib mit dem LMS Server verbunden, erfahre Neuigkeiten und tausche dich mit anderen aus.</p>
+<div class="discord-actions">
+<img class="discord-app-icon" src="social-media-day-png-hochwertige-transparente-ikonen-beliebter-apps_1093584-372-removebg-preview.png" alt="Discord App Icon">
 <a class="rank-button admin" href="https://discord.gg/N5ZYVRpMMU" target="_blank" rel="noopener">DISCORD ÖFFNEN</a>
+</div>
 </div>
 <div class="discord-visual">
 <img src="social-media-day-png-hochwertige-transparente-ikonen-beliebter-apps_1093584-372-removebg-preview.png" alt="LMS Discord">
@@ -243,22 +342,18 @@ body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:6
 <p class="section-description">Öffne einen Ordner, um wichtige Informationen, Regeln und Hinweise zum LMS Server nachzulesen.</p>
 </div>
 <div class="docs-grid">
-
-<a class="doc-card" href="info.html">
+<a class="doc-card" href="info.html" aria-label="Server-Informationen öffnen">
 <div class="doc-folder"></div>
 <h3>Server-Informationen</h3>
 </a>
-
-<a class="doc-card" href="regeln.html">
+<a class="doc-card" href="regeln.html" aria-label="Server-Regeln öffnen">
 <div class="doc-folder"></div>
 <h3>Server-Regeln</h3>
 </a>
-
-<a class="doc-card" href="sponsoren.html">
+<a class="doc-card" href="sponsoren.html" aria-label="Sponsoren und Mitwirkende öffnen">
 <div class="doc-folder"></div>
 <h3>Sponsoren & Mitwirkende</h3>
 </a>
-
 </div>
 </section>
 
@@ -266,14 +361,63 @@ body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:6
 <div class="section-header">
 <div class="section-label">TEAM</div>
 <h2>Das LMS Team.</h2>
+<p class="section-description">Lerne die Mitglieder unseres Teams kennen.</p>
 </div>
-<div class="team-grid">
-<div class="team-card"><img src="https://mc-heads.net/avatar/CC_Minecarft/112" alt="CC_Minecarft"><div class="team-name">CC_Minecarft</div><span class="rank owner">OWNER</span></div>
-<div class="team-card"><img src="https://mc-heads.net/avatar/Hobbit2304/112" alt="Hobbit2304"><div class="team-name">Hobbit2304</div><span class="rank builder">BUILDER</span></div>
-<div class="team-card"><img src="https://mc-heads.net/avatar/King_Luma1/112" alt="King_Luma1"><div class="team-name">King_Luma1</div><span class="rank builder">BUILDER</span></div>
-<div class="team-card"><img src="https://mc-heads.net/avatar/Lennyy20/112" alt="Lennyy20"><div class="team-name">Lennyy20</div><span class="rank builder">BUILDER</span></div>
-<div class="team-card"><img src="https://mc-heads.net/avatar/Takatonka/112" alt="Takatonka"><div class="team-name">Takatonka</div><span class="rank premium">PREMIUM</span></div>
-<div class="team-card"><img src="https://mc-heads.net/avatar/Vanielle/112" alt="Vanielle"><div class="team-name">Vanielle</div><span class="rank premium">PREMIUM</span></div>
+
+<div class="team-grid" id="teamGrid">
+<div class="team-card">
+<img src="https://mc-heads.net/avatar/CC_Minecarft/112" alt="CC_Minecarft">
+<div class="team-info">
+<div class="team-name">CC_Minecarft</div>
+<a class="team-profile" href="https://namemc.com/search?q=CC_Minecarft" target="_blank" rel="noopener">NameMC-Profil ↗</a>
+</div>
+<span class="rank owner">OWNER</span>
+</div>
+
+<div class="team-card">
+<img src="https://mc-heads.net/avatar/Hobbit2304/112" alt="Hobbit2304">
+<div class="team-info">
+<div class="team-name">Hobbit2304</div>
+<a class="team-profile" href="https://namemc.com/search?q=Hobbit2304" target="_blank" rel="noopener">NameMC-Profil ↗</a>
+</div>
+<span class="rank builder">BUILDER</span>
+</div>
+
+<div class="team-card">
+<img src="https://mc-heads.net/avatar/King_Luma1/112" alt="King_Luma1">
+<div class="team-info">
+<div class="team-name">King_Luma1</div>
+<a class="team-profile" href="https://namemc.com/search?q=King_Luma1" target="_blank" rel="noopener">NameMC-Profil ↗</a>
+</div>
+<span class="rank builder">BUILDER</span>
+</div>
+
+<div class="team-card">
+<img src="https://mc-heads.net/avatar/Lennyy20/112" alt="Lennyy20">
+<div class="team-info">
+<div class="team-name">Lennyy20</div>
+<a class="team-profile" href="https://namemc.com/search?q=Lennyy20" target="_blank" rel="noopener">NameMC-Profil ↗</a>
+</div>
+<span class="rank builder">BUILDER</span>
+</div>
+
+<div class="team-card">
+<img src="https://mc-heads.net/avatar/Takatonka/112" alt="Takatonka">
+<div class="team-info">
+<div class="team-name">Takatonka</div>
+<a class="team-profile" href="https://namemc.com/search?q=Takatonka" target="_blank" rel="noopener">NameMC-Profil ↗</a>
+</div>
+<span class="rank premium">PREMIUM</span>
+</div>
+
+<div class="team-card">
+<img src="https://mc-heads.net/avatar/Vanielle/112" alt="Vanielle">
+<div class="team-info">
+<div class="team-name">Vanielle</div>
+<a class="team-profile" href="https://namemc.com/search?q=Vanielle" target="_blank" rel="noopener">NameMC-Profil ↗</a>
+</div>
+<span class="rank premium">PREMIUM</span>
+</div>
 </div>
 </section>
 
@@ -326,14 +470,18 @@ body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:6
 <div class="section-label">PARTNER</div>
 <h2>Unsere Unterstützung.</h2>
 </div>
-<img class="partner-logo" src="logo-03.cc5e5332-removebg-preview.png" alt="Partnerlogo">
+<div class="partner-logos">
+<div class="partner-item">
+<img class="partner-github" src="logo-03.cc5e5332-removebg-preview.png" alt="GitHub Logo">
 <p class="partner-caption">Mit lieber Unterstützung von <strong>GitHub.io</strong></p>
+</div>
+</div>
 </section>
 
 <footer>
 <div class="footer-grid">
 <div class="footer-brand">
-<img src="WhatsApp Image 2026-07-11 at 15.30.43.jpeg" alt="LMS">
+<img src="WhatsApp_Image_2026-07-11_at_15.30.43-removebg-preview.png" alt="LMS">
 <p>LMS Server – dein Minecraft Netzwerk mit eigenen Projekten und Community.</p>
 </div>
 <div class="footer-column">
@@ -392,7 +540,7 @@ body>section{scroll-snap-align:start;scroll-snap-stop:normal;scroll-margin-top:6
 <script>
 const SERVER_IP="LMS_server.aternos.me";
 
-/* MINECRAFT-SPIELERSUCHE */
+/* TEAMDATEN */
 const lmsPlayers=[
 {name:"CC_Minecarft",rank:"Owner"},
 {name:"Hobbit2304",rank:"Builder"},
@@ -402,13 +550,14 @@ const lmsPlayers=[
 {name:"Vanielle",rank:"Premium"}
 ];
 
+/* MINECRAFT-SPIELERSUCHE */
 const playerSearchInput=document.getElementById("playerSearchInput");
 const playerSearchForm=document.getElementById("playerSearchForm");
 const playerSuggestions=document.getElementById("playerSuggestions");
 const playerSearchResult=document.getElementById("playerSearchResult");
 
 function safeMinecraftName(name){
-return /^[A-Za-z0-9_]{1,16}$/.test(name);
+return /^[A-Za-z0-9_]{3,16}$/.test(name);
 }
 
 function makePlayerSuggestion(player){
@@ -439,7 +588,6 @@ playerSearchInput.value=player.name;
 showPlayerResult(player.name,player.rank||"Minecraft-Spieler");
 closePlayerSuggestions();
 });
-
 return button;
 }
 
@@ -473,8 +621,7 @@ return player.name.toLowerCase()===query;
 
 if(safeMinecraftName(value.trim())&&!exact){
 playerSuggestions.appendChild(makePlayerSuggestion({
-name:value.trim(),
-rank:"Beliebigen Namen suchen"
+name:value.trim(),rank:"Beliebigen Namen suchen"
 }));
 }
 
@@ -526,7 +673,6 @@ link.href="https://namemc.com/search?q="+encodeURIComponent(name);
 link.target="_blank";
 link.rel="noopener noreferrer";
 link.textContent="Spielerprofil suchen ↗";
-
 playerSearchResult.appendChild(link);
 playerSearchResult.classList.add("open");
 }
@@ -559,10 +705,7 @@ playerSearchResult.classList.remove("open");
 }
 if(event.key==="ArrowDown"){
 const first=playerSuggestions.querySelector("button");
-if(first){
-event.preventDefault();
-first.focus();
-}
+if(first){event.preventDefault();first.focus();}
 }
 });
 
@@ -590,27 +733,19 @@ document.body.style.overflow="";
 
 function changeConnectionStep(step){
 connectionImage.src=connectionStepImages[step];
-
 document.querySelectorAll(".connection-step").forEach(function(element){
 element.classList.remove("active");
 });
-
 const selectedStep=document.getElementById("connectionStep"+step);
-if(selectedStep){
-selectedStep.classList.add("active");
-}
+if(selectedStep)selectedStep.classList.add("active");
 }
 
 connectionModal.addEventListener("click",function(event){
-if(event.target===connectionModal){
-closeConnection();
-}
+if(event.target===connectionModal)closeConnection();
 });
 
 document.addEventListener("keydown",function(event){
-if(event.key==="Escape"){
-closeConnection();
-}
+if(event.key==="Escape")closeConnection();
 });
 
 /* SERVER-IP KOPIEREN */
@@ -618,7 +753,6 @@ function copyServerAddress(){
 const done=function(){
 copyButton.textContent="ADRESSE KOPIERT ✓";
 copyButton.classList.add("copied");
-
 setTimeout(function(){
 copyButton.textContent="ADRESSE KOPIEREN";
 copyButton.classList.remove("copied");
@@ -648,9 +782,8 @@ const playerCount=document.getElementById("playerCount");
 const statusDot=document.getElementById("statusDot");
 
 try{
-const response=await fetch(
-"https://api.mcstatus.io/v2/status/java/"+encodeURIComponent(SERVER_IP)
-);
+const response=await fetch("https://api.mcstatus.io/v2/status/java/"+encodeURIComponent(SERVER_IP));
+if(!response.ok)throw new Error("Status konnte nicht geladen werden");
 const data=await response.json();
 
 if(data.online){
@@ -678,14 +811,9 @@ let cookies=0;
 
 function cookieClick(){
 cookies++;
-
 const button=document.querySelector(".cookie-button");
 button.style.transform="scale(1.2)";
-
-setTimeout(function(){
-button.style.transform="";
-},100);
-
+setTimeout(function(){button.style.transform="";},100);
 button.title=cookies+" Cookies";
 
 for(let i=0;i<16;i++){
@@ -699,17 +827,13 @@ piece.style.fontSize="22px";
 piece.style.pointerEvents="none";
 piece.style.zIndex="2500";
 piece.style.transition="transform 2.4s linear, opacity 2.4s linear";
-
 document.body.appendChild(piece);
 
 requestAnimationFrame(function(){
 piece.style.transform="translateY(110vh) rotate(520deg)";
 piece.style.opacity="0.15";
 });
-
-setTimeout(function(){
-piece.remove();
-},2600);
+setTimeout(function(){piece.remove();},2600);
 },i*55);
 }
 }
@@ -717,9 +841,7 @@ piece.remove();
 /* STATUS-ANZEIGE EINSTELLUNGEN */
 function toggleStatusSettings(){
 const menu=document.getElementById("statusSettingsMenu");
-if(menu){
-menu.hidden=!menu.hidden;
-}
+if(menu)menu.hidden=!menu.hidden;
 }
 
 document.querySelectorAll("[data-status-setting]").forEach(function(control){
@@ -728,10 +850,7 @@ const key=control.getAttribute("data-status-setting");
 const target=key==="players"
 ?document.getElementById("playerCount")
 :document.getElementById("statusVersion");
-
-if(target){
-target.style.display=control.checked?"":"none";
-}
+if(target)target.style.display=control.checked?"":"none";
 });
 });
 </script>
