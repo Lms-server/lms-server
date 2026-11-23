@@ -4,740 +4,477 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#111318">
-<meta name="description" content="LMS NETWORK – Minecraft, Community und eigene Projekte. Entdecke unser Netzwerk und werde Teil davon.">
-<title>LMS NETWORK | Gemeinsam mehr erleben</title>
+<meta name="theme-color" content="#101010">
+<title>Sponsoren & Mitwirkende | LMS NETWORK</title>
 
 <style>
-:root{
-  --bg:#111318;
-  --bg2:#191c23;
-  --panel:#20242c;
-  --gold:#e4c16d;
-  --gold2:#f4d58b;
-  --text:#f3f3f3;
-  --muted:#aeb3bd;
-  --line:#363b45;
-  --blue:#75aeea;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:95px}
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
-  overflow-x:hidden;
-}
-a{color:inherit;text-decoration:none}
-button{font:inherit;cursor:pointer}
-.top-progress{
-  position:fixed;top:0;left:0;width:0;height:3px;
-  background:linear-gradient(90deg,#b88b2e,var(--gold2));
-  z-index:2000;
-}
-.notice{
-  text-align:center;background:#c59a3c;color:#171717;
-  padding:7px;font-size:10px;font-weight:950;letter-spacing:2px;
-}
-.navbar{
-  position:sticky;top:0;z-index:1000;
-  min-height:70px;padding:7px 4%;
-  display:flex;align-items:center;gap:20px;
-  background:#18191df5;border-bottom:1px solid #34353a;
-  backdrop-filter:blur(15px);
-}
-.logo{display:flex;align-items:center;gap:11px;flex-shrink:0}
-.logo img{width:52px;height:52px;object-fit:contain}
-.logo strong{font-size:16px;letter-spacing:1px}
-.nav-links{
-  display:flex;align-items:center;justify-content:flex-end;
-  gap:5px;flex:1;flex-wrap:wrap;
-}
-.nav-links a{
-  padding:10px 11px;border-radius:7px;
-  font-size:11px;font-weight:900;color:#d9dbe0;transition:.2s;
-}
-.nav-links a:hover,.nav-links a.active{
-  color:var(--gold2);background:#e4c16d14;
-}
-.nav-links .play{
-  background:linear-gradient(135deg,var(--gold2),#b88b2e);
-  color:#171717;padding:11px 17px;
-}
-.mobile-menu{
-  display:none;margin-left:auto;padding:9px 12px;
-  color:white;background:#24272e;border:1px solid var(--line);
-  border-radius:7px;font-weight:900;
+:root {
+    --gold: #e5b94f;
+    --gold-light: #ffdc83;
+    --bg: #101010;
+    --card: #191919;
+    --text: #f5f5f5;
+    --muted: #aaa;
 }
 
-/* HERO */
-.hero{
-  min-height:650px;position:relative;display:grid;place-items:center;
-  text-align:center;padding:110px 22px 120px;overflow:hidden;
-  background:
-    linear-gradient(110deg,#0b0d12eF,#10141aa8,#0b0d12ed),
-    url("minecraft-bg2.webp") center/cover no-repeat;
-}
-.hero:before{
-  content:"";position:absolute;width:650px;height:650px;
-  background:#e4c16d13;border-radius:50%;filter:blur(8px);
-  top:-390px;left:calc(50% - 325px);
-}
-.hero:after{
-  content:"";position:absolute;bottom:0;left:0;right:0;height:150px;
-  background:linear-gradient(transparent,var(--bg));
-}
-.hero-content{position:relative;z-index:2;max-width:900px}
-.eyebrow{
-  color:var(--gold2);font-size:11px;font-weight:950;
-  letter-spacing:4px;margin-bottom:19px;
-}
-.hero h1{
-  font-size:clamp(43px,8vw,82px);line-height:1.02;
-  font-weight:1000;letter-spacing:-3px;margin-bottom:22px;
-}
-.hero h1 span{color:var(--gold2)}
-.hero p{
-  max-width:690px;margin:auto;color:#d2d5dc;
-  font-size:16px;line-height:1.9;
-}
-.hero-buttons{
-  display:flex;justify-content:center;gap:12px;
-  flex-wrap:wrap;margin-top:30px;
-}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  gap:8px;padding:13px 20px;border-radius:8px;
-  background:linear-gradient(135deg,var(--gold2),#b88b2e);
-  color:#171717;font-size:11px;font-weight:950;transition:.2s;
-  border:1px solid transparent;
-}
-.btn:hover{transform:translateY(-3px);filter:brightness(1.08)}
-.btn.secondary{
-  background:#ffffff0c;color:#fff;border-color:#ffffff35;
-}
-.btn.secondary:hover{border-color:var(--gold);color:var(--gold2)}
-.hero-tags{
-  display:flex;justify-content:center;gap:9px;
-  flex-wrap:wrap;margin-top:30px;
-}
-.tag{
-  padding:7px 13px;border:1px solid #ffffff30;
-  border-radius:30px;background:#101319a8;
-  color:#e5e7eb;font-size:10px;font-weight:900;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* COMMON */
-.container{width:min(1160px,91%);margin:auto}
-.section{padding:75px 0;scroll-margin-top:90px}
-.heading{text-align:center;margin-bottom:36px}
-.heading small{
-  display:block;color:var(--gold2);font-size:10px;
-  font-weight:950;letter-spacing:3px;margin-bottom:10px;
-}
-.heading h2{font-size:clamp(29px,4.5vw,43px);line-height:1.15}
-.heading h2 span{color:var(--gold2)}
-.heading p{
-  max-width:650px;margin:13px auto 0;
-  color:var(--muted);font-size:14px;line-height:1.8;
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
 }
 
-/* INTRO */
-.intro-grid{
-  display:grid;grid-template-columns:1.1fr .9fr;gap:22px;
-}
-.intro-card{
-  border:1px solid var(--line);border-radius:16px;
-  padding:30px;background:linear-gradient(145deg,#252932,#191c22);
-}
-.intro-card h3{font-size:23px;margin-bottom:12px}
-.intro-card p{color:#b9bec7;font-size:14px;line-height:1.9}
-.intro-card strong{color:var(--gold2)}
-.intro-stat{
-  display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
-  margin-top:22px;
-}
-.stat{
-  background:#11151c;border:1px solid #353a44;
-  padding:17px;border-radius:10px;
-}
-.stat strong{display:block;color:var(--gold2);font-size:21px}
-.stat span{font-size:10px;color:#aab0bb;font-weight:800}
-
-/* FEATURES */
-.feature-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
-}
-.feature{
-  border:1px solid var(--line);border-radius:14px;
-  background:linear-gradient(145deg,#242831,#191c22);
-  padding:25px;transition:.25s;
-}
-.feature:hover{
-  transform:translateY(-5px);border-color:#8c7548;
-  box-shadow:0 15px 35px #0004;
-}
-.feature-icon{
-  width:48px;height:48px;border-radius:12px;
-  display:grid;place-items:center;background:#e4c16d18;
-  border:1px solid #e4c16d40;font-size:23px;margin-bottom:18px;
-}
-.feature h3{font-size:18px;margin-bottom:8px}
-.feature p{color:#aeb4be;font-size:12px;line-height:1.8}
-.feature a{
-  display:inline-block;margin-top:16px;color:var(--gold2);
-  font-size:10px;font-weight:950;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-/* COMMUNITY */
-.community-panel{
-  display:grid;grid-template-columns:1fr 1fr;gap:30px;
-  align-items:center;padding:35px;border-radius:17px;
-  border:1px solid #514630;
-  background:radial-gradient(circle at 0 50%,#e4c16d15,transparent 55%),#20232a;
-}
-.community-panel h2{font-size:clamp(27px,4vw,38px);line-height:1.2}
-.community-panel h2 span{color:var(--gold2)}
-.community-panel p{color:#bbc1ca;font-size:14px;line-height:1.9;margin-top:15px}
-.community-art{
-  min-height:250px;border-radius:13px;overflow:hidden;
-  background:#151820;display:grid;place-items:center;
-}
-.community-art img{width:100%;height:100%;max-height:320px;object-fit:contain}
-
-/* TEAM */
-.team-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:15px;
-}
-.team-card{
-  text-align:center;padding:23px 15px;
-  background:#20232a;border:1px solid var(--line);
-  border-radius:13px;transition:.2s;
-}
-.team-card:hover{transform:translateY(-4px);border-color:#8d7545}
-.avatar{
-  width:82px;height:82px;border-radius:13px;
-  object-fit:cover;image-rendering:pixelated;
-  border:3px solid #9c8048;margin-bottom:13px;
-}
-.team-card h3{font-size:14px;overflow-wrap:anywhere}
-.team-card span{
-  display:inline-block;margin-top:7px;padding:5px 10px;
-  border-radius:30px;background:#e4c16d17;color:var(--gold2);
-  font-size:9px;font-weight:950;letter-spacing:1px;
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(15,15,15,.95);
+    border-bottom: 1px solid rgba(229,185,79,.2);
+    backdrop-filter: blur(12px);
 }
 
-/* SPONSORS */
-.sponsor-strip{
-  display:grid;grid-template-columns:1fr 1fr;gap:15px;
+nav {
+    max-width: 1150px;
+    margin: auto;
+    padding: 17px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.sponsor-item{
-  display:flex;align-items:center;gap:18px;padding:22px;
-  border-radius:13px;background:#20232a;border:1px solid var(--line);
-}
-.sponsor-item img{
-  width:90px;height:65px;object-fit:contain;
-  background:white;border-radius:8px;padding:8px;
-}
-.sponsor-item h3{font-size:15px}
-.sponsor-item p{color:#aeb4be;font-size:11px;margin-top:5px}
 
-/* CTA */
-.cta{
-  margin:20px 0 75px;text-align:center;padding:50px 25px;
-  border:1px solid #806b42;border-radius:17px;
-  background:radial-gradient(circle at 50% 0,#e4c16d1c,transparent 70%),#20232a;
+.logo {
+    color: var(--gold);
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
 }
-.cta h2{font-size:clamp(27px,4vw,39px)}
-.cta h2 span{color:var(--gold2)}
-.cta p{max-width:630px;margin:13px auto 0;color:#b8bec8;font-size:14px;line-height:1.8}
 
-/* FOOTER */
-footer{
-  background:#0d0f13;border-top:1px solid #2d3037;
-  padding:35px 5%;
+.nav-links {
+    display: flex;
+    gap: 25px;
 }
-.footer-inner{
-  max-width:1160px;margin:auto;display:flex;
-  justify-content:space-between;align-items:center;
-  gap:25px;flex-wrap:wrap;
-}
-.footer-brand{display:flex;align-items:center;gap:10px;font-size:13px}
-.footer-brand img{width:45px;height:45px;object-fit:contain}
-.footer-text{font-size:11px;color:#858b95;margin-top:5px}
-.footer-links{display:flex;gap:16px;flex-wrap:wrap}
-.footer-links a{font-size:11px;color:#a8adb6}
-.footer-links a:hover{color:var(--gold2)}
-.footer-bottom{
-  max-width:1160px;margin:22px auto 0;padding-top:17px;
-  border-top:1px solid #292c33;color:#69717d;
-  font-size:10px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
-}
-.back-top{
-  position:fixed;right:20px;bottom:20px;width:45px;height:45px;
-  border-radius:50%;border:1px solid #7e6b42;
-  background:#24272e;color:var(--gold2);font-size:20px;
-  opacity:0;pointer-events:none;transition:.2s;z-index:900;
-}
-.back-top.visible{opacity:1;pointer-events:auto}
 
-@media(max-width:850px){
-  .navbar{flex-wrap:wrap;padding:6px 18px}
-  .mobile-menu{display:block}
-  .nav-links{display:none;order:3;flex:1 0 100%;justify-content:flex-start}
-  .nav-links.open{display:flex}
-  .intro-grid,.community-panel{grid-template-columns:1fr}
-  .feature-grid{grid-template-columns:repeat(2,1fr)}
-  .team-grid{grid-template-columns:repeat(2,1fr)}
+.nav-links a {
+    color: #ddd;
+    font-size: 14px;
+    transition: .2s;
 }
-@media(max-width:600px){
-  .hero{min-height:550px;padding:85px 20px}
-  .hero p{font-size:14px}
-  .section{padding:52px 0}
-  .feature-grid{grid-template-columns:1fr}
-  .sponsor-strip{grid-template-columns:1fr}
-  .community-panel{padding:22px}
-  .footer-inner{align-items:flex-start;flex-direction:column}
+
+.nav-links a:hover { color: var(--gold); }
+
+.menu-button {
+    display: none;
+    background: none;
+    border: 0;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
 }
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*:before,*:after{transition:none!important}
+
+.hero {
+    text-align: center;
+    padding: 95px 20px 75px;
+    background:
+        radial-gradient(ellipse at top, rgba(229,185,79,.16), transparent 65%);
+}
+
+.eyebrow {
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 7vw, 65px);
+    margin: 15px 0;
+    font-weight: 900;
+}
+
+.hero h1 span { color: var(--gold); }
+
+.hero p {
+    color: var(--muted);
+    max-width: 620px;
+    margin: auto;
+    font-size: 16px;
+}
+
+.section {
+    max-width: 1100px;
+    margin: auto;
+    padding: 55px 22px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-heading small {
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.section-heading h2 {
+    font-size: 32px;
+    margin: 8px 0;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.sponsor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+.sponsor-card {
+    background: linear-gradient(145deg, #202020, #151515);
+    border: 1px solid #333;
+    border-radius: 16px;
+    padding: 35px 22px;
+    text-align: center;
+    transition: .25s;
+}
+
+.sponsor-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+}
+
+.sponsor-logo {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.sponsor-placeholder {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 15px;
+    border-radius: 18px;
+    display: grid;
+    place-items: center;
+    background: #292929;
+    color: var(--gold);
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.sponsor-card h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.sponsor-card p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.sponsor-tag {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 5px 12px;
+    border-radius: 30px;
+    background: rgba(229,185,79,.12);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.divider {
+    max-width: 1100px;
+    height: 1px;
+    margin: 10px auto;
+    background: linear-gradient(90deg, transparent, #484848, transparent);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 18px;
+}
+
+.member {
+    background: var(--card);
+    border: 1px solid #303030;
+    border-radius: 15px;
+    padding: 25px 15px;
+    text-align: center;
+    transition: .25s;
+}
+
+.member:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+}
+
+.member img {
+    width: 76px;
+    height: 76px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    image-rendering: pixelated;
+    background: #292929;
+}
+
+.member h3 { font-size: 17px; }
+
+.member p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.role {
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    background: rgba(229,185,79,.1);
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.thanks {
+    max-width: 900px;
+    margin: 30px auto 75px;
+    padding: 45px 25px;
+    text-align: center;
+    border: 1px solid rgba(229,185,79,.3);
+    border-radius: 18px;
+    background: radial-gradient(ellipse at center, rgba(229,185,79,.1), #171717 75%);
+}
+
+.thanks h2 {
+    color: var(--gold);
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.thanks p {
+    color: var(--muted);
+    max-width: 650px;
+    margin: auto;
+}
+
+footer {
+    border-top: 1px solid #292929;
+    padding: 25px 20px;
+    text-align: center;
+    color: #777;
+    font-size: 12px;
+}
+
+footer span { color: var(--gold); }
+
+@media(max-width: 700px) {
+    .menu-button { display: block; }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        background: #151515;
+        flex-direction: column;
+        gap: 17px;
+        border-bottom: 1px solid #333;
+    }
+
+    .nav-links.open { display: flex; }
+
+    .hero { padding: 70px 20px; }
+    .section { padding: 40px 18px; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="top-progress" id="topProgress"></div>
+<header>
+    <nav>
+        <a href="index.html" class="logo">LMS NETWORK</a>
 
-<div class="notice">
-  LMS NETWORK · MINECRAFT · COMMUNITY · PROJEKTE
-</div>
+        <button class="menu-button" onclick="toggleMenu()" aria-label="Menü öffnen">☰</button>
 
-<!-- NAVIGATION -->
-<header class="navbar">
-
-  <a class="logo" href="index.html">
-    <img src="WhatsApp_Image_2026-07-11_at_15.30.43-removebg-preview.png" alt="LMS Logo">
-    <strong>LMS NETWORK</strong>
-  </a>
-
-  <button class="mobile-menu" id="mobileMenu" aria-expanded="false">
-    ☰ MENÜ
-  </button>
-
-  <nav class="nav-links" id="navLinks">
-    <a class="active" href="index.html">Start</a>
-    <a href="#community">Community</a>
-    <a href="#team">Team</a>
-    <a href="#projekte">Projekte</a>
-    <a href="sponsoren.html">Sponsoren</a>
-    <a href="info.html">Info & Wiki</a>
-    <a href="regeln.html">Regeln</a>
-    <a class="play" href="#server">ZUM SERVER</a>
-  </nav>
-
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Startseite</a>
+            <a href="#sponsoren">Sponsoren</a>
+            <a href="#unterstuetzer">Unterstützer</a>
+            <a href="#team">Mitwirkende</a>
+        </div>
+    </nav>
 </header>
-
-<!-- HERO -->
-<section class="hero">
-
-  <div class="hero-content">
-
-    <div class="eyebrow">WELCOME TO THE LMS NETWORK</div>
-
-    <h1>
-      DEINE WELT.<br>
-      <span>DEINE COMMUNITY.</span>
-    </h1>
-
-    <p>
-      Willkommen im LMS NETWORK! Entdecke unsere Minecraft-Projekte,
-      lerne die Community kennen und werde Teil einer Welt,
-      die wir gemeinsam gestalten.
-    </p>
-
-    <div class="hero-buttons">
-      <a class="btn" href="#server">🎮 SERVER ENTDECKEN</a>
-      <a class="btn secondary" href="info.html">📖 MEHR ERFAHREN</a>
-    </div>
-
-    <div class="hero-tags">
-      <span class="tag">🧱 EIGENE PROJEKTE</span>
-      <span class="tag">🤝 COMMUNITY</span>
-      <span class="tag">⭐ LMS NETWORK</span>
-    </div>
-
-  </div>
-
-</section>
 
 <main>
 
-<!-- INTRO -->
-<section class="section">
-  <div class="container intro-grid">
-
-    <div class="intro-card">
-      <div class="heading" style="text-align:left;margin-bottom:18px">
-        <small>ÜBER UNS</small>
-        <h2>MEHR ALS NUR <span>MINECRAFT.</span></h2>
-      </div>
-
-      <p>
-        Das LMS NETWORK ist ein eigenes Minecraft-Projekt,
-        das Schritt für Schritt weiterentwickelt wird.
-        Wir möchten eigene Spielideen, kreative Bauwerke
-        und eine Community zusammenbringen.
-        <br><br>
-        Dabei stehen gemeinsame Erlebnisse, Kreativität
-        und ein respektvoller Umgang im Mittelpunkt.
-        <br><br>
-        <strong>Gemeinsam bauen wir etwas Eigenes auf.</strong>
-      </p>
-
-      <div class="intro-stat">
-        <div class="stat">
-          <strong>∞</strong>
-          <span>IDEEN & MÖGLICHKEITEN</span>
-        </div>
-        <div class="stat">
-          <strong>100%</strong>
-          <span>LEIDENSCHAFT</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="intro-card" id="server">
-      <div class="heading" style="text-align:left;margin-bottom:18px">
-        <small>SPIELEN & ENTDECKEN</small>
-        <h2>DEIN NÄCHSTER <span>STOPP.</span></h2>
-      </div>
-
-      <p>
-        Du möchtest das LMS NETWORK kennenlernen?
-        Dann schau vorbei und entdecke, was unser Projekt
-        zu bieten hat.
-        <br><br>
-        <strong>Serveradresse:</strong><br>
-        LMS_server.aternos.me
-      </p>
-
-      <div class="hero-buttons" style="justify-content:flex-start">
-        <button class="btn" id="copyServer">📋 IP KOPIEREN</button>
-        <a class="btn secondary" href="info.html">SERVER-INFOS</a>
-      </div>
-    </div>
-
-  </div>
+<section class="hero">
+    <div class="eyebrow">LMS NETWORK · Gemeinsam stark</div>
+    <h1>Unsere <span>Unterstützer</span></h1>
+    <p>
+        Hinter LMS NETWORK stehen Menschen und Projekte,
+        die uns unterstützen, mitgestalten und unsere Community
+        zu etwas Besonderem machen.
+    </p>
 </section>
 
-<!-- PROJEKTE -->
-<section class="section" id="projekte">
-  <div class="container">
-
-    <div class="heading">
-      <small>WAS DICH ERWARTET</small>
-      <h2>ENTDECKE UNSERE <span>WELT.</span></h2>
-      <p>
-        Unterschiedliche Ideen und Projekte bilden die Grundlage
-        unseres Netzwerks. Hier findest du einen Einblick.
-      </p>
+<section class="section" id="sponsoren">
+    <div class="section-heading">
+        <small>Vielen Dank</small>
+        <h2>Unsere Sponsoren</h2>
+        <p>Unternehmen und Partner, die unser Projekt offiziell unterstützen.</p>
     </div>
 
-    <div class="feature-grid">
+    <div class="sponsor-grid">
 
-      <article class="feature">
-        <div class="feature-icon">🧱</div>
-        <h3>Builder-Projekte</h3>
-        <p>
-          Eigene Maps, kreative Bauwerke und neue Umgebungen,
-          die gemeinsam entwickelt werden.
-        </p>
-        <a href="info.html#builder-projekt">MEHR ERFAHREN ↗</a>
-      </article>
+        <!-- Hier weitere offizielle Sponsoren eintragen -->
 
-      <article class="feature">
-        <div class="feature-icon">🏃</div>
-        <h3>OnlyUp & Parcours</h3>
-        <p>
-          Spannende Parcours-Ideen und Herausforderungen
-          für alle, die gerne neue Wege ausprobieren.
-        </p>
-        <a href="info.html#builder-projekt">PROJEKT ANSEHEN ↗</a>
-      </article>
-
-      <article class="feature">
-        <div class="feature-icon">🌍</div>
-        <h3>Community</h3>
-        <p>
-          Gemeinsam spielen, Ideen austauschen und neue
-          Menschen kennenlernen.
-        </p>
-        <a href="#community">COMMUNITY ENTDECKEN ↗</a>
-      </article>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- COMMUNITY -->
-<section class="section" id="community">
-  <div class="container">
-
-    <div class="community-panel">
-
-      <div>
-        <div class="eyebrow">ONE COMMUNITY · MANY IDEAS</div>
-
-        <h2>
-          EIN ORT FÜR <span>ALLE.</span>
-        </h2>
-
-        <p>
-          Wir möchten eine Community schaffen, in der Respekt,
-          Fairness und gemeinsame Erlebnisse zählen.
-          Unterschiedliche Menschen, unterschiedliche Ideen –
-          aber ein gemeinsames Projekt.
-          <br><br>
-          Auf dem LMS NETWORK soll jeder die Möglichkeit haben,
-          sich willkommen zu fühlen und Teil unserer Community
-          zu werden.
-        </p>
-
-        <div class="hero-buttons" style="justify-content:flex-start">
-          <a class="btn" href="info.html#community-werte">UNSERE WERTE</a>
+        <div class="sponsor-card">
+            <div class="sponsor-placeholder">★</div>
+            <h3>Dein Unternehmen</h3>
+            <p>Hier könnte dein Unternehmen stehen.</p>
+            <span class="sponsor-tag">SPONSOR</span>
         </div>
-      </div>
-
-      <div class="community-art">
-        <img
-          src="minecraft-bg2.webp"
-          alt="Minecraft Welt des LMS NETWORK"
-          loading="lazy"
-        >
-      </div>
 
     </div>
-
-  </div>
 </section>
 
-<!-- TEAM -->
+<div class="divider"></div>
+
+<section class="section" id="unterstuetzer">
+    <div class="section-heading">
+        <small>Technik & Zusammenarbeit</small>
+        <h2>Unsere Unterstützer</h2>
+        <p>Tools und Plattformen, die wir für unser Projekt nutzen.</p>
+    </div>
+
+    <div class="sponsor-grid">
+
+        <a class="sponsor-card" href="https://github.com/" target="_blank" rel="noopener noreferrer">
+            <div class="sponsor-placeholder">GH</div>
+            <h3>GitHub</h3>
+            <p>Für Entwicklung, Code und unsere digitalen Projekte.</p>
+            <span class="sponsor-tag">PLATTFORM</span>
+        </a>
+
+        <a class="sponsor-card" href="https://aternos.org/" target="_blank" rel="noopener noreferrer">
+            <div class="sponsor-placeholder">A</div>
+            <h3>Aternos</h3>
+            <p>Eine Plattform, die wir für unseren Minecraft-Server verwenden.</p>
+            <span class="sponsor-tag">HOSTING-PLATTFORM</span>
+        </a>
+
+    </div>
+</section>
+
+<div class="divider"></div>
+
 <section class="section" id="team">
-  <div class="container">
-
-    <div class="heading">
-      <small>BEHIND THE NETWORK</small>
-      <h2>DIE MENSCHEN <span>DAHINTER.</span></h2>
-      <p>
-        Ein Projekt entsteht durch Menschen, die ihre Ideen,
-        Zeit und Kreativität einbringen.
-      </p>
+    <div class="section-heading">
+        <small>Das Team hinter LMS</small>
+        <h2>Mitwirkende</h2>
+        <p>Die Menschen, die Zeit, Ideen und Arbeit in LMS NETWORK stecken.</p>
     </div>
 
     <div class="team-grid">
 
-      <article class="team-card">
-        <img class="avatar" src="https://mc-heads.net/avatar/CC_Minecarft/100" alt="CC_Minecarft">
-        <h3>CC_Minecarft</h3>
-        <span>OWNER</span>
-      </article>
+        <a class="member" href="https://namemc.com/" target="_blank" rel="noopener noreferrer">
+            <img src="https://mc-heads.net/avatar/CC_Minecarft/100" alt="Minecraft-Kopf von CC_Minecarft">
+            <h3>CC_Minecarft</h3>
+            <p>Projektleitung</p>
+            <span class="role">OWNER</span>
+        </a>
 
-      <article class="team-card">
-        <img class="avatar" src="https://mc-heads.net/avatar/Hobbit2304/100" alt="Hobbit2304">
-        <h3>Hobbit2304</h3>
-        <span>BUILDER</span>
-      </article>
+        <a class="member" href="https://namemc.com/" target="_blank" rel="noopener noreferrer">
+            <img src="https://mc-heads.net/avatar/Hobbit2304/100" alt="Minecraft-Kopf von Hobbit2304">
+            <h3>Hobbit2304</h3>
+            <p>Mitgestaltung und Bauprojekte</p>
+            <span class="role">BUILDER</span>
+        </a>
 
-      <article class="team-card">
-        <img class="avatar" src="https://mc-heads.net/avatar/King_Luma1/100" alt="King_Luma1">
-        <h3>King_Luma1</h3>
-        <span>BUILDER</span>
-      </article>
+        <a class="member" href="https://namemc.com/" target="_blank" rel="noopener noreferrer">
+            <img src="https://mc-heads.net/avatar/King_Luma1/100" alt="Minecraft-Kopf von King_Luma1">
+            <h3>King_Luma1</h3>
+            <p>Mitgestaltung und Bauprojekte</p>
+            <span class="role">BUILDER</span>
+        </a>
+
+        <a class="member" href="https://namemc.com/" target="_blank" rel="noopener noreferrer">
+            <img src="https://mc-heads.net/avatar/Lennyy20/100" alt="Minecraft-Kopf von Lennyy20">
+            <h3>Lennyy20</h3>
+            <p>Unterstützung des Projekts</p>
+            <span class="role">BUILDER</span>
+        </a>
+
+        <a class="member" href="https://namemc.com/" target="_blank" rel="noopener noreferrer">
+            <img src="https://mc-heads.net/avatar/Takatonka/100" alt="Minecraft-Kopf von Takatonka">
+            <h3>Takatonka</h3>
+            <p>Unterstützung der Community</p>
+            <span class="role">PREMIUM</span>
+        </a>
+
+        <a class="member" href="https://namemc.com/" target="_blank" rel="noopener noreferrer">
+            <img src="https://mc-heads.net/avatar/Vanielle/100" alt="Minecraft-Kopf von Vanielle">
+            <h3>Vanielle</h3>
+            <p>Unterstützung der Community</p>
+            <span class="role">PREMIUM</span>
+        </a>
 
     </div>
-
-    <div style="text-align:center;margin-top:22px">
-      <a class="btn secondary" href="sponsoren.html">ALLE MITWIRKENDEN ANSEHEN ↗</a>
-    </div>
-
-  </div>
 </section>
 
-<!-- PARTNER -->
-<section class="section">
-  <div class="container">
-
-    <div class="heading">
-      <small>VIELEN DANK</small>
-      <h2>UNSERE <span>UNTERSTÜTZER.</span></h2>
-      <p>
-        Danke an alle, die das LMS NETWORK begleiten,
-        unterstützen und bei der Entwicklung helfen.
-      </p>
-    </div>
-
-    <div class="sponsor-strip">
-
-      <article class="sponsor-item">
-        <img src="logo-03.cc5e5332-removebg-preview.png" alt="GitHub Logo">
-        <div>
-          <h3>GitHub</h3>
-          <p>Unterstützung für unsere digitale Entwicklungsarbeit.</p>
-        </div>
-      </article>
-
-      <article class="sponsor-item">
-        <img src="aternos-logo.png" alt="Aternos Logo">
-        <div>
-          <h3>Aternos</h3>
-          <p>Unsere Serverumgebung für das Minecraft-Projekt.</p>
-        </div>
-      </article>
-
-    </div>
-
-    <div style="text-align:center;margin-top:22px">
-      <a class="btn secondary" href="sponsoren.html">SPONSOREN & MITWIRKENDE ↗</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="container">
-  <div class="cta">
-
-    <div class="eyebrow">YOUR ADVENTURE STARTS HERE</div>
-
-    <h2>WERDE TEIL VON <span>LMS.</span></h2>
-
+<section class="thanks">
+    <h2>Danke, dass ihr dabei seid! ♥</h2>
     <p>
-      Entdecke unsere Projekte, lerne die Community kennen
-      und bring deine eigenen Ideen mit.
-      Wir freuen uns auf dich!
+        Jedes Projekt lebt von den Menschen dahinter.
+        Ob mit Ideen, Unterstützung, Kreativität oder Zeit –
+        jeder Beitrag hilft LMS NETWORK weiter.
+        Wir freuen uns auf alles, was noch kommt!
     </p>
-
-    <div class="hero-buttons">
-      <a class="btn" href="info.html">📘 LMS WIKI</a>
-      <a class="btn secondary" href="sponsoren.html">🤝 UNSER TEAM</a>
-    </div>
-
-  </div>
 </section>
 
 </main>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-
-    <div>
-      <div class="footer-brand">
-        <img src="WhatsApp_Image_2026-07-11_at_15.30.43-removebg-preview.png" alt="LMS Logo">
-        <strong>LMS NETWORK</strong>
-      </div>
-      <div class="footer-text">
-        Minecraft · Community · Eigene Projekte<br>
-        LMS_server.aternos.me
-      </div>
-    </div>
-
-    <div class="footer-links">
-      <a href="index.html">Startseite</a>
-      <a href="info.html">Info & Wiki</a>
-      <a href="sponsoren.html">Sponsoren</a>
-      <a href="regeln.html">Regeln</a>
-      <a href="#community">Community</a>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    <span>LMS NETWORK © 2026</span>
-    <span>Gemeinsam spielen. Gemeinsam gestalten.</span>
-  </div>
+    © 2026 <span>LMS NETWORK</span> · Mit Leidenschaft aufgebaut.
 </footer>
 
-<button class="back-top" id="backTop" aria-label="Nach oben">↑</button>
-
-<div id="toast" style="
-  position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);
-  opacity:0;pointer-events:none;background:#252932;color:white;
-  border:1px solid #656b76;border-radius:9px;padding:11px 16px;
-  font-size:12px;font-weight:800;z-index:2500;transition:.25s;
-"></div>
-
 <script>
-const progressBar=document.getElementById("topProgress");
-const backTop=document.getElementById("backTop");
-const toast=document.getElementById("toast");
-
-function updateScrollUI(){
-  const maxScroll=document.documentElement.scrollHeight-window.innerHeight;
-  const percent=maxScroll>0?(window.scrollY/maxScroll)*100:0;
-  progressBar.style.width=percent+"%";
-  backTop.classList.toggle("visible",window.scrollY>450);
+function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("open");
 }
 
-window.addEventListener("scroll",updateScrollUI,{passive:true});
-window.addEventListener("resize",updateScrollUI);
-updateScrollUI();
-
-backTop.addEventListener("click",()=>{
-  window.scrollTo({top:0,behavior:"smooth"});
-});
-
-const mobileMenu=document.getElementById("mobileMenu");
-const navLinks=document.getElementById("navLinks");
-
-mobileMenu.addEventListener("click",()=>{
-  const open=navLinks.classList.toggle("open");
-  mobileMenu.setAttribute("aria-expanded",String(open));
-  mobileMenu.textContent=open?"✕ SCHLIESSEN":"☰ MENÜ";
-});
-
-navLinks.querySelectorAll("a").forEach(link=>{
-  link.addEventListener("click",()=>{
-    navLinks.classList.remove("open");
-    mobileMenu.setAttribute("aria-expanded","false");
-    mobileMenu.textContent="☰ MENÜ";
-  });
-});
-
-function showToast(message){
-  toast.textContent=message;
-  toast.style.opacity="1";
-  toast.style.transform="translate(-50%,0)";
-  clearTimeout(showToast.timer);
-  showToast.timer=setTimeout(()=>{
-    toast.style.opacity="0";
-    toast.style.transform="translate(-50%,20px)";
-  },2200);
-}
-
-document.getElementById("copyServer").addEventListener("click",async()=>{
-  const address="LMS_server.aternos.me";
-  try{
-    if(navigator.clipboard && window.isSecureContext){
-      await navigator.clipboard.writeText(address);
-    }else{
-      const field=document.createElement("textarea");
-      field.value=address;
-      field.style.position="fixed";
-      field.style.opacity="0";
-      document.body.appendChild(field);
-      field.select();
-      document.execCommand("copy");
-      field.remove();
-    }
-    showToast("Serveradresse kopiert!");
-  }catch(error){
-    showToast("Server-IP: "+address);
-  }
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        document.getElementById("navLinks").classList.remove("open");
+    });
 });
 </script>
 
