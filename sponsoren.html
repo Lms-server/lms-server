@@ -9,6 +9,13 @@
 <title>Werbung auf LMS NETWORK</title>
 
 <style>
+:root {
+    --green: #1DB954;
+    --black: #111;
+    --grey: #666;
+    --light: #f5f5f5;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -17,8 +24,63 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #fff;
-    color: #202020;
+    background: white;
+    color: var(--black);
+}
+
+/* NAVIGATION */
+
+header {
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    background: white;
+}
+
+nav {
+    max-width: 1150px;
+    margin: auto;
+    padding: 17px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--black);
+    text-decoration: none;
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo img {
+    width: 43px;
+    height: 43px;
+    object-fit: contain;
+}
+
+.logo span {
+    color: var(--green);
+}
+
+.home-button {
+    display: inline-block;
+    background: var(--green);
+    color: white;
+    padding: 11px 19px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.home-button:hover {
+    background: #159443;
+    transform: translateY(-2px);
 }
 
 /* LAUFMELDUNG */
@@ -26,17 +88,17 @@ body {
 .notice {
     width: 100%;
     height: 48px;
-    background: #171717;
-    color: #f5c75e;
+    background: #111;
+    color: white;
     display: flex;
     align-items: center;
     overflow: hidden;
-    border-bottom: 3px solid #e8b94e;
+    border-bottom: 3px solid var(--green);
 }
 
 .notice-label {
-    background: #e8b94e;
-    color: #171717;
+    background: var(--green);
+    color: white;
     height: 100%;
     display: flex;
     align-items: center;
@@ -63,33 +125,37 @@ body {
     animation: laufen 18s linear infinite;
 }
 
+.marquee strong {
+    color: var(--green);
+}
+
 @keyframes laufen {
     from { transform: translateX(0); }
     to { transform: translateX(-100%); }
 }
 
-/* INHALT */
+/* HAUPTBEREICH */
 
 main {
-    min-height: 85vh;
+    min-height: 83vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 50px 20px;
+    padding: 65px 20px;
 }
 
 .content {
-    max-width: 720px;
+    max-width: 750px;
     width: 100%;
     text-align: center;
 }
 
 .label {
     display: inline-block;
-    padding: 8px 15px;
+    padding: 8px 16px;
     border-radius: 30px;
-    background: #fff5dc;
-    color: #9b6c12;
+    background: #e8f8ed;
+    color: #168b40;
     font-size: 12px;
     font-weight: bold;
     letter-spacing: 2px;
@@ -97,66 +163,78 @@ main {
 }
 
 h1 {
-    font-size: clamp(36px, 7vw, 62px);
+    font-size: clamp(38px, 7vw, 68px);
     line-height: 1.1;
     font-weight: 900;
-    margin-bottom: 20px;
-    color: #171717;
+    margin-bottom: 22px;
+    color: var(--black);
 }
 
 h1 span {
-    color: #d6a32d;
+    color: var(--green);
 }
 
 .description {
-    color: #666;
+    color: var(--grey);
     font-size: 17px;
-    line-height: 1.7;
-    max-width: 580px;
-    margin: 0 auto 35px;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto 38px;
 }
 
-/* PREIS */
+.description strong {
+    color: var(--black);
+}
+
+/* PREISKARTE */
 
 .price-card {
-    max-width: 430px;
+    max-width: 440px;
     margin: auto;
-    padding: 30px 25px;
-    border: 1px solid #e6e6e6;
-    border-radius: 18px;
-    box-shadow: 0 12px 40px rgba(0,0,0,.06);
+    padding: 34px 25px;
+    border: 1px solid #e7e7e7;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 15px 45px rgba(0,0,0,.07);
+    transition: .25s;
+}
+
+.price-card:hover {
+    border-color: var(--green);
+    transform: translateY(-4px);
 }
 
 .price {
-    font-size: 48px;
+    font-size: 50px;
     font-weight: 900;
-    color: #171717;
+    color: var(--black);
 }
 
 .price small {
     font-size: 15px;
     font-weight: normal;
-    color: #777;
+    color: var(--grey);
 }
 
 .period {
-    color: #777;
-    margin-top: 5px;
+    color: var(--grey);
+    margin-top: 6px;
     font-size: 14px;
 }
 
 .offer {
-    margin-top: 22px;
-    padding: 13px;
-    border-radius: 10px;
-    background: #fff5dc;
-    color: #8b6215;
+    margin-top: 23px;
+    padding: 16px;
+    border-radius: 12px;
+    background: #e8f8ed;
+    color: #168b40;
     font-size: 14px;
-    font-weight: bold;
+    line-height: 1.6;
 }
 
 .offer strong {
-    font-size: 19px;
+    font-size: 20px;
+    color: #12813a;
 }
 
 /* BUTTON */
@@ -164,10 +242,10 @@ h1 span {
 .button {
     display: inline-block;
     margin-top: 28px;
-    padding: 15px 28px;
-    background: #171717;
+    padding: 15px 27px;
+    background: var(--green);
     color: white;
-    border-radius: 9px;
+    border-radius: 30px;
     font-size: 14px;
     font-weight: bold;
     text-decoration: none;
@@ -175,8 +253,7 @@ h1 span {
 }
 
 .button:hover {
-    background: #d6a32d;
-    color: #171717;
+    background: #159443;
     transform: translateY(-3px);
 }
 
@@ -184,60 +261,91 @@ h1 span {
     color: #999;
     font-size: 12px;
     margin-top: 20px;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 /* FOOTER */
 
 footer {
     text-align: center;
-    padding: 22px;
+    padding: 23px;
     border-top: 1px solid #eee;
-    color: #999;
+    color: #888;
     font-size: 12px;
 }
 
 footer strong {
-    color: #c29328;
+    color: var(--green);
 }
 
 @media(max-width: 500px) {
+    nav { padding: 13px 15px; }
+    .logo { font-size: 17px; }
+    .logo img { width: 35px; height: 35px; }
+    .home-button { padding: 10px 13px; font-size: 12px; }
     .notice { height: 43px; }
     .notice-label { padding: 0 10px; font-size: 10px; }
     .marquee span { font-size: 12px; }
     .description { font-size: 15px; }
-    .price { font-size: 42px; }
+    .price { font-size: 43px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- STYLISCHE LAUFMELDUNG -->
+<!-- NAVIGATION -->
+<header>
+    <nav>
+
+        <!-- Logo anklicken = Startseite -->
+        <a href="index.html" class="logo">
+            <img src="WhatsApp_Image_2026-07-11_at_15.30.43-removebg-preview.png" alt="LMS Logo">
+            LMS <span>NETWORK</span>
+        </a>
+
+        <a href="index.html" class="home-button">
+            ← Startseite
+        </a>
+
+    </nav>
+</header>
+
+<!-- LAUFMELDUNG -->
 <div class="notice">
-    <div class="notice-label">WERBEPLATZ</div>
+
+    <div class="notice-label">
+        ✦ WERBUNG
+    </div>
+
     <div class="marquee">
         <span>
-            ✦ HIER KÖNNTE DEINE WERBUNG STEHEN ✦
-            HIER KÖNNTE DEINE WERBUNG STEHEN ✦
-            WERDE TEIL VON LMS NETWORK ✦
+            HIER KÖNNTE <strong>DEINE WERBUNG</strong> STEHEN! ✦
+            HIER KÖNNTE <strong>DEINE WERBUNG</strong> STEHEN! ✦
+            WERDE TEIL VON <strong>LMS NETWORK</strong>!
         </span>
     </div>
+
 </div>
 
+<!-- INHALT -->
 <main>
+
     <div class="content">
 
-        <div class="label">LMS NETWORK · WERBEANGEBOT</div>
+        <div class="label">
+            LMS NETWORK · WERBEANGEBOT
+        </div>
 
         <h1>
             Werbung auf <span>LMS.</span>
         </h1>
 
         <p class="description">
-            Melde deine Werbung auf LMS NETWORK an und spare dir teure Werbepartner.
+            Melde deine Werbung auf <strong>LMS NETWORK</strong> an
+            und spare dir teure Werbepartner.
             Präsentiere dein Unternehmen, deine Marke oder dein Projekt
-            zu einem fairen Preis.
+            zu einem <strong>fairen Preis.</strong>
         </p>
 
         <div class="price-card">
@@ -247,12 +355,12 @@ footer strong {
             </div>
 
             <div class="period">
-                Nur ein kleiner Preis für deine Werbepräsenz.
+                Deine Werbepräsenz auf LMS NETWORK.
             </div>
 
             <div class="offer">
                 <strong>1. Monat für 0 € testen!</strong><br>
-                Lerne unser Werbeangebot unverbindlich kennen.
+                Lerne unser Werbeangebot kennen.
             </div>
 
             <a href="mailto:DEINE-EMAIL-ADRESSE" class="button">
@@ -262,11 +370,12 @@ footer strong {
         </div>
 
         <p class="note">
-            Angebot und Werbeplatzierung nach Absprache.
-            Die genauen Konditionen werden vor Beginn bestätigt.
+            Werbeplatzierungen nach Absprache.
+            Alle Konditionen werden vor Beginn gemeinsam bestätigt.
         </p>
 
     </div>
+
 </main>
 
 <footer>
