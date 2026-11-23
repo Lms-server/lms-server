@@ -159,6 +159,74 @@ button:disabled {
     margin-top: 13px;
 }
 
+/* BILDER UPLOAD */
+
+.drop-zone {
+    width: 100%;
+    min-height: 180px;
+    border: 2px dashed #a9bfd8;
+    border-radius: 12px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 22px;
+    text-align: center;
+    cursor: pointer;
+    transition: .2s;
+    color: #315d91;
+}
+
+.drop-zone:hover,
+.drop-zone.dragover {
+    border-color: #397fc2;
+    background: #edf5ff;
+}
+
+.drop-icon {
+    font-size: 35px;
+}
+
+.drop-main {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.drop-sub {
+    font-size: 13px;
+    color: #8290a1;
+}
+
+.image-preview-box {
+    display: none;
+    margin-top: 15px;
+    padding: 12px;
+    border: 1px solid #dce4ee;
+    border-radius: 10px;
+    background: white;
+}
+
+.image-preview-box img {
+    display: block;
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 7px;
+}
+
+.image-info {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #718096;
+    overflow-wrap: anywhere;
+}
+
+.remove-image {
+    margin-top: 10px;
+}
+
 #preview {
     display: none;
     margin-top: 20px;
@@ -244,6 +312,7 @@ button:disabled {
         <p class="subtitle">Schreibe und veröffentliche deinen Blogbeitrag.</p>
 
         <div class="panel">
+
             <label for="title">Titel</label>
             <input id="title" maxlength="180" placeholder="Titel des Beitrags">
 
@@ -256,17 +325,65 @@ button:disabled {
                 <option>Community</option>
             </select>
 
-            <label for="image">Bild-URL (optional)</label>
-            <input id="image" type="url" placeholder="https://...">
+            <!-- BILDER PER DRAG & DROP -->
+            <label>Beitragsbild (optional)</label>
+
+            <input
+                type="file"
+                id="imageFile"
+                accept="image/*"
+                hidden
+            >
+
+            <div
+                class="drop-zone"
+                id="dropZone"
+                role="button"
+                tabindex="0"
+                aria-label="Bild auswählen oder hier hineinziehen"
+            >
+                <div class="drop-icon">📷</div>
+                <div class="drop-main">Bild hier hineinziehen</div>
+                <div class="drop-sub">oder klicken, um ein Bild auszuwählen</div>
+                <div class="drop-sub">JPG, PNG, WEBP · maximal 8 MB</div>
+            </div>
+
+            <div class="image-preview-box" id="imagePreviewBox">
+                <img id="imagePreview" alt="Bildvorschau">
+
+                <div class="image-info" id="imageInfo"></div>
+
+                <button
+                    type="button"
+                    class="danger remove-image"
+                    onclick="removeImage()"
+                >
+                    Bild entfernen
+                </button>
+            </div>
 
             <label for="content">Beitrag</label>
-            <textarea id="content" placeholder="Schreibe hier deinen Beitrag ..."></textarea>
+            <textarea
+                id="content"
+                placeholder="Schreibe hier deinen Beitrag ..."
+            ></textarea>
 
             <div class="actions">
-                <button class="primary" onclick="savePost(true)">Veröffentlichen</button>
-                <button class="secondary" onclick="savePost(false)">Als Entwurf speichern</button>
-                <button class="secondary" onclick="showPreview()">Vorschau</button>
-                <button class="secondary" onclick="backToDashboard()">Zurück</button>
+                <button class="primary" id="publishButton" onclick="savePost(true)">
+                    Veröffentlichen
+                </button>
+
+                <button class="secondary" id="draftButton" onclick="savePost(false)">
+                    Als Entwurf speichern
+                </button>
+
+                <button class="secondary" onclick="showPreview()">
+                    Vorschau
+                </button>
+
+                <button class="secondary" onclick="backToDashboard()">
+                    Zurück
+                </button>
             </div>
 
             <p class="status" id="editorStatus" aria-live="polite"></p>
@@ -276,12 +393,14 @@ button:disabled {
                 <img id="previewImage" alt="" style="display:none">
                 <p id="previewContent"></p>
             </div>
+
         </div>
     </section>
 
 </main>
 
 <script>
+
 /* SUPABASE VERBINDUNG */
 
 const SUPABASE_URL = "https://kxafgbrdybonjxwfziee.supabase.co";
@@ -293,8 +412,16 @@ const db = window.supabase.createClient(
     SUPABASE_KEY
 );
 
+const IMAGE_BUCKET = "blog-images";
+const MAX_IMAGE_SIZE = 8 * 1024 * 1024;
+
 let currentPostId = null;
 let saving = false;
+
+let selectedImageFile = null;
+let existingImageUrl = null;
+let imageRemoved = false;
+let previewObjectUrl = null;
 
 /* HILFSFUNKTIONEN */
 
@@ -308,6 +435,173 @@ function showSection(section) {
     document.getElementById("editor").style.display = "none";
 
     document.getElementById(section).style.display = "block";
+}
+
+function clearImagePreviewUrl() {
+    if (previewObjectUrl) {
+        URL.revokeObjectURL(previewObjectUrl);
+        previewObjectUrl = null;
+    }
+}
+
+function resetImage() {
+    selectedImageFile = null;
+    existingImageUrl = null;
+    imageRemoved = false;
+
+    clearImagePreviewUrl();
+
+    document.getElementById("imageFile").value = "";
+    document.getElementById("imagePreviewBox").style.display = "none";
+    document.getElementById("imagePreview").removeAttribute("src");
+    document.getElementById("imageInfo").textContent = "";
+}
+
+/* BILD AUSWÄHLEN */
+
+function selectImage(file) {
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+        setStatus("editorStatus", "Bitte wähle eine Bilddatei aus.");
+        return;
+    }
+
+    if (file.size > MAX_IMAGE_SIZE) {
+        setStatus("editorStatus", "Das Bild ist zu groß. Maximal 8 MB erlaubt.");
+        return;
+    }
+
+    clearImagePreviewUrl();
+
+    selectedImageFile = file;
+    existingImageUrl = null;
+    imageRemoved = false;
+
+    previewObjectUrl = URL.createObjectURL(file);
+
+    document.getElementById("imagePreview").src = previewObjectUrl;
+    document.getElementById("imageInfo").textContent =
+        file.name + " · " + (file.size / 1024 / 1024).toFixed(2) + " MB";
+
+    document.getElementById("imagePreviewBox").style.display = "block";
+
+    setStatus("editorStatus", "Bild ausgewählt. Es wird beim Speichern hochgeladen.");
+}
+
+/* BILD ENTFERNEN */
+
+function removeImage() {
+    resetImage();
+    imageRemoved = true;
+
+    setStatus("editorStatus", "Das Bild wurde entfernt.");
+}
+
+/* VORHANDENES BILD ANZEIGEN */
+
+function showExistingImage(url) {
+    resetImage();
+
+    if (!url) return;
+
+    existingImageUrl = url;
+    imageRemoved = false;
+
+    document.getElementById("imagePreview").src = url;
+    document.getElementById("imageInfo").textContent = "Bereits gespeichertes Bild";
+
+    document.getElementById("imagePreviewBox").style.display = "block";
+}
+
+/* DRAG & DROP EINRICHTEN */
+
+const dropZone = document.getElementById("dropZone");
+const imageInput = document.getElementById("imageFile");
+
+dropZone.addEventListener("click", () => {
+    imageInput.click();
+});
+
+dropZone.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        imageInput.click();
+    }
+});
+
+imageInput.addEventListener("change", event => {
+    const file = event.target.files[0];
+
+    if (file) {
+        selectImage(file);
+    }
+});
+
+dropZone.addEventListener("dragover", event => {
+    event.preventDefault();
+    dropZone.classList.add("dragover");
+});
+
+dropZone.addEventListener("dragleave", event => {
+    event.preventDefault();
+    dropZone.classList.remove("dragover");
+});
+
+dropZone.addEventListener("drop", event => {
+    event.preventDefault();
+    dropZone.classList.remove("dragover");
+
+    const file = event.dataTransfer.files[0];
+
+    if (file) {
+        selectImage(file);
+    }
+});
+
+/* BILD HOCHLADEN */
+
+async function uploadImage(file) {
+    const { data: { user }, error: userError } = await db.auth.getUser();
+
+    if (userError || !user) {
+        throw new Error("Deine Anmeldung ist abgelaufen. Bitte melde dich erneut an.");
+    }
+
+    const extensionFromName = file.name.includes(".")
+        ? file.name.split(".").pop().toLowerCase()
+        : "";
+
+    const extension = extensionFromName.match(/^[a-z0-9]{1,8}$/)
+        ? extensionFromName
+        : "jpg";
+
+    const randomPart = crypto.randomUUID
+        ? crypto.randomUUID()
+        : Date.now() + "-" + Math.random().toString(36).slice(2);
+
+    const filePath =
+        user.id + "/" + randomPart + "." + extension;
+
+    const { error: uploadError } = await db
+        .storage
+        .from(IMAGE_BUCKET)
+        .upload(filePath, file, {
+            cacheControl: "3600",
+            upsert: false,
+            contentType: file.type
+        });
+
+    if (uploadError) {
+        throw new Error("Bild-Upload fehlgeschlagen: " + uploadError.message);
+    }
+
+    const { data } = db
+        .storage
+        .from(IMAGE_BUCKET)
+        .getPublicUrl(filePath);
+
+    return data.publicUrl;
 }
 
 /* ANMELDUNG */
@@ -406,7 +700,8 @@ async function loadPosts() {
         heading.textContent = post.title;
 
         const meta = document.createElement("small");
-        meta.textContent = post.category + " · " +
+        meta.textContent =
+            post.category + " · " +
             (post.published ? "Veröffentlicht" : "Entwurf");
 
         const actions = document.createElement("div");
@@ -435,10 +730,11 @@ function newPost() {
 
     document.getElementById("title").value = "";
     document.getElementById("category").value = "Allgemein";
-    document.getElementById("image").value = "";
     document.getElementById("content").value = "";
     document.getElementById("editorTitle").textContent = "Neuer Beitrag";
     document.getElementById("preview").style.display = "none";
+
+    resetImage();
 
     showSection("editor");
     setStatus("editorStatus", "");
@@ -451,10 +747,11 @@ function editPost(post) {
 
     document.getElementById("title").value = post.title;
     document.getElementById("category").value = post.category;
-    document.getElementById("image").value = post.image_url || "";
     document.getElementById("content").value = post.content;
     document.getElementById("editorTitle").textContent = "Beitrag bearbeiten";
     document.getElementById("preview").style.display = "none";
+
+    showExistingImage(post.image_url);
 
     showSection("editor");
     setStatus("editorStatus", "");
@@ -467,7 +764,6 @@ async function savePost(published) {
 
     const title = document.getElementById("title").value.trim();
     const category = document.getElementById("category").value;
-    const image = document.getElementById("image").value.trim();
     const content = document.getElementById("content").value.trim();
 
     if (!title || !content) {
@@ -475,32 +771,32 @@ async function savePost(published) {
         return;
     }
 
-    if (image) {
-        try {
-            const url = new URL(image);
-
-            if (url.protocol !== "https:" && url.protocol !== "http:") {
-                throw new Error();
-            }
-        } catch {
-            setStatus("editorStatus", "Bitte gib eine gültige Bild-URL ein.");
-            return;
-        }
-    }
-
     saving = true;
-    setStatus("editorStatus", "Wird gespeichert ...");
 
-    const post = {
-        title,
-        category,
-        image_url: image || null,
-        content,
-        published,
-        updated_at: new Date().toISOString()
-    };
+    document.getElementById("publishButton").disabled = true;
+    document.getElementById("draftButton").disabled = true;
 
     try {
+        let imageUrl = existingImageUrl;
+
+        if (selectedImageFile) {
+            setStatus("editorStatus", "Bild wird hochgeladen ...");
+            imageUrl = await uploadImage(selectedImageFile);
+        } else if (imageRemoved) {
+            imageUrl = null;
+        }
+
+        setStatus("editorStatus", "Beitrag wird gespeichert ...");
+
+        const post = {
+            title,
+            category,
+            content,
+            image_url: imageUrl,
+            published,
+            updated_at: new Date().toISOString()
+        };
+
         let result;
 
         if (currentPostId !== null) {
@@ -519,16 +815,20 @@ async function savePost(published) {
             return;
         }
 
-        alert(published
-            ? "Dein Beitrag wurde veröffentlicht!"
-            : "Dein Entwurf wurde gespeichert!");
+        alert(
+            published
+                ? "Dein Beitrag wurde veröffentlicht!"
+                : "Dein Entwurf wurde gespeichert!"
+        );
 
         await backToDashboard();
 
     } catch (error) {
-        setStatus("editorStatus", "Fehler: " + error.message);
+        setStatus("editorStatus", error.message);
     } finally {
         saving = false;
+        document.getElementById("publishButton").disabled = false;
+        document.getElementById("draftButton").disabled = false;
     }
 }
 
@@ -536,28 +836,26 @@ async function savePost(published) {
 
 function showPreview() {
     const title = document.getElementById("title").value;
-    const image = document.getElementById("image").value.trim();
     const content = document.getElementById("content").value;
 
-    document.getElementById("previewTitle").textContent = title || "Ohne Titel";
+    document.getElementById("previewTitle").textContent =
+        title || "Ohne Titel";
+
     document.getElementById("previewContent").textContent = content;
 
     const previewImage = document.getElementById("previewImage");
 
-    if (image) {
-        try {
-            const url = new URL(image);
+    let imageUrl = null;
 
-            if (url.protocol !== "https:" && url.protocol !== "http:") {
-                throw new Error();
-            }
+    if (selectedImageFile && previewObjectUrl) {
+        imageUrl = previewObjectUrl;
+    } else if (!imageRemoved && existingImageUrl) {
+        imageUrl = existingImageUrl;
+    }
 
-            previewImage.src = url.href;
-            previewImage.style.display = "block";
-        } catch {
-            previewImage.style.display = "none";
-            setStatus("editorStatus", "Die Bild-URL ist ungültig.");
-        }
+    if (imageUrl) {
+        previewImage.src = imageUrl;
+        previewImage.style.display = "block";
     } else {
         previewImage.style.display = "none";
         previewImage.removeAttribute("src");
@@ -589,6 +887,8 @@ async function deletePost(id) {
 /* ZURÜCK */
 
 async function backToDashboard() {
+    resetImage();
+
     showSection("dashboard");
     await loadPosts();
 }
@@ -598,7 +898,9 @@ async function backToDashboard() {
 async function logout() {
     await db.auth.signOut();
 
+    resetImage();
     showSection("login");
+
     setStatus("loginStatus", "Du wurdest abgemeldet.");
 }
 
@@ -618,6 +920,7 @@ async function restoreSession() {
 }
 
 restoreSession();
+
 </script>
 
 </body>
