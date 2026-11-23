@@ -98,6 +98,11 @@ button {
     font-size: 14px;
 }
 
+button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
 .primary {
     background: #102b50;
     color: white;
@@ -124,10 +129,11 @@ button {
     display: none;
 }
 
-#status {
+.status {
     margin-top: 15px;
     color: #315d91;
     font-size: 14px;
+    overflow-wrap: anywhere;
 }
 
 .post {
@@ -148,6 +154,7 @@ button {
 
 .post-actions {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
     margin-top: 13px;
 }
@@ -163,6 +170,8 @@ button {
 
 #preview img {
     max-width: 100%;
+    max-height: 350px;
+    object-fit: contain;
     border-radius: 8px;
     margin: 12px 0;
 }
@@ -170,11 +179,13 @@ button {
 #previewContent {
     white-space: pre-wrap;
     line-height: 1.6;
+    overflow-wrap: anywhere;
 }
 
 @media(max-width:600px) {
     h1 { font-size: 32px; }
     header { padding: 16px 5%; }
+    .panel { padding: 18px; }
 }
 </style>
 </head>
@@ -193,25 +204,27 @@ button {
 
 <main>
 
+    <!-- LOGIN -->
     <section id="login">
         <h1>BLOG ADMIN</h1>
         <p class="subtitle">Melde dich mit deinem LMS-Administrator-Konto an.</p>
 
         <div class="panel">
-            <label>E-Mail</label>
-            <input type="email" id="email" placeholder="Deine E-Mail">
+            <label for="email">E-Mail</label>
+            <input type="email" id="email" placeholder="Deine E-Mail" autocomplete="username">
 
-            <label>Passwort</label>
-            <input type="password" id="password" placeholder="Dein Passwort">
+            <label for="password">Passwort</label>
+            <input type="password" id="password" placeholder="Dein Passwort" autocomplete="current-password">
 
             <div class="actions">
-                <button class="primary" onclick="login()">Anmelden</button>
+                <button class="primary" id="loginButton" onclick="login()">Anmelden</button>
             </div>
 
-            <p id="status"></p>
+            <p class="status" id="loginStatus" aria-live="polite"></p>
         </div>
     </section>
 
+    <!-- DASHBOARD -->
     <section id="dashboard">
         <h1>Beiträge</h1>
         <p class="subtitle">Verwalte deine LMS-Blogbeiträge.</p>
@@ -221,18 +234,20 @@ button {
             <button class="secondary" onclick="logout()">Abmelden</button>
         </div>
 
+        <p class="status" id="dashboardStatus" aria-live="polite"></p>
         <div id="postList"></div>
     </section>
 
+    <!-- EDITOR -->
     <section id="editor">
         <h1 id="editorTitle">Neuer Beitrag</h1>
         <p class="subtitle">Schreibe und veröffentliche deinen Blogbeitrag.</p>
 
         <div class="panel">
-            <label>Titel</label>
-            <input id="title" placeholder="Titel des Beitrags">
+            <label for="title">Titel</label>
+            <input id="title" maxlength="180" placeholder="Titel des Beitrags">
 
-            <label>Kategorie</label>
+            <label for="category">Kategorie</label>
             <select id="category">
                 <option>Allgemein</option>
                 <option>News</option>
@@ -241,10 +256,10 @@ button {
                 <option>Community</option>
             </select>
 
-            <label>Bild-URL (optional)</label>
-            <input id="image" placeholder="https://...">
+            <label for="image">Bild-URL (optional)</label>
+            <input id="image" type="url" placeholder="https://...">
 
-            <label>Beitrag</label>
+            <label for="content">Beitrag</label>
             <textarea id="content" placeholder="Schreibe hier deinen Beitrag ..."></textarea>
 
             <div class="actions">
@@ -254,21 +269,24 @@ button {
                 <button class="secondary" onclick="backToDashboard()">Zurück</button>
             </div>
 
+            <p class="status" id="editorStatus" aria-live="polite"></p>
+
             <div id="preview">
                 <h2 id="previewTitle"></h2>
                 <img id="previewImage" alt="" style="display:none">
                 <p id="previewContent"></p>
             </div>
-
-            <p id="status"></p>
         </div>
     </section>
 
 </main>
 
 <script>
+/* SUPABASE VERBINDUNG */
+
 const SUPABASE_URL = "https://kxafgbrdybonjxwfziee.supabase.co";
-const SUPABASE_KEY = "DEIN_SUPABASE_PUBLIC_KEY";
+
+const SUPABASE_KEY = "sb_publishable_d8qB9cKr2st2FVwAAYHorQ_sho1knUD";
 
 const db = window.supabase.createClient(
     SUPABASE_URL,
@@ -276,69 +294,106 @@ const db = window.supabase.createClient(
 );
 
 let currentPostId = null;
+let saving = false;
 
-function status(message) {
-    document.getElementById("status").textContent = message;
+/* HILFSFUNKTIONEN */
+
+function setStatus(id, message) {
+    document.getElementById(id).textContent = message;
 }
+
+function showSection(section) {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("dashboard").style.display = "none";
+    document.getElementById("editor").style.display = "none";
+
+    document.getElementById(section).style.display = "block";
+}
+
+/* ANMELDUNG */
 
 async function login() {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
+    const button = document.getElementById("loginButton");
 
-    status("Anmeldung läuft ...");
-
-    const { error } = await db.auth.signInWithPassword({
-        email,
-        password
-    });
-
-    if (error) {
-        status("Anmeldung fehlgeschlagen: " + error.message);
+    if (!email || !password) {
+        setStatus("loginStatus", "Bitte E-Mail und Passwort eingeben.");
         return;
     }
 
-    await checkAdmin();
+    button.disabled = true;
+    setStatus("loginStatus", "Anmeldung läuft ...");
+
+    try {
+        const { error } = await db.auth.signInWithPassword({
+            email,
+            password
+        });
+
+        if (error) {
+            setStatus("loginStatus", "Anmeldung fehlgeschlagen: " + error.message);
+            return;
+        }
+
+        await checkAdmin();
+
+    } catch (error) {
+        setStatus("loginStatus", "Fehler: " + error.message);
+    } finally {
+        button.disabled = false;
+    }
 }
+
+/* ADMIN PRÜFEN */
 
 async function checkAdmin() {
     const { data: { user }, error: userError } = await db.auth.getUser();
 
     if (userError || !user) {
-        status("Bitte melde dich erneut an.");
+        setStatus("loginStatus", "Bitte melde dich erneut an.");
         return;
     }
 
     const { data, error } = await db.rpc("is_lms_admin");
 
-    if (error || data !== true) {
-        status("Du hast keine Administrator-Berechtigung.");
+    if (error) {
+        setStatus("loginStatus", "Admin-Prüfung fehlgeschlagen: " + error.message);
         await db.auth.signOut();
         return;
     }
 
-    document.getElementById("login").style.display = "none";
-    document.getElementById("editor").style.display = "none";
-    document.getElementById("dashboard").style.display = "block";
+    if (data !== true) {
+        setStatus("loginStatus", "Du hast keine Administrator-Berechtigung.");
+        await db.auth.signOut();
+        return;
+    }
 
+    showSection("dashboard");
     await loadPosts();
 }
 
+/* BEITRÄGE LADEN */
+
 async function loadPosts() {
+    const list = document.getElementById("postList");
+
+    list.replaceChildren();
+    setStatus("dashboardStatus", "Beiträge werden geladen ...");
+
     const { data, error } = await db
         .from("blog_posts")
         .select("*")
         .order("created_at", { ascending: false });
 
     if (error) {
-        document.getElementById("postList").textContent =
-            "Beiträge konnten nicht geladen werden: " + error.message;
+        setStatus("dashboardStatus", "Fehler beim Laden: " + error.message);
         return;
     }
 
-    const list = document.getElementById("postList");
-    list.innerHTML = "";
+    setStatus("dashboardStatus", "");
 
-    if (!data.length) {
+    if (!data || data.length === 0) {
         list.textContent = "Noch keine Beiträge vorhanden.";
         return;
     }
@@ -351,8 +406,7 @@ async function loadPosts() {
         heading.textContent = post.title;
 
         const meta = document.createElement("small");
-        meta.textContent =
-            post.category + " · " +
+        meta.textContent = post.category + " · " +
             (post.published ? "Veröffentlicht" : "Entwurf");
 
         const actions = document.createElement("div");
@@ -374,6 +428,8 @@ async function loadPosts() {
     });
 }
 
+/* NEUER BEITRAG */
+
 function newPost() {
     currentPostId = null;
 
@@ -384,10 +440,11 @@ function newPost() {
     document.getElementById("editorTitle").textContent = "Neuer Beitrag";
     document.getElementById("preview").style.display = "none";
 
-    document.getElementById("dashboard").style.display = "none";
-    document.getElementById("editor").style.display = "block";
-    status("");
+    showSection("editor");
+    setStatus("editorStatus", "");
 }
+
+/* BEITRAG BEARBEITEN */
 
 function editPost(post) {
     currentPostId = post.id;
@@ -399,33 +456,40 @@ function editPost(post) {
     document.getElementById("editorTitle").textContent = "Beitrag bearbeiten";
     document.getElementById("preview").style.display = "none";
 
-    document.getElementById("dashboard").style.display = "none";
-    document.getElementById("editor").style.display = "block";
-    status("");
+    showSection("editor");
+    setStatus("editorStatus", "");
 }
 
+/* SPEICHERN UND VERÖFFENTLICHEN */
+
 async function savePost(published) {
+    if (saving) return;
+
     const title = document.getElementById("title").value.trim();
     const category = document.getElementById("category").value;
     const image = document.getElementById("image").value.trim();
     const content = document.getElementById("content").value.trim();
 
     if (!title || !content) {
-        status("Bitte gib einen Titel und einen Beitragstext ein.");
+        setStatus("editorStatus", "Bitte gib einen Titel und einen Beitragstext ein.");
         return;
     }
 
     if (image) {
         try {
             const url = new URL(image);
+
             if (url.protocol !== "https:" && url.protocol !== "http:") {
                 throw new Error();
             }
         } catch {
-            status("Bitte gib eine gültige Bild-URL ein.");
+            setStatus("editorStatus", "Bitte gib eine gültige Bild-URL ein.");
             return;
         }
     }
+
+    saving = true;
+    setStatus("editorStatus", "Wird gespeichert ...");
 
     const post = {
         title,
@@ -436,41 +500,64 @@ async function savePost(published) {
         updated_at: new Date().toISOString()
     };
 
-    let result;
+    try {
+        let result;
 
-    if (currentPostId) {
-        result = await db
-            .from("blog_posts")
-            .update(post)
-            .eq("id", currentPostId);
-    } else {
-        result = await db
-            .from("blog_posts")
-            .insert(post);
+        if (currentPostId !== null) {
+            result = await db
+                .from("blog_posts")
+                .update(post)
+                .eq("id", currentPostId);
+        } else {
+            result = await db
+                .from("blog_posts")
+                .insert(post);
+        }
+
+        if (result.error) {
+            setStatus("editorStatus", "Speichern fehlgeschlagen: " + result.error.message);
+            return;
+        }
+
+        alert(published
+            ? "Dein Beitrag wurde veröffentlicht!"
+            : "Dein Entwurf wurde gespeichert!");
+
+        await backToDashboard();
+
+    } catch (error) {
+        setStatus("editorStatus", "Fehler: " + error.message);
+    } finally {
+        saving = false;
     }
-
-    if (result.error) {
-        status("Fehler: " + result.error.message);
-        return;
-    }
-
-    alert(published ? "Beitrag veröffentlicht!" : "Entwurf gespeichert!");
-    backToDashboard();
 }
+
+/* VORSCHAU */
 
 function showPreview() {
     const title = document.getElementById("title").value;
-    const image = document.getElementById("image").value;
+    const image = document.getElementById("image").value.trim();
     const content = document.getElementById("content").value;
 
-    document.getElementById("previewTitle").textContent = title;
+    document.getElementById("previewTitle").textContent = title || "Ohne Titel";
     document.getElementById("previewContent").textContent = content;
 
     const previewImage = document.getElementById("previewImage");
 
     if (image) {
-        previewImage.src = image;
-        previewImage.style.display = "block";
+        try {
+            const url = new URL(image);
+
+            if (url.protocol !== "https:" && url.protocol !== "http:") {
+                throw new Error();
+            }
+
+            previewImage.src = url.href;
+            previewImage.style.display = "block";
+        } catch {
+            previewImage.style.display = "none";
+            setStatus("editorStatus", "Die Bild-URL ist ungültig.");
+        }
     } else {
         previewImage.style.display = "none";
         previewImage.removeAttribute("src");
@@ -479,8 +566,12 @@ function showPreview() {
     document.getElementById("preview").style.display = "block";
 }
 
+/* LÖSCHEN */
+
 async function deletePost(id) {
-    if (!confirm("Möchtest du diesen Beitrag wirklich löschen?")) return;
+    if (!confirm("Möchtest du diesen Beitrag wirklich löschen?")) {
+        return;
+    }
 
     const { error } = await db
         .from("blog_posts")
@@ -495,24 +586,31 @@ async function deletePost(id) {
     await loadPosts();
 }
 
+/* ZURÜCK */
+
 async function backToDashboard() {
-    document.getElementById("editor").style.display = "none";
-    document.getElementById("dashboard").style.display = "block";
+    showSection("dashboard");
     await loadPosts();
 }
+
+/* ABMELDEN */
 
 async function logout() {
     await db.auth.signOut();
 
-    document.getElementById("dashboard").style.display = "none";
-    document.getElementById("editor").style.display = "none";
-    document.getElementById("login").style.display = "block";
-
-    status("Du wurdest abgemeldet.");
+    showSection("login");
+    setStatus("loginStatus", "Du wurdest abgemeldet.");
 }
 
+/* GESPEICHERTE ANMELDUNG PRÜFEN */
+
 async function restoreSession() {
-    const { data: { session } } = await db.auth.getSession();
+    const { data: { session }, error } = await db.auth.getSession();
+
+    if (error) {
+        setStatus("loginStatus", "Sitzungsfehler: " + error.message);
+        return;
+    }
 
     if (session) {
         await checkAdmin();
