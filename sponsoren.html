@@ -4,585 +4,274 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101010">
-<title>Werbung & Sponsoring | LMS NETWORK</title>
+<meta name="theme-color" content="#ffffff">
+
+<title>Werbung auf LMS NETWORK</title>
 
 <style>
-:root {
-    --gold: #e8bd59;
-    --gold-light: #ffdf91;
-    --bg: #101010;
-    --card: #191919;
-    --muted: #aaa;
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html { scroll-behavior: smooth; }
-
 body {
-    background: var(--bg);
-    color: #fff;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff;
+    color: #202020;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
+/* LAUFMELDUNG */
 
-/* NAVIGATION */
-
-header {
-    background: rgba(13,13,13,.96);
-    border-bottom: 1px solid #333;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    backdrop-filter: blur(12px);
-}
-
-nav {
-    max-width: 1150px;
-    margin: auto;
-    padding: 17px 22px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    color: var(--gold);
-    font-weight: 900;
-    font-size: 21px;
-    letter-spacing: 1px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 25px;
-}
-
-.nav-links a {
-    color: #ccc;
-    font-size: 14px;
-}
-
-.nav-links a:hover { color: var(--gold); }
-
-.menu {
-    display: none;
-    color: white;
-    background: none;
-    border: none;
-    font-size: 27px;
-    cursor: pointer;
-}
-
-/* LAUFSCHRIFT */
-
-.breaking {
-    background: var(--gold);
-    color: #111;
-    height: 43px;
+.notice {
+    width: 100%;
+    height: 48px;
+    background: #171717;
+    color: #f5c75e;
     display: flex;
     align-items: center;
     overflow: hidden;
-    font-weight: 900;
-    font-size: 13px;
-    letter-spacing: 1.5px;
+    border-bottom: 3px solid #e8b94e;
 }
 
-.breaking-label {
-    background: #111;
-    color: var(--gold);
+.notice-label {
+    background: #e8b94e;
+    color: #171717;
     height: 100%;
-    padding: 0 18px;
     display: flex;
     align-items: center;
+    padding: 0 17px;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1px;
     z-index: 2;
     flex-shrink: 0;
 }
 
 .marquee {
-    white-space: nowrap;
-    overflow: hidden;
     flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .marquee span {
     display: inline-block;
     padding-left: 100%;
-    animation: ticker 22s linear infinite;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    animation: laufen 18s linear infinite;
 }
 
-@keyframes ticker {
+@keyframes laufen {
     from { transform: translateX(0); }
     to { transform: translateX(-100%); }
 }
 
-/* HERO */
+/* INHALT */
 
-.hero {
-    padding: 100px 20px 80px;
-    text-align: center;
-    background:
-        radial-gradient(ellipse at top, rgba(232,189,89,.18), transparent 65%);
+main {
+    min-height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
 }
 
-.hero-tag {
-    color: var(--gold);
-    letter-spacing: 4px;
+.content {
+    max-width: 720px;
+    width: 100%;
+    text-align: center;
+}
+
+.label {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 30px;
+    background: #fff5dc;
+    color: #9b6c12;
     font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(36px, 7vw, 62px);
+    line-height: 1.1;
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: #171717;
+}
+
+h1 span {
+    color: #d6a32d;
+}
+
+.description {
+    color: #666;
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 580px;
+    margin: 0 auto 35px;
+}
+
+/* PREIS */
+
+.price-card {
+    max-width: 430px;
+    margin: auto;
+    padding: 30px 25px;
+    border: 1px solid #e6e6e6;
+    border-radius: 18px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.06);
+}
+
+.price {
+    font-size: 48px;
+    font-weight: 900;
+    color: #171717;
+}
+
+.price small {
+    font-size: 15px;
+    font-weight: normal;
+    color: #777;
+}
+
+.period {
+    color: #777;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.offer {
+    margin-top: 22px;
+    padding: 13px;
+    border-radius: 10px;
+    background: #fff5dc;
+    color: #8b6215;
+    font-size: 14px;
     font-weight: bold;
 }
 
-.hero h1 {
-    font-size: clamp(38px, 7vw, 72px);
-    font-weight: 900;
-    margin: 20px 0;
-    line-height: 1.08;
+.offer strong {
+    font-size: 19px;
 }
 
-.hero h1 span { color: var(--gold); }
-
-.hero p {
-    color: var(--muted);
-    max-width: 650px;
-    margin: auto;
-    line-height: 1.8;
-}
+/* BUTTON */
 
 .button {
     display: inline-block;
-    margin-top: 30px;
-    padding: 14px 25px;
-    background: var(--gold);
-    color: #111;
+    margin-top: 28px;
+    padding: 15px 28px;
+    background: #171717;
+    color: white;
+    border-radius: 9px;
+    font-size: 14px;
     font-weight: bold;
-    border-radius: 8px;
+    text-decoration: none;
     transition: .2s;
 }
 
 .button:hover {
-    background: var(--gold-light);
+    background: #d6a32d;
+    color: #171717;
     transform: translateY(-3px);
 }
 
-/* SECTIONS */
-
-.section {
-    max-width: 1100px;
-    margin: auto;
-    padding: 65px 22px;
-}
-
-.heading {
-    text-align: center;
-    margin-bottom: 35px;
-}
-
-.heading small {
-    color: var(--gold);
-    letter-spacing: 3px;
-    font-weight: bold;
-}
-
-.heading h2 {
-    font-size: 34px;
-    margin: 10px 0;
-}
-
-.heading p {
-    color: var(--muted);
-    font-size: 14px;
-}
-
-/* WERBEFLÄCHEN */
-
-.ad-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.ad-card {
-    min-height: 190px;
-    border: 2px dashed #555;
-    border-radius: 15px;
-    background: linear-gradient(145deg, #1c1c1c, #141414);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 25px;
-    transition: .25s;
-}
-
-.ad-card:hover {
-    border-color: var(--gold);
-    background: #202020;
-    transform: translateY(-4px);
-}
-
-.ad-icon {
-    font-size: 35px;
-    color: var(--gold);
-    margin-bottom: 12px;
-}
-
-.ad-card h3 {
-    font-size: 19px;
-    color: var(--gold);
-    margin-bottom: 7px;
-}
-
-.ad-card p {
-    color: var(--muted);
-    font-size: 13px;
-}
-
-/* WERBEINFORMATIONEN */
-
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 18px;
-}
-
-.info-card {
-    padding: 25px;
-    background: var(--card);
-    border: 1px solid #303030;
-    border-radius: 13px;
-}
-
-.info-card .number {
-    color: var(--gold);
-    font-size: 28px;
-    font-weight: 900;
-}
-
-.info-card h3 {
-    margin: 12px 0 7px;
-}
-
-.info-card p {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.7;
-}
-
-/* PLATTFORMEN */
-
-.platforms {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 25px;
-}
-
-.platform {
-    width: 280px;
-    min-height: 190px;
-    background: var(--card);
-    border: 1px solid #333;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
-    transition: .25s;
-}
-
-.platform:hover {
-    border-color: var(--gold);
-    transform: translateY(-4px);
-}
-
-.platform img {
-    width: 85px;
-    height: 85px;
-    object-fit: contain;
-    margin-bottom: 15px;
-}
-
-.platform h3 { font-size: 20px; }
-
-.platform p {
-    color: var(--muted);
+.note {
+    color: #999;
     font-size: 12px;
-    margin-top: 5px;
-    text-align: center;
-}
-
-/* KONTAKT */
-
-.contact {
-    max-width: 850px;
-    margin: 30px auto 75px;
-    padding: 55px 25px;
-    text-align: center;
-    border-radius: 18px;
-    border: 1px solid rgba(232,189,89,.35);
-    background: radial-gradient(ellipse at center, rgba(232,189,89,.13), #181818 75%);
-}
-
-.contact h2 {
-    font-size: 32px;
-    margin-bottom: 15px;
-}
-
-.contact h2 span { color: var(--gold); }
-
-.contact p {
-    color: var(--muted);
-    max-width: 600px;
-    margin: auto;
-    line-height: 1.8;
-}
-
-.contact-note {
-    font-size: 12px;
-    color: #888;
-    margin-top: 18px;
+    margin-top: 20px;
+    line-height: 1.6;
 }
 
 /* FOOTER */
 
 footer {
-    border-top: 1px solid #292929;
-    padding: 25px;
     text-align: center;
-    color: #777;
+    padding: 22px;
+    border-top: 1px solid #eee;
+    color: #999;
     font-size: 12px;
 }
 
-footer span { color: var(--gold); }
+footer strong {
+    color: #c29328;
+}
 
-@media(max-width: 700px) {
-    .menu { display: block; }
-
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        background: #151515;
-        padding: 22px;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .nav-links.open { display: flex; }
-
-    .hero { padding: 75px 20px; }
-    .section { padding: 45px 18px; }
-    .breaking { font-size: 11px; }
+@media(max-width: 500px) {
+    .notice { height: 43px; }
+    .notice-label { padding: 0 10px; font-size: 10px; }
+    .marquee span { font-size: 12px; }
+    .description { font-size: 15px; }
+    .price { font-size: 42px; }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<nav>
-    <a href="index.html" class="logo">LMS NETWORK</a>
-
-    <button class="menu" onclick="toggleMenu()" aria-label="Menü öffnen">☰</button>
-
-    <div class="nav-links" id="navLinks">
-        <a href="index.html">Startseite</a>
-        <a href="#werbeflaechen">Werbeflächen</a>
-        <a href="#moeglichkeiten">Möglichkeiten</a>
-        <a href="#partner">Partner</a>
-        <a href="#kontakt">Kontakt</a>
-    </div>
-</nav>
-</header>
-
-<!-- DAUERHAFTE EILMELDUNG -->
-
-<div class="breaking">
-    <div class="breaking-label">✦ EILMELDUNG</div>
+<!-- STYLISCHE LAUFMELDUNG -->
+<div class="notice">
+    <div class="notice-label">WERBEPLATZ</div>
     <div class="marquee">
         <span>
-            HIER KÖNNTE DEINE WERBUNG STEHEN! ✦
-            WERDE TEIL VON LMS NETWORK! ✦
-            PRÄSENTIERE DEIN UNTERNEHMEN UNSERER COMMUNITY! ✦
-            JETZT WERBEPARTNER WERDEN! ✦
+            ✦ HIER KÖNNTE DEINE WERBUNG STEHEN ✦
+            HIER KÖNNTE DEINE WERBUNG STEHEN ✦
+            WERDE TEIL VON LMS NETWORK ✦
         </span>
     </div>
 </div>
 
 <main>
+    <div class="content">
 
-<!-- HERO -->
+        <div class="label">LMS NETWORK · WERBEANGEBOT</div>
 
-<section class="hero">
-    <div class="hero-tag">LMS NETWORK · PARTNER & SPONSORING</div>
+        <h1>
+            Werbung auf <span>LMS.</span>
+        </h1>
 
-    <h1>
-        Deine Marke.<br>
-        Unsere <span>Plattform.</span>
-    </h1>
+        <p class="description">
+            Melde deine Werbung auf LMS NETWORK an und spare dir teure Werbepartner.
+            Präsentiere dein Unternehmen, deine Marke oder dein Projekt
+            zu einem fairen Preis.
+        </p>
 
-    <p>
-        Du möchtest dein Unternehmen, deine Marke oder dein Projekt
-        präsentieren? LMS NETWORK bietet dir die Möglichkeit,
-        mit einer eigenen Werbefläche Teil unserer Website zu werden.
-    </p>
+        <div class="price-card">
 
-    <a href="#kontakt" class="button">Werbepartner werden →</a>
-</section>
+            <div class="price">
+                3,99 € <small>/ 2 Monate</small>
+            </div>
 
-<!-- WERBEFLÄCHEN -->
+            <div class="period">
+                Nur ein kleiner Preis für deine Werbepräsenz.
+            </div>
 
-<section class="section" id="werbeflaechen">
+            <div class="offer">
+                <strong>1. Monat für 0 € testen!</strong><br>
+                Lerne unser Werbeangebot unverbindlich kennen.
+            </div>
 
-    <div class="heading">
-        <small>DEINE MÖGLICHKEIT</small>
-        <h2>Hier könnte deine Werbung stehen.</h2>
-        <p>Unsere Werbeflächen warten auf neue Partner.</p>
-    </div>
+            <a href="mailto:DEINE-EMAIL-ADRESSE" class="button">
+                Jetzt Werbung anmelden →
+            </a>
 
-    <div class="ad-grid">
-
-        <div class="ad-card">
-            <div class="ad-icon">✦</div>
-            <h3>Deine Werbung</h3>
-            <p>Dein Logo, dein Name und deine Botschaft könnten hier erscheinen.</p>
         </div>
 
-        <div class="ad-card">
-            <div class="ad-icon">▣</div>
-            <h3>Dein Unternehmen</h3>
-            <p>Präsentiere deine Marke auf unserer Website.</p>
-        </div>
-
-        <div class="ad-card">
-            <div class="ad-icon">★</div>
-            <h3>Dein Projekt</h3>
-            <p>Stelle dein eigenes Projekt unserer Community vor.</p>
-        </div>
+        <p class="note">
+            Angebot und Werbeplatzierung nach Absprache.
+            Die genauen Konditionen werden vor Beginn bestätigt.
+        </p>
 
     </div>
-</section>
-
-<!-- MÖGLICHKEITEN -->
-
-<section class="section" id="moeglichkeiten">
-
-    <div class="heading">
-        <small>WERBUNG BEI LMS</small>
-        <h2>Deine Möglichkeiten</h2>
-        <p>So könnte eine Zusammenarbeit aussehen.</p>
-    </div>
-
-    <div class="info-grid">
-
-        <div class="info-card">
-            <div class="number">01</div>
-            <h3>Logo-Platzierung</h3>
-            <p>Dein Firmenlogo wird auf unserer Sponsoren-Seite präsentiert und kann auf deine Website verlinken.</p>
-        </div>
-
-        <div class="info-card">
-            <div class="number">02</div>
-            <h3>Werbebanner</h3>
-            <p>Ein eigener Banner mit deinem Design und einer kurzen Werbebotschaft.</p>
-        </div>
-
-        <div class="info-card">
-            <div class="number">03</div>
-            <h3>Partner-Präsentation</h3>
-            <p>Eine eigene kleine Vorstellung deines Unternehmens oder Projekts.</p>
-        </div>
-
-        <div class="info-card">
-            <div class="number">04</div>
-            <h3>Individuelle Kooperation</h3>
-            <p>Gemeinsam können wir eine passende Form der Zusammenarbeit besprechen.</p>
-        </div>
-
-    </div>
-</section>
-
-<!-- PARTNER UND PLATTFORMEN -->
-
-<section class="section" id="partner">
-
-    <div class="heading">
-        <small>UNSERE PLATTFORMEN</small>
-        <h2>Technische Unterstützung</h2>
-        <p>Plattformen und Dienste, die wir für unsere Projekte einsetzen.</p>
-    </div>
-
-    <div class="platforms">
-
-        <a class="platform" href="https://github.com/" target="_blank" rel="noopener noreferrer">
-            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo">
-            <h3>GitHub</h3>
-            <p>Code, Entwicklung und digitale Projekte</p>
-        </a>
-
-        <a class="platform" href="https://aternos.org/" target="_blank" rel="noopener noreferrer">
-            <img src="https://aternos.org/favicon.ico" alt="Aternos Logo">
-            <h3>Aternos</h3>
-            <p>Hosting-Plattform für unseren Minecraft-Server</p>
-        </a>
-
-    </div>
-</section>
-
-<!-- KONTAKT -->
-
-<section class="contact" id="kontakt">
-
-    <h2>Interesse an einer <span>Werbefläche?</span></h2>
-
-    <p>
-        Du möchtest dein Unternehmen oder dein Projekt auf LMS NETWORK
-        präsentieren? Dann melde dich bei uns. Wir besprechen gemeinsam
-        die Möglichkeiten einer Zusammenarbeit.
-    </p>
-
-    <a href="mailto:DEINE-EMAIL-ADRESSE" class="button">
-        Jetzt anfragen →
-    </a>
-
-    <div class="contact-note">
-        Werbeplatzierungen werden individuell besprochen.
-        Eine Veröffentlichung erfolgt erst nach gemeinsamer Absprache.
-    </div>
-
-</section>
-
 </main>
 
 <footer>
-    © 2026 <span>LMS NETWORK</span> · Werbung & Partnerschaften
+    © 2026 <strong>LMS NETWORK</strong> · Werbung, die ankommt.
 </footer>
-
-<script>
-function toggleMenu() {
-    document.getElementById("navLinks").classList.toggle("open");
-}
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
-        document.getElementById("navLinks").classList.remove("open");
-    });
-});
-</script>
 
 </body>
 </html>
