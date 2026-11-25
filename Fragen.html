@@ -28,7 +28,7 @@
     .container {
       width: 100%;
       max-width: 760px;
-      margin: 0 auto;
+      margin: auto;
     }
 
     .top {
@@ -45,7 +45,7 @@
     }
 
     .logo span {
-      color: #ffffff;
+      color: white;
     }
 
     .subtitle {
@@ -85,11 +85,6 @@
       font-size: 14px;
     }
 
-    .optional {
-      color: #8495ad;
-      font-weight: normal;
-    }
-
     input, textarea {
       width: 100%;
       background: #091321;
@@ -99,7 +94,6 @@
       color: white;
       font-size: 15px;
       outline: none;
-      transition: border .2s;
     }
 
     input:focus, textarea:focus {
@@ -144,11 +138,6 @@
       padding: 11px 18px;
       font-weight: bold;
       cursor: pointer;
-      transition: .2s;
-    }
-
-    .file-button:hover {
-      background: #347bd0;
     }
 
     input[type="file"] {
@@ -188,9 +177,10 @@
       color: #8193ab;
       font-size: 12px;
       margin-top: 9px;
+      line-height: 1.5;
     }
 
-    .submit-button {
+    .submit-button, .copy-button {
       width: 100%;
       border: none;
       border-radius: 9px;
@@ -204,7 +194,7 @@
       transition: .2s;
     }
 
-    .submit-button:hover {
+    .submit-button:hover, .copy-button:hover {
       filter: brightness(1.12);
       transform: translateY(-1px);
     }
@@ -238,6 +228,63 @@
       color: #ffc0c8;
     }
 
+    .code-box {
+      display: none;
+      margin-top: 22px;
+      padding: 20px;
+      border-radius: 11px;
+      border: 1px solid #397ac0;
+      background: #0b1c31;
+    }
+
+    .code-box h2 {
+      color: #e5bd59;
+      font-size: 19px;
+      margin-bottom: 10px;
+    }
+
+    .code-box p {
+      color: #bdcce0;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .access-code {
+      display: block;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      background: #07111f;
+      border: 1px solid #344b69;
+      color: #ffffff;
+      font-size: 19px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-align: center;
+      overflow-wrap: anywhere;
+      user-select: all;
+    }
+
+    .copy-button {
+      font-size: 14px;
+      padding: 12px;
+    }
+
+    .my-questions-link {
+      display: block;
+      margin-top: 16px;
+      text-align: center;
+      color: #a9cfff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .my-questions-link:hover {
+      color: white;
+      text-decoration: underline;
+    }
+
     .back {
       display: block;
       width: fit-content;
@@ -245,11 +292,6 @@
       color: #a9cfff;
       text-decoration: none;
       font-size: 14px;
-    }
-
-    .back:hover {
-      color: white;
-      text-decoration: underline;
     }
 
     footer {
@@ -273,349 +315,406 @@
 
 <body>
 
-  <main class="container">
+<main class="container">
 
-    <header class="top">
-      <div class="logo">LMS <span>NETWORK</span></div>
-      <p class="subtitle">
-        Deine Frage. Unser Team. Gemeinsam finden wir eine Antwort.
-      </p>
-    </header>
+  <header class="top">
+    <div class="logo">LMS <span>NETWORK</span></div>
+    <p class="subtitle">
+      Deine Frage. Unser Team. Gemeinsam finden wir eine Antwort.
+    </p>
+  </header>
 
-    <section class="panel">
+  <section class="panel">
 
-      <h1>Frage einreichen</h1>
+    <h1>Frage einreichen</h1>
 
-      <p class="description">
-        Du hast eine Frage, ein Problem oder einen Vorschlag?
-        Dann kannst du uns hier eine Nachricht hinterlassen.
-        Unser Team kann deine Einsendung anschließend intern bearbeiten.
-      </p>
+    <p class="description">
+      Du hast eine Frage, ein Problem oder einen Vorschlag?
+      Reiche deine Frage hier ein. Unser Team kümmert sich darum.
+      Mit deinem persönlichen Zugangscode kannst du später deine Antwort abrufen.
+    </p>
 
-      <form id="questionForm">
+    <form id="questionForm">
 
-        <div class="field">
-          <label for="name">Dein Name</label>
-          <input
-            type="text"
-            id="name"
-            maxlength="60"
-            placeholder="Wie dürfen wir dich nennen?"
-            required
-          >
-        </div>
+      <div class="field">
+        <label for="minecraftName">Dein Minecraft-Name</label>
+        <input
+          type="text"
+          id="minecraftName"
+          maxlength="40"
+          placeholder="z. B. Steve123"
+          required
+          autocomplete="off"
+        >
+      </div>
 
-        <div class="field">
-          <label for="question">Deine Frage</label>
-          <textarea
-            id="question"
-            minlength="5"
-            maxlength="3000"
-            placeholder="Schreibe hier deine Frage oder Nachricht ..."
-            required
-          ></textarea>
-          <p class="hint">Mindestens 5 und maximal 3.000 Zeichen.</p>
-        </div>
+      <div class="field">
+        <label for="question">Deine Frage</label>
+        <textarea
+          id="question"
+          minlength="5"
+          maxlength="3000"
+          placeholder="Schreibe hier deine Frage oder Nachricht ..."
+          required
+        ></textarea>
+        <p class="hint">Mindestens 5 und maximal 3.000 Zeichen.</p>
+      </div>
 
-        <div class="field">
-          <label>
-            Bilder anhängen
-            <span class="optional">(optional)</span>
+      <div class="field">
+        <label>
+          Bilder anhängen
+          <span style="color:#8495ad;font-weight:normal;">(optional)</span>
+        </label>
+
+        <div class="upload-area">
+          <div class="upload-icon">📷</div>
+
+          <p>
+            Bis zu 3 Bilder hinzufügen.<br>
+            JPG, PNG, WEBP und GIF.<br>
+            Maximal 5 MB pro Bild.
+          </p>
+
+          <label for="images" class="file-button">
+            Bilder auswählen
           </label>
 
-          <div class="upload-area">
-            <div class="upload-icon">📷</div>
+          <input
+            type="file"
+            id="images"
+            accept="image/jpeg,image/png,image/webp,image/gif"
+            multiple
+          >
 
-            <p>
-              Du kannst bis zu 3 Bilder hinzufügen.<br>
-              Erlaubt: JPG, PNG, WEBP und GIF.<br>
-              Maximal 5 MB pro Bild.
-            </p>
-
-            <label for="images" class="file-button">
-              Bilder auswählen
-            </label>
-
-            <input
-              type="file"
-              id="images"
-              accept="image/jpeg,image/png,image/webp,image/gif"
-              multiple
-            >
-
-            <div class="file-list" id="fileList"></div>
-          </div>
-
-          <p class="hint">
-            Bitte lade nur Bilder hoch, die für deine Frage relevant sind.
-          </p>
+          <div class="file-list" id="fileList"></div>
         </div>
+      </div>
 
-        <button type="submit" class="submit-button" id="submitButton">
-          Frage absenden
-        </button>
+      <button type="submit" class="submit-button" id="submitButton">
+        Frage absenden
+      </button>
 
-        <div id="messageBox" class="message" role="status" aria-live="polite"></div>
+      <div id="messageBox" class="message" role="status" aria-live="polite"></div>
 
-      </form>
+    </form>
 
-    </section>
+    <div class="code-box" id="codeBox">
+      <h2>Dein persönlicher Zugangscode</h2>
 
-    <a href="index.html" class="back">← Zurück zur Startseite</a>
+      <p>
+        Bewahre diesen Code gut auf! Du brauchst ihn, um später deine Frage
+        und die Antwort des LMS-Teams anzusehen. Der Code wird dir nicht
+        erneut angezeigt.
+      </p>
 
-    <footer>
-      © LMS NETWORK – Alle Rechte vorbehalten.
-    </footer>
+      <div class="access-code" id="accessCode"></div>
 
-  </main>
+      <button type="button" class="copy-button" id="copyButton">
+        Zugangscode kopieren
+      </button>
 
-  <script>
-    // SUPABASE VERBINDUNG
-    const SUPABASE_URL = "https://kxafgbrdybonjxwfziee.supabase.co";
-    const SUPABASE_KEY = "sb_publishable_d8qB9cKr2st2FVwAAYHorQ_sho1knUD";
+      <a href="MeineFragen.html" class="my-questions-link">
+        Zu Meine Fragen →
+      </a>
+    </div>
 
-    const db = window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
+  </section>
 
-    // ELEMENTE
-    const form = document.getElementById("questionForm");
-    const nameInput = document.getElementById("name");
-    const questionInput = document.getElementById("question");
-    const imageInput = document.getElementById("images");
-    const fileList = document.getElementById("fileList");
-    const messageBox = document.getElementById("messageBox");
-    const submitButton = document.getElementById("submitButton");
+  <a href="index.html" class="back">← Zurück zur Startseite</a>
 
-    const MAX_FILES = 3;
-    const MAX_SIZE = 5 * 1024 * 1024;
+  <footer>
+    © LMS NETWORK – Alle Rechte vorbehalten.
+  </footer>
 
-    const ALLOWED_TYPES = [
-      "image/jpeg",
-      "image/png",
-      "image/webp",
-      "image/gif"
-    ];
+</main>
 
-    let selectedFiles = [];
+<script>
+  // SUPABASE
+  const SUPABASE_URL = "https://kxafgbrdybonjxwfziee.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_d8qB9cKr2st2FVwAAYHorQ_sho1knUD";
 
-    // MELDUNG ANZEIGEN
-    function showMessage(text, type) {
-      messageBox.textContent = text;
-      messageBox.className = "message " + type;
-    }
+  const db = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
-    function clearMessage() {
-      messageBox.textContent = "";
-      messageBox.className = "message";
-    }
+  // ELEMENTE
+  const form = document.getElementById("questionForm");
+  const minecraftNameInput = document.getElementById("minecraftName");
+  const questionInput = document.getElementById("question");
+  const imageInput = document.getElementById("images");
+  const fileList = document.getElementById("fileList");
+  const messageBox = document.getElementById("messageBox");
+  const submitButton = document.getElementById("submitButton");
+  const codeBox = document.getElementById("codeBox");
+  const accessCodeElement = document.getElementById("accessCode");
+  const copyButton = document.getElementById("copyButton");
 
-    // DATEIEN ANZEIGEN
-    function renderFiles() {
-      fileList.innerHTML = "";
+  const MAX_FILES = 3;
+  const MAX_SIZE = 5 * 1024 * 1024;
 
-      selectedFiles.forEach((file, index) => {
-        const item = document.createElement("div");
-        item.className = "file-item";
+  const ALLOWED_TYPES = [
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+    "image/gif"
+  ];
 
-        const fileName = document.createElement("span");
-        fileName.textContent = file.name;
+  let selectedFiles = [];
+  let currentAccessCode = "";
 
-        const removeButton = document.createElement("button");
-        removeButton.type = "button";
-        removeButton.className = "remove-file";
-        removeButton.textContent = "Entfernen";
+  function showMessage(text, type) {
+    messageBox.textContent = text;
+    messageBox.className = "message " + type;
+  }
 
-        removeButton.addEventListener("click", () => {
-          selectedFiles.splice(index, 1);
-          renderFiles();
-          clearMessage();
-        });
+  function clearMessage() {
+    messageBox.textContent = "";
+    messageBox.className = "message";
+  }
 
-        item.appendChild(fileName);
-        item.appendChild(removeButton);
-        fileList.appendChild(item);
+  // ZUFÄLLIGEN ZUGANGSCODE ERZEUGEN
+  function generateAccessCode() {
+    const bytes = new Uint8Array(16);
+    crypto.getRandomValues(bytes);
+
+    return Array.from(bytes)
+      .map(byte => byte.toString(16).padStart(2, "0"))
+      .join("")
+      .toUpperCase();
+  }
+
+  // SHA-256 HASH ERZEUGEN
+  async function hashAccessCode(code) {
+    const data = new TextEncoder().encode(code);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+
+    return Array.from(new Uint8Array(hashBuffer))
+      .map(byte => byte.toString(16).padStart(2, "0"))
+      .join("");
+  }
+
+  // DATEIEN ANZEIGEN
+  function renderFiles() {
+    fileList.innerHTML = "";
+
+    selectedFiles.forEach((file, index) => {
+      const item = document.createElement("div");
+      item.className = "file-item";
+
+      const fileName = document.createElement("span");
+      fileName.textContent = file.name;
+
+      const removeButton = document.createElement("button");
+      removeButton.type = "button";
+      removeButton.className = "remove-file";
+      removeButton.textContent = "Entfernen";
+
+      removeButton.addEventListener("click", () => {
+        selectedFiles.splice(index, 1);
+        renderFiles();
+        clearMessage();
       });
-    }
 
-    // BILDER AUSWÄHLEN
-    imageInput.addEventListener("change", () => {
-      clearMessage();
+      item.appendChild(fileName);
+      item.appendChild(removeButton);
+      fileList.appendChild(item);
+    });
+  }
 
-      const newFiles = Array.from(imageInput.files);
+  // BILDER AUSWÄHLEN
+  imageInput.addEventListener("change", () => {
+    clearMessage();
 
-      for (const file of newFiles) {
-        if (!ALLOWED_TYPES.includes(file.type)) {
-          showMessage(
-            "Eine Datei hat ein nicht erlaubtes Format. Bitte nutze JPG, PNG, WEBP oder GIF.",
-            "error"
-          );
-          imageInput.value = "";
-          return;
-        }
+    const newFiles = Array.from(imageInput.files);
 
-        if (file.size > MAX_SIZE) {
-          showMessage(
-            "Das Bild " + file.name + " ist größer als 5 MB.",
-            "error"
-          );
-          imageInput.value = "";
-          return;
-        }
-      }
-
-      if (selectedFiles.length + newFiles.length > MAX_FILES) {
+    for (const file of newFiles) {
+      if (!ALLOWED_TYPES.includes(file.type)) {
         showMessage(
-          "Du kannst maximal 3 Bilder anhängen.",
+          "Bitte nutze nur JPG, PNG, WEBP oder GIF.",
           "error"
         );
         imageInput.value = "";
         return;
       }
 
-      selectedFiles.push(...newFiles);
-      imageInput.value = "";
-      renderFiles();
-    });
-
-    // DATEI-ENDUNG ERMITTELN
-    function getExtension(file) {
-      const extensions = {
-        "image/jpeg": "jpg",
-        "image/png": "png",
-        "image/webp": "webp",
-        "image/gif": "gif"
-      };
-
-      return extensions[file.type];
+      if (file.size > MAX_SIZE) {
+        showMessage(
+          "Das Bild " + file.name + " ist größer als 5 MB.",
+          "error"
+        );
+        imageInput.value = "";
+        return;
+      }
     }
 
-    // FORMULAR ABSENDEN
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      clearMessage();
+    if (selectedFiles.length + newFiles.length > MAX_FILES) {
+      showMessage(
+        "Du kannst maximal 3 Bilder anhängen.",
+        "error"
+      );
+      imageInput.value = "";
+      return;
+    }
 
-      const name = nameInput.value.trim();
-      const question = questionInput.value.trim();
+    selectedFiles.push(...newFiles);
+    imageInput.value = "";
+    renderFiles();
+  });
 
-      if (!name || !question) {
-        showMessage(
-          "Bitte fülle deinen Namen und deine Frage aus.",
-          "error"
+  function getExtension(file) {
+    const extensions = {
+      "image/jpeg": "jpg",
+      "image/png": "png",
+      "image/webp": "webp",
+      "image/gif": "gif"
+    };
+
+    return extensions[file.type];
+  }
+
+  // FRAGE ABSENDEN
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    clearMessage();
+    codeBox.style.display = "none";
+
+    const minecraftName = minecraftNameInput.value.trim();
+    const question = questionInput.value.trim();
+
+    if (!minecraftName || minecraftName.length > 40) {
+      showMessage(
+        "Bitte gib einen gültigen Minecraft-Namen ein.",
+        "error"
+      );
+      return;
+    }
+
+    if (question.length < 5 || question.length > 3000) {
+      showMessage(
+        "Deine Frage muss zwischen 5 und 3.000 Zeichen lang sein.",
+        "error"
+      );
+      return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Wird gesendet ...";
+
+    const uploadedPaths = [];
+
+    try {
+      if (!crypto.subtle || !crypto.getRandomValues) {
+        throw new Error(
+          "Dein Browser unterstützt die sichere Code-Erstellung nicht. Bitte nutze eine aktuelle Browser-Version über HTTPS."
         );
-        return;
       }
 
-      if (name.length > 60) {
-        showMessage(
-          "Dein Name darf höchstens 60 Zeichen lang sein.",
-          "error"
-        );
-        return;
-      }
+      // CODE UND HASH ERZEUGEN
+      const accessCode = generateAccessCode();
+      const accessCodeHash = await hashAccessCode(accessCode);
 
-      if (question.length < 5) {
-        showMessage(
-          "Deine Frage muss mindestens 5 Zeichen lang sein.",
-          "error"
-        );
-        return;
-      }
+      // BILDER HOCHLADEN
+      for (const file of selectedFiles) {
+        const extension = getExtension(file);
 
-      if (question.length > 3000) {
-        showMessage(
-          "Deine Frage darf höchstens 3.000 Zeichen lang sein.",
-          "error"
-        );
-        return;
-      }
-
-      submitButton.disabled = true;
-      submitButton.textContent = "Wird gesendet ...";
-
-      const uploadedPaths = [];
-
-      try {
-        // BILDER HOCHLADEN
-        for (const file of selectedFiles) {
-          const extension = getExtension(file);
-
-          if (!extension) {
-            throw new Error("Ein Bild hat ein ungültiges Format.");
-          }
-
-          const filePath =
-            "incoming/" +
-            crypto.randomUUID() +
-            "." +
-            extension;
-
-          const { error: uploadError } = await db.storage
-            .from("question-images")
-            .upload(filePath, file, {
-              cacheControl: "3600",
-              upsert: false,
-              contentType: file.type
-            });
-
-          if (uploadError) {
-            throw uploadError;
-          }
-
-          uploadedPaths.push(filePath);
+        if (!extension) {
+          throw new Error("Ein Bild hat ein ungültiges Format.");
         }
 
-        // FRAGE IN SUPABASE SPEICHERN
-        const { error: insertError } = await db
-          .from("questions")
-          .insert({
-            name: name,
-            message: question,
-            image_paths: uploadedPaths,
-            status: "Offen"
+        const filePath =
+          "incoming/" +
+          crypto.randomUUID() +
+          "." +
+          extension;
+
+        const { error: uploadError } = await db.storage
+          .from("question-images")
+          .upload(filePath, file, {
+            cacheControl: "3600",
+            upsert: false,
+            contentType: file.type
           });
 
-        if (insertError) {
-          throw insertError;
+        if (uploadError) {
+          throw uploadError;
         }
 
-        // ERFOLG
-        form.reset();
-        selectedFiles = [];
-        renderFiles();
-
-        showMessage(
-          "Vielen Dank! Deine Frage wurde erfolgreich eingereicht. Unser Team kann sie nun bearbeiten.",
-          "success"
-        );
-
-      } catch (error) {
-        console.error("Fehler beim Absenden:", error);
-
-        // HOCHGELADENE BILDER AUFRÄUMEN
-        if (uploadedPaths.length > 0) {
-          const { error: cleanupError } = await db.storage
-            .from("question-images")
-            .remove(uploadedPaths);
-
-          if (cleanupError) {
-            console.error("Bild-Aufräumfehler:", cleanupError);
-          }
-        }
-
-        showMessage(
-          "Deine Frage konnte leider nicht gesendet werden. Bitte versuche es später erneut. Fehler: " +
-          (error.message || "Unbekannter Fehler"),
-          "error"
-        );
-
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = "Frage absenden";
+        uploadedPaths.push(filePath);
       }
-    });
-  </script>
+
+      // FRAGE SPEICHERN
+      const { error: insertError } = await db
+        .from("questions")
+        .insert({
+          name: minecraftName,
+          minecraft_name: minecraftName,
+          message: question,
+          image_paths: uploadedPaths,
+          status: "Offen",
+          access_code_hash: accessCodeHash
+        });
+
+      if (insertError) {
+        throw insertError;
+      }
+
+      // CODE NUR EINMAL ANZEIGEN
+      currentAccessCode = accessCode;
+      accessCodeElement.textContent = accessCode;
+      codeBox.style.display = "block";
+
+      form.reset();
+      selectedFiles = [];
+      renderFiles();
+
+      showMessage(
+        "Deine Frage wurde erfolgreich eingereicht!",
+        "success"
+      );
+
+      codeBox.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+    } catch (error) {
+      console.error("Fehler beim Absenden:", error);
+
+      if (uploadedPaths.length > 0) {
+        const { error: cleanupError } = await db.storage
+          .from("question-images")
+          .remove(uploadedPaths);
+
+        if (cleanupError) {
+          console.error("Fehler beim Aufräumen:", cleanupError);
+        }
+      }
+
+      showMessage(
+        "Deine Frage konnte leider nicht gesendet werden. " +
+        (error.message || "Unbekannter Fehler"),
+        "error"
+      );
+
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = "Frage absenden";
+    }
+  });
+
+  // ZUGANGSCODE KOPIEREN
+  copyButton.addEventListener("click", async () => {
+    if (!currentAccessCode) return;
+
+    try {
+      await navigator.clipboard.writeText(currentAccessCode);
+      copyButton.textContent = "Code kopiert!";
+    } catch (error) {
+      copyButton.textContent = "Bitte Code manuell kopieren";
+    }
+  });
+</script>
 
 </body>
 </html>
