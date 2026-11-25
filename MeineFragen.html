@@ -1,0 +1,456 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meine Fragen | LMS NETWORK</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, #172c49 0%, transparent 42%),
+        #080d18;
+      color: #f3f5fa;
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 30px 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 760px;
+      margin: auto;
+    }
+
+    .top {
+      text-align: center;
+      margin: 25px 0 35px;
+    }
+
+    .logo {
+      color: #e5bd59;
+      font-size: 31px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .logo span {
+      color: white;
+    }
+
+    .subtitle {
+      color: #aebbd0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .panel {
+      background: #111b2c;
+      border: 1px solid #263955;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 15px 45px rgba(0,0,0,.3);
+    }
+
+    h1 {
+      font-size: 27px;
+      margin-bottom: 12px;
+    }
+
+    .description {
+      color: #aebbd0;
+      line-height: 1.65;
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 9px;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      background: #091321;
+      border: 1px solid #344760;
+      border-radius: 9px;
+      padding: 14px;
+      color: white;
+      font-size: 15px;
+      outline: none;
+      margin-bottom: 18px;
+    }
+
+    input:focus {
+      border-color: #3988ed;
+    }
+
+    .submit-button {
+      width: 100%;
+      border: none;
+      border-radius: 9px;
+      padding: 16px;
+      color: white;
+      background: linear-gradient(180deg, #3989ec, #205aa7);
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #143c70;
+      transition: .2s;
+    }
+
+    .submit-button:hover {
+      filter: brightness(1.12);
+      transform: translateY(-1px);
+    }
+
+    .submit-button:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .message {
+      display: none;
+      margin-top: 20px;
+      padding: 14px;
+      border-radius: 9px;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .error {
+      display: block;
+      background: #421f29;
+      border: 1px solid #8d3c4d;
+      color: #ffc0c8;
+    }
+
+    .result {
+      display: none;
+      margin-top: 25px;
+    }
+
+    .question-card {
+      background: #0b1626;
+      border: 1px solid #344b69;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 15px;
+    }
+
+    .question-card h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #e5bd59;
+    }
+
+    .meta {
+      color: #8ea1ba;
+      font-size: 12px;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .question-text {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      color: #e4eaf3;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .answer-box {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 9px;
+      background: #153b2c;
+      border: 1px solid #28734e;
+    }
+
+    .answer-box h3 {
+      color: #a9f0c7;
+      font-size: 15px;
+      margin-bottom: 9px;
+    }
+
+    .answer-box p {
+      color: #e1f8e9;
+      font-size: 14px;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .waiting {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 9px;
+      background: #342d19;
+      border: 1px solid #80652c;
+      color: #f3d995;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      background: #203b59;
+      color: #b8d9ff;
+    }
+
+    .status.done {
+      background: #153b2c;
+      color: #a9f0c7;
+    }
+
+    .back {
+      display: block;
+      width: fit-content;
+      margin: 25px auto 0;
+      color: #a9cfff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .back:hover {
+      color: white;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      color: #62738a;
+      font-size: 12px;
+      margin-top: 35px;
+    }
+
+    @media (max-width: 550px) {
+      .panel {
+        padding: 21px;
+      }
+
+      h1 {
+        font-size: 23px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<main class="container">
+
+  <header class="top">
+    <div class="logo">LMS <span>NETWORK</span></div>
+    <p class="subtitle">
+      Deine Fragen. Deine Antworten. Alles an einem Ort.
+    </p>
+  </header>
+
+  <section class="panel">
+
+    <h1>Meine Fragen</h1>
+
+    <p class="description">
+      Gib deinen persönlichen Zugangscode ein, den du beim Einreichen
+      deiner Frage erhalten hast. Anschließend kannst du den aktuellen
+      Bearbeitungsstand und die Antwort unseres Teams sehen.
+    </p>
+
+    <form id="lookupForm">
+
+      <label for="accessCode">Dein Zugangscode</label>
+
+      <input
+        type="text"
+        id="accessCode"
+        maxlength="32"
+        minlength="32"
+        placeholder="Deinen 32-stelligen Code eingeben"
+        autocomplete="off"
+        spellcheck="false"
+        required
+      >
+
+      <button type="submit" class="submit-button" id="lookupButton">
+        Frage anzeigen
+      </button>
+
+    </form>
+
+    <div id="messageBox" class="message" role="status" aria-live="polite"></div>
+
+    <div id="result" class="result">
+
+      <div class="question-card">
+
+        <h2>Deine Einsendung</h2>
+
+        <div class="meta" id="playerName"></div>
+
+        <div class="status" id="statusBadge"></div>
+
+        <p class="question-text" id="questionText"></p>
+
+        <div id="waitingBox" class="waiting">
+          Deine Frage ist noch in Bearbeitung. Bitte hab etwas Geduld.
+          Unser Team kümmert sich darum!
+        </div>
+
+        <div id="answerBox" class="answer-box" style="display:none;">
+          <h3>Antwort vom LMS-Team</h3>
+          <p id="answerText"></p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <a href="Fragen.html" class="back">← Neue Frage einreichen</a>
+
+  <footer>
+    © LMS NETWORK – Alle Rechte vorbehalten.
+  </footer>
+
+</main>
+
+<script>
+  // SUPABASE
+  const SUPABASE_URL = "https://kxafgbrdybonjxwfziee.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_d8qB9cKr2st2FVwAAYHorQ_sho1knUD";
+
+  const db = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+  const form = document.getElementById("lookupForm");
+  const codeInput = document.getElementById("accessCode");
+  const lookupButton = document.getElementById("lookupButton");
+  const messageBox = document.getElementById("messageBox");
+  const result = document.getElementById("result");
+
+  const playerName = document.getElementById("playerName");
+  const statusBadge = document.getElementById("statusBadge");
+  const questionText = document.getElementById("questionText");
+  const waitingBox = document.getElementById("waitingBox");
+  const answerBox = document.getElementById("answerBox");
+  const answerText = document.getElementById("answerText");
+
+  function showError(text) {
+    messageBox.textContent = text;
+    messageBox.className = "message error";
+  }
+
+  function clearMessage() {
+    messageBox.textContent = "";
+    messageBox.className = "message";
+  }
+
+  async function hashAccessCode(code) {
+    const data = new TextEncoder().encode(code);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+
+    return Array.from(new Uint8Array(hashBuffer))
+      .map(byte => byte.toString(16).padStart(2, "0"))
+      .join("");
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    clearMessage();
+    result.style.display = "none";
+
+    const code = codeInput.value.trim().toUpperCase();
+
+    if (!/^[A-F0-9]{32}$/.test(code)) {
+      showError("Bitte gib einen gültigen 32-stelligen Zugangscode ein.");
+      return;
+    }
+
+    lookupButton.disabled = true;
+    lookupButton.textContent = "Wird gesucht ...";
+
+    try {
+      const codeHash = await hashAccessCode(code);
+
+      const { data, error } = await db.rpc("get_my_question", {
+        p_code_hash: codeHash
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      if (!data || data.length === 0) {
+        showError(
+          "Es wurde keine Frage zu diesem Zugangscode gefunden. Bitte überprüfe deinen Code."
+        );
+        return;
+      }
+
+      const question = data[0];
+
+      playerName.textContent =
+        "Minecraft-Name: " + question.minecraft_name;
+
+      questionText.textContent = question.message;
+
+      statusBadge.textContent = question.status || "Offen";
+      statusBadge.className =
+        "status" +
+        (question.status === "Erledigt" ? " done" : "");
+
+      if (question.answer && question.answer.trim() !== "") {
+        answerText.textContent = question.answer;
+        answerBox.style.display = "block";
+        waitingBox.style.display = "none";
+      } else {
+        answerBox.style.display = "none";
+        waitingBox.style.display = "block";
+      }
+
+      result.style.display = "block";
+
+      result.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+    } catch (error) {
+      console.error("Fehler beim Abrufen:", error);
+
+      showError(
+        "Deine Frage konnte gerade nicht geladen werden. Bitte versuche es später erneut."
+      );
+
+    } finally {
+      lookupButton.disabled = false;
+      lookupButton.textContent = "Frage anzeigen";
+    }
+  });
+</script>
+
+</body>
+</html>
