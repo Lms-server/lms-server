@@ -2,633 +2,842 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#111318">
-<title>Fragen | LMS NETWORK</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LMS NETWORK – Fragenverwaltung</title>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<style>
-:root{
-  --bg:#111318;
-  --panel:#20232a;
-  --gold:#e4c16d;
-  --blue:#1685cf;
-  --text:#f1f1f2;
-  --muted:#a9abb1;
-  --line:#373a43;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-*{box-sizing:border-box;margin:0;padding:0}
+    body {
+      font-family: Arial, sans-serif;
+      background: #080d18;
+      color: #f1f5f9;
+      min-height: 100vh;
+    }
 
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
-  line-height:1.6;
-}
+    header {
+      background: #101827;
+      border-bottom: 1px solid #26344b;
+      padding: 20px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
 
-a{text-decoration:none;color:inherit}
+    .logo {
+      font-size: 23px;
+      font-weight: 900;
+      color: #f4c542;
+      letter-spacing: 1px;
+    }
 
-.top-notice{
-  background:#c59a3c;
-  color:#171717;
-  text-align:center;
-  padding:7px;
-  font-size:10px;
-  font-weight:950;
-  letter-spacing:2px;
-}
+    .logo span {
+      color: #fff;
+    }
 
-.navbar{
-  min-height:70px;
-  padding:8px 5%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  background:#18191d;
-  border-bottom:1px solid #34353a;
-}
+    header a {
+      color: #b8c5d9;
+      text-decoration: none;
+    }
 
-.logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-size:16px;
-  font-weight:950;
-  letter-spacing:1px;
-}
+    header a:hover {
+      color: #f4c542;
+    }
 
-.logo img{
-  width:48px;
-  height:48px;
-  object-fit:contain;
-}
+    main {
+      width: min(1100px, 92%);
+      margin: 45px auto;
+    }
 
-.nav-links{
-  display:flex;
-  gap:20px;
-  flex-wrap:wrap;
-}
+    .hero {
+      margin-bottom: 30px;
+    }
 
-.nav-links a{
-  color:#d9dbe0;
-  font-size:11px;
-  font-weight:900;
-}
+    .hero small {
+      color: #4ca8ff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
 
-.nav-links a:hover{color:var(--gold)}
+    h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      margin: 10px 0;
+    }
 
-.hero{
-  text-align:center;
-  padding:75px 20px 35px;
-  background:
-    radial-gradient(ellipse at 50% 0%,#1685cf26,transparent 65%);
-}
+    .muted {
+      color: #9eacc1;
+      line-height: 1.6;
+    }
 
-.hero-label{
-  color:#80caff;
-  font-size:10px;
-  font-weight:950;
-  letter-spacing:3px;
-  margin-bottom:12px;
-}
+    .panel {
+      background: #111c2d;
+      border: 1px solid #293a54;
+      border-radius: 14px;
+      padding: 25px;
+      margin-bottom: 22px;
+      box-shadow: 0 12px 35px #0003;
+    }
 
-.hero h1{
-  font-size:clamp(35px,7vw,58px);
-  font-weight:950;
-  line-height:1.1;
-  margin-bottom:15px;
-}
+    h2 {
+      margin-bottom: 17px;
+      font-size: 22px;
+    }
 
-.hero h1 span{color:var(--gold)}
+    input, textarea, select {
+      width: 100%;
+      background: #0a1322;
+      border: 1px solid #354761;
+      border-radius: 8px;
+      padding: 13px;
+      color: white;
+      font: inherit;
+      margin: 7px 0 15px;
+    }
 
-.hero p{
-  max-width:620px;
-  margin:auto;
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.8;
-}
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
 
-.container{
-  width:min(760px,92%);
-  margin:25px auto 75px;
-}
+    label {
+      color: #cbd5e1;
+      font-size: 14px;
+      font-weight: bold;
+    }
 
-.form-card{
-  background:linear-gradient(145deg,#222832,#191d25);
-  border:1px solid #3b526d;
-  border-radius:16px;
-  padding:clamp(22px,5vw,40px);
-  box-shadow:0 18px 45px #0005;
-}
+    button {
+      border: 0;
+      border-radius: 8px;
+      padding: 12px 18px;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      transition: .2s;
+    }
 
-.form-heading{
-  margin-bottom:25px;
-}
+    button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.12);
+    }
 
-.form-heading h2{
-  font-size:23px;
-  margin-bottom:5px;
-}
+    .primary {
+      color: white;
+      background: linear-gradient(135deg, #1688e8, #0754a7);
+      box-shadow: 0 4px 15px #0879d544;
+    }
 
-.form-heading p{
-  color:var(--muted);
-  font-size:12px;
-}
+    .gold {
+      color: #171717;
+      background: linear-gradient(135deg, #ffdc70, #d99b19);
+    }
 
-.field{margin-bottom:20px}
+    .secondary {
+      color: white;
+      background: #293a54;
+    }
 
-label{
-  display:block;
-  font-size:12px;
-  font-weight:900;
-  margin-bottom:8px;
-}
+    .danger {
+      color: white;
+      background: #a83242;
+    }
 
-input,textarea{
-  width:100%;
-  padding:14px;
-  background:#11151c;
-  border:1px solid #424c5b;
-  border-radius:8px;
-  color:#fff;
-  font-family:inherit;
-  font-size:14px;
-  outline:none;
-  transition:.2s;
-}
+    .success {
+      color: white;
+      background: #16804b;
+    }
 
-input:focus,textarea:focus{
-  border-color:#56b9f2;
-  box-shadow:0 0 0 3px #1685cf22;
-}
+    .button-row {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
 
-textarea{
-  min-height:160px;
-  resize:vertical;
-  line-height:1.6;
-}
+    .message {
+      display: none;
+      padding: 13px;
+      border-radius: 8px;
+      margin: 15px 0;
+      line-height: 1.5;
+    }
 
-.help{
-  color:#8993a1;
-  font-size:10px;
-  margin-top:6px;
-}
+    .error {
+      background: #451d29;
+      border: 1px solid #a83e51;
+      color: #ffc3cb;
+    }
 
-.upload-area{
-  border:1px dashed #52718e;
-  border-radius:10px;
-  padding:22px;
-  background:#111923;
-  text-align:center;
-  cursor:pointer;
-  transition:.2s;
-}
+    .notice {
+      background: #123c2b;
+      border: 1px solid #267d52;
+      color: #b7f7d2;
+    }
 
-.upload-area:hover{
-  border-color:#80caff;
-  background:#162536;
-}
+    .question {
+      background: #0b1525;
+      border: 1px solid #2b3c55;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 17px 0;
+    }
 
-.upload-area strong{
-  display:block;
-  font-size:13px;
-  color:#80caff;
-}
+    .question-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
 
-.upload-area span{
-  display:block;
-  font-size:11px;
-  color:#9ba7b5;
-  margin-top:5px;
-}
+    .question h3 {
+      font-size: 19px;
+      overflow-wrap: anywhere;
+    }
 
-#images{display:none}
+    .meta {
+      color: #899bb5;
+      font-size: 13px;
+      margin-top: 6px;
+    }
 
-.preview{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:13px;
-}
+    .question-text {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      line-height: 1.6;
+      margin: 15px 0;
+      color: #dbe5f3;
+    }
 
-.preview-item{
-  position:relative;
-  width:90px;
-  height:90px;
-  border-radius:8px;
-  overflow:hidden;
-  border:1px solid #526274;
-}
+    .status {
+      padding: 6px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
 
-.preview-item img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
+    .status-offen {
+      background: #4a3514;
+      color: #ffd77b;
+    }
 
-.remove-image{
-  position:absolute;
-  top:4px;
-  right:4px;
-  width:23px;
-  height:23px;
-  border:0;
-  border-radius:50%;
-  background:#b62d36;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
-}
+    .status-bearbeitung {
+      background: #123e62;
+      color: #91d1ff;
+    }
 
-.submit-button{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-  width:100%;
-  min-height:52px;
-  padding:13px 20px;
-  border:2px solid #a8e3ff;
-  border-radius:7px;
-  background:linear-gradient(180deg,#42b9f4,#1685cf 55%,#0865a9);
-  color:white;
-  font-size:12px;
-  font-weight:950;
-  letter-spacing:1px;
-  text-shadow:0 2px 0 #064875;
-  box-shadow:0 5px 0 #064875,0 9px 18px #0006;
-  cursor:pointer;
-  transition:.15s;
-}
+    .status-erledigt {
+      background: #16432e;
+      color: #9aefbb;
+    }
 
-.submit-button:hover{
-  filter:brightness(1.12);
-  transform:translateY(-2px);
-}
+    .images {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+    }
 
-.submit-button:disabled{
-  opacity:.55;
-  cursor:wait;
-  transform:none;
-}
+    .images a {
+      display: block;
+    }
 
-.message-box{
-  display:none;
-  padding:13px 15px;
-  margin-bottom:18px;
-  border-radius:8px;
-  font-size:12px;
-  line-height:1.6;
-}
+    .images img {
+      width: 125px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid #40536e;
+    }
 
-.message-box.success{
-  display:block;
-  background:#163d2c;
-  border:1px solid #347c54;
-  color:#b9f2ce;
-}
+    .answer-box {
+      background: #142238;
+      border-left: 3px solid #36a2ff;
+      padding: 13px;
+      margin: 15px 0;
+      border-radius: 5px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
 
-.message-box.error{
-  display:block;
-  background:#421d24;
-  border:1px solid #a34752;
-  color:#ffd0d4;
-}
+    .hidden {
+      display: none !important;
+    }
 
-.privacy{
-  text-align:center;
-  color:#828b98;
-  font-size:10px;
-  margin-top:17px;
-  line-height:1.7;
-}
+    .empty {
+      text-align: center;
+      padding: 35px 10px;
+      color: #9eacc1;
+    }
 
-footer{
-  background:#0d0f13;
-  border-top:1px solid #2d3037;
-  padding:30px 5%;
-  text-align:center;
-}
+    footer {
+      text-align: center;
+      color: #718096;
+      padding: 30px 15px;
+      border-top: 1px solid #26344b;
+      margin-top: 60px;
+      font-size: 13px;
+    }
 
-footer p{
-  color:#818894;
-  font-size:11px;
-  margin-top:8px;
-}
+    @media (max-width: 600px) {
+      .panel {
+        padding: 18px;
+      }
 
-.footer-links{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:18px;
-  margin-top:12px;
-}
+      header {
+        padding: 17px 5%;
+      }
 
-.footer-links a{
-  color:#a8adb6;
-  font-size:11px;
-}
-
-.footer-links a:hover{color:var(--gold)}
-
-@media(max-width:600px){
-  .navbar{align-items:flex-start;flex-direction:column}
-  .nav-links{gap:13px}
-  .hero{padding-top:55px}
-  .form-card{padding:22px 17px}
-}
-</style>
+      main {
+        margin-top: 30px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="top-notice">
-  LMS NETWORK · FRAGEN & SUPPORT
-</div>
-
-<nav class="navbar">
-
-  <a class="logo" href="index.html">
-    <img src="WhatsApp_Image_2026-07-11_at_15.30.43-removebg-preview.png" alt="LMS Logo">
-    LMS NETWORK
-  </a>
-
-  <div class="nav-links">
-    <a href="index.html">Startseite</a>
-    <a href="info.html">Info & Wiki</a>
-    <a href="regeln.html">Regeln</a>
-  </div>
-
-</nav>
-
-<header class="hero">
-
-  <div class="hero-label">WIR HELFEN DIR WEITER</div>
-
-  <h1>DEINE <span>FRAGE.</span></h1>
-
-  <p>
-    Du hast eine Frage zu LMS NETWORK oder benötigst Unterstützung?
-    Schreibe uns eine Nachricht. Unser Team kümmert sich darum.
-  </p>
-
+<header>
+  <div class="logo">LMS <span>NETWORK</span></div>
+  <a href="index.html">← Zurück zur Website</a>
 </header>
 
-<main class="container">
+<main>
 
-  <section class="form-card">
+  <section class="hero">
+    <small>Internes Team-System</small>
+    <h1>Fragenverwaltung</h1>
+    <p class="muted">
+      Hier kannst du die eingereichten Fragen der Community verwalten
+      und beantworten.
+    </p>
+  </section>
 
-    <div class="form-heading">
-      <h2>❔ Frage einreichen</h2>
-      <p>Fülle das Formular aus und sende deine Frage an unser Team.</p>
+  <div id="loginPanel" class="panel">
+    <h2>Admin-Login</h2>
+    <p class="muted">Melde dich mit deinem Team-Account an.</p>
+
+    <form id="loginForm">
+      <label for="email">E-Mail-Adresse</label>
+      <input id="email" type="email" placeholder="Deine E-Mail-Adresse" required>
+
+      <label for="password">Passwort</label>
+      <input id="password" type="password" placeholder="Dein Passwort" required>
+
+      <button class="primary" type="submit">Anmelden</button>
+    </form>
+
+    <div id="loginMessage" class="message error"></div>
+  </div>
+
+  <section id="adminPanel" class="hidden">
+
+    <div class="panel">
+      <div class="question-top">
+        <div>
+          <h2>Team-Dashboard</h2>
+          <p class="muted">Du bist angemeldet.</p>
+        </div>
+        <button class="danger" id="logoutButton">Abmelden</button>
+      </div>
+
+      <div class="button-row">
+        <button class="secondary" id="refreshButton">↻ Fragen aktualisieren</button>
+      </div>
+
+      <div id="adminMessage" class="message"></div>
     </div>
 
-    <div id="formMessage" class="message-box" role="status" aria-live="polite"></div>
+    <div class="panel">
+      <h2>Eingereichte Fragen</h2>
 
-    <form id="questionForm">
+      <label for="filterStatus">Nach Status filtern</label>
+      <select id="filterStatus">
+        <option value="Alle">Alle Fragen</option>
+        <option value="Offen">Offen</option>
+        <option value="In Bearbeitung">In Bearbeitung</option>
+        <option value="Erledigt">Erledigt</option>
+      </select>
 
-      <div class="field">
-        <label for="name">Dein Name</label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          placeholder="Wie heißt du?"
-          minlength="2"
-          maxlength="60"
-          autocomplete="name"
-          required
-        >
+      <div id="questionsList">
+        <div class="empty">Fragen werden geladen ...</div>
       </div>
-
-      <div class="field">
-        <label for="message">Deine Frage</label>
-        <textarea
-          id="message"
-          name="message"
-          placeholder="Schreibe hier deine Frage ..."
-          minlength="5"
-          maxlength="3000"
-          required
-        ></textarea>
-        <div class="help">Mindestens 5 und maximal 3.000 Zeichen.</div>
-      </div>
-
-      <div class="field">
-        <label>Bilder anhängen (optional)</label>
-
-        <label class="upload-area" for="images">
-          <strong>📷 Bilder auswählen</strong>
-          <span>JPG, PNG, WEBP oder GIF · maximal 5 MB pro Bild · bis zu 3 Bilder</span>
-        </label>
-
-        <input
-          id="images"
-          type="file"
-          accept="image/jpeg,image/png,image/webp,image/gif"
-          multiple
-        >
-
-        <div class="preview" id="preview"></div>
-      </div>
-
-      <button class="submit-button" id="submitButton" type="submit">
-        FRAGE ABSENDEN <span>➜</span>
-      </button>
-
-      <p class="privacy">
-        Deine Angaben werden an das LMS-NETWORK-Team übermittelt,
-        damit deine Frage bearbeitet werden kann.
-        Bitte sende keine Passwörter oder privaten Zugangsdaten.
-      </p>
-
-    </form>
+    </div>
 
   </section>
 
 </main>
 
 <footer>
-
-  <strong>LMS NETWORK</strong>
-
-  <p>Gemeinsam spielen. Gemeinsam gestalten.</p>
-
-  <div class="footer-links">
-    <a href="index.html">Startseite</a>
-    <a href="info.html">Info & Wiki</a>
-    <a href="regeln.html">Regeln</a>
-  </div>
-
-  <p style="margin-top:20px">LMS NETWORK © 2026</p>
-
+  © LMS NETWORK – Internes Team-System
 </footer>
 
 <script>
-const SUPABASE_URL = "https://kxafgbrdybonjxwfziee.supabase.co";
-const SUPABASE_KEY = "sb_publishable_d8qB9cKr2st2FVwAAYHorQ_sho1knUD";
+  // SUPABASE-VERBINDUNG
+  const SUPABASE_URL = "https://kxafgbrdybonjxwfziee.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_d8qB9cKr2st2FVwAAYHorQ_sho1knUD";
 
-const db = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
+  const db = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
-const form = document.getElementById("questionForm");
-const fileInput = document.getElementById("images");
-const preview = document.getElementById("preview");
-const submitButton = document.getElementById("submitButton");
-const formMessage = document.getElementById("formMessage");
+  const loginPanel = document.getElementById("loginPanel");
+  const adminPanel = document.getElementById("adminPanel");
+  const loginMessage = document.getElementById("loginMessage");
+  const adminMessage = document.getElementById("adminMessage");
+  const questionsList = document.getElementById("questionsList");
 
-let selectedFiles = [];
+  let currentQuestions = [];
 
-const allowedTypes = [
-  "image/jpeg",
-  "image/png",
-  "image/webp",
-  "image/gif"
-];
+  function escapeHTML(value) {
+    return String(value ?? "").replace(/[&<>"']/g, char => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#039;"
+    })[char]);
+  }
 
-function showMessage(text,type){
-  formMessage.className = "message-box " + type;
-  formMessage.textContent = text;
-  formMessage.style.display = "block";
-}
+  function showMessage(element, message, isError = false) {
+    element.textContent = message;
+    element.className = "message " + (isError ? "error" : "notice");
+    element.style.display = "block";
+  }
 
-function renderPreview(){
-  preview.replaceChildren();
+  function hideMessage(element) {
+    element.style.display = "none";
+  }
 
-  selectedFiles.forEach((file,index)=>{
-    const item = document.createElement("div");
-    item.className = "preview-item";
+  function statusClass(status) {
+    if (status === "Erledigt") return "status-erledigt";
+    if (status === "In Bearbeitung") return "status-bearbeitung";
+    return "status-offen";
+  }
 
-    const img = document.createElement("img");
-    const objectUrl = URL.createObjectURL(file);
-    img.src = objectUrl;
-    img.alt = "Bildvorschau";
+  function formatDate(date) {
+    if (!date) return "Unbekannt";
 
-    img.onload = ()=>URL.revokeObjectURL(objectUrl);
+    return new Date(date).toLocaleString("de-DE", {
+      dateStyle: "medium",
+      timeStyle: "short"
+    });
+  }
 
-    const remove = document.createElement("button");
-    remove.type = "button";
-    remove.className = "remove-image";
-    remove.textContent = "×";
-    remove.setAttribute("aria-label","Bild entfernen");
+  async function checkAdmin() {
+    const { data: { user }, error: userError } = await db.auth.getUser();
 
-    remove.addEventListener("click",()=>{
-      selectedFiles.splice(index,1);
-      renderPreview();
+    if (userError || !user) {
+      loginPanel.classList.remove("hidden");
+      adminPanel.classList.add("hidden");
+      return false;
+    }
+
+    // Prüft die Admin-Berechtigung über die SQL-Funktion.
+    const { data, error } = await db.rpc("is_lms_admin");
+
+    if (error || data !== true) {
+      await db.auth.signOut();
+      loginPanel.classList.remove("hidden");
+      adminPanel.classList.add("hidden");
+
+      showMessage(
+        loginMessage,
+        "Dein Account ist nicht als LMS-Administrator freigeschaltet. Prüfe den Admin-Eintrag in Supabase.",
+        true
+      );
+
+      return false;
+    }
+
+    loginPanel.classList.add("hidden");
+    adminPanel.classList.remove("hidden");
+
+    await loadQuestions();
+    return true;
+  }
+
+  // LOGIN
+  document.getElementById("loginForm").addEventListener("submit", async event => {
+    event.preventDefault();
+    hideMessage(loginMessage);
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    const { error } = await db.auth.signInWithPassword({
+      email,
+      password
     });
 
-    item.append(img,remove);
-    preview.append(item);
+    if (error) {
+      showMessage(loginMessage, "Login fehlgeschlagen: " + error.message, true);
+      return;
+    }
+
+    await checkAdmin();
   });
-}
 
-fileInput.addEventListener("change",()=>{
-  const incoming = Array.from(fileInput.files || []);
+  // LOGOUT
+  document.getElementById("logoutButton").addEventListener("click", async () => {
+    await db.auth.signOut();
 
-  for(const file of incoming){
-    if(!allowedTypes.includes(file.type)){
-      showMessage("Dieses Dateiformat wird nicht unterstützt.","error");
-      continue;
+    adminPanel.classList.add("hidden");
+    loginPanel.classList.remove("hidden");
+
+    document.getElementById("password").value = "";
+    hideMessage(loginMessage);
+  });
+
+  // FRAGEN LADEN
+  async function loadQuestions() {
+    questionsList.innerHTML = '<div class="empty">Fragen werden geladen ...</div>';
+
+    const { data, error } = await db
+      .from("questions")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      questionsList.innerHTML = "";
+      showMessage(
+        adminMessage,
+        "Die Fragen konnten nicht geladen werden: " + error.message,
+        true
+      );
+      return;
     }
 
-    if(file.size > 5 * 1024 * 1024){
-      showMessage("Ein Bild ist größer als 5 MB.","error");
-      continue;
+    currentQuestions = data || [];
+    renderQuestions();
+    hideMessage(adminMessage);
+  }
+
+  // FRAGEN ANZEIGEN
+  async function renderQuestions() {
+    const filter = document.getElementById("filterStatus").value;
+
+    const filtered = currentQuestions.filter(question => {
+      return filter === "Alle" || question.status === filter;
+    });
+
+    if (!filtered.length) {
+      questionsList.innerHTML =
+        '<div class="empty">Keine Fragen in dieser Auswahl vorhanden.</div>';
+      return;
     }
 
-    if(selectedFiles.length >= 3){
-      showMessage("Du kannst maximal 3 Bilder anhängen.","error");
-      break;
+    questionsList.innerHTML = "";
+
+    for (const question of filtered) {
+      const card = document.createElement("article");
+      card.className = "question";
+
+      const status = question.status || "Offen";
+
+      card.innerHTML = `
+        <div class="question-top">
+          <div>
+            <h3>${escapeHTML(question.name || "Unbekannt")}</h3>
+            <div class="meta">
+              Eingereicht: ${escapeHTML(formatDate(question.created_at))}
+            </div>
+          </div>
+
+          <span class="status ${statusClass(status)}">
+            ${escapeHTML(status)}
+          </span>
+        </div>
+
+        <h3>Frage</h3>
+        <div class="question-text">${escapeHTML(question.message)}</div>
+
+        <div class="images" id="images-${question.id}">
+          <span class="meta">Bilder werden geladen ...</span>
+        </div>
+
+        <label for="name-${question.id}">Name bearbeiten</label>
+        <input id="name-${question.id}" value="${escapeHTML(question.name || "")}">
+
+        <label for="message-${question.id}">Frage bearbeiten</label>
+        <textarea id="message-${question.id}">${escapeHTML(question.message || "")}</textarea>
+
+        <label for="answer-${question.id}">Antwort an die Person</label>
+        <textarea id="answer-${question.id}" placeholder="Schreibe hier deine Antwort ...">${escapeHTML(question.answer || "")}</textarea>
+
+        <label for="note-${question.id}">Interne Team-Notiz</label>
+        <textarea id="note-${question.id}" placeholder="Nur für das Team sichtbar ...">${escapeHTML(question.admin_note || "")}</textarea>
+
+        <label for="status-${question.id}">Status</label>
+        <select id="status-${question.id}">
+          <option value="Offen" ${status === "Offen" ? "selected" : ""}>Offen</option>
+          <option value="In Bearbeitung" ${status === "In Bearbeitung" ? "selected" : ""}>In Bearbeitung</option>
+          <option value="Erledigt" ${status === "Erledigt" ? "selected" : ""}>Erledigt</option>
+        </select>
+
+        <label for="files-${question.id}">Bilder anhängen</label>
+        <input id="files-${question.id}" type="file" accept="image/png,image/jpeg,image/webp,image/gif" multiple>
+
+        <div class="button-row">
+          <button class="gold" data-action="save" data-id="${question.id}">
+            Änderungen speichern
+          </button>
+
+          <button class="primary" data-action="upload" data-id="${question.id}">
+            Bilder hochladen
+          </button>
+
+          <button class="danger" data-action="delete" data-id="${question.id}">
+            Frage löschen
+          </button>
+        </div>
+      `;
+
+      questionsList.appendChild(card);
+      await showQuestionImages(question);
+    }
+  }
+
+  // BILDER ANZEIGEN
+  async function showQuestionImages(question) {
+    const container = document.getElementById("images-" + question.id);
+    if (!container) return;
+
+    const paths = Array.isArray(question.image_paths)
+      ? question.image_paths
+      : [];
+
+    if (!paths.length) {
+      container.innerHTML = '<span class="meta">Keine Bilder angehängt.</span>';
+      return;
     }
 
-    selectedFiles.push(file);
-  }
+    container.innerHTML = "";
 
-  fileInput.value = "";
-  renderPreview();
-});
-
-form.addEventListener("submit",async(event)=>{
-  event.preventDefault();
-
-  const name = document.getElementById("name").value.trim();
-  const message = document.getElementById("message").value.trim();
-
-  if(name.length < 2 || message.length < 5){
-    showMessage("Bitte überprüfe deine Angaben.","error");
-    return;
-  }
-
-  if(selectedFiles.length > 3){
-    showMessage("Du kannst maximal 3 Bilder anhängen.","error");
-    return;
-  }
-
-  submitButton.disabled = true;
-  submitButton.textContent = "WIRD GESENDET ...";
-  formMessage.style.display = "none";
-
-  try{
-    const imagePaths = [];
-
-    for(const file of selectedFiles){
-      const extension = file.name.split(".").pop().toLowerCase()
-        .replace(/[^a-z0-9]/g,"");
-
-      const path = "incoming/" + crypto.randomUUID() + "." + extension;
-
-      const {error:uploadError} = await db.storage
+    for (const path of paths) {
+      const { data, error } = await db.storage
         .from("question-images")
-        .upload(path,file,{
-          contentType:file.type,
-          upsert:false
+        .createSignedUrl(path, 3600);
+
+      if (error || !data?.signedUrl) continue;
+
+      const link = document.createElement("a");
+      link.href = data.signedUrl;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+
+      const img = document.createElement("img");
+      img.src = data.signedUrl;
+      img.alt = "Angehängtes Bild";
+
+      link.appendChild(img);
+      container.appendChild(link);
+    }
+
+    if (!container.children.length) {
+      container.innerHTML = '<span class="meta">Bilder konnten nicht geladen werden.</span>';
+    }
+  }
+
+  // ÄNDERUNGEN SPEICHERN
+  async function saveQuestion(id) {
+    const name = document.getElementById("name-" + id).value.trim();
+    const message = document.getElementById("message-" + id).value.trim();
+    const answer = document.getElementById("answer-" + id).value.trim();
+    const admin_note = document.getElementById("note-" + id).value.trim();
+    const status = document.getElementById("status-" + id).value;
+
+    if (!name || !message) {
+      showMessage(adminMessage, "Name und Frage dürfen nicht leer sein.", true);
+      return;
+    }
+
+    const oldQuestion = currentQuestions.find(q => q.id === id);
+
+    const updateData = {
+      name,
+      message,
+      answer,
+      admin_note,
+      status,
+      updated_at: new Date().toISOString(),
+      answered_at: answer ? new Date().toISOString() : null
+    };
+
+    const { error } = await db
+      .from("questions")
+      .update(updateData)
+      .eq("id", id);
+
+    if (error) {
+      showMessage(adminMessage, "Speichern fehlgeschlagen: " + error.message, true);
+      return;
+    }
+
+    showMessage(adminMessage, "Die Frage wurde erfolgreich gespeichert.");
+    await loadQuestions();
+  }
+
+  // BILDER HOCHLADEN
+  async function uploadQuestionImages(id) {
+    const input = document.getElementById("files-" + id);
+    const files = Array.from(input.files || []);
+
+    if (!files.length) {
+      showMessage(adminMessage, "Bitte wähle zuerst mindestens ein Bild aus.", true);
+      return;
+    }
+
+    if (files.length > 5) {
+      showMessage(adminMessage, "Du kannst maximal 5 Bilder auf einmal hochladen.", true);
+      return;
+    }
+
+    const question = currentQuestions.find(q => q.id === id);
+    if (!question) return;
+
+    const paths = Array.isArray(question.image_paths)
+      ? [...question.image_paths]
+      : [];
+
+    for (const file of files) {
+      const allowed = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+
+      if (!allowed.includes(file.type)) {
+        showMessage(adminMessage, "Nur JPG, PNG, WEBP und GIF sind erlaubt.", true);
+        return;
+      }
+
+      if (file.size > 5 * 1024 * 1024) {
+        showMessage(adminMessage, "Jedes Bild darf maximal 5 MB groß sein.", true);
+        return;
+      }
+    }
+
+    for (const file of files) {
+      const extension = file.name.split(".").pop().toLowerCase();
+      const path = `admin/${id}/${crypto.randomUUID()}.${extension}`;
+
+      const { error } = await db.storage
+        .from("question-images")
+        .upload(path, file, {
+          contentType: file.type,
+          upsert: false
         });
 
-      if(uploadError) throw uploadError;
+      if (error) {
+        showMessage(adminMessage, "Bild-Upload fehlgeschlagen: " + error.message, true);
+        return;
+      }
 
-      imagePaths.push(path);
+      paths.push(path);
     }
 
-    const {error:insertError} = await db
+    const { error } = await db
       .from("questions")
-      .insert({
-        name:name,
-        message:message,
-        image_paths:imagePaths
-      });
+      .update({
+        image_paths: paths,
+        updated_at: new Date().toISOString()
+      })
+      .eq("id", id);
 
-    if(insertError) throw insertError;
+    if (error) {
+      showMessage(adminMessage, "Bilder wurden hochgeladen, aber nicht an die Frage angehängt: " + error.message, true);
+      return;
+    }
 
-    form.reset();
-    selectedFiles = [];
-    renderPreview();
-
-    showMessage(
-      "Deine Frage wurde erfolgreich an das LMS-NETWORK-Team gesendet. Vielen Dank!",
-      "success"
-    );
-
-  }catch(error){
-    console.error("LMS question submission:",error);
-
-    showMessage(
-      "Deine Frage konnte leider nicht gesendet werden. Bitte versuche es später erneut.",
-      "error"
-    );
-
-  }finally{
-    submitButton.disabled = false;
-    submitButton.innerHTML = 'FRAGE ABSENDEN <span>➜</span>';
+    showMessage(adminMessage, "Die Bilder wurden erfolgreich angehängt.");
+    input.value = "";
+    await loadQuestions();
   }
-});
+
+  // FRAGE LÖSCHEN
+  async function deleteQuestion(id) {
+    const question = currentQuestions.find(q => q.id === id);
+    if (!question) return;
+
+    const confirmed = confirm(
+      "Möchtest du diese Frage wirklich endgültig löschen?"
+    );
+
+    if (!confirmed) return;
+
+    const paths = Array.isArray(question.image_paths)
+      ? question.image_paths
+      : [];
+
+    if (paths.length) {
+      const { error: storageError } = await db.storage
+        .from("question-images")
+        .remove(paths);
+
+      if (storageError) {
+        showMessage(
+          adminMessage,
+          "Die Bilder konnten nicht gelöscht werden: " + storageError.message,
+          true
+        );
+        return;
+      }
+    }
+
+    const { error } = await db
+      .from("questions")
+      .delete()
+      .eq("id", id);
+
+    if (error) {
+      showMessage(adminMessage, "Löschen fehlgeschlagen: " + error.message, true);
+      return;
+    }
+
+    showMessage(adminMessage, "Die Frage wurde gelöscht.");
+    await loadQuestions();
+  }
+
+  // BUTTON-AKTIONEN
+  questionsList.addEventListener("click", async event => {
+    const button = event.target.closest("button[data-action]");
+    if (!button) return;
+
+    const id = button.dataset.id;
+    const action = button.dataset.action;
+
+    button.disabled = true;
+
+    try {
+      if (action === "save") await saveQuestion(id);
+      if (action === "upload") await uploadQuestionImages(id);
+      if (action === "delete") await deleteQuestion(id);
+    } finally {
+      button.disabled = false;
+    }
+  });
+
+  document.getElementById("refreshButton").addEventListener("click", loadQuestions);
+
+  document.getElementById("filterStatus").addEventListener("change", renderQuestions);
+
+  // AUTOMATISCHE SESSION-PRÜFUNG
+  db.auth.onAuthStateChange((event, session) => {
+    if (event === "SIGNED_OUT") {
+      loginPanel.classList.remove("hidden");
+      adminPanel.classList.add("hidden");
+    }
+  });
+
+  checkAdmin();
 </script>
 
 </body>
