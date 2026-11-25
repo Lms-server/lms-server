@@ -2,843 +2,441 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LMS NETWORK – Fragenverwaltung</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LMS NETWORK | Admin Fragenverwaltung</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: #080d18;
-      color: #f1f5f9;
-      min-height: 100vh;
-    }
-
-    header {
-      background: #101827;
-      border-bottom: 1px solid #26344b;
-      padding: 20px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .logo {
-      font-size: 23px;
-      font-weight: 900;
-      color: #f4c542;
-      letter-spacing: 1px;
-    }
-
-    .logo span {
-      color: #fff;
-    }
-
-    header a {
-      color: #b8c5d9;
-      text-decoration: none;
-    }
-
-    header a:hover {
-      color: #f4c542;
-    }
-
-    main {
-      width: min(1100px, 92%);
-      margin: 45px auto;
-    }
-
-    .hero {
-      margin-bottom: 30px;
-    }
-
-    .hero small {
-      color: #4ca8ff;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: bold;
-    }
-
-    h1 {
-      font-size: clamp(28px, 5vw, 42px);
-      margin: 10px 0;
-    }
-
-    .muted {
-      color: #9eacc1;
-      line-height: 1.6;
-    }
-
-    .panel {
-      background: #111c2d;
-      border: 1px solid #293a54;
-      border-radius: 14px;
-      padding: 25px;
-      margin-bottom: 22px;
-      box-shadow: 0 12px 35px #0003;
-    }
-
-    h2 {
-      margin-bottom: 17px;
-      font-size: 22px;
-    }
-
-    input, textarea, select {
-      width: 100%;
-      background: #0a1322;
-      border: 1px solid #354761;
-      border-radius: 8px;
-      padding: 13px;
-      color: white;
-      font: inherit;
-      margin: 7px 0 15px;
-    }
-
-    textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
-    label {
-      color: #cbd5e1;
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    button {
-      border: 0;
-      border-radius: 8px;
-      padding: 12px 18px;
-      font-weight: bold;
-      font-size: 14px;
-      cursor: pointer;
-      transition: .2s;
-    }
-
-    button:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.12);
-    }
-
-    .primary {
-      color: white;
-      background: linear-gradient(135deg, #1688e8, #0754a7);
-      box-shadow: 0 4px 15px #0879d544;
-    }
-
-    .gold {
-      color: #171717;
-      background: linear-gradient(135deg, #ffdc70, #d99b19);
-    }
-
-    .secondary {
-      color: white;
-      background: #293a54;
-    }
-
-    .danger {
-      color: white;
-      background: #a83242;
-    }
-
-    .success {
-      color: white;
-      background: #16804b;
-    }
-
-    .button-row {
-      display: flex;
-      gap: 9px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
-
-    .message {
-      display: none;
-      padding: 13px;
-      border-radius: 8px;
-      margin: 15px 0;
-      line-height: 1.5;
-    }
-
-    .error {
-      background: #451d29;
-      border: 1px solid #a83e51;
-      color: #ffc3cb;
-    }
-
-    .notice {
-      background: #123c2b;
-      border: 1px solid #267d52;
-      color: #b7f7d2;
-    }
-
-    .question {
-      background: #0b1525;
-      border: 1px solid #2b3c55;
-      border-radius: 12px;
-      padding: 20px;
-      margin: 17px 0;
-    }
-
-    .question-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
-    }
-
-    .question h3 {
-      font-size: 19px;
-      overflow-wrap: anywhere;
-    }
-
-    .meta {
-      color: #899bb5;
-      font-size: 13px;
-      margin-top: 6px;
-    }
-
-    .question-text {
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-      line-height: 1.6;
-      margin: 15px 0;
-      color: #dbe5f3;
-    }
-
-    .status {
-      padding: 6px 10px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    .status-offen {
-      background: #4a3514;
-      color: #ffd77b;
-    }
-
-    .status-bearbeitung {
-      background: #123e62;
-      color: #91d1ff;
-    }
-
-    .status-erledigt {
-      background: #16432e;
-      color: #9aefbb;
-    }
-
-    .images {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 12px 0;
-    }
-
-    .images a {
-      display: block;
-    }
-
-    .images img {
-      width: 125px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 1px solid #40536e;
-    }
-
-    .answer-box {
-      background: #142238;
-      border-left: 3px solid #36a2ff;
-      padding: 13px;
-      margin: 15px 0;
-      border-radius: 5px;
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    .empty {
-      text-align: center;
-      padding: 35px 10px;
-      color: #9eacc1;
-    }
-
-    footer {
-      text-align: center;
-      color: #718096;
-      padding: 30px 15px;
-      border-top: 1px solid #26344b;
-      margin-top: 60px;
-      font-size: 13px;
-    }
-
-    @media (max-width: 600px) {
-      .panel {
-        padding: 18px;
-      }
-
-      header {
-        padding: 17px 5%;
-      }
-
-      main {
-        margin-top: 30px;
-      }
-    }
-  </style>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#080d18;color:#edf3fc;font-family:Arial,sans-serif;min-height:100vh}
+header{height:76px;background:#101827;border-bottom:1px solid #29374c;display:flex;align-items:center;justify-content:space-between;padding:0 6%;gap:15px}
+.logo{font-size:23px;font-weight:900;color:#f4c542;letter-spacing:1px}
+.logo span{color:white}
+header a{color:#aabbd1;text-decoration:none}
+header a:hover{color:#f4c542}
+main{width:min(1100px,92%);margin:45px auto}
+.eyebrow{color:#45aaff;font-size:12px;font-weight:bold;letter-spacing:2px;text-transform:uppercase}
+h1{font-size:clamp(30px,5vw,43px);margin:10px 0}
+h2{font-size:22px;margin-bottom:18px}
+.muted{color:#9aabc1;line-height:1.6}
+.panel{background:#111c2d;border:1px solid #2a3b55;border-radius:14px;padding:25px;margin:22px 0;box-shadow:0 12px 35px #0003}
+input,textarea,select{width:100%;background:#091323;border:1px solid #354761;border-radius:8px;padding:13px;color:white;font:inherit;margin:8px 0 17px}
+textarea{min-height:105px;resize:vertical}
+label{font-size:13px;font-weight:bold;color:#cbd5e1}
+button{border:0;border-radius:8px;padding:12px 18px;font-weight:bold;cursor:pointer;transition:.2s}
+button:hover{filter:brightness(1.13);transform:translateY(-1px)}
+button:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.primary{background:linear-gradient(135deg,#1688e8,#0754a7);color:white;box-shadow:0 4px 15px #0879d544}
+.gold{background:linear-gradient(135deg,#ffdc70,#d99b19);color:#171717}
+.secondary{background:#293a54;color:white}
+.danger{background:#a83242;color:white}
+.message{display:none;padding:13px;border-radius:8px;margin:15px 0;line-height:1.5}
+.error{display:block;background:#451d29;border:1px solid #a83e51;color:#ffc3cb}
+.success{display:block;background:#123c2b;border:1px solid #267d52;color:#b7f7d2}
+.hidden{display:none!important}
+.question{background:#0a1424;border:1px solid #2b3d58;border-radius:12px;padding:20px;margin:17px 0}
+.question-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.question h3{font-size:19px;overflow-wrap:anywhere}
+.meta{color:#899bb5;font-size:13px;margin-top:6px}
+.question-text{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6;margin:15px 0;color:#dbe5f3}
+.status{padding:6px 10px;border-radius:20px;font-size:12px;font-weight:bold}
+.status-offen{background:#4a3514;color:#ffd77b}
+.status-bearbeitung{background:#123e62;color:#91d1ff}
+.status-erledigt{background:#16432e;color:#9aefbb}
+.images{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.images a{display:block}
+.images img{width:125px;height:100px;object-fit:cover;border-radius:8px;border:1px solid #40536e}
+.answer-box{background:#142238;border-left:3px solid #36a2ff;padding:13px;margin:15px 0;border-radius:5px;white-space:pre-wrap;overflow-wrap:anywhere}
+.button-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:10px}
+.empty{text-align:center;padding:35px 10px;color:#9eacc1}
+footer{text-align:center;color:#718096;padding:30px 15px;border-top:1px solid #26344b;margin-top:60px;font-size:13px}
+@media(max-width:600px){.panel{padding:18px}header{padding:0 5%}main{margin-top:30px}}
+</style>
 </head>
 
 <body>
-
 <header>
   <div class="logo">LMS <span>NETWORK</span></div>
   <a href="index.html">← Zurück zur Website</a>
 </header>
 
 <main>
-
-  <section class="hero">
-    <small>Internes Team-System</small>
+  <div style="margin-bottom:30px">
+    <div class="eyebrow">Internes Team-System</div>
     <h1>Fragenverwaltung</h1>
-    <p class="muted">
-      Hier kannst du die eingereichten Fragen der Community verwalten
-      und beantworten.
-    </p>
-  </section>
+    <p class="muted">Verwalte, bearbeite und beantworte die Fragen der LMS-Community.</p>
+  </div>
 
-  <div id="loginPanel" class="panel">
+  <section id="loginPanel" class="panel">
     <h2>Admin-Login</h2>
-    <p class="muted">Melde dich mit deinem Team-Account an.</p>
-
+    <p class="muted">Melde dich mit deinem freigeschalteten Team-Account an.</p>
     <form id="loginForm">
       <label for="email">E-Mail-Adresse</label>
       <input id="email" type="email" placeholder="Deine E-Mail-Adresse" required>
-
       <label for="password">Passwort</label>
       <input id="password" type="password" placeholder="Dein Passwort" required>
-
-      <button class="primary" type="submit">Anmelden</button>
+      <button class="primary" type="submit" id="loginButton">Anmelden</button>
     </form>
-
-    <div id="loginMessage" class="message error"></div>
-  </div>
+    <div id="loginMessage" class="message"></div>
+  </section>
 
   <section id="adminPanel" class="hidden">
-
     <div class="panel">
       <div class="question-top">
         <div>
           <h2>Team-Dashboard</h2>
-          <p class="muted">Du bist angemeldet.</p>
+          <p class="muted">Du bist im Admin-Bereich angemeldet.</p>
         </div>
         <button class="danger" id="logoutButton">Abmelden</button>
       </div>
-
       <div class="button-row">
-        <button class="secondary" id="refreshButton">↻ Fragen aktualisieren</button>
+        <button class="secondary" id="refreshButton">↻ Aktualisieren</button>
       </div>
-
       <div id="adminMessage" class="message"></div>
     </div>
 
     <div class="panel">
       <h2>Eingereichte Fragen</h2>
-
-      <label for="filterStatus">Nach Status filtern</label>
+      <label for="filterStatus">Statusfilter</label>
       <select id="filterStatus">
         <option value="Alle">Alle Fragen</option>
         <option value="Offen">Offen</option>
         <option value="In Bearbeitung">In Bearbeitung</option>
         <option value="Erledigt">Erledigt</option>
       </select>
-
-      <div id="questionsList">
-        <div class="empty">Fragen werden geladen ...</div>
-      </div>
+      <div id="questionsList"><div class="empty">Fragen werden geladen ...</div></div>
     </div>
-
   </section>
-
 </main>
 
-<footer>
-  © LMS NETWORK – Internes Team-System
-</footer>
+<footer>© LMS NETWORK – Internes Team-System</footer>
 
 <script>
-  // SUPABASE-VERBINDUNG
-  const SUPABASE_URL = "https://kxafgbrdybonjxwfziee.supabase.co";
-  const SUPABASE_KEY = "sb_publishable_d8qB9cKr2st2FVwAAYHorQ_sho1knUD";
+const SUPABASE_URL="https://kxafgbrdybonjxwfziee.supabase.co";
+const SUPABASE_KEY="sb_publishable_d8qB9cKr2st2FVwAAYHorQ_sho1knUD";
+const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
-  const db = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
+const loginPanel=document.getElementById("loginPanel");
+const adminPanel=document.getElementById("adminPanel");
+const loginMessage=document.getElementById("loginMessage");
+const adminMessage=document.getElementById("adminMessage");
+const questionsList=document.getElementById("questionsList");
+let currentQuestions=[];
 
-  const loginPanel = document.getElementById("loginPanel");
-  const adminPanel = document.getElementById("adminPanel");
-  const loginMessage = document.getElementById("loginMessage");
-  const adminMessage = document.getElementById("adminMessage");
-  const questionsList = document.getElementById("questionsList");
+function escapeHTML(value){
+  return String(value??"").replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+  })[c]);
+}
 
-  let currentQuestions = [];
+function showMessage(el,message,error=false){
+  el.textContent=message;
+  el.className="message "+(error?"error":"success");
+}
+function hideMessage(el){
+  el.textContent="";
+  el.className="message";
+}
+function statusClass(status){
+  if(status==="Erledigt")return "status-erledigt";
+  if(status==="In Bearbeitung")return "status-bearbeitung";
+  return "status-offen";
+}
+function formatDate(date){
+  if(!date)return "Unbekannt";
+  return new Date(date).toLocaleString("de-DE",{dateStyle:"medium",timeStyle:"short"});
+}
 
-  function escapeHTML(value) {
-    return String(value ?? "").replace(/[&<>"']/g, char => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#039;"
-    })[char]);
-  }
-
-  function showMessage(element, message, isError = false) {
-    element.textContent = message;
-    element.className = "message " + (isError ? "error" : "notice");
-    element.style.display = "block";
-  }
-
-  function hideMessage(element) {
-    element.style.display = "none";
-  }
-
-  function statusClass(status) {
-    if (status === "Erledigt") return "status-erledigt";
-    if (status === "In Bearbeitung") return "status-bearbeitung";
-    return "status-offen";
-  }
-
-  function formatDate(date) {
-    if (!date) return "Unbekannt";
-
-    return new Date(date).toLocaleString("de-DE", {
-      dateStyle: "medium",
-      timeStyle: "short"
-    });
-  }
-
-  async function checkAdmin() {
-    const { data: { user }, error: userError } = await db.auth.getUser();
-
-    if (userError || !user) {
-      loginPanel.classList.remove("hidden");
-      adminPanel.classList.add("hidden");
-      return false;
-    }
-
-    // Prüft die Admin-Berechtigung über die SQL-Funktion.
-    const { data, error } = await db.rpc("is_lms_admin");
-
-    if (error || data !== true) {
-      await db.auth.signOut();
-      loginPanel.classList.remove("hidden");
-      adminPanel.classList.add("hidden");
-
-      showMessage(
-        loginMessage,
-        "Dein Account ist nicht als LMS-Administrator freigeschaltet. Prüfe den Admin-Eintrag in Supabase.",
-        true
-      );
-
-      return false;
-    }
-
-    loginPanel.classList.add("hidden");
-    adminPanel.classList.remove("hidden");
-
-    await loadQuestions();
-    return true;
-  }
-
-  // LOGIN
-  document.getElementById("loginForm").addEventListener("submit", async event => {
-    event.preventDefault();
-    hideMessage(loginMessage);
-
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-
-    const { error } = await db.auth.signInWithPassword({
-      email,
-      password
-    });
-
-    if (error) {
-      showMessage(loginMessage, "Login fehlgeschlagen: " + error.message, true);
-      return;
-    }
-
-    await checkAdmin();
-  });
-
-  // LOGOUT
-  document.getElementById("logoutButton").addEventListener("click", async () => {
-    await db.auth.signOut();
-
-    adminPanel.classList.add("hidden");
+async function checkAdmin(){
+  const {data:{user},error:userError}=await db.auth.getUser();
+  if(userError||!user){
     loginPanel.classList.remove("hidden");
-
-    document.getElementById("password").value = "";
-    hideMessage(loginMessage);
-  });
-
-  // FRAGEN LADEN
-  async function loadQuestions() {
-    questionsList.innerHTML = '<div class="empty">Fragen werden geladen ...</div>';
-
-    const { data, error } = await db
-      .from("questions")
-      .select("*")
-      .order("created_at", { ascending: false });
-
-    if (error) {
-      questionsList.innerHTML = "";
-      showMessage(
-        adminMessage,
-        "Die Fragen konnten nicht geladen werden: " + error.message,
-        true
-      );
-      return;
-    }
-
-    currentQuestions = data || [];
-    renderQuestions();
-    hideMessage(adminMessage);
+    adminPanel.classList.add("hidden");
+    return false;
   }
 
-  // FRAGEN ANZEIGEN
-  async function renderQuestions() {
-    const filter = document.getElementById("filterStatus").value;
+  const {data,error}=await db.rpc("is_lms_admin");
+  if(error||data!==true){
+    await db.auth.signOut();
+    loginPanel.classList.remove("hidden");
+    adminPanel.classList.add("hidden");
+    showMessage(loginMessage,"Dein Account ist nicht als LMS-Administrator freigeschaltet. Prüfe den Admin-Eintrag in Supabase.",true);
+    return false;
+  }
 
-    const filtered = currentQuestions.filter(question => {
-      return filter === "Alle" || question.status === filter;
+  loginPanel.classList.add("hidden");
+  adminPanel.classList.remove("hidden");
+  await loadQuestions();
+  return true;
+}
+
+document.getElementById("loginForm").addEventListener("submit",async event=>{
+  event.preventDefault();
+  hideMessage(loginMessage);
+  const button=document.getElementById("loginButton");
+  button.disabled=true;
+  button.textContent="Anmeldung läuft ...";
+
+  try{
+    const email=document.getElementById("email").value.trim();
+    const password=document.getElementById("password").value;
+    const {error}=await db.auth.signInWithPassword({email,password});
+    if(error){
+      showMessage(loginMessage,"Login fehlgeschlagen: "+error.message,true);
+      return;
+    }
+    await checkAdmin();
+  }finally{
+    button.disabled=false;
+    button.textContent="Anmelden";
+  }
+});
+
+document.getElementById("logoutButton").addEventListener("click",async()=>{
+  await db.auth.signOut();
+  adminPanel.classList.add("hidden");
+  loginPanel.classList.remove("hidden");
+  document.getElementById("password").value="";
+  hideMessage(loginMessage);
+});
+
+async function loadQuestions(){
+  questionsList.innerHTML='<div class="empty">Fragen werden geladen ...</div>';
+  const {data,error}=await db.from("questions").select("*").order("created_at",{ascending:false});
+  if(error){
+    questionsList.innerHTML="";
+    showMessage(adminMessage,"Fragen konnten nicht geladen werden: "+error.message,true);
+    return;
+  }
+  currentQuestions=data||[];
+  renderQuestions();
+  hideMessage(adminMessage);
+}
+
+async function renderQuestions(){
+  const filter=document.getElementById("filterStatus").value;
+  const filtered=currentQuestions.filter(q=>filter==="Alle"||q.status===filter);
+
+  if(!filtered.length){
+    questionsList.innerHTML='<div class="empty">Keine Fragen in dieser Auswahl vorhanden.</div>';
+    return;
+  }
+
+  questionsList.innerHTML="";
+
+  for(const q of filtered){
+    const card=document.createElement("article");
+    card.className="question";
+    const status=q.status||"Offen";
+
+    card.innerHTML=`
+      <div class="question-top">
+        <div>
+          <h3>${escapeHTML(q.name||"Unbekannt")}</h3>
+          <div class="meta">Eingereicht: ${escapeHTML(formatDate(q.created_at))}</div>
+        </div>
+        <span class="status ${statusClass(status)}">${escapeHTML(status)}</span>
+      </div>
+
+      <h3>Frage</h3>
+      <div class="question-text">${escapeHTML(q.message)}</div>
+      <div class="images" id="images-${q.id}"><span class="meta">Bilder werden geladen ...</span></div>
+
+      <label for="name-${q.id}">Name bearbeiten</label>
+      <input id="name-${q.id}" value="${escapeHTML(q.name||"")}">
+
+      <label for="message-${q.id}">Frage bearbeiten</label>
+      <textarea id="message-${q.id}">${escapeHTML(q.message||"")}</textarea>
+
+      <label for="answer-${q.id}">Antwort</label>
+      <textarea id="answer-${q.id}" placeholder="Schreibe hier deine Antwort ...">${escapeHTML(q.answer||"")}</textarea>
+
+      <label for="note-${q.id}">Interne Team-Notiz (nicht öffentlich)</label>
+      <textarea id="note-${q.id}" placeholder="Nur für das Team sichtbar ...">${escapeHTML(q.admin_note||"")}</textarea>
+
+      <label for="status-${q.id}">Status</label>
+      <select id="status-${q.id}">
+        <option value="Offen" ${status==="Offen"?"selected":""}>Offen</option>
+        <option value="In Bearbeitung" ${status==="In Bearbeitung"?"selected":""}>In Bearbeitung</option>
+        <option value="Erledigt" ${status==="Erledigt"?"selected":""}>Erledigt</option>
+      </select>
+
+      <label for="files-${q.id}">Bilder anhängen (max. 5 Bilder, je 5 MB)</label>
+      <input id="files-${q.id}" type="file" accept="image/png,image/jpeg,image/webp,image/gif" multiple>
+
+      <div class="button-row">
+        <button class="gold" data-action="save" data-id="${q.id}">Änderungen speichern</button>
+        <button class="primary" data-action="upload" data-id="${q.id}">Bilder hochladen</button>
+        <button class="danger" data-action="delete" data-id="${q.id}">Frage löschen</button>
+      </div>
+    `;
+    questionsList.appendChild(card);
+    await showQuestionImages(q);
+  }
+}
+
+async function showQuestionImages(q){
+  const container=document.getElementById("images-"+q.id);
+  if(!container)return;
+  const paths=Array.isArray(q.image_paths)?q.image_paths:[];
+  if(!paths.length){
+    container.innerHTML='<span class="meta">Keine Bilder angehängt.</span>';
+    return;
+  }
+  container.innerHTML="";
+  for(const path of paths){
+    const {data,error}=await db.storage.from("question-images").createSignedUrl(path,3600);
+    if(error||!data?.signedUrl)continue;
+    const link=document.createElement("a");
+    link.href=data.signedUrl;
+    link.target="_blank";
+    link.rel="noopener noreferrer";
+    const img=document.createElement("img");
+    img.src=data.signedUrl;
+    img.alt="Angehängtes Bild";
+    link.appendChild(img);
+    container.appendChild(link);
+  }
+  if(!container.children.length){
+    container.innerHTML='<span class="meta">Bilder konnten nicht geladen werden.</span>';
+  }
+}
+
+async function saveQuestion(id){
+  const name=document.getElementById("name-"+id).value.trim();
+  const message=document.getElementById("message-"+id).value.trim();
+  const answer=document.getElementById("answer-"+id).value.trim();
+  const admin_note=document.getElementById("note-"+id).value.trim();
+  const status=document.getElementById("status-"+id).value;
+
+  if(!name||!message){
+    showMessage(adminMessage,"Name und Frage dürfen nicht leer sein.",true);
+    return;
+  }
+
+  const {error}=await db.from("questions").update({
+    name,message,answer,admin_note,status,
+    updated_at:new Date().toISOString(),
+    answered_at:answer?new Date().toISOString():null
+  }).eq("id",id);
+
+  if(error){
+    showMessage(adminMessage,"Speichern fehlgeschlagen: "+error.message,true);
+    return;
+  }
+  showMessage(adminMessage,"Die Änderungen wurden gespeichert.");
+  await loadQuestions();
+}
+
+async function uploadQuestionImages(id){
+  const input=document.getElementById("files-"+id);
+  const files=Array.from(input.files||[]);
+  if(!files.length){
+    showMessage(adminMessage,"Bitte wähle zuerst Bilder aus.",true);
+    return;
+  }
+  if(files.length>5){
+    showMessage(adminMessage,"Maximal 5 Bilder auf einmal.",true);
+    return;
+  }
+
+  const q=currentQuestions.find(item=>item.id===id);
+  if(!q)return;
+  const paths=Array.isArray(q.image_paths)?[...q.image_paths]:[];
+  const allowed=["image/jpeg","image/png","image/webp","image/gif"];
+
+  for(const file of files){
+    if(!allowed.includes(file.type)){
+      showMessage(adminMessage,"Nur JPG, PNG, WEBP und GIF sind erlaubt.",true);
+      return;
+    }
+    if(file.size>5*1024*1024){
+      showMessage(adminMessage,"Jedes Bild darf maximal 5 MB groß sein.",true);
+      return;
+    }
+  }
+
+  for(const file of files){
+    const extension=file.name.split(".").pop().toLowerCase();
+    const path=`admin/${id}/${crypto.randomUUID()}.${extension}`;
+    const {error}=await db.storage.from("question-images").upload(path,file,{
+      contentType:file.type,upsert:false
     });
-
-    if (!filtered.length) {
-      questionsList.innerHTML =
-        '<div class="empty">Keine Fragen in dieser Auswahl vorhanden.</div>';
+    if(error){
+      showMessage(adminMessage,"Bild-Upload fehlgeschlagen: "+error.message,true);
       return;
     }
+    paths.push(path);
+  }
 
-    questionsList.innerHTML = "";
+  const {error}=await db.from("questions").update({
+    image_paths:paths,
+    updated_at:new Date().toISOString()
+  }).eq("id",id);
 
-    for (const question of filtered) {
-      const card = document.createElement("article");
-      card.className = "question";
+  if(error){
+    showMessage(adminMessage,"Bilder wurden hochgeladen, aber nicht angehängt: "+error.message,true);
+    return;
+  }
 
-      const status = question.status || "Offen";
+  input.value="";
+  showMessage(adminMessage,"Bilder erfolgreich angehängt.");
+  await loadQuestions();
+}
 
-      card.innerHTML = `
-        <div class="question-top">
-          <div>
-            <h3>${escapeHTML(question.name || "Unbekannt")}</h3>
-            <div class="meta">
-              Eingereicht: ${escapeHTML(formatDate(question.created_at))}
-            </div>
-          </div>
+async function deleteQuestion(id){
+  const q=currentQuestions.find(item=>item.id===id);
+  if(!q)return;
+  if(!confirm("Möchtest du diese Frage wirklich endgültig löschen?"))return;
 
-          <span class="status ${statusClass(status)}">
-            ${escapeHTML(status)}
-          </span>
-        </div>
-
-        <h3>Frage</h3>
-        <div class="question-text">${escapeHTML(question.message)}</div>
-
-        <div class="images" id="images-${question.id}">
-          <span class="meta">Bilder werden geladen ...</span>
-        </div>
-
-        <label for="name-${question.id}">Name bearbeiten</label>
-        <input id="name-${question.id}" value="${escapeHTML(question.name || "")}">
-
-        <label for="message-${question.id}">Frage bearbeiten</label>
-        <textarea id="message-${question.id}">${escapeHTML(question.message || "")}</textarea>
-
-        <label for="answer-${question.id}">Antwort an die Person</label>
-        <textarea id="answer-${question.id}" placeholder="Schreibe hier deine Antwort ...">${escapeHTML(question.answer || "")}</textarea>
-
-        <label for="note-${question.id}">Interne Team-Notiz</label>
-        <textarea id="note-${question.id}" placeholder="Nur für das Team sichtbar ...">${escapeHTML(question.admin_note || "")}</textarea>
-
-        <label for="status-${question.id}">Status</label>
-        <select id="status-${question.id}">
-          <option value="Offen" ${status === "Offen" ? "selected" : ""}>Offen</option>
-          <option value="In Bearbeitung" ${status === "In Bearbeitung" ? "selected" : ""}>In Bearbeitung</option>
-          <option value="Erledigt" ${status === "Erledigt" ? "selected" : ""}>Erledigt</option>
-        </select>
-
-        <label for="files-${question.id}">Bilder anhängen</label>
-        <input id="files-${question.id}" type="file" accept="image/png,image/jpeg,image/webp,image/gif" multiple>
-
-        <div class="button-row">
-          <button class="gold" data-action="save" data-id="${question.id}">
-            Änderungen speichern
-          </button>
-
-          <button class="primary" data-action="upload" data-id="${question.id}">
-            Bilder hochladen
-          </button>
-
-          <button class="danger" data-action="delete" data-id="${question.id}">
-            Frage löschen
-          </button>
-        </div>
-      `;
-
-      questionsList.appendChild(card);
-      await showQuestionImages(question);
+  const paths=Array.isArray(q.image_paths)?q.image_paths:[];
+  if(paths.length){
+    const {error}=await db.storage.from("question-images").remove(paths);
+    if(error){
+      showMessage(adminMessage,"Bilder konnten nicht gelöscht werden: "+error.message,true);
+      return;
     }
   }
 
-  // BILDER ANZEIGEN
-  async function showQuestionImages(question) {
-    const container = document.getElementById("images-" + question.id);
-    if (!container) return;
-
-    const paths = Array.isArray(question.image_paths)
-      ? question.image_paths
-      : [];
-
-    if (!paths.length) {
-      container.innerHTML = '<span class="meta">Keine Bilder angehängt.</span>';
-      return;
-    }
-
-    container.innerHTML = "";
-
-    for (const path of paths) {
-      const { data, error } = await db.storage
-        .from("question-images")
-        .createSignedUrl(path, 3600);
-
-      if (error || !data?.signedUrl) continue;
-
-      const link = document.createElement("a");
-      link.href = data.signedUrl;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-
-      const img = document.createElement("img");
-      img.src = data.signedUrl;
-      img.alt = "Angehängtes Bild";
-
-      link.appendChild(img);
-      container.appendChild(link);
-    }
-
-    if (!container.children.length) {
-      container.innerHTML = '<span class="meta">Bilder konnten nicht geladen werden.</span>';
-    }
+  const {error}=await db.from("questions").delete().eq("id",id);
+  if(error){
+    showMessage(adminMessage,"Löschen fehlgeschlagen: "+error.message,true);
+    return;
   }
 
-  // ÄNDERUNGEN SPEICHERN
-  async function saveQuestion(id) {
-    const name = document.getElementById("name-" + id).value.trim();
-    const message = document.getElementById("message-" + id).value.trim();
-    const answer = document.getElementById("answer-" + id).value.trim();
-    const admin_note = document.getElementById("note-" + id).value.trim();
-    const status = document.getElementById("status-" + id).value;
+  showMessage(adminMessage,"Die Frage wurde gelöscht.");
+  await loadQuestions();
+}
 
-    if (!name || !message) {
-      showMessage(adminMessage, "Name und Frage dürfen nicht leer sein.", true);
-      return;
-    }
-
-    const oldQuestion = currentQuestions.find(q => q.id === id);
-
-    const updateData = {
-      name,
-      message,
-      answer,
-      admin_note,
-      status,
-      updated_at: new Date().toISOString(),
-      answered_at: answer ? new Date().toISOString() : null
-    };
-
-    const { error } = await db
-      .from("questions")
-      .update(updateData)
-      .eq("id", id);
-
-    if (error) {
-      showMessage(adminMessage, "Speichern fehlgeschlagen: " + error.message, true);
-      return;
-    }
-
-    showMessage(adminMessage, "Die Frage wurde erfolgreich gespeichert.");
-    await loadQuestions();
+questionsList.addEventListener("click",async event=>{
+  const button=event.target.closest("button[data-action]");
+  if(!button)return;
+  const id=button.dataset.id;
+  const action=button.dataset.action;
+  button.disabled=true;
+  try{
+    if(action==="save")await saveQuestion(id);
+    if(action==="upload")await uploadQuestionImages(id);
+    if(action==="delete")await deleteQuestion(id);
+  }catch(error){
+    showMessage(adminMessage,"Ein unerwarteter Fehler ist aufgetreten: "+error.message,true);
+  }finally{
+    button.disabled=false;
   }
+});
 
-  // BILDER HOCHLADEN
-  async function uploadQuestionImages(id) {
-    const input = document.getElementById("files-" + id);
-    const files = Array.from(input.files || []);
+document.getElementById("refreshButton").addEventListener("click",loadQuestions);
+document.getElementById("filterStatus").addEventListener("change",renderQuestions);
 
-    if (!files.length) {
-      showMessage(adminMessage, "Bitte wähle zuerst mindestens ein Bild aus.", true);
-      return;
-    }
-
-    if (files.length > 5) {
-      showMessage(adminMessage, "Du kannst maximal 5 Bilder auf einmal hochladen.", true);
-      return;
-    }
-
-    const question = currentQuestions.find(q => q.id === id);
-    if (!question) return;
-
-    const paths = Array.isArray(question.image_paths)
-      ? [...question.image_paths]
-      : [];
-
-    for (const file of files) {
-      const allowed = ["image/jpeg", "image/png", "image/webp", "image/gif"];
-
-      if (!allowed.includes(file.type)) {
-        showMessage(adminMessage, "Nur JPG, PNG, WEBP und GIF sind erlaubt.", true);
-        return;
-      }
-
-      if (file.size > 5 * 1024 * 1024) {
-        showMessage(adminMessage, "Jedes Bild darf maximal 5 MB groß sein.", true);
-        return;
-      }
-    }
-
-    for (const file of files) {
-      const extension = file.name.split(".").pop().toLowerCase();
-      const path = `admin/${id}/${crypto.randomUUID()}.${extension}`;
-
-      const { error } = await db.storage
-        .from("question-images")
-        .upload(path, file, {
-          contentType: file.type,
-          upsert: false
-        });
-
-      if (error) {
-        showMessage(adminMessage, "Bild-Upload fehlgeschlagen: " + error.message, true);
-        return;
-      }
-
-      paths.push(path);
-    }
-
-    const { error } = await db
-      .from("questions")
-      .update({
-        image_paths: paths,
-        updated_at: new Date().toISOString()
-      })
-      .eq("id", id);
-
-    if (error) {
-      showMessage(adminMessage, "Bilder wurden hochgeladen, aber nicht an die Frage angehängt: " + error.message, true);
-      return;
-    }
-
-    showMessage(adminMessage, "Die Bilder wurden erfolgreich angehängt.");
-    input.value = "";
-    await loadQuestions();
+db.auth.onAuthStateChange((event)=>{
+  if(event==="SIGNED_OUT"){
+    loginPanel.classList.remove("hidden");
+    adminPanel.classList.add("hidden");
   }
+});
 
-  // FRAGE LÖSCHEN
-  async function deleteQuestion(id) {
-    const question = currentQuestions.find(q => q.id === id);
-    if (!question) return;
-
-    const confirmed = confirm(
-      "Möchtest du diese Frage wirklich endgültig löschen?"
-    );
-
-    if (!confirmed) return;
-
-    const paths = Array.isArray(question.image_paths)
-      ? question.image_paths
-      : [];
-
-    if (paths.length) {
-      const { error: storageError } = await db.storage
-        .from("question-images")
-        .remove(paths);
-
-      if (storageError) {
-        showMessage(
-          adminMessage,
-          "Die Bilder konnten nicht gelöscht werden: " + storageError.message,
-          true
-        );
-        return;
-      }
-    }
-
-    const { error } = await db
-      .from("questions")
-      .delete()
-      .eq("id", id);
-
-    if (error) {
-      showMessage(adminMessage, "Löschen fehlgeschlagen: " + error.message, true);
-      return;
-    }
-
-    showMessage(adminMessage, "Die Frage wurde gelöscht.");
-    await loadQuestions();
-  }
-
-  // BUTTON-AKTIONEN
-  questionsList.addEventListener("click", async event => {
-    const button = event.target.closest("button[data-action]");
-    if (!button) return;
-
-    const id = button.dataset.id;
-    const action = button.dataset.action;
-
-    button.disabled = true;
-
-    try {
-      if (action === "save") await saveQuestion(id);
-      if (action === "upload") await uploadQuestionImages(id);
-      if (action === "delete") await deleteQuestion(id);
-    } finally {
-      button.disabled = false;
-    }
-  });
-
-  document.getElementById("refreshButton").addEventListener("click", loadQuestions);
-
-  document.getElementById("filterStatus").addEventListener("change", renderQuestions);
-
-  // AUTOMATISCHE SESSION-PRÜFUNG
-  db.auth.onAuthStateChange((event, session) => {
-    if (event === "SIGNED_OUT") {
-      loginPanel.classList.remove("hidden");
-      adminPanel.classList.add("hidden");
-    }
-  });
-
-  checkAdmin();
+checkAdmin();
 </script>
-
 </body>
 </html>
