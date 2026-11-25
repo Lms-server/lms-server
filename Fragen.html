@@ -1,0 +1,600 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fragen stellen | LMS NETWORK</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, #172c49 0%, transparent 42%),
+        #080d18;
+      color: #f3f5fa;
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 30px 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .top {
+      text-align: center;
+      margin: 25px 0 35px;
+    }
+
+    .logo {
+      color: #e5bd59;
+      font-size: 31px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .logo span {
+      color: #ffffff;
+    }
+
+    .subtitle {
+      color: #aebbd0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .panel {
+      background: #111b2c;
+      border: 1px solid #263955;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 15px 45px rgba(0,0,0,.3);
+    }
+
+    h1 {
+      font-size: 27px;
+      margin-bottom: 12px;
+    }
+
+    .description {
+      color: #aebbd0;
+      line-height: 1.65;
+      margin-bottom: 28px;
+      font-size: 14px;
+    }
+
+    .field {
+      margin-bottom: 22px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 9px;
+      font-size: 14px;
+    }
+
+    .optional {
+      color: #8495ad;
+      font-weight: normal;
+    }
+
+    input, textarea {
+      width: 100%;
+      background: #091321;
+      border: 1px solid #344760;
+      border-radius: 9px;
+      padding: 14px;
+      color: white;
+      font-size: 15px;
+      outline: none;
+      transition: border .2s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #3988ed;
+    }
+
+    textarea {
+      min-height: 170px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #71829a;
+    }
+
+    .upload-area {
+      border: 2px dashed #344b69;
+      border-radius: 11px;
+      padding: 22px;
+      text-align: center;
+      background: #0b1626;
+    }
+
+    .upload-icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .upload-area p {
+      color: #aebbd0;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .file-button {
+      display: inline-block;
+      background: #245da5;
+      color: white;
+      border-radius: 7px;
+      padding: 11px 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .file-button:hover {
+      background: #347bd0;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .file-list {
+      margin-top: 13px;
+      text-align: left;
+    }
+
+    .file-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 11px;
+      background: #17263a;
+      border-radius: 7px;
+      margin-top: 7px;
+      font-size: 13px;
+      color: #dce5f2;
+      overflow-wrap: anywhere;
+    }
+
+    .remove-file {
+      border: none;
+      background: #71343d;
+      color: white;
+      border-radius: 5px;
+      padding: 5px 9px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .hint {
+      color: #8193ab;
+      font-size: 12px;
+      margin-top: 9px;
+    }
+
+    .submit-button {
+      width: 100%;
+      border: none;
+      border-radius: 9px;
+      padding: 16px;
+      color: white;
+      background: linear-gradient(180deg, #3989ec, #205aa7);
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #143c70;
+      transition: .2s;
+    }
+
+    .submit-button:hover {
+      filter: brightness(1.12);
+      transform: translateY(-1px);
+    }
+
+    .submit-button:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .message {
+      display: none;
+      margin-top: 20px;
+      padding: 14px;
+      border-radius: 9px;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .success {
+      display: block;
+      background: #153b2c;
+      border: 1px solid #28734e;
+      color: #a9f0c7;
+    }
+
+    .error {
+      display: block;
+      background: #421f29;
+      border: 1px solid #8d3c4d;
+      color: #ffc0c8;
+    }
+
+    .back {
+      display: block;
+      width: fit-content;
+      margin: 25px auto 0;
+      color: #a9cfff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .back:hover {
+      color: white;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      color: #62738a;
+      font-size: 12px;
+      margin-top: 35px;
+    }
+
+    @media (max-width: 550px) {
+      .panel {
+        padding: 21px;
+      }
+
+      h1 {
+        font-size: 23px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <header class="top">
+      <div class="logo">LMS <span>NETWORK</span></div>
+      <p class="subtitle">
+        Deine Frage. Unser Team. Gemeinsam finden wir eine Antwort.
+      </p>
+    </header>
+
+    <section class="panel">
+
+      <h1>Frage einreichen</h1>
+
+      <p class="description">
+        Du hast eine Frage, ein Problem oder einen Vorschlag?
+        Dann kannst du uns hier eine Nachricht hinterlassen.
+        Unser Team kann deine Einsendung anschließend intern bearbeiten.
+      </p>
+
+      <form id="questionForm">
+
+        <div class="field">
+          <label for="name">Dein Name</label>
+          <input
+            type="text"
+            id="name"
+            maxlength="60"
+            placeholder="Wie dürfen wir dich nennen?"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="question">Deine Frage</label>
+          <textarea
+            id="question"
+            maxlength="5000"
+            placeholder="Schreibe hier deine Frage oder Nachricht ..."
+            required
+          ></textarea>
+        </div>
+
+        <div class="field">
+          <label>
+            Bilder anhängen
+            <span class="optional">(optional)</span>
+          </label>
+
+          <div class="upload-area">
+            <div class="upload-icon">📷</div>
+
+            <p>
+              Du kannst bis zu 3 Bilder hinzufügen.<br>
+              Erlaubt: JPG, PNG, WEBP und GIF.<br>
+              Maximal 5 MB pro Bild.
+            </p>
+
+            <label for="images" class="file-button">
+              Bilder auswählen
+            </label>
+
+            <input
+              type="file"
+              id="images"
+              accept="image/jpeg,image/png,image/webp,image/gif"
+              multiple
+            >
+
+            <div class="file-list" id="fileList"></div>
+          </div>
+
+          <p class="hint">
+            Bitte lade nur Bilder hoch, die für deine Frage relevant sind.
+          </p>
+        </div>
+
+        <button type="submit" class="submit-button" id="submitButton">
+          Frage absenden
+        </button>
+
+        <div id="messageBox" class="message" role="status" aria-live="polite"></div>
+
+      </form>
+
+    </section>
+
+    <a href="index.html" class="back">← Zurück zur Startseite</a>
+
+    <footer>
+      © LMS NETWORK – Alle Rechte vorbehalten.
+    </footer>
+
+  </main>
+
+  <script>
+    // SUPABASE VERBINDUNG
+    const SUPABASE_URL = "https://kxafgbrdybonjxwfziee.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_d8qB9cKr2st2FVwAAYHorQ_sho1knUD";
+
+    const db = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+    // ELEMENTE
+    const form = document.getElementById("questionForm");
+    const nameInput = document.getElementById("name");
+    const questionInput = document.getElementById("question");
+    const imageInput = document.getElementById("images");
+    const fileList = document.getElementById("fileList");
+    const messageBox = document.getElementById("messageBox");
+    const submitButton = document.getElementById("submitButton");
+
+    const MAX_FILES = 3;
+    const MAX_SIZE = 5 * 1024 * 1024;
+
+    const ALLOWED_TYPES = [
+      "image/jpeg",
+      "image/png",
+      "image/webp",
+      "image/gif"
+    ];
+
+    let selectedFiles = [];
+
+    // MELDUNG ANZEIGEN
+    function showMessage(text, type) {
+      messageBox.textContent = text;
+      messageBox.className = "message " + type;
+    }
+
+    function clearMessage() {
+      messageBox.textContent = "";
+      messageBox.className = "message";
+    }
+
+    // DATEIEN ANZEIGEN
+    function renderFiles() {
+      fileList.innerHTML = "";
+
+      selectedFiles.forEach((file, index) => {
+        const item = document.createElement("div");
+        item.className = "file-item";
+
+        const fileName = document.createElement("span");
+        fileName.textContent = file.name;
+
+        const removeButton = document.createElement("button");
+        removeButton.type = "button";
+        removeButton.className = "remove-file";
+        removeButton.textContent = "Entfernen";
+
+        removeButton.addEventListener("click", () => {
+          selectedFiles.splice(index, 1);
+          renderFiles();
+          clearMessage();
+        });
+
+        item.appendChild(fileName);
+        item.appendChild(removeButton);
+        fileList.appendChild(item);
+      });
+    }
+
+    // BILDER AUSWÄHLEN
+    imageInput.addEventListener("change", () => {
+      clearMessage();
+
+      const newFiles = Array.from(imageInput.files);
+
+      for (const file of newFiles) {
+        if (!ALLOWED_TYPES.includes(file.type)) {
+          showMessage(
+            "Eine Datei hat ein nicht erlaubtes Format. Bitte nutze JPG, PNG, WEBP oder GIF.",
+            "error"
+          );
+          imageInput.value = "";
+          return;
+        }
+
+        if (file.size > MAX_SIZE) {
+          showMessage(
+            "Das Bild " + file.name + " ist größer als 5 MB.",
+            "error"
+          );
+          imageInput.value = "";
+          return;
+        }
+      }
+
+      if (selectedFiles.length + newFiles.length > MAX_FILES) {
+        showMessage(
+          "Du kannst maximal 3 Bilder anhängen.",
+          "error"
+        );
+        imageInput.value = "";
+        return;
+      }
+
+      selectedFiles.push(...newFiles);
+      imageInput.value = "";
+      renderFiles();
+    });
+
+    // DATEI-ENDUNG ERMITTELN
+    function getExtension(file) {
+      const extensions = {
+        "image/jpeg": "jpg",
+        "image/png": "png",
+        "image/webp": "webp",
+        "image/gif": "gif"
+      };
+
+      return extensions[file.type];
+    }
+
+    // FORMULAR ABSENDEN
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      clearMessage();
+
+      const name = nameInput.value.trim();
+      const question = questionInput.value.trim();
+
+      if (!name || !question) {
+        showMessage(
+          "Bitte fülle deinen Namen und deine Frage aus.",
+          "error"
+        );
+        return;
+      }
+
+      if (name.length > 60 || question.length > 5000) {
+        showMessage(
+          "Deine Eingabe ist zu lang.",
+          "error"
+        );
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Wird gesendet ...";
+
+      const uploadedPaths = [];
+
+      try {
+        // BILDER HOCHLADEN
+        for (const file of selectedFiles) {
+          const extension = getExtension(file);
+
+          if (!extension) {
+            throw new Error("Ein Bild hat ein ungültiges Format.");
+          }
+
+          const filePath =
+            "incoming/" +
+            crypto.randomUUID() +
+            "." +
+            extension;
+
+          const { error: uploadError } = await db.storage
+            .from("question-images")
+            .upload(filePath, file, {
+              cacheControl: "3600",
+              upsert: false,
+              contentType: file.type
+            });
+
+          if (uploadError) {
+            throw uploadError;
+          }
+
+          uploadedPaths.push(filePath);
+        }
+
+        // FRAGE IN SUPABASE SPEICHERN
+        const { error: insertError } = await db
+          .from("questions")
+          .insert({
+            name: name,
+            message: question,
+            image_paths: uploadedPaths,
+            status: "Offen"
+          });
+
+        if (insertError) {
+          throw insertError;
+        }
+
+        // ERFOLG
+        form.reset();
+        selectedFiles = [];
+        renderFiles();
+
+        showMessage(
+          "Vielen Dank! Deine Frage wurde erfolgreich eingereicht. Unser Team kann sie nun bearbeiten.",
+          "success"
+        );
+
+      } catch (error) {
+        console.error("Fehler beim Absenden:", error);
+
+        // HOCHGELADENE BILDER AUFRÄUMEN,
+        // WENN DAS SPEICHERN DER FRAGE FEHLSCHLÄGT
+        if (uploadedPaths.length > 0) {
+          await db.storage
+            .from("question-images")
+            .remove(uploadedPaths);
+        }
+
+        showMessage(
+          "Deine Frage konnte leider nicht gesendet werden. Bitte versuche es später erneut. Fehler: " +
+          (error.message || "Unbekannter Fehler"),
+          "error"
+        );
+
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Frage absenden";
+      }
+    });
+  </script>
+
+</body>
+</html>
