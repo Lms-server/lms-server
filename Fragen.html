@@ -309,10 +309,12 @@
           <label for="question">Deine Frage</label>
           <textarea
             id="question"
-            maxlength="5000"
+            minlength="5"
+            maxlength="3000"
             placeholder="Schreibe hier deine Frage oder Nachricht ..."
             required
           ></textarea>
+          <p class="hint">Mindestens 5 und maximal 3.000 Zeichen.</p>
         </div>
 
         <div class="field">
@@ -505,9 +507,25 @@
         return;
       }
 
-      if (name.length > 60 || question.length > 5000) {
+      if (name.length > 60) {
         showMessage(
-          "Deine Eingabe ist zu lang.",
+          "Dein Name darf höchstens 60 Zeichen lang sein.",
+          "error"
+        );
+        return;
+      }
+
+      if (question.length < 5) {
+        showMessage(
+          "Deine Frage muss mindestens 5 Zeichen lang sein.",
+          "error"
+        );
+        return;
+      }
+
+      if (question.length > 3000) {
+        showMessage(
+          "Deine Frage darf höchstens 3.000 Zeichen lang sein.",
           "error"
         );
         return;
@@ -575,12 +593,15 @@
       } catch (error) {
         console.error("Fehler beim Absenden:", error);
 
-        // HOCHGELADENE BILDER AUFRÄUMEN,
-        // WENN DAS SPEICHERN DER FRAGE FEHLSCHLÄGT
+        // HOCHGELADENE BILDER AUFRÄUMEN
         if (uploadedPaths.length > 0) {
-          await db.storage
+          const { error: cleanupError } = await db.storage
             .from("question-images")
             .remove(uploadedPaths);
+
+          if (cleanupError) {
+            console.error("Bild-Aufräumfehler:", cleanupError);
+          }
         }
 
         showMessage(
