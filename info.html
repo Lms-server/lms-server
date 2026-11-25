@@ -3,24 +3,22 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#111318">
-<meta name="description" content="Unsere Sponsoren, Unterstützer und Mitwirkenden – LMS NETWORK.">
-<title>LMS NETWORK | Sponsoren & Mitwirkende</title>
+<meta name="description" content="Erfahre mehr über LMS NETWORK – deinen Minecraft-Server und seine Community.">
+
+<title>LMS NETWORK | Info & Wiki</title>
 
 <style>
 :root{
   --bg:#111318;
   --bg2:#181b21;
   --panel:#20232a;
-  --panel2:#252932;
   --text:#f1f1f2;
   --muted:#a9abb1;
   --gold:#e4c16d;
   --gold2:#f0cf7d;
   --line:#373a43;
-  --green:#65c58a;
-  --blue:#75aeea;
 }
 
 *{
@@ -52,6 +50,8 @@ button{
   cursor:pointer;
 }
 
+/* SCROLL PROGRESS */
+
 .top-progress{
   position:fixed;
   top:0;
@@ -62,6 +62,8 @@ button{
   z-index:2000;
   box-shadow:0 0 12px #e4c16d66;
 }
+
+/* TOP NOTICE */
 
 .top-notice{
   background:#c59a3c;
@@ -156,12 +158,12 @@ button{
 /* HERO */
 
 .hero{
-  min-height:420px;
+  min-height:410px;
   position:relative;
   display:grid;
   place-items:center;
   text-align:center;
-  padding:100px 22px 85px;
+  padding:95px 22px 80px;
   overflow:hidden;
   background:
     linear-gradient(110deg,rgba(10,12,16,.94),rgba(10,12,16,.68),rgba(10,12,16,.94)),
@@ -243,18 +245,17 @@ button{
 /* GENERAL */
 
 .container{
-  width:min(1200px,91%);
+  width:min(1100px,91%);
   margin:auto;
 }
 
 .section{
   padding:65px 0 15px;
-  scroll-margin-top:100px;
 }
 
 .section-heading{
   text-align:center;
-  margin-bottom:35px;
+  margin-bottom:30px;
 }
 
 .section-label{
@@ -279,355 +280,195 @@ button{
   color:var(--muted);
   font-size:14px;
   margin:12px auto 0;
-  max-width:650px;
+  max-width:700px;
   line-height:1.8;
 }
 
-/* SPONSOR */
+/* MAIN INFO CARD */
 
-.sponsor-area{
-  padding-top:15px;
-}
-
-.sponsor-card{
+.info-card{
   position:relative;
-  display:grid;
-  grid-template-columns:240px 1fr;
-  gap:35px;
-  align-items:center;
-  padding:38px;
-  border:1px solid #8d7545;
-  border-radius:18px;
+  padding:clamp(28px,5vw,50px);
+  border:1px solid #3b526d;
+  border-radius:16px;
   background:
-    radial-gradient(circle at 10% 50%,#e4c16d12,transparent 35%),
-    linear-gradient(135deg,#25251f,#20232a 65%,#191c22);
-  overflow:hidden;
-  box-shadow:0 20px 55px #0004;
-  transition:.25s;
-}
-
-.sponsor-card:hover{
-  border-color:var(--gold2);
-  transform:translateY(-3px);
-}
-
-.sponsor-logo{
-  min-height:175px;
-  display:grid;
-  place-items:center;
-  padding:22px;
-  background:#fff;
-  border-radius:15px;
-}
-
-.sponsor-logo img{
-  width:100%;
-  max-width:185px;
-  max-height:125px;
-  object-fit:contain;
-}
-
-.sponsor-content .sponsor-badge{
-  display:inline-block;
-  background:#e4c16d1c;
-  border:1px solid #e4c16d55;
-  color:var(--gold2);
-  padding:6px 11px;
-  border-radius:30px;
-  font-size:9px;
-  font-weight:950;
-  letter-spacing:1.5px;
-  margin-bottom:13px;
-}
-
-.sponsor-content h3{
-  font-size:clamp(24px,4vw,35px);
-  margin-bottom:10px;
-}
-
-.sponsor-content p{
-  color:#c2c6ce;
-  font-size:14px;
-  line-height:1.85;
-  max-width:650px;
-}
-
-.sponsor-content strong{
-  color:#fff;
-}
-
-.sponsor-footer{
-  margin-top:19px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-.sponsor-link{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  background:linear-gradient(135deg,#e4c16d,#b88b2e);
-  color:#171717;
-  padding:11px 16px;
-  border-radius:8px;
-  font-size:11px;
-  font-weight:950;
-  transition:.2s;
-}
-
-.sponsor-link:hover{
-  transform:translateY(-2px);
-  background:var(--gold2);
-}
-
-.sponsor-note{
-  color:#8e949e;
-  font-size:10px;
-}
-
-/* PARTNER BOX */
-
-.support-info{
-  margin-top:17px;
-  padding:17px 20px;
-  background:#20232a;
-  border:1px solid var(--line);
-  border-radius:11px;
-  color:#bfc4cc;
-  font-size:12px;
-  line-height:1.8;
-}
-
-.support-info strong{
-  color:var(--gold2);
-}
-
-/* CONTRIBUTORS */
-
-.contributor-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:17px;
-}
-
-.person-card{
-  position:relative;
-  min-width:0;
-  background:linear-gradient(145deg,#24272f,#1a1d23);
-  border:1px solid var(--line);
-  border-radius:15px;
-  padding:25px 20px 23px;
+    radial-gradient(circle at 50% 0%,#55b8ff18,transparent 65%),
+    linear-gradient(145deg,#202a38,#171d28);
+  box-shadow:0 18px 45px #0005;
   text-align:center;
   overflow:hidden;
-  transition:.25s;
 }
 
-.person-card:before{
+.info-card:before{
   content:"";
   position:absolute;
   top:0;
-  left:0;
-  width:100%;
-  height:3px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
-  opacity:.7;
+  left:10%;
+  width:80%;
+  height:2px;
+  background:linear-gradient(90deg,transparent,#80caff,transparent);
 }
 
-.person-card:hover{
-  transform:translateY(-5px);
-  border-color:#8f794b;
-  box-shadow:0 15px 35px #0004;
-}
-
-.avatar-wrap{
-  width:100px;
-  height:100px;
-  margin:0 auto 17px;
-  border-radius:15px;
-  padding:4px;
-  background:linear-gradient(135deg,#e4c16d,#715b31);
-  box-shadow:0 8px 25px #0005;
-}
-
-.avatar-wrap img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:12px;
-  background:#292d35;
-  image-rendering:pixelated;
-}
-
-.person-card h3{
-  font-size:17px;
-  font-weight:950;
-  overflow-wrap:anywhere;
-  margin-bottom:9px;
-}
-
-.role{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:6px 12px;
-  border-radius:30px;
-  background:#e4c16d15;
-  border:1px solid #e4c16d45;
-  color:var(--gold2);
-  font-size:9px;
-  font-weight:950;
-  letter-spacing:1.5px;
-}
-
-.role.owner{
-  background:#e4c16d1d;
-  border-color:#e4c16d88;
-  color:#f5d98f;
-}
-
-.role.builder{
-  background:#75aeea15;
-  border-color:#75aeea55;
-  color:#9bc8f5;
-}
-
-.role.premium{
-  background:#b28ae51a;
-  border-color:#b28ae555;
-  color:#c9a7fa;
-}
-
-.person-description{
-  margin-top:14px;
-  color:#939aa5;
-  font-size:11px;
-  line-height:1.7;
-  min-height:38px;
-}
-
-.profile-link{
-  display:inline-block;
-  margin-top:15px;
-  color:#aeb5c0;
+.info-label{
+  color:#80caff;
   font-size:10px;
+  font-weight:950;
+  letter-spacing:3px;
+  margin-bottom:14px;
+}
+
+.info-card h2{
+  font-size:clamp(27px,4vw,40px);
+  font-weight:950;
+  margin-bottom:20px;
+}
+
+.info-card h2 span{
+  color:#80caff;
+}
+
+.info-text{
+  max-width:760px;
+  margin:auto;
+  color:#c5cfdb;
+  font-size:14px;
+  line-height:1.95;
+}
+
+.info-text strong{
+  color:#fff;
+}
+
+.info-highlight{
+  color:#80caff;
   font-weight:900;
+}
+
+/* INFO DETAILS */
+
+.info-details{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  margin-top:22px;
+}
+
+.detail-card{
+  padding:23px 18px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:linear-gradient(145deg,#24272f,#1a1d23);
+  text-align:center;
   transition:.2s;
 }
 
-.profile-link:hover{
-  color:var(--gold2);
+.detail-card:hover{
+  transform:translateY(-4px);
+  border-color:#5d8eb5;
 }
 
-/* CONTRIBUTOR INFO */
-
-.team-note{
-  margin-top:25px;
-  padding:24px;
-  border-radius:13px;
-  background:#20232a;
-  border:1px solid var(--line);
-  display:flex;
-  align-items:center;
-  gap:18px;
+.detail-icon{
+  font-size:29px;
+  margin-bottom:11px;
 }
 
-.team-note-icon{
-  width:48px;
-  height:48px;
-  flex-shrink:0;
-  display:grid;
-  place-items:center;
-  background:#e4c16d1a;
-  border:1px solid #e4c16d55;
-  border-radius:12px;
-  font-size:22px;
-}
-
-.team-note h3{
-  color:var(--gold2);
+.detail-card h3{
   font-size:15px;
-  margin-bottom:5px;
+  margin-bottom:8px;
+  color:#fff;
 }
 
-.team-note p{
-  color:#aeb4be;
+.detail-card p{
+  color:#aeb5c0;
   font-size:12px;
-  line-height:1.8;
+  line-height:1.75;
 }
 
-/* JOIN SECTION */
+/* QUESTIONS SECTION */
 
-.join-card{
-  margin:65px 0 75px;
-  padding:clamp(27px,5vw,48px);
+.questions-card{
+  margin:55px 0 75px;
+  padding:clamp(28px,5vw,45px);
   text-align:center;
-  border-radius:17px;
-  border:1px solid #7f6b43;
+  border:1px solid #3b526d;
+  border-radius:16px;
   background:
-    radial-gradient(circle at 50% 0%,#e4c16d18,transparent 65%),
-    linear-gradient(135deg,#24251f,#1c2028);
+    radial-gradient(circle at 50% 0%,#55b8ff18,transparent 65%),
+    linear-gradient(145deg,#202a38,#171d28);
+  box-shadow:0 18px 45px #0004;
 }
 
-.join-card .join-icon{
-  font-size:35px;
+.questions-icon{
+  font-size:38px;
   margin-bottom:13px;
 }
 
-.join-card h2{
+.questions-card h2{
   font-size:clamp(25px,4vw,35px);
   margin-bottom:12px;
 }
 
-.join-card h2 span{
-  color:var(--gold2);
+.questions-card h2 span{
+  color:#80caff;
 }
 
-.join-card p{
+.questions-card p{
   max-width:650px;
   margin:auto;
-  color:#bfc4cc;
+  color:#c5cfdb;
   font-size:14px;
   line-height:1.8;
 }
 
-.join-buttons{
-  display:flex;
+/* CYTOOXIEN INSPIRED BUTTON */
+
+.questions-action{
+  margin-top:27px;
+}
+
+.cytooxien-button{
+  display:inline-flex;
+  align-items:center;
   justify-content:center;
   gap:10px;
-  flex-wrap:wrap;
-  margin-top:23px;
-}
-
-.join-button{
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-  gap:8px;
-  padding:12px 18px;
-  border-radius:8px;
-  background:linear-gradient(135deg,#e4c16d,#b88b2e);
-  color:#171717;
-  font-size:11px;
+  min-height:52px;
+  padding:13px 25px;
+  border:2px solid #a8e3ff;
+  border-radius:7px;
+  background:linear-gradient(
+    180deg,
+    #42b9f4 0%,
+    #1685cf 55%,
+    #0865a9 100%
+  );
+  color:#fff;
+  font-size:12px;
   font-weight:950;
-  transition:.2s;
+  letter-spacing:1px;
+  text-shadow:0 2px 0 #064875;
+  box-shadow:
+    0 5px 0 #064875,
+    0 9px 18px #0006,
+    inset 0 2px 0 #ffffff55;
+  transition:transform .15s,filter .15s,box-shadow .15s;
 }
 
-.join-button:hover{
+.cytooxien-button:hover{
+  filter:brightness(1.13);
   transform:translateY(-2px);
-  background:var(--gold2);
+  box-shadow:
+    0 7px 0 #064875,
+    0 12px 22px #0007,
+    inset 0 2px 0 #ffffff66;
 }
 
-.join-button.secondary{
-  background:#292d35;
-  border:1px solid #4a4f59;
-  color:#e5e7eb;
+.cytooxien-button:active{
+  transform:translateY(3px);
+  box-shadow:0 2px 0 #064875;
 }
 
-.join-button.secondary:hover{
-  border-color:var(--gold);
-  color:var(--gold2);
+.button-arrow{
+  font-size:19px;
 }
 
 /* FOOTER */
@@ -773,14 +614,8 @@ footer{
     font-size:11px;
   }
 
-  .sponsor-card{
-    grid-template-columns:180px 1fr;
-    gap:23px;
-    padding:25px;
-  }
-
-  .contributor-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
+  .info-details{
+    grid-template-columns:1fr;
   }
 }
 
@@ -815,53 +650,22 @@ footer{
     padding-top:48px;
   }
 
-  .sponsor-card{
-    grid-template-columns:1fr;
-    gap:20px;
-    padding:22px;
+  .info-card{
+    padding:25px 19px;
   }
 
-  .sponsor-logo{
-    min-height:130px;
-  }
-
-  .sponsor-logo img{
-    max-height:95px;
-  }
-
-  .sponsor-content h3{
-    font-size:27px;
-  }
-
-  .sponsor-content p{
+  .info-text{
     font-size:13px;
   }
 
-  .contributor-grid{
-    grid-template-columns:1fr 1fr;
-    gap:11px;
+  .questions-card{
+    padding:27px 18px;
   }
 
-  .person-card{
-    padding:19px 10px;
-  }
-
-  .avatar-wrap{
-    width:76px;
-    height:76px;
-  }
-
-  .person-card h3{
-    font-size:13px;
-  }
-
-  .person-description{
-    font-size:10px;
-  }
-
-  .team-note{
-    align-items:flex-start;
-    padding:17px;
+  .cytooxien-button{
+    width:100%;
+    padding:13px 12px;
+    font-size:11px;
   }
 
   .footer-inner{
@@ -871,12 +675,6 @@ footer{
 
   .footer-links{
     gap:12px;
-  }
-}
-
-@media(max-width:370px){
-  .contributor-grid{
-    grid-template-columns:1fr;
   }
 }
 
@@ -892,7 +690,7 @@ footer{
 <div class="top-progress" id="topProgress"></div>
 
 <div class="top-notice">
-  LMS NETWORK · SPONSOREN & MITWIRKENDE
+  LMS NETWORK · INFORMATIONEN
 </div>
 
 <!-- NAVIGATION -->
@@ -921,8 +719,8 @@ footer{
     <a href="index.html#community">Community</a>
     <a href="index.html#team">Team</a>
     <a href="index.html#kontakt">Kontakt</a>
-    <a class="active" href="sponsoren.html">Sponsoren</a>
-    <a href="info.html">Info & Wiki</a>
+    <a href="sponsoren.html">Sponsoren</a>
+    <a class="active" href="info.html">Info & Wiki</a>
     <a href="regeln.html">Regeln</a>
     <a class="nav-play" href="index.html">ZUM SERVER</a>
   </nav>
@@ -936,23 +734,23 @@ footer{
   <div class="hero-content">
 
     <div class="hero-label">
-      LMS NETWORK · BEHIND THE NETWORK
+      WILLKOMMEN BEI LMS NETWORK
     </div>
 
     <h1>
-      GEMEINSAM <span>MEHR ERREICHEN.</span>
+      DEIN <span>MINECRAFT-SERVER.</span>
     </h1>
 
     <p>
-      Hinter dem LMS NETWORK stehen Menschen, die ihre Zeit,
-      Kreativität und Unterstützung in dieses Projekt stecken.
-      Hier stellen wir unsere Unterstützer und Mitwirkenden vor.
+      Entdecke LMS NETWORK, lerne unsere Community kennen
+      und erfahre mehr über das Projekt.
+      Hier findest du die wichtigsten Informationen rund um unseren Server.
     </p>
 
     <div class="hero-tags">
-      <span class="hero-tag">🤝 UNTERSTÜTZER</span>
-      <span class="hero-tag">🧱 MITWIRKENDE</span>
-      <span class="hero-tag">⭐ LMS COMMUNITY</span>
+      <span class="hero-tag">⛏ MINECRAFT</span>
+      <span class="hero-tag">🌍 COMMUNITY</span>
+      <span class="hero-tag">⭐ LMS NETWORK</span>
     </div>
 
   </div>
@@ -961,372 +759,159 @@ footer{
 
 <main class="container">
 
-  <!-- SPONSOREN -->
+  <!-- LMS INFORMATION -->
 
-  <section class="section sponsor-area" id="sponsoren">
+  <section class="section" id="ueber-lms">
 
     <div class="section-heading">
 
       <div class="section-label">
-        PARTNER & UNTERSTÜTZER
+        LERNE UNS KENNEN
       </div>
 
       <h2>
-        UNSERE <span>UNTERSTÜTZUNG.</span>
+        WAS IST <span>LMS NETWORK?</span>
       </h2>
 
       <p>
-        Ein Projekt wie das LMS NETWORK entsteht nicht völlig
-        allein. Wir freuen uns über Unterstützung und
-        Zusammenarbeit, die unsere Entwicklung begleiten.
+        Alles Wissenswerte über unseren Minecraft-Server
+        und die Idee dahinter.
       </p>
 
     </div>
 
-    <article class="sponsor-card">
+    <article class="info-card">
 
-      <div class="sponsor-logo">
-        <img
-          src="logo-03.cc5e5332-removebg-preview.png"
-          alt="GitHub Logo"
-        >
+      <div class="info-label">
+        WILLKOMMEN BEI LMS NETWORK
       </div>
 
-      <div class="sponsor-content">
+      <h2>
+        DEIN <span>MINECRAFT-SERVER.</span>
+      </h2>
 
-        <span class="sponsor-badge">
-          TECHNISCHE UNTERSTÜTZUNG
-        </span>
+      <div class="info-text">
 
-        <h3>GitHub.io</h3>
+        <strong>LMS NETWORK</strong> ist ein Minecraft-Server,
+        auf dem gemeinsames Spielen, Kreativität und eine
+        freundliche Community im Mittelpunkt stehen.
 
-        <p>
-          Mit lieber Unterstützung von <strong>GitHub.io</strong>.
-          GitHub ist ein wichtiger Bestandteil unserer
-          Entwicklungsarbeit und hilft uns dabei, unsere
-          Website und weitere digitale Projekte zu verwalten
-          und weiterzuentwickeln.
-          <br><br>
-          Wir freuen uns über diese Unterstützung und darüber,
-          unsere Ideen Schritt für Schritt in die Realität
-          umzusetzen.
-        </p>
+        <br><br>
 
-        <div class="sponsor-footer">
+        Entdecke unsere Minecraft-Welt, lerne andere Spieler kennen
+        und werde Teil einer Community, die gemeinsam etwas
+        aufbauen und erleben möchte.
 
-          <a
-            class="sponsor-link"
-            href="https://github.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            ↗ GITHUB BESUCHEN
-          </a>
+        <br><br>
 
-          <span class="sponsor-note">
-            Vielen Dank für die Unterstützung!
-          </span>
+        Egal, ob du gerne baust, die Welt erkundest oder einfach
+        gemeinsam mit anderen spielst –
+        <span class="info-highlight">bei LMS NETWORK bist du willkommen!</span>
 
-        </div>
+        <br><br>
+
+        Wir möchten einen Ort schaffen, an dem Spieler zusammenkommen,
+        Ideen verwirklichen und gemeinsam schöne Minecraft-Momente erleben.
 
       </div>
 
     </article>
 
-    <div class="support-info">
-      <strong>Du möchtest das LMS NETWORK unterstützen?</strong>
-      <br>
-      Wir freuen uns über Menschen und Organisationen, die
-      unser Projekt unterstützen oder gemeinsam mit uns
-      neue Ideen verwirklichen möchten.
-    </div>
-
   </section>
 
-  <!-- MITWIRKENDE -->
+  <!-- THREE INFO CARDS -->
 
-  <section class="section" id="mitwirkende">
+  <section class="section">
 
     <div class="section-heading">
 
       <div class="section-label">
-        DAS TEAM HINTER LMS
+        UNSER NETZWERK
       </div>
 
       <h2>
-        UNSERE <span>MITWIRKENDEN.</span>
+        GEMEINSAM <span>SPIELEN.</span>
       </h2>
 
       <p>
-        Ein großes Dankeschön an alle, die ihre Zeit und
-        Energie in das LMS NETWORK investieren und dabei
-        helfen, das Projekt weiterzuentwickeln.
+        LMS NETWORK lebt von den Menschen, die Teil
+        unserer Community sind.
       </p>
 
     </div>
 
-    <div class="contributor-grid">
+    <div class="info-details">
 
-      <!-- OWNER -->
+      <article class="detail-card">
 
-      <article class="person-card">
+        <div class="detail-icon">⛏️</div>
 
-        <div class="avatar-wrap">
-          <img
-            src="https://mc-heads.net/avatar/CC_Minecarft/100"
-            alt="Minecraft Avatar CC_Minecarft"
-            loading="lazy"
-          >
-        </div>
-
-        <h3>CC_Minecarft</h3>
-
-        <span class="role owner">
-          ★ OWNER
-        </span>
-
-        <p class="person-description">
-          Projektleitung und Verantwortung
-          für das LMS NETWORK.
-        </p>
-
-        <a
-          class="profile-link"
-          href="https://namemc.com/profile/CC_Minecarft"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          NAME MC PROFIL ↗
-        </a>
-
-      </article>
-
-      <!-- BUILDER 1 -->
-
-      <article class="person-card">
-
-        <div class="avatar-wrap">
-          <img
-            src="https://mc-heads.net/avatar/Hobbit2304/100"
-            alt="Minecraft Avatar Hobbit2304"
-            loading="lazy"
-          >
-        </div>
-
-        <h3>Hobbit2304</h3>
-
-        <span class="role builder">
-          🧱 BUILDER
-        </span>
-
-        <p class="person-description">
-          Unterstützt die Gestaltung und
-          den Aufbau unserer Minecraft-Welten.
-        </p>
-
-        <a
-          class="profile-link"
-          href="https://namemc.com/profile/Hobbit2304"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          NAME MC PROFIL ↗
-        </a>
-
-      </article>
-
-      <!-- BUILDER 2 -->
-
-      <article class="person-card">
-
-        <div class="avatar-wrap">
-          <img
-            src="https://mc-heads.net/avatar/King_Luma1/100"
-            alt="Minecraft Avatar King_Luma1"
-            loading="lazy"
-          >
-        </div>
-
-        <h3>King_Luma1</h3>
-
-        <span class="role builder">
-          🧱 BUILDER
-        </span>
-
-        <p class="person-description">
-          Unterstützt die Gestaltung und
-          den Aufbau unserer Minecraft-Welten.
-        </p>
-
-        <a
-          class="profile-link"
-          href="https://namemc.com/profile/King_Luma1"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          NAME MC PROFIL ↗
-        </a>
-
-      </article>
-
-      <!-- BUILDER 3 -->
-
-      <article class="person-card">
-
-        <div class="avatar-wrap">
-          <img
-            src="https://mc-heads.net/avatar/Lennyy20/100"
-            alt="Minecraft Avatar Lennyy20"
-            loading="lazy"
-          >
-        </div>
-
-        <h3>Lennyy20</h3>
-
-        <span class="role builder">
-          🧱 BUILDER
-        </span>
-
-        <p class="person-description">
-          Unterstützt die Gestaltung und
-          den Aufbau unserer Minecraft-Welten.
-        </p>
-
-        <a
-          class="profile-link"
-          href="https://namemc.com/profile/Lennyy20"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          NAME MC PROFIL ↗
-        </a>
-
-      </article>
-
-      <!-- PREMIUM 1 -->
-
-      <article class="person-card">
-
-        <div class="avatar-wrap">
-          <img
-            src="https://mc-heads.net/avatar/Takatonka/100"
-            alt="Minecraft Avatar Takatonka"
-            loading="lazy"
-          >
-        </div>
-
-        <h3>Takatonka</h3>
-
-        <span class="role premium">
-          ✦ PREMIUM
-        </span>
-
-        <p class="person-description">
-          Teil unserer Community und
-          Unterstützer des LMS NETWORK.
-        </p>
-
-        <a
-          class="profile-link"
-          href="https://namemc.com/profile/Takatonka"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          NAME MC PROFIL ↗
-        </a>
-
-      </article>
-
-      <!-- PREMIUM 2 -->
-
-      <article class="person-card">
-
-        <div class="avatar-wrap">
-          <img
-            src="https://mc-heads.net/avatar/Vanielle/100"
-            alt="Minecraft Avatar Vanielle"
-            loading="lazy"
-          >
-        </div>
-
-        <h3>Vanielle</h3>
-
-        <span class="role premium">
-          ✦ PREMIUM
-        </span>
-
-        <p class="person-description">
-          Teil unserer Community und
-          Unterstützer des LMS NETWORK.
-        </p>
-
-        <a
-          class="profile-link"
-          href="https://namemc.com/profile/Vanielle"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          NAME MC PROFIL ↗
-        </a>
-
-      </article>
-
-    </div>
-
-    <div class="team-note">
-
-      <div class="team-note-icon">
-        💛
-      </div>
-
-      <div>
-        <h3>Jeder Beitrag zählt.</h3>
+        <h3>MINECRAFT</h3>
 
         <p>
-          Ob beim Bauen, Entwickeln, Planen oder Unterstützen:
-          Jeder Beitrag hilft dabei, das LMS NETWORK
-          weiterzubringen. Vielen Dank an alle, die Teil
-          dieses Projekts sind!
+          Eine gemeinsame Minecraft-Welt,
+          in der du spielen, entdecken und
+          kreativ werden kannst.
         </p>
-      </div>
+
+      </article>
+
+      <article class="detail-card">
+
+        <div class="detail-icon">🌍</div>
+
+        <h3>COMMUNITY</h3>
+
+        <p>
+          Lerne andere Spieler kennen und
+          werde Teil unserer LMS-Community.
+        </p>
+
+      </article>
+
+      <article class="detail-card">
+
+        <div class="detail-icon">💡</div>
+
+        <h3>GEMEINSAME IDEEN</h3>
+
+        <p>
+          Gemeinsam können neue Ideen entstehen
+          und das LMS NETWORK weiterentwickelt werden.
+        </p>
+
+      </article>
 
     </div>
 
   </section>
 
-  <!-- MITMACHEN -->
+  <!-- QUESTIONS -->
 
-  <section class="join-card" id="mitmachen">
+  <section class="questions-card" id="fragen">
 
-    <div class="join-icon">🚀</div>
+    <div class="questions-icon">❔</div>
 
     <h2>
-      WERDE TEIL VON <span>LMS.</span>
+      DU HAST NOCH <span>FRAGEN?</span>
     </h2>
 
     <p>
-      Du möchtest das LMS NETWORK unterstützen, bei
-      zukünftigen Projekten mitwirken oder einfach Teil
-      unserer Community werden?
+      Du möchtest mehr über LMS NETWORK erfahren oder
+      suchst Antworten auf häufig gestellte Fragen?
+
       <br><br>
-      Wir freuen uns darauf, neue Menschen kennenzulernen
-      und gemeinsam etwas aufzubauen!
+
+      Dann besuche unseren Fragenbereich!
+      Dort findest du weitere Informationen rund um
+      unseren Minecraft-Server.
     </p>
 
-    <div class="join-buttons">
+    <div class="questions-action">
 
-      <a
-        class="join-button"
-        href="index.html#community"
-      >
-        💬 ZUR COMMUNITY
-      </a>
-
-      <a
-        class="join-button secondary"
-        href="index.html#kontakt"
-      >
-        ✉ KONTAKT
+      <a class="cytooxien-button" href="Fragen.html">
+        ❔ ZU DEN HÄUFIGEN FRAGEN
+        <span class="button-arrow">›</span>
       </a>
 
     </div>
@@ -1366,6 +951,7 @@ footer{
 
       <a href="index.html">Startseite</a>
       <a href="info.html">Info & Wiki</a>
+      <a href="Fragen.html">Fragen</a>
       <a href="regeln.html">Regelwerk</a>
       <a href="sponsoren.html">Sponsoren</a>
       <a href="index.html#kontakt">Kontakt</a>
@@ -1383,6 +969,8 @@ footer{
   </div>
 
 </footer>
+
+<!-- BACK TO TOP -->
 
 <button
   class="back-top"
