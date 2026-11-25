@@ -50,6 +50,7 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none}
 .answer-box{background:#142238;border-left:3px solid #36a2ff;padding:13px;margin:15px 0;border-radius:5px;white-space:pre-wrap;overflow-wrap:anywhere}
 .button-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:10px}
 .empty{text-align:center;padding:35px 10px;color:#9eacc1}
+.minecraft-name{color:#f4c542;font-size:14px;font-weight:bold;margin-top:5px}
 footer{text-align:center;color:#718096;padding:30px 15px;border-top:1px solid #26344b;margin-top:60px;font-size:13px}
 @media(max-width:600px){.panel{padding:18px}header{padding:0 5%}main{margin-top:30px}}
 </style>
@@ -74,8 +75,10 @@ footer{text-align:center;color:#718096;padding:30px 15px;border-top:1px solid #2
     <form id="loginForm">
       <label for="email">E-Mail-Adresse</label>
       <input id="email" type="email" placeholder="Deine E-Mail-Adresse" required>
+
       <label for="password">Passwort</label>
       <input id="password" type="password" placeholder="Dein Passwort" required>
+
       <button class="primary" type="submit" id="loginButton">Anmelden</button>
     </form>
     <div id="loginMessage" class="message"></div>
@@ -90,14 +93,17 @@ footer{text-align:center;color:#718096;padding:30px 15px;border-top:1px solid #2
         </div>
         <button class="danger" id="logoutButton">Abmelden</button>
       </div>
+
       <div class="button-row">
         <button class="secondary" id="refreshButton">↻ Aktualisieren</button>
       </div>
+
       <div id="adminMessage" class="message"></div>
     </div>
 
     <div class="panel">
       <h2>Eingereichte Fragen</h2>
+
       <label for="filterStatus">Statusfilter</label>
       <select id="filterStatus">
         <option value="Alle">Alle Fragen</option>
@@ -105,7 +111,10 @@ footer{text-align:center;color:#718096;padding:30px 15px;border-top:1px solid #2
         <option value="In Bearbeitung">In Bearbeitung</option>
         <option value="Erledigt">Erledigt</option>
       </select>
-      <div id="questionsList"><div class="empty">Fragen werden geladen ...</div></div>
+
+      <div id="questionsList">
+        <div class="empty">Fragen werden geladen ...</div>
+      </div>
     </div>
   </section>
 </main>
@@ -122,11 +131,16 @@ const adminPanel=document.getElementById("adminPanel");
 const loginMessage=document.getElementById("loginMessage");
 const adminMessage=document.getElementById("adminMessage");
 const questionsList=document.getElementById("questionsList");
+
 let currentQuestions=[];
 
 function escapeHTML(value){
   return String(value??"").replace(/[&<>"']/g,c=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
   })[c]);
 }
 
@@ -134,22 +148,29 @@ function showMessage(el,message,error=false){
   el.textContent=message;
   el.className="message "+(error?"error":"success");
 }
+
 function hideMessage(el){
   el.textContent="";
   el.className="message";
 }
+
 function statusClass(status){
   if(status==="Erledigt")return "status-erledigt";
   if(status==="In Bearbeitung")return "status-bearbeitung";
   return "status-offen";
 }
+
 function formatDate(date){
   if(!date)return "Unbekannt";
-  return new Date(date).toLocaleString("de-DE",{dateStyle:"medium",timeStyle:"short"});
+  return new Date(date).toLocaleString("de-DE",{
+    dateStyle:"medium",
+    timeStyle:"short"
+  });
 }
 
 async function checkAdmin(){
   const {data:{user},error:userError}=await db.auth.getUser();
+
   if(userError||!user){
     loginPanel.classList.remove("hidden");
     adminPanel.classList.add("hidden");
@@ -157,16 +178,25 @@ async function checkAdmin(){
   }
 
   const {data,error}=await db.rpc("is_lms_admin");
+
   if(error||data!==true){
     await db.auth.signOut();
+
     loginPanel.classList.remove("hidden");
     adminPanel.classList.add("hidden");
-    showMessage(loginMessage,"Dein Account ist nicht als LMS-Administrator freigeschaltet. Prüfe den Admin-Eintrag in Supabase.",true);
+
+    showMessage(
+      loginMessage,
+      "Dein Account ist nicht als LMS-Administrator freigeschaltet. Prüfe den Admin-Eintrag in Supabase.",
+      true
+    );
+
     return false;
   }
 
   loginPanel.classList.add("hidden");
   adminPanel.classList.remove("hidden");
+
   await loadQuestions();
   return true;
 }
@@ -174,6 +204,7 @@ async function checkAdmin(){
 document.getElementById("loginForm").addEventListener("submit",async event=>{
   event.preventDefault();
   hideMessage(loginMessage);
+
   const button=document.getElementById("loginButton");
   button.disabled=true;
   button.textContent="Anmeldung läuft ...";
@@ -181,12 +212,21 @@ document.getElementById("loginForm").addEventListener("submit",async event=>{
   try{
     const email=document.getElementById("email").value.trim();
     const password=document.getElementById("password").value;
-    const {error}=await db.auth.signInWithPassword({email,password});
+
+    const {error}=await db.auth.signInWithPassword({
+      email,
+      password
+    });
+
     if(error){
       showMessage(loginMessage,"Login fehlgeschlagen: "+error.message,true);
       return;
     }
+
     await checkAdmin();
+
+  }catch(error){
+    showMessage(loginMessage,"Ein Fehler ist aufgetreten: "+error.message,true);
   }finally{
     button.disabled=false;
     button.textContent="Anmelden";
@@ -195,28 +235,43 @@ document.getElementById("loginForm").addEventListener("submit",async event=>{
 
 document.getElementById("logoutButton").addEventListener("click",async()=>{
   await db.auth.signOut();
+
   adminPanel.classList.add("hidden");
   loginPanel.classList.remove("hidden");
+
   document.getElementById("password").value="";
   hideMessage(loginMessage);
 });
 
 async function loadQuestions(){
   questionsList.innerHTML='<div class="empty">Fragen werden geladen ...</div>';
-  const {data,error}=await db.from("questions").select("*").order("created_at",{ascending:false});
+  hideMessage(adminMessage);
+
+  const {data,error}=await db
+    .from("questions")
+    .select("id,name,minecraft_name,message,image_paths,status,answer,admin_note,created_at,updated_at,answered_at")
+    .order("created_at",{ascending:false});
+
   if(error){
     questionsList.innerHTML="";
-    showMessage(adminMessage,"Fragen konnten nicht geladen werden: "+error.message,true);
+    showMessage(
+      adminMessage,
+      "Fragen konnten nicht geladen werden: "+error.message,
+      true
+    );
     return;
   }
+
   currentQuestions=data||[];
-  renderQuestions();
-  hideMessage(adminMessage);
+  await renderQuestions();
 }
 
 async function renderQuestions(){
   const filter=document.getElementById("filterStatus").value;
-  const filtered=currentQuestions.filter(q=>filter==="Alle"||q.status===filter);
+
+  const filtered=currentQuestions.filter(q=>
+    filter==="Alle"||q.status===filter
+  );
 
   if(!filtered.length){
     questionsList.innerHTML='<div class="empty">Keine Fragen in dieser Auswahl vorhanden.</div>';
@@ -228,32 +283,52 @@ async function renderQuestions(){
   for(const q of filtered){
     const card=document.createElement("article");
     card.className="question";
+
     const status=q.status||"Offen";
+    const minecraftName=q.minecraft_name||q.name||"Unbekannt";
 
     card.innerHTML=`
       <div class="question-top">
         <div>
-          <h3>${escapeHTML(q.name||"Unbekannt")}</h3>
+          <h3>${escapeHTML(minecraftName)}</h3>
+          <div class="minecraft-name">Minecraft-Spieler</div>
           <div class="meta">Eingereicht: ${escapeHTML(formatDate(q.created_at))}</div>
+          <div class="meta">Fragen-ID: ${escapeHTML(q.id)}</div>
         </div>
-        <span class="status ${statusClass(status)}">${escapeHTML(status)}</span>
+
+        <span class="status ${statusClass(status)}">
+          ${escapeHTML(status)}
+        </span>
       </div>
 
       <h3>Frage</h3>
       <div class="question-text">${escapeHTML(q.message)}</div>
-      <div class="images" id="images-${q.id}"><span class="meta">Bilder werden geladen ...</span></div>
 
-      <label for="name-${q.id}">Name bearbeiten</label>
-      <input id="name-${q.id}" value="${escapeHTML(q.name||"")}">
+      <div class="images" id="images-${q.id}">
+        <span class="meta">Bilder werden geladen ...</span>
+      </div>
+
+      <label for="name-${q.id}">Minecraft-Name bearbeiten</label>
+      <input
+        id="name-${q.id}"
+        maxlength="40"
+        value="${escapeHTML(minecraftName==="Unbekannt"?"":minecraftName)}"
+      >
 
       <label for="message-${q.id}">Frage bearbeiten</label>
-      <textarea id="message-${q.id}">${escapeHTML(q.message||"")}</textarea>
+      <textarea id="message-${q.id}" maxlength="3000">${escapeHTML(q.message||"")}</textarea>
 
-      <label for="answer-${q.id}">Antwort</label>
-      <textarea id="answer-${q.id}" placeholder="Schreibe hier deine Antwort ...">${escapeHTML(q.answer||"")}</textarea>
+      <label for="answer-${q.id}">Antwort für den Spieler</label>
+      <textarea
+        id="answer-${q.id}"
+        placeholder="Schreibe hier deine Antwort ..."
+      >${escapeHTML(q.answer||"")}</textarea>
 
       <label for="note-${q.id}">Interne Team-Notiz (nicht öffentlich)</label>
-      <textarea id="note-${q.id}" placeholder="Nur für das Team sichtbar ...">${escapeHTML(q.admin_note||"")}</textarea>
+      <textarea
+        id="note-${q.id}"
+        placeholder="Nur für das Team sichtbar ..."
+      >${escapeHTML(q.admin_note||"")}</textarea>
 
       <label for="status-${q.id}">Status</label>
       <select id="status-${q.id}">
@@ -262,15 +337,29 @@ async function renderQuestions(){
         <option value="Erledigt" ${status==="Erledigt"?"selected":""}>Erledigt</option>
       </select>
 
-      <label for="files-${q.id}">Bilder anhängen (max. 5 Bilder, je 5 MB)</label>
-      <input id="files-${q.id}" type="file" accept="image/png,image/jpeg,image/webp,image/gif" multiple>
+      <label for="files-${q.id}">Bilder anhängen (max. 5 Bilder auf einmal, je 5 MB)</label>
+      <input
+        id="files-${q.id}"
+        type="file"
+        accept="image/png,image/jpeg,image/webp,image/gif"
+        multiple
+      >
 
       <div class="button-row">
-        <button class="gold" data-action="save" data-id="${q.id}">Änderungen speichern</button>
-        <button class="primary" data-action="upload" data-id="${q.id}">Bilder hochladen</button>
-        <button class="danger" data-action="delete" data-id="${q.id}">Frage löschen</button>
+        <button class="gold" data-action="save" data-id="${q.id}">
+          Änderungen speichern
+        </button>
+
+        <button class="primary" data-action="upload" data-id="${q.id}">
+          Bilder hochladen
+        </button>
+
+        <button class="danger" data-action="delete" data-id="${q.id}">
+          Frage löschen
+        </button>
       </div>
     `;
+
     questionsList.appendChild(card);
     await showQuestionImages(q);
   }
@@ -279,63 +368,106 @@ async function renderQuestions(){
 async function showQuestionImages(q){
   const container=document.getElementById("images-"+q.id);
   if(!container)return;
+
   const paths=Array.isArray(q.image_paths)?q.image_paths:[];
+
   if(!paths.length){
     container.innerHTML='<span class="meta">Keine Bilder angehängt.</span>';
     return;
   }
+
   container.innerHTML="";
+
   for(const path of paths){
-    const {data,error}=await db.storage.from("question-images").createSignedUrl(path,3600);
+    const {data,error}=await db
+      .storage
+      .from("question-images")
+      .createSignedUrl(path,3600);
+
     if(error||!data?.signedUrl)continue;
+
     const link=document.createElement("a");
     link.href=data.signedUrl;
     link.target="_blank";
     link.rel="noopener noreferrer";
+
     const img=document.createElement("img");
     img.src=data.signedUrl;
     img.alt="Angehängtes Bild";
+
     link.appendChild(img);
     container.appendChild(link);
   }
+
   if(!container.children.length){
     container.innerHTML='<span class="meta">Bilder konnten nicht geladen werden.</span>';
   }
 }
 
 async function saveQuestion(id){
-  const name=document.getElementById("name-"+id).value.trim();
+  const minecraftName=document.getElementById("name-"+id).value.trim();
   const message=document.getElementById("message-"+id).value.trim();
   const answer=document.getElementById("answer-"+id).value.trim();
   const admin_note=document.getElementById("note-"+id).value.trim();
   const status=document.getElementById("status-"+id).value;
 
-  if(!name||!message){
-    showMessage(adminMessage,"Name und Frage dürfen nicht leer sein.",true);
+  if(!minecraftName){
+    showMessage(adminMessage,"Der Minecraft-Name darf nicht leer sein.",true);
     return;
   }
 
-  const {error}=await db.from("questions").update({
-    name,message,answer,admin_note,status,
-    updated_at:new Date().toISOString(),
-    answered_at:answer?new Date().toISOString():null
-  }).eq("id",id);
+  if(minecraftName.length>40){
+    showMessage(adminMessage,"Der Minecraft-Name darf maximal 40 Zeichen lang sein.",true);
+    return;
+  }
+
+  if(message.length<5||message.length>3000){
+    showMessage(adminMessage,"Die Frage muss zwischen 5 und 3000 Zeichen lang sein.",true);
+    return;
+  }
+
+  const now=new Date().toISOString();
+
+  const {error}=await db
+    .from("questions")
+    .update({
+      name:minecraftName,
+      minecraft_name:minecraftName,
+      message,
+      answer,
+      admin_note,
+      status,
+      updated_at:now,
+      answered_at:answer&&status==="Erledigt"?now:null
+    })
+    .eq("id",id);
 
   if(error){
-    showMessage(adminMessage,"Speichern fehlgeschlagen: "+error.message,true);
+    showMessage(
+      adminMessage,
+      "Speichern fehlgeschlagen: "+error.message,
+      true
+    );
     return;
   }
-  showMessage(adminMessage,"Die Änderungen wurden gespeichert.");
+
+  showMessage(
+    adminMessage,
+    "Die Änderungen wurden gespeichert. Die Antwort ist in MeineFragen.html abrufbar, sobald sie hinterlegt wurde."
+  );
+
   await loadQuestions();
 }
 
 async function uploadQuestionImages(id){
   const input=document.getElementById("files-"+id);
   const files=Array.from(input.files||[]);
+
   if(!files.length){
     showMessage(adminMessage,"Bitte wähle zuerst Bilder aus.",true);
     return;
   }
+
   if(files.length>5){
     showMessage(adminMessage,"Maximal 5 Bilder auf einmal.",true);
     return;
@@ -343,6 +475,7 @@ async function uploadQuestionImages(id){
 
   const q=currentQuestions.find(item=>item.id===id);
   if(!q)return;
+
   const paths=Array.isArray(q.image_paths)?[...q.image_paths]:[];
   const allowed=["image/jpeg","image/png","image/webp","image/gif"];
 
@@ -351,36 +484,63 @@ async function uploadQuestionImages(id){
       showMessage(adminMessage,"Nur JPG, PNG, WEBP und GIF sind erlaubt.",true);
       return;
     }
+
     if(file.size>5*1024*1024){
       showMessage(adminMessage,"Jedes Bild darf maximal 5 MB groß sein.",true);
       return;
     }
   }
 
+  const uploadedPaths=[];
+
   for(const file of files){
     const extension=file.name.split(".").pop().toLowerCase();
     const path=`admin/${id}/${crypto.randomUUID()}.${extension}`;
-    const {error}=await db.storage.from("question-images").upload(path,file,{
-      contentType:file.type,upsert:false
-    });
+
+    const {error}=await db
+      .storage
+      .from("question-images")
+      .upload(path,file,{
+        contentType:file.type,
+        upsert:false
+      });
+
     if(error){
-      showMessage(adminMessage,"Bild-Upload fehlgeschlagen: "+error.message,true);
+      showMessage(
+        adminMessage,
+        "Bild-Upload fehlgeschlagen: "+error.message,
+        true
+      );
+
+      if(uploadedPaths.length){
+        await db.storage.from("question-images").remove(uploadedPaths);
+      }
       return;
     }
+
+    uploadedPaths.push(path);
     paths.push(path);
   }
 
-  const {error}=await db.from("questions").update({
-    image_paths:paths,
-    updated_at:new Date().toISOString()
-  }).eq("id",id);
+  const {error}=await db
+    .from("questions")
+    .update({
+      image_paths:paths,
+      updated_at:new Date().toISOString()
+    })
+    .eq("id",id);
 
   if(error){
-    showMessage(adminMessage,"Bilder wurden hochgeladen, aber nicht angehängt: "+error.message,true);
+    showMessage(
+      adminMessage,
+      "Bilder wurden hochgeladen, aber nicht angehängt: "+error.message,
+      true
+    );
     return;
   }
 
   input.value="";
+
   showMessage(adminMessage,"Bilder erfolgreich angehängt.");
   await loadQuestions();
 }
@@ -388,20 +548,38 @@ async function uploadQuestionImages(id){
 async function deleteQuestion(id){
   const q=currentQuestions.find(item=>item.id===id);
   if(!q)return;
+
   if(!confirm("Möchtest du diese Frage wirklich endgültig löschen?"))return;
 
   const paths=Array.isArray(q.image_paths)?q.image_paths:[];
+
   if(paths.length){
-    const {error}=await db.storage.from("question-images").remove(paths);
+    const {error}=await db
+      .storage
+      .from("question-images")
+      .remove(paths);
+
     if(error){
-      showMessage(adminMessage,"Bilder konnten nicht gelöscht werden: "+error.message,true);
+      showMessage(
+        adminMessage,
+        "Bilder konnten nicht gelöscht werden: "+error.message,
+        true
+      );
       return;
     }
   }
 
-  const {error}=await db.from("questions").delete().eq("id",id);
+  const {error}=await db
+    .from("questions")
+    .delete()
+    .eq("id",id);
+
   if(error){
-    showMessage(adminMessage,"Löschen fehlgeschlagen: "+error.message,true);
+    showMessage(
+      adminMessage,
+      "Löschen fehlgeschlagen: "+error.message,
+      true
+    );
     return;
   }
 
@@ -412,21 +590,30 @@ async function deleteQuestion(id){
 questionsList.addEventListener("click",async event=>{
   const button=event.target.closest("button[data-action]");
   if(!button)return;
+
   const id=button.dataset.id;
   const action=button.dataset.action;
+
   button.disabled=true;
+
   try{
     if(action==="save")await saveQuestion(id);
     if(action==="upload")await uploadQuestionImages(id);
     if(action==="delete")await deleteQuestion(id);
+
   }catch(error){
-    showMessage(adminMessage,"Ein unerwarteter Fehler ist aufgetreten: "+error.message,true);
+    showMessage(
+      adminMessage,
+      "Ein unerwarteter Fehler ist aufgetreten: "+error.message,
+      true
+    );
   }finally{
     button.disabled=false;
   }
 });
 
 document.getElementById("refreshButton").addEventListener("click",loadQuestions);
+
 document.getElementById("filterStatus").addEventListener("change",renderQuestions);
 
 db.auth.onAuthStateChange((event)=>{
