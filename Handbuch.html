@@ -1,0 +1,543 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Das große Handbuch</title>
+
+<style>
+:root{
+  --green:#102d22;
+  --green2:#194332;
+  --green3:#285941;
+  --gold:#c8ad70;
+  --paper:#f4efdf;
+  --paper2:#e9e1cc;
+  --ink:#302d24;
+  --muted:#77705e;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse at top,#294b39 0%,#10271e 55%,#091811 100%);
+  font-family:Georgia,"Times New Roman",serif;
+  color:var(--ink);
+  padding:35px 16px;
+}
+
+.book{
+  max-width:1100px;
+  margin:auto;
+  background:var(--green);
+  padding:15px;
+  border:1px solid #b69b5d;
+  border-radius:12px;
+  box-shadow:0 25px 70px #0009;
+}
+
+.book-cover{
+  border:1px solid #b99e63;
+  border-radius:7px;
+  padding:12px;
+  background:
+    repeating-linear-gradient(90deg,#ffffff05 0px,#ffffff05 1px,transparent 1px,transparent 4px),
+    linear-gradient(135deg,#1d4935,#0d281d);
+}
+
+.cover-heading{
+  text-align:center;
+  color:var(--gold);
+  padding:22px 10px 28px;
+  border:1px solid #b99e6366;
+}
+
+.cover-heading .small{
+  letter-spacing:5px;
+  font-size:11px;
+  text-transform:uppercase;
+}
+
+.cover-heading h1{
+  font-size:clamp(28px,5vw,48px);
+  margin:15px 0 8px;
+  font-weight:normal;
+  letter-spacing:2px;
+}
+
+.cover-heading p{
+  margin:0;
+  color:#e4d7b6;
+  font-style:italic;
+  font-size:15px;
+}
+
+.book-pages{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  background:var(--paper);
+  margin-top:12px;
+  min-height:650px;
+  border-radius:3px;
+  box-shadow:inset 0 0 25px #806b4433;
+}
+
+.page{
+  padding:35px clamp(18px,4vw,48px);
+  min-width:0;
+  position:relative;
+}
+
+.left-page{
+  border-right:1px solid #c8bea7;
+  box-shadow:inset -12px 0 18px -18px #3d3320;
+}
+
+.right-page{
+  box-shadow:inset 12px 0 18px -18px #3d3320;
+}
+
+.page-number{
+  position:absolute;
+  bottom:15px;
+  left:0;
+  right:0;
+  text-align:center;
+  color:#9b927d;
+  font-size:12px;
+}
+
+.ornament{
+  color:#a68a4e;
+  text-align:center;
+  font-size:22px;
+  margin-bottom:15px;
+}
+
+h2{
+  color:#294a36;
+  font-size:27px;
+  font-weight:normal;
+  margin:0 0 8px;
+}
+
+.subtitle{
+  color:var(--muted);
+  font-style:italic;
+  font-size:14px;
+  margin-bottom:22px;
+}
+
+.search{
+  width:100%;
+  border:1px solid #c6bda8;
+  background:#fffdf6;
+  padding:12px 14px;
+  font-family:Arial,sans-serif;
+  font-size:14px;
+  border-radius:3px;
+  outline:none;
+  margin-bottom:23px;
+}
+
+.search:focus{
+  border-color:#54745b;
+  box-shadow:0 0 0 2px #54745b22;
+}
+
+.category{
+  margin-bottom:22px;
+}
+
+.category-title{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  border-bottom:1px solid #c9bea6;
+  padding-bottom:7px;
+  margin-bottom:9px;
+  color:#34533b;
+  font-size:17px;
+}
+
+.category-title span{
+  color:#a68a4e;
+  font-size:19px;
+}
+
+.entry{
+  display:block;
+  width:100%;
+  border:0;
+  background:transparent;
+  color:#514a3a;
+  text-align:left;
+  padding:7px 5px;
+  font-family:Georgia,serif;
+  font-size:14px;
+  cursor:pointer;
+  border-bottom:1px dotted #d4cbb8;
+  transition:.2s;
+}
+
+.entry:hover{
+  color:#173e2a;
+  background:#e9e4d5;
+  padding-left:11px;
+}
+
+.entry::after{
+  content:"›";
+  float:right;
+  color:#a68a4e;
+  font-size:18px;
+  line-height:13px;
+}
+
+.intro-box{
+  border:1px solid #d1c5a9;
+  background:#eee8d8;
+  padding:18px;
+  margin-top:20px;
+  line-height:1.7;
+  font-size:14px;
+}
+
+.gold-line{
+  width:70px;
+  height:1px;
+  background:#b59a60;
+  margin:15px 0;
+}
+
+.article{
+  line-height:1.85;
+  font-size:15px;
+  color:#484333;
+  white-space:normal;
+}
+
+.article p{margin:12px 0}
+
+.article h3{
+  color:#34533b;
+  font-size:19px;
+  font-weight:normal;
+  margin:23px 0 7px;
+}
+
+.article ul{
+  padding-left:22px;
+}
+
+.article li{margin:7px 0}
+
+.back-button{
+  background:#244c35;
+  color:#f4efdf;
+  border:1px solid #a68a4e;
+  padding:10px 17px;
+  font-family:Georgia,serif;
+  cursor:pointer;
+  margin-bottom:25px;
+  transition:.2s;
+}
+
+.back-button:hover{background:#356748}
+
+.article-label{
+  color:#a08449;
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+.article-title{
+  font-size:31px;
+  line-height:1.2;
+  margin-bottom:10px;
+}
+
+.empty{
+  color:#8b826e;
+  font-style:italic;
+  font-size:14px;
+  padding:10px 0;
+}
+
+.footer{
+  text-align:center;
+  color:#d5c49b;
+  font-size:12px;
+  padding:18px 5px 8px;
+  letter-spacing:1px;
+}
+
+@media(max-width:700px){
+  body{padding:12px 7px}
+  .book{padding:8px}
+  .book-pages{grid-template-columns:1fr}
+  .left-page{border-right:0;border-bottom:1px solid #c8bea7}
+  .page{padding:27px 22px 45px}
+  .page-number{display:none}
+}
+</style>
+</head>
+
+<body>
+
+<div class="book">
+  <div class="book-cover">
+
+    <header class="cover-heading">
+      <div class="small">Wissen · Informationen · Orientierung</div>
+      <h1>DAS GROSSE HANDBUCH</h1>
+      <p>Ein Nachschlagewerk für alles Wissenswerte</p>
+    </header>
+
+    <main class="book-pages">
+
+      <section class="page left-page">
+        <div class="ornament">❧</div>
+        <h2>Inhaltsverzeichnis</h2>
+        <div class="subtitle">Alle Kapitel und Einträge auf einen Blick</div>
+
+        <input
+          class="search"
+          id="search"
+          type="search"
+          placeholder="⌕  Handbuch durchsuchen ..."
+          oninput="searchEntries()"
+        >
+
+        <div id="contents">
+
+          <div class="category">
+            <div class="category-title"><span>◆</span> LMS NETWORK</div>
+            <button class="entry" data-title="Was ist LMS NETWORK?" onclick="openArticle('lms')">Was ist LMS NETWORK?</button>
+            <button class="entry" data-title="Fragen und Antworten" onclick="openArticle('fragen')">Fragen und Antworten</button>
+            <button class="entry" data-title="Hilfe und Unterstützung" onclick="openArticle('hilfe')">Hilfe und Unterstützung</button>
+            <button class="entry" data-title="Wichtige Informationen" onclick="openArticle('lmsinfo')">Wichtige Informationen</button>
+          </div>
+
+          <div class="category">
+            <div class="category-title"><span>◆</span> Technik & Computer</div>
+            <button class="entry" data-title="Was ist ein Computer?" onclick="openArticle('computer')">Was ist ein Computer?</button>
+            <button class="entry" data-title="Das Internet erklärt" onclick="openArticle('internet')">Das Internet erklärt</button>
+            <button class="entry" data-title="Was ist HTML?" onclick="openArticle('html')">Was ist HTML?</button>
+            <button class="entry" data-title="Was ist eine Datenbank?" onclick="openArticle('datenbank')">Was ist eine Datenbank?</button>
+          </div>
+
+          <div class="page-number">1</div>
+        </div>
+      </section>
+
+      <section class="page right-page">
+        <div id="article-view">
+          <div class="ornament">✦</div>
+          <h2>Willkommen</h2>
+          <div class="subtitle">Öffne einen Eintrag, um mehr zu erfahren.</div>
+
+          <div class="intro-box">
+            <strong>Ein Buch voller Wissen.</strong>
+            <div class="gold-line"></div>
+            Dieses digitale Handbuch vereint verschiedene Themenbereiche
+            an einem Ort. Hier findest du Informationen, Erklärungen,
+            Anleitungen und wichtige Hinweise.
+            <p>Klicke links auf einen Eintrag im Inhaltsverzeichnis.
+            Der passende Artikel wird direkt hier geöffnet.</p>
+          </div>
+
+          <div class="gold-line"></div>
+          <p style="font-size:14px;line-height:1.8;color:#77705e">
+            „Wissen beginnt mit einer Frage.“
+          </p>
+        </div>
+        <div class="page-number">2</div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      DAS GROSSE HANDBUCH · DIGITALE AUSGABE
+    </footer>
+  </div>
+</div>
+
+<script>
+const articles = {
+  lms: {
+    category:"LMS NETWORK",
+    title:"Was ist LMS NETWORK?",
+    content:`
+      <p>LMS NETWORK ist ein Projekt, dessen Informationen und Funktionen
+      in diesem Handbuch gesammelt werden können.</p>
+      <h3>Was findest du hier?</h3>
+      <ul>
+        <li>Informationen über das Netzwerk</li>
+        <li>Erklärungen zu verschiedenen Funktionen</li>
+        <li>Hilfestellungen und Anleitungen</li>
+        <li>Wichtige Hinweise und Regeln</li>
+      </ul>
+      <p>Weitere Informationen können jederzeit ergänzt werden.</p>
+    `
+  },
+  fragen: {
+    category:"LMS NETWORK",
+    title:"Fragen und Antworten",
+    content:`
+      <p>In diesem Bereich können häufig gestellte Fragen und passende
+      Antworten gesammelt werden.</p>
+      <h3>Warum gibt es diesen Bereich?</h3>
+      <p>Damit Besucher wichtige Informationen schnell finden und
+      Antworten auf häufige Fragen erhalten können.</p>
+      <h3>Weitere Inhalte</h3>
+      <p>Hier können später konkrete Fragen, Antworten und Verweise auf
+      die Fragenseite ergänzt werden.</p>
+    `
+  },
+  hilfe: {
+    category:"LMS NETWORK",
+    title:"Hilfe und Unterstützung",
+    content:`
+      <p>Dieser Bereich erklärt, wo Nutzer Unterstützung und Hilfe
+      finden können.</p>
+      <h3>Wenn du nicht weiterkommst</h3>
+      <p>Suche zuerst im Inhaltsverzeichnis nach deinem Thema.
+      Falls du keine passende Erklärung findest, kann ein eigener
+      Hilfeartikel ergänzt werden.</p>
+    `
+  },
+  lmsinfo: {
+    category:"LMS NETWORK",
+    title:"Wichtige Informationen",
+    content:`
+      <p>Hier werden wichtige Informationen rund um LMS NETWORK
+      übersichtlich gesammelt.</p>
+      <h3>Hinweis</h3>
+      <p>Dieser Artikel ist ein Platzhalter. Trage hier später die
+      offiziellen und bestätigten Informationen ein.</p>
+    `
+  },
+  computer: {
+    category:"TECHNIK & COMPUTER",
+    title:"Was ist ein Computer?",
+    content:`
+      <p>Ein Computer ist ein elektronisches Gerät, das Daten verarbeitet.
+      Er kann Informationen speichern, Berechnungen durchführen und
+      Programme ausführen.</p>
+      <h3>Typische Bestandteile</h3>
+      <ul>
+        <li>Prozessor (CPU): verarbeitet Befehle</li>
+        <li>Arbeitsspeicher (RAM): hält kurzfristig benötigte Daten bereit</li>
+        <li>Speicher: bewahrt Dateien und Programme auf</li>
+        <li>Grafikkarte: verarbeitet Bildinformationen</li>
+      </ul>
+    `
+  },
+  internet: {
+    category:"TECHNIK & COMPUTER",
+    title:"Das Internet erklärt",
+    content:`
+      <p>Das Internet ist ein weltweites Netzwerk miteinander
+      verbundener Computer und anderer Geräte.</p>
+      <h3>Was kann man damit machen?</h3>
+      <ul>
+        <li>Webseiten besuchen</li>
+        <li>Nachrichten versenden</li>
+        <li>Informationen recherchieren</li>
+        <li>Gemeinsam an Projekten arbeiten</li>
+      </ul>
+      <p>Webseiten werden häufig über einen Browser aufgerufen.</p>
+    `
+  },
+  html: {
+    category:"TECHNIK & COMPUTER",
+    title:"Was ist HTML?",
+    content:`
+      <p>HTML steht für HyperText Markup Language. Es ist eine
+      Auszeichnungssprache, mit der die Struktur einer Webseite
+      festgelegt wird.</p>
+      <h3>Beispiele</h3>
+      <ul>
+        <li>Überschriften</li>
+        <li>Absätze und Texte</li>
+        <li>Bilder und Links</li>
+        <li>Formulare und Bereiche</li>
+      </ul>
+      <p>Zusammen mit CSS und JavaScript bildet HTML eine wichtige
+      Grundlage moderner Webseiten.</p>
+    `
+  },
+  datenbank: {
+    category:"TECHNIK & COMPUTER",
+    title:"Was ist eine Datenbank?",
+    content:`
+      <p>Eine Datenbank ist eine strukturierte Sammlung von Daten.
+      Sie ermöglicht es, Informationen zu speichern, zu suchen,
+      zu ändern und zu verwalten.</p>
+      <h3>Beispiel</h3>
+      <p>Eine Datenbank kann Nutzerdaten, Fragen, Antworten oder
+      Einstellungen einer Webseite speichern.</p>
+    `
+  }
+};
+
+function openArticle(id){
+  const article=articles[id];
+  if(!article)return;
+
+  document.getElementById("article-view").innerHTML=`
+    <button class="back-button" onclick="showWelcome()">← Inhaltsverzeichnis</button>
+    <div class="article-label">${article.category}</div>
+    <div class="article-title">${article.title}</div>
+    <div class="gold-line"></div>
+    <div class="article">${article.content}</div>
+  `;
+
+  if(window.innerWidth<=700){
+    document.getElementById("article-view").scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+  }
+}
+
+function showWelcome(){
+  document.getElementById("article-view").innerHTML=`
+    <div class="ornament">✦</div>
+    <h2>Willkommen</h2>
+    <div class="subtitle">Öffne einen Eintrag, um mehr zu erfahren.</div>
+    <div class="intro-box">
+      <strong>Ein Buch voller Wissen.</strong>
+      <div class="gold-line"></div>
+      Dieses digitale Handbuch vereint verschiedene Themenbereiche
+      an einem Ort. Klicke links auf einen Eintrag im Inhaltsverzeichnis,
+      um den passenden Artikel zu öffnen.
+    </div>
+  `;
+}
+
+function searchEntries(){
+  const query=document.getElementById("search").value.toLowerCase().trim();
+  document.querySelectorAll(".entry").forEach(entry=>{
+    entry.style.display=entry.dataset.title.toLowerCase().includes(query)
+      ? "block"
+      : "none";
+  });
+
+  document.querySelectorAll(".category").forEach(category=>{
+    const visible=[...category.querySelectorAll(".entry")]
+      .some(entry=>entry.style.display!=="none");
+    category.style.display=visible?"block":"none";
+  });
+}
+</script>
+
+</body>
+</html>
