@@ -4,18 +4,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Das große Handbuch</title>
+<title>LMS NETWORK | Handbuch</title>
 
 <style>
 :root{
-  --green:#102d22;
-  --green2:#194332;
-  --green3:#285941;
-  --gold:#c8ad70;
+  --bg:#08140f;
+  --green:#102b20;
+  --green2:#173b2b;
+  --green3:#24533b;
+  --gold:#c7aa69;
+  --gold2:#e1c98d;
   --paper:#f4efdf;
-  --paper2:#e9e1cc;
-  --ink:#302d24;
-  --muted:#77705e;
+  --paper2:#e9e1cd;
+  --ink:#393629;
+  --muted:#817966;
 }
 
 *{box-sizing:border-box}
@@ -24,76 +26,201 @@ body{
   margin:0;
   min-height:100vh;
   background:
-    radial-gradient(ellipse at top,#294b39 0%,#10271e 55%,#091811 100%);
-  font-family:Georgia,"Times New Roman",serif;
+    radial-gradient(ellipse at 50% 0%,#315641 0%,#152e21 42%,#07120c 100%);
   color:var(--ink);
-  padding:35px 16px;
+  font-family:Georgia,"Times New Roman",serif;
 }
 
-.book{
-  max-width:1100px;
-  margin:auto;
-  background:var(--green);
-  padding:15px;
-  border:1px solid #b69b5d;
-  border-radius:12px;
-  box-shadow:0 25px 70px #0009;
+button,input{font:inherit}
+
+/* HEADER */
+
+.topbar{
+  min-height:78px;
+  padding:12px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  background:#07130edc;
+  border-bottom:1px solid #c7aa6944;
+  backdrop-filter:blur(10px);
 }
 
-.book-cover{
-  border:1px solid #b99e63;
-  border-radius:7px;
-  padding:12px;
-  background:
-    repeating-linear-gradient(90deg,#ffffff05 0px,#ffffff05 1px,transparent 1px,transparent 4px),
-    linear-gradient(135deg,#1d4935,#0d281d);
+.brand{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  color:#fff;
+  text-decoration:none;
 }
 
-.cover-heading{
-  text-align:center;
-  color:var(--gold);
-  padding:22px 10px 28px;
-  border:1px solid #b99e6366;
+.brand-symbol{
+  width:43px;
+  height:43px;
+  border:2px solid var(--gold);
+  background:linear-gradient(145deg,#28563d,#102b20);
+  display:grid;
+  place-items:center;
+  color:var(--gold2);
+  font-family:Arial,sans-serif;
+  font-weight:900;
+  font-size:19px;
+  box-shadow:inset 0 0 12px #0005;
+  transform:rotate(0deg);
 }
 
-.cover-heading .small{
-  letter-spacing:5px;
-  font-size:11px;
-  text-transform:uppercase;
-}
-
-.cover-heading h1{
-  font-size:clamp(28px,5vw,48px);
-  margin:15px 0 8px;
-  font-weight:normal;
+.brand-name{
+  font-family:Arial,sans-serif;
+  font-weight:900;
+  font-size:20px;
   letter-spacing:2px;
 }
 
-.cover-heading p{
-  margin:0;
-  color:#e4d7b6;
-  font-style:italic;
+.brand-name span{
+  color:var(--gold);
+}
+
+.brand-sub{
+  color:#aab8aa;
+  font-family:Arial,sans-serif;
+  font-size:10px;
+  letter-spacing:3px;
+  margin-top:4px;
+}
+
+.top-links{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+}
+
+.top-links a{
+  color:#e4e9e3;
+  text-decoration:none;
+  font-family:Arial,sans-serif;
+  font-size:12px;
+  padding:10px 14px;
+  border:1px solid #ffffff25;
+  background:#ffffff08;
+  transition:.2s;
+}
+
+.top-links a:hover{
+  border-color:var(--gold);
+  color:var(--gold2);
+  background:#c7aa6912;
+}
+
+/* INTRO */
+
+.hero{
+  text-align:center;
+  padding:48px 15px 32px;
+  color:#fff;
+}
+
+.hero-label{
+  color:var(--gold2);
+  font-family:Arial,sans-serif;
+  font-size:10px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  font-size:clamp(29px,5vw,47px);
+  font-weight:normal;
+  letter-spacing:2px;
+  margin:14px 0 9px;
+  color:#f5edda;
+}
+
+.hero p{
+  color:#c2d0c3;
   font-size:15px;
+  margin:0;
+  font-style:italic;
+}
+
+/* BOOK */
+
+.book-wrapper{
+  max-width:1250px;
+  margin:0 auto 50px;
+  padding:0 18px;
+}
+
+.book{
+  background:#0b2117;
+  border:2px solid #9c824d;
+  border-radius:10px;
+  padding:13px;
+  box-shadow:
+    0 30px 90px #000a,
+    inset 0 0 0 3px #ffffff08;
+}
+
+.book-cover{
+  border:1px solid #c7aa6980;
+  padding:11px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #ffffff04 0px,
+      #ffffff04 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    linear-gradient(135deg,#1d4933,#0c261a);
+}
+
+.book-title{
+  text-align:center;
+  color:var(--gold2);
+  border:1px solid #c7aa6955;
+  padding:22px 10px 20px;
+  margin-bottom:12px;
+}
+
+.book-title .eyebrow{
+  font-family:Arial,sans-serif;
+  font-size:10px;
+  letter-spacing:5px;
+  color:#d5c18f;
+}
+
+.book-title h2{
+  color:#e8d6a8;
+  font-size:clamp(25px,4vw,39px);
+  font-weight:normal;
+  letter-spacing:3px;
+  margin:12px 0 5px;
+}
+
+.book-title p{
+  color:#d0c4a4;
+  font-style:italic;
+  font-size:14px;
+  margin:0;
 }
 
 .book-pages{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns: minmax(0, .92fr) minmax(0,1.08fr);
+  min-height:690px;
   background:var(--paper);
-  margin-top:12px;
-  min-height:650px;
-  border-radius:3px;
-  box-shadow:inset 0 0 25px #806b4433;
+  box-shadow:inset 0 0 35px #74613b33;
 }
 
 .page{
-  padding:35px clamp(18px,4vw,48px);
   min-width:0;
+  padding:30px clamp(18px,3vw,40px) 55px;
   position:relative;
 }
 
 .left-page{
-  border-right:1px solid #c8bea7;
+  border-right:1px solid #c9bea6;
   box-shadow:inset -12px 0 18px -18px #3d3320;
 }
 
@@ -107,86 +234,110 @@ body{
   left:0;
   right:0;
   text-align:center;
-  color:#9b927d;
+  color:#a49a82;
   font-size:12px;
 }
 
 .ornament{
   color:#a68a4e;
+  font-size:23px;
   text-align:center;
-  font-size:22px;
-  margin-bottom:15px;
+  margin-bottom:12px;
 }
 
-h2{
+.page-heading{
   color:#294a36;
-  font-size:27px;
+  font-size:26px;
   font-weight:normal;
-  margin:0 0 8px;
+  margin:0 0 7px;
 }
 
-.subtitle{
+.page-subtitle{
   color:var(--muted);
   font-style:italic;
-  font-size:14px;
-  margin-bottom:22px;
+  font-size:13px;
+  margin-bottom:20px;
+}
+
+/* SEARCH */
+
+.search-wrap{
+  position:relative;
+  margin-bottom:23px;
+}
+
+.search-icon{
+  position:absolute;
+  left:13px;
+  top:11px;
+  color:#8e805e;
+  font-size:18px;
 }
 
 .search{
   width:100%;
-  border:1px solid #c6bda8;
+  padding:12px 12px 12px 39px;
   background:#fffdf6;
-  padding:12px 14px;
-  font-family:Arial,sans-serif;
-  font-size:14px;
-  border-radius:3px;
+  border:1px solid #c9bea7;
   outline:none;
-  margin-bottom:23px;
+  border-radius:3px;
+  color:#393629;
+  font-family:Arial,sans-serif;
+  font-size:13px;
 }
 
 .search:focus{
-  border-color:#54745b;
-  box-shadow:0 0 0 2px #54745b22;
+  border-color:#4b7955;
+  box-shadow:0 0 0 2px #4b795522;
 }
 
+/* CATEGORIES */
+
 .category{
-  margin-bottom:22px;
+  margin-bottom:21px;
 }
 
 .category-title{
   display:flex;
   align-items:center;
   gap:9px;
-  border-bottom:1px solid #c9bea6;
-  padding-bottom:7px;
-  margin-bottom:9px;
-  color:#34533b;
+  padding-bottom:8px;
+  border-bottom:1px solid #c8bea7;
+  color:#294b35;
+  font-size:17px;
+  margin-bottom:8px;
+}
+
+.category-icon{
+  color:#a68a4e;
   font-size:17px;
 }
 
-.category-title span{
-  color:#a68a4e;
-  font-size:19px;
+.category-description{
+  color:#928873;
+  font-size:11px;
+  font-style:italic;
+  margin:-2px 0 7px 25px;
 }
 
 .entry{
   display:block;
   width:100%;
+  padding:7px 5px;
+  text-align:left;
   border:0;
+  border-bottom:1px dotted #d4cbb8;
   background:transparent;
   color:#514a3a;
-  text-align:left;
-  padding:7px 5px;
-  font-family:Georgia,serif;
-  font-size:14px;
   cursor:pointer;
-  border-bottom:1px dotted #d4cbb8;
-  transition:.2s;
+  font-family:Georgia,serif;
+  font-size:13px;
+  transition:.18s;
 }
 
-.entry:hover{
-  color:#173e2a;
-  background:#e9e4d5;
+.entry:hover,.entry.active{
+  background:#e8e4d6;
+  color:#17452b;
   padding-left:11px;
 }
 
@@ -198,309 +349,1000 @@ h2{
   line-height:13px;
 }
 
-.intro-box{
-  border:1px solid #d1c5a9;
+.no-results{
+  display:none;
+  padding:15px;
+  font-size:13px;
+  font-style:italic;
+  color:#8b826e;
   background:#eee8d8;
-  padding:18px;
-  margin-top:20px;
-  line-height:1.7;
-  font-size:14px;
+}
+
+/* ARTICLE */
+
+.article-label{
+  color:#a08449;
+  font-family:Arial,sans-serif;
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:11px;
+}
+
+.article-title{
+  font-size:clamp(25px,3vw,34px);
+  color:#294a36;
+  font-weight:normal;
+  line-height:1.2;
+  margin:0 0 10px;
 }
 
 .gold-line{
-  width:70px;
+  width:75px;
   height:1px;
   background:#b59a60;
-  margin:15px 0;
+  margin:16px 0 22px;
 }
 
 .article{
+  color:#494434;
+  font-size:14px;
   line-height:1.85;
-  font-size:15px;
-  color:#484333;
-  white-space:normal;
 }
 
 .article p{margin:12px 0}
 
 .article h3{
   color:#34533b;
-  font-size:19px;
+  font-size:18px;
   font-weight:normal;
   margin:23px 0 7px;
 }
 
-.article ul{
+.article ul,.article ol{
   padding-left:22px;
 }
 
-.article li{margin:7px 0}
+.article li{margin:6px 0}
+
+.article strong{color:#334a35}
+
+.article-note{
+  padding:14px 16px;
+  margin:18px 0;
+  background:#eee8d8;
+  border-left:3px solid #a68a4e;
+  font-size:13px;
+  line-height:1.7;
+}
+
+.article-warning{
+  padding:14px 16px;
+  margin:18px 0;
+  background:#f0e5d5;
+  border-left:3px solid #b17c42;
+  font-size:13px;
+  line-height:1.7;
+}
+
+.article-button{
+  display:inline-block;
+  padding:10px 15px;
+  margin:8px 5px 8px 0;
+  background:#244c35;
+  color:#fff8e9;
+  text-decoration:none;
+  border:1px solid #a68a4e;
+  font-size:13px;
+  transition:.2s;
+}
+
+.article-button:hover{background:#356748}
 
 .back-button{
+  padding:9px 14px;
+  margin-bottom:24px;
+  border:1px solid #a68a4e;
   background:#244c35;
   color:#f4efdf;
-  border:1px solid #a68a4e;
-  padding:10px 17px;
-  font-family:Georgia,serif;
   cursor:pointer;
-  margin-bottom:25px;
-  transition:.2s;
+  font-size:13px;
 }
 
 .back-button:hover{background:#356748}
 
-.article-label{
-  color:#a08449;
-  font-size:11px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  margin-bottom:10px;
-}
-
-.article-title{
-  font-size:31px;
-  line-height:1.2;
-  margin-bottom:10px;
-}
-
-.empty{
-  color:#8b826e;
-  font-style:italic;
+.welcome-box{
+  border:1px solid #d1c5a9;
+  background:#eee8d8;
+  padding:19px;
+  margin-top:20px;
   font-size:14px;
-  padding:10px 0;
+  line-height:1.8;
+}
+
+.welcome-box h3{
+  color:#34533b;
+  font-size:18px;
+  font-weight:normal;
+  margin:0 0 8px;
+}
+
+.quick-links{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin-top:20px;
+}
+
+.quick-link{
+  padding:13px;
+  background:#e9e3d2;
+  border:1px solid #d1c5a9;
+  text-align:left;
+  color:#34533b;
+  cursor:pointer;
+  font-size:12px;
+  transition:.2s;
+}
+
+.quick-link:hover{
+  background:#ded6c1;
+  border-color:#a68a4e;
+}
+
+.quick-link span{
+  display:block;
+  color:#8c805f;
+  font-size:10px;
+  margin-top:5px;
 }
 
 .footer{
   text-align:center;
+  padding:20px 10px 8px;
   color:#d5c49b;
-  font-size:12px;
-  padding:18px 5px 8px;
-  letter-spacing:1px;
+  font-family:Arial,sans-serif;
+  font-size:10px;
+  letter-spacing:2px;
 }
 
-@media(max-width:700px){
-  body{padding:12px 7px}
-  .book{padding:8px}
-  .book-pages{grid-template-columns:1fr}
-  .left-page{border-right:0;border-bottom:1px solid #c8bea7}
-  .page{padding:27px 22px 45px}
-  .page-number{display:none}
+@media(max-width:760px){
+  .topbar{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .top-links{width:100%}
+
+  .book-pages{
+    grid-template-columns:1fr;
+  }
+
+  .left-page{
+    border-right:0;
+    border-bottom:1px solid #c9bea6;
+  }
+
+  .page{padding:26px 21px 45px}
+
+  .hero{padding:34px 15px 25px}
+}
+
+@media(max-width:420px){
+  .book-wrapper{padding:0 8px}
+  .book{padding:7px}
+  .book-cover{padding:7px}
+  .brand-name{font-size:17px}
+  .quick-links{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 
+<!-- KOPFBEREICH -->
+
+<header class="topbar">
+  <a class="brand" href="info.html">
+    <div class="brand-symbol">L</div>
+    <div>
+      <div class="brand-name">LMS <span>NETWORK</span></div>
+      <div class="brand-sub">MINECRAFT NETWORK</div>
+    </div>
+  </a>
+
+  <nav class="top-links">
+    <a href="info.html">Startseite</a>
+    <a href="Fragen.html">Fragen stellen</a>
+    <a href="MeineFragen.html">Meine Fragen</a>
+  </nav>
+</header>
+
+<!-- SEITENÜBERSCHRIFT -->
+
+<section class="hero">
+  <div class="hero-label">LMS NETWORK · WISSEN & INFORMATIONEN</div>
+  <h1>Das offizielle Handbuch</h1>
+  <p>Alles Wissenswerte rund um Minecraft und LMS NETWORK.</p>
+</section>
+
+<!-- DAS BUCH -->
+
+<div class="book-wrapper">
 <div class="book">
-  <div class="book-cover">
+<div class="book-cover">
 
-    <header class="cover-heading">
-      <div class="small">Wissen · Informationen · Orientierung</div>
-      <h1>DAS GROSSE HANDBUCH</h1>
-      <p>Ein Nachschlagewerk für alles Wissenswerte</p>
-    </header>
+  <header class="book-title">
+    <div class="eyebrow">LMS NETWORK · DIGITALE ENZYKLOPÄDIE</div>
+    <h2>DAS GROSSE HANDBUCH</h2>
+    <p>Die Welt von Minecraft und LMS NETWORK entdecken</p>
+  </header>
 
-    <main class="book-pages">
+  <main class="book-pages">
 
-      <section class="page left-page">
-        <div class="ornament">❧</div>
-        <h2>Inhaltsverzeichnis</h2>
-        <div class="subtitle">Alle Kapitel und Einträge auf einen Blick</div>
+    <!-- LINKE BUCHSEITE -->
 
+    <section class="page left-page">
+      <div class="ornament">❧</div>
+      <h2 class="page-heading">Inhaltsverzeichnis</h2>
+      <div class="page-subtitle">Wähle ein Kapitel und entdecke die Informationen.</div>
+
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
         <input
           class="search"
           id="search"
           type="search"
-          placeholder="⌕  Handbuch durchsuchen ..."
+          placeholder="Handbuch durchsuchen ..."
           oninput="searchEntries()"
         >
+      </div>
 
-        <div id="contents">
+      <div id="contents">
 
-          <div class="category">
-            <div class="category-title"><span>◆</span> LMS NETWORK</div>
-            <button class="entry" data-title="Was ist LMS NETWORK?" onclick="openArticle('lms')">Was ist LMS NETWORK?</button>
-            <button class="entry" data-title="Fragen und Antworten" onclick="openArticle('fragen')">Fragen und Antworten</button>
-            <button class="entry" data-title="Hilfe und Unterstützung" onclick="openArticle('hilfe')">Hilfe und Unterstützung</button>
-            <button class="entry" data-title="Wichtige Informationen" onclick="openArticle('lmsinfo')">Wichtige Informationen</button>
-          </div>
-
-          <div class="category">
-            <div class="category-title"><span>◆</span> Technik & Computer</div>
-            <button class="entry" data-title="Was ist ein Computer?" onclick="openArticle('computer')">Was ist ein Computer?</button>
-            <button class="entry" data-title="Das Internet erklärt" onclick="openArticle('internet')">Das Internet erklärt</button>
-            <button class="entry" data-title="Was ist HTML?" onclick="openArticle('html')">Was ist HTML?</button>
-            <button class="entry" data-title="Was ist eine Datenbank?" onclick="openArticle('datenbank')">Was ist eine Datenbank?</button>
-          </div>
-
-          <div class="page-number">1</div>
+        <div class="category">
+          <div class="category-title"><span class="category-icon">◆</span> LMS NETWORK</div>
+          <div class="category-description">Unser Netzwerk und seine Angebote</div>
+          <button class="entry" data-title="LMS NETWORK – Vorstellung" onclick="openArticle('lms')">Was ist LMS NETWORK?</button>
+          <button class="entry" data-title="Server beitreten" onclick="openArticle('beitreten')">Dem Server beitreten</button>
+          <button class="entry" data-title="Serveradresse und Version" onclick="openArticle('serverdaten')">Serveradresse & Version</button>
+          <button class="entry" data-title="Serverkonzept" onclick="openArticle('konzept')">Das Serverkonzept</button>
+          <button class="entry" data-title="Spielmodi" onclick="openArticle('spielmodi')">Spielmodi</button>
+          <button class="entry" data-title="Team und Ansprechpartner" onclick="openArticle('team')">Team & Ansprechpartner</button>
+          <button class="entry" data-title="Support" onclick="openArticle('support')">Support erhalten</button>
+          <button class="entry" data-title="Fragen und Antworten" onclick="openArticle('fragen')">Fragen & Antworten</button>
+          <button class="entry" data-title="Neuigkeiten und Updates" onclick="openArticle('updates')">Neuigkeiten & Updates</button>
         </div>
-      </section>
 
-      <section class="page right-page">
-        <div id="article-view">
-          <div class="ornament">✦</div>
-          <h2>Willkommen</h2>
-          <div class="subtitle">Öffne einen Eintrag, um mehr zu erfahren.</div>
+        <div class="category">
+          <div class="category-title"><span class="category-icon">◆</span> MINECRAFT</div>
+          <div class="category-description">Die Grundlagen des Spiels</div>
+          <button class="entry" data-title="Minecraft Grundlagen" onclick="openArticle('grundlagen')">Minecraft-Grundlagen</button>
+          <button class="entry" data-title="Spielmodi in Minecraft" onclick="openArticle('minecraftmodi')">Spielmodi erklärt</button>
+          <button class="entry" data-title="Blöcke und Gegenstände Items" onclick="openArticle('items')">Blöcke & Items</button>
+          <button class="entry" data-title="Crafting und Werkzeuge" onclick="openArticle('crafting')">Crafting & Werkzeuge</button>
+          <button class="entry" data-title="Verzauberungen" onclick="openArticle('verzauberungen')">Verzauberungen</button>
+          <button class="entry" data-title="Redstone" onclick="openArticle('redstone')">Redstone</button>
+          <button class="entry" data-title="Biome und Dimensionen" onclick="openArticle('biome')">Biome & Dimensionen</button>
+          <button class="entry" data-title="Minecraft Kreaturen Mobs" onclick="openArticle('mobs')">Kreaturen & Mobs</button>
+          <button class="entry" data-title="Minecraft Befehle Commands" onclick="openArticle('befehle')">Befehle & Commands</button>
+        </div>
 
-          <div class="intro-box">
-            <strong>Ein Buch voller Wissen.</strong>
-            <div class="gold-line"></div>
-            Dieses digitale Handbuch vereint verschiedene Themenbereiche
-            an einem Ort. Hier findest du Informationen, Erklärungen,
-            Anleitungen und wichtige Hinweise.
-            <p>Klicke links auf einen Eintrag im Inhaltsverzeichnis.
-            Der passende Artikel wird direkt hier geöffnet.</p>
-          </div>
+        <div class="category">
+          <div class="category-title"><span class="category-icon">◆</span> SERVER & TECHNIK</div>
+          <div class="category-description">Alles rund um Multiplayer</div>
+          <button class="entry" data-title="Java oder Bedrock Edition" onclick="openArticle('editionen')">Java oder Bedrock?</button>
+          <button class="entry" data-title="Server IP und Port" onclick="openArticle('ip')">IP-Adresse & Port</button>
+          <button class="entry" data-title="Verbindungsprobleme" onclick="openArticle('verbindung')">Verbindungsprobleme</button>
+          <button class="entry" data-title="Lags und Performance" onclick="openArticle('lags')">Lags & Performance</button>
+          <button class="entry" data-title="Plugins und Erweiterungen" onclick="openArticle('plugins')">Plugins & Erweiterungen</button>
+          <button class="entry" data-title="Mods und Ressourcenpakete" onclick="openArticle('mods')">Mods & Ressourcenpakete</button>
+          <button class="entry" data-title="Account Sicherheit" onclick="openArticle('sicherheit')">Account-Sicherheit</button>
+        </div>
 
-          <div class="gold-line"></div>
-          <p style="font-size:14px;line-height:1.8;color:#77705e">
-            „Wissen beginnt mit einer Frage.“
+        <div class="category">
+          <div class="category-title"><span class="category-icon">◆</span> REGELN & INFORMATIONEN</div>
+          <div class="category-description">Gemeinsam fair spielen</div>
+          <button class="entry" data-title="Allgemeine Serverregeln" onclick="openArticle('regeln')">Allgemeine Serverregeln</button>
+          <button class="entry" data-title="Chatregeln" onclick="openArticle('chatregeln')">Chatregeln</button>
+          <button class="entry" data-title="Verhalten im Team" onclick="openArticle('verhalten')">Fairness & Verhalten</button>
+          <button class="entry" data-title="Strafen und Konsequenzen" onclick="openArticle('strafen')">Strafen & Konsequenzen</button>
+          <button class="entry" data-title="Support Richtlinien" onclick="openArticle('supportregeln')">Support-Richtlinien</button>
+          <button class="entry" data-title="Datenschutz und Privatsphäre" onclick="openArticle('datenschutz')">Datenschutz & Privatsphäre</button>
+        </div>
+
+      </div>
+
+      <div class="no-results" id="no-results">
+        Keine passenden Einträge gefunden.
+      </div>
+
+      <div class="page-number">1</div>
+    </section>
+
+    <!-- RECHTE BUCHSEITE -->
+
+    <section class="page right-page">
+      <div id="article-view">
+
+        <div class="ornament">✦</div>
+        <h2 class="page-heading">Willkommen im Handbuch</h2>
+        <div class="page-subtitle">Das Nachschlagewerk von LMS NETWORK</div>
+
+        <div class="welcome-box">
+          <h3>Eine Welt voller Möglichkeiten.</h3>
+          Dieses Handbuch ist deine zentrale Anlaufstelle für Informationen
+          über Minecraft, Multiplayer-Server und LMS NETWORK.
+
+          <p>
+            Hier findest du Erklärungen, Anleitungen, Hinweise und
+            Wissenswertes. Das Inhaltsverzeichnis auf der linken Seite
+            führt dich direkt zu den einzelnen Kapiteln.
+          </p>
+
+          <p>
+            Klicke einfach auf einen Eintrag, um den dazugehörigen Artikel
+            auf dieser Buchseite zu öffnen.
           </p>
         </div>
+
+        <h3 style="color:#34533b;font-weight:normal;margin-top:27px">
+          Schnellzugriff
+        </h3>
+
+        <div class="quick-links">
+          <button class="quick-link" onclick="openArticle('beitreten')">
+            Server beitreten
+            <span>So funktioniert der Einstieg</span>
+          </button>
+
+          <button class="quick-link" onclick="openArticle('regeln')">
+            Serverregeln
+            <span>Wichtige Verhaltensregeln</span>
+          </button>
+
+          <button class="quick-link" onclick="openArticle('befehle')">
+            Minecraft-Befehle
+            <span>Commands kennenlernen</span>
+          </button>
+
+          <button class="quick-link" onclick="openArticle('support')">
+            Support
+            <span>Hilfe und Unterstützung</span>
+          </button>
+        </div>
+
         <div class="page-number">2</div>
-      </section>
+      </div>
+    </section>
 
-    </main>
+  </main>
 
-    <footer class="footer">
-      DAS GROSSE HANDBUCH · DIGITALE AUSGABE
-    </footer>
-  </div>
+  <footer class="footer">
+    LMS NETWORK · DAS DIGITALE HANDBUCH
+  </footer>
+
+</div>
+</div>
 </div>
 
 <script>
 const articles = {
-  lms: {
-    category:"LMS NETWORK",
-    title:"Was ist LMS NETWORK?",
-    content:`
-      <p>LMS NETWORK ist ein Projekt, dessen Informationen und Funktionen
-      in diesem Handbuch gesammelt werden können.</p>
-      <h3>Was findest du hier?</h3>
-      <ul>
-        <li>Informationen über das Netzwerk</li>
-        <li>Erklärungen zu verschiedenen Funktionen</li>
-        <li>Hilfestellungen und Anleitungen</li>
-        <li>Wichtige Hinweise und Regeln</li>
-      </ul>
-      <p>Weitere Informationen können jederzeit ergänzt werden.</p>
-    `
-  },
-  fragen: {
-    category:"LMS NETWORK",
-    title:"Fragen und Antworten",
-    content:`
-      <p>In diesem Bereich können häufig gestellte Fragen und passende
-      Antworten gesammelt werden.</p>
-      <h3>Warum gibt es diesen Bereich?</h3>
-      <p>Damit Besucher wichtige Informationen schnell finden und
-      Antworten auf häufige Fragen erhalten können.</p>
-      <h3>Weitere Inhalte</h3>
-      <p>Hier können später konkrete Fragen, Antworten und Verweise auf
-      die Fragenseite ergänzt werden.</p>
-    `
-  },
-  hilfe: {
-    category:"LMS NETWORK",
-    title:"Hilfe und Unterstützung",
-    content:`
-      <p>Dieser Bereich erklärt, wo Nutzer Unterstützung und Hilfe
-      finden können.</p>
-      <h3>Wenn du nicht weiterkommst</h3>
-      <p>Suche zuerst im Inhaltsverzeichnis nach deinem Thema.
-      Falls du keine passende Erklärung findest, kann ein eigener
-      Hilfeartikel ergänzt werden.</p>
-    `
-  },
-  lmsinfo: {
-    category:"LMS NETWORK",
-    title:"Wichtige Informationen",
-    content:`
-      <p>Hier werden wichtige Informationen rund um LMS NETWORK
-      übersichtlich gesammelt.</p>
-      <h3>Hinweis</h3>
-      <p>Dieser Artikel ist ein Platzhalter. Trage hier später die
-      offiziellen und bestätigten Informationen ein.</p>
-    `
-  },
-  computer: {
-    category:"TECHNIK & COMPUTER",
-    title:"Was ist ein Computer?",
-    content:`
-      <p>Ein Computer ist ein elektronisches Gerät, das Daten verarbeitet.
-      Er kann Informationen speichern, Berechnungen durchführen und
-      Programme ausführen.</p>
-      <h3>Typische Bestandteile</h3>
-      <ul>
-        <li>Prozessor (CPU): verarbeitet Befehle</li>
-        <li>Arbeitsspeicher (RAM): hält kurzfristig benötigte Daten bereit</li>
-        <li>Speicher: bewahrt Dateien und Programme auf</li>
-        <li>Grafikkarte: verarbeitet Bildinformationen</li>
-      </ul>
-    `
-  },
-  internet: {
-    category:"TECHNIK & COMPUTER",
-    title:"Das Internet erklärt",
-    content:`
-      <p>Das Internet ist ein weltweites Netzwerk miteinander
-      verbundener Computer und anderer Geräte.</p>
-      <h3>Was kann man damit machen?</h3>
-      <ul>
-        <li>Webseiten besuchen</li>
-        <li>Nachrichten versenden</li>
-        <li>Informationen recherchieren</li>
-        <li>Gemeinsam an Projekten arbeiten</li>
-      </ul>
-      <p>Webseiten werden häufig über einen Browser aufgerufen.</p>
-    `
-  },
-  html: {
-    category:"TECHNIK & COMPUTER",
-    title:"Was ist HTML?",
-    content:`
-      <p>HTML steht für HyperText Markup Language. Es ist eine
-      Auszeichnungssprache, mit der die Struktur einer Webseite
-      festgelegt wird.</p>
-      <h3>Beispiele</h3>
-      <ul>
-        <li>Überschriften</li>
-        <li>Absätze und Texte</li>
-        <li>Bilder und Links</li>
-        <li>Formulare und Bereiche</li>
-      </ul>
-      <p>Zusammen mit CSS und JavaScript bildet HTML eine wichtige
-      Grundlage moderner Webseiten.</p>
-    `
-  },
-  datenbank: {
-    category:"TECHNIK & COMPUTER",
-    title:"Was ist eine Datenbank?",
-    content:`
-      <p>Eine Datenbank ist eine strukturierte Sammlung von Daten.
-      Sie ermöglicht es, Informationen zu speichern, zu suchen,
-      zu ändern und zu verwalten.</p>
-      <h3>Beispiel</h3>
-      <p>Eine Datenbank kann Nutzerdaten, Fragen, Antworten oder
-      Einstellungen einer Webseite speichern.</p>
-    `
-  }
+
+lms:{
+category:"LMS NETWORK",
+title:"Was ist LMS NETWORK?",
+content:`
+<p>Willkommen bei LMS NETWORK! Dieses Kapitel stellt das Netzwerk vor und sammelt die wichtigsten Informationen rund um das Projekt.</p>
+
+<h3>Was findest du in diesem Handbuch?</h3>
+<ul>
+<li>Informationen über das Netzwerk</li>
+<li>Erklärungen zu Minecraft und Multiplayer</li>
+<li>Hilfestellungen für Spieler</li>
+<li>Regeln und wichtige Hinweise</li>
+<li>Antworten auf häufig gestellte Fragen</li>
+</ul>
+
+<div class="article-note">
+<strong>Hinweis:</strong> Die konkreten Angaben zu den Serverangeboten werden ergänzt, sobald die offiziellen LMS-Informationen feststehen.
+</div>
+`
+},
+
+beitreten:{
+category:"LMS NETWORK",
+title:"Dem Server beitreten",
+content:`
+<p>Du möchtest LMS NETWORK besuchen? Hier wird später die genaue Anleitung für den Einstieg auf den Server stehen.</p>
+
+<h3>Was du grundsätzlich benötigst</h3>
+<ul>
+<li>Eine passende Minecraft-Version</li>
+<li>Einen Minecraft-Account</li>
+<li>Die korrekte Serveradresse</li>
+<li>Eine funktionierende Internetverbindung</li>
+</ul>
+
+<h3>So funktioniert der Einstieg</h3>
+<ol>
+<li>Minecraft starten.</li>
+<li>Den Mehrspieler-Bereich öffnen.</li>
+<li>Einen Server hinzufügen oder direkt verbinden.</li>
+<li>Die offizielle Serveradresse eintragen.</li>
+<li>Verbinden und den Server betreten.</li>
+</ol>
+
+<div class="article-note">
+Die genaue LMS-Serveradresse und unterstützte Version müssen noch ergänzt werden.
+</div>
+`
+},
+
+serverdaten:{
+category:"LMS NETWORK",
+title:"Serveradresse & Version",
+content:`
+<p>Hier stehen die offiziellen Verbindungsdaten von LMS NETWORK.</p>
+
+<h3>Serveradresse</h3>
+<p><strong>IP-Adresse:</strong> Noch nicht eingetragen</p>
+
+<h3>Minecraft-Version</h3>
+<p><strong>Unterstützte Versionen:</strong> Noch nicht eingetragen</p>
+
+<h3>Weitere Informationen</h3>
+<p>Falls ein Port oder eine besondere Verbindungseinstellung erforderlich ist, wird sie hier veröffentlicht.</p>
+
+<div class="article-warning">
+Bitte verwende ausschließlich die offiziell veröffentlichten Verbindungsdaten.
+</div>
+`
+},
+
+konzept:{
+category:"LMS NETWORK",
+title:"Das Serverkonzept",
+content:`
+<p>Hier wird erklärt, welche Idee hinter LMS NETWORK steckt und was das Netzwerk seinen Spielern bieten möchte.</p>
+
+<h3>Die Idee</h3>
+<p>Dieser Abschnitt kann die Ausrichtung, Besonderheiten und Ziele des Servers vorstellen.</p>
+
+<h3>Was macht LMS NETWORK besonders?</h3>
+<p>Hier können die tatsächlichen Besonderheiten des Netzwerks ergänzt werden.</p>
+`
+},
+
+spielmodi:{
+category:"LMS NETWORK",
+title:"Spielmodi",
+content:`
+<p>In diesem Kapitel werden die verfügbaren Spielmodi von LMS NETWORK vorgestellt.</p>
+
+<h3>Spielmodi im Überblick</h3>
+<p>Die offiziellen Spielmodi werden hier mit einer Beschreibung, den wichtigsten Funktionen und den jeweiligen Besonderheiten ergänzt.</p>
+
+<div class="article-note">
+Noch keine konkreten Spielmodi eingetragen. So werden keine nicht vorhandenen Serverangebote versprochen.
+</div>
+`
+},
+
+team:{
+category:"LMS NETWORK",
+title:"Team & Ansprechpartner",
+content:`
+<p>Hier findest du später die offiziellen Ansprechpartner und Teammitglieder von LMS NETWORK.</p>
+
+<h3>Teamübersicht</h3>
+<ul>
+<li>Netzwerkleitung – wird ergänzt</li>
+<li>Administration – wird ergänzt</li>
+<li>Moderation – wird ergänzt</li>
+<li>Support – wird ergänzt</li>
+</ul>
+
+<p>Die tatsächlichen Teammitglieder und Zuständigkeiten werden hier veröffentlicht.</p>
+`
+},
+
+support:{
+category:"LMS NETWORK",
+title:"Support erhalten",
+content:`
+<p>Du hast eine Frage oder benötigst Unterstützung? Dieser Bereich erklärt, wie du Hilfe erhalten kannst.</p>
+
+<h3>Vor einer Supportanfrage</h3>
+<ul>
+<li>Beschreibe dein Problem möglichst genau.</li>
+<li>Erkläre, wann der Fehler auftritt.</li>
+<li>Füge bei Bedarf einen Screenshot hinzu.</li>
+<li>Bleibe freundlich und sachlich.</li>
+</ul>
+
+<h3>Frage einreichen</h3>
+<p>Über die Fragenseite kannst du eine Nachricht einreichen.</p>
+<a class="article-button" href="Fragen.html">Zur Fragenseite</a>
+`
+},
+
+fragen:{
+category:"LMS NETWORK",
+title:"Fragen & Antworten",
+content:`
+<p>Dieser Bereich hilft dir dabei, Antworten auf häufige Fragen zu finden.</p>
+
+<h3>Frage nicht gefunden?</h3>
+<p>Wenn deine Frage im Handbuch nicht beantwortet wird, kannst du sie über die Fragenseite einreichen.</p>
+
+<a class="article-button" href="Fragen.html">Frage einreichen</a>
+<a class="article-button" href="MeineFragen.html">Meine Fragen ansehen</a>
+
+<div class="article-note">
+Bewahre deinen persönlichen Zugangscode für deine eingereichte Frage sicher auf.
+</div>
+`
+},
+
+updates:{
+category:"LMS NETWORK",
+title:"Neuigkeiten & Updates",
+content:`
+<p>Hier werden wichtige Neuigkeiten und Änderungen rund um LMS NETWORK gesammelt.</p>
+
+<h3>Update-Übersicht</h3>
+<p>Neue Funktionen, Änderungen, Wartungsarbeiten und weitere Ankündigungen können hier mit Datum veröffentlicht werden.</p>
+
+<div class="article-note">Noch wurden keine offiziellen Updates eingetragen.</div>
+`
+},
+
+grundlagen:{
+category:"MINECRAFT",
+title:"Minecraft-Grundlagen",
+content:`
+<p>Minecraft ist ein Sandbox-Spiel, in dem Spieler eine Welt aus Blöcken erkunden, gestalten und verändern können.</p>
+
+<h3>Die Spielwelt</h3>
+<p>Die Welt besteht aus unterschiedlichen Blöcken, Landschaften, Lebewesen und Ressourcen.</p>
+
+<h3>Was kannst du machen?</h3>
+<ul>
+<li>Die Welt erkunden</li>
+<li>Ressourcen sammeln</li>
+<li>Gebäude bauen</li>
+<li>Gegenstände herstellen</li>
+<li>Mit anderen Spielern zusammenspielen</li>
+</ul>
+
+<h3>Überleben und Kreativität</h3>
+<p>Je nach Spielmodus stehen unterschiedliche Möglichkeiten im Vordergrund. Manche Spielweisen konzentrieren sich auf das Überleben, andere auf das Bauen und Gestalten.</p>
+`
+},
+
+minecraftmodi:{
+category:"MINECRAFT",
+title:"Spielmodi in Minecraft",
+content:`
+<p>Minecraft bietet verschiedene Spielmodi mit unterschiedlichen Regeln.</p>
+
+<h3>Überleben</h3>
+<p>Spieler sammeln Ressourcen, stellen Gegenstände her und müssen auf ihre Lebenspunkte achten.</p>
+
+<h3>Kreativ</h3>
+<p>Im Kreativmodus stehen umfangreiche Baumöglichkeiten zur Verfügung. Ressourcen sind direkt verfügbar.</p>
+
+<h3>Abenteuer</h3>
+<p>Der Abenteuermodus eignet sich für speziell gestaltete Karten und Spielerlebnisse.</p>
+
+<h3>Zuschauer</h3>
+<p>Im Zuschauermodus kann die Welt beobachtet werden, ohne sie normal zu verändern.</p>
+`
+},
+
+items:{
+category:"MINECRAFT",
+title:"Blöcke & Items",
+content:`
+<p>Die Minecraft-Welt besteht aus Blöcken. Items sind Gegenstände, die Spieler aufnehmen, verwenden oder herstellen können.</p>
+
+<h3>Blöcke</h3>
+<ul>
+<li>Erde und Stein</li>
+<li>Holz und Baumaterialien</li>
+<li>Erze und Mineralien</li>
+<li>Dekorationsblöcke</li>
+<li>Redstone-Komponenten</li>
+</ul>
+
+<h3>Items</h3>
+<p>Werkzeuge, Waffen, Nahrung, Materialien und viele weitere Gegenstände gehören zu den Items.</p>
+`
+},
+
+crafting:{
+category:"MINECRAFT",
+title:"Crafting & Werkzeuge",
+content:`
+<p>Beim Crafting werden Materialien miteinander kombiniert, um neue Gegenstände herzustellen.</p>
+
+<h3>Werkbank</h3>
+<p>Mit einer Werkbank steht ein größeres Crafting-Raster zur Verfügung.</p>
+
+<h3>Werkzeuge</h3>
+<ul>
+<li>Spitzhacke – zum Abbauen vieler Gesteinsarten</li>
+<li>Axt – zum Bearbeiten von Holz</li>
+<li>Schaufel – für Erde, Sand und ähnliche Blöcke</li>
+<li>Hacke – für die Landwirtschaft</li>
+<li>Schere – für bestimmte Blöcke und Gegenstände</li>
+</ul>
+`
+},
+
+verzauberungen:{
+category:"MINECRAFT",
+title:"Verzauberungen",
+content:`
+<p>Verzauberungen verbessern bestimmte Eigenschaften von Werkzeugen, Waffen und Rüstungen.</p>
+
+<h3>Wie erhält man Verzauberungen?</h3>
+<p>Eine Möglichkeit ist der Verzauberungstisch. Auch andere Spielmechaniken können Verzauberungen ermöglichen.</p>
+
+<h3>Beispiele</h3>
+<ul>
+<li>Effizienz – schnelleres Abbauen</li>
+<li>Haltbarkeit – Gegenstände halten länger</li>
+<li>Schutz – reduziert bestimmten Schaden</li>
+<li>Reparatur – kann Haltbarkeit mit Erfahrung wiederherstellen</li>
+</ul>
+`
+},
+
+redstone:{
+category:"MINECRAFT",
+title:"Redstone",
+content:`
+<p>Redstone ermöglicht technische Konstruktionen und automatische Abläufe in Minecraft.</p>
+
+<h3>Typische Bauteile</h3>
+<ul>
+<li>Redstone-Staub</li>
+<li>Hebel und Knöpfe</li>
+<li>Redstone-Fackeln</li>
+<li>Kolben</li>
+<li>Beobachter</li>
+<li>Repeater und Komparatoren</li>
+</ul>
+
+<h3>Was lässt sich bauen?</h3>
+<p>Mit Redstone können Türen, Sortieranlagen, automatische Farmen und viele weitere Konstruktionen entstehen.</p>
+`
+},
+
+biome:{
+category:"MINECRAFT",
+title:"Biome & Dimensionen",
+content:`
+<p>Biome sind unterschiedliche Landschafts- und Klimazonen innerhalb der Minecraft-Welt.</p>
+
+<h3>Beispiele für Biome</h3>
+<ul>
+<li>Wüste</li>
+<li>Dschungel</li>
+<li>Taiga</li>
+<li>Ebene</li>
+<li>Schneebiome</li>
+<li>Ozeane</li>
+</ul>
+
+<h3>Dimensionen</h3>
+<p>Zu den bekannten Dimensionen gehören die Oberwelt, der Nether und das Ende.</p>
+`
+},
+
+mobs:{
+category:"MINECRAFT",
+title:"Kreaturen & Mobs",
+content:`
+<p>In Minecraft gibt es zahlreiche Kreaturen, die als Mobs bezeichnet werden.</p>
+
+<h3>Passive Kreaturen</h3>
+<p>Beispiele sind Kühe, Schafe, Schweine und Hühner.</p>
+
+<h3>Feindliche Kreaturen</h3>
+<p>Zu den feindlichen Kreaturen gehören unter anderem Zombies, Skelette und Creeper.</p>
+
+<h3>Weitere Kreaturen</h3>
+<p>Es gibt außerdem neutrale und besondere Kreaturen mit eigenen Eigenschaften und Verhaltensweisen.</p>
+`
+},
+
+befehle:{
+category:"MINECRAFT",
+title:"Befehle & Commands",
+content:`
+<p>Minecraft-Befehle ermöglichen bestimmte Aktionen über den Chat oder die Konsole. Welche Befehle funktionieren, hängt unter anderem von Berechtigungen und Servereinstellungen ab.</p>
+
+<h3>Beispiele für bekannte Befehle</h3>
+<ul>
+<li><strong>/help</strong> – zeigt verfügbare Hilfeinformationen</li>
+<li><strong>/msg</strong> – sendet eine private Nachricht, sofern verfügbar</li>
+<li><strong>/spawn</strong> – kann zum Spawn führen, sofern der Server dies unterstützt</li>
+<li><strong>/home</strong> – kann einen gespeicherten Ort aufrufen, sofern vorhanden</li>
+</ul>
+
+<div class="article-warning">
+Nicht jeder Befehl ist auf jedem Server verfügbar. Die tatsächlichen LMS-Befehle müssen noch ergänzt werden.
+</div>
+`
+},
+
+editionen:{
+category:"SERVER & TECHNIK",
+title:"Java oder Bedrock?",
+content:`
+<p>Minecraft gibt es in verschiedenen Editionen. Besonders bekannt sind die Java Edition und die Bedrock Edition.</p>
+
+<h3>Java Edition</h3>
+<p>Die Java Edition wird hauptsächlich auf Windows, macOS und Linux gespielt.</p>
+
+<h3>Bedrock Edition</h3>
+<p>Die Bedrock Edition ist unter anderem auf Konsolen, Mobilgeräten und Windows verfügbar.</p>
+
+<h3>Wichtig für Multiplayer</h3>
+<p>Ob beide Editionen gemeinsam spielen können, hängt von der jeweiligen Servertechnik und Konfiguration ab.</p>
+
+<div class="article-note">Welche Editionen LMS NETWORK unterstützt, wird hier ergänzt.</div>
+`
+},
+
+ip:{
+category:"SERVER & TECHNIK",
+title:"IP-Adresse & Port",
+content:`
+<p>Eine Server-IP-Adresse hilft Minecraft dabei, den gewünschten Server im Netzwerk zu finden.</p>
+
+<h3>Was ist eine IP-Adresse?</h3>
+<p>Sie ist eine Adresse, über die ein Server erreichbar gemacht wird.</p>
+
+<h3>Was ist ein Port?</h3>
+<p>Ein Port bezeichnet einen bestimmten Netzwerkzugang. Bei manchen Minecraft-Verbindungen muss neben der Adresse auch ein Port angegeben werden.</p>
+
+<div class="article-note">Die offiziellen Verbindungsdaten von LMS NETWORK stehen im Kapitel „Serveradresse & Version“.</div>
+`
+},
+
+verbindung:{
+category:"SERVER & TECHNIK",
+title:"Verbindungsprobleme",
+content:`
+<p>Wenn Minecraft keine Verbindung zu einem Server herstellen kann, können verschiedene Ursachen dahinterstecken.</p>
+
+<h3>Häufige Ursachen</h3>
+<ul>
+<li>Falsche Serveradresse</li>
+<li>Unpassende Minecraft-Version</li>
+<li>Server vorübergehend nicht erreichbar</li>
+<li>Probleme mit der Internetverbindung</li>
+<li>Unterschiedliche Editionen</li>
+</ul>
+
+<h3>Was kannst du überprüfen?</h3>
+<ol>
+<li>Kontrolliere die Serveradresse.</li>
+<li>Prüfe deine Minecraft-Version.</li>
+<li>Überprüfe deine Internetverbindung.</li>
+<li>Versuche es zu einem späteren Zeitpunkt erneut.</li>
+</ol>
+`
+},
+
+lags:{
+category:"SERVER & TECHNIK",
+title:"Lags & Performance",
+content:`
+<p>Lags sind Verzögerungen, die beim Spielen auftreten können.</p>
+
+<h3>Unterschiedliche Arten</h3>
+<p>Man unterscheidet beispielsweise zwischen Verzögerungen durch die Internetverbindung und Leistungseinbrüchen des eigenen Geräts oder Servers.</p>
+
+<h3>Mögliche Ursachen</h3>
+<ul>
+<li>Schwache Internetverbindung</li>
+<li>Hohe Auslastung des Geräts</li>
+<li>Viele gleichzeitig dargestellte Inhalte</li>
+<li>Hohe Serverauslastung</li>
+</ul>
+`
+},
+
+plugins:{
+category:"SERVER & TECHNIK",
+title:"Plugins & Erweiterungen",
+content:`
+<p>Plugins erweitern die Funktionen eines Minecraft-Servers.</p>
+
+<h3>Was können Plugins machen?</h3>
+<ul>
+<li>Zusätzliche Befehle bereitstellen</li>
+<li>Spielerfunktionen ergänzen</li>
+<li>Serverregeln technisch unterstützen</li>
+<li>Neue Spielmechaniken ermöglichen</li>
+</ul>
+
+<p>Welche Plugins LMS NETWORK tatsächlich verwendet, wird nur mit bestätigten Angaben ergänzt.</p>
+`
+},
+
+mods:{
+category:"SERVER & TECHNIK",
+title:"Mods & Ressourcenpakete",
+content:`
+<p>Mods und Ressourcenpakete verändern Minecraft auf unterschiedliche Weise.</p>
+
+<h3>Mods</h3>
+<p>Mods können neue Inhalte, Funktionen und Spielmechaniken hinzufügen.</p>
+
+<h3>Ressourcenpakete</h3>
+<p>Ressourcenpakete können unter anderem Texturen, Sounds und die Darstellung von Gegenständen verändern.</p>
+
+<h3>Server-Kompatibilität</h3>
+<p>Ob zusätzliche Dateien benötigt werden, hängt vom jeweiligen Server ab.</p>
+`
+},
+
+sicherheit:{
+category:"SERVER & TECHNIK",
+title:"Account-Sicherheit",
+content:`
+<p>Ein sicherer Minecraft-Account schützt deinen Zugang und deine persönlichen Daten.</p>
+
+<h3>Wichtige Hinweise</h3>
+<ul>
+<li>Verwende ein starkes, einzigartiges Passwort.</li>
+<li>Gib deine Zugangsdaten nicht weiter.</li>
+<li>Nutze offizielle Anmeldeseiten.</li>
+<li>Sei vorsichtig bei unbekannten Links.</li>
+<li>Verwende verfügbare Sicherheitsfunktionen.</li>
+</ul>
+
+<div class="article-warning">Ein Teammitglied benötigt niemals dein Passwort.</div>
+`
+},
+
+regeln:{
+category:"REGELN & INFORMATIONEN",
+title:"Allgemeine Serverregeln",
+content:`
+<p>Serverregeln schaffen einen gemeinsamen Rahmen für ein faires und angenehmes Spielerlebnis.</p>
+
+<h3>Grundlegende Verhaltensweisen</h3>
+<ul>
+<li>Behandle andere Spieler respektvoll.</li>
+<li>Vermeide Beleidigungen und Belästigungen.</li>
+<li>Nutze keine unerlaubten Hilfsmittel.</li>
+<li>Störe nicht absichtlich das Spielerlebnis anderer.</li>
+<li>Beachte die Anweisungen des zuständigen Teams.</li>
+</ul>
+
+<div class="article-warning">
+Dies sind allgemeine Beispiele und noch nicht die bestätigten offiziellen LMS-Regeln. Die verbindlichen Regeln müssen durch die Serverleitung ergänzt werden.
+</div>
+`
+},
+
+chatregeln:{
+category:"REGELN & INFORMATIONEN",
+title:"Chatregeln",
+content:`
+<p>Ein freundlicher Chat trägt zu einer angenehmen Atmosphäre auf einem Minecraft-Server bei.</p>
+
+<h3>Grundsätze</h3>
+<ul>
+<li>Bleibe respektvoll.</li>
+<li>Vermeide Spam.</li>
+<li>Veröffentliche keine fremden privaten Daten.</li>
+<li>Unterlasse gezielte Provokationen.</li>
+<li>Respektiere andere Spieler.</li>
+</ul>
+
+<p>Die verbindlichen Chatregeln von LMS NETWORK werden hier ergänzt.</p>
+`
+},
+
+verhalten:{
+category:"REGELN & INFORMATIONEN",
+title:"Fairness & Verhalten",
+content:`
+<p>Ein gutes Miteinander ist ein wichtiger Bestandteil eines Multiplayer-Servers.</p>
+
+<h3>Fair spielen</h3>
+<p>Spiele fair, respektiere andere und versuche Konflikte sachlich zu lösen.</p>
+
+<h3>Gemeinschaft</h3>
+<p>Ein respektvoller Umgang macht das gemeinsame Spielen für alle angenehmer.</p>
+`
+},
+
+strafen:{
+category:"REGELN & INFORMATIONEN",
+title:"Strafen & Konsequenzen",
+content:`
+<p>Wenn Serverregeln verletzt werden, können je nach Regelwerk Konsequenzen folgen.</p>
+
+<h3>Mögliche Maßnahmen</h3>
+<p>Welche Maßnahmen auf LMS NETWORK existieren und wann sie angewendet werden, muss durch die Serverleitung festgelegt und hier veröffentlicht werden.</p>
+
+<div class="article-warning">
+Es werden hier bewusst keine konkreten Strafzeiten oder Strafstufen behauptet, solange die offiziellen Regelungen nicht vorliegen.
+</div>
+`
+},
+
+supportregeln:{
+category:"REGELN & INFORMATIONEN",
+title:"Support-Richtlinien",
+content:`
+<p>Damit Supportanfragen gut bearbeitet werden können, sollten einige Grundsätze beachtet werden.</p>
+
+<h3>Eine gute Anfrage</h3>
+<ul>
+<li>Beschreibe dein Anliegen verständlich.</li>
+<li>Bleibe höflich.</li>
+<li>Gib relevante Informationen an.</li>
+<li>Vermeide mehrfache identische Anfragen.</li>
+</ul>
+
+<h3>Persönliche Daten</h3>
+<p>Teile keine Passwörter oder andere vertrauliche Zugangsdaten.</p>
+`
+},
+
+datenschutz:{
+category:"REGELN & INFORMATIONEN",
+title:"Datenschutz & Privatsphäre",
+content:`
+<p>Persönliche Daten sollten im Internet sorgfältig behandelt werden.</p>
+
+<h3>Schütze deine Informationen</h3>
+<ul>
+<li>Veröffentliche keine privaten Adressen.</li>
+<li>Teile keine Passwörter.</li>
+<li>Veröffentliche keine fremden persönlichen Daten.</li>
+<li>Sei vorsichtig mit Screenshots und privaten Nachrichten.</li>
+</ul>
+
+<p>Offizielle Datenschutzinformationen von LMS NETWORK müssen hier ergänzt werden.</p>
+`
+}
+
 };
+
+/* ARTIKEL ÖFFNEN */
 
 function openArticle(id){
   const article=articles[id];
   if(!article)return;
 
+  document.querySelectorAll(".entry").forEach(button=>{
+    button.classList.remove("active");
+    if(button.getAttribute("onclick")===`openArticle('${id}')`){
+      button.classList.add("active");
+    }
+  });
+
   document.getElementById("article-view").innerHTML=`
-    <button class="back-button" onclick="showWelcome()">← Inhaltsverzeichnis</button>
+    <button class="back-button" onclick="showWelcome()">← Zurück zum Handbuch</button>
+
     <div class="article-label">${article.category}</div>
-    <div class="article-title">${article.title}</div>
+    <h2 class="article-title">${article.title}</h2>
     <div class="gold-line"></div>
     <div class="article">${article.content}</div>
   `;
 
-  if(window.innerWidth<=700){
+  if(window.innerWidth<=760){
     document.getElementById("article-view").scrollIntoView({
       behavior:"smooth",
       block:"start"
@@ -508,34 +1350,84 @@ function openArticle(id){
   }
 }
 
+/* STARTSEITE IM BUCH */
+
 function showWelcome(){
+  document.querySelectorAll(".entry").forEach(button=>{
+    button.classList.remove("active");
+  });
+
   document.getElementById("article-view").innerHTML=`
     <div class="ornament">✦</div>
-    <h2>Willkommen</h2>
-    <div class="subtitle">Öffne einen Eintrag, um mehr zu erfahren.</div>
-    <div class="intro-box">
-      <strong>Ein Buch voller Wissen.</strong>
-      <div class="gold-line"></div>
-      Dieses digitale Handbuch vereint verschiedene Themenbereiche
-      an einem Ort. Klicke links auf einen Eintrag im Inhaltsverzeichnis,
-      um den passenden Artikel zu öffnen.
+    <h2 class="page-heading">Willkommen im Handbuch</h2>
+    <div class="page-subtitle">Das Nachschlagewerk von LMS NETWORK</div>
+
+    <div class="welcome-box">
+      <h3>Eine Welt voller Möglichkeiten.</h3>
+      Dieses Handbuch ist deine zentrale Anlaufstelle für Informationen
+      über Minecraft, Multiplayer-Server und LMS NETWORK.
+
+      <p>Wähle links einen Eintrag aus dem Inhaltsverzeichnis.
+      Der passende Artikel wird direkt auf dieser Seite angezeigt.</p>
+    </div>
+
+    <h3 style="color:#34533b;font-weight:normal;margin-top:27px">
+      Schnellzugriff
+    </h3>
+
+    <div class="quick-links">
+      <button class="quick-link" onclick="openArticle('beitreten')">
+        Server beitreten
+        <span>So funktioniert der Einstieg</span>
+      </button>
+
+      <button class="quick-link" onclick="openArticle('regeln')">
+        Serverregeln
+        <span>Wichtige Verhaltensregeln</span>
+      </button>
+
+      <button class="quick-link" onclick="openArticle('befehle')">
+        Minecraft-Befehle
+        <span>Commands kennenlernen</span>
+      </button>
+
+      <button class="quick-link" onclick="openArticle('support')">
+        Support
+        <span>Hilfe und Unterstützung</span>
+      </button>
     </div>
   `;
 }
 
+/* SUCHE */
+
 function searchEntries(){
-  const query=document.getElementById("search").value.toLowerCase().trim();
-  document.querySelectorAll(".entry").forEach(entry=>{
-    entry.style.display=entry.dataset.title.toLowerCase().includes(query)
-      ? "block"
-      : "none";
-  });
+  const query=document.getElementById("search").value
+    .toLowerCase()
+    .trim();
+
+  let total=0;
 
   document.querySelectorAll(".category").forEach(category=>{
-    const visible=[...category.querySelectorAll(".entry")]
-      .some(entry=>entry.style.display!=="none");
-    category.style.display=visible?"block":"none";
+    let categoryHasResults=false;
+
+    category.querySelectorAll(".entry").forEach(entry=>{
+      const title=entry.dataset.title.toLowerCase();
+      const matches=title.includes(query);
+
+      entry.style.display=matches?"block":"none";
+
+      if(matches){
+        categoryHasResults=true;
+        total++;
+      }
+    });
+
+    category.style.display=categoryHasResults?"block":"none";
   });
+
+  document.getElementById("no-results").style.display=
+    total===0?"block":"none";
 }
 </script>
 
